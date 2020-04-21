@@ -1,0 +1,107 @@
+<template>
+  <div style="width:100%">
+    <div class="text-center">
+      <v-dialog v-model="startChart2" dark width="500">
+        <template v-slot:activator="{ on }">
+          <v-btn color="red lighten-2" dark v-on="on">
+            Figura
+          </v-btn>
+        </template>
+
+        <v-card>
+          <v-card-actions>
+            <client-only placeholder="carregando..." class="figure">
+              <line-chart
+                v-if="startChart2"
+                :chartdata="chartData"
+                :options="chartOptions"
+              />
+            </client-only>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" text @click="startChart2 = false">
+              Voltar
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
+
+    <v-container style="width:100%">
+      <v-row>
+        <v-col cols="8" style="position: relative; height:100%; width:100%">
+          <client-only placeholder="carregando...">
+            <div class="chart-container">
+              <line-chart
+                v-if="startChart"
+                :chartdata="chartData"
+                :options="chartOptions"
+              />
+            </div>
+          </client-only>
+        </v-col>
+        <v-col cols="4" style="position: relative; height:100%; width:100%">
+          <v-card style="width:100%" class="green lighten-4">
+            <v-card-title class="primary">Exercicio:</v-card-title>
+            <v-card-text id="mathjax">
+              Resolva o problema de valor inicial $$\color{green} {\frac{dy}{dx}
+              = \frac{1+ 3x^2}{3y^2-6y}, \quad y(0) =1 }$$
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-btn v-on:click="startChart = !startChart"> Toggle/Figura </v-btn>
+    <v-divider />
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      startChart: true,
+      startChart2: false,
+
+      chartData: {
+        labels: ['Janeiro', 'Fevereiro', 'Marzo'],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: 'Green',
+            borderColor: 'Blue',
+            lineTension: 0.4,
+            borderWidth: 1,
+            data: [40, 25, 67],
+            fill: false
+          }
+        ]
+      },
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    }
+  },
+
+  updated() {},
+  mounted() {
+    //this.startChart = true
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  methods: {},
+  head() {
+    return {
+      title: 'About page',
+      script: [
+        // {
+        //   src: 'js/global-config.js',
+        //   //async: true,
+        //   defer: true
+        // }
+      ]
+    }
+  }
+}
+</script>
+
+<style></style>

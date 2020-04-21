@@ -1,0 +1,93 @@
+// Ref: https://github.com/nuxt-community/vuetify-module#customvariables
+//
+// The variables you want to modify
+$font-size-root: 18px;
+
+// TRANSITIONS-----------------------------------
+// .page-enter-active,
+// .page-enter-active {
+//   transition: all 0.5s;
+// }
+// .page-enter,
+// .page-leave-active {
+//   opacity: 0;
+//   transform: scale(0.95);
+// }
+
+// .page-enter-active,
+// .bounce-enter-active {
+//   animation: bounce-in 0.8s;
+// }
+
+// .page-enter,
+// .bounce-leave-active {
+//   animation: bounce-out 0.5s;
+// }
+
+// @keyframes bounce-in {
+//   0% {
+//     opacity: 0;
+//     transform: scale(0.9);
+//   }
+//   //   50% {
+//   //     transform: scale(1.5);
+//   //   }
+//   100% {
+//     opacity: 1;
+//     transform: scale(1);
+//   }
+// }
+// @keyframes bounce-out {
+//   0% {
+//     opacity: 1;
+//     transform: scale(1);
+//   }
+//   //   50% {
+//   //     transform: scale(1.5);
+//   //   }
+//   100% {
+//     opacity: 0;
+//     transform: scale(0.9);
+//   }
+// }
+
+// .slide-left-enter,
+// .slide-right-leave-active {
+//   opacity: 0;
+//   transform: translate(30px, 0);
+// }
+// .slide-left-leave-active,
+// .slide-right-enter {
+//   opacity: 0;
+//   transform: translate(-30px, 0);
+// }
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
+// TRANSITIONS-------------------------------
+
+// html {
+//   --main-color: lightgrey;
+//   --tam-letra: 18px;
+//   --tam-letra-active: 19px;
+//   --height-a-tag: 50px;
+//   --height-a-tag-active: 60px;
+//   --width-a-tag: 130px;
+//   --main-font: Lucida Console;
+//   height: 100%;
+// }
+
+// body {
+//   font-family: var(--main-font);
+//   padding: 0px;
+//   margin: 0ex;
+//   font-size: var(--tam-letra);
+//   line-height: 1.6;
+// }
