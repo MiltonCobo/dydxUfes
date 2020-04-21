@@ -44,7 +44,10 @@
             <v-card-title class="primary">Exercicio:</v-card-title>
             <v-card-text id="mathjax">
               Resolva o problema de valor inicial $$\color{green} {\frac{dy}{dx}
-              = \frac{1+ 3x^2}{3y^2-6y}, \quad y(0) =1 }$$
+              = \frac{1+ 3x^2}{3y^2-6y}, \quad y(0) =1 }$$ Lorem ipsum dolor
+              sit, amet consectetur adipisicing elit. Ipsam hic voluptas
+              exercitationem voluptate esse magnam cumque beatae ducimus
+              distinctio perferendis.
             </v-card-text>
           </v-card>
         </v-col>
@@ -103,5 +106,9 @@ export default {
   }
 }
 </script>
-
-<style></style>
+<style scoped>
+#mathjax {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+</style>

@@ -52,10 +52,11 @@
             </v-card-title>
             <v-divider />
             <v-card-text style="width:100%;" id="mathjax">
-              $ \color{blue} {\cos(x)^2 = 3 } $ \( \e \R \) Lorem ipsum dolor
-              sit amet, $\Q$ consectetur adipisicing elit. Quo officia, cumque
-              $\color{green} {\int g(\cos(t)) dt }$ dolorem at atque molestiae?
-              $$\color{brown}{\int_0^\infty f(\xi) d\xi = \log(1+x^2)}.$$
+              $ \color{blue} {\cos(x)^2 = 3 } $ $ \e \R $ Lorem ipsum dolor sit
+              amet, $\mathbb{Q}$ consectetur adipisicing elit. Quo officia,
+              cumque \( \color{green} {\int g(\cos(t)) dt } \) dolorem at atque
+              molestiae? $$\color{brown}{\int_0^\infty f(\xi) d\xi =
+              \log(1+x^2)}.$$
             </v-card-text>
           </v-card>
         </v-col>
@@ -139,11 +140,11 @@ export default {
     return {
       title: 'Minha pagina UFES',
       script: [
-        // {
-        //   src: 'js/config-mathjax2.js',
-        //   async: false,
-        //   defer: true
-        // },
+        {
+          src: 'js/config-mathjax2.js',
+          async: false,
+          defer: false
+        }
         // {
         //   type: 'text/javascript',
         //   async: true,
@@ -156,3 +157,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+#mathjax {
+  font-family: 'Neucha', cursive;
+  font-size: 26px;
+}
+</style>

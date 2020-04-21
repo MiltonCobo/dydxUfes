@@ -18,19 +18,32 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Neucha&display=swap'
+      }
+    ],
 
     title: 'Minha pagina UFES',
     script: [
-      {
-        src: 'js/config-mathjax2.js',
-        async: false,
-        defer: true
-      },
+      // {
+      //   src: 'js/config-mathjax2.js',
+      //   async: false,
+      //   defer: true
+      // },
       {
         type: 'text/javascript',
-        async: true,
+        async: false,
         defer: true,
+        // src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js'
+
         src:
           'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG'
       }

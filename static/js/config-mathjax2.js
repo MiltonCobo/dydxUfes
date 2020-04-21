@@ -1,4 +1,19 @@
-window.MathJax.Hub.Config({
+// window.MathJax = {
+//   tex: {
+//     inlineMath: [
+//       ['$', '$'],
+//       ['\\(', '\\)']
+//     ],
+//     macros: {
+//       e: '{\\textrm{e}}',
+//       R: '{\\mathbb R}',
+//       Q: '{\\mathbb Q}'
+//     }
+//   }
+// }
+
+MathJax.Hub.Config({
+  showProcessingMessages: false,
   TeX: {
     equationNumbers: { autoNumber: 'AMS' },
     Macros: {
@@ -12,12 +27,15 @@ window.MathJax.Hub.Config({
   jax: ['input/TeX', 'output/HTML-CSS'],
   //TeX: { equationNumbers: { autoNumber: "AMS" } }
   tex2jax: {
-    inlineMath: [['$', '$']], //["\(","\)"] ,
+    inlineMath: [
+      ['$', '$']
+      // ['\\(', '\\)']
+    ],
     displayMath: [
       ['$$', '$$'],
       ['[', ']']
-    ],
-    processEscapes: true // necessario para $ nao seja confundido
+    ]
+    // processEscapes: false // necessario para $ nao seja confundido
   },
   'HTML-CSS': {
     fonts: ['TeX'],
