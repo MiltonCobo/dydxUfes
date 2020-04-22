@@ -52,6 +52,7 @@ export default function lorenz(p) {
     points.push(ip)
 
     p.angleMode(p.radians)
+    // p.colorMode(p.RGB)
     p.colorMode(p.HSB) // color mode hue, saturation, bright
 
     attractor = new Attractor(points)
@@ -182,7 +183,6 @@ export default function lorenz(p) {
     }
 
     show() {
-      p.push()
       p.noFill() // mostra atrator principal
       p.beginShape()
       for (let v of this.points) {
@@ -192,7 +192,6 @@ export default function lorenz(p) {
         // v.add(offset);
       }
       p.endShape()
-      p.pop()
     }
 
     fall() {

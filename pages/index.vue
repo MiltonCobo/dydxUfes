@@ -63,13 +63,16 @@
       </v-row>
     </v-container>
     <div>$$ \sin(x) $$</div>
-    <div id="figure" ref="p5figure"></div>
+    <div id="figure" ref="p5figure" style="width:600px; height:600px"></div>
     <!-- mathjax dont typeset here style="background-color: black;" -->
   </div>
 </template>
 
 <script>
 import lorenz from '@/static/js/lorenzp5.js'
+import goldenRatio from '@/static/js/goldenRatio.js'
+
+// import p5 from '@/static/js/p5.min.js'
 //import Plotly from 'plotly.js-dist'
 
 export default {
@@ -145,7 +148,7 @@ export default {
     },
     startPlot() {
       let divFigure = this.$refs.p5figure
-      this.p5plot = new window.p5(lorenz, divFigure)
+      this.p5plot = new p5(goldenRatio, divFigure)
       // this.p5plot.remove()
       // console.log('startChart2=', this.startChart)
       // console.log(window.MathJax)
@@ -159,8 +162,9 @@ export default {
       script: [
         {
           type: 'text/javascript',
-          src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
-          async: true,
+          src: '/js/p5.min.js',
+          // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+          async: false,
           defer: true
         }
         // {
