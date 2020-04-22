@@ -52,24 +52,24 @@
             </v-card-title>
             <v-divider />
             <v-card-text style="width:100%;" id="mathjax">
-              $ \color{blue} {\cos(x)^2 = 3 } $ $ \e \R $ Lorem ipsum dolor sit
-              amet, $\mathbb{Q}$ consectetur adipisicing elit. Quo officia,
-              cumque \( \color{green} {\int g(\cos(t)) dt } \) dolorem at atque
-              molestiae? $$\color{brown}{\int_0^\infty f(\xi) d\xi =
-              \log(1+x^2)}.$$
+              $ \color{blue} {\cos(x)^2 = 3 \e^{2} \R } $ \( \log(x) \e \RR \)
+              Lorem ipsum $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\)
+              consectetur adipisicing elit. Quo officia, cumque \( \color{green}
+              {\int g(\cos(t)) dt } \) dolorem at atque molestiae?
+              $$\color{brown}{\int_0^\infty f(\xi) d\xi = \log(1+x^2)}.$$
             </v-card-text>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-
-    <div id="figure">$$ \sin(x) $$</div>
-    <!-- mathjax dont typeset here -->
+    <div>$$ \sin(x) $$</div>
+    <div id="figure" ref="p5figure"></div>
+    <!-- mathjax dont typeset here style="background-color: black;" -->
   </div>
 </template>
 
 <script>
-//import VuePlotly from '@/plugins/vue-plotly.js'
+import lorenz from '@/static/js/lorenzp5.js'
 //import Plotly from 'plotly.js-dist'
 
 export default {
@@ -88,6 +88,7 @@ export default {
     let data = [trace1, trace2]
 
     return {
+      p5plot: null,
       startChart: true,
       startChart2: false,
 
@@ -116,20 +117,36 @@ export default {
       }
     }
   },
-  mounted() {
-    //this.startPlot()
-    console.log('passou no mounted')
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
   created() {},
+
+  mounted() {
+    this.startPlot()
+    //this.loadMathJaxConf()
+    MathJax.Hub.Queue(['Typeset', window.MathJax.Hub, 'mathjax'])
+  },
 
   updated() {
     //this.startPlot()
   },
 
   methods: {
+    loadMathJaxConf() {
+      let config = document.getElementById('MathJaxConfig')
+      if (config !== undefined) {
+        let script = document.createElement('script')
+        let mathjaxNode = document.getElementById('MathJaxScript')
+        console.log(mathjaxNode)
+        script.src = 'js/config-mathjax2.js'
+        script.async = false
+        script.defer = false
+        script.id = 'MathJaxConfig'
+        document.head.insertBefore(script, mathjaxNode)
+      }
+    },
     startPlot() {
-      // console.log('startChart=', this.startChart)
+      let divFigure = this.$refs.p5figure
+      this.p5plot = new window.p5(lorenz, divFigure)
+      // this.p5plot.remove()
       // console.log('startChart2=', this.startChart)
       // console.log(window.MathJax)
       // window.MathJax.typeset()
@@ -141,9 +158,10 @@ export default {
       title: 'Minha pagina UFES',
       script: [
         {
-          src: 'js/config-mathjax2.js',
-          async: false,
-          defer: false
+          type: 'text/javascript',
+          src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+          async: true,
+          defer: true
         }
         // {
         //   type: 'text/javascript',
@@ -161,6 +179,6 @@ export default {
 <style scoped>
 #mathjax {
   font-family: 'Neucha', cursive;
-  font-size: 26px;
+  font-size: 22px;
 }
 </style>

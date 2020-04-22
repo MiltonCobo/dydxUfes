@@ -33,19 +33,20 @@ export default {
 
     title: 'Minha pagina UFES',
     script: [
-      // {
-      //   src: 'js/config-mathjax2.js',
-      //   async: false,
-      //   defer: true
-      // },
+      {
+        type: 'text/x-mathjax-config',
+        src: 'js/mathjax3Config.js',
+        async: false,
+        defer: true
+      },
       {
         type: 'text/javascript',
-        async: false,
-        defer: true,
-        // src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js'
-
+        async: true,
+        defer: true, //&delayStartupUntil=configured
+        // src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js' ?config=TeX-AMS-MML_SVG
+        id: 'MathJaxScript',
         src:
-          'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG'
+          'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
       }
       // {
       //   src: 'js/global-config.js',
@@ -59,7 +60,15 @@ export default {
       // {
       //   type: 'text/javascript',
       //   id: 'MathJax-script',
+      //   async: true,
+      //   defer: true,
       //   src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js'
+      // }
+      // {
+      //   type: 'text/x-mathjax-config',
+      //   src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+      //   async: true,
+      //   defer: true
       // }
     ]
     // {

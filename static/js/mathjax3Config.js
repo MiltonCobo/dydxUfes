@@ -3,7 +3,7 @@ window.MathJax = {
     load: ['[tex]/tagFormat', '[tex]/color']
   },
   startup: {
-    elements: ['#mathjax'],
+    elements: ['mathjax'],
     typeset: true,
     ready: () => {
       console.log('MathJax is loaded, but not yet initialized')
@@ -31,9 +31,8 @@ window.MathJax = {
 ;(function() {
   let script = document.createElement('script')
   //script.src = 'cdn.jsdelivr.net/npm/mathjax@2/MathJax.js'
-
   script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js'
-  ;(script.async = false),
-    (script.defer = false),
-    document.head.appendChild(script)
+  script.async = true
+  script.defer = true
+  document.head.appendChild(script)
 })()
