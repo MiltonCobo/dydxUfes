@@ -1,32 +1,41 @@
 // MathJax.Hub.Config({
-//   extensions: ['tex2jax.js'],
-//   jax: ['input/TeX', 'output/HTML-CSS'],
-//   tex2jax: {
-//     inlineMath: [
-//       ['$', '$'],
-//       ['\\(', '\\)']
-//     ],
-//     displayMath: [
-//       ['$$', '$$'],
-//       ['\\[', '\\]']
-//     ],
-//     processEscapes: true
-//   },
-//   'HTML-CSS': { fonts: ['TeX'] }
+//   TeX: {
+//     Macros: {
+//       RR: '{\\bf R}',
+//       R: '{\\mathbb R}',
+//       e: '{\\textrm e}',
+//       bold: ['{\\bf #1}', 1]
+//     }
+//   }
 // })
 
+//MathJax.Ajax.loadComplete('[MathJax]/config/local/local.js')
+
 window.MathJax = {
-  tex: {
+  tex2jax: {
     inlineMath: [
       ['$', '$'],
       ['\\(', '\\)']
     ],
-    macros: {
-      RR: '{\\bf R}',
-      e: '{\\textrm e}',
-      R: '{\\mathbb R}',
-      Q: '{\\mathbb Q}'
-    },
     processEscapes: true
   }
 }
+
+// MathJax.Hub.Config({
+//   TeX: {
+//     Macros: {
+//       RR: '{\\bf R}',
+//       R: '{\\mathbb R}',
+//       bold: ['{\\bf #1}', 1]
+//     }
+//   }
+// })
+// ;(function() {
+//   let script = document.createElement('script')
+//   //script.src = 'cdn.jsdelivr.net/npm/mathjax@2/MathJax.js'
+//   script.src =
+//     'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
+//   script.async = true
+//   script.defer = true
+//   document.head.appendChild(script)
+// })()

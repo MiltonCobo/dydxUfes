@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="index0">
     <div class="text-center">
       <v-dialog v-model="startChart2" width="500">
         <template v-slot:activator="{ on }">
@@ -52,31 +52,40 @@
             </v-card-title>
             <v-divider />
             <v-card-text style="width:100%;" id="mathjax">
-              $ \color{blue} {\cos(x)^2 = 3 \e^{2} \R } $ \( \log(x) \e \RR \)
-              Lorem ipsum $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\)
-              consectetur adipisicing elit. Quo officia, cumque \( \color{green}
-              {\int g(\cos(t)) dt } \) dolorem at atque molestiae?
-              $$\color{brown}{\int_0^\infty f(\xi) d\xi = \log(1+x^2)}.$$
+              <client-only>
+                $ \color{blue} {\cos(x)^2 = 3 \e^{2} \R } $ \( \log(x) \e \RR \)
+                Lorem ipsum $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\)
+                consectetur adipisicing elit. Quo officia, cumque \(
+                \color{green} {\int g(\cos(t)) dt } \) dolorem at atque
+                molestiae? $$\color{brown}{\int_0^\infty f(\xi) d\xi =
+                \log(1+x^2)}.$$
+              </client-only>
             </v-card-text>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
     <div>$$ \sin(x) $$</div>
-    <div id="figure" ref="p5figure" style="width:600px; height:600px"></div>
-    <!-- mathjax dont typeset here style="background-color: black;" -->
+    <!--mathjax dont typeset-->
+
+    <div style="background-color: black width:400px; height:400px">
+      <div
+        style="width:100%; height:100%;background-color:inherit;"
+        id="figure"
+        ref="p5figure"
+      ></div>
+    </div>
   </div>
 </template>
 
 <script>
 import lorenz from '@/static/js/lorenzp5.js'
-import goldenRatio from '@/static/js/goldenRatio.js'
+//import goldenRatio from '@/static/js/goldenRatio.js'
 
 // import p5 from '@/static/js/p5.min.js'
 //import Plotly from 'plotly.js-dist'
 
 export default {
-  //components: { 'vue-plotly': () => import('@/plugins/vue-plotly.js') },
   data() {
     let trace1 = {
       x: [1, 2, 3, 4],
@@ -125,7 +134,7 @@ export default {
   mounted() {
     this.startPlot()
     //this.loadMathJaxConf()
-    MathJax.Hub.Queue(['Typeset', window.MathJax.Hub, 'mathjax'])
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
 
   updated() {
@@ -147,33 +156,48 @@ export default {
       }
     },
     startPlot() {
-      let divFigure = this.$refs.p5figure
-      this.p5plot = new p5(goldenRatio, divFigure)
-      // this.p5plot.remove()
-      // console.log('startChart2=', this.startChart)
-      // console.log(window.MathJax)
-      // window.MathJax.typeset()
-      //this.startChart = true
+      let route = this.$route.fullPath
+      if (route === '/') {
+        let divFigure = this.$refs.p5figure
+        this.p5plot = new p5(lorenz, divFigure)
+      } else {
+        this.p5plot.noLoop()
+        this.p5plot.remove()
+      }
     }
   },
   head() {
     return {
       title: 'Minha pagina UFES',
       script: [
+        // {
+        //   type: 'text/javascript', //x-mathjax-config',
+        //   src: 'js/mathjax2Config.js',
+        //   async: true,
+        //   defer: true
+        // },
+        {
+          type: 'text/javascript',
+          async: true,
+          defer: true, //&delayStartupUntil=configured
+          id: 'MathJaxScript',
+          src:
+            'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
+        },
         {
           type: 'text/javascript',
           src: '/js/p5.min.js',
           // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
           async: false,
           defer: true
+        },
+        {
+          type: 'text/javascript',
+          src: '/js/p5.dom.min.js',
+          // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+          async: false,
+          defer: true
         }
-        // {
-        //   type: 'text/javascript',
-        //   async: true,
-        //   defer: true,
-        //   src:
-        //     'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG'
-        // }
       ]
     }
   }

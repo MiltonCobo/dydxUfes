@@ -1,7 +1,7 @@
 <template>
   <div style="width:100%">
     <div class="text-center">
-      <v-dialog v-model="startChart2" dark width="500">
+      <v-dialog v-model="startChart2" width="500">
         <template v-slot:activator="{ on }">
           <v-btn color="red lighten-2" dark v-on="on">
             Figura
@@ -26,9 +26,13 @@
       </v-dialog>
     </div>
 
-    <v-container style="width:100%">
-      <v-row>
-        <v-col cols="8" style="position: relative; height:100%; width:100%">
+    <v-container style="width:100%" fluid>
+      <v-row wrap>
+        <v-col
+          sm="12"
+          md="8"
+          style="position: relative; height:100%; width:100%"
+        >
           <client-only placeholder="carregando...">
             <div class="chart-container">
               <line-chart
@@ -39,7 +43,11 @@
             </div>
           </client-only>
         </v-col>
-        <v-col cols="4" style="position: relative; height:100%; width:100%">
+        <v-col
+          sm="12"
+          md="4"
+          style="position: relative; height:100%; width:100%"
+        >
           <v-card style="width:100%" class="green lighten-4">
             <v-card-title class="primary">Exercicio:</v-card-title>
             <v-card-text id="mathjax">
@@ -63,10 +71,10 @@ export default {
   data() {
     return {
       startChart: true,
-      startChart2: false,
+      startChart2: true,
 
       chartData: {
-        labels: ['Janeiro', 'Fevereiro', 'Marzo'],
+        labels: ['0', '0.25', '0.5', '0.75', '1'],
         datasets: [
           {
             label: 'Data One',
@@ -74,7 +82,7 @@ export default {
             borderColor: 'Blue',
             lineTension: 0.4,
             borderWidth: 1,
-            data: [40, 25, 67],
+            data: [40, 25, 67, 33, 46],
             fill: false
           }
         ]
@@ -96,11 +104,14 @@ export default {
     return {
       title: 'About page',
       script: [
-        // {
-        //   src: 'js/global-config.js',
-        //   //async: true,
-        //   defer: true
-        // }
+        {
+          type: 'text/javascript',
+          async: true,
+          defer: true, //&delayStartupUntil=configured
+          id: 'MathJaxScript',
+          src:
+            'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
+        }
       ]
     }
   }

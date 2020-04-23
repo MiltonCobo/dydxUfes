@@ -85,7 +85,7 @@
     <v-content>
       <v-container class="fill-height" fluid>
         <!--style="margin: 0px; padding: 0px; width: 100%; height:100%"-->
-        <nuxt />
+        <nuxt ref="nuxt0" />
       </v-container>
     </v-content>
   </v-app>

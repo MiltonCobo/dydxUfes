@@ -1,49 +1,52 @@
 export default function lorenz(p) {
-  var maxIterations = 2000
+  let maxIterations = 1000
   // numero total de iteracoes antes de mudar ponto inicial
 
-  var cont = 0
-  var attractor
-  var rate //var angleRate = 0.026;
+  let count = 0
+  let attractor
+  let rate //let angleRate = 0.026;
 
-  var x, y, z
-  //var scala = 1;
+  let x, y, z
+  //let scala = 1;
 
-  var points = []
+  let points = []
 
-  var angle = 0.2
-  var R = 220
+  let angle = 0.2
+  let R = 220
   let cnv
   let attractorFall = false
   let attractorWiggle = false
+  let figure = null
+  let btn
+  let typeNavigation
 
   const a = 10
   const b = 99.96 // parameters of Lorenz
   const c = 8.0 / 3.0
 
   p.setup = function() {
-    cnv = p.createCanvas(600, 600, p.WEBGL)
-
-    let figure = p.select('#figure')
-
-    figure.html(
-      `<span style ="color : lightgoldenrodyellow; font-size: 12px;
-        position: relative; left: 30%; top: 600px;">
-        clique duas vezes no atrator...clique de novo.
-        </span>`
-    )
-
-    // btnLorenz = createButton('Atrator de Lorenz');
-    // btnLorenz.parent('#figura1');
-    // btnLorenz.position(windowWidth - 100, windowHeight - 100);
-    // btnLorenz.mousePressed(playLorenz);
-
-    // btnOuro = createButton('O Numero de Ouro');
-    // btnOuro.parent('#figura1');
-    // btnOuro.position(windowWidth - 100, windowHeight - 200);
-    // btnOuro.mousePressed(playOuro);
+    cnv = p.createCanvas(500, 600, p.WEBGL)
+    figure = p.select('#figure')
 
     cnv.parent('#figure')
+    //cnv.position(0, 0, 'stickily')
+
+    // figure.html(
+    //   `<span style ="color : lightgoldenrodyellow; font-size: 12px;
+    //     position: relative; left: 30%; top: 20%;">
+    //     clique duas vezes no atrator...clique de novo.
+    //     </span>`
+    // )
+
+    btn = p.createButton('Stop')
+    btn.parent('#figure')
+    //btn.position(0, p.windowHeight, 'relative')
+    btn.mousePressed(stopLorenz)
+    btn.style(
+      'background-color: black; width: 100px; height: 60px; color:lightgoldenrodyellow'
+    )
+    btn.style('font-size', '18px')
+
     let ip = initial_random()
     x = ip.x
     y = ip.y
@@ -56,6 +59,11 @@ export default function lorenz(p) {
     p.colorMode(p.HSB) // color mode hue, saturation, bright
 
     attractor = new Attractor(points)
+  }
+
+  function stopLorenz() {
+    p.noLoop()
+    p.remove()
   }
 
   function initial_random() {
@@ -86,25 +94,36 @@ export default function lorenz(p) {
     // } //else {attractorFall = false}
   }
 
+  /*-----------DRAW ATTRACTOR--------------------------------
+  --------------------------------------------------------------*/
+
   p.draw = function() {
+    let route = window.location.pathname
+    if (route !== '/' || count == maxIterations * 0.5) {
+      p.noLoop() /* stop sketch when route change */
+      p.remove()
+    }
+
+    //console.log('count=', count)
     p.background(0)
+    p.noFill()
     p.mouseOver()
 
-    if (attractorWiggle) {
-      attractor.wiggle()
-      attractor.show()
-    }
+    // if (attractorWiggle) {
+    //   attractor.wiggle()
+    //   attractor.show()
+    // }
 
     //p.clear();
 
     // rotacao da camera -------------------
 
-    angle += 0.015 //angleRate; ; // rotacao da camera
-    if (cont > maxIterations / 2) {
-      p.noLoop()
-      p.remove()
-      //R -= 0.3
-    }
+    angle += 0.012 //angleRate; ; // rotacao da camera
+    // if (count > maxIterations) {
+    //   p.noLoop()
+    //   p.remove()
+    //   //R -= 0.3
+    // }
 
     let x0 = R * p.cos(angle)
     let z0 = R * p.sin(angle)
@@ -116,9 +135,9 @@ export default function lorenz(p) {
     //titlebox.plane(400, 100);
     //---------------------------------------------------
 
-    rate = Math.floor(p.map(cont, 0, maxIterations, 1, 8))
+    rate = Math.floor(p.map(count, 0, maxIterations, 1, 12))
     //acelera plot
-    let dt = 0.0035
+    let dt = 0.0037
 
     for (let i = 0; i < rate; i++) {
       let dx = a * (y - x) * dt //  Equations of Lorenz
@@ -136,9 +155,10 @@ export default function lorenz(p) {
 
     drawAxes(70, 6) // coloca os eixos comprim=70, asas das setas = 6
 
-    cont = cont + rate
+    count = count + rate
+    // console.log(count)
 
-    if (cont > maxIterations) {
+    if (count > maxIterations) {
       points = [] // reinicia points
       R = 220
       //angleRate = 0.028;
@@ -150,7 +170,7 @@ export default function lorenz(p) {
       z = ip.z
       points.push(ip)
 
-      cont = 0 // reinicia contador
+      count = 0 // reinicia contador
     }
 
     let bright = 100
@@ -161,7 +181,7 @@ export default function lorenz(p) {
       // if (i < 200) { bright = 100 }
       // else { }
       p.stroke(i % 360, 100, bright)
-      p.strokeWeight(0.5)
+      p.strokeWeight(0.7)
 
       if (attractorFall) {
         attractor.fall()
@@ -175,7 +195,9 @@ export default function lorenz(p) {
       p.sphere(1.5) // plot white sphere at the end
       p.pop()
     }
-  } //  ------end Draw()----------------------
+  }
+
+  //  ------end Draw()----------------------
 
   class Attractor {
     constructor(points) {
@@ -183,7 +205,8 @@ export default function lorenz(p) {
     }
 
     show() {
-      p.noFill() // mostra atrator principal
+      p.noFill()
+      //p.fill(0, 0, 0, 0) // mostra atrator principal
       p.beginShape()
       for (let v of this.points) {
         p.vertex(v.x, v.y, v.z)
@@ -212,7 +235,6 @@ export default function lorenz(p) {
     }
 
     wiggle() {
-      //
       p.push()
       for (let v of this.points) {
         v.x += p.random(-0.3, 0.3)
@@ -231,12 +253,12 @@ export default function lorenz(p) {
     p.line(L, 0, 0, L - l, l, 0)
     p.line(L, 0, 0, L - l, -l, 0)
 
-    p.stroke('white') // y axes yellow color
+    // p.stroke('black') // y axes yellow color
     p.line(0, 0, 0, 0, L, 0)
     p.line(0, L, 0, l, L - l, 0)
     p.line(0, L, 0, -l, L - l, 0)
 
-    p.stroke('white') // z axes blue color
+    // p.stroke('black') // z axes blue color
     p.line(0, 0, 0, 0, 0, L)
     p.line(0, 0, L, -l * 0.7, l * 0.7, L - l * 0.9)
     p.line(0, 0, L, l * 0.7, -l * 0.7, L - l * 0.9)

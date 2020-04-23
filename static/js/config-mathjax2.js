@@ -14,6 +14,15 @@ MathJax.Hub.Config({
   },
   'HTML-CSS': { fonts: ['TeX'] }
 })
+// ;(function() {
+//   let script = document.createElement('script')
+//   //script.src = 'cdn.jsdelivr.net/npm/mathjax@2/MathJax.js'
+//   script.src =
+//     'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
+//   script.async = true
+//   script.defer = true
+//   document.head.appendChild(script)
+// })()
 
 // window.MathJax = {
 //   tex: {

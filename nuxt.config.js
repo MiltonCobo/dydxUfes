@@ -33,21 +33,21 @@ export default {
 
     title: 'Minha pagina UFES',
     script: [
-      {
-        type: 'text/x-mathjax-config',
-        src: 'js/mathjax3Config.js',
-        async: false,
-        defer: true
-      },
-      {
-        type: 'text/javascript',
-        async: true,
-        defer: true, //&delayStartupUntil=configured
-        // src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js' ?config=TeX-AMS-MML_SVG
-        id: 'MathJaxScript',
-        src:
-          'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
-      }
+      // {
+      //   type: 'text/x-mathjax-config',
+      //   src: 'js/mathjax2Config.js',
+      //   async: false,
+      //   defer: true
+      // },
+      // {
+      //   type: 'text/javascript',
+      //   async: true,
+      //   defer: true, //&delayStartupUntil=configured
+      //   // src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js' ?config=TeX-AMS-MML_SVG
+      //   id: 'MathJaxScript',
+      //   src:
+      //     'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
+      // }
       // {
       //   src: 'js/global-config.js',
       //   //async: true,
