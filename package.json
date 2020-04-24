@@ -15,6 +15,7 @@
     "@mdi/font": "^5.1.45",
     "@statnett/vue-plotly": "^0.3.2",
     "chart.js": "^2.9.3",
+    "ify-loader": "^1.1.0",
     "import": "0.0.6",
     "mathjax": "^3.0.5",
     "nuxt": "^2.12.2",

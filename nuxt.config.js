@@ -108,7 +108,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [], // ['~/node_modules/mathjax/es5/tex-mml-chtml.js'],
+  modules: [],
 
   /*
    ** vuetify module configuration
@@ -144,10 +144,20 @@ export default {
    ** Build configuration
    */
   build: {
-    transpile: ['vue-plotly.js'],
+    transpile: ['vue-plotly.js']
+    // }
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    // extend(config, { isClient, loaders }) {
+    //   config.module.rules.push({
+    //     test: /\.js$/,
+    //     // loader: 'ify-loader'
+    //     use: [
+    //       'ify-loader',
+    //       'transform-loader?plotly.js/tasks/util/compress_attributes.js'
+    //     ]
+    //   })
+    // }
   }
 }

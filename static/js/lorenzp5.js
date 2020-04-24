@@ -4,7 +4,7 @@ export default function lorenz(p) {
 
   let count = 0
   let attractor
-  let rate //let angleRate = 0.026;
+  let rate = 2 //let angleRate = 0.026;
 
   let x, y, z
   //let scala = 1;
@@ -12,20 +12,19 @@ export default function lorenz(p) {
   let points = []
 
   let angle = 0.2
-  let R = 220
+  let R = 380
   let cnv
   let attractorFall = false
   let attractorWiggle = false
-  let figure = null
+  var figure
   let btn
-  let typeNavigation
 
   const a = 10
   const b = 99.96 // parameters of Lorenz
   const c = 8.0 / 3.0
 
   p.setup = function() {
-    cnv = p.createCanvas(500, 600, p.WEBGL)
+    cnv = p.createCanvas(p.windowWidth, 800, p.WEBGL)
     figure = p.select('#figure')
 
     cnv.parent('#figure')
@@ -99,7 +98,7 @@ export default function lorenz(p) {
 
   p.draw = function() {
     let route = window.location.pathname
-    if (route !== '/' || count == maxIterations * 0.5) {
+    if (route !== '/') {
       p.noLoop() /* stop sketch when route change */
       p.remove()
     }
@@ -118,12 +117,10 @@ export default function lorenz(p) {
 
     // rotacao da camera -------------------
 
-    angle += 0.012 //angleRate; ; // rotacao da camera
-    // if (count > maxIterations) {
-    //   p.noLoop()
-    //   p.remove()
-    //   //R -= 0.3
-    // }
+    angle += 0.015 //angleRate; ; // rotacao da camera
+    if (count > maxIterations * 0.7) {
+      R -= 0.3
+    }
 
     let x0 = R * p.cos(angle)
     let z0 = R * p.sin(angle)
@@ -135,9 +132,9 @@ export default function lorenz(p) {
     //titlebox.plane(400, 100);
     //---------------------------------------------------
 
-    rate = Math.floor(p.map(count, 0, maxIterations, 1, 12))
+    rate = Math.floor(p.map(count, 0, maxIterations, 2, 12))
     //acelera plot
-    let dt = 0.0037
+    let dt = 0.00375
 
     for (let i = 0; i < rate; i++) {
       let dx = a * (y - x) * dt //  Equations of Lorenz

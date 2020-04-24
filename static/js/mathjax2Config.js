@@ -1,16 +1,3 @@
-// MathJax.Hub.Config({
-//   TeX: {
-//     Macros: {
-//       RR: '{\\bf R}',
-//       R: '{\\mathbb R}',
-//       e: '{\\textrm e}',
-//       bold: ['{\\bf #1}', 1]
-//     }
-//   }
-// })
-
-//MathJax.Ajax.loadComplete('[MathJax]/config/local/local.js')
-
 window.MathJax = {
   tex2jax: {
     inlineMath: [
@@ -18,24 +5,47 @@ window.MathJax = {
       ['\\(', '\\)']
     ],
     processEscapes: true
+  },
+  tex: {
+    macros: {
+      e: '{\\textrm e}',
+      R: '{\\mathbb R}'
+    },
+    inlineMath: [
+      ['$', '$'],
+      ['\\(', '\\)']
+    ]
   }
 }
 
 // MathJax.Hub.Config({
+//   showProcessingMessages: false,
+//   tex2jax: {
+//     inlineMath: [
+//       ['$', '$'],
+//       ['\\(', '\\)']
+//     ],
+//     processEscapes: true
+//   },
+//   // jax: ['input/TeX', 'output/HTML-CSS'],
 //   TeX: {
+//     TagSide: 'left',
 //     Macros: {
 //       RR: '{\\bf R}',
-//       R: '{\\mathbb R}',
+//       e: '\\textrm{e}',
+//       R: '\\mathbb{R}',
 //       bold: ['{\\bf #1}', 1]
 //     }
+//   },
+//   tex2jax: {
+//     inlineMath: [
+//       ['$', '$'],
+//       ['(', ')']
+//     ],
+//     displayMath: [
+//       ['$$', '$$'],
+//       ['[', ']']
+//     ],
+//     processEscapes: true // necessario para $ nao seja confundido
 //   }
 // })
-// ;(function() {
-//   let script = document.createElement('script')
-//   //script.src = 'cdn.jsdelivr.net/npm/mathjax@2/MathJax.js'
-//   script.src =
-//     'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
-//   script.async = true
-//   script.defer = true
-//   document.head.appendChild(script)
-// })()

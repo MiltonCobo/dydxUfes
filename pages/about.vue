@@ -105,8 +105,14 @@ export default {
       title: 'About page',
       script: [
         {
+          type: 'text/x-mathjax-config',
+          src: 'js/mathjax2Config.js',
+          async: false,
+          defer: false
+        },
+        {
           type: 'text/javascript',
-          async: true,
+          async: false,
           defer: true, //&delayStartupUntil=configured
           id: 'MathJaxScript',
           src:

@@ -52,20 +52,21 @@
             </v-card-title>
             <v-divider />
             <v-card-text style="width:100%;" id="mathjax">
-              <client-only>
-                $ \color{blue} {\cos(x)^2 = 3 \e^{2} \R } $ \( \log(x) \e \RR \)
-                Lorem ipsum $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\)
-                consectetur adipisicing elit. Quo officia, cumque \(
-                \color{green} {\int g(\cos(t)) dt } \) dolorem at atque
-                molestiae? $$\color{brown}{\int_0^\infty f(\xi) d\xi =
-                \log(1+x^2)}.$$
-              </client-only>
+              <!-- <client-only> -->
+              $ \color{blue} {\cos(x)^2 = 3 \e^{2} \R } $ \( \log(x) \e \RR \)
+              Lorem ipsum $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\)
+              consectetur adipisicing elit. Quo officia, cumque \( \color{green}
+              {\int g(\cos(t)) dt } \) dolorem at atque molestiae?
+              $$\color{brown}{\int_0^\infty f(\xi) d\xi = \log(1+x^2)}.$$
+              <!-- </client-only> -->
             </v-card-text>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
+    <!-- <client-only>  -->
     <div>$$ \sin(x) $$</div>
+    <!-- </client-only> -->
     <!--mathjax dont typeset-->
 
     <div style="background-color: black width:400px; height:400px">
@@ -80,24 +81,37 @@
 
 <script>
 import lorenz from '@/static/js/lorenzp5.js'
-//import goldenRatio from '@/static/js/goldenRatio.js'
-
+import {
+  data as dataConfig,
+  getDataSurface
+} from '@/static/js/plotly-config.js'
+//import getDataSurface from '@/static/js/drawSurface.js'
 // import p5 from '@/static/js/p5.min.js'
 //import Plotly from 'plotly.js-dist'
 
 export default {
   data() {
-    let trace1 = {
-      x: [1, 2, 3, 4],
-      y: [10, 15, 13, 17],
-      type: 'scatter'
+    let data = []
+    let xwidth = 6
+    let ywidth = 10
+    let xcenter = xwidth / 2
+    let ycenter = (ywidth - 2) / 2
+    var ysteps = 30
+    var xsteps = 30
+    let center = {
+      x: xcenter,
+      y: ycenter
     }
-    let trace2 = {
-      x: [1, 2, 3, 4],
-      y: [10, 15, 13, 17],
-      type: 'scatter'
+
+    function funct(x, y) {
+      return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
     }
-    let data = [trace1, trace2]
+    let data0 = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+    dataConfig.x = data0.x
+    dataConfig.y = data0.y
+    dataConfig.z = data0.z
+
+    data.push(dataConfig) /* put trace1 inside data array */
 
     return {
       p5plot: null,
@@ -105,6 +119,7 @@ export default {
       startChart2: false,
 
       data: data,
+
       layout: {
         title: 'Grafico', //'${\\color{brown} y^2+3y-2x+\\exp(x)= C}$',
         paper_bgcolor: 'lightgrey',
@@ -113,8 +128,8 @@ export default {
         hovermode: false,
         dragmode: false,
         autosize: false,
-        width: 400,
-        height: 400
+        width: 500,
+        height: 500
       },
       options: {
         displayModeBar: true,
@@ -133,56 +148,37 @@ export default {
 
   mounted() {
     this.startPlot()
-    //this.loadMathJaxConf()
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
 
-  updated() {
-    //this.startPlot()
-  },
+  updated() {},
 
   methods: {
-    loadMathJaxConf() {
-      let config = document.getElementById('MathJaxConfig')
-      if (config !== undefined) {
-        let script = document.createElement('script')
-        let mathjaxNode = document.getElementById('MathJaxScript')
-        console.log(mathjaxNode)
-        script.src = 'js/config-mathjax2.js'
-        script.async = false
-        script.defer = false
-        script.id = 'MathJaxConfig'
-        document.head.insertBefore(script, mathjaxNode)
-      }
-    },
     startPlot() {
-      let route = this.$route.fullPath
-      if (route === '/') {
-        let divFigure = this.$refs.p5figure
-        this.p5plot = new p5(lorenz, divFigure)
-      } else {
-        this.p5plot.noLoop()
-        this.p5plot.remove()
-      }
+      let divFigure = this.$refs.p5figure
+      this.p5plot = new p5(lorenz, divFigure)
     }
   },
   head() {
     return {
       title: 'Minha pagina UFES',
       script: [
-        // {
-        //   type: 'text/javascript', //x-mathjax-config',
-        //   src: 'js/mathjax2Config.js',
-        //   async: true,
-        //   defer: true
-        // },
+        {
+          type: 'text/x-mathjax-config',
+          src: 'js/mathjax2Config.js',
+          async: false,
+          defer: false
+        },
         {
           type: 'text/javascript',
-          async: true,
-          defer: true, //&delayStartupUntil=configured
-          id: 'MathJaxScript',
+          async: false,
+          defer: false, //&delayStartupUntil=configured
+          // id: 'MathJaxScript',
           src:
-            'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
+            'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
+          //'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.8/MathJax.js?config=TeX-AMS-MML_SVG' //&delayStartupUntil=onload'
+          //'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
+          //'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
         },
         {
           type: 'text/javascript',
