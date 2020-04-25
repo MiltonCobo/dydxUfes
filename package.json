@@ -12,8 +12,10 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@babel/core": "^7.9.0",
     "@mdi/font": "^5.1.45",
     "@statnett/vue-plotly": "^0.3.2",
+    "babelify": "^10.0.0",
     "chart.js": "^2.9.3",
     "ify-loader": "^1.1.0",
     "import": "0.0.6",
@@ -21,6 +23,7 @@
     "nuxt": "^2.12.2",
     "plotly.js": "^1.53.0",
     "plotly.js-dist": "^1.53.0",
+    "transform-loader": "^0.2.4",
     "vue-chart.js": "^0.2.0",
     "vue-chartjs": "^3.5.0",
     "vue-meta": "^2.3.3",

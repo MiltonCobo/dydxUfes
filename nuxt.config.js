@@ -71,13 +71,6 @@ export default {
       //   defer: true
       // }
     ]
-    // {
-    //   // type: 'text/x-mathjax-config',
-    //   src: 'js/drawSurface.js',
-    //   defer: true
-    // },
-
-    //]
   },
 
   /*
@@ -144,20 +137,21 @@ export default {
    ** Build configuration
    */
   build: {
-    transpile: ['vue-plotly.js']
-    // }
+    transpile: ['vue-plotly.js', 'vue-chartjs'],
+
     /*
      ** You can extend webpack config here
      */
-    // extend(config, { isClient, loaders }) {
-    //   config.module.rules.push({
-    //     test: /\.js$/,
-    //     // loader: 'ify-loader'
-    //     use: [
-    //       'ify-loader',
-    //       'transform-loader?plotly.js/tasks/util/compress_attributes.js'
-    //     ]
-    //   })
-    // }
+    extend(config, {}) {
+      config.module.rules.push({
+        test: /\.js$/,
+        // loader: 'ify-loader',
+        enforce: 'post',
+        use: [
+          'ify-loader'
+          //'transform-loader?plotly.js/tasks/util/compress_attributes.js'
+        ]
+      })
+    }
   }
 }

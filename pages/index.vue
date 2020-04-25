@@ -110,7 +110,7 @@ export default {
     dataConfig.x = data0.x
     dataConfig.y = data0.y
     dataConfig.z = data0.z
-
+    dataConfig.type = 'surface' /* change data type ...*/
     data.push(dataConfig) /* put trace1 inside data array */
 
     return {
