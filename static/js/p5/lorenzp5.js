@@ -24,7 +24,7 @@ export default function lorenz(p) {
   const c = 8.0 / 3.0
 
   p.setup = function() {
-    cnv = p.createCanvas(p.windowWidth, 800, p.WEBGL)
+    cnv = p.createCanvas(500, 500, p.WEBGL) // (p.windowWidth, 800, p.WEBGL)
     figure = p.select('#figure')
 
     cnv.parent('#figure')
@@ -117,9 +117,9 @@ export default function lorenz(p) {
 
     // rotacao da camera -------------------
 
-    angle += 0.015 //angleRate; ; // rotacao da camera
-    if (count > maxIterations * 0.7) {
-      R -= 0.3
+    angle += 0.03 //angleRate; ; // rotacao da camera
+    if (count > maxIterations * 0.24) {
+      R -= 1
     }
 
     let x0 = R * p.cos(angle)
@@ -157,7 +157,7 @@ export default function lorenz(p) {
 
     if (count > maxIterations) {
       points = [] // reinicia points
-      R = 220
+      R = 380
       //angleRate = 0.028;
       angle = p.random(0, p.TWO_PI)
 
@@ -178,7 +178,7 @@ export default function lorenz(p) {
       // if (i < 200) { bright = 100 }
       // else { }
       p.stroke(i % 360, 100, bright)
-      p.strokeWeight(0.7)
+      p.strokeWeight(0.9)
 
       if (attractorFall) {
         attractor.fall()

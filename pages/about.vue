@@ -106,7 +106,7 @@ export default {
       script: [
         {
           type: 'text/x-mathjax-config',
-          src: 'js/mathjax2Config.js',
+          src: 'js/MathJax/mathjax2Config.js',
           async: false,
           defer: false
         },

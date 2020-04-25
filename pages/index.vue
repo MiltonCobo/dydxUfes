@@ -1,36 +1,9 @@
 <template>
-  <div ref="index0">
-    <div class="text-center">
-      <v-dialog v-model="startChart2" width="500">
-        <template v-slot:activator="{ on }">
-          <v-btn color="red lighten-2" dark v-on="on">
-            Figura
-          </v-btn>
-        </template>
-
-        <v-card>
-          <v-card-actions>
-            <client-only placeholder="carregando..." class="figure">
-              <vue-plotly
-                v-if="startChart2"
-                :data="data"
-                :layout="layout"
-                :options="options"
-              />
-            </client-only>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" text @click="startChart2 = false">
-              Voltar
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </div>
-
+  <div>
     <v-container>
       <v-row>
         <v-col cols="12">
-          <client-only placeholder="carregando..." class="figure">
+          <client-only placeholder="carregando...">
             <vue-plotly
               v-if="startChart"
               :data="data"
@@ -69,29 +42,28 @@
     <!-- </client-only> -->
     <!--mathjax dont typeset-->
 
-    <div style="background-color: black width:400px; height:400px">
-      <div
-        style="width:100%; height:100%;background-color:inherit;"
-        id="figure"
-        ref="p5figure"
-      ></div>
-    </div>
+    <v-btn color="primary" text @click="startPlot">
+      Lorenz!
+    </v-btn>
+    <div id="figure" ref="p5figure"></div>
+
+    <!-- <v-spacer /> -->
   </div>
 </template>
 
 <script>
-import lorenz from '@/static/js/lorenzp5.js'
+import lorenz from '@/static/js/p5/lorenzp5.js'
 import {
-  data as dataConfig,
-  getDataSurface
-} from '@/static/js/plotly-config.js'
+  getDataSurface,
+  layout,
+  options
+} from '@/static/js/Plotly/plotly-config.js'
 //import getDataSurface from '@/static/js/drawSurface.js'
 // import p5 from '@/static/js/p5.min.js'
 //import Plotly from 'plotly.js-dist'
 
 export default {
   data() {
-    let data = []
     let xwidth = 6
     let ywidth = 10
     let xcenter = xwidth / 2
@@ -106,48 +78,25 @@ export default {
     function funct(x, y) {
       return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
     }
-    let data0 = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
-    dataConfig.x = data0.x
-    dataConfig.y = data0.y
-    dataConfig.z = data0.z
-    dataConfig.type = 'surface' /* change data type ...*/
-    data.push(dataConfig) /* put trace1 inside data array */
+
+    let data = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+
+    data.type = 'surface' /* contour ...*/
 
     return {
       p5plot: null,
       startChart: true,
       startChart2: false,
 
-      data: data,
-
-      layout: {
-        title: 'Grafico', //'${\\color{brown} y^2+3y-2x+\\exp(x)= C}$',
-        paper_bgcolor: 'lightgrey',
-        plot_bgcolor: 'lightgrey',
-        showlegend: false,
-        hovermode: false,
-        dragmode: false,
-        autosize: false,
-        width: 500,
-        height: 500
-      },
-      options: {
-        displayModeBar: true,
-        displaylogo: false,
-        responsive: true,
-        showLink: false,
-        modeBarButtonsToRemove: [
-          'hoverClosestCartesian',
-          'hoverCompareCartesian',
-          'toggleSpikelines'
-        ]
-      }
+      data: [data],
+      layout,
+      options
     }
   },
   created() {},
 
   mounted() {
-    this.startPlot()
+    //this.startPlot()
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
 
@@ -155,8 +104,13 @@ export default {
 
   methods: {
     startPlot() {
-      let divFigure = this.$refs.p5figure
-      this.p5plot = new p5(lorenz, divFigure)
+      this.startChart2 = !this.startChart2
+      if (this.startChart2) {
+        let divFigure = this.$refs.p5figure
+        this.p5plot = new p5(lorenz, divFigure)
+      } else {
+        this.p5plot.remove()
+      }
     }
   },
   head() {
@@ -165,7 +119,7 @@ export default {
       script: [
         {
           type: 'text/x-mathjax-config',
-          src: 'js/mathjax2Config.js',
+          src: 'js/MathJax/mathjax2Config.js',
           async: false,
           defer: false
         },
@@ -182,14 +136,14 @@ export default {
         },
         {
           type: 'text/javascript',
-          src: '/js/p5.min.js',
+          src: '/js/p5/p5.min.js',
           // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
           async: false,
           defer: true
         },
         {
           type: 'text/javascript',
-          src: '/js/p5.dom.min.js',
+          src: '/js/p5/p5.dom.min.js',
           // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
           async: false,
           defer: true
