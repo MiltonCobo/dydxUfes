@@ -103,7 +103,7 @@ export default function lorenz(p) {
       p.remove()
     }
 
-    //console.log('count=', count)
+    console.log('count=', count)
     p.background(0)
     p.noFill()
     p.mouseOver()

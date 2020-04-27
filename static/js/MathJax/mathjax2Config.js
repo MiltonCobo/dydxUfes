@@ -1,13 +1,18 @@
 window.MathJax = {
+  displayAlign: 'center',
   tex2jax: {
     inlineMath: [
       ['$', '$'],
       ['\\(', '\\)']
     ],
-    processEscapes: true
+    processEscapes: true,
+    Macros: {
+      e: '{\\textrm e}',
+      R: '{\\mathbb R}'
+    }
   },
   tex: {
-    macros: {
+    Macros: {
       e: '{\\textrm e}',
       R: '{\\mathbb R}'
     },

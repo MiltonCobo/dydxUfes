@@ -1,6 +1,4 @@
-export { getDataSurface, layout, options }
-
-let getDataSurface = function(funct, center, xwidth, ywidth, xsteps, ysteps) {
+export default function(funct, center, xwidth, ywidth, xsteps, ysteps) {
   let x, y
 
   let xArray = []
@@ -24,8 +22,13 @@ let getDataSurface = function(funct, center, xwidth, ywidth, xsteps, ysteps) {
       zArray[i].push(value)
     }
   }
+  let zMax = Math.max(...[].concat(...zArray))
+  let zMin = Math.min(...[].concat(...zArray))
 
-  return {
+  console.log('zMin=', zMin)
+  console.log('zMax=', zMax)
+
+  let data = {
     x: xArray,
     y: yArray,
     z: zArray,
@@ -45,22 +48,19 @@ let getDataSurface = function(funct, center, xwidth, ywidth, xsteps, ysteps) {
     contours: {
       z: {
         show: true,
-        start: -80,
-        end: 50,
-        size: 2,
+        start: zMin * 1.2 /* 20% a mais no eixo z */,
+        end: zMax * 1.2,
+        size: (zMax - zMin) * 0.05,
         color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,
-
-        project: {
-          z: true
-        }
+        project: { z: true }
       },
       y: {
         show: true,
-        start: -ywidth / 2,
-        end: ywidth / 2,
-        size: 0.5,
+        start: -ywidth * 0.6 /* 10% of offset */,
+        end: ywidth * 0.6,
+        size: ywidth * 0.05,
         color: 'lightblue',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -68,9 +68,9 @@ let getDataSurface = function(funct, center, xwidth, ywidth, xsteps, ysteps) {
       },
       x: {
         show: true,
-        start: -xwidth / 2,
-        end: xwidth / 2,
-        size: 0.5,
+        start: -xwidth * 0.6,
+        end: xwidth * 0.6,
+        size: xwidth * 0.05,
         color: 'lightgreen',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -82,69 +82,64 @@ let getDataSurface = function(funct, center, xwidth, ywidth, xsteps, ysteps) {
     // dy: 10,
     // y0: 0,
   }
-
-  // return {
-  //   data
-  // }
-}
-
-let layout = {
-  scene: {
-    xaxis: {
-      showlegend: false,
-      tickmode: 'linear',
-      //range: [0, 6],
-      tick0: 0,
-      dtick: 1,
-      nticks: 4
-      //fixedrange: true
-    },
-    yaxis: {
-      tickmode: 'linear',
-      //range: [0,10],
-      tick0: 0,
-      dtick: 2,
-      nticks: 3,
-      fixedrange: true
-    },
-    zaxis: {
-      range: [-15, 20]
-    },
-    camera: {
-      eye: {
-        x: 1,
-        y: 0.8,
-        z: 1.2
+  let options = {
+    displaylogo: false,
+    scrollZoom: false,
+    responsive: true,
+    showLink: false,
+    modeBarButtonsToRemove: [
+      'hoverClosestCartesian',
+      'hoverCompareCartesian',
+      'toggleSpikelines',
+      'hoverClosest3d'
+    ]
+  }
+  let layout = {
+    scene: {
+      xaxis: {
+        showlegend: false,
+        tickmode: 'linear',
+        //range: [0, 6],
+        tick0: 0,
+        dtick: xwidth * 0.2
+        // nticks: 4
+        //fixedrange: true
+      },
+      yaxis: {
+        tickmode: 'linear',
+        //range: [0,10],
+        tick0: 0,
+        dtick: ywidth * 0.2
+        // nticks: 3,
+        // fixedrange: true
+      },
+      zaxis: {
+        range: [zMin, zMax]
+      },
+      camera: {
+        eye: {
+          x: 1,
+          y: 0.8,
+          z: 1.2
+        }
       }
-    }
-  },
-  title: '$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$',
+    },
+    title: '$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$',
 
-  plot_bgcolor: 'lightgrey',
-  paper_bgcolor: 'lightgrey',
-  dragmode: true,
-  showlegend: false,
-  hovermode: false,
-  autosize: false,
-  width: 700,
-  height: 700
-  // margin: {
-  //     l: 0,
-  //     r: 0,
-  //     b: 0,
-  //     t: 100,
-  //   },
-}
-
-let options = {
-  displaylogo: false,
-  scrollZoom: false,
-  responsive: true,
-  showLink: false,
-  modeBarButtonsToRemove: [
-    'hoverClosestCartesian',
-    'hoverCompareCartesian',
-    'toggleSpikelines',
-    'hoverClosest3d'
-  ]
+    // plot_bgcolor: 'lightgrey',
+    // paper_bgcolor: 'lightgrey',
+    dragmode: true,
+    showlegend: false,
+    hovermode: false,
+    autosize: false,
+    width: null,
+    height: null
+    // margin: {
+    //     l: 0,
+    //     r: 0,
+    //     b: 0,
+    //     t: 100,
+    //   },
+  }
+  return { data, layout, options }
 }

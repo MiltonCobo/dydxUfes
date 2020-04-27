@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar hide-on-scroll flat app>
+    <v-app-bar hide-on-scroll flat app dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn icon>
         <nuxt-link to="/">
@@ -20,6 +20,14 @@
           <v-icon>mdi-book-open-page-variant</v-icon>
         </nuxt-link>
       </v-btn>
+      <v-spacer />
+
+      <v-btn icon>
+        <nuxt-link to="/LodkaVolterra">
+          Lodka-Volterra
+        </nuxt-link>
+      </v-btn>
+      <v-spacer />
 
       <v-menu left bottom>
         <template v-slot:activator="{ on }">

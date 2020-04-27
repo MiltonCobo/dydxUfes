@@ -23,7 +23,12 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap'
+          'https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css'
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,400&display=swap'
       },
       {
         rel: 'stylesheet',
@@ -33,21 +38,20 @@ export default {
 
     title: 'Minha pagina UFES',
     script: [
-      // {
-      //   type: 'text/x-mathjax-config',
-      //   src: 'js/mathjax2Config.js',
-      //   async: false,
-      //   defer: true
-      // },
-      // {
-      //   type: 'text/javascript',
-      //   async: true,
-      //   defer: true, //&delayStartupUntil=configured
-      //   // src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js' ?config=TeX-AMS-MML_SVG
-      //   id: 'MathJaxScript',
-      //   src:
-      //     'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG'
-      // }
+      {
+        type: 'text/javascript',
+        src: 'js/MathJax/mathjax2Config.js',
+        async: false,
+        defer: false
+      },
+      {
+        type: 'text/javascript',
+        async: false,
+        defer: true, //&delayStartupUntil=configured
+        // id: 'MathJaxScript',
+        src:
+          'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS_SVG' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
+      }
       // {
       //   src: 'js/global-config.js',
       //   //async: true,

@@ -1,7 +1,11 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
 //
 // The variables you want to modify
-$font-size-root: 18px;
+$font-size-root: 22px;
+$body-font-family: SofiaPro, Roboto;
+body {
+  padding: 0px;
+}
 
 // TRANSITIONS-----------------------------------
 // .page-enter-active,

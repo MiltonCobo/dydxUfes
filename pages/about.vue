@@ -1,10 +1,10 @@
 <template>
   <div style="width:100%">
     <div class="text-center">
-      <v-dialog v-model="startChart2" width="500">
+      <v-dialog v-model="startChart2" width="600">
         <template v-slot:activator="{ on }">
           <v-btn color="red lighten-2" dark v-on="on">
-            Figura
+            Gráfico da Função
           </v-btn>
         </template>
 
@@ -35,11 +35,7 @@
         >
           <client-only placeholder="carregando...">
             <div class="chart-container">
-              <line-chart
-                v-if="startChart"
-                :chartdata="chartData"
-                :options="chartOptions"
-              />
+              <line-chart :chartdata="chartData" :options="chartOptions" />
             </div>
           </client-only>
         </v-col>
@@ -49,19 +45,20 @@
           style="position: relative; height:100%; width:100%"
         >
           <v-card style="width:100%" class="green lighten-4">
-            <v-card-title class="primary">Exercicio:</v-card-title>
+            <v-card-title class="blue lighten-4 font-weight-bold"
+              >Exercício:</v-card-title
+            >
             <v-card-text id="mathjax">
               Resolva o problema de valor inicial $$\color{green} {\frac{dy}{dx}
-              = \frac{1+ 3x^2}{3y^2-6y}, \quad y(0) =1 }$$ Lorem ipsum dolor
-              sit, amet consectetur adipisicing elit. Ipsam hic voluptas
-              exercitationem voluptate esse magnam cumque beatae ducimus
-              distinctio perferendis.
+              = \frac{1+ 3x^2}{3y^2-6y}, \quad y(0) =1 }$$ TEXTO EM MAIÚSCULAS
+              COM ROCK-SALT Nesse período temos escrito em portugués para não
+              crer mais em cocô.... Lorem ipsum dolor
             </v-card-text>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-    <v-btn v-on:click="startChart = !startChart"> Toggle/Figura </v-btn>
+    <v-btn @click="startChart = !startChart"> Toggle/Figura </v-btn>
     <v-divider />
   </div>
 </template>
@@ -71,7 +68,7 @@ export default {
   data() {
     return {
       startChart: true,
-      startChart2: true,
+      startChart2: false,
 
       chartData: {
         labels: ['0', '0.25', '0.5', '0.75', '1'],
@@ -125,7 +122,10 @@ export default {
 </script>
 <style scoped>
 #mathjax {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+  /* font-family: 'Comic Sans MS', cursive, sans-serif; */
+  font-family: 'Neucha', cursive;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-size: 22px;
+  font-weight: 700;
 }
 </style>
