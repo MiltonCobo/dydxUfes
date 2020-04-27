@@ -1,41 +1,44 @@
 <template>
-  <div>
-    <v-container id="mathjax" fluid>
-      <v-row align="center" align-content="space-between" wrap>
-        <v-col cols="1" align-items="start">
-          <v-btn
-            @click="count = count + 9"
-            class="mx-2"
-            fab
-            large
-            left
-            color="lightgrey green--text"
-          >
-            <v-icon large>mdi-chevron-left</v-icon>
-          </v-btn>
-        </v-col>
-        <v-col cols="10">
-          <div v-if="updateText == 0"><Text1 id="mathjax" /></div>
-          <div v-else-if="updateText == 1"><Text2 /></div>
-          <div v-else-if="updateText == 2"><Text3 /></div>
-          <div v-else-if="updateText == 3"><Text4 /></div>
-          <div v-else><Text5 /></div>
-        </v-col>
-        <v-col cols="1" align-items="end">
-          <v-btn
-            @click="count++"
-            class="mx-2"
-            fab
-            large
-            right
-            color="lightgrey green--text"
-          >
-            <v-icon large>mdi-chevron-right</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+  <sheet id="mathjax">
+    <!-- <v-container id="mathjax" fluid>
+      <v-row align="center" align-content="space-between" wrap> -->
+    <!-- <v-col cols="1" align-items="start"> -->
+    <v-btn
+      @click="count = count + 9"
+      class="mx-2"
+      fab
+      large
+      absolute
+      bottom
+      left
+      color="lightgrey green--text"
+    >
+      <v-icon large>mdi-chevron-left</v-icon>
+    </v-btn>
+    <!-- </v-col> -->
+    <!-- <v-col cols="12"> -->
+    <div v-if="updateText == 0"><Text1 id="mathjax" /></div>
+    <div v-else-if="updateText == 1"><Text2 /></div>
+    <div v-else-if="updateText == 2"><Text3 /></div>
+    <div v-else-if="updateText == 3"><Text4 /></div>
+    <div v-else><Text5 /></div>
+    <!-- </v-col> -->
+    <v-btn
+      @click="count++"
+      class="mx-2"
+      fab
+      large
+      absolute
+      bottom
+      right
+      color="lightgrey green--text"
+    >
+      <v-icon large>mdi-chevron-right</v-icon>
+    </v-btn>
+    <!-- </v-col> -->
+    <!-- </v-row>
+    </v-container> -->
+  </sheet>
 </template>
 
 <script>
@@ -97,7 +100,7 @@ export default {
   font-size: 18px;
   /* font-weight: 700; */
   /* line-height: 150%; */
-  margin: 0px;
+  margin: 25px;
   margin-bottom: 0.4cm;
 }
 </style>

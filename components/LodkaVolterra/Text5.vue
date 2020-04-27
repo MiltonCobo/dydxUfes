@@ -5,8 +5,8 @@
     </h2>
     <hr style="color:brown; margin-bottom:1cm;" />
     <v-container fluid>
-      <v-row align="center" wrap>
-        <v-col justify-start xs="12">
+      <v-row wrap>
+        <v-col justify-start xs="12" md="6">
           As soluções das equações de Lodka-Volterra tem uma característica
           importante:
           <span style="color: green">
@@ -21,7 +21,7 @@
           = \int_0^T a-b\, y(t)\, dt }$$ de onde $\color{green}{ {1\over
           T}\int_0^T y(t) dt = a/b.}$ A outra igualdade é similar.
         </v-col>
-        <v-col justify-center xs="12" md="5">
+        <v-col xs="12" md="6">
           <client-only>
             <vue-plotly
               v-if="startChart"
@@ -31,8 +31,9 @@
             />
           </client-only>
         </v-col>
-
-        <v-col xs="12" md="7">
+      </v-row>
+      <v-row>
+        <v-col xs="12">
           <h4 style="color:green">
             Qual foi a explicação dada por Volterra para o aumento da população
             de tubarões no mar adriático por causa da guerra?
@@ -74,48 +75,273 @@ import getDataSurface from '@/static/js/Plotly/plotly-config.js'
 export default {
   name: 'Text5',
   data() {
-    const a = 5.3
-    const b = 0.12
-    const c = 4.9
-    const d = 0.14
-
-    let xwidth = 160
-    let ywidth = 160
-    let xsteps = 26
-    let ysteps = 26
-    let center = { x: 0, y: 0 }
-
-    function funct(x, y) {
-      return -c * Math.log(x) + d * x - a * Math.log(y) + b * y + 20
-    }
-
-    let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
-    console.log(info)
-    let data = info.data
-    let layout = info.layout
-    let options = info.options
-
-    data.type = 'contour'
-    layout.width = 400
-    layout.height = 400 /* set size of plot */
-    data.colorscale = 'Earth'
-    layout.title =
-      '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$'
-    // data.contours.z.size = 0.005
-
-    data.contours.z.start = -14 /* set manually because zMax=Infinity */
-    data.contours.z.end = 70
-    data.contours.z.size = 0.6
+    let surface = getData()
+    let data = surface.data
+    let layout = surface.layout
+    let options = surface.options
 
     return {
       startChart: true,
-      data: [data] /* data use in the plot */,
+      data /* data use in the plot */,
       layout,
       options
     }
   },
   mounted() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  }
+}
+
+/*  function separated to compute data of surface  */
+let getData = function() {
+  const a = 5.3
+  const b = 0.12
+  const c = 4.9
+  const d = 0.14
+
+  const a1 = 3.6
+  const b1 = 0.12
+  const c1 = 7.5
+  const d1 = 0.14
+
+  let xwidth = 160
+  let ywidth = 160
+  let xsteps = 30
+  let ysteps = 30
+  let center = { x: 0, y: 0 }
+
+  function funct(x, y) {
+    return -c * Math.log(x) + d * x - a * Math.log(y) + b * y + 20
+  }
+
+  let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  let data = info.data
+  let layout = info.layout
+  let options = info.options
+
+  data.type = 'contour'
+  layout.width = 500
+  layout.height = 500 /* set size of plot */
+  data.colorscale = 'Earth'
+  layout.title =
+    '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$'
+  // data.contours.z.size = 0.005
+
+  data.contours.z.start = -14 /* set manually because zMax=Infinity */
+  data.contours.z.end = 70
+  data.contours.z.size = 0.05
+  data.visible = false
+  data.autocontour = false
+  data.line = {
+    smoothing: 1,
+    width: 1,
+    color: 'green'
+  }
+  data.contours.coloring = 'none'
+
+  function funct_1(x, y) {
+    return -c1 * Math.log(x) + d1 * x - a1 * Math.log(y) + b1 * y + 46
+  }
+
+  let info1 = getDataSurface(funct_1, center, xwidth, ywidth, xsteps, ysteps)
+  let data1 = info1.data
+  data1.type = 'contour'
+  data1.visible = true
+  data1.autocontour = false
+
+  data1.contours.z.start = -14 /* set manually because zMax=Infinity */
+  data1.contours.z.end = 70
+  data1.contours.z.size = 0.05
+  data1.line = {
+    smoothing: 1,
+    width: 1,
+    color: 'brown'
+  }
+  data1.contours.coloring = 'none'
+
+  let annotations1 = [
+    {
+      text: 'Sem pesca',
+      ax: 50, //tail of arrow
+      ay: -70,
+      ayref: 'pixel', // refers to axes
+      axref: 'pixel',
+      arrowcolor: 'black',
+      font: {
+        size: 18,
+        color: 'black'
+      },
+      x: c / d,
+      y: a / b // head af arrow
+    }
+  ]
+
+  let annotations2 = [
+    {
+      text: 'Com pesca',
+      ax: 60, //tail of arrow
+      ay: -50,
+      ayref: 'pixel', // refers to axes
+      axref: 'pixel',
+      arrowcolor: 'black',
+      font: {
+        size: 18,
+        color: 'black'
+      },
+      x: c1 / d1,
+      y: a1 / b1 // head af arrow
+    }
+  ]
+
+  let shapes2 = [
+    {
+      type: 'line',
+      x0: c1 / d1,
+      y0: 0,
+      x1: c1 / d1,
+      y1: 140,
+      line: {
+        color: 'brown',
+        width: 2.5
+      }
+    },
+    {
+      type: 'line',
+      x0: 0,
+      y0: a1 / b1,
+      x1: 140,
+      y1: a1 / b1,
+      line: {
+        color: 'brown',
+        width: 2.5
+      }
+    }
+  ]
+
+  let shapes1 = [
+    {
+      type: 'line',
+      x0: c / d,
+      y0: 0,
+      x1: c / d,
+      y1: 140,
+      line: {
+        color: 'green',
+        width: 2.5
+      }
+    },
+    {
+      type: 'line',
+      x0: 0,
+      y0: a / b,
+      x1: 140,
+      y1: a / b,
+      line: {
+        color: 'green',
+        width: 2.5
+      }
+    }
+  ]
+
+  let shapes3 = [
+    {
+      type: 'line',
+      x0: c / d,
+      y0: 0,
+      x1: c / d,
+      y1: 140,
+      line: {
+        color: 'olive',
+        width: 2.5
+      },
+      opacity: 0.4
+    },
+    {
+      type: 'line',
+      x0: 0,
+      y0: a / b,
+      x1: 140,
+      y1: a / b,
+      line: {
+        color: 'olive',
+        width: 2.5
+      },
+      opacity: 0.4
+    }
+  ]
+
+  layout.annotations = annotations1
+  layout.shapes = shapes1
+  layout.updatemenus = [
+    {
+      buttons: [
+        {
+          method: 'update',
+          args: [
+            { visible: [true, false], opacity: 0.8 },
+            {
+              annotations: annotations1,
+              shapes: shapes1
+            }
+          ],
+          label: 'Sem pesca'
+        },
+        {
+          method: 'update',
+          args: [
+            { visible: [true, true], opacity: [0.2, 1] },
+            {
+              annotations: [...annotations2],
+              shapes: [...shapes3, ...shapes2]
+            }
+          ],
+          label: 'Com pesca'
+        }
+      ],
+      direction: 'bottom',
+      pad: {
+        r: 10,
+        t: 10
+      },
+      showactive: true,
+      bgcolor: 'lightgrey',
+      type: 'buttons',
+      x: 0.76,
+      xanchor: 'left',
+      y: 0.92,
+      yanchor: 'top',
+      font: {
+        size: 14,
+        color: 'brown'
+      }
+    }
+  ]
+  layout.xaxis = {
+    tickmode: 'array',
+    tickvals: [0, c / d, c1 / d1, 140],
+    ticktext: ['0', 'c/d', "c'/d", '140'],
+    title: 'Atuns',
+    titlefont: {
+      family: 'Arial, sans-serif',
+      size: 18,
+      color: 'Blue'
+    }
+  }
+  layout.yaxis = {
+    tickmode: 'array',
+    tickvals: [0, a / b, a1 / b1, 140],
+    ticktext: ['0', 'a/b', "a'/b", '140'],
+    title: 'Tubarões',
+    titlefont: {
+      family: 'Arial, sans-serif',
+      size: 18,
+      color: 'Blue'
+    }
+  }
+  return {
+    data: [data, data1] /* data use in the plot */,
+    layout,
+    options
   }
 }
 </script>
