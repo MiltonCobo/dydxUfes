@@ -1,4 +1,30 @@
-export default function(funct, center, xwidth, ywidth, xsteps, ysteps) {
+export function getDataScatter(funct, xinitial, xwidth, step) {
+  let xArray = []
+  let yArray = []
+
+  let xaxisStep = xwidth / step
+
+  for (let i = 0; i < xaxisStep; i++) {
+    let x = step * i + xinitial
+    xArray.push(x)
+    let value = funct.apply(this, [x])
+    yArray.push(value)
+  }
+
+  return {
+    x: xArray,
+    y: yArray,
+    type: 'scatter',
+    line: {
+      smoothing: 1.2,
+      shape: 'spline',
+      width: 1,
+      opacity: 1
+    }
+  }
+}
+
+export function getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps) {
   let x, y
 
   let xArray = []

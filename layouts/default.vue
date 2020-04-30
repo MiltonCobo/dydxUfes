@@ -12,7 +12,7 @@
       <v-spacer />
       <v-btn icon>
         <nuxt-link to="/">
-          <v-icon left>
+          <v-icon>
             mdi-home
           </v-icon>
         </nuxt-link>
@@ -146,8 +146,12 @@ export default {
       drawer: false,
       cursos,
       itemsDrawer: [
-        { title: 'Home', icon: 'mdi-home', route: '/' },
-        { title: 'About', icon: 'mdi-account', route: '/about' },
+        { title: 'Inicial', icon: 'mdi-home', route: '/' },
+        {
+          title: 'Lorenz',
+          icon: 'mdi-book-open-page-variant',
+          route: '/about'
+        },
         {
           title: 'Lodka-Volterra',
           icon: 'mdi-book-open-page-variant',

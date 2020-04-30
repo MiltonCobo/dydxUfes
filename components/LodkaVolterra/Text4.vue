@@ -35,42 +35,13 @@
 </template>
 
 <script>
-import getDataSurface from '@/static/js/Plotly/plotly-config.js'
+import { getDataSurface } from '@/static/js/Plotly/plotly-config.js'
 
 export default {
   name: 'Text4',
   data() {
-    const a = 5.3
-    const b = 0.12
-    const c = 4.9
-    const d = 0.14
+    setData()
 
-    let xwidth = 160
-    let ywidth = 160
-    let xsteps = 26
-    let ysteps = 26
-    let center = { x: 0, y: 0 }
-
-    function funct(x, y) {
-      return -c * Math.log(x) + d * x - a * Math.log(y) + b * y
-    }
-
-    let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
-    let data = info.data
-    let layout = info.layout
-    let options = info.options
-
-    data.type = 'surface' /* contour ...*/
-    layout.width = 600
-    layout.height = 600 /* set size of plot */
-    data.colorscale = 'Earth'
-    layout.title =
-      '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$'
-    data.contours.z.start = -30 /* set manually because zMax=Infinity */
-    data.contours.z.end = 0
-    data.contours.z.size = 1
-    //data.autocontour = true // contours attrib picked by algorithm, ncontours = contours levels
-    //data.ncontours = 100
     return {
       startChart: true,
       data: [data] /* data use in the plot */,
@@ -81,5 +52,44 @@ export default {
   mounted() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
+}
+
+//   SET DATA FOR PLOT------------------- //
+let data
+let layout
+let options
+function setData() {
+  const a = 5.3
+  const b = 0.12
+  const c = 4.9
+  const d = 0.14
+
+  let xwidth = 160
+  let ywidth = 160
+  let xsteps = 26
+  let ysteps = 26
+  let center = { x: 0, y: 0 }
+
+  function funct(x, y) {
+    return -c * Math.log(x) + d * x - a * Math.log(y) + b * y
+  }
+
+  let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  data = info.data
+  layout = info.layout
+  options = info.options
+
+  data.type = 'surface' /* contour ...*/
+  layout.width = 600
+  layout.height = 600 /* set size of plot */
+  data.colorscale = 'Earth'
+  layout.title =
+    '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$'
+  data.contours.z.start = -30 /* set manually because zMax=Infinity */
+  data.contours.z.end = 0
+  data.contours.z.size = 1
+
+  //data.autocontour = true // contours attrib picked by algorithm, ncontours = contours levels
+  //data.ncontours = 100
 }
 </script>

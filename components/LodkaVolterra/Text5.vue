@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import getDataSurface from '@/static/js/Plotly/plotly-config.js'
+import { getDataSurface } from '@/static/js/Plotly/plotly-config.js'
 
 export default {
   name: 'Text5',

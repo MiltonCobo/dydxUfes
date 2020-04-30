@@ -1,30 +1,30 @@
 <template>
   <div style="width:100%">
-    <div class="text-center">
-      <v-dialog v-model="startChart2" width="600">
-        <template v-slot:activator="{ on }">
-          <v-btn color="red lighten-2" dark v-on="on">
-            Gráfico da Função
-          </v-btn>
-        </template>
+    <!-- <div class="text-center"> -->
+    <v-dialog v-model="startChart2" width="600">
+      <template v-slot:activator="{ on }">
+        <v-btn color="red lighten-2" dark v-on="on">
+          Gráfico da Função
+        </v-btn>
+      </template>
 
-        <v-card>
-          <v-card-actions>
-            <client-only placeholder="carregando..." class="figure">
-              <line-chart
-                v-if="startChart2"
-                :chartdata="chartData"
-                :options="chartOptions"
-              />
-            </client-only>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" text @click="startChart2 = false">
-              Voltar
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </div>
+      <v-card>
+        <v-card-actions>
+          <client-only placeholder="carregando..." class="figure">
+            <line-chart
+              v-if="startChart2"
+              :chartdata="chartData"
+              :options="chartOptions"
+            />
+          </client-only>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" text @click="startChart2 = false">
+            Voltar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!-- </div> -->
 
     <v-container style="width:100%" fluid>
       <v-row wrap>

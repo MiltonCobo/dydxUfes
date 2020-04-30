@@ -67,7 +67,7 @@
 
 <script>
 import lorenz from '@/static/js/p5/lorenzp5.js'
-import getDataSurface from '@/static/js/Plotly/plotly-config.js'
+import { getDataSurface } from '@/static/js/Plotly/plotly-config.js'
 
 export default {
   // layout: 'initial',
