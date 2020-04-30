@@ -1,13 +1,31 @@
 <template>
-  <sheet id="mathjax">
-    <!-- <v-container id="mathjax" fluid>
-      <v-row align="center" align-content="space-between" wrap> -->
-    <!-- <v-col cols="1" align-items="start"> -->
+  <v-sheet id="mathjax">
+    <div>
+      <h2 style="color:brown; margin-bottom:0.1cm;">
+        As equações de Lodka-Volterra
+      </h2>
+      <hr style="color:brown; margin-bottom:1cm;" />
+      <v-btn
+        @click="count = count + 1"
+        class="mx-2"
+        fab
+        large
+        absolute
+        top
+        text
+        right
+        color="lightgrey green--text"
+      >
+        <v-icon large>mdi-chevron-right</v-icon>
+      </v-btn>
+    </div>
+
     <v-btn
       @click="count = count + 9"
       class="mx-2"
       fab
       large
+      text
       absolute
       bottom
       left
@@ -15,19 +33,21 @@
     >
       <v-icon large>mdi-chevron-left</v-icon>
     </v-btn>
-    <!-- </v-col> -->
-    <!-- <v-col cols="12"> -->
-    <div v-if="updateText == 0"><Text1 id="mathjax" /></div>
-    <div v-else-if="updateText == 1"><Text2 /></div>
-    <div v-else-if="updateText == 2"><Text3 /></div>
-    <div v-else-if="updateText == 3"><Text4 /></div>
-    <div v-else><Text5 /></div>
-    <!-- </v-col> -->
+
+    <transition name="fade">
+      <div key="1" v-if="updateText == 0"><Text1 /></div>
+      <div key="2" v-else-if="updateText == 1"><Text2 /></div>
+      <div key="3" v-else-if="updateText == 2"><Text3 /></div>
+      <div key="4" v-else-if="updateText == 3"><Text4 /></div>
+      <div key="5" v-else><Text5 /></div>
+    </transition>
+
     <v-btn
       @click="count++"
       class="mx-2"
       fab
       large
+      text
       absolute
       bottom
       right
@@ -35,12 +55,11 @@
     >
       <v-icon large>mdi-chevron-right</v-icon>
     </v-btn>
-    <!-- </v-col> -->
-    <!-- </v-row>
-    </v-container> -->
-  </sheet>
+  </v-sheet>
 </template>
-
+<!--absolute transform: 'translateY(-50%)'
+      // top       :style="{ left: '0%', top: '50%' }"
+-->
 <script>
 import Text1 from '../../components/LodkaVolterra/Text1'
 import Text2 from '../../components/LodkaVolterra/Text2'
@@ -92,6 +111,28 @@ export default {
 }
 </script>
 <style scoped>
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all 0.2s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 #mathjax {
   /* font-family: 'Comic Sans MS', cursive, sans-serif; */
   /* font-family: 'Neucha', cursive; */
@@ -100,7 +141,7 @@ export default {
   font-size: 18px;
   /* font-weight: 700; */
   /* line-height: 150%; */
-  margin: 25px;
+  margin: 0;
   margin-bottom: 0.4cm;
 }
 </style>

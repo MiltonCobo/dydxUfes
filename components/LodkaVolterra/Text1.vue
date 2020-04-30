@@ -1,9 +1,5 @@
 <template>
   <v-sheet id="mathjax">
-    <h2 style="color:brown; margin-bottom:0.1cm;">
-      As equações de Lodka-Volterra
-    </h2>
-    <hr style="color:brown; margin-bottom:1cm;" />
     Durante a 1ª Guerra Mundial a pesca no mar Adriático foi severamente
     restrita. Após a Guerra os pescadores italianos reportaram o aumento
     ostensível dos tubarões nesse mar, mas não assim o aumento na população de
@@ -48,3 +44,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* #mathjax { 
+  font-family: 'Comic Sans MS', cursive, sans-serif; 
+  font-family: 'Neucha', cursive;
+  font-family: 'Montserrat', sans-serif; margin: 20px; 
+   }  */
+</style>

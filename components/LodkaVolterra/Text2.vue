@@ -1,10 +1,5 @@
 <template>
   <v-sheet id="mathjax">
-        <h2 style="color:brown; margin-bottom:0.1cm;">
-      As equações de Lodka-Volterra
-    </h2>
-    <hr style="color:brown; margin-bottom:1cm;" />
-
     Lodka e Volterra consideraram duas espécies, um predador e uma presa, num
     ecossistema isolado e interagindo segundo algumas hipóteses. Consideramos
     populações de atuns

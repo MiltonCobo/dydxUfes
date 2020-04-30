@@ -1,7 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar hide-on-scroll flat app dark>
+    <v-app-bar hide-on-scroll flat dark app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
+      <v-toolbar flat>
+        <v-toolbar-title class="blue--text text-Capitalize">
+          Departamento de Matemática/UFES
+        </v-toolbar-title>
+      </v-toolbar>
+
+      <v-spacer />
       <v-btn icon>
         <nuxt-link to="/">
           <v-icon left>
@@ -9,24 +17,67 @@
           </v-icon>
         </nuxt-link>
       </v-btn>
-      <v-toolbar-title class="blue--text text-uppercase">
-        universidade federal do espírito santo
-      </v-toolbar-title>
 
       <v-spacer />
 
-      <v-btn icon>
-        <nuxt-link to="/about">
-          <v-icon>mdi-book-open-page-variant</v-icon>
-        </nuxt-link>
-      </v-btn>
-      <v-spacer />
+      <!--   MENU CURSOS -->
+      <v-menu :close-on-content-click="false" text dense dark offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn dark v-on="on">
+            Cursos
+          </v-btn>
+        </template>
 
-      <v-btn icon>
-        <nuxt-link to="/LodkaVolterra">
-          Lodka-Volterra
-        </nuxt-link>
-      </v-btn>
+        <v-list>
+          <v-list-group
+            v-for="curso in cursos"
+            :key="curso.title"
+            v-model="curso.active"
+          >
+            <template v-slot:activator>
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title>{{ curso.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </template>
+
+            <v-list
+              link
+              v-for="section in curso.sections"
+              :key="section.title"
+              @click=""
+              dense
+              no-action
+            >
+              <v-list-item link nuxt>
+                <v-list-item-content>
+                  <v-list-item-title class="blue--text" link>{{
+                    section.title
+                  }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list
+                link
+                v-for="item in section.items"
+                :key="item.title"
+                @click=""
+                dense
+                no-action
+              >
+                <v-list-item class="mx-2" link nuxt :to="item.route">
+                  <v-list-item-content>
+                    <v-list-item-title class="green--text" link>{{
+                      item.title
+                    }}</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-list>
+          </v-list-group>
+        </v-list>
+      </v-menu>
       <v-spacer />
 
       <v-menu left bottom>
@@ -43,8 +94,7 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-
-    <v-navigation-drawer v-model="drawer" temporary app>
+    <v-navigation-drawer v-model="drawer" temporary dense dark app>
       <v-list>
         <v-list-item class="px-2">
           <v-list-item-avatar>
@@ -54,15 +104,15 @@
               src="https://randomuser.me/api/portraits/men/19.jpg"
             />
           </v-list-item-avatar>
-          <span> Milton Cobo </span>
+          <span class="blue--text"> UFES </span>
         </v-list-item>
 
         <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title class="title">
-              Milton Cobo
+            <v-list-item-title class="blue--text">
+              Dep. de Matemática
             </v-list-item-title>
-            <v-list-item-subtitle>milton@gmail.com</v-list-item-subtitle>
+            <v-list-item-subtitle>dmat.ufes.br</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -70,31 +120,21 @@
       <v-divider />
 
       <v-list nav dense>
-        <v-list-item link>
+        <v-list-item v-for="item in itemsDrawer" :key="item.title">
           <v-list-item-icon>
-            <v-icon>mdi-folder</v-icon>
+            <v-icon class="blue--text" left>{{ item.icon }}</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>My Files</v-list-item-title>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-icon>
-            <v-icon>mdi-account-multiple</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Shared with me</v-list-item-title>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-icon>
-            <v-icon>mdi-star</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Starred</v-list-item-title>
+          <n-link :to="item.route" style="text-decoration: none;">
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </n-link>
         </v-list-item>
       </v-list>
+      <v-divider />
+      <div></div>
     </v-navigation-drawer>
+
     <v-content>
-      <v-container class="fill-height" fluid>
-        <!--style="margin: 0px; padding: 0px; width: 100%; height:100%"-->
-        <nuxt ref="nuxt0" />
-      </v-container>
+      <nuxt />
     </v-content>
   </v-app>
 </template>
@@ -104,16 +144,50 @@ export default {
   data() {
     return {
       drawer: false,
-      items: [
-        { title: 'Home', icon: 'mdi-home' },
-        { title: 'About', icon: 'mdi-account' }
+      cursos,
+      itemsDrawer: [
+        { title: 'Home', icon: 'mdi-home', route: '/' },
+        { title: 'About', icon: 'mdi-account', route: '/about' },
+        {
+          title: 'Lodka-Volterra',
+          icon: 'mdi-book-open-page-variant',
+          route: '/LodkaVolterra'
+        }
       ]
-    }
-  },
-  methods: {
-    clique() {
-      this.drawer = !this.drawer
     }
   }
 }
+let cursos = [
+  {
+    title: 'Eq. Diferenciais',
+    active: false,
+    sections: [
+      {
+        title: 'Eq. de 1a Ordem',
+        active: false,
+        items: [
+          { title: 'Eq. Linear', route: '/EqDiff/Lineares' },
+          { title: 'Eq. Separável', route: '/EqDiff1aOrdem/naolinear' }
+        ]
+      },
+      {
+        title: 'Eq. de 2a Ordem',
+        active: false,
+        items: [
+          { title: 'Coef. Constantes', route: '' },
+          { title: 'Coef. Variáveis', route: '' }
+        ]
+      }
+    ]
+  }
+]
 </script>
+
+<style>
+body {
+  padding: 0px;
+  margin: 25px;
+  line-height: 1.2;
+  /* background-color: 'lightblue'; /* #f5f5f5; grey lighten-4 */
+}
+</style>

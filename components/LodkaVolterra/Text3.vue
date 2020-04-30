@@ -1,9 +1,5 @@
 <template>
   <v-sheet id="mathjax">
-    <h2 style="color:brown; margin-bottom:0.1cm;">
-      As equações de Lodka-Volterra
-    </h2>
-    <hr style="color:brown; margin-bottom:1cm;" />
     Desta forma as equações do modelo são (com $a, b, c $ e $d$ positivas): $$
     \color{green}{ \frac{dx}{dt} = a\,x - b\,x y, \quad \frac{dy}{dt} = -c\,y +
     d\,x y.}\quad \textrm{(EQs)} $$ Uma observação é importante. As constantes

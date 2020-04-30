@@ -1,9 +1,5 @@
 <template>
   <v-sheet id="mathjax">
-    <h2 style="color:brown; margin-bottom:0.1cm;">
-      As equações de Lodka-Volterra
-    </h2>
-    <hr style="color:brown; margin-bottom:1cm;" />
     <v-container fluid>
       <v-row wrap>
         <v-col justify-start xs="12" md="6">
@@ -106,12 +102,12 @@ let getData = function() {
 
   let xwidth = 160
   let ywidth = 160
-  let xsteps = 30
-  let ysteps = 30
+  let xsteps = 40
+  let ysteps = 40
   let center = { x: 0, y: 0 }
 
   function funct(x, y) {
-    return -c * Math.log(x) + d * x - a * Math.log(y) + b * y + 20
+    return -c * Math.log(x) + d * x - a * Math.log(y) + b * y + 46
   }
 
   let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
@@ -125,19 +121,19 @@ let getData = function() {
   data.colorscale = 'Earth'
   layout.title =
     '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$'
-  // data.contours.z.size = 0.005
 
-  data.contours.z.start = -14 /* set manually because zMax=Infinity */
-  data.contours.z.end = 70
-  data.contours.z.size = 0.05
+  // data.contours.z.start = -10 /* set manually because zMax=Infinity */
+  // data.contours.z.end = 50
+  // data.contours.z.size = 0.5
   data.visible = false
-  data.autocontour = false
+  data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
+  data.ncontours = 30
   data.line = {
     smoothing: 1,
     width: 1,
     color: 'green'
   }
-  data.contours.coloring = 'none'
+  data.contours.coloring = 'lines'
 
   function funct_1(x, y) {
     return -c1 * Math.log(x) + d1 * x - a1 * Math.log(y) + b1 * y + 46
@@ -147,17 +143,16 @@ let getData = function() {
   let data1 = info1.data
   data1.type = 'contour'
   data1.visible = true
-  data1.autocontour = false
-
-  data1.contours.z.start = -14 /* set manually because zMax=Infinity */
-  data1.contours.z.end = 70
-  data1.contours.z.size = 0.05
+  data1.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
+  data1.ncontours = 30
+  /* start - end-size not requiere when ncountours set */
   data1.line = {
     smoothing: 1,
     width: 1,
     color: 'brown'
   }
-  data1.contours.coloring = 'none'
+  data1.colorscale = 'RdBu'
+  data1.contours.coloring = 'lines'
 
   let annotations1 = [
     {
@@ -201,9 +196,10 @@ let getData = function() {
       x1: c1 / d1,
       y1: 140,
       line: {
-        color: 'brown',
-        width: 2.5
-      }
+        color: 'blue',
+        width: 2
+      },
+      opacity: 0.5
     },
     {
       type: 'line',
@@ -212,9 +208,10 @@ let getData = function() {
       x1: 140,
       y1: a1 / b1,
       line: {
-        color: 'brown',
-        width: 2.5
-      }
+        color: 'blue',
+        width: 2
+      },
+      opacity: 0.5
     }
   ]
 
@@ -227,8 +224,9 @@ let getData = function() {
       y1: 140,
       line: {
         color: 'green',
-        width: 2.5
-      }
+        width: 2
+      },
+      opacity: 0.5
     },
     {
       type: 'line',
@@ -238,8 +236,9 @@ let getData = function() {
       y1: a / b,
       line: {
         color: 'green',
-        width: 2.5
-      }
+        width: 2
+      },
+      opacity: 0.5
     }
   ]
 
@@ -251,10 +250,10 @@ let getData = function() {
       x1: c / d,
       y1: 140,
       line: {
-        color: 'olive',
-        width: 2.5
+        color: 'green',
+        width: 2
       },
-      opacity: 0.4
+      opacity: 0.5
     },
     {
       type: 'line',
@@ -263,10 +262,10 @@ let getData = function() {
       x1: 140,
       y1: a / b,
       line: {
-        color: 'olive',
-        width: 2.5
+        color: 'green',
+        width: 2
       },
-      opacity: 0.4
+      opacity: 0.5
     }
   ]
 
@@ -278,7 +277,7 @@ let getData = function() {
         {
           method: 'update',
           args: [
-            { visible: [true, false], opacity: 0.8 },
+            { visible: [true, false], opacity: 1 },
             {
               annotations: annotations1,
               shapes: shapes1
@@ -303,16 +302,17 @@ let getData = function() {
         r: 10,
         t: 10
       },
-      showactive: true,
-      bgcolor: 'lightgrey',
+      // showactive: true,
+      // highlightcolor: 'lightgrey',
+      // bgcolor: 'lightgrey',
       type: 'buttons',
-      x: 0.76,
-      xanchor: 'left',
-      y: 0.92,
+      x: 1,
+      xanchor: 'right',
+      y: 1,
       yanchor: 'top',
       font: {
         size: 14,
-        color: 'brown'
+        color: 'black'
       }
     }
   ]
@@ -338,6 +338,31 @@ let getData = function() {
       color: 'Blue'
     }
   }
+  layout.images = [
+    {
+      source: '~assets/figures/atun1.png',
+      xref: 'paper',
+      yref: 'paper',
+      x: 0.66,
+      y: -0.15,
+      sizex: 0.2,
+      sizey: 0.2,
+      xanchor: 'left',
+      yanchor: 'bottom'
+    },
+    {
+      source: '~assets/figures/shark1.png',
+      xref: 'paper',
+      yref: 'paper',
+      x: 0,
+      y: 0.7,
+      sizex: 0.2,
+      sizey: 0.2,
+      xanchor: 'right',
+      yanchor: 'bottom'
+    }
+  ]
+
   return {
     data: [data, data1] /* data use in the plot */,
     layout,

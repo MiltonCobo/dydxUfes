@@ -1,5 +1,11 @@
 <template>
   <div>
+    <!-- <v-toolbar dark>
+      <v-toolbar-title class="blue--text text-uppercase">
+        Universidad Federal do ESpírito Santo
+        <div class="subheading">Departamento de Matemática</div>
+      </v-toolbar-title>
+    </v-toolbar> -->
     <v-btn color="primary" text @click="startPlot">
       Veja o atrator de Lorenz!
     </v-btn>
@@ -64,6 +70,8 @@ import lorenz from '@/static/js/p5/lorenzp5.js'
 import getDataSurface from '@/static/js/Plotly/plotly-config.js'
 
 export default {
+  // layout: 'initial',
+
   data() {
     let xwidth = 10
     let ywidth = 10

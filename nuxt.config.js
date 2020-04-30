@@ -23,11 +23,6 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css'
-      },
-      {
-        rel: 'stylesheet',
-        href:
           'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,400&display=swap'
       },
       {
@@ -84,8 +79,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/variables.scss'],
-  //'@mdi/font/css/materialdesignicons.css'],
+  css: ['~/assets/variables.scss', '@mdi/font/css/materialdesignicons.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -99,7 +93,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    //'@nuxtjs/eslint-module', // had problems!
+    '@nuxtjs/eslint-module', // had problems!
     '@nuxtjs/vuetify'
   ],
   /*

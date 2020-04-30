@@ -35,7 +35,7 @@ export default function(funct, center, xwidth, ywidth, xsteps, ysteps) {
     type: '', // 'contour', surface
 
     showscale: false, // no colorbar
-    colorscale: 'RdBu',
+    colorscale: 'Viridis',
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
     // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
     // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’
@@ -48,9 +48,11 @@ export default function(funct, center, xwidth, ywidth, xsteps, ysteps) {
     contours: {
       z: {
         show: true,
-        start: zMin * 1.2 /* 20% a mais no eixo z */,
+        start: zMin * 1.2,
         end: zMax * 1.2,
         size: (zMax - zMin) * 0.05,
+        autocontour: true,
+        ncontours: 30,
         color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -61,6 +63,8 @@ export default function(funct, center, xwidth, ywidth, xsteps, ysteps) {
         start: -ywidth * 0.6 /* 10% of offset */,
         end: ywidth * 0.6,
         size: ywidth * 0.05,
+        autocontour: true /* contours attrib picked by algorithm, ncontours = contours levels */,
+        ncontours: 30,
         color: 'lightblue',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -71,6 +75,8 @@ export default function(funct, center, xwidth, ywidth, xsteps, ysteps) {
         start: -xwidth * 0.6,
         end: xwidth * 0.6,
         size: xwidth * 0.05,
+        autocontour: true,
+        ncontours: 30,
         color: 'lightgreen',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -119,15 +125,13 @@ export default function(funct, center, xwidth, ywidth, xsteps, ysteps) {
       camera: {
         eye: {
           x: 1,
-          y: 0.8,
+          y: 1,
           z: 1.2
         }
       }
     },
     title: '$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$',
 
-    // plot_bgcolor: 'lightgrey',
-    // paper_bgcolor: 'lightgrey',
     dragmode: true,
     showlegend: false,
     hovermode: false,

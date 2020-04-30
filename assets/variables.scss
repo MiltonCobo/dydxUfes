@@ -3,10 +3,6 @@
 // The variables you want to modify
 $font-size-root: 22px;
 $body-font-family: SofiaPro, Roboto;
-body {
-  padding: 0px;
-  margin: 0px;
-}
 
 // TRANSITIONS-----------------------------------
 // .page-enter-active,
@@ -77,22 +73,3 @@ body {
 }
 
 // TRANSITIONS-------------------------------
-
-// html {
-//   --main-color: lightgrey;
-//   --tam-letra: 18px;
-//   --tam-letra-active: 19px;
-//   --height-a-tag: 50px;
-//   --height-a-tag-active: 60px;
-//   --width-a-tag: 130px;
-//   --main-font: Lucida Console;
-//   height: 100%;
-// }
-
-// body {
-//   font-family: var(--main-font);
-//   padding: 0px;
-//   margin: 0ex;
-//   font-size: var(--tam-letra);
-//   line-height: 1.6;
-// }
