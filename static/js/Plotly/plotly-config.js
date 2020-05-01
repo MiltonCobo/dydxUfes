@@ -18,7 +18,7 @@ export function getDataScatter(funct, xinitial, xwidth, step) {
     line: {
       smoothing: 1.2,
       shape: 'spline',
-      width: 1,
+      width: 1.5,
       opacity: 1
     }
   }

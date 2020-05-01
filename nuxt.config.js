@@ -28,6 +28,10 @@ export default {
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Neucha&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
       }
     ],
 
@@ -37,7 +41,7 @@ export default {
         type: 'text/javascript',
         src: 'js/MathJax/mathjax2Config.js',
         async: false,
-        defer: false
+        defer: true
       },
       {
         type: 'text/javascript',

@@ -7,8 +7,8 @@
     <h3>Os exercícios desta seção são os seguintes:</h3>
 
     <v-list v-for="(exercise, index) in exercises">
-      <v-list-item nuxt link to="/EqDiff/Lineares/mosquitos">
-        <h3 class="green--text">{{ index + 1 }})-{{ exercise }}</h3>
+      <v-list-item nuxt link :to="exercise.route">
+        <h3 class="green--text">{{ index + 1 }})--{{ exercise.title }}</h3>
       </v-list-item>
     </v-list>
   </div>
@@ -18,7 +18,13 @@
 export default {
   data() {
     return {
-      exercises: ['O problema dos mosquitos']
+      exercises: [
+        {
+          title: 'O problema dos mosquitos',
+          route: '/EqDiff/Lineares/mosquitos'
+        },
+        { title: 'Eq. linear 2', route: '/EqDiff/Lineares/linear2' }
+      ]
     }
   }
 }

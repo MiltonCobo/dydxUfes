@@ -42,12 +42,11 @@
             </v-card-title>
             <v-divider />
             <v-card-text style="width:100%;" id="mathjax">
-              <!-- <client-only> MathJax CONFLICT!!!-->
               Seja $\color{lightgreen}{f(x)}$ uma função dada por
               $\color{lightblue}{f(x) = \int_{0}^\infty \Psi(t,x) dt}$ considere
               que não existe uma pessoa localmente igual a água de côco. Mostre
               que podemos reduzir tudo isto a bobagem. $ \color{blue} {\cos(x)^2
-              = 3 \e^{2} \R } $ \( \log(x) \e \RR \) Lorem ipsum $${\bf R} \e
+              = 3 \e^{2} \R } $ \( \log(x) \e \R \) Lorem ipsum $${\bf R} \e
               \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM MAIÚSCULAS NÃO
               IMPORTA. Quo officia, cumque \( \color{green} {\int g(\cos(t)) dt
               } \) dolorem at atque molestiae? $$\color{brown}{\int_0^\infty

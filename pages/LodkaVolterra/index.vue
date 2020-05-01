@@ -14,9 +14,8 @@
         top
         text
         right
-        color="lightgrey green--text"
       >
-        <v-icon large>mdi-chevron-right</v-icon>
+        <v-icon class="brown--text" large>mdi-chevron-right</v-icon>
       </v-btn>
     </div>
 
@@ -29,9 +28,8 @@
       absolute
       bottom
       left
-      color="lightgrey green--text"
     >
-      <v-icon large>mdi-chevron-left</v-icon>
+      <v-icon class="brown--text" large>mdi-chevron-left</v-icon>
     </v-btn>
 
     <transition name="fade">
@@ -42,18 +40,8 @@
       <div key="5" v-else><Text5 /></div>
     </transition>
 
-    <v-btn
-      @click="count++"
-      class="mx-2"
-      fab
-      large
-      text
-      absolute
-      bottom
-      right
-      color="lightgrey green--text"
-    >
-      <v-icon large>mdi-chevron-right</v-icon>
+    <v-btn @click="count++" class="mx-2" fab large text absolute bottom right>
+      <v-icon class="brown--text" large>mdi-chevron-right</v-icon>
     </v-btn>
   </v-sheet>
 </template>

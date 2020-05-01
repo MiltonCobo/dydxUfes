@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       startChart: true,
-      startChart2: false,
+      startChart2: true,
 
       chartData: {
         labels: ['0', '0.25', '0.5', '0.75', '1'],
