@@ -1,36 +1,25 @@
 <template>
   <v-sheet id="mathjax">
-    <v-btn
-      @click="count = count + 1"
-      class="mx-2"
-      fab
-      large
-      absolute
-      top
-      text
-      right
-    >
-      <v-icon class="brown--text" large>
-        mdi-chevron-right
-      </v-icon>
-    </v-btn>
-
     <v-container>
-      <Qlinear2 />
+      <v-row>
+        <Qlinear2 />
+      </v-row>
       <v-spacer />
-      <v-btn
-        absolute
-        right
-        @click.stop="openFigure = true"
-        color="green lighten-2"
-      >
-        Gráfico das soluções
-      </v-btn>
+      <v-row style="margin-top:0.5cm;">
+        <v-btn
+          absolute
+          right
+          @click.stop="openFigure = true"
+          color="green lighten-2"
+        >
+          Gráfico das soluções
+        </v-btn>
+      </v-row>
 
       <v-spacer />
-      <v-spacer />
-
-      <Slinear2 />
+      <v-row style="margin-top:1cm;">
+        <Slinear2 />
+      </v-row>
 
       <v-spacer />
 
@@ -55,40 +44,13 @@
         </v-card>
       </v-dialog>
     </v-container>
-
-    <v-spacer />
-
-    <v-btn
-      @click="count = count + 9"
-      class="mx-2"
-      fab
-      large
-      text
-      absolute
-      bottom
-      left
-    >
-      <v-icon class="brown--text" large>mdi-chevron-left</v-icon>
-    </v-btn>
-    <v-btn
-      @click="count = count + 1"
-      class="mx-2"
-      fab
-      large
-      text
-      absolute
-      bottom
-      right
-    >
-      <v-icon class="brown--text" large>mdi-chevron-right</v-icon>
-    </v-btn>
   </v-sheet>
 </template>
 
 <script>
 import { getDataLineChartjs, options } from '@/static/js/Chartjs/Functions.js'
-import Qlinear2 from '@/components/EqDiff/Linear/Qlinear2'
-import Slinear2 from '@/components/EqDiff/Linear/Slinear2'
+import Qlinear2 from '@/components/EqDiff/Linear/Textos/Qlinear2'
+import Slinear2 from '@/components/EqDiff/Linear/Textos/Slinear2'
 
 let info = createDataSets()
 

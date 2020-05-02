@@ -1,50 +1,13 @@
 <template>
   <v-sheet id="mathjax">
-    <v-btn
-      @click="count = count + 1"
-      class="mx-2"
-      fab
-      large
-      absolute
-      top
-      text
-      right
-    >
-      <v-icon class="brown--text" large>arrow_forward_ios</v-icon>
-    </v-btn>
     <Qlinear1 />
     <Slinear1 />
-
-    <v-btn
-      @click="count = count + 9"
-      class="mx-2"
-      fab
-      large
-      text
-      absolute
-      bottom
-      left
-    >
-      <v-icon class="brown--text" large>arrow_back_ios</v-icon>
-    </v-btn>
-    <v-btn
-      @click="count = count + 1"
-      class="mx-2"
-      fab
-      large
-      text
-      absolute
-      bottom
-      right
-    >
-      <v-icon class="brown--text" large>arrow_forward_ios</v-icon>
-    </v-btn>
   </v-sheet>
 </template>
 
 <script>
-import Qlinear1 from '@/components/EqDiff/Linear/Qlinear1'
-import Slinear1 from '@/components/EqDiff/Linear/Slinear1'
+import Qlinear1 from '@/components/EqDiff/Linear/Textos/Qlinear1'
+import Slinear1 from '@/components/EqDiff/Linear/Textos/Slinear1'
 
 export default {
   name: 'Text1',
