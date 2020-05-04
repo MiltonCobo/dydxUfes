@@ -24,6 +24,68 @@ export function getDataScatter(funct, xinitial, xwidth, step) {
   }
 }
 
+export let options = {
+  displaylogo: false,
+  scrollZoom: false,
+  responsive: true,
+  showLink: false,
+  modeBarButtonsToRemove: [
+    'hoverClosestCartesian',
+    'hoverCompareCartesian',
+    'toggleSpikelines',
+    'hoverClosest3d'
+  ]
+}
+
+export let layout = {
+  scene: {
+    xaxis: {
+      showlegend: true,
+      tickmode: 'linear',
+      title: { text: 'x' },
+      //range: [0, 6],
+      tick0: 0,
+      dtick: null, //xwidth * 0.2
+      tickmode: 'auto',
+      nticks: 4
+      //fixedrange: true
+    },
+    yaxis: {
+      showlegend: true,
+      tickmode: 'linear',
+      title: { text: 'y' },
+      //range: [0,10],
+      tick0: 0,
+      dtick: null, // ywidth * 0.2
+      tickmode: 'auto',
+      nticks: 4
+
+      // fixedrange: true
+    },
+    zaxis: {
+      showlegend: true,
+      tickmode: 'auto',
+      nticks: 5,
+      title: { text: 'z' },
+      range: null //[zMin, zMax]
+    },
+    camera: {
+      eye: {
+        x: 1,
+        y: 1,
+        z: 1.2
+      }
+    }
+  },
+  title: null, //'$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$',
+
+  dragmode: true,
+  showlegend: false,
+  hovermode: false,
+  autosize: false,
+  width: null,
+  height: null
+}
 export function getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps) {
   let x, y
 
@@ -51,8 +113,8 @@ export function getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps) {
   let zMax = Math.max(...[].concat(...zArray))
   let zMin = Math.min(...[].concat(...zArray))
 
-  console.log('zMin=', zMin)
-  console.log('zMax=', zMax)
+  // console.log('zMin=', zMin)
+  // console.log('zMax=', zMax)
 
   let data = {
     x: xArray,
@@ -109,67 +171,6 @@ export function getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps) {
         project: { x: true }
       }
     }
-    // dx: 10,
-    // x0: 0,
-    // dy: 10,
-    // y0: 0,
   }
-  let options = {
-    displaylogo: false,
-    scrollZoom: false,
-    responsive: true,
-    showLink: false,
-    modeBarButtonsToRemove: [
-      'hoverClosestCartesian',
-      'hoverCompareCartesian',
-      'toggleSpikelines',
-      'hoverClosest3d'
-    ]
-  }
-  let layout = {
-    scene: {
-      xaxis: {
-        showlegend: false,
-        tickmode: 'linear',
-        //range: [0, 6],
-        tick0: 0,
-        dtick: xwidth * 0.2
-        // nticks: 4
-        //fixedrange: true
-      },
-      yaxis: {
-        tickmode: 'linear',
-        //range: [0,10],
-        tick0: 0,
-        dtick: ywidth * 0.2
-        // nticks: 3,
-        // fixedrange: true
-      },
-      zaxis: {
-        range: [zMin, zMax]
-      },
-      camera: {
-        eye: {
-          x: 1,
-          y: 1,
-          z: 1.2
-        }
-      }
-    },
-    title: '$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$',
-
-    dragmode: true,
-    showlegend: false,
-    hovermode: false,
-    autosize: false,
-    width: null,
-    height: null
-    // margin: {
-    //     l: 0,
-    //     r: 0,
-    //     b: 0,
-    //     t: 100,
-    //   },
-  }
-  return { data, layout, options }
+  return data
 }

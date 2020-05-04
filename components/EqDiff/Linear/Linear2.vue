@@ -31,14 +31,25 @@
         <v-card>
           <v-card-actions>
             <client-only>
-              <line-chart :chartdata="data" :options="options" />
+              <line-chart
+                v-if="openFigure"
+                :chartdata="data"
+                :options="options"
+              />
             </client-only>
             <v-card-text id="mathjax" style="font-family: Lucida Console;">
               Ao lado as soluções ...note que para $$a=-0.8$$ a soluções
               permanecem limitadas.
-              <v-btn class="green lighten-2" text @click="openFigure = false">
+              <!-- <v-btn
+                class="green lighten-2"
+                text
+                @click="
+                  openFigure = false
+                  openFigure2 = false
+                "
+              >
                 Voltar
-              </v-btn>
+              </v-btn> -->
             </v-card-text>
           </v-card-actions>
         </v-card>
@@ -58,16 +69,23 @@ let data = {
   labels: info.xlabels,
   datasets: info.datasets
 }
+
+options.title.text = '$ y=\\sin(x^2) $'
+
 export default {
   data() {
     return {
       openFigure: true,
+      // openFigure2: false,
       data,
       options // has been modified below from original
     }
   },
   name: 'Text1',
   mounted() {
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  updated() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   components: {

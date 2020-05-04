@@ -66,7 +66,11 @@
 
 <script>
 import lorenz from '@/static/js/p5/lorenzp5.js'
-import { getDataSurface } from '@/static/js/Plotly/plotly-config.js'
+import {
+  getDataSurface,
+  options,
+  layout
+} from '@/static/js/Plotly/plotly-config.js'
 
 export default {
   // layout: 'initial',
@@ -76,26 +80,34 @@ export default {
     let ywidth = 10
     let xcenter = xwidth / 2
     let ycenter = (ywidth - 2) / 2
-    var ysteps = 28
-    var xsteps = 28
+    let ysteps = 28
+    let xsteps = 28
     let center = {
       x: xcenter,
       y: ycenter
     }
 
-    function funct(x, y) {
+    let funct = function(x, y) {
       return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
     }
 
-    let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
-    let data = info.data
-    let layout = info.layout
-    let options = info.options
+    let data = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+    let zValues = data.z
+
+    let zMax = Math.max(...[].concat(...zValues))
+    let zMin = Math.min(...[].concat(...zValues))
+
+    console.log('zMin=', zMin)
+    console.log('zMax=', zMax)
 
     data.type = 'surface' /* contour ...*/
     layout.width = 600
     layout.height = 600 /* set size of plot */
 
+    layout.title = '$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$'
+    layout.scene.xaxis.dtick = xwidth * 0.2
+    layout.scene.yaxis.dtick = xwidth * 0.2
+    layout.scene.zaxis.range = [zMin, zMax]
     return {
       p5plot: null,
       startChart: true,

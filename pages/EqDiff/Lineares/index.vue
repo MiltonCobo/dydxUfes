@@ -10,16 +10,16 @@
       </v-btn>
     </div>
 
-    <v-btn @click="count += 4" class="mx-2" fab large text absolute bottom left>
+    <v-btn @click="count += 2" class="mx-2" fab large text absolute bottom left>
       <v-icon class="black--text" large>mdi-chevron-left</v-icon>
     </v-btn>
 
     <transition name="fade">
       <div key="1" v-if="updateText == 0"><Linear1 /></div>
       <div key="2" v-else-if="updateText == 1"><Linear2 /></div>
-      <div key="3" v-else-if="updateText == 2"><Linear3 /></div>
+      <div key="3" v-else="updateText == 2"><Linear3 /></div>
       <!-- <div key="4" v-else-if="updateText == 3"><Text4 /></div> -->
-      <div key="5" v-else><Linear1 /></div>
+      <!-- <div key="5" v-else><Linear1 /></div> -->
     </transition>
 
     <v-btn @click="count++" class="mx-2" fab large text absolute bottom right>

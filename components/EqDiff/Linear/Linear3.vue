@@ -1,7 +1,14 @@
 <template>
   <v-sheet id="mathjax">
-    <Qlinear3 />
-    <Slinear3 />
+    <v-container>
+      <v-row>
+        <Qlinear3 />
+      </v-row>
+      <v-spacer />
+      <v-row>
+        <Slinear3 />
+      </v-row>
+    </v-container>
   </v-sheet>
 </template>
 
