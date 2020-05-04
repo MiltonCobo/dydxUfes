@@ -47,15 +47,15 @@ export default {
   /* font-family: 'Montserrat', sans-serif; */
   /* font-family: 'Neucha', cursive; */
   /* font-family: Lucida Console; */
-  font-family: 'Rock Salt', cursive;
+  /* font-family: 'Rock Salt', cursive;
   font-weight: 700;
-  line-height: 1.8;
+  line-height: 1.8; */
 }
 
 p {
-  font-size: 12px;
+  /* font-size: 12px; */
   /* font-weight: 700; */
-  line-height: 1.5;
+  /* line-height: 1.5; */
   /* font-family: 'Rock Salt', cursive; */
 }
 </style>

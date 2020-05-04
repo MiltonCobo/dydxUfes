@@ -214,20 +214,20 @@ function createDataSets() {
 
 <style scoped>
 #mathjax {
-  font-size: 18px;
+  /* font-size: 18px; */
   /* font-family: 'Montserrat', sans-serif; */
   /* font-family: 'Neucha', cursive; */
-  font-family: Lucida Console;
+  /* font-family: Lucida Console; */
   /* font-family: 'Rock Salt', cursive; */
-  font-weight: 700;
-  line-height: 1.2;
+  /* font-weight: 700;
+  line-height: 1.2; */
 }
 
 p {
-  font-size: 15px;
-  font-family: Lucida Console;
+  /* font-size: 15px;
+  font-family: Lucida Console; */
   /* font-weight: 700; */
-  line-height: 1.2;
+  /* line-height: 1.2; */
   /* font-family: 'Rock Salt', cursive; */
 }
 </style>

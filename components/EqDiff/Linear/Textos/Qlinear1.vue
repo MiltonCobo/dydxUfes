@@ -13,3 +13,9 @@
     <hr style="margin-bottom:0.5cm;" />
   </div>
 </template>
+
+<style scoped>
+h3 h4 {
+  font-size: 26px;
+}
+</style>

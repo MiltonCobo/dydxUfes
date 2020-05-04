@@ -128,8 +128,8 @@ export default {
   /* font-family: 'Montserrat', sans-serif; */
   font-size: 18px;
   /* font-weight: 700; */
-  /* line-height: 150%; */
+  line-height: 140%;
   margin: 0;
-  margin-bottom: 0.4cm;
+  /* margin-bottom: 0.4cm; */
 }
 </style>

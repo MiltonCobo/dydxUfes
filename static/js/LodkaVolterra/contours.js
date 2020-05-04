@@ -29,7 +29,7 @@ export function volterraContours() {
     return -c1 * Math.log(x) + d1 * x - a1 * Math.log(y) + b1 * y + 46
   }
 
-  let data = getDataSurface(funct_1, center, xwidth, ywidth, xsteps, ysteps)
+  let data = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
 
   data.type = 'contour'
   let layout0 = Object.assign({}, layout)
@@ -43,7 +43,7 @@ export function volterraContours() {
   // data.contours.z.start = -10 /* set manually because zMax=Infinity */
   // data.contours.z.end = 50
   // data.contours.z.size = 0.5
-  data.visible = false
+  data.visible = true
   data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
   data.ncontours = 30
   data.line = {
@@ -59,7 +59,7 @@ export function volterraContours() {
 
   let data1 = getDataSurface(funct_1, center, xwidth, ywidth, xsteps, ysteps)
   data1.type = 'contour'
-  data1.visible = true
+  data1.visible = false
   data1.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
   data1.ncontours = 40
   /* start - end-size not requiere when ncountours set */
@@ -237,7 +237,7 @@ export function volterraContours() {
         {
           method: 'update',
           args: [
-            { visible: [true, false], opacity: 0.8 },
+            { visible: [true, false], opacity: 1 },
             {
               annotations: annotations1,
               shapes: shapes1
@@ -249,7 +249,7 @@ export function volterraContours() {
         {
           method: 'update',
           args: [
-            { visible: [true, true], opacity: [0.2, 1] },
+            { visible: [true, true], opacity: [0.5, 1] },
             {
               annotations: [...annotations2],
               shapes: [...shapes3, ...shapes2]

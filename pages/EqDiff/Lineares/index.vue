@@ -104,12 +104,12 @@ export default {
 #mathjax {
   /* font-family: 'Comic Sans MS', cursive, sans-serif; */
   /* font-family: 'Neucha', cursive; */
-  font-family: Lucida Console;
-  /* font-family: 'Montserrat', sans-serif; */
+  /* font-family: Lucida Console; */
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   /* font-weight: 700; */
-  /* line-height: 150%; */
+  line-height: 150%;
   margin: 0;
-  margin-bottom: 0.4cm;
+  /* margin-bottom: 0.4cm; */
 }
 </style>

@@ -31,7 +31,7 @@ export function volterraSurface() {
     hovermode: false,
     line: {
       smoothing: 1,
-      width: 1.2
+      width: 1
     },
     title:
       '$\\color{brown}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$',

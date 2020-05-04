@@ -77,7 +77,7 @@ export default {
 
     return {
       startChart: true,
-      data /* data use in the plot */,
+      data,
       layout,
       options
     }

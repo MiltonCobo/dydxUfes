@@ -35,13 +35,13 @@
 </template>
 
 <script>
-import { volterraSurface } from '@/static/js/LodkaVolterra/surfaces'
+import { volterraSurface2 } from '@/static/js/LodkaVolterra/surfaces2'
 
 export default {
   name: 'Text4',
 
   data() {
-    let info = volterraSurface()
+    let info = volterraSurface2()
     let data = info.data
     let layout = info.layout
     let options = info.options
