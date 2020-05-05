@@ -1,46 +1,49 @@
 <template>
-  <v-sheet id="mathjax">
-    <v-container>
-      <v-row>
-        <Qlinear2 />
-      </v-row>
-      <v-spacer />
-      <v-row style="margin-top:0.5cm;">
-        <v-btn
-          absolute
-          right
-          @click.stop="openFigure = true"
-          color="green lighten-2"
-        >
-          Gráfico das soluções
-        </v-btn>
-      </v-row>
-
-      <v-spacer />
-      <v-row style="margin-top:1cm;">
-        <Slinear2 />
-      </v-row>
-
-      <v-spacer />
-
-      <v-dialog
-        v-model="openFigure"
-        max-width="600"
-        style="background-color:lightgrey;"
+  <v-container id="mathjax">
+    <v-row>
+      <Qlinear2 />
+    </v-row>
+    <v-spacer />
+    <v-row style="margin-top:0.5cm;">
+      <v-btn
+        absolute
+        right
+        @click.stop="openFigure = true"
+        color="green lighten-2"
       >
-        <v-card>
-          <v-card-actions>
-            <client-only>
-              <line-chart
-                v-if="openFigure"
-                :chartdata="data"
-                :options="options"
-              />
-            </client-only>
-            <v-card-text id="mathjax" style="font-family: Lucida Console;">
-              Ao lado as soluções ...note que para $$a=-0.8$$ a soluções
-              permanecem limitadas.
-              <!-- <v-btn
+        Gráfico das soluções
+      </v-btn>
+    </v-row>
+
+    <v-spacer />
+    <v-row style="margin-top:1cm;">
+      <Slinear2 />
+    </v-row>
+
+    <v-spacer />
+
+    <v-dialog
+      v-model="openFigure"
+      max-width="500"
+      style="background-color:lightgrey;"
+    >
+      <v-card>
+        <v-card-actions>
+          <client-only>
+            <line-chart
+              id="mathjax"
+              v-if="openFigure"
+              :chartdata="data"
+              :options="options"
+            />
+          </client-only>
+        </v-card-actions>
+
+        <v-card-text id="mathjax" style="font-family: Lucida Console;">
+          $$ \color{green}{ y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t)
+          + \color{green}{(\frac{4}{5}+a)}\e^{t/2}. }$$ Para
+          $\color{green}{a=-0.8}$ a soluções permanecem limitadas.
+          <!-- <v-btn
                 class="green lighten-2"
                 text
                 @click="
@@ -50,12 +53,10 @@
               >
                 Voltar
               </v-btn> -->
-            </v-card-text>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-container>
-  </v-sheet>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+  </v-container>
 </template>
 
 <script>
@@ -70,7 +71,7 @@ let data = {
   datasets: info.datasets
 }
 
-options.title.text = '$ y=\\sin(x^2) $'
+options.title.text = 'Soluções'
 
 export default {
   data() {

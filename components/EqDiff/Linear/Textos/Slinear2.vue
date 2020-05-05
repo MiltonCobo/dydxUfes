@@ -4,7 +4,7 @@
       Solução:
     </h3>
 
-    <div id="solution">
+    <div id="mathjax">
       $\def\e{\textrm{e}}$ A equação é do tipo linear $\color{green}{y'+p(t) y =
       g(t)}$ sendo o fator integrante $\color{green}{\mu(t)=\e^{\int p(t) dt} =
       \e^{-\int (1/2) dt} = \e^{-t/2} }.$ Desta forma temos $$\color{green}{
@@ -78,7 +78,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  }
+}
 </script>
 
 <style></style>

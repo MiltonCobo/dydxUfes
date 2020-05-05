@@ -1,5 +1,5 @@
 export default function lorenz(p) {
-  let maxIterations = 1000
+  let maxIterations = 3000
   // numero total de iteracoes antes de mudar ponto inicial
 
   let count = 0
@@ -16,7 +16,6 @@ export default function lorenz(p) {
   let cnv
   let attractorFall = false
   let attractorWiggle = false
-  var figure
   let btn
 
   const a = 10
@@ -25,7 +24,8 @@ export default function lorenz(p) {
 
   p.setup = function() {
     cnv = p.createCanvas(500, 500, p.WEBGL) // (p.windowWidth, 800, p.WEBGL)
-    figure = p.select('#figure')
+
+    // let figure = p.select('#figure')
 
     cnv.parent('#figure')
     //cnv.position(0, 0, 'stickily')
@@ -118,8 +118,8 @@ export default function lorenz(p) {
     // rotacao da camera -------------------
 
     angle += 0.03 //angleRate; ; // rotacao da camera
-    if (count > maxIterations * 0.24) {
-      R -= 1
+    if (count > maxIterations * 0.7) {
+      R -= 0.3
     }
 
     let x0 = R * p.cos(angle)
@@ -171,6 +171,9 @@ export default function lorenz(p) {
     }
 
     let bright = 100
+    if (count > maxIterations * 0.5 && points.length > maxIterations * 0.7) {
+      points.splice(0, 1)
+    }
     for (let i = 0; i < points.length; i += 200) {
       // change color every 200 points
       attractor.points = points.slice(i) // take 200 points each time and draw in random color

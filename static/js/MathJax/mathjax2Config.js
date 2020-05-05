@@ -1,56 +1,58 @@
-window.MathJax = {
-  displayAlign: 'center',
+MathJax.Hub.Config({
+  showProcessingMessages: false,
   tex2jax: {
     inlineMath: [
       ['$', '$'],
       ['\\(', '\\)']
     ],
-    processEscapes: true,
+    processEscapes: true
+  },
+  jax: ['input/TeX', 'output/HTML-CSS'],
+  TeX: {
+    extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js'],
+    TagSide: 'left',
     Macros: {
+      RR: '{\\bf R}',
       e: '{\\textrm e}',
-      R: '{\\mathbb R}'
+      R: '{\\mathbb R}',
+      Z: '{\\mathbb Z}',
+      bold: ['{\\bf #1}', 1]
     }
   },
-  tex: {
-    Macros: {
-      e: '{\\textrm e}',
-      R: '{\\mathbb R}'
-    },
+  tex2jax: {
     inlineMath: [
       ['$', '$'],
       ['\\(', '\\)']
-    ]
+    ],
+    displayMath: [
+      ['$$', '$$'],
+      ['\\[', '\\]']
+    ],
+    processEscapes: true // necessario para $ nao seja confundido
   }
-}
+})
 
-// MathJax.Hub.Config({
-//   showProcessingMessages: false,
-//   tex2jax: {
+// window.MathJax = {
+//   displayAlign: 'center',
+//   // tex2jax: {
+//   //   inlineMath: [
+//   //     ['$', '$'],
+//   //     ['\\(', '\\)']
+//   //   ],
+//   //   processEscapes: true,
+//   //   Macros: {
+//   //     e: '{\\textrm e}',
+//   //     R: '{\\textrm{R}^2}'
+//   //   }
+//   // }
+//   tex: {
+//     macros: {
+//       e: '{\\textrm e}',
+//       R: '{R^2}'
+//     },
 //     inlineMath: [
 //       ['$', '$'],
 //       ['\\(', '\\)']
-//     ],
-//     processEscapes: true
-//   },
-//   // jax: ['input/TeX', 'output/HTML-CSS'],
-//   TeX: {
-//     TagSide: 'left',
-//     Macros: {
-//       RR: '{\\bf R}',
-//       e: '\\textrm{e}',
-//       R: '\\mathbb{R}',
-//       bold: ['{\\bf #1}', 1]
-//     }
-//   },
-//   tex2jax: {
-//     inlineMath: [
-//       ['$', '$'],
-//       ['(', ')']
-//     ],
-//     displayMath: [
-//       ['$$', '$$'],
-//       ['[', ']']
-//     ],
-//     processEscapes: true // necessario para $ nao seja confundido
+//     ]
 //   }
-// })
+// }

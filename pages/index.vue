@@ -46,11 +46,11 @@
               $\color{lightblue}{f(x) = \int_{0}^\infty \Psi(t,x) dt}$ considere
               que não existe uma pessoa localmente igual a água de côco. Mostre
               que podemos reduzir tudo isto a bobagem. $ \color{blue} {\cos(x)^2
-              = 3 \e^{2} \R } $ \( \log(x) \e \R \) Lorem ipsum $${\bf R} \e
-              \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM MAIÚSCULAS NÃO
-              IMPORTA. Quo officia, cumque \( \color{green} {\int g(\cos(t)) dt
-              } \) dolorem at atque molestiae? $$\color{brown}{\int_0^\infty
-              f(\xi) d\xi = \log(1+x^2)}.$$
+              = 3 \e^{x} \R } $ abra cadabra $ \log(x) \e \Z $ Lorem ipsum
+              $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM
+              MAIÚSCULAS NÃO IMPORTA. Quo officia, cumque \( \color{green} {\int
+              g(\cos(t)) dt } \) dolorem at atque molestiae?
+              $$\color{brown}{\int_0^\infty f(\xi) d\xi = \log(1+x^2)}.$$
               <!-- </client-only> -->
             </v-card-text>
           </v-card>
@@ -166,10 +166,25 @@ export default {
         },
         {
           type: 'text/javascript',
-          src: '/js/p5/p5.dom.min.js',
+          src: '/js/p5/p5.dom.js',
           // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
           async: false,
           defer: false
+        },
+        // script: [
+        {
+          type: 'text/x-mathjax-config',
+          src: 'js/MathJax/mathjax2Config.js',
+          async: false,
+          defer: true
+        },
+        {
+          type: 'text/javascript',
+          async: true,
+          defer: true, //&delayStartupUntil=configured
+          // id: 'MathJaxScript',
+          src:
+            'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-MML-AM_SVG' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
         }
       ]
     }

@@ -45,11 +45,11 @@ export function volterraSurface2() {
     '$\\color{green}{V(x,y)=d\\, x - c\\, \\ln(x) +b\\, y-a\\, \\ln(y)}$'
 
   data.contours.z.start = 15 /* set manually because zMax=Infinity */
-  data.contours.z.end = 40
+  data.contours.z.end = 30
   data.contours.z.size = 2
   data.visible = true
   data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
-  data.ncontours = 30
+  data.ncontours = 20
   data.line = {
     smoothing: 1,
     width: 1,
@@ -62,6 +62,8 @@ export function volterraSurface2() {
   }
 
   let data1 = getDataSurface(funct_1, center, xwidth, ywidth, xsteps, ysteps)
+  let zMin1 = Math.min(...[].concat(...data1.z))
+
   data1.type = 'surface'
   data1.visible = false
   data1.contours.z.start = 15 /* set manually because zMax=Infinity */
@@ -78,11 +80,11 @@ export function volterraSurface2() {
     width: 1,
     color: 'brown'
   }
-  data1.colorscale = 'Viridis' //'RdBu'
+  data1.colorscale = 'Jet' //'Viridis' //'RdBu'
   data1.contours.coloring = 'lines'
 
   let annotations1 = {
-    text: 'mínimo',
+    text: 'mínimo=' + zMin.toFixed(1).toString(),
     ax: 50, //tail of arrow
     ay: 0,
     visible: true,
@@ -95,7 +97,7 @@ export function volterraSurface2() {
     arrowhead: 1,
     font: {
       size: 18,
-      color: 'black'
+      color: 'red'
     },
     x: c / d,
     y: a / b,
@@ -103,21 +105,23 @@ export function volterraSurface2() {
   }
 
   let annotations2 = {
-    text: 'Com pesca',
+    text: 'mínimo=' + zMin1.toFixed(1).toString(),
     ax: 50, //tail of arrow
     ay: 0,
     visible: true,
+    xanchor: 'left',
+
     //   ayref: 'pixel', // refers to axes
     //   axref: 'pixel',
     arrowhead: 1,
     arrowcolor: 'black',
     font: {
       size: 18,
-      color: 'black'
+      color: 'red'
     },
-    x: 50, //c1 / d1,
-    y: 50, //a1 / b1,
-    z: 25 // head af arrow
+    x: c1 / d1,
+    y: a1 / b1,
+    z: zMin1 // head af arrow
   }
 
   layout0.scene = {
@@ -133,20 +137,20 @@ export function volterraSurface2() {
       showlegend: true,
       tickmode: 'linear',
       range: [0, 160],
-      // tick0: 0,
-      // dtick: 20,
-      tickmode: 'auto',
-      nticks: 4
+      tick0: 0,
+      dtick: 20
+      // tickmode: 'auto',
+      // nticks: 4
       //fixedrange: true
     },
     yaxis: {
       title: 'y',
       tickmode: 'linear',
       range: [0, 160],
-      // tick0: 0,
-      // dtick: 20,
-      tickmode: 'auto',
-      nticks: 4
+      tick0: 0,
+      dtick: 20
+      // tickmode: 'auto',
+      // nticks: 4
       //fixedrange: true
     },
     zaxis: {
@@ -166,11 +170,11 @@ export function volterraSurface2() {
           args: [
             { visible: [true, false], opacity: 1 },
             {
-              annotations: [annotations1]
+              scene: { annotations: [annotations1] }
               //   shapes: shapes1
             }
           ],
-          label: 'Sem pesca'
+          label: 'Superfície 1'
         },
 
         {
@@ -178,14 +182,14 @@ export function volterraSurface2() {
           args: [
             {
               visible: [true, true],
-              opacity: [0.2, 1]
+              opacity: [0.1, 1]
             },
             {
-              annotations: [annotations2]
+              scene: { annotations: [annotations2] }
               //   shapes: [...shapes3, ...shapes2]
             }
           ],
-          label: 'Com pesca'
+          label: 'Superfície 2'
         }
       ],
       direction: 'bottom',

@@ -38,14 +38,14 @@ export default {
     title: 'Minha pagina UFES',
     script: [
       {
-        type: 'text/javascript',
+        type: 'text/x-mathjax-config',
         src: 'js/MathJax/mathjax2Config.js',
         async: false,
         defer: true
       },
       {
         type: 'text/javascript',
-        async: false,
+        async: true,
         defer: true, //&delayStartupUntil=configured
         // id: 'MathJaxScript',
         src:

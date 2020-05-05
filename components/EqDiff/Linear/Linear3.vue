@@ -1,15 +1,13 @@
 <template>
-  <v-sheet id="mathjax">
-    <v-container>
-      <v-row>
-        <Qlinear3 />
-      </v-row>
-      <v-spacer />
-      <v-row>
-        <Slinear3 />
-      </v-row>
-    </v-container>
-  </v-sheet>
+  <v-container id="mathjax">
+    <v-row>
+      <Qlinear3 />
+    </v-row>
+    <v-spacer />
+    <v-row>
+      <Slinear3 />
+    </v-row>
+  </v-container>
 </template>
 
 <script>

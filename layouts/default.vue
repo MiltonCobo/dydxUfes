@@ -170,8 +170,8 @@ let cursos = [
         title: 'Eq. de 1a Ordem',
         active: false,
         items: [
-          { title: 'Eq. Linear', route: '/EqDiff/Lineares' },
-          { title: 'Eq. Separável', route: '/EqDiff1aOrdem/naolinear' }
+          { title: 'Eq. Linear', route: '/EqDiff/Lineares/' },
+          { title: 'Eq. Separável', route: '/EqDiff/Separavel/' }
         ]
       },
       {

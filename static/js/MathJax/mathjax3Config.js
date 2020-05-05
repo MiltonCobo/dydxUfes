@@ -16,7 +16,7 @@ window.MathJax = {
 ;(function() {
   var script = document.createElement('script')
   script.src =
-    'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_SVG' //'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js'
+    'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-svg.js'
   script.async = false
   script.defer = false
   document.head.appendChild(script)

@@ -57,13 +57,34 @@
         Uma maneira de tentar achar o valor de $\color{green}{t_0}$ (que muitos
         alunos tentam) é tentar resolver o sistema de equações
         <span style="color: green">
-          $$\begin{align*} y(t_0) &= 12 - 2t_0 +(y_0-12)\e^{-t_0/2} = 0 \\
+          $$\begin{align*} y(t_0) &= 12 - 2t_0 +(y_0-12)\e^{-t_0/2} = 0 \
           y'(t_0) &= 2 - \frac{1}{2} (y_0-12)\e^{-t_0/2} = 0, \end{align*} $$
         </span>
-        para $t_0$ e $y_0$. No entanto, isto não é possível. Se isolamos uma
-        variável (digamos $t_0$ na segunda equação), e substituimos na outra
-        equação, obtemos uma equação igualmente complicada (com logaritmos em
-        lugar de exponenciais). $\require{cancel}$
+        para $\color{green}{t_0}$ e $\color{green}{y_0}$. No entanto, isto não é
+        possível. Se isolamos uma variável (digamos $t_0$ na segunda equação), e
+        substituimos na outra equação, obtemos uma equação igualmente complicada
+        (com logaritmos em lugar de exponenciais). Assim, deve ter outra forma
+        de achar $y_0$. A resposta é olhar para a própria equação diferencial,
+        $\color{green}{ y'(t)+ (1/4)\, y(t) = 1-(1/2)\, t. }$ Esta equação é
+        válida
+        <span style="color: green">
+          para todo $t$ no domínio da função $y$, em particular vale no ponto
+          $\color{green}{t_0}$!
+        </span>
+        Portanto obtemos que $\color{green}{ y'(t_0) + (1/4)\, y(t_0) = 0 =
+        1-(1/2)\, t_0. }$ Isto implica que $\color{green}{t_0 = 2 }$ !
+        <br />
+        Sabendo que $\color{green}{t_0=2}$ então resolvemos $$\color{green}{
+        y(2)= 12 -2\cdot 2 + (y_0-12) \e^{-2/4} = 0} $$ obtendo-se que
+        $\color{green}{ y_0 = 12-8\sqrt{\e}}.$ Substituindo na equação (eq2)
+        temos que $$\color{green}{ y(t) = 12 - 2t - \color{green}{8\sqrt{\e}}\,
+        \e^{-t/4} }.$$ A figura mostra que realmente $\color{green}{t=2}$ é um
+        ponto de tangência desta função.
+        <br />
+        Note que se $\color{green}{y_0=12}$ na equação (eq2) então a solução o
+        PVI é a linha reta $\color{green}{y=12- 2t}.$ É fácil ver que todas as
+        soluções da equação se tornam assintóticas à reta
+        $\color{green}{y=12-2t}$ quando $t\to\infty.$
       </p>
     </v-row>
 
@@ -107,3 +128,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+#solution {
+  margin: 0;
+}
+</style>

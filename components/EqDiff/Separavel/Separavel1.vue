@@ -1,23 +1,23 @@
 <template>
   <v-container id="mathjax">
     <v-row>
-      <Qlinear1 />
+      <Qseparavel1 />
     </v-row>
     <v-row>
-      <Slinear1 />
+      <Sseparavel1 />
     </v-row>
   </v-container>
 </template>
 
 <script>
-import Qlinear1 from '@/components/EqDiff/Linear/Textos/Qlinear1'
-import Slinear1 from '@/components/EqDiff/Linear/Textos/Slinear1'
+import Qseparavel1 from '@/components/EqDiff/Separavel/Textos/Qseparavel1'
+import Sseparavel1 from '@/components/EqDiff/Separavel/Textos/Sseparavel1'
 
 export default {
   name: 'Text1',
   components: {
-    Qlinear1,
-    Slinear1
+    Qseparavel1,
+    Sseparavel1
   },
   mounted() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
