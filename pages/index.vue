@@ -118,14 +118,15 @@ export default {
       options
     }
   },
-  created() {},
 
   mounted() {
     //this.startPlot()
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
 
-  updated() {},
+  updated() {
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
 
   methods: {
     startPlot() {
@@ -194,12 +195,12 @@ export default {
 
 <style scoped>
 #mathjax {
-  font-family: 'Rock Salt', cursive;
-
+  /* font-family: 'Rock Salt', cursive; */
+  /* font-family: SofiaPro Roboto; */
   /* font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; */
-  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
   /* font-family: 'Neucha', cursive; */
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
 }
 </style>

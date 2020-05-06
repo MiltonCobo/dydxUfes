@@ -1,10 +1,10 @@
 <template>
   <v-sheet id="mathjax">
     <div>
-      <h2 style="color:brown; margin-bottom:0.1cm;">
+      <h2 style="color:brown; margin-bottom:0.5cm;">
         Equações Lineares de primeira Ordem
       </h2>
-      <hr style="color:brown; margin-bottom:1cm;" />
+      <hr style="color:brown; margin-bottom:0.5cm;" />
       <v-btn @click="count++" class="mx-2" fab large absolute top text right>
         <v-icon class="black--text" large>mdi-chevron-right</v-icon>
       </v-btn>

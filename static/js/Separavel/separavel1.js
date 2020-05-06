@@ -81,6 +81,8 @@ export function drawSurfaceSep1() {
   }
 
   let layout = {
+    paper_bgcolor: 'gainsboro',
+    plot_bgcolor: 'gainsboro',
     scene: {
       xaxis: {
         showlegend: false,
@@ -113,9 +115,9 @@ export function drawSurfaceSep1() {
     title: '$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$',
     hovermode: false,
     dragmode: true,
-    autosize: false,
-    width: 500,
-    height: 500
+    autosize: true,
+    width: 600
+    // height: 800
   }
 
   return { data: [data], layout, options }
@@ -290,8 +292,8 @@ export function drawContoursSep1() {
     },
     {
       text: '$ y = 1 - \\sqrt{x^3+2x^2+2x+4},\\, x \\ge -2 $',
-      ax: -60, //tail of arrow
-      ay: 55,
+      ax: -65, //tail of arrow
+      ay: 45,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'green',
@@ -318,8 +320,8 @@ export function drawContoursSep1() {
     },
     {
       text: '$ y = 1 + \\sqrt{x^3+2x^2+2x+4},\\, x \\ge -2 $',
-      ax: -60, //tail of arrow
-      ay: -55,
+      ax: -65, //tail of arrow
+      ay: -45,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'red',
@@ -361,7 +363,8 @@ export function drawContoursSep1() {
   ]
   let layout = {
     annotations: annotations1,
-
+    paper_bgcolor: 'gainsboro',
+    plot_bgcolor: 'gainsboro',
     scene: {
       xaxis: {
         showlegend: false,
@@ -414,7 +417,8 @@ export function drawContoursSep1() {
           t: 10
         },
         showactive: true,
-        // bgcolor: 'lightgrey',
+        paper_bgcolor: 'gainsboro',
+        plot_bgcolor: 'gainsboro',
         type: 'buttons',
         x: 0.01,
         xanchor: 'left',
@@ -434,9 +438,9 @@ export function drawContoursSep1() {
     showlegend: false,
     hovermode: false,
     dragmode: false,
-    autosize: false,
-    width: 600,
-    height: 600
+    autosize: true,
+    width: 600
+    // height: 600
     // margin: {
     //     l: 0,
     //     r: 0,

@@ -108,6 +108,8 @@ export function drawLinear3() {
   ]
 
   let layout = {
+    paper_bgcolor: 'gainsboro',
+    plot_bgcolor: 'gainsboro',
     annotations: annotations0,
     updatemenus: [
       {
@@ -139,7 +141,6 @@ export function drawLinear3() {
           t: 10
         },
         showactive: true,
-        bgcolor: 'lightgrey',
         type: 'buttons',
         x: 0.7,
         xanchor: 'left',

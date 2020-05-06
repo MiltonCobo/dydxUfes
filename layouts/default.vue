@@ -191,7 +191,12 @@ let cursos = [
 body {
   padding: 0px;
   margin: 25px;
-  line-height: 1.2;
+  line-height: 1.6;
+  font-size: 20px;
   /* background-color: 'lightblue'; /* #f5f5f5; grey lighten-4 */
+}
+
+* {
+  text-transform: none !important;
 }
 </style>

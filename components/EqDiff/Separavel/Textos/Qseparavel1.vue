@@ -12,8 +12,4 @@
   </div>
 </template>
 
-<style scoped>
-h3 h4 {
-  font-size: 26px;
-}
-</style>
+<style scoped></style>

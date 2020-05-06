@@ -47,13 +47,13 @@ export default {
 
 <style scoped>
 #mathjax {
-  font-size: 15px;
+  /* font-size: 15px; */
   /* font-family: 'Montserrat', sans-serif; */
   /* font-family: 'Neucha', cursive; */
   /* font-family: Lucida Console; */
-  font-family: 'Rock Salt', cursive;
+  /* font-family: 'Rock Salt', cursive;
   font-weight: 700;
-  line-height: 1.8;
+  line-height: 1.8; */
 }
 
 p {

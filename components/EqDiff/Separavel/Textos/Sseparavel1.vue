@@ -58,12 +58,8 @@
       </p>
     </v-row>
 
-    <v-dialog
-      v-model="openFigure"
-      max-width="500"
-      style="background-color:lightgrey;"
-    >
-      <v-card>
+    <v-dialog v-model="openFigure" max-width="600">
+      <v-card style="background-color:gainsboro;">
         <v-card-actions>
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
@@ -74,12 +70,8 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog
-      v-model="openFigure2"
-      max-width="500"
-      style="background-color:lightgrey;"
-    >
-      <v-card>
+    <v-dialog v-model="openFigure2" max-width="600">
+      <v-card style="background-color:gainsboro;">
         <v-card-actions>
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />

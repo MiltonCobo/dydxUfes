@@ -5,7 +5,6 @@
         <h2 style="color:brown; margin-bottom:0.1cm;">
           As equações de Lodka-Volterra
         </h2>
-        <hr style="color:brown; margin-bottom:1cm;" />
         <v-btn
           @click="count = count + 1"
           class="mx-2"
@@ -19,6 +18,8 @@
           <v-icon class="brown--text" large>mdi-chevron-right</v-icon>
         </v-btn>
       </v-row>
+      <hr style="color:brown;margin-bottom:0.5cm;" />
+
       <v-spacer />
       <v-row>
         <transition name="fade">
@@ -87,6 +88,9 @@ export default {
   mounted() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
+  updated() {
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
   computed: {
     updateText() {
       return this.count % 5
@@ -138,14 +142,18 @@ export default {
 }
 
 #mathjax {
+  /* font-family: 'Lucida Grande', sans-serif;
+  font-size: 20px; */
+  /* font-weight: 700; */
+  /* line-height: 150%; */
   /* font-family: 'Comic Sans MS', cursive, sans-serif; */
   /* font-family: 'Neucha', cursive; */
-  font-family: Lucida Console;
+  /* font-family: Lucida Console; */
   /* font-family: 'Montserrat', sans-serif; */
-  font-size: 18px;
+  /* font-size: 18px; */
   /* font-weight: 700; */
-  line-height: 150%;
-  margin: 0;
+  /* line-height: 150%; */
+  /* margin: 0; */
   /* margin-bottom: 0.4cm; */
 }
 </style>

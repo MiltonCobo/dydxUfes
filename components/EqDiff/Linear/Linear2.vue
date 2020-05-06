@@ -22,37 +22,18 @@
 
     <v-spacer />
 
-    <v-dialog
-      v-model="openFigure"
-      max-width="500"
-      style="background-color:lightgrey;"
-    >
+    <v-dialog v-model="openFigure" max-width="450">
       <v-card>
         <v-card-actions>
-          <client-only>
-            <line-chart
-              id="mathjax"
-              v-if="openFigure"
-              :chartdata="data"
-              :options="options"
-            />
+          <client-only v-if="openFigure">
+            <line-chart id="mathjax" :chartdata="data" :options="options" />
           </client-only>
         </v-card-actions>
 
         <v-card-text id="mathjax" style="font-family: Lucida Console;">
           $$ \color{green}{ y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t)
           + \color{green}{(\frac{4}{5}+a)}\e^{t/2}. }$$ Para
-          $\color{green}{a=-0.8}$ a soluções permanecem limitadas.
-          <!-- <v-btn
-                class="green lighten-2"
-                text
-                @click="
-                  openFigure = false
-                  openFigure2 = false
-                "
-              >
-                Voltar
-              </v-btn> -->
+          $\color{green}{a=-0.8=-4/5}$ a soluções permanecem limitadas.
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -76,8 +57,7 @@ options.title.text = 'Soluções'
 export default {
   data() {
     return {
-      openFigure: true,
-      // openFigure2: false,
+      openFigure: false,
       data,
       options // has been modified below from original
     }
@@ -137,7 +117,7 @@ options.scales = {
   xAxes: [
     {
       ticks: {
-        max: 50,
+        max: 40,
         min: 0,
         stepSize: 5,
         maxTicksLimit: 10,

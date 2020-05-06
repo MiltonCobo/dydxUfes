@@ -51,6 +51,10 @@ export default {
   mounted() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
+  updated() {
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+
   computed: {
     updateText() {
       return this.count % 3
@@ -72,6 +76,11 @@ export default {
           rel: 'stylesheet',
           href:
             'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
+        },
+        {
+          rel: 'stylesheet',
+          href:
+            'https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap'
         }
       ]
     }
@@ -105,10 +114,12 @@ export default {
   /* font-family: 'Comic Sans MS', cursive, sans-serif; */
   /* font-family: 'Neucha', cursive; */
   /* font-family: Lucida Console; */
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+  /* font-family: 'Montserrat', sans-serif; */
+  /* font-family: 'Reenie Beanie', cursive; */
+  font-family: 'Lucida Grande', sans-serif;
+  font-size: 20px;
   /* font-weight: 700; */
-  line-height: 150%;
+  line-height: 160%;
   margin: 0;
   /* margin-bottom: 0.4cm; */
 }

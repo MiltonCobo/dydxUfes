@@ -88,17 +88,17 @@
       </p>
     </v-row>
 
-    <v-dialog
-      v-model="openFigure"
-      max-width="600"
-      style="background-color:lightgrey;"
-    >
-      <v-card>
+    <v-dialog v-model="openFigure" max-width="500">
+      <v-card style="background-color:gainsboro;">
         <v-card-actions>
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
-          <v-card-text id="mathjax" style="font-family: Lucida Console;">
+          <v-card-text
+            class="gainsboro"
+            id="mathjax"
+            style="font-family: Lucida Console;"
+          >
           </v-card-text>
         </v-card-actions>
       </v-card>
@@ -124,6 +124,9 @@ export default {
     }
   },
   mounted() {
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  updated() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }

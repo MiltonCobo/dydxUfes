@@ -4,14 +4,14 @@
     restrita. Após a Guerra os pescadores italianos reportaram o aumento
     ostensível dos tubarões nesse mar, mas não assim o aumento na população de
     suas presas. O biólogo italiano
-    <a href="https://it.wikipedia.org/wiki/Umberto_D%27Ancona" target="_blank">
-      Umberto D'Ancona
-    </a>
+    <!-- <a href="https://it.wikipedia.org/wiki/Umberto_D%27Ancona" target="_blank"> -->
+    Umberto D'Ancona
+    <!-- </a> -->
     documentou este fato como parte de uma pesquisa. Em 1926, D'Ancona casou-se
     com uma das filhas do matemático italiano
-    <a href="https://es.wikipedia.org/wiki/Vito_Volterra" target="_blank"
-      >Vito Volterra</a
-    >
+    <!-- <a href="https://es.wikipedia.org/wiki/Vito_Volterra" target="_blank"> -->
+    Vito Volterra
+    <!-- </a> -->
     quem se intrigou muito pelo fato dos predadores ter sido favorecidos pela
     restrição à pesca. As discussões entre D'Ancona e Volterra levaram
     posteriomente ao famoso modelo
@@ -24,9 +24,9 @@
     do qual falaremos aqui (publicado em 1942, em italiano, e em inglês em 1954
     sob o nome de "A luta pela existência"). Simultâneamente o matemático
     americano
-    <a href="https://en.wikipedia.org/wiki/Alfred_J._Lotka" target="_blank">
-      Alfred Lotka</a
-    >
+    <!-- <a href="https://en.wikipedia.org/wiki/Alfred_J._Lotka" target="_blank"> -->
+    Alfred Lotka
+    <!-- </a> -->
     (era também, físico, químico e estatístico!) propôs as mesmas equações,
     chamadas agora "Equações de Lodka-Volterra". Com estas equações eles
     tentaram responder à pergunta:

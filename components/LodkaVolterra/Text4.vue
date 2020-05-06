@@ -14,9 +14,9 @@
         </v-col>
         <v-col xs="12">
           A figura mostra o gráfico de $V(x,y)$ para valores
-          $\color{green}{a=5.3, b=0.12, c=4.9}$ e $\color{green}{d=0.14}$ (sem
-          pesca) e para valores $\color{green}{a=3.6}$ e $\color{green}{c=7.5} $
-          (com pesca).
+          $\color{green}{a=5.3, b=0.12, c=4.9}$ e $\color{green}{d=0.14}$
+          (superfície 1, sem pesca) e para valores $\color{green}{a=3.6}$ e
+          $\color{green}{c=7.5} $ (superfície 2, com pesca).
           <br />
           Note que as curvas de nível de $V$ são fechadas. De fato o gradiente
           $\color{green}{\nabla V(x,y)=(d-c/x, b-a/y)}$ se anula no ponto
