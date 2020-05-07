@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <h3 style="color: brown;margin-bottom:0.3cm;text-decoration: underline;">
+      <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
         Solução:
       </h3>
     </v-row>

@@ -190,9 +190,9 @@ let cursos = [
 <style>
 body {
   padding: 0px;
-  margin: 25px;
-  line-height: 1.6;
-  font-size: 20px;
+  margin: 22px;
+  line-height: 1.5;
+  font-size: 18px;
   /* background-color: 'lightblue'; /* #f5f5f5; grey lighten-4 */
 }
 

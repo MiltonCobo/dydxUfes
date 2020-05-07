@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 style="color: brown;margin-bottom:0.3cm;text-decoration: underline;">
+    <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
       Solução:
     </h3>
 
@@ -139,7 +139,7 @@ function plotMosquitosSol() {
     hovermode: false,
     dragmode: false,
     // width: 500,
-    height: 660,
+    // height: 660,
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
       range: [initial, xwidth],

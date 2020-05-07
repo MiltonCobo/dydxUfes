@@ -4,9 +4,9 @@
       Exercício:
     </h3>
     <h4>
-      Ache a solução explícita do problema de valor inicial $$\color{green}{
-      \frac{dy}{dx} = \frac{3x^2+4x+2}{2(y-1)},\quad y(0)=-1, }$$ determinando o
-      intervalo de validade da solução.
+      Resolva o problema de valor inicial $$\color{green}{ \frac{dy}{dx} =
+      \frac{2-\exp(x)}{3+2y}, \quad y(0) = 0, }$$ encontre o domínio da solução
+      e determine onde a solução atinge seu valor máximo.
     </h4>
     <hr style="margin-bottom:0.5cm;" />
   </div>

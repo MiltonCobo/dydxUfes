@@ -2,7 +2,7 @@
   <v-sheet id="mathjax">
     <div>
       <h2 style="color:brown; margin-bottom:0.5cm;">
-        Equações Lineares de primeira Ordem
+        Equações separáveis de primeira Ordem
       </h2>
       <hr style="color:brown; margin-bottom:0.5cm;" />
       <v-btn @click="count++" class="mx-2" fab large absolute top text right>
@@ -16,8 +16,8 @@
 
     <transition name="fade">
       <div key="1" v-if="updateText == 0"><Separavel1 /></div>
-      <div key="2" v-else-if="updateText == 1"><Linear2 /></div>
-      <div key="3" v-else="updateText == 2"><Linear3 /></div>
+      <div key="2" v-else-if="updateText == 1"><Separavel2 /></div>
+      <div key="3" v-else="updateText == 2"><Separavel3 /></div>
       <!-- <div key="4" v-else-if="updateText == 3"><Text4 /></div> -->
       <!-- <div key="5" v-else><Linear1 /></div> -->
     </transition>
@@ -30,18 +30,16 @@
 
 <script>
 import Separavel1 from '@/components/EqDiff/Separavel/Separavel1'
-import Linear2 from '@/components/EqDiff/Linear/Linear2'
-import Linear3 from '@/components/EqDiff/Linear/Linear3'
+import Separavel2 from '@/components/EqDiff/Separavel/Separavel2'
+import Separavel3 from '@/components/EqDiff/Separavel/Separavel3'
 // import Linear4 from '../../components/LodkaVolterra/Linear4'
 // import Linear5 from '../../components/LodkaVolterra/Linear5'
 
 export default {
   components: {
     Separavel1,
-    Linear2,
-    Linear3
-    // Linear4,
-    // Linear5
+    Separavel2,
+    Separavel3
   },
   data() {
     return {
@@ -109,7 +107,7 @@ export default {
   font-size: 18px;
   /* font-weight: 700; */
   line-height: 150%;
-  margin: 0;
+  /* margin: 0; */
   /* margin-bottom: 0.4cm; */
 }
 </style>

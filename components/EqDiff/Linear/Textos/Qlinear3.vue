@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 style="color:brown;margin-bottom:0.5cm;text-decoration: underline;">
+    <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
       Exercício:
     </h3>
     <h4>

@@ -116,11 +116,11 @@ export default {
   /* font-family: Lucida Console; */
   /* font-family: 'Montserrat', sans-serif; */
   /* font-family: 'Reenie Beanie', cursive; */
-  font-family: 'Lucida Grande', sans-serif;
-  font-size: 20px;
+  /* font-family: 'Lucida Grande', sans-serif; */
+  /* font-size: 20px; */
   /* font-weight: 700; */
-  line-height: 160%;
-  margin: 0;
+  /* line-height: 160%; */
+  /* margin: 25px; */
   /* margin-bottom: 0.4cm; */
 }
 </style>

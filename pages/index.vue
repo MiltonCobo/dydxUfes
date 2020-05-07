@@ -195,10 +195,10 @@ export default {
 
 <style scoped>
 #mathjax {
-  /* font-family: 'Rock Salt', cursive; */
+  font-family: 'Rock Salt', cursive;
   /* font-family: SofiaPro Roboto; */
   /* font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; */
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
   /* font-family: 'Neucha', cursive; */
   font-size: 24px;
   font-weight: 700;

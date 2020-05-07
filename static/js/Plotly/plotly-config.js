@@ -27,7 +27,7 @@ export function getDataScatter(funct, xinitial, xwidth, step) {
 export let options = {
   displaylogo: false,
   scrollZoom: false,
-  responsive: true,
+  responsive: false,
   showLink: false,
   modeBarButtonsToRemove: [
     'hoverClosestCartesian',

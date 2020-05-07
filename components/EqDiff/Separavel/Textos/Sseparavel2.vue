@@ -1,0 +1,202 @@
+<template>
+  <v-container>
+    <v-row>
+      <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
+        Solução:
+      </h3>
+    </v-row>
+    <v-spacer />
+    <v-row>
+      <v-sheet id="solution">
+        $\def\R{\mathbb R}$ Separando as variáveis, $ \color{green}{ (3y^2-6y)
+        \, dy = (1+ 3x^2) \, dx},$ e integrando a ambos lados, obtemos que as
+        soluções $y=f(x)$ da equação diferencial moram
+        <span style="color:green">implícitamente</span> nas curvas $$
+        \color{green}{ y^3-3y^2 = x^3+x+C} \quad\textrm{(eq1)}$$ com $C$
+        variando em $\R.$ Dito de outra forma, as soluções da equação moram nas
+        curvas de nível da função $$\color{green}{z=V(x,y) = y^3-3y^2 -x^3-x}.
+        $$
+        <v-btn
+          id="mathjax"
+          @click.stop="openFigure = true"
+          color="green lighten-4"
+        >
+          Ver figura
+        </v-btn>
+        <br />
+        Usando a condição inicial $x=0, y=1$ em (eq1) obtemos que $C=-2,$ ou
+        seja a solução do problema de valor inicial (PVI) mora implícitamente na
+        curva de nível $$\color{green}{y^3-3y^2 - x^3-x = -2}\quad
+        \textrm{(eq2)}.$$ Neste caso é muito complicado, embora possível, achar
+        a solução de forma
+        <span style="color:green"> explícita $y=f(x).$ </span> Para achar o
+        intervalo de definição da solução do PVI, precisamos achar
+        <span style="color:green">
+          o maior intervalo, que contenha $x=0$, e onde a derivada $dy/dx$
+          esteja bem definida.
+        </span>
+        Isto é, precisamos determinar os valores de $x$ e $y$ onde
+        $\color{green}{\frac{dy}{dx} = \frac{1+3x^2}{3y^2-6y}}$,
+        <span style="color:green">não existe. </span>
+        Isto acontece quando $y=0$ ou $y=2.$ Para achar os valores de $x$
+        substituimos $y$ na equação (eq2). Por exemplo se $\color{green}{y=0}$
+        temos $\color{green}{0 = x^3+x-2}$.
+        <span style="color:green"
+          >Como determinar os valores de $x$ que satisfazem esta equação?
+        </span>
+        O problema de achar as raizes de um polinômio de grau $n\ge 3$ é em
+        geral difícil. Para $n=2$ temos a fórmula de Bháskara ou quadrática.
+        Para $n=3$ e $4$ ainda existem fórmulas explícitas mas muito extensas e
+        pouco práticas para calcular as raizes. O matemático frances Évariste
+        Galois provou que
+        <span style="color:green">
+          para polinômios de grau $\ge 5$ não existem fórmulas gerais para
+          calcular as raizes.</span
+        >
+        Este é um resultado profundo que Galois demostrou antes de completar
+        seus 20 anos, quando morreu num duelo de pistola (veja por exemplo a
+        página de
+        <a
+          href="https://pt.wikipedia.org/wiki/%C3%89variste_Galois"
+          target="_blank"
+          >Wikipedia
+        </a>
+        sobre Galois).
+        <br />
+        Usaremos o seguinte teorema matemático que nos permite achar as raizes
+        racionais de um polinômio
+        <span style="color:green"> se elas existirem. </span>
+
+        <h3 style="color:green">Teorema:</h3>
+        Considere o polinômio $\color{green}{p(x)= a_n x^n+ \dots+a_1 x+ a_0}$
+        onde os coeficientes $\color{green}{a_0, a_1, \dots,a_n}$ e
+        $\color{green}{n\gt 1}$ são números inteiros. Então se $p(x)$ tem uma
+        raiz racional $\color{green}{x=p/q}$ (com $p,q$ sem divisores comuns),
+        então
+        <span style="color:green"
+          >$p$ divide a $a_0$ e $q$ divide a $a_n.$
+        </span>
+
+        Não tentaremos demostrar este resultado nestas notas. É importante
+        frisar que $p(x)$ pode não ter nenhuma raiz racional e portanto o
+        teorema não diz nada sobre as raizes de $p(x).$.
+
+        <ul>
+          <li>
+            Para $\color{green}{y=0}$ nossa esperança é que $\color{green}{p(x)
+            = x^3+x-2}$ tenha pelo menos uma raiz racional. Pelo teorema se
+            $x=p/q$ é uma raiz racional de $p(x)$ então
+            <span style="color:green">
+              $p$ é um divisor de $-2$ e $q$ é um divisor de $1$</span
+            >. Isto nos deixa com as possíveis raizes racionais $ x= \pm 1, \pm
+            2.$ Testando cada uma delas descobrimos que $x=1$ é raiz de $p(x)$.
+            Isto significa que o monômio $(x-1)$ é um divisor de $p(x),$ de fato
+            podemos mostrar que $\color{green}{p(x) = x^3+x-2 =
+            (x-1)(x^2+x+2)}$. Comprovamos fácilmente que $x^2+x+2$ não tem
+            raizes reais. Assim $x=1$ é a única raiz real de $p(x),$ o que
+            implica que a curva $y^3-3y^2 - x^3-x = -2$ intercepta o eixo "x"
+            únicamente no ponto $(1,0).$
+          </li>
+
+          <li>
+            Para $\color{green}{y=2}$ devemos achar as raizes de
+            $\color{green}{q(x)=x^3+x+2.}$ Usando de novo o teorema temos que as
+            possíveis raizes racionais deste polinômio são $x=\pm1, \pm 2.$
+            Testando descobrimos que $x=-1$ é uma raiz e que
+            <span style="color:green">$q(x)= (x+1)(x^2+x-2)$</span> onde
+            $x^2+x-2$ não tem raizes reais. Portanto a curva $y^3-3y^2 - x^3-x =
+            -2$ intercepta a reta $y=2$ únicamente no ponto $(-1,2).$
+          </li>
+        </ul>
+
+        Desta forma sabemos que a derivada de nossa solução $y=f(x)$ não está
+        definida para $x=-1$ e $x=1$ pois como vimos os valores $y(-1) = 2$ e
+        $y(1)=0$ estão proibidos na expressão de $dy/dx.$ Como o intervalo de
+        definição da solução deve conter o valor inicial $x=0$ concluimos que
+        <span style="color:green">
+          o domínio da solução é o intervalo $[-1,1]$</span
+        >
+        <v-btn
+          id="mathjax"
+          @click.stop="openFigure2 = true"
+          color="green lighten-4"
+        >
+          Ver figura
+        </v-btn>
+        Uma outra observação a se fazer é que as curvas de nível de
+        $\color{green}{V(x,y)=y^3-3y^2-x^3-x}$ se tornam assintóticas à reta
+        $\color{green}{y=x}$ quando $t\to\pm\infty.$ Para sermos mais claros, se
+        $\color{green}{y=f(x)}$ é uma função implícita numa das curva de nível
+        de $V(x,y)$
+        <span style="color:green"
+          >e que está definida num intervalo da forma $\color{green}{[a,
+          \infty)}$ (ou $\color{green}{(-\infty, a]}$),
+        </span>
+        então
+        <span style="color:green">
+          $$\lim_{x\to\infty} f(x)/x = 1 \quad\textrm{(ou $\lim_{x\to-\infty}
+          f(x)/x = 1$)}. $$
+        </span>
+        <br />
+        <span style="color:green">
+          Consegue encontrar uma justificativa matemática para este
+          fenômeno?</span
+        >
+        <v-dialog v-model="openFigure" max-width="600">
+          <v-card style="background-color:gainsboro;">
+            <v-card-actions>
+              <client-only placeholder="carregando...">
+                <vue-plotly :data="data" :layout="layout" :options="options" />
+              </client-only>
+              <v-card-text id="mathjax" style="font-family: Lucida Console;">
+              </v-card-text>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-sheet>
+    </v-row>
+
+    <v-dialog v-model="openFigure2" max-width="600">
+      <v-card style="background-color:gainsboro;">
+        <v-card-actions>
+          <client-only placeholder="carregando...">
+            <vue-plotly :data="data2" :layout="layout2" :options="options" />
+          </client-only>
+          <v-card-text id="mathjax" style="font-family: Lucida Console;">
+          </v-card-text>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-container>
+</template>
+
+<script>
+import { drawSurfaceSep2 } from '@/static/js/Separavel/separavel2.js'
+import { drawContoursSep2 } from '@/static/js/Separavel/separavel2.js'
+
+export default {
+  data() {
+    let info = drawSurfaceSep2()
+    let data = info.data
+    let layout = info.layout
+    let options = info.options
+
+    let info2 = drawContoursSep2()
+    let data2 = info2.data
+    let layout2 = info2.layout
+
+    return {
+      openFigure: false,
+      openFigure2: false,
+      data,
+      layout,
+      options,
+      data2,
+      layout2
+    }
+  },
+  mounted() {
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  }
+}
+</script>
