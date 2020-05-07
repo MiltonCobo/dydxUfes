@@ -1,16 +1,10 @@
 MathJax.Hub.Config({
-  showProcessingMessages: false,
-  tex2jax: {
-    inlineMath: [
-      ['$', '$'],
-      ['\\(', '\\)']
-    ],
-    processEscapes: true
-  },
+  extensions: ['tex2jax.js'],
   jax: ['input/TeX', 'output/HTML-CSS'],
   TeX: {
     extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js'],
-    TagSide: 'left',
+    TagSide: 'right',
+
     Macros: {
       RR: '{\\bf R}',
       e: '{\\textrm e}',
@@ -28,8 +22,17 @@ MathJax.Hub.Config({
       ['$$', '$$'],
       ['\\[', '\\]']
     ],
-    processEscapes: true // necessario para $ nao seja confundido
-  }
+    processEscapes: true
+  },
+  'HTML-CSS': {
+    fonts: ['TeX'],
+    styles: {
+      '.MathJax a': { color: 'green' }
+    }
+  },
+  displayAlign: 'center',
+  showProcessingMessages: false,
+  menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true }
 })
 
 // window.MathJax = {

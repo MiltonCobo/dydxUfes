@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- <v-toolbar dark>
-      <v-toolbar-title class="blue--text text-uppercase">
-        Universidad Federal do ESpírito Santo
-        <div class="subheading">Departamento de Matemática</div>
-      </v-toolbar-title>
-    </v-toolbar> -->
     <v-btn color="primary" text @click="startPlot">
       Veja o atrator de Lorenz!
     </v-btn>
@@ -37,7 +31,6 @@
         <v-col cols="12">
           <v-card style="width:100%;">
             <v-card-title>
-              <!--class="green--text lighten-4" -->
               Exercicio:
             </v-card-title>
             <v-divider />
@@ -50,17 +43,13 @@
               $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM
               MAIÚSCULAS NÃO IMPORTA. Quo officia, cumque \( \color{green} {\int
               g(\cos(t)) dt } \) dolorem at atque molestiae?
-              $$\color{brown}{\int_0^\infty f(\xi) d\xi = \log(1+x^2)}.$$
-              <!-- </client-only> -->
+              \[\color{brown}{\int_0^\infty f(\xi) d\xi = \log(1+x^2)}.\]
             </v-card-text>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-    <!-- <client-only>  -->
     <div>$$ \sin(x) $$</div>
-    <!-- </client-only> -->
-    <!--mathjax dont typeset-->
   </div>
 </template>
 
@@ -171,22 +160,22 @@ export default {
           // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
           async: false,
           defer: false
-        },
-        // script: [
-        {
-          type: 'text/x-mathjax-config',
-          src: 'js/MathJax/mathjax2Config.js',
-          async: false,
-          defer: true
-        },
-        {
-          type: 'text/javascript',
-          async: true,
-          defer: true, //&delayStartupUntil=configured
-          // id: 'MathJaxScript',
-          src:
-            'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-MML-AM_SVG' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
         }
+        // script: [
+        // {
+        //   type: 'text/x-mathjax-config',
+        //   src: 'js/MathJax/mathjax2Config.js',
+        //   async: false,
+        //   defer: true
+        // },
+        // {
+        //   type: 'text/javascript',
+        //   async: true,
+        //   defer: true, //&delayStartupUntil=configured
+        //   // id: 'MathJaxScript',
+        //   src:
+        //     'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-MML-AM_SVG' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
+        // }
       ]
     }
   }

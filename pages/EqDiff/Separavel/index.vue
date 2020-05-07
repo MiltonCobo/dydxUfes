@@ -1,31 +1,46 @@
 <template>
-  <v-sheet id="mathjax">
-    <div>
+  <v-container id="mathjax">
+    <v-row>
+      <v-btn @click="count++" class="mx-2" fab large absolute top text right>
+        <v-icon class="black--text" large>chevron_right</v-icon>
+      </v-btn>
+    </v-row>
+    <v-row>
       <h2 style="color:brown; margin-bottom:0.5cm;">
         Equações separáveis de primeira Ordem
       </h2>
       <hr style="color:brown; margin-bottom:0.5cm;" />
-      <v-btn @click="count++" class="mx-2" fab large absolute top text right>
-        <v-icon class="black--text" large>mdi-chevron-right</v-icon>
+    </v-row>
+
+    <v-row>
+      <transition name="fade">
+        <div key="1" v-if="updateText == 0"><Separavel1 /></div>
+        <div key="2" v-else-if="updateText == 1"><Separavel2 /></div>
+        <div key="3" v-else="updateText == 2"><Separavel3 /></div>
+        <!-- <div key="4" v-else-if="updateText == 3"><Text4 /></div> -->
+        <!-- <div key="5" v-else><Linear1 /></div> -->
+      </transition>
+    </v-row>
+
+    <v-row>
+      <v-btn
+        @click="count += 2"
+        class="mx-2"
+        fab
+        large
+        text
+        absolute
+        bottom
+        left
+      >
+        <v-icon class="black--text" large>chevron_left</v-icon>
       </v-btn>
-    </div>
 
-    <v-btn @click="count += 2" class="mx-2" fab large text absolute bottom left>
-      <v-icon class="black--text" large>mdi-chevron-left</v-icon>
-    </v-btn>
-
-    <transition name="fade">
-      <div key="1" v-if="updateText == 0"><Separavel1 /></div>
-      <div key="2" v-else-if="updateText == 1"><Separavel2 /></div>
-      <div key="3" v-else="updateText == 2"><Separavel3 /></div>
-      <!-- <div key="4" v-else-if="updateText == 3"><Text4 /></div> -->
-      <!-- <div key="5" v-else><Linear1 /></div> -->
-    </transition>
-
-    <v-btn @click="count++" class="mx-2" fab large text absolute bottom right>
-      <v-icon class="black--text" large>mdi-chevron-right</v-icon>
-    </v-btn>
-  </v-sheet>
+      <v-btn @click="count++" class="mx-2" fab large text absolute bottom right>
+        <v-icon class="black--text" large>chevron_right</v-icon>
+      </v-btn>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

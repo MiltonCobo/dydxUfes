@@ -49,7 +49,7 @@ export default {
         defer: true, //&delayStartupUntil=configured
         // id: 'MathJaxScript',
         src:
-          'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS_SVG' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
+          'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG&displayAlign="center"' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
       }
       // {
       //   src: 'js/global-config.js',

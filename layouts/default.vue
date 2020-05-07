@@ -191,12 +191,17 @@ let cursos = [
 body {
   padding: 0px;
   margin: 22px;
-  line-height: 1.5;
-  font-size: 18px;
+  line-height: 1.8;
+  font-size: 20px;
   /* background-color: 'lightblue'; /* #f5f5f5; grey lighten-4 */
 }
 
 * {
   text-transform: none !important;
+}
+
+.MathJax_Display {
+  text-align: center !important;
+  display: inline !important;
 }
 </style>

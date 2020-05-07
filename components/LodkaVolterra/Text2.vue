@@ -39,7 +39,7 @@
       <li>
         A velocidade com que atuns são mortos pelos tubarões é proporcional ao
         número total de encontros tubarão-atum, $\color{green}{-b\, x(t)y(t),
-        \,\, b>0}$. Posto de outra forma, $b$ é a probabilidade de um encontro
+        \,\, b>0}.$ Posto de outra forma: $\color{green}{b}$ é a probabilidade de um encontro
         tubarão-atum e do atum resultar morto;
       </li>
 
