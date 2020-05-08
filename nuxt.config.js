@@ -41,15 +41,14 @@ export default {
         type: 'text/x-mathjax-config',
         src: 'js/MathJax/mathjax2Config.js',
         async: false,
-        defer: true
+        defer: true // defer = true is important
       },
       {
         type: 'text/javascript',
         async: true,
         defer: true, //&delayStartupUntil=configured
-        // id: 'MathJaxScript',
         src:
-          'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG&displayAlign="center"' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
+          'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
       }
       // {
       //   src: 'js/global-config.js',

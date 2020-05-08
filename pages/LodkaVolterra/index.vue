@@ -2,7 +2,7 @@
   <v-container id="mathjax">
     <v-row>
       <h2 style="color:brown; margin-bottom:0.1cm;">
-        As equações de Lodka-Volterra
+        As equações de Lotka-Volterra
       </h2>
       <v-btn
         @click="count = count + 1"

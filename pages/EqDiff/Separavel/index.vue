@@ -2,16 +2,15 @@
   <v-container id="mathjax">
     <v-row>
       <v-btn @click="count++" class="mx-2" fab large absolute top text right>
-        <v-icon class="black--text" large>chevron_right</v-icon>
+        <v-icon class="brown--text" large>chevron_right</v-icon>
       </v-btn>
     </v-row>
     <v-row>
-      <h2 style="color:brown; margin-bottom:0.5cm;">
+      <h2 style="color:brown;">
         Equações separáveis de primeira Ordem
+        <hr style="color:brown; margin:0.5cm;" />
       </h2>
-      <hr style="color:brown; margin-bottom:0.5cm;" />
     </v-row>
-
     <v-row>
       <transition name="fade">
         <div key="1" v-if="updateText == 0"><Separavel1 /></div>
@@ -33,11 +32,11 @@
         bottom
         left
       >
-        <v-icon class="black--text" large>chevron_left</v-icon>
+        <v-icon class="brown--text" large>chevron_left</v-icon>
       </v-btn>
 
       <v-btn @click="count++" class="mx-2" fab large text absolute bottom right>
-        <v-icon class="black--text" large>chevron_right</v-icon>
+        <v-icon class="brown--text" large>chevron_right</v-icon>
       </v-btn>
     </v-row>
   </v-container>

@@ -321,9 +321,9 @@ export function drawContoursSep2() {
         showactive: true,
         bgcolor: 'gainsboro',
         type: 'buttons',
-        x: 1.04,
+        x: 0.7,
         xanchor: 'left',
-        y: 0.92,
+        y: 0.23,
         yanchor: 'top',
         font: {
           size: 14,

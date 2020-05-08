@@ -12,10 +12,11 @@
           isto é, $$ \color{green}{ {1\over T}\int_0^T x(t) dt = c/d, \quad\quad
           {1\over T}\int_0^T y(t) dt = a/b.}$$ De fato pelas equações
           <span style="font-size: 20px">(EQs)</span>, $\color{green}{ {d\over
-          dx} \ln(x) = x'/x= a-b\,y, }$ então
-          $$\color{green}{0=\ln(x(T))-\ln(x(0))=\int_0^T {d\over dt} \ln(x) \,dt
-          = \int_0^T a-b\, y(t)\, dt }$$ de onde $\color{green}{ {1\over
-          T}\int_0^T y(t) dt = a/b.}$ A outra igualdade é similar.
+          dx} \ln(x) = x'/x= a-b\,y, }$ então integrando e usando que
+          $x(T)=x(0)$ porque as soluções são periódicas,
+          $$\begin{split}0&=\ln(x(T))-\ln(x(0))=\int_0^T {d\over dt} \ln(x) \,dt
+          \\ &= \int_0^T a-b\, y(t)\, dt \end{split}$$ de onde $\color{green}{
+          {1\over T}\int_0^T y(t) dt = a/b.}$ A outra igualdade é similar.
         </v-col>
         <v-col xs="12" md="6">
           <client-only>
@@ -39,7 +40,7 @@
           população de presas, isto é, a pesca diminui o valor de $a.$ Por outro
           lado, a pesca aumenta a velocidade intrínseca com que a população de
           predadores declina na ausência de presas, i.e., aumenta o valor de
-          $c.$ Isto porque os pescadores pegam nas suas redes tanto predadores
+          $c.$ Isto porque os pescadores pegavam nas suas redes tanto predadores
           como presas indiscriminadamente.
 
           <br />
@@ -49,16 +50,24 @@
           inalteradas. Assim, o efeito da pesca será que a média $a/b$ da
           população dos tubarões diminui enquanto a média $c/d$ da população de
           atuns aumenta.
+          <span style="color:green">
+            Assim, de forma paradoxal, a pesca aumenta a média da população de
+            atuns e diminui a média da população de tubarões!. Entretanto, a
+            restrição da pesca fará o contrário, a média dos tubarões aumenta e
+            a média dos atuns diminui.
+          </span>
           <br />
           Observe na figura o efeito de diminuir $a$ de $5.3$ para $a'=3.6$ e
-          aumentar $c=4.9$ para $c'=7.5$.
+          aumentar $c=4.9$ para $c'=7.5$. Note que como todas as soluções são
+          periódicas, em certos momentos há muitas presas para poucos predadores
+          e isto provoca o crescimento da população de predadores até termos a
+          situação oposta, muito predador para pouca presa e o ciclo se repete.
           <br />
-          <h4 style="color:green">
-            Não é paradoxal? A pesca aumentaria a média da população de atuns!.
-          </h4>
-          <br />
-          Entretanto, a restrição da pesca fará o contrário, a média dos
-          tubarões aumenta e a média dos atuns diminui.
+          As equações de Lotka-Volterra podem ser sofisticadas de várias formas,
+          por exemplo introduzindo mais especies interdependentes.
+          Particularmente para 3 especies, digamos um predador e duas presas,
+          estas equações podem ter soluções caóticas, apresentando por exemplo
+          um "atrator de Lorenz".
         </v-col>
       </v-row>
     </v-container>

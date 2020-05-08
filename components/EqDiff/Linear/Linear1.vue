@@ -3,6 +3,7 @@
     <v-row>
       <Qlinear1 />
     </v-row>
+    <hr style="margin:0.1cm;" />
     <v-row>
       <Slinear1 />
     </v-row>

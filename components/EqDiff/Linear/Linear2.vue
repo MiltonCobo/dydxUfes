@@ -3,6 +3,8 @@
     <v-row>
       <Qlinear2 />
     </v-row>
+    <hr style="margin:0.1cm;" />
+
     <v-spacer />
     <v-row style="margin-top:0.5cm;">
       <v-btn

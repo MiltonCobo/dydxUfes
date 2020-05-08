@@ -17,7 +17,7 @@
         da função $$\color{green}{z=V(x,y) = y^2-2y -x^3-2x^2-2x}.$$
         <v-btn
           id="mathjax"
-          @click.stop="openFigure2 = true"
+          @click.stop="openFigure = true"
           color="green lighten-4"
         >
           Ver Gráfico
@@ -37,10 +37,10 @@
         1\pm\sqrt{x^3+2x^2+2x+4}},$$ Assim, no gráfico da curva
         $\color{green}{y^2-2y = x^3+2x^2+2x+3}$ se encontram
         <span style="color:green;">escondidas</span> duas funções.
-        <br />
         <v-btn
+          style="margin:10px;"
           id="mathjax"
-          @click.stop="openFigure = true"
+          @click.stop="openFigure2 = true"
           color="green lighten-4"
         >
           Ver Gráfico

@@ -3,13 +3,6 @@
     <v-app-bar hide-on-scroll flat dark app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-      <v-toolbar flat>
-        <v-toolbar-title class="blue--text text-Capitalize">
-          Departamento de Matemática/UFES
-        </v-toolbar-title>
-      </v-toolbar>
-
-      <v-spacer />
       <v-btn icon>
         <nuxt-link to="/">
           <v-icon>
@@ -17,6 +10,12 @@
           </v-icon>
         </nuxt-link>
       </v-btn>
+
+      <v-toolbar flat>
+        <v-toolbar-title class="blue--text text-Capitalize">
+          Departamento de Matemática/UFES
+        </v-toolbar-title>
+      </v-toolbar>
 
       <v-spacer />
 
@@ -197,11 +196,15 @@ body {
 }
 
 * {
-  text-transform: none !important;
+  text-transform: none !important; /* disable vuetify default font  */
 }
 
 .MathJax_Display {
   text-align: center !important;
   display: inline !important;
+}
+.MathJax {
+  color: green !important;
+  padding: 0px 25px 0px 0px;
 }
 </style>

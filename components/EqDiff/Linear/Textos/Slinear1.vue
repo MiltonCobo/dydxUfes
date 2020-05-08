@@ -139,7 +139,7 @@ function plotMosquitosSol() {
     hovermode: false,
     dragmode: false,
     // width: 500,
-    // height: 660,
+    height: 580,
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
       range: [initial, xwidth],

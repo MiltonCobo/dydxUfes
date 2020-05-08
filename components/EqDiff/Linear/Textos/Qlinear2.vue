@@ -8,8 +8,7 @@
       $$\color{green}{ y' - {1\over 2} y = 2\cos(t), \quad y(0)=}
       \color{green}{a} $$ dependendo do valor inicial $\color{green}{a} .$
     </h4>
-
-    <hr style="margin-bottom:0.5cm;" />
+    <!-- <hr style="margin-bottom:0.5cm;" /> -->
   </div>
 </template>
 

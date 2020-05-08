@@ -3,6 +3,7 @@
     <v-row>
       <Qseparavel2 />
     </v-row>
+    <hr style="margin:0.1cm;" />
     <v-row>
       <Sseparavel2 />
     </v-row>

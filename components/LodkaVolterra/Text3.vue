@@ -1,10 +1,13 @@
 <template>
   <v-sheet id="mathjax">
-    Desta forma as equações do modelo são (com $a, b, c $ e $d$ positivas): $$
-    \color{green}{ \frac{dx}{dt} = a\,x - b\,x y, \quad \frac{dy}{dt} = -c\,y +
-    d\,x y.}\quad \textrm{(EQs)} $$ Uma observação é importante. As constantes
-    $b$ e $d$ dependem apenas da dinâmica interna predador-presa enquanto que
-    $a$ e $c$ consideram fatores exteriores, como a pesca, que afetam o taxa de
+    Sendo assim, temos por exemplo que a velocidade com que varia a população de
+    presas estará dada
+    <span style="color:green">$dx/dt $= taxa de entrada - taxa saida</span> e as
+    equações do modelo são (com $a, b, c $ e $d$ positivas): $$ \color{green}{
+    \frac{dx}{dt} = a\,x - b\,x y, \quad \frac{dy}{dt} = -c\,y + d\,x y.}\quad
+    \textrm{(EQs)} $$ Uma observação é importante. As constantes $b$ e $d$
+    dependem apenas da dinâmica interna predador-presa enquanto que $a$ e $c$
+    consideram fatores exteriores, como a pesca, que afetam o taxa de
     crescimento dos atuns e a taxa de mortalidade dos tubarões.
     <br />
     As soluções $(x(t), y(t))$ das equações de Lodka-Volterra moram nas

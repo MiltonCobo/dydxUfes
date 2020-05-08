@@ -8,7 +8,7 @@
       \frac{2-\exp(x)}{3+2y}, \quad y(0) = 0, }$$ encontre o domínio da solução
       e determine onde a solução atinge seu valor máximo.
     </h4>
-    <hr style="margin-bottom:0.5cm;" />
+    <!-- <hr style="margin-bottom:0.5cm;" /> -->
   </div>
 </template>
 

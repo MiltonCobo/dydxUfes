@@ -1,17 +1,16 @@
 MathJax.Hub.Config({
-  extensions: ['tex2jax.js'],
-  jax: ['input/TeX', 'output/HTML-CSS'],
   TeX: {
-    extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js'],
-    TagSide: 'right',
-
     Macros: {
-      RR: '{\\bf R}',
       e: '{\\textrm e}',
       R: '{\\mathbb R}',
       Z: '{\\mathbb Z}',
-      bold: ['{\\bf #1}', 1]
+      KK: '{\\bf K}'
     }
+  },
+  jax: ['input/TeX', 'output/HTML-CSS'],
+  extensions: ['tex2jax.js'], //tex2jax.js necessary for centering displaymath?
+  TeX: {
+    extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js']
   },
   tex2jax: {
     inlineMath: [
@@ -27,7 +26,8 @@ MathJax.Hub.Config({
   'HTML-CSS': {
     fonts: ['TeX'],
     styles: {
-      '.MathJax a': { color: 'green' }
+      '.MathJax': { color: 'green' }
+      // '.MathJax a': { color: 'green' }
     }
   },
   displayAlign: 'center',

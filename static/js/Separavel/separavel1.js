@@ -221,7 +221,7 @@ export function drawContoursSep1() {
   let yy2 = xx.map(x => fExplicit(x, +1))
 
   let trace1 = {
-    visible: false,
+    visible: true,
     x: xx,
     y: yy,
     type: 'scatter',
@@ -233,7 +233,7 @@ export function drawContoursSep1() {
   }
 
   let trace2 = {
-    visible: false,
+    visible: true,
     x: xx,
     y: yy2,
     type: 'scatter',
@@ -362,7 +362,8 @@ export function drawContoursSep1() {
     }
   ]
   let layout = {
-    annotations: annotations1,
+    annotations: annotations,
+    shapes: shapes,
     paper_bgcolor: 'gainsboro',
     plot_bgcolor: 'gainsboro',
     scene: {
@@ -391,6 +392,17 @@ export function drawContoursSep1() {
           {
             method: 'update',
             args: [
+              { visible: [true, false, true, true], opacity: [0.7, 0.6, 1, 1] },
+              {
+                annotations: annotations,
+                shapes: shapes
+              }
+            ],
+            label: 'Ver as funções'
+          },
+          {
+            method: 'update',
+            args: [
               { visible: [true, true, false, false], opacity: [1, 0.6, 0, 0] },
               {
                 annotations: annotations1,
@@ -398,17 +410,6 @@ export function drawContoursSep1() {
               }
             ],
             label: 'Curvas de nível'
-          },
-          {
-            method: 'update',
-            args: [
-              { visible: [true, false, true, true], opacity: [0.6, 0.6, 1, 1] },
-              {
-                annotations: annotations,
-                shapes: shapes
-              }
-            ],
-            label: 'Ver as funções'
           }
         ],
         direction: 'right',

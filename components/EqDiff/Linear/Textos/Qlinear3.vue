@@ -10,6 +10,6 @@
       </span>
       <span style="color: green">encoste mas não atravesse o eixo $x$. </span>
     </h4>
-    <hr style="margin-bottom:0.5cm;" />
+    <!-- <hr style="margin-bottom:0.5cm;" /> -->
   </div>
 </template>

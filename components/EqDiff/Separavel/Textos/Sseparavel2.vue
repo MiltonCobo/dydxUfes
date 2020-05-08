@@ -16,7 +16,9 @@
         variando em $\R.$ Dito de outra forma, as soluções da equação moram nas
         curvas de nível da função $$\color{green}{z=V(x,y) = y^3-3y^2 -x^3-x}.
         $$
+        <br />
         <v-btn
+          style="margin:5px;"
           id="mathjax"
           @click.stop="openFigure = true"
           color="green lighten-4"
@@ -59,9 +61,9 @@
         <a
           href="https://pt.wikipedia.org/wiki/%C3%89variste_Galois"
           target="_blank"
-          >Wikipedia
+          >Wikipedia sobre Galois
         </a>
-        sobre Galois).
+        ).
         <br />
         Usaremos o seguinte teorema matemático que nos permite achar as raizes
         racionais de um polinômio
@@ -117,11 +119,12 @@
           o domínio da solução é o intervalo $[-1,1]$</span
         >
         <v-btn
+          style="margin:10px;"
           id="mathjax"
           @click.stop="openFigure2 = true"
           color="green lighten-4"
         >
-          Ver figura
+          Ver figura.
         </v-btn>
         Uma outra observação a se fazer é que as curvas de nível de
         $\color{green}{V(x,y)=y^3-3y^2-x^3-x}$ se tornam assintóticas à reta

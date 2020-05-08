@@ -35,15 +35,15 @@
             </v-card-title>
             <v-divider />
             <v-card-text style="width:100%;" id="mathjax">
-              Seja $\color{lightgreen}{f(x)}$ uma função dada por
-              $\color{lightblue}{f(x) = \int_{0}^\infty \Psi(t,x) dt}$ considere
-              que não existe uma pessoa localmente igual a água de côco. Mostre
-              que podemos reduzir tudo isto a bobagem. $ \color{blue} {\cos(x)^2
-              = 3 \e^{x} \R } $ abra cadabra $ \log(x) \e \Z $ Lorem ipsum
-              $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM
-              MAIÚSCULAS NÃO IMPORTA. Quo officia, cumque \( \color{green} {\int
-              g(\cos(t)) dt } \) dolorem at atque molestiae?
-              \[\color{brown}{\int_0^\infty f(\xi) d\xi = \log(1+x^2)}.\]
+              Seja $\color{lightgreen}{f(x)}$ uma função dada por $f(x) =
+              \int_{0}^\infty \Psi(t,x) dt$ considere $$ \cos(\e^2) \log(x) -
+              \int g(\xi)d\xi $$ que não existe uma pessoa localmente igual a
+              água de côco. Mostre que podemos reduzir tudo isto a bobagem. $
+              \cos(x)^2 = 3 \e^{x} \KK $ abra cadabra $ \log(x) \\e \\Z $ Lorem
+              ipsum $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO
+              EM MAIÚSCULAS NÃO IMPORTA. Quo officia, cumque \( \color{green}
+              {\int g(\cos(t)) dt } \) dolorem at atque molestiae?
+              $$\int_0^\infty f(\xi) d\xi = \log(1+x^2).$$
             </v-card-text>
           </v-card>
         </v-col>
@@ -161,7 +161,7 @@ export default {
           async: false,
           defer: false
         }
-        // script: [
+
         // {
         //   type: 'text/x-mathjax-config',
         //   src: 'js/MathJax/mathjax2Config.js',
@@ -170,11 +170,11 @@ export default {
         // },
         // {
         //   type: 'text/javascript',
-        //   async: true,
+        //   async: false,
         //   defer: true, //&delayStartupUntil=configured
         //   // id: 'MathJaxScript',
         //   src:
-        //     'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-MML-AM_SVG' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
+        //     'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG&displayAlign="center"' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
         // }
       ]
     }
