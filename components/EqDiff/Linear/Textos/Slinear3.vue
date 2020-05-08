@@ -12,12 +12,6 @@
     </v-row>
     <v-spacer />
     <v-row>
-      <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
-        Solução:
-      </h3>
-    </v-row>
-    <v-spacer />
-    <v-row>
       <p id="solution">
         A equação é linear e o fator integrante é $\mu(t)=\e^{t/4}.$ Portanto,
         $$\color{green}{ \begin{align*} \e^{t/4} (y' + \frac{1}{4} y) &=
@@ -57,16 +51,16 @@
         Uma maneira de tentar achar o valor de $\color{green}{t_0}$ (que muitos
         alunos tentam) é tentar resolver o sistema de equações
         <span style="color: green">
-          $$\begin{align*} y(t_0) &= 12 - 2t_0 +(y_0-12)\e^{-t_0/2} = 0 \
-          y'(t_0) &= 2 - \frac{1}{2} (y_0-12)\e^{-t_0/2} = 0, \end{align*} $$
+          $$\begin{split} y(t_0) &= 12 - 2t_0 +(y_0-12)\e^{-t_0/2} = 0 \\
+          y'(t_0) &= 2 - \frac{1}{2} (y_0-12)\e^{-t_0/2} = 0, \end{split} $$
         </span>
         para $\color{green}{t_0}$ e $\color{green}{y_0}$. No entanto, isto não é
         possível. Se isolamos uma variável (digamos $t_0$ na segunda equação), e
         substituimos na outra equação, obtemos uma equação igualmente complicada
-        (com logaritmos em lugar de exponenciais). Assim, deve ter outra forma
-        de achar $y_0$. A resposta é olhar para a própria equação diferencial,
-        $\color{green}{ y'(t)+ (1/4)\, y(t) = 1-(1/2)\, t. }$ Esta equação é
-        válida
+        (com logaritmos em lugar de exponenciais). Assim, devemos procurar uma
+        outra forma de achar $y_0$. A resposta é olhar para a própria equação
+        diferencial, $\color{green}{ y'(t)+ (1/4)\, y(t) = 1-(1/2)\, t. }$ Esta
+        equação é válida
         <span style="color: green">
           para todo $t$ no domínio da função $y$, em particular vale no ponto
           $\color{green}{t_0}$!

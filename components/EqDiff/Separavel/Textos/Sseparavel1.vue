@@ -1,12 +1,6 @@
 <template>
   <v-container>
     <v-row>
-      <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
-        Solução:
-      </h3>
-    </v-row>
-    <v-spacer />
-    <v-row>
       <p id="solution">
         $\def\R{\mathbb R}$ Separamos as variáveis $$ \color{green}{2(y-1)\, dy
         = (3x^2+4x+2)\, dx} $$ e integramos a ambos lados, obtendo que as
@@ -14,18 +8,19 @@
         <span style="color:green">implícitamente</span> nas curvas $$
         \color{green}{ y^2-2y = x^3+2x^2+2x+C} \quad \textrm{(eq1)} $$ com $C$
         variando em $\R.$ Assim, as soluções da equação são as curvas de nível
-        da função $$\color{green}{z=V(x,y) = y^2-2y -x^3-2x^2-2x}.$$
+        da função
         <v-btn
-          id="mathjax"
+          style="margin:4px;"
           @click.stop="openFigure = true"
           color="green lighten-4"
         >
           Ver Gráfico
         </v-btn>
         <br />
-        Usando a condição inicial $x=0, y=-1$ na equação (eq1) obtemos que
-        $1-2(-1)=1+2=C$, isto é, a solução do problema de valor inicial (PVI)
-        mora implícitamente na curva de nível $\color{green}{V(x,y)=3}$.
+        $$\color{green}{z=V(x,y) = y^2-2y -x^3-2x^2-2x}.$$ Usando a condição
+        inicial $x=0, y=-1$ na equação (eq1) obtemos que $1-2(-1)=1+2=C$, isto
+        é, a solução do problema de valor inicial (PVI) mora implícitamente na
+        curva de nível $\color{green}{V(x,y)=3}$.
       </p>
       <p>
         Em geral não é possível achar a solução de forma

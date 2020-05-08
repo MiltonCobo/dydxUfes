@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
-      Exercício:
-    </h3>
     <h4>
       Ache a solução explícita do problema de valor inicial \[ \color{green}{
       \frac{dy}{dx} = \frac{3x^2+4x+2}{2(y-1)},\quad y(0)=-1, } \] determinando

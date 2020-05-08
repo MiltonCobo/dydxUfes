@@ -1,9 +1,5 @@
 <template>
   <div>
-    <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
-      Solução:
-    </h3>
-
     <p id="solution">
       $\,\def\e{\textrm{e}}\,$ Seja $\,\color{green}{ p(t) }\,$ a população de
       mosquitos em tempo $ \color{green}{t}. $ Para simplificar os números
@@ -69,8 +65,9 @@
             $\,\color{green}{ C=(0.9-\frac{0.7}{\ln 2}) \approx -0.11},$ e a
             quantidade mosquitos (em milhões) é dada por $\,\color{green}{ p(t)
             = 1.01 -(0.11) \, 2^{t}.} $ Os mosquitos se estinguem neste caso, e
-            resolvendo $\,\color{green}{p(t) = 0}\,$ temos eles se extinguem
-            aproximadamente em $\,\color{green}{t\approx 3.2}\,$ semanas.
+            resolvendo $p(t) = 0$ temos $2^t = 1.01/0.11\approx 9.18,$ ou
+            $t=\log(9.18)/\log(2),$ os mosquitos se extinguem em aproximadamente
+            $\,\color{green}{t\approx 3.2}\,$ semanas (ver gráfico).
             <br />
           </p>
         </v-col>

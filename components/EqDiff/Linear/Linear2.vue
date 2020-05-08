@@ -1,10 +1,16 @@
 <template>
   <v-container id="mathjax">
     <v-row>
+      <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
+        Exercício 2:
+      </h3>
+    </v-row>
+    <v-spacer />
+    <v-row>
       <Qlinear2 />
     </v-row>
-    <hr style="margin:0.1cm;" />
-
+    <v-divider />
+    <v-spacer />
     <v-spacer />
     <v-row style="margin-top:0.5cm;">
       <v-btn
@@ -18,7 +24,12 @@
     </v-row>
 
     <v-spacer />
-    <v-row style="margin-top:1cm;">
+    <v-row>
+      <h3
+        style="color: green;margin:0.5cm 0cm 0.5cm 0cm;text-decoration: underline;"
+      >
+        Solução:
+      </h3>
       <Slinear2 />
     </v-row>
 

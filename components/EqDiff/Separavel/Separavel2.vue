@@ -1,10 +1,23 @@
 <template>
   <v-container id="mathjax">
     <v-row>
+      <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
+        Exercício 2:
+      </h3>
+    </v-row>
+    <v-spacer />
+    <v-row>
       <Qseparavel2 />
     </v-row>
-    <hr style="margin:0.1cm;" />
+    <v-divider />
+    <v-spacer />
+
     <v-row>
+      <h3
+        style="color: green;margin:0.5cm 0cm 0.5cm 0cm;text-decoration: underline;"
+      >
+        Solução:
+      </h3>
       <Sseparavel2 />
     </v-row>
   </v-container>

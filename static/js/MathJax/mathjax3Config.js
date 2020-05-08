@@ -17,7 +17,7 @@ window.MathJax = {
   var script = document.createElement('script')
   script.src =
     'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-svg.js'
-  script.async = false
-  script.defer = false
+  script.async = true
+  // script.defer = false
   document.head.appendChild(script)
 })()

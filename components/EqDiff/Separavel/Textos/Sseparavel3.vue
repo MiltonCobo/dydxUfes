@@ -1,11 +1,5 @@
 <template>
   <v-container>
-    <v-row>
-      <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
-        Solução:
-      </h3>
-    </v-row>
-    <v-spacer />
     <v-row class="flex-wrap-reverse">
       <v-col xs="12" md="6" order="1">
         <client-only placeholder="carregando...">

@@ -203,8 +203,10 @@ body {
   text-align: center !important;
   display: inline !important;
 }
+
+/*
 .MathJax {
   color: green !important;
-  padding: 0px 25px 0px 0px;
-}
+  padding: 3px 3px;
+} */
 </style>

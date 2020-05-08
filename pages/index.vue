@@ -13,6 +13,19 @@
 
     <v-container>
       <v-row>
+        <p id="mathjax">
+          Aqui temos um paragrafo $\e^x + \KK$ Seja $f(x)$ uma função dada por
+          $f(x) = \int_{0}^\infty \Psi(t,x) dt$ considere $$ \cos(\e^2) \log(x)
+          - \int g(\xi)d\xi $$ que não existe uma pessoa localmente igual a água
+          de côco. Mostre que podemos reduzir tudo isto a bobagem. $ \cos(x)^2 =
+          3 \e^{x} \KK $ abra cadabra $ \log(x) \e^2 \Z $ Lorem ipsum $${\bf R}
+          \e \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM MAIÚSCULAS NÃO
+          IMPORTA. Quo officia, cumque \( \color{green} {\int g(\cos(t)) dt } \)
+          dolorem at atque molestiae? $$\int_0^\infty f(\xi) d\xi =
+          \log(1+x^2).$$
+        </p>
+      </v-row>
+      <v-row>
         <v-col cols="12">
           <client-only placeholder="carregando...">
             <vue-plotly
@@ -29,21 +42,21 @@
           </v-btn>
         </v-col>
         <v-col cols="12">
-          <v-card style="width:100%;">
+          <v-card>
             <v-card-title>
               Exercicio:
             </v-card-title>
             <v-divider />
-            <v-card-text style="width:100%;" id="mathjax">
-              Seja $\color{lightgreen}{f(x)}$ uma função dada por $f(x) =
-              \int_{0}^\infty \Psi(t,x) dt$ considere $$ \cos(\e^2) \log(x) -
-              \int g(\xi)d\xi $$ que não existe uma pessoa localmente igual a
-              água de côco. Mostre que podemos reduzir tudo isto a bobagem. $
-              \cos(x)^2 = 3 \e^{x} \KK $ abra cadabra $ \log(x) \\e \\Z $ Lorem
-              ipsum $${\bf R} \e \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO
-              EM MAIÚSCULAS NÃO IMPORTA. Quo officia, cumque \( \color{green}
-              {\int g(\cos(t)) dt } \) dolorem at atque molestiae?
-              $$\int_0^\infty f(\xi) d\xi = \log(1+x^2).$$
+            <v-card-text id="mathjax">
+              Seja $f(x)$ uma função dada por $f(x) = \int_{0}^\infty \Psi(t,x)
+              dt$ considere $$ \cos(\e^2) \log(x^2) - \int g(\xi)d\xi $$ que não
+              existe uma pessoa localmente igual a água de côco. Mostre que
+              podemos reduzir tudo isto a bobagem. $ \cos(x)^2 = 3 \e^{x} \KK $
+              abra cadabra $ \log(x) \e \Z^2 $ Lorem ipsum $${\bf R} \e \R$$
+              dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM MAIÚSCULAS NÃO
+              IMPORTA. Quo officia, cumque \( \color{green} {\int g(\cos(t)) dt
+              } \) dolorem at atque molestiae? $$\int_0^\infty f(\xi) d\xi =
+              \log(1+x^2).$$
             </v-card-text>
           </v-card>
         </v-col>
@@ -119,13 +132,13 @@ export default {
 
   methods: {
     startPlot() {
-      this.startChart2 = !this.startChart2
-      if (this.startChart2) {
-        let divFigure = this.$refs.p5figure
-        this.p5plot = new p5(lorenz, divFigure)
-      } else {
-        this.p5plot.remove()
-      }
+      // this.startChart2 = !this.startChart2
+      // if (this.startChart2) {
+      //   let divFigure = this.$refs.p5figure
+      //   this.p5plot = new p5(lorenz, divFigure)
+      // } else {
+      //   this.p5plot.remove()
+      // }
     }
   },
   head() {
@@ -147,32 +160,30 @@ export default {
         }
       ],
       script: [
-        {
-          type: 'text/javascript',
-          src: '/js/p5/p5.min.js',
-          // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
-          async: false,
-          defer: false
-        },
-        {
-          type: 'text/javascript',
-          src: '/js/p5/p5.dom.js',
-          // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
-          async: false,
-          defer: false
-        }
-
+        // {
+        //   type: 'text/javascript',
+        //   src: '/js/p5/p5.min.js',
+        //   // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+        //   async: false,
+        //   defer: false
+        // },
+        // {
+        //   type: 'text/javascript',
+        //   src: '/js/p5/p5.dom.js',
+        //   // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+        //   async: false,
+        //   defer: false
+        // }
         // {
         //   type: 'text/x-mathjax-config',
         //   src: 'js/MathJax/mathjax2Config.js',
-        //   async: false,
+        //   async: true,
         //   defer: true
         // },
         // {
         //   type: 'text/javascript',
-        //   async: false,
+        //   async: true,
         //   defer: true, //&delayStartupUntil=configured
-        //   // id: 'MathJaxScript',
         //   src:
         //     'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG&displayAlign="center"' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
         // }

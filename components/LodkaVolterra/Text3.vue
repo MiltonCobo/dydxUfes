@@ -1,7 +1,7 @@
 <template>
   <v-sheet id="mathjax">
     Sendo assim, temos por exemplo que a velocidade com que varia a população de
-    presas estará dada
+    presas estará dada por
     <span style="color:green">$dx/dt $= taxa de entrada - taxa saida</span> e as
     equações do modelo são (com $a, b, c $ e $d$ positivas): $$ \color{green}{
     \frac{dx}{dt} = a\,x - b\,x y, \quad \frac{dy}{dt} = -c\,y + d\,x y.}\quad

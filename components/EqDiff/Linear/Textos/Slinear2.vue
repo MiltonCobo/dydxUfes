@@ -1,9 +1,5 @@
 <template>
   <div>
-    <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
-      Solução:
-    </h3>
-
     <div id="mathjax">
       $\def\e{\textrm{e}}$ A equação é do tipo linear
       $\,\boxed{\color{green}{y'+p(t) y = g(t)}}\,$ sendo o fator integrante

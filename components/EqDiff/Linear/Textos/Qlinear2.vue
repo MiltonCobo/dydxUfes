@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
-      Exercício:
-    </h3>
     <h4>
       Descreva o comportamento das soluções do problema de valor inicial
       $$\color{green}{ y' - {1\over 2} y = 2\cos(t), \quad y(0)=}

@@ -1,16 +1,59 @@
-MathJax.Hub.Config({
-  TeX: {
-    Macros: {
-      e: '{\\textrm e}',
-      R: '{\\mathbb R}',
-      Z: '{\\mathbb Z}',
-      KK: '{\\bf K}'
+// MathJax.Hub.Config({
+//   jax: ['input/TeX', 'output/HTML-CSS'],
+//   'HTML-CSS': {
+//     fonts: ['TeX'],
+//     styles: {
+//       '.MathJax': { color: 'green' }
+//       // '.MathJax a': { color: 'green' }
+//     }
+//   },
+//   extensions: ['tex2jax.js'], //tex2jax.js necessary for centering displaymath?
+//   TeX: {
+//     extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js'],
+//     Macros: {
+//       e: '{\\textrm{e}}',
+//       R: '{\\mathbb{R}}',
+//       Z: '{\\mathbb Z}',
+//       KK: '{\\mathbb{K}}'
+//     }
+//   },
+//   tex2jax: {
+//     inlineMath: [
+//       ['$', '$'],
+//       ['\\(', '\\)']
+//     ],
+//     displayMath: [
+//       ['$$', '$$'],
+//       ['\\[', '\\]']
+//     ],
+//     processEscapes: true
+//   },
+
+//   displayAlign: 'center',
+//   showProcessingMessages: false,
+//   menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true }
+// })
+
+window.MathJax = {
+  jax: ['input/TeX', 'output/HTML-CSS'],
+  'HTML-CSS': {
+    fonts: ['TeX'],
+    styles: {
+      '.MathJax': { color: 'green' }
+      // '.MathJax a': { color: 'green' }
     }
   },
-  jax: ['input/TeX', 'output/HTML-CSS'],
+  displayAlign: 'center',
+
   extensions: ['tex2jax.js'], //tex2jax.js necessary for centering displaymath?
   TeX: {
-    extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js']
+    extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js'],
+    Macros: {
+      e: '{\\textrm{e}}',
+      R: '{\\mathbb{R}}',
+      Z: '{\\mathbb Z}',
+      KK: '{\\mathbb{K}}'
+    }
   },
   tex2jax: {
     inlineMath: [
@@ -23,17 +66,16 @@ MathJax.Hub.Config({
     ],
     processEscapes: true
   },
-  'HTML-CSS': {
-    fonts: ['TeX'],
-    styles: {
-      '.MathJax': { color: 'green' }
-      // '.MathJax a': { color: 'green' }
-    }
-  },
-  displayAlign: 'center',
   showProcessingMessages: false,
   menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true }
-})
+}
+;(function() {
+  let script = document.createElement('script')
+  script.src =
+    'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
+  script.async = true
+  document.head.appendChild(script)
+})()
 
 // window.MathJax = {
 //   displayAlign: 'center',

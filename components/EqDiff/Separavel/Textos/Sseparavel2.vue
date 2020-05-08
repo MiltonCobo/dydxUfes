@@ -1,12 +1,6 @@
 <template>
   <v-container>
     <v-row>
-      <h3 style="color: green;margin-bottom:0.3cm;text-decoration: underline;">
-        Solução:
-      </h3>
-    </v-row>
-    <v-spacer />
-    <v-row>
       <v-sheet id="solution">
         $\def\R{\mathbb R}$ Separando as variáveis, $ \color{green}{ (3y^2-6y)
         \, dy = (1+ 3x^2) \, dx},$ e integrando a ambos lados, obtemos que as
@@ -14,18 +8,18 @@
         <span style="color:green">implícitamente</span> nas curvas $$
         \color{green}{ y^3-3y^2 = x^3+x+C} \quad\textrm{(eq1)}$$ com $C$
         variando em $\R.$ Dito de outra forma, as soluções da equação moram nas
-        curvas de nível da função $$\color{green}{z=V(x,y) = y^3-3y^2 -x^3-x}.
-        $$
-        <br />
+        curvas de nível da função:
         <v-btn
-          style="margin:5px;"
+          style="margin:4px;"
           id="mathjax"
           @click.stop="openFigure = true"
           color="green lighten-4"
         >
           Ver figura
         </v-btn>
+        $$\color{green}{z=V(x,y) = y^3-3y^2 -x^3-x}. $$
         <br />
+
         Usando a condição inicial $x=0, y=1$ em (eq1) obtemos que $C=-2,$ ou
         seja a solução do problema de valor inicial (PVI) mora implícitamente na
         curva de nível $$\color{green}{y^3-3y^2 - x^3-x = -2}\quad
