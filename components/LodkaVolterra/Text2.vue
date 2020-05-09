@@ -4,12 +4,12 @@
     ecossistema isolado e interagindo segundo certas hipóteses. Consideramos aqui, para ilustrar,
     populações de atuns e tubarões, que denotaremos as populações por $x(t)$ e $y(t)$
     respectivamente. Assumiremos as seguintes simplificações (claramente não realísticas):
-    <ui> 
+    <ul> 
       <li> O predador depende totalmente da sua presa, sendo esta sua única 
       fonte de alimento; </li>
       <li> A presa tem uma fonte inesgotável de alimento e a única restrição ao seu crescimento
         se deve ao predador; </li>
-    </ui>
+    </ul>
     De fato, o modelo inicial de Lotka se aplicava a  uma população de herbívoros que dependia de uma certa planta.
     <br/>
     Do ponto de vista matemático o modelo Lotka-Volterra tem 4 hipóteses.

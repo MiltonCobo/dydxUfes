@@ -1,29 +1,29 @@
 <template>
   <div>
     <p id="solution">
-      $\,\def\e{\textrm{e}}\,$ Seja $\,\color{green}{ p(t) }\,$ a população de
-      mosquitos em tempo $ \color{green}{t}. $ Para simplificar os números
-      consideramos $\,\color{green}{p(t)}\,$ em milhões e $\,\color{green}{t}\,$
-      em semanas. Na ausência de predadores, a taxa de crescimento dos mosquitos
-      é dada por $\,\color{green}{ p'(t) = r\cdot p(t) }\,$ onde
-      $\,\color{green}{r}\, $ a taxa intrínseca de crescimento. Obtemos que a
-      população de mosquitos cresce como $\,\color{green}{ p(t)=p_0\e^{rt} }\,$
-      sendo $\,\color{green}{p_0=p(0)}\,$ a população inicial.
+      $\def\e{\textrm{e}}$ Seja $\color{green}{ p(t) }$ a população de mosquitos
+      em tempo $ \color{green}{t}. $ Para simplificar os números consideramos
+      $\color{green}{p(t)}$ em milhões e $\color{green}{t}$ em semanas. Na
+      ausência de predadores, a taxa de crescimento dos mosquitos é dada por
+      $\color{green}{ p'(t) = r\cdot p(t) }$ onde $\color{green}{r}\, $ a taxa
+      intrínseca de crescimento. Obtemos que a população de mosquitos cresce
+      como $\color{green}{ p(t)=p_0\e^{rt} }$ sendo $\color{green}{p_0=p(0)}$ a
+      população inicial.
       <br />
       Por outro lado, a população de mosquitos dobra a cada semana. Isto
-      significa que $\,\color{green}{ p(1)=2p(0) = p(0)\e^{r\cdot 1}}, $ de onde
-      concluímos que $ \color{green}{r=\ln(2) \approx 0.69.}\,$ Denotaremos por
+      significa que $\color{green}{ p(1)=2p(0) = p(0)\e^{r\cdot 1}}, $ de onde
+      concluímos que $ \color{green}{r=\ln(2) \approx 0.69.}$ Denotaremos por
       $v$ a taxa de mortalidade dos mosquitos, isto é, $ v=0,1 $ milhões x dia,
       ou
       <span style="color:green"> $ v= 0.7 $ milhões por semana.</span>
       <br />
-      A equação diferencial associada é dada por $$\,\color{green}{\frac{dp}{dt}
-      = (\text{taxa crescimento}) - (\text{taxa de mortalidade}) = r\, p - v .
-      }\,$$ A equação é linear de primeira ordem e o
+      A equação diferencial associada é dada por $$\color{green}{\frac{dp}{dt} =
+      (\text{taxa crescimento}) - (\text{taxa de mortalidade}) = r\, p - v . }$$
+      A equação é linear de primeira ordem e o
       <span style="color:green">fator integrante é </span>
-      $\, \color{green}{\mu(t)=\e^{-rt }} \,$ e portanto,
+      $ \color{green}{\mu(t)=\e^{-rt }} $ e portanto,
       <span style="color:green">
-        $$\,\begin{split} & \e^{-rt}(p'-r\, p) = \frac{d}{dt} ( \e^{-rt} \,p ) =
+        $$\begin{split} & \e^{-rt}(p'-r\, p) = \frac{d}{dt} ( \e^{-rt} \,p ) =
         -v\cdot \e^{-rt}\quad \color{green}{\textrm{e integrando,}} \\ &
         \e^{-rt}\, p(t) = \frac{v}{r} \e^{-rt} + C \implies p(t) = a_0 + C\cdot
         \e^{rt}, \end{split} $$
@@ -39,11 +39,10 @@
         </v-col>
         <v-col xs="12" md="6">
           <p id="solution">
-            onde $\,\color{green}{a_0 = \frac{v}{r} = \frac{0.7}{\ln(2)}.}\,$ É
-            fácil ver que $\,\color{green}{C= (p_0-a_0)}.$ <br />
-            Temos então a solução geral $\,\color{green}{p(t)=a_0 + (p_0-a_0)\,
-            \e^{rt}.}\,$ Note que para $\,\color{green}{p(0)=a_0 }\,$ a solução
-            é a
+            onde $\color{green}{a_0 = \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ É
+            fácil ver que $\color{green}{C= (p_0-a_0)}.$ <br />
+            Temos então a solução geral $\color{green}{p(t)=a_0 + (p_0-a_0)\,
+            \e^{rt}.}$ Note que para $\color{green}{p(0)=a_0 }$ a solução é a
             <span style="color:green"
               >função constante $p(t) = a_0\approx 1.01,\,\, \forall t$ (um
               milhão e 10 mil mosquitos).
@@ -51,23 +50,23 @@
             <br />
 
             O comportamente das demais soluções depende do sinal de
-            $\,\color{green}{p_0 - a_0}$:
+            $\color{green}{p_0 - a_0}$:
 
             <br />
-            Se $\,\,\color{green}{p_0 - a_0 \gt 0}\,$ a população de mosquitos
-            explode para infinito e se $\,\color{green}{p_0 - a_0 \lt 0}\,$ a
-            população de mosquitos se torna negativa eventualmente, isto é,
-            passa por zero em tempo positivo implicando que os mosquitos se
-            extinguem pela ação dos predadores.
+            Se $\color{green}{p_0 - a_0 \gt 0}$ a população de mosquitos explode
+            para infinito e se $\color{green}{p_0 - a_0 \lt 0}$ a população de
+            mosquitos se torna negativa eventualmente, isto é, passa por zero em
+            tempo positivo implicando que os mosquitos se extinguem pela ação
+            dos predadores.
             <br />
-            Note que $\,\color{green}{\e^{\ln(2)t} = 2^t}\,$. Se inicialmente há
-            $\,\color{green}{ 0.9 }\,$ milhões de mosquitos, a constante
-            $\,\color{green}{ C=(0.9-\frac{0.7}{\ln 2}) \approx -0.11},$ e a
-            quantidade mosquitos (em milhões) é dada por $\,\color{green}{ p(t)
-            = 1.01 -(0.11) \, 2^{t}.} $ Os mosquitos se estinguem neste caso, e
+            Note que $\color{green}{\e^{\ln(2)t} = 2^t}.$ Se inicialmente há
+            $\color{green}{ 0.9 }$ milhões de mosquitos, a constante
+            $\color{green}{ C=(0.9-\frac{0.7}{\ln 2}) \approx -0.11},$ e a
+            quantidade mosquitos (em milhões) é dada por $\color{green}{ p(t) =
+            1.01 -(0.11) \, 2^{t}.} $ Os mosquitos se estinguem neste caso, e
             resolvendo $p(t) = 0$ temos $2^t = 1.01/0.11\approx 9.18,$ ou
             $t=\log(9.18)/\log(2),$ os mosquitos se extinguem em aproximadamente
-            $\,\color{green}{t\approx 3.2}\,$ semanas (ver gráfico).
+            $\color{green}{t\approx 3.2}$ semanas (ver gráfico).
             <br />
           </p>
         </v-col>
@@ -92,7 +91,39 @@ export default {
     }
   },
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = '@/static/js/MathJax/mathjax2Config.js'
+      document.head.appendChild(script)
+    } else {
+      this.onScriptLoaded()
+    }
+    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  methods: {
+    onScriptLoaded(event = null) {
+      if (event) {
+        console.log('Was added')
+      } else {
+        console.log('Already existed')
+      }
+      console.log(window.MathJax)
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
+  },
+  updated() {
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = '@/static/js/mathjax2Config.js'
+      document.head.appendChild(script)
+    } else {
+      this.onScriptLoaded()
+    }
+    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }
 

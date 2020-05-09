@@ -39,7 +39,7 @@ window.MathJax = {
   'HTML-CSS': {
     fonts: ['TeX'],
     styles: {
-      '.MathJax': { color: 'green' }
+      '.MathJax': { color: 'green', padding: '0.2em 0.2em' }
       // '.MathJax a': { color: 'green' }
     }
   },

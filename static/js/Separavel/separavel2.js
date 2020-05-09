@@ -177,7 +177,7 @@ export function drawContoursSep2() {
   ]
   let annotations2 = [
     {
-      text: 'Domínio da solução = [-1,1]',
+      text: '$\\textrm{Domínio da solução } = [-1,1]$',
       ax: 70, //tail of arrow
       ay: 50,
       ayref: 'pixel', // refers to axes
@@ -191,7 +191,7 @@ export function drawContoursSep2() {
       y: -0.1 // head af arrow
     },
     {
-      text: 'Solução do PVI com y(0)=1',
+      text: '$\\textrm{Solução do PVI com } y(0)=1$',
       ax: 80, //tail of arrow
       ay: -50,
       ayref: 'pixel', // refers to axes

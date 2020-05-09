@@ -96,7 +96,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module', // had problems!
+    //'@nuxtjs/eslint-module', // had problems!
     '@nuxtjs/vuetify'
   ],
   /*

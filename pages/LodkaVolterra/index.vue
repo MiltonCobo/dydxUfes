@@ -102,6 +102,14 @@ export default {
           href:
             'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
         }
+      ],
+      script: [
+        {
+          type: 'text/javascript', //x-mathjax-config',
+          src: 'js/MathJax/mathjax2Config.js',
+          async: true
+          //defer: true // defer = true is important
+        }
       ]
     }
   }

@@ -36,7 +36,9 @@
             <template v-slot:activator>
               <v-list-item>
                 <v-list-item-content>
-                  <v-list-item-title>{{ curso.title }}</v-list-item-title>
+                  <v-list-item-title link :to="curso.route">
+                    {{ curso.title }}
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </template>
@@ -49,9 +51,9 @@
               dense
               no-action
             >
-              <v-list-item link nuxt>
+              <v-list-item link nuxt :to="section.route">
                 <v-list-item-content>
-                  <v-list-item-title class="blue--text" link>{{
+                  <v-list-item-title class="blue--text">{{
                     section.title
                   }}</v-list-item-title>
                 </v-list-item-content>
@@ -167,14 +169,16 @@ let cursos = [
     sections: [
       {
         title: 'Eq. de 1a Ordem',
+        route: '/EqDiff/Ordem1/',
         active: false,
         items: [
-          { title: 'Eq. Linear', route: '/EqDiff/Lineares/' },
-          { title: 'Eq. Separável', route: '/EqDiff/Separavel/' }
+          { title: 'Eq. Linear', route: '/EqDiff/Ordem1/Lineares/' },
+          { title: 'Eq. Separável', route: '/EqDiff/Ordem1/Separavel/' }
         ]
       },
       {
         title: 'Eq. de 2a Ordem',
+        route: '/EqDiff/Ordem2',
         active: false,
         items: [
           { title: 'Coef. Constantes', route: '' },

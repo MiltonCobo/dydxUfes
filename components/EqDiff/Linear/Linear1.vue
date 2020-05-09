@@ -33,7 +33,27 @@ export default {
     Slinear1
   },
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = 'js/MathJax/mathjax2Config.js'
+      document.head.appendChild(script)
+    } else {
+      this.onScriptLoaded()
+    }
+    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  methods: {
+    onScriptLoaded(event = null) {
+      if (event) {
+        console.log('Was added')
+      } else {
+        console.log('Already existed')
+      }
+      console.log(window.MathJax)
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
   head() {
     return {

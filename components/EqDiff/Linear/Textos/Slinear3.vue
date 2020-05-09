@@ -1,17 +1,6 @@
 <template>
   <v-container>
     <v-row>
-      <v-btn
-        absolute
-        right
-        @click.stop="openFigure = true"
-        color="green lighten-2"
-      >
-        Gráfico da solução
-      </v-btn>
-    </v-row>
-    <v-spacer />
-    <v-row>
       <p id="solution">
         A equação é linear e o fator integrante é $\mu(t)=\e^{t/4}.$ Portanto,
         $$\color{green}{ \begin{align*} \e^{t/4} (y' + \frac{1}{4} y) &=
@@ -74,11 +63,16 @@
         temos que $$\color{green}{ y(t) = 12 - 2t - \color{green}{8\sqrt{\e}}\,
         \e^{-t/4} }.$$ A figura mostra que realmente $\color{green}{t=2}$ é um
         ponto de tangência desta função.
+        <v-btn @click.stop="openFigure = true" color="green lighten-4">
+          Ver gráfico
+        </v-btn>
         <br />
         Note que se $\color{green}{y_0=12}$ na equação (eq2) então a solução o
-        PVI é a linha reta $\color{green}{y=12- 2t}.$ É fácil ver que todas as
-        soluções da equação se tornam assintóticas à reta
-        $\color{green}{y=12-2t}$ quando $t\to\infty.$
+        PVI é a linha reta $y=12- 2t.$ É fácil ver que todas as soluções da
+        equação são "assintóticamente equivalentes" à reta $y=12-2t$ quando
+        $t\to\infty.$ Por assintóticamente equivalentes entendemos que
+        $\lim_{t\to\infty} {y(t)\over {12-2t}} = 1$ para toda solução $y(t)$ da
+        equação.
       </p>
     </v-row>
 

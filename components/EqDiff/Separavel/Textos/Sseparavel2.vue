@@ -62,20 +62,24 @@
         Usaremos o seguinte teorema matemático que nos permite achar as raizes
         racionais de um polinômio
         <span style="color:green"> se elas existirem. </span>
-
+        <br />
+        <br />
+        <v-divider />
         <h3 style="color:green">Teorema:</h3>
         Considere o polinômio $\color{green}{p(x)= a_n x^n+ \dots+a_1 x+ a_0}$
         onde os coeficientes $\color{green}{a_0, a_1, \dots,a_n}$ e
-        $\color{green}{n\gt 1}$ são números inteiros. Então se $p(x)$ tem uma
-        raiz racional $\color{green}{x=p/q}$ (com $p,q$ sem divisores comuns),
-        então
+        $\color{green}{n\gt 1}$ são números inteiros. <br />
+        Então se $p(x)$ tem uma raiz racional $\color{green}{x=p/q}$ (com $p,q$
+        sem divisores comuns), então
         <span style="color:green"
           >$p$ divide a $a_0$ e $q$ divide a $a_n.$
         </span>
-
+        <br />
+        <v-divider />
+        <br />
         Não tentaremos demostrar este resultado nestas notas. É importante
         frisar que $p(x)$ pode não ter nenhuma raiz racional e portanto o
-        teorema não diz nada sobre as raizes de $p(x).$.
+        teorema não diz nada sobre as raizes de $p(x).$
 
         <ul>
           <li>
@@ -139,7 +143,7 @@
           Consegue encontrar uma justificativa matemática para este
           fenômeno?</span
         >
-        <v-dialog v-model="openFigure" max-width="600">
+        <v-dialog v-model="openFigure" max-width="550">
           <v-card style="background-color:gainsboro;">
             <v-card-actions>
               <client-only placeholder="carregando...">
