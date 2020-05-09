@@ -64,23 +64,17 @@ export default {
   mounted() {
     if (!window.MathJax) {
       const script = document.createElement('script')
-      script.onload = this.onScriptLoaded
+      // script.onload = this.onScriptLoaded
       script.type = 'text/javascript'
-      script.src = 'js/MathJax/mathjax2Config.js'
+      script.src = '../../../js/MathJax/mathjax2Config.js'
       document.head.appendChild(script)
     } else {
       this.onScriptLoaded()
     }
-    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   methods: {
     onScriptLoaded(event = null) {
-      if (event) {
-        console.log('Was added')
-      } else {
-        console.log('Already existed')
-      }
-      console.log(window.MathJax)
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
   },
@@ -115,15 +109,15 @@ export default {
           href:
             'https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap'
         }
-      ],
-      script: [
-        {
-          type: 'text/javascript', //x-mathjax-config',
-          src: 'js/MathJax/mathjax2Config.js',
-          async: true
-          //defer: true // defer = true is important
-        }
       ]
+      // script: [
+      //   {
+      //     type: 'text/javascript', //x-mathjax-config',
+      //     src: '../../../static/js/MathJax/mathjax2Config.js',
+      //     async: true
+      //     //defer: true // defer = true is important
+      //   }
+      // ]
     }
   }
 }

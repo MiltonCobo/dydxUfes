@@ -61,6 +61,23 @@ export default {
     }
   },
   mounted() {
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = '../../../js/MathJax/mathjax2Config.js'
+      document.head.appendChild(script)
+    } else {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //this.onScriptLoaded()
+    }
+  },
+  methods: {
+    onScriptLoaded(event = null) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
+  },
+  updated() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   computed: {
@@ -77,15 +94,15 @@ export default {
           name: 'Eq Separável',
           content: 'LEq Separável www.dydx.ufes.br do DMAT/UFES'
         }
-      ],
-      script: [
-        {
-          type: 'text/javascript',
-          src: 'js/MathJax/mathjax2Config.js',
-          async: true
-          //defer: true // defer = true is important
-        }
       ]
+      // script: [
+      //   {
+      //     type: 'text/javascript',
+      //     src: 'js/MathJax/mathjax2Config.js',
+      //     async: true
+      //     //defer: true // defer = true is important
+      //   }
+      // ]
     }
   }
 }

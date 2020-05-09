@@ -90,39 +90,9 @@ export default {
       options
     }
   },
-  mounted() {
-    if (!window.MathJax) {
-      const script = document.createElement('script')
-      script.onload = this.onScriptLoaded
-      script.type = 'text/javascript'
-      script.src = '@/static/js/MathJax/mathjax2Config.js'
-      document.head.appendChild(script)
-    } else {
-      this.onScriptLoaded()
-    }
-    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
-  methods: {
-    onScriptLoaded(event = null) {
-      if (event) {
-        console.log('Was added')
-      } else {
-        console.log('Already existed')
-      }
-      console.log(window.MathJax)
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    }
-  },
+  mounted() {},
+  methods: {},
   updated() {
-    if (!window.MathJax) {
-      const script = document.createElement('script')
-      script.onload = this.onScriptLoaded
-      script.type = 'text/javascript'
-      script.src = '@/static/js/mathjax2Config.js'
-      document.head.appendChild(script)
-    } else {
-      this.onScriptLoaded()
-    }
     // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }

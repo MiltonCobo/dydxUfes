@@ -9,7 +9,7 @@
     \int \e^{-t/2} \cos(t) dt + C \quad \textrm{(eq1)}. \end{align*} } $$
     Precisamos calcular a integral $ \color{green}{\int \e^{a t} \cos(t) dt}$
     com $\color{green}{a=-1/2.}$ Lembremos a fórmula de integração por partes:
-    $\boxed{ \int u\, dv = u\, v - \int v\, du }. $ Portanto fazendo
+    $\boxed{ \int u\, dv = u\, v - \int v\, du. } $ Portanto fazendo
     $\color{green}{u = \e^{at},\, du = a\e^{at}}$ e $\color{green}{dv = \cos(t)
     dt, \, v = \sin(t)} $ temos $$\int u\, dv = \int \e^{a t} \cos(t) dt =
     \e^{at}\sin(t) - a \int \e^{at} \sin(t) dt, \, \textrm{(eq2)} $$ A segunda

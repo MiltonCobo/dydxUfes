@@ -63,12 +63,7 @@ export default {
     return {}
   },
   name: 'Text1',
-  mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
-  updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
+
   components: {
     Qlinear2,
     Slinear2

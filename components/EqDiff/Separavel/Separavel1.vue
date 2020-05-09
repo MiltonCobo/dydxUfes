@@ -33,7 +33,7 @@ export default {
     Sseparavel1
   },
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   head() {
     return {

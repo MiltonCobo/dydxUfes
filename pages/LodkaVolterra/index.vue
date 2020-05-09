@@ -75,7 +75,16 @@ export default {
     }
   },
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      //script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = '../../../js/MathJax/mathjax2Config.js'
+      document.head.appendChild(script)
+    } else {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //this.onScriptLoaded()
+    }
   },
   updated() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
@@ -102,15 +111,15 @@ export default {
           href:
             'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
         }
-      ],
-      script: [
-        {
-          type: 'text/javascript', //x-mathjax-config',
-          src: 'js/MathJax/mathjax2Config.js',
-          async: true
-          //defer: true // defer = true is important
-        }
       ]
+      // script: [
+      //   {
+      //     type: 'text/javascript', //x-mathjax-config',
+      //     src: '/js/MathJax/mathjax2Config.js',
+      //     async: true
+      //     //defer: true // defer = true is important
+      //   }
+      // ]
     }
   }
 }
