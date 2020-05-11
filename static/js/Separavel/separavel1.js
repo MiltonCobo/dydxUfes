@@ -115,9 +115,9 @@ export function drawSurfaceSep1() {
     title: '$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$',
     hovermode: false,
     dragmode: true,
-    autosize: true,
-    width: 600
-    // height: 800
+    autosize: false,
+    width: 600,
+    height: 600
   }
 
   return { data: [data], layout, options }

@@ -37,12 +37,12 @@ export default {
 
     title: 'Minha pagina UFES',
     script: [
-      {
-        type: 'text/javascript', //x-mathjax-config',
-        src: 'js/MathJax/mathjax2Config.js',
-        async: true
-        //defer: true // defer = true is important
-      }
+      // {
+      //   type: 'text/javascript', //x-mathjax-config',
+      //   src: 'js/MathJax/mathjax2Config.js',
+      //   async: true
+      //   //defer: true // defer = true is important
+      // }
       // {
       //   type: 'text/javascript',
       //   async: true,
@@ -82,7 +82,12 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['~/assets/variables.scss', '@mdi/font/css/materialdesignicons.css'],
+  css: [
+    'vuetify/dist/vuetify.min.css',
+    // '~/assets/css/main.css',
+    '@mdi/font/css/materialdesignicons.css',
+    '~/assets/variables.scss'
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -138,6 +143,7 @@ export default {
    ** Build configuration
    */
   build: {
+    extractCSS: true,
     transpile: ['vue-plotly.js', 'vue-chartjs'],
 
     /*

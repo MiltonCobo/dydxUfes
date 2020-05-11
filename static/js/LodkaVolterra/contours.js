@@ -203,7 +203,7 @@ export function volterraContours() {
   }
   layout0.images = [
     {
-      source: 'figuras/atun1.png',
+      source: '../../assets/figures/atun1.png',
       xref: 'paper',
       yref: 'paper',
       x: 0.66,
@@ -214,7 +214,7 @@ export function volterraContours() {
       yanchor: 'bottom'
     },
     {
-      source: 'figuras/shark1.png',
+      source: '../../../assets/figures/shark1.png',
       xref: 'paper',
       yref: 'paper',
       x: 0,

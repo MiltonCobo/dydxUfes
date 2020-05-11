@@ -31,7 +31,7 @@
     </p>
 
     <v-container>
-      <v-row>
+      <v-row class="flex-wrap">
         <v-col xs="12" md="6">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
@@ -136,8 +136,8 @@ function plotMosquitosSol() {
     autosize: true,
     hovermode: false,
     dragmode: false,
-    // width: 500,
-    height: 580,
+    width: 500,
+    height: 600,
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
       range: [initial, xwidth],
@@ -182,7 +182,7 @@ function plotMosquitosSol() {
   let options = {
     displaylogo: false,
     scrollZoom: false,
-    responsive: true,
+    responsive: false,
     showLink: false,
     modeBarButtonsToRemove: [
       'hoverClosestCartesian',

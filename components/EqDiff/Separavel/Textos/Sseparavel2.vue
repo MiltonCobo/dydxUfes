@@ -143,7 +143,7 @@
           Consegue encontrar uma justificativa matemática para este
           fenômeno?</span
         >
-        <v-dialog v-model="openFigure" max-width="550">
+        <v-dialog v-model="openFigure" max-width="600">
           <v-card style="background-color:gainsboro;">
             <v-card-actions>
               <client-only placeholder="carregando...">

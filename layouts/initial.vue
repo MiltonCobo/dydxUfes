@@ -105,11 +105,4 @@ export default {
 }
 </script>
 
-<style>
-body {
-  padding: 0px;
-  margin: 25px;
-  line-height: 1.2;
-  /* background-color: #f5f5f5; grey lighten-4 */
-}
-</style>
+<style></style>

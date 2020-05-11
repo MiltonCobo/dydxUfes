@@ -35,17 +35,11 @@
 // })
 
 window.MathJax = {
-  jax: ['input/TeX', 'output/HTML-CSS'],
-  'HTML-CSS': {
-    fonts: ['TeX'],
-    styles: {
-      '.MathJax': { color: 'green', padding: '0.2em 0.2em' }
-      // '.MathJax a': { color: 'green' }
-    }
-  },
+  jax: ['input/TeX', 'output/CommonHTML'],
+  extensions: ['tex2jax.js'], //tex2jax.js necessary for centering displaymath?
+
   displayAlign: 'center',
 
-  extensions: ['tex2jax.js'], //tex2jax.js necessary for centering displaymath?
   TeX: {
     extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js'],
     Macros: {
@@ -67,7 +61,17 @@ window.MathJax = {
     processEscapes: true
   },
   showProcessingMessages: false,
-  menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true }
+  menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true },
+  'HTML-CSS': {
+    preferredFont: 'TeX',
+    availableFonts: ['STIX', 'TeX'],
+    styles: {
+      scale: 120,
+      '.MathJax': { padding: '0.1em 0.1em', color: 'green !important' },
+      '.MathJax_Display': { 'text-align': 'center', color: 'green !important' }
+      // '.MathJax a': { color: 'green' } , padding: '0.2em 0.2em'
+    }
+  }
 }
 ;(function() {
   let script = document.createElement('script')

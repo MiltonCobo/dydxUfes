@@ -1,6 +1,6 @@
 <template>
   <v-container id="mathjax">
-    <v-row>
+    <v-row style="width:100%;">
       <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
         Exercício 3:
       </h3>

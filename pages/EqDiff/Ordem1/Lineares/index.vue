@@ -1,44 +1,55 @@
 <template>
-  <v-container id="mathjax">
-    <v-row>
-      <v-btn @click="count++" class="mx-2" fab large absolute top text right>
-        <v-icon class="brown--text" large>chevron_right</v-icon>
-      </v-btn>
-    </v-row>
-    <v-row>
-      <h2 style="color:brown;">
-        Equações Lineares de primeira Ordem
-        <hr style="color:brown; margin:0.5cm;" />
-      </h2>
-    </v-row>
+  <div>
+    <v-container id="mathjax">
+      <v-row>
+        <v-btn @click="count++" class="mx-2" fab large absolute top text right>
+          <v-icon class="brown--text" large>chevron_right</v-icon>
+        </v-btn>
+      </v-row>
+      <v-row>
+        <h2 style="color:brown;">
+          Equações Lineares de primeira Ordem
+          <hr style="color:brown; margin:0.5cm;" />
+        </h2>
+      </v-row>
 
-    <v-row>
-      <transition name="fade">
-        <div key="1" v-if="updateText == 0"><Linear1 /></div>
-        <div key="2" v-else-if="updateText == 1"><Linear2 /></div>
-        <div key="3" v-else="updateText == 2"><Linear3 /></div>
-        <!-- <div key="4" v-else-if="updateText == 3"><Text4 /></div> -->
-        <!-- <div key="5" v-else><Linear1 /></div> -->
-      </transition>
-    </v-row>
-    <v-row>
-      <v-btn
-        @click="count += 2"
-        class="mx-2"
-        fab
-        large
-        text
-        absolute
-        bottom
-        left
-      >
-        <v-icon class="brown--text" large>chevron_left</v-icon>
-      </v-btn>
-      <v-btn @click="count++" class="mx-2" fab large text absolute bottom right>
-        <v-icon class="brown--text" large>chevron_right</v-icon>
-      </v-btn>
-    </v-row>
-  </v-container>
+      <v-row>
+        <transition name="fade">
+          <div key="1" v-if="updateText == 0"><Linear1 /></div>
+          <div key="2" v-else-if="updateText == 1"><Linear2 /></div>
+          <div key="3" v-else="updateText == 2"><Linear3 /></div>
+          <!-- <div key="4" v-else-if="updateText == 3"><Text4 /></div> -->
+          <!-- <div key="5" v-else><Linear1 /></div> -->
+        </transition>
+      </v-row>
+      <v-row>
+        <v-btn
+          @click="count += 2"
+          class="mx-2"
+          fab
+          large
+          text
+          absolute
+          bottom
+          left
+        >
+          <v-icon class="brown--text" large>chevron_left</v-icon>
+        </v-btn>
+        <v-btn
+          @click="count++"
+          class="mx-2"
+          fab
+          large
+          text
+          absolute
+          bottom
+          right
+        >
+          <v-icon class="brown--text" large>chevron_right</v-icon>
+        </v-btn>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>

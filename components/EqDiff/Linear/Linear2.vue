@@ -1,5 +1,5 @@
 <template>
-  <v-container id="mathjax">
+  <v-container id="mathjax" style="width:100%;">
     <v-row>
       <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
         Exercício 2:

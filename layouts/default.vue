@@ -191,26 +191,27 @@ let cursos = [
 </script>
 
 <style>
-body {
-  padding: 0px;
-  margin: 22px;
-  line-height: 1.8;
-  font-size: 20px;
-  /* background-color: 'lightblue'; /* #f5f5f5; grey lighten-4 */
-}
+/* body {
+  padding: 1.2em;
+  margin: 0px;
+  line-height: 1.5;
+  font-size: 24px;
+  /* background-color: 'lightblue'; /* #f5f5f5; grey lighten-4 
+} */
 
-* {
-  text-transform: none !important; /* disable vuetify default font  */
-}
+/* * {
+  text-transform: none !important;
+} */
 
-.MathJax_Display {
+/* .MathJax_Display .mi,
+.MathJax_Display .mo {
   text-align: center !important;
   display: inline !important;
 }
 
-/*
-.MathJax {
+.MathJax .mi,
+.MathJax .mo {
   color: green !important;
-  padding: 3px 3px;
+  /* padding: 3px 3px !important; 
 } */
 </style>

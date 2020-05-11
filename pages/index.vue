@@ -11,20 +11,17 @@
       Gráfico da superfície
     </v-btn>
 
-    <v-container>
-      <v-row>
-        <p id="mathjax">
-          Aqui temos um paragrafo $\e^x + \KK$ Seja $f(x)$ uma função dada por
-          $f(x) = \int_{0}^\infty \Psi(t,x) dt$ considere $$ \cos(\e^2) \log(x)
-          - \int g(\xi)d\xi $$ que não existe uma pessoa localmente igual a água
-          de côco. Mostre que podemos reduzir tudo isto a bobagem. $ \cos(x)^2 =
-          3 \e^{x} \KK $ abra cadabra $ \log(x) \e^2 \Z $ Lorem ipsum $${\bf R}
-          \e \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM MAIÚSCULAS NÃO
-          IMPORTA. Quo officia, cumque \( \color{green} {\int g(\cos(t)) dt } \)
-          dolorem at atque molestiae? $$\int_0^\infty f(\xi) d\xi =
-          \log(1+x^2).$$
-        </p>
-      </v-row>
+    <p id="mathjax">
+      Aqui temos um paragrafo $\e^x + \KK$ Seja $f(x)$ uma função dada por $f(x)
+      = \int_{0}^\infty \Psi(t,x) dt$ considere $$ \cos(\e^2) \log(x) - \int
+      g(\xi)d\xi $$ que não existe uma pessoa localmente igual a água de côco.
+      Mostre que podemos reduzir tudo isto a bobagem. $ \cos(x)^2 = 3 \e^{x} \KK
+      $ abra cadabra $ \log(x) \e^2 \Z $ Lorem ipsum $${\bf R} \e \R$$ dolor sit
+      amet, \(\mathbb{Q}\) ESTE TEXTO EM MAIÚSCULAS NÃO IMPORTA. Quo officia,
+      cumque \( \color{green} {\int g(\cos(t)) dt } \) dolorem at atque
+      molestiae? $$\int_0^\infty f(\xi) d\xi = \log(1+x^2).$$
+    </p>
+    <v-container style="width:100%">
       <v-row>
         <v-col cols="12">
           <client-only placeholder="carregando...">
@@ -42,12 +39,12 @@
           </v-btn>
         </v-col>
         <v-col cols="12">
-          <v-card>
+          <v-card id="mathjax">
             <v-card-title>
               Exercicio:
             </v-card-title>
             <v-divider />
-            <v-card-text id="mathjax">
+            <v-card-text>
               Seja $f(x)$ uma função dada por $f(x) = \int_{0}^\infty \Psi(t,x)
               dt$ considere $$ \cos(\e^2) \log(x^2) - \int g(\xi)d\xi $$ que não
               existe uma pessoa localmente igual a água de côco. Mostre que
@@ -75,7 +72,35 @@ import {
 } from '@/static/js/Plotly/plotly-config.js'
 
 export default {
-  // layout: 'initial',
+  mounted() {
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      //script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = '../../../js/MathJax/mathjax2Config.js'
+      document.head.appendChild(script)
+    } else {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //this.onScriptLoaded()
+    }
+  },
+  methods: {
+    onScriptLoaded(event = null) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    },
+    startPlot() {
+      // this.startChart2 = !this.startChart2
+      // if (this.startChart2) {
+      //   let divFigure = this.$refs.p5figure
+      //   this.p5plot = new p5(lorenz, divFigure)
+      // } else {
+      //   this.p5plot.remove()
+      // }
+    }
+  },
+  updated() {
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
 
   data() {
     let xwidth = 10
@@ -121,26 +146,6 @@ export default {
     }
   },
 
-  mounted() {
-    //this.startPlot()
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
-
-  updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
-
-  methods: {
-    startPlot() {
-      // this.startChart2 = !this.startChart2
-      // if (this.startChart2) {
-      //   let divFigure = this.$refs.p5figure
-      //   this.p5plot = new p5(lorenz, divFigure)
-      // } else {
-      //   this.p5plot.remove()
-      // }
-    }
-  },
   head() {
     return {
       title: 'página dydx da UFES',
@@ -194,6 +199,16 @@ export default {
 </script>
 
 <style scoped>
+/* .MathJax_Display {
+  text-align: center !important;
+  display: inline !important;
+}
+
+.MathJax {
+  color: green !important;
+  padding: 3px 3px !important;
+} */
+
 #mathjax {
   font-family: 'Rock Salt', cursive;
   /* font-family: SofiaPro Roboto; */

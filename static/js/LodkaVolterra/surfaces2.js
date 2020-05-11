@@ -37,19 +37,19 @@ export function volterraSurface2() {
 
   let layout0 = Object.assign({}, layout)
   //   let layout0 = {}
-
-  layout0.width = 600
-  layout0.height = 600 /* set size of plot */
+  layout0.autosize = false
+  layout0.width = 700
+  layout0.height = 700 /* set size of plot */
   data.colorscale = 'Earth'
   layout0.title =
     '$\\color{green}{V(x,y)=d\\, x - c\\, \\ln(x) +b\\, y-a\\, \\ln(y)}$'
 
   data.contours.z.start = 15 /* set manually because zMax=Infinity */
   data.contours.z.end = 30
-  data.contours.z.size = 2
+  data.contours.z.size = 1
   data.visible = true
   data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
-  data.ncontours = 20
+  data.ncontours = 40
   data.line = {
     smoothing: 1,
     width: 1,
@@ -68,12 +68,12 @@ export function volterraSurface2() {
   data1.visible = false
   data1.contours.z.start = 15 /* set manually because zMax=Infinity */
   data1.contours.z.end = 40
-  data1.contours.z.size = 2
+  data1.contours.z.size = 1
   data1.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
   data1.ncontours = 40
-  data.contours.z.start = 15 /* set manually because zMax=Infinity */
-  data.contours.z.end = 50
-  data.contours.z.size = 0.4
+  // data.contours.z.start = 15 /* set manually because zMax=Infinity */
+  // data.contours.z.end = 50
+  // data.contours.z.size = 0.4
   /* start - end-size not requiere when ncountours set */
   data1.line = {
     smoothing: 1,
