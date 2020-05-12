@@ -406,8 +406,8 @@ export function drawContoursSep3() {
     hovermode: false,
     dragmode: false,
     autosize: false,
-    width: 550,
-    height: 600
+    width: 500,
+    height: 500
   }
 
   return { data: [data, data1, data2], layout, options }
@@ -511,7 +511,7 @@ export function drawFunctionsSep3() {
     dragmode: false,
     displaylogo: false,
     showLink: true,
-    width: 550,
+    width: 500,
     height: 500
   }
 

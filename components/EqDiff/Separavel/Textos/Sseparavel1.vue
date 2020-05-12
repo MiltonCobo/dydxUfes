@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <p id="solution">
         $\def\R{\mathbb R}$ Separamos as variáveis $$ \color{green}{2(y-1)\, dy

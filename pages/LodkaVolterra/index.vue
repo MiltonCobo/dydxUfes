@@ -1,6 +1,6 @@
 <template>
   <div id="mathjax">
-    <v-container>
+    <v-container fluid>
       <v-row>
         <h2 style="color:brown; margin-bottom:0.1cm;">
           As equações de Lotka-Volterra

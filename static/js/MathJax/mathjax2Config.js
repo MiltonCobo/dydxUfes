@@ -64,7 +64,7 @@ window.MathJax = {
     fonts: ['TeX'],
     styles: {
       scale: 200,
-      '.MathJax': { padding: '10em 0.1em', color: 'blue ! important' },
+      '.MathJax': { padding: '10em 0.1em', color: 'green' },
       '.MathJax_Display': { 'text-align': 'center' }
       // '.MathJax a': { color: 'green' } , padding: '0.2em 0.2em'
     }

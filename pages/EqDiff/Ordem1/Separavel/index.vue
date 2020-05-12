@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container id="mathjax">
+    <v-container id="mathjax" fluid>
       <v-row>
         <v-btn @click="count++" class="mx-2" fab large absolute top text right>
           <v-icon class="brown--text" large>chevron_right</v-icon>

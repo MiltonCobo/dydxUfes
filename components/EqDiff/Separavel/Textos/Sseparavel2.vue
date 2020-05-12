@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <v-sheet id="solution">
         $\def\R{\mathbb R}$ Separando as variáveis, $ \color{green}{ (3y^2-6y)

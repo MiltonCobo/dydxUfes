@@ -30,7 +30,7 @@
       </span>
     </p>
 
-    <v-container>
+    <v-container fluid>
       <v-row class="flex-wrap">
         <v-col xs="12" md="6">
           <client-only placeholder="carregando...">
@@ -41,8 +41,9 @@
           <p id="solution">
             onde $\color{green}{a_0 = \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ É
             fácil ver que $\color{green}{C= (p_0-a_0)}.$ <br />
-            Temos então a solução geral $\color{green}{p(t)=a_0 + (p_0-a_0)\,
-            \e^{rt}.}$ Note que para $\color{green}{p(0)=a_0 }$ a solução é a
+            Temos então a solução geral $$\color{green}{p(t)=a_0 + (p_0-a_0)\,
+            \e^{rt}.}$$ 
+            Note que para $\color{green}{p(0)=a_0 }$ a solução é a
             <span style="color:green"
               >função constante $p(t) = a_0\approx 1.01,\,\, \forall t$ (um
               milhão e 10 mil mosquitos).
@@ -58,7 +59,12 @@
             mosquitos se torna negativa eventualmente, isto é, passa por zero em
             tempo positivo implicando que os mosquitos se extinguem pela ação
             dos predadores.
-            <br />
+
+          </p>
+        </v-col>
+      </v-row>
+      <v-col> 
+        <p>
             Note que $\color{green}{\e^{\ln(2)t} = 2^t}.$ Se inicialmente há
             $\color{green}{ 0.9 }$ milhões de mosquitos, a constante
             $\color{green}{ C=(0.9-\frac{0.7}{\ln 2}) \approx -0.11},$ e a
@@ -67,9 +73,9 @@
             resolvendo $p(t) = 0$ temos $2^t = 1.01/0.11\approx 9.18,$ ou
             $t=\log(9.18)/\log(2),$ os mosquitos se extinguem em aproximadamente
             $\color{green}{t\approx 3.2}$ semanas (ver gráfico).
-            <br />
-          </p>
-        </v-col>
+        </p>
+      </v-col>
+      </v-row>
       </v-row>
     </v-container>
   </div>
@@ -137,7 +143,7 @@ function plotMosquitosSol() {
     hovermode: false,
     dragmode: false,
     width: 500,
-    height: 600,
+    height: 500,
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
       range: [initial, xwidth],

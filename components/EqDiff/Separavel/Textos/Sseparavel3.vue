@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container>
+    <v-container fluid>
       <v-row class="flex-wrap-reverse">
         <v-col xs="12" md="6" order="1">
           <client-only placeholder="carregando...">

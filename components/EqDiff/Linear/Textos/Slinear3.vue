@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <p id="solution">
         A equação é linear e o fator integrante é $\mu(t)=\e^{t/4}.$ Portanto,
