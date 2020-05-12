@@ -1,17 +1,18 @@
 <template>
-  <v-container id="mathjax" style="width:100%;">
-    <v-row>
-      <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
-        Exercício 2:
-      </h3>
-    </v-row>
-    <v-spacer />
+  <div>
+    <v-container id="mathjax" style="width:100%;">
+      <v-row>
+        <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
+          Exercício 2:
+        </h3>
+      </v-row>
+      <v-spacer />
 
-    <v-row>
-      <Qlinear2 />
-    </v-row>
-    <v-divider />
-    <!-- <v-spacer />
+      <v-row>
+        <Qlinear2 />
+      </v-row>
+      <v-divider />
+      <!-- <v-spacer />
     <v-spacer />
     <v-row style="margin-top:0.5cm;">
       <v-btn
@@ -24,17 +25,17 @@
       </v-btn>
     </v-row> -->
 
-    <v-spacer />
-    <v-row>
-      <h3
-        style="color: green;margin:0.5cm 0cm 0.5cm 0cm;text-decoration: underline;"
-      >
-        Solução:
-      </h3>
-      <Slinear2 />
-    </v-row>
+      <v-spacer />
+      <v-row>
+        <h3
+          style="color: green;margin:0.5cm 0cm 0.5cm 0cm;text-decoration: underline;"
+        >
+          Solução:
+        </h3>
+        <Slinear2 />
+      </v-row>
 
-    <!-- <v-spacer />
+      <!-- <v-spacer />
 
     <v-dialog v-model="openFigure" max-width="450">
       <v-card>
@@ -51,7 +52,8 @@
         </v-card-text>
       </v-card>
     </v-dialog> -->
-  </v-container>
+    </v-container>
+  </div>
 </template>
 
 <script>

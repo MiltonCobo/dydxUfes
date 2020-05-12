@@ -7,15 +7,13 @@ $body-font-family: 'Lucida Grande', sans-serif;
   text-transform: none !important;
 }
 
-.MathJax_Display .mi,
-.MathJax_Display .mo {
-  text-align: center !important;
-  display: inline !important;
-}
+// .MathJax_Display {
+//   text-align: center !important;
+//   display: inline !important;
+// }
 
-.MathJax .mi,
-.MathJax .mo {
-  color: green !important;
+.MathJax {
+  color: green;
   // padding: 0.1em 0.1em !important;
 }
 

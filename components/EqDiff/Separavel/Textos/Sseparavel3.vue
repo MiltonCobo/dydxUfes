@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-row style="width:100%;" class="flex-wrap-reverse">
+      <v-row class="flex-wrap-reverse">
         <v-col xs="12" md="6" order="1">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
@@ -75,13 +75,13 @@
           </span>
         </p>
       </v-row>
-      <v-row class="flex-wrap">
-        <v-col xs="12" md="6" order="5">
+      <v-row wrap>
+        <v-col xs="12" md="6">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
           </client-only>
         </v-col>
-        <v-col xs="12" ms="6" order="4">
+        <v-col xs="12" md="6">
           <p id="solution">
             Uma outra observação é que a derivada $y'(x)$ não está bem definida
             para $y=-3/2,$ e podemos ver na figura que é sobre esta reta que as

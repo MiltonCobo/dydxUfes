@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -83,7 +83,7 @@ export default {
    ** Global CSS
    */
   css: [
-    'vuetify/dist/vuetify.min.css',
+    // 'vuetify/dist/vuetify.min.css',
     // '~/assets/css/main.css',
     '@mdi/font/css/materialdesignicons.css',
     '~/assets/variables.scss'
@@ -139,6 +139,7 @@ export default {
       }
     }
   },
+
   /*
    ** Build configuration
    */

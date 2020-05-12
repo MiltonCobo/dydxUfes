@@ -1,24 +1,26 @@
 <template>
-  <v-container id="mathjax">
-    <v-row>
-      <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
-        Exercício 3:
-      </h3>
-    </v-row>
-    <v-row>
-      <Qseparavel3 />
-    </v-row>
-    <v-divider />
-    <v-spacer />
-    <v-row>
-      <h3
-        style="color: green;margin:0.5cm 0cm 0.5cm 0cm;text-decoration: underline;"
-      >
-        Solução:
-      </h3>
-      <Sseparavel3 />
-    </v-row>
-  </v-container>
+  <div>
+    <v-container id="mathjax">
+      <v-row>
+        <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
+          Exercício 3:
+        </h3>
+      </v-row>
+      <v-row>
+        <Qseparavel3 />
+      </v-row>
+      <v-divider />
+      <v-spacer />
+      <v-row>
+        <h3
+          style="color: green;margin:0.5cm 0cm 0.5cm 0cm;text-decoration: underline;"
+        >
+          Solução:
+        </h3>
+        <Sseparavel3 />
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>

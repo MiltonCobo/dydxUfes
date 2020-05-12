@@ -196,22 +196,21 @@ let cursos = [
   margin: 0px;
   line-height: 1.5;
   font-size: 24px;
-  /* background-color: 'lightblue'; /* #f5f5f5; grey lighten-4 
+  /* background-color: 'lightblue'; /* #f5f5f5; grey lighten-4
 } */
 
 /* * {
   text-transform: none !important;
 } */
 
-/* .MathJax_Display .mi,
-.MathJax_Display .mo {
+/* .MathJax_Display {
   text-align: center !important;
   display: inline !important;
-}
+} */
 
-.MathJax .mi,
-.MathJax .mo {
+/* .MathJax {
   color: green !important;
-  /* padding: 3px 3px !important; 
+} */
+/*padding: 3px 3px !important;
 } */
 </style>

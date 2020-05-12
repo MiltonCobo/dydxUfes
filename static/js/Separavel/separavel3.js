@@ -5,10 +5,10 @@ import {
 } from '@/static/js/Plotly/plotly-config.js'
 
 export function drawSurfaceSep3() {
-  let xwidth = 20
-  let ywidth = 20
-  let xcenter = 15
-  let ycenter = 10
+  let xwidth = 30
+  let ywidth = 30
+  let xcenter = 15 //Math.log(2)
+  let ycenter = 15 //-1.5
   let ysteps = 40
   let xsteps = 40
   let center = {
@@ -44,8 +44,8 @@ export function drawSurfaceSep3() {
       z: {
         show: true,
         start: -2,
-        end: 20,
-        size: 1,
+        end: 40,
+        size: 4,
         color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -98,9 +98,9 @@ export function drawSurfaceSep3() {
     scene: {
       camera: {
         eye: {
-          x: 1,
-          y: 0.8,
-          z: 0.8
+          x: 0.7,
+          y: 0.2,
+          z: 1.5
         }
       },
       xaxis: {
@@ -117,24 +117,24 @@ export function drawSurfaceSep3() {
       },
       zaxis: {
         title: 'z',
-        range: [-2, 20]
+        range: [-2, 30]
       }
     },
     showlegend: false,
     hovermode: false,
-    autosize: true,
-    width: 500
-    // height: 600
+    autosize: false,
+    width: 500,
+    height: 550
   }
 
   return { data: [data], layout, options }
 } // End
 
 export function drawContoursSep3() {
-  let xwidth = 16
-  let ywidth = 10
-  let xcenter = 12
-  let ycenter = 6.5
+  let xwidth = 40 //16
+  let ywidth = 20 //10
+  let xcenter = 35 //12
+  let ycenter = 10 //6.5
   let ysteps = 40
   let xsteps = 40
   let center = {
@@ -172,8 +172,8 @@ export function drawContoursSep3() {
     contours: {
       //coloring: 'none',
       start: -2,
-      end: 40,
-      size: 1,
+      end: 100,
+      size: 4,
       opacity: 1
     }
   }
@@ -347,8 +347,8 @@ export function drawContoursSep3() {
           args: [
             { visible: [true, true, false], opacity: [0.8, 1, 0] },
             {
-              annotations: [...annotations1],
-              shapes: []
+              annotations: annotations1,
+              shapes: null
             }
           ],
           label: 'Curvas de nível'
@@ -358,14 +358,14 @@ export function drawContoursSep3() {
           args: [
             { visible: [true, true, true], opacity: [0.4, 0.6, 1] },
             {
-              annotations: [...annotations],
-              shapes: [...shapes]
+              annotations: annotations,
+              shapes: shapes
             }
           ],
           label: 'Anotações'
         }
       ],
-      direction: 'bottom',
+      direction: 'right',
       pad: {
         r: 10,
         t: 10
@@ -375,7 +375,7 @@ export function drawContoursSep3() {
       type: 'buttons',
       x: 0.01,
       xanchor: 'left',
-      y: 0.35,
+      y: 1.2,
       yanchor: 'top',
       font: {
         size: 14,
@@ -405,9 +405,9 @@ export function drawContoursSep3() {
     showlegend: false,
     hovermode: false,
     dragmode: false,
-    autosize: true,
-    width: 550
-    // height: 500
+    autosize: false,
+    width: 550,
+    height: 600
   }
 
   return { data: [data, data1, data2], layout, options }
@@ -511,8 +511,8 @@ export function drawFunctionsSep3() {
     dragmode: false,
     displaylogo: false,
     showLink: true,
-    width: 500
-    // height: 400
+    width: 550,
+    height: 500
   }
 
   return { data: [trace1, trace2], layout, options }

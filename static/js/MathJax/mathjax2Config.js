@@ -35,8 +35,8 @@
 // })
 
 window.MathJax = {
-  jax: ['input/TeX', 'output/CommonHTML'],
-  extensions: ['tex2jax.js'], //tex2jax.js necessary for centering displaymath?
+  jax: ['input/TeX', 'output/HTML-CSS'],
+  extensions: ['tex2jax.js'],
 
   displayAlign: 'center',
 
@@ -60,23 +60,23 @@ window.MathJax = {
     ],
     processEscapes: true
   },
-  showProcessingMessages: false,
-  menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true },
   'HTML-CSS': {
-    preferredFont: 'TeX',
-    availableFonts: ['STIX', 'TeX'],
+    fonts: ['TeX'],
     styles: {
-      scale: 120,
-      '.MathJax': { padding: '0.1em 0.1em', color: 'green !important' },
-      '.MathJax_Display': { 'text-align': 'center', color: 'green !important' }
+      scale: 200,
+      '.MathJax': { padding: '10em 0.1em', color: 'blue ! important' },
+      '.MathJax_Display': { 'text-align': 'center' }
       // '.MathJax a': { color: 'green' } , padding: '0.2em 0.2em'
     }
-  }
+  },
+  showProcessingMessages: false,
+  menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true }
 }
 ;(function() {
   let script = document.createElement('script')
   script.src =
-    'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
+    'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_SVG'
+  // 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
   script.async = true
   document.head.appendChild(script)
 })()
