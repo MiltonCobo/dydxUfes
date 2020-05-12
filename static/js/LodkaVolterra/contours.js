@@ -36,6 +36,7 @@ export function volterraContours() {
 
   layout0.width = 500
   layout0.height = 500 /* set size of plot */
+  layout0.dragmode = false
   data.colorscale = 'Earth'
   layout0.title =
     '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$'
