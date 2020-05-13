@@ -2,13 +2,13 @@
   <v-container fluid>
     <v-row>
       <v-sheet id="solution">
-        $\def\R{\mathbb R}$ Separando as variáveis, $ \color{green}{ (3y^2-6y)
-        \, dy = (1+ 3x^2) \, dx},$ e integrando a ambos lados, obtemos que as
-        soluções $y=f(x)$ da equação diferencial moram
-        <span style="color:green">implícitamente</span> nas curvas $$
-        \color{green}{ y^3-3y^2 = x^3+x+C} \quad\textrm{(eq1)}$$ com $C$
-        variando em $\R.$ Dito de outra forma, as soluções da equação moram nas
-        curvas de nível da função:
+        $\def\R{\mathbb R}$ Separando as variáveis, $ { (3y^2-6y) \, dy = (1+
+        3x^2) \, dx},$ e integrando a ambos lados, obtemos que as soluções
+        $y=f(x)$ da equação diferencial moram
+        <span style="color:var(--mjx-green)">implícitamente</span> nas curvas $$
+        { y^3-3y^2 = x^3+x+C} \quad\textrm{(eq1)}$$ com $C$ variando em $\R.$
+        Dito de outra forma, as soluções da equação moram nas curvas de nível da
+        função:
         <v-btn
           style="margin:4px;"
           id="mathjax"
@@ -17,27 +17,26 @@
         >
           Ver figura
         </v-btn>
-        $$\color{green}{z=V(x,y) = y^3-3y^2 -x^3-x}. $$
+        $${z=V(x,y) = y^3-3y^2 -x^3-x}. $$
         <br />
 
         Usando a condição inicial $x=0, y=1$ em (eq1) obtemos que $C=-2,$ ou
         seja a solução do problema de valor inicial (PVI) mora implícitamente na
-        curva de nível $$\color{green}{y^3-3y^2 - x^3-x = -2}\quad
-        \textrm{(eq2)}.$$ Neste caso é muito complicado, embora possível, achar
-        a solução de forma
-        <span style="color:green"> explícita $y=f(x).$ </span> Para achar o
-        intervalo de definição da solução do PVI, precisamos achar
-        <span style="color:green">
+        curva de nível $${y^3-3y^2 - x^3-x = -2}\quad \textrm{(eq2)}.$$ Neste
+        caso é muito complicado, embora possível, achar a solução de forma
+        <span style="color:var(--mjx-green)"> explícita $y=f(x).$ </span> Para
+        achar o intervalo de definição da solução do PVI, precisamos achar
+        <span style="color:var(--mjx-green)">
           o maior intervalo, que contenha $x=0$, e onde a derivada $dy/dx$
           esteja bem definida.
         </span>
         Isto é, precisamos determinar os valores de $x$ e $y$ onde
-        $\color{green}{\frac{dy}{dx} = \frac{1+3x^2}{3y^2-6y}}$,
-        <span style="color:green">não existe. </span>
+        ${\frac{dy}{dx} = \frac{1+3x^2}{3y^2-6y}}$,
+        <span style="color:var(--mjx-green)">não existe. </span>
         Isto acontece quando $y=0$ ou $y=2.$ Para achar os valores de $x$
-        substituimos $y$ na equação (eq2). Por exemplo se $\color{green}{y=0}$
-        temos $\color{green}{0 = x^3+x-2}$.
-        <span style="color:green"
+        substituimos $y$ na equação (eq2). Por exemplo se ${y=0}$ temos ${0 =
+        x^3+x-2}$.
+        <span style="color:var(--mjx-green)"
           >Como determinar os valores de $x$ que satisfazem esta equação?
         </span>
         O problema de achar as raizes de um polinômio de grau $n\ge 3$ é em
@@ -45,7 +44,7 @@
         Para $n=3$ e $4$ ainda existem fórmulas explícitas mas muito extensas e
         pouco práticas para calcular as raizes. O matemático frances Évariste
         Galois provou que
-        <span style="color:green">
+        <span style="color:var(--mjx-green)">
           para polinômios de grau $\ge 5$ não existem fórmulas gerais para
           calcular as raizes.</span
         >
@@ -61,17 +60,17 @@
         <br />
         Usaremos o seguinte teorema matemático que nos permite achar as raizes
         racionais de um polinômio
-        <span style="color:green"> se elas existirem. </span>
+        <span style="color:var(--mjx-green)"> se elas existirem. </span>
         <br />
         <br />
         <v-divider />
-        <h3 style="color:green">Teorema:</h3>
-        Considere o polinômio $\color{green}{p(x)= a_n x^n+ \dots+a_1 x+ a_0}$
-        onde os coeficientes $\color{green}{a_0, a_1, \dots,a_n}$ e
-        $\color{green}{n\gt 1}$ são números inteiros. <br />
-        Então se $p(x)$ tem uma raiz racional $\color{green}{x=p/q}$ (com $p,q$
-        sem divisores comuns), então
-        <span style="color:green"
+        <h3 style="color:var(--mjx-green)">Teorema:</h3>
+        Considere o polinômio ${p(x)= a_n x^n+ \dots+a_1 x+ a_0}$ onde os
+        coeficientes ${a_0, a_1, \dots,a_n}$ e ${n\gt 1}$ são números inteiros.
+        <br />
+        Então se $p(x)$ tem uma raiz racional ${x=p/q}$ (com $p,q$ sem divisores
+        comuns), então
+        <span style="color:var(--mjx-green)"
           >$p$ divide a $a_0$ e $q$ divide a $a_n.$
         </span>
         <br />
@@ -83,29 +82,28 @@
 
         <ul>
           <li>
-            Para $\color{green}{y=0}$ nossa esperança é que $\color{green}{p(x)
-            = x^3+x-2}$ tenha pelo menos uma raiz racional. Pelo teorema se
-            $x=p/q$ é uma raiz racional de $p(x)$ então
-            <span style="color:green">
+            Para ${y=0}$ nossa esperança é que ${p(x) = x^3+x-2}$ tenha pelo
+            menos uma raiz racional. Pelo teorema se $x=p/q$ é uma raiz racional
+            de $p(x)$ então
+            <span style="color:var(--mjx-green)">
               $p$ é um divisor de $-2$ e $q$ é um divisor de $1$</span
             >. Isto nos deixa com as possíveis raizes racionais $ x= \pm 1, \pm
             2.$ Testando cada uma delas descobrimos que $x=1$ é raiz de $p(x)$.
             Isto significa que o monômio $(x-1)$ é um divisor de $p(x),$ de fato
-            podemos mostrar que $\color{green}{p(x) = x^3+x-2 =
-            (x-1)(x^2+x+2)}$. Comprovamos fácilmente que $x^2+x+2$ não tem
-            raizes reais. Assim $x=1$ é a única raiz real de $p(x),$ o que
-            implica que a curva $y^3-3y^2 - x^3-x = -2$ intercepta o eixo "x"
-            únicamente no ponto $(1,0).$
+            podemos mostrar que ${p(x) = x^3+x-2 = (x-1)(x^2+x+2)}$. Comprovamos
+            fácilmente que $x^2+x+2$ não tem raizes reais. Assim $x=1$ é a única
+            raiz real de $p(x),$ o que implica que a curva $y^3-3y^2 - x^3-x =
+            -2$ intercepta o eixo "x" únicamente no ponto $(1,0).$
           </li>
 
           <li>
-            Para $\color{green}{y=2}$ devemos achar as raizes de
-            $\color{green}{q(x)=x^3+x+2.}$ Usando de novo o teorema temos que as
-            possíveis raizes racionais deste polinômio são $x=\pm1, \pm 2.$
-            Testando descobrimos que $x=-1$ é uma raiz e que
-            <span style="color:green">$q(x)= (x+1)(x^2+x-2)$</span> onde
-            $x^2+x-2$ não tem raizes reais. Portanto a curva $y^3-3y^2 - x^3-x =
-            -2$ intercepta a reta $y=2$ únicamente no ponto $(-1,2).$
+            Para ${y=2}$ devemos achar as raizes de ${q(x)=x^3+x+2.}$ Usando de
+            novo o teorema temos que as possíveis raizes racionais deste
+            polinômio são $x=\pm1, \pm 2.$ Testando descobrimos que $x=-1$ é uma
+            raiz e que
+            <span style="color:var(--mjx-green)">$q(x)= (x+1)(x^2+x-2)$</span>
+            onde $x^2+x-2$ não tem raizes reais. Portanto a curva $y^3-3y^2 -
+            x^3-x = -2$ intercepta a reta $y=2$ únicamente no ponto $(-1,2).$
           </li>
         </ul>
 
@@ -113,7 +111,7 @@
         definida para $x=-1$ e $x=1$ pois como vimos os valores $y(-1) = 2$ e
         $y(1)=0$ estão proibidos na expressão de $dy/dx.$ Como o intervalo de
         definição da solução deve conter o valor inicial $x=0$ concluimos que
-        <span style="color:green">
+        <span style="color:var(--mjx-green)">
           o domínio da solução é o intervalo $[-1,1]$</span
         >
         <v-btn
@@ -125,21 +123,20 @@
           Ver figura.
         </v-btn>
         Uma outra observação a se fazer é que as curvas de nível de
-        $\color{green}{V(x,y)=y^3-3y^2-x^3-x}$ se tornam assintóticas à reta
-        $\color{green}{y=x}$ quando $t\to\pm\infty.$ Para sermos mais claros, se
-        $\color{green}{y=f(x)}$ é uma função implícita numa das curva de nível
-        de $V(x,y)$
-        <span style="color:green"
-          >e que está definida num intervalo da forma $\color{green}{[a,
-          \infty)}$ (ou $\color{green}{(-\infty, a]}$),
+        ${V(x,y)=y^3-3y^2-x^3-x}$ se tornam assintóticas à reta ${y=x}$ quando
+        $t\to\pm\infty.$ Para sermos mais claros, se ${y=f(x)}$ é uma função
+        implícita numa das curva de nível de $V(x,y)$
+        <span style="color:var(--mjx-green)"
+          >e que está definida num intervalo da forma ${[a, \infty)}$ (ou
+          ${(-\infty, a]}$),
         </span>
         então
-        <span style="color:green">
+        <span style="color:var(--mjx-green)">
           $$\lim_{x\to\infty} f(x)/x = 1 \quad\textrm{(ou $\lim_{x\to-\infty}
           f(x)/x = 1$)}. $$
         </span>
         <br />
-        <span style="color:green">
+        <span style="color:var(--mjx-green)">
           Consegue encontrar uma justificativa matemática para este
           fenômeno?</span
         >

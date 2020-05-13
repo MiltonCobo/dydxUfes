@@ -5,18 +5,17 @@
         <v-col justify-start xs="12" md="6">
           As soluções das equações de Lodka-Volterra tem uma característica
           importante:
-          <span style="color: green">
+          <span style="color:  var(--mjx-green);">
             O valor médio da população de atuns, em qualquer trajetória, é $c/d$
             e o valor médio para os tubarões é $a/b$,</span
           >
-          isto é, $$ \color{green}{ {1\over T}\int_0^T x(t) dt = c/d, \quad\quad
-          {1\over T}\int_0^T y(t) dt = a/b.}$$ De fato pelas equações
-          <span style="font-size: 20px">(EQs)</span>, $\color{green}{ {d\over
-          dx} \ln(x) = x'/x= a-b\,y, }$ então integrando e usando que
-          $x(T)=x(0)$ porque as soluções são periódicas,
+          isto é, $${1\over T}\int_0^T x(t) dt = c/d, \quad\quad {1\over
+          T}\int_0^T y(t) dt = a/b.$$ De fato pelas equações (EQs), $ {d\over
+          dx} \ln(x) = x'/x= a-b\,y $ então integrando e usando que $x(T)=x(0)$
+          porque as soluções são periódicas,
           $$\begin{split}0&=\ln(x(T))-\ln(x(0))=\int_0^T {d\over dt} \ln(x) \,dt
-          \\ &= \int_0^T a-b\, y(t)\, dt \end{split}$$ de onde $\color{green}{
-          {1\over T}\int_0^T y(t) dt = a/b.}$ A outra igualdade é similar.
+          \\ &= \int_0^T a-b\, y(t)\, dt \end{split} $$ de onde $ {1\over
+          T}\int_0^T y(t) dt = a/b.$ A outra igualdade é similar.
         </v-col>
         <v-col xs="12" md="6">
           <client-only>
@@ -31,7 +30,7 @@
       </v-row>
       <v-row>
         <v-col xs="12">
-          <h4 style="color:green">
+          <h4 style="color:var(--mjx-green)">
             Qual foi a explicação dada por Volterra para o aumento da população
             de tubarões no mar adriático por causa da guerra?
           </h4>
@@ -50,7 +49,7 @@
           inalteradas. Assim, o efeito da pesca será que a média $a/b$ da
           população dos tubarões diminui enquanto a média $c/d$ da população de
           atuns aumenta.
-          <span style="color:green">
+          <span style="color: var(--mjx-green)">
             Assim, de forma paradoxal, a pesca aumenta a média da população de
             atuns e diminui a média da população de tubarões!. Entretanto, a
             restrição da pesca fará o contrário, a média dos tubarões aumenta e

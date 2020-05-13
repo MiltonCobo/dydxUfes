@@ -12,15 +12,15 @@
     </v-btn>
 
     <p id="mathjax">
-      Aqui temos um paragrafo $\e^x + \KK$ Seja $f(x)$ uma função dada por $f(x)
-      = \int_{0}^\infty \Psi(t,x) dt$ considere $$ \cos(\e^2)
-      \href{javascript:alert('Ola!')}{==} \log(x) - \int g(\xi)d\xi $$ que não
-      existe uma pessoa localmente igual a água de côco. Mostre que podemos
-      reduzir tudo isto a bobagem. $ \cos(x)^2 = 3 \e^{x} \KK $ abra cadabra $
-      \log(x) \e^2 \Z $ Lorem ipsum $${\bf R} \e \R$$ dolor sit amet,
-      \(\mathbb{Q}\) ESTE TEXTO EM MAIÚSCULAS NÃO IMPORTA. Quo officia, cumque
-      \( \color{green} {\int g(\cos(t)) dt } \) dolorem at atque molestiae?
-      $$\int_0^\infty f(\xi) d\xi = \log(1+x^2).$$
+      <span style="color:var(--mjx-green);">Aqui temos um paragrafo</span> $\e^x
+      + \KK$ Seja $f(x)$ uma função dada por $f(x) = \int_{0}^\infty \Psi(t,x)
+      dt$ considere $$ \cos(\e^2) \href{javascript:alert('Ola!')}{==} \log(x) -
+      \int g(\xi)d\xi $$ que não existe uma pessoa localmente igual a água de
+      côco. Mostre que podemos reduzir tudo isto a bobagem. $ \cos(x)^2 = 3
+      \e^{x} \KK $ abra cadabra $ \log(x) \e^2 \Z $ Lorem ipsum $${\bf R} \e
+      \R$$ dolor sit amet, \(\mathbb{Q}\) ESTE TEXTO EM MAIÚSCULAS NÃO IMPORTA.
+      Quo officia, cumque \( \color{green} {\int g(\cos(t)) dt } \) dolorem at
+      atque molestiae? $$\int_0^\infty f(\xi) d\xi = \log(1+x^2).$$
     </p>
     <v-container style="width:100%">
       <v-row>

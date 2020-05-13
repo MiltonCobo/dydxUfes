@@ -15,7 +15,7 @@
     Do ponto de vista matemático o modelo Lotka-Volterra tem 4 hipóteses.
     Vamos justificar aqui somente a primeira:
     <br/>
-    <span style="color:green;">
+    <span style="color:var(--mjx-green);">
       "Em ausência de tubarões o incremento na população de atuns é proporcional
     ao tempo transcorrido e à própria quantidade de atuns".</span>
 
@@ -28,7 +28,7 @@
 
     <br />
     Apresentaremos agora as hipóteses do modelo na linguagem de
-    <span style="color:green">derivadas</span>, isto é, considerando os limites
+    <span style="color:var(--mjx-green)">derivadas</span>, isto é, considerando os limites
     quando $\Delta t \to 0$.
 
     <ol>
@@ -36,7 +36,7 @@
         $\def\e{\textrm e}$
         Em ausência de predadores a população de presas aumenta com velocidade
         proporcional ao número de presas nesse momento:
-        $\color{green}{\frac{dx}{dt} = a\, x(t),\, a \gt 0} $ (os atuns nascem a
+        ${\frac{dx}{dt} = a\, x(t),\, a \gt 0} $ (os atuns nascem a
         ritmo constante); como sabem nossos alunos do curso de equações diferenciais,
         isto implica que $x(t)=x_0\e^{at},$ e a população de presas cresce exponencialente.
         Sabe-se que a população de toda forma de vida tende a aumentar exponencialmente, e que isto só
@@ -51,15 +51,15 @@
 
       <li>
         A velocidade com que atuns são mortos pelos tubarões é proporcional ao
-        número total de encontros tubarão-atum, $\color{green}{-b\, x(t)y(t),
-        \,\, b>0}.$ Posto de outra forma: $\color{green}{b}$ é a probabilidade de um encontro
+        número total de encontros tubarão-atum, ${-b\, x(t)y(t),
+        \,\, b>0}.$ Posto de outra forma: ${b}$ é a probabilidade de um encontro
         tubarão-atum e do atum resultar morto;
       </li>
 
       <li>
         Similarmente, a população de tubarões aumenta devido à presença dos
         atuns com velocidade proporcional ao número de encontros entre eles
-        (isto é $\color{green}{+d\, x(t)y(t),\,\, d \gt 0}$).
+        (isto é ${+d\, x(t)y(t),\,\, d \gt 0}$).
       </li>
     </ol>
   </v-sheet>

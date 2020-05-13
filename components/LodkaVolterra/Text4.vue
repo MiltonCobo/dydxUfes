@@ -13,22 +13,20 @@
           </client-only>
         </v-col>
         <v-col xs="12">
-          A figura mostra o gráfico de $V(x,y)$ para valores
-          $\color{green}{a=5.3, b=0.12, c=4.9}$ e $\color{green}{d=0.14}$
-          (superfície 1, sem pesca) e para valores $\color{green}{a=3.6}$ e
-          $\color{green}{c=7.5} $ (superfície 2, com pesca).
+          A figura mostra o gráfico de $V(x,y)$ para valores ${a=5.3, b=0.12,
+          c=4.9}$ e ${d=0.14}$ (superfície 1, sem pesca) e para valores
+          ${a=3.6}$ e ${c=7.5} $ (superfície 2, com pesca).
           <br />
           Note que as curvas de nível de $V$ são fechadas. De fato o gradiente
-          $\color{green}{\nabla V(x,y)=(d-c/x, b-a/y)}$ se anula no ponto
-          $\bar{p}=(c/d, a/b)$ e a matriz Hessiana de $V$ em
-          $\color{green}{\bar{p}}$ é dada por $$\textrm{Hess}\, V(\bar{p}) =
-          \begin{pmatrix} d^2/c & 0 \\ 0 & b^2/a \end{pmatrix}.$$ Pelo critério
-          da segunda derivada $V$ tem um mínimo local em $\bar{p}$, isto é,
-          $\color{green}{ V(\frac{c}{d}+x,\frac{a}{b}+y) }$ é aproximadamente
-          igual $$\color{green}{ V(\bar{p})+\frac{d^2}{c}\, x^2 +\frac{b^2}{a}\,
-          y^2 }$$ para $(x,y)$ muito pequenos e portanto, perto do ponto
-          $\bar{p}$, o gráfico de $V$ é próximo de um paraboloide, com curvas de
-          nível fechadas.
+          ${\nabla V(x,y)=(d-c/x, b-a/y)}$ se anula no ponto $\bar{p}=(c/d,
+          a/b)$ e a matriz Hessiana de $V$ em ${\bar{p}}$ é dada por
+          $$\textrm{Hess}\, V(\bar{p}) = \begin{pmatrix} d^2/c & 0 \\ 0 & b^2/a
+          \end{pmatrix}.$$ Pelo critério da segunda derivada $V$ tem um mínimo
+          local em $\bar{p}$, isto é, ${ V(\frac{c}{d}+x,\frac{a}{b}+y) }$ é
+          aproximadamente igual $${ V(\bar{p})+\frac{d^2}{c}\, x^2
+          +\frac{b^2}{a}\, y^2 }$$ para $(x,y)$ muito pequenos e portanto, perto
+          do ponto $\bar{p}$, o gráfico de $V$ é próximo de um paraboloide, com
+          curvas de nível fechadas.
         </v-col>
       </v-row>
     </v-container>

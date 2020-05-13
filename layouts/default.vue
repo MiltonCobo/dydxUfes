@@ -208,6 +208,9 @@ let cursos = [
 </script>
 
 <style>
+:root {
+  --mjx-green: #33691e;
+}
 /* body {
   padding: 1.2em;
   margin: 0px;
