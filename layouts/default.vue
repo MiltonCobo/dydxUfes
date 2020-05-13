@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar hide-on-scroll flat dark app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon class="blue--text" @click.stop="drawer = !drawer" />
 
       <v-btn icon>
         <nuxt-link to="/">
@@ -22,7 +22,7 @@
       <!--   MENU CURSOS -->
       <v-menu :close-on-content-click="false" text dense dark offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn dark v-on="on">
+          <v-btn class="blue--text" dark v-on="on">
             Cursos
           </v-btn>
         </template>
@@ -142,6 +142,23 @@
 
 <script>
 export default {
+  mounted() {
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      //script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = '../../../js/MathJax/mathjax2Config.js'
+      document.head.appendChild(script)
+    } else {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //this.onScriptLoaded()
+    }
+  },
+  methods: {
+    onScriptLoaded(event = null) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
+  },
   data() {
     return {
       drawer: false,
@@ -208,9 +225,10 @@ let cursos = [
   display: inline !important;
 } */
 
-/* .MathJax {
+/* .MathJax .mi .mo {
   color: green !important;
 } */
-/*padding: 3px 3px !important;
+/*
+padding: 3px 3px !important;
 } */
 </style>

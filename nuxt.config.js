@@ -40,8 +40,8 @@ export default {
       // {
       //   type: 'text/javascript', //x-mathjax-config',
       //   src: 'js/MathJax/mathjax2Config.js',
-      //   async: true
-      //   //defer: true // defer = true is important
+      //   async: false,
+      //   defer: true // defer = true is important
       // }
       // {
       //   type: 'text/javascript',

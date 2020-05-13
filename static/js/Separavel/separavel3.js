@@ -135,8 +135,8 @@ export function drawContoursSep3() {
   let ywidth = 20 //10
   let xcenter = 35 //12
   let ycenter = 10 //6.5
-  let ysteps = 40
-  let xsteps = 40
+  let ysteps = 50
+  let xsteps = 50
   let center = {
     x: xcenter,
     y: ycenter
@@ -161,13 +161,13 @@ export function drawContoursSep3() {
     // colorscale: 'RdBu',
     // reversescale: true,
 
-    line: {
-      smoothing: 1.3,
-      shape: 'spline',
-      width: 1.2,
-      color: 'grey',
-      opacity: 0.4
-    },
+    // line: {
+    //   smoothing: 1.3,
+    //   shape: 'spline',
+    //   width: 1.2,
+    //   color: 'purple',
+    //   opacity: 0.4
+    // },
 
     contours: {
       //coloring: 'none',
@@ -225,9 +225,9 @@ export function drawContoursSep3() {
     //colorscale: 'Earth',
 
     line: {
-      smoothing: 1.3,
+      smoothing: 2,
       shape: 'spline',
-      width: 2.5,
+      width: 1.5,
       color: 'red',
       opacity: 1
     },
@@ -242,13 +242,13 @@ export function drawContoursSep3() {
   let annotations1 = [
     {
       text: '$y^2+3y-2x + \\e^x = 1$',
-      ax: -120, //tail of arrow
-      ay: -30,
+      ax: -140, //tail of arrow
+      ay: -40,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 16,
+        size: 20,
         color: 'black'
       },
       x: -1.5,
@@ -262,7 +262,7 @@ export function drawContoursSep3() {
       axref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 16,
+        size: 20,
         color: 'black'
       },
       x: 0,
@@ -273,8 +273,8 @@ export function drawContoursSep3() {
   let annotations = [
     {
       text: '$y=-3/2$',
-      ax: -80, //tail of arrow
-      ay: -80,
+      ax: 0, //tail of arrow
+      ay: -60,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'blue',
@@ -282,13 +282,13 @@ export function drawContoursSep3() {
         size: 16,
         color: 'blue'
       },
-      x: -5,
+      x: -16,
       y: -3 / 2 // head af arrow
     },
     {
       text: '$x=\\ln(2)$',
       ax: -90, //tail of arrow
-      ay: 80,
+      ay: 0,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'blue',
@@ -297,17 +297,17 @@ export function drawContoursSep3() {
         color: 'blue'
       },
       x: 0.69,
-      y: -2 // head af arrow
+      y: -5 // head af arrow
     },
     {
       text: '$y=\\frac{-3+\\sqrt{13-4\\e^x+8x}}{2}$',
-      ax: -100, //tail of arrow
-      ay: -80,
+      ax: -120, //tail of arrow
+      ay: -100,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'red',
       font: {
-        size: 18,
+        size: 22,
         color: 'red'
       },
       x: 0,
@@ -317,7 +317,7 @@ export function drawContoursSep3() {
   let shapes = [
     {
       type: 'line',
-      x0: -11,
+      x0: -32,
       y0: -3 / 2,
       x1: 3.5,
       y1: -3 / 2,
@@ -329,9 +329,9 @@ export function drawContoursSep3() {
     {
       type: 'line',
       x0: 0.69,
-      y0: -6,
+      y0: -9,
       x1: 0.69,
-      y1: 3.5,
+      y1: 8,
       line: {
         color: 'blue',
         width: 2.5
@@ -393,7 +393,7 @@ export function drawContoursSep3() {
     xaxis: {
       tickmode: 'linear',
       tick0: 0,
-      dtick: 2
+      dtick: 8
     },
     yaxis: {
       tickmode: 'linear',
