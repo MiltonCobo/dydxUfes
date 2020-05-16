@@ -3,7 +3,7 @@ window.MathJax = {
   extensions: ['tex2jax.js', 'Safe.js'],
   styles: {
     '.mjx-chtml': { padding: '0.1em 0.1em' },
-    '.MJXc-display, .mjx-chtml': { color: '#33691E' }
+    '.MJXc-display, .mjx-chtml': { color: 'var(--mjx-green)' } //'#2E7D32' CSS variable in default.vue
   },
   displayAlign: 'center',
 

@@ -1,0 +1,253 @@
+export default function goldenRatio(p) {
+  let totalPoints = 400 // total number of ball per angle
+  let totalSteps = 40
+  let c = 15 //7
+  //let radium = 13
+  let escala = 0.6
+  let initialRadium = 100
+  let bubbles = []
+  let rate = 0.0001
+
+  let angle
+  let figFall = false
+  let stopped = false
+  //let over = false
+  let angleSlider
+  let button
+  let l = 1
+  let r0 = 9
+  let r1 = 9
+  let N = 0
+  let step = 1
+  let distances = []
+  let hue = 82 //step % 267
+  let sat = 100
+  let lightness = 50
+  let inputAngle
+  let angleTexto
+  let angleString
+  let slider
+
+  p.setup = function() {
+    let cnv = p.createCanvas(p.windowWidth, p.windowHeight)
+    cnv.parent('#container')
+
+    p.angleMode(p.RADIANS)
+    p.colorMode(p.HSL)
+
+    angleTexto = p.createElement('h3', '')
+    angleTexto.style(
+      'background-color: black; font-size: 20px; color:lightgoldenrodyellow'
+    )
+    angleTexto.parent('#container')
+
+    inputAngle = p.createInput('Digite a fração de 2 PI')
+    inputAngle.style('width:60; background-color: grey;')
+    inputAngle.parent('#container')
+
+    slider = p.createSlider(0, p.TWO_PI, 0.15 * p.PI, rate)
+
+    slider.style('width', '300px')
+    slider.parent('#container')
+    //slider.style('height: 60px;')
+
+    angle = slider.value() // set angle inicial in slider
+
+    button = p.createButton('Parar/Seguir')
+    button.parent('#container')
+
+    button.style(
+      'background-color: black; width: 200px; height: 50px; color:lightgoldenrodyellow'
+    )
+
+    button.style('font-size', '18px')
+
+    let xpos = 0.1
+    angleTexto.position(xpos * p.windowWidth, 0.04 * p.height)
+    button.position(xpos * p.width, 0.75 * p.height)
+    inputAngle.position(xpos * p.width, 0.85 * p.height)
+    slider.position(xpos * p.width, 0.9 * p.height)
+  }
+
+  function updateAngle() {
+    stopped = true
+    angle = p.float(inputAngle.value())
+    angle = (angle * p.TWO_PI) % p.TWO_PI
+    slider.value(angle)
+    //stopped = false
+  }
+
+  function toggleStopAngle() {
+    stopped = !stopped
+  }
+  function setAngle() {
+    angle = slider.value()
+    //inputAngle.value(angle.toFixed(6).toString())
+  }
+  p.windowResized = function() {
+    p.resizeCanvas(p.windowWidth, p.windowHeight)
+    console.log(p.windowWidth)
+  }
+
+  p.draw = function() {
+    let route = window.location.pathname
+    if (route !== '/') {
+      p.noLoop() /* stop sketch when route change */
+      p.remove()
+    }
+
+    p.clear()
+    p.translate(0.2 * p.width, 0.4 * p.height)
+    console.log('working')
+    if (step < totalSteps) {
+      let bubble
+
+      p.push()
+      //p.translate(0.2 * p.width, 0.4 * p.height)
+      p.stroke(0, 0, 255)
+      p.strokeWeight(3)
+      p.noFill()
+      p.circle(0, 0, 2 * initialRadium)
+
+      if (p.frameCount % 16 === 0) {
+        step++
+      }
+      for (let n = 0; n < step; n++) {
+        let x = initialRadium * p.cos(-n * angle)
+        let y = initialRadium * p.sin(-n * angle)
+
+        bubble = new Bubble(x, y, hue, sat, lightness, r0)
+        bubble.display()
+      }
+      p.pop()
+    } else if (initialRadium > 20) {
+      initialRadium--
+      p.push()
+      //p.translate(0.2 * p.width, 0.4 * p.height)
+      p.stroke(0, 0, 255)
+      p.noFill()
+      p.strokeWeight(3)
+      //p.scale()
+      //p.circle(0, 0, 2 * R)
+      for (let n = 0; n < totalSteps; n++) {
+        let x = initialRadium * p.cos(n * angle)
+        let y = initialRadium * p.sin(n * angle)
+
+        let bubble = new Bubble(x, y, hue, sat, lightness, r0)
+        bubble.display()
+      }
+
+      p.pop()
+    } else if (l > 0) {
+      l -= 0.01
+      p.push()
+      p.scale(escala)
+      for (let n = 0; n < totalPoints; n++) {
+        distances[n] = l + (1 - l) * Math.sqrt(n)
+        let x = c * distances[n] * p.cos(n * angle)
+        let y = c * distances[n] * p.sin(n * angle)
+        hue = n % 267
+        sat = 70
+        lightness = 55
+
+        let bubble = new Bubble(x, y, hue, sat, lightness, r1)
+        //bubbles.push(bubble)
+        bubble.display()
+      }
+      //setTimeout(() => console.log('hola'), 1000)
+      p.pop()
+    } else {
+      angleString = (angle % p.TWO_PI).toFixed(6).toString()
+      angleTexto.html('Ângulo (radianos) =' + angleString)
+
+      button.mousePressed(toggleStopAngle)
+
+      slider.changed(setAngle)
+      inputAngle.changed(updateAngle)
+
+      p.push()
+      p.scale(escala)
+
+      angleSlider = slider.value() % p.TWO_PI
+      angle = angle % p.TWO_PI
+      if (angle != angleSlider) {
+        angle = angleSlider
+      }
+
+      if (figFall == false) {
+        bubbles = []
+        if (stopped == false) {
+          angle += rate
+          slider.value(angle)
+        }
+
+        for (let n = 0; n < totalPoints; n++) {
+          let x = c * Math.sqrt(n) * p.cos(n * angle)
+          let y = c * Math.sqrt(n) * p.sin(n * angle)
+          hue = n % 267 //(n%93) + 60 ;//80 + 123*Math.sqrt(n)/Math.sqrt(totalPoints);
+          sat = 70
+          lightness = 55
+
+          let bubble = new Bubble(x, y, hue, sat, lightness, r1)
+          bubbles.push(bubble)
+          // if (over == true) {
+          // 	bubble.wiggle()
+          // }
+          bubble.display()
+        }
+      } else {
+        for (let bubble of bubbles) {
+          if (stopped == false) {
+            bubble.fall()
+          }
+          bubble.display()
+        }
+      }
+      p.pop()
+    } // end draw
+  }
+  p.mouseOver = function() {
+    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 300) {
+      over = true
+    } else {
+      over = false
+    }
+  }
+
+  p.mouseClicked = function() {
+    if (figFall == true) {
+      figFall = false
+    }
+  }
+
+  p.doubleClicked = function() {
+    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 300) {
+      figFall = !figFall
+    }
+  }
+
+  class Bubble {
+    constructor(x, y, hue, saturation, lightness, radium) {
+      this.x = x
+      this.y = y
+      this.L = lightness
+      this.hue = hue
+      this.sat = saturation
+      this.r = radium
+    }
+
+    display() {
+      p.stroke(100)
+      p.fill(this.hue, this.sat, this.L)
+      p.ellipse(this.x, this.y, this.r)
+    }
+    fall() {
+      this.x = this.x + p.random(-1, 1)
+      this.y = this.y + 0.05 * this.x
+    }
+    wiggle() {
+      this.x = this.x + p.random(-2, 2)
+      this.y = this.y + p.random(-2, 2)
+    }
+  }
+}

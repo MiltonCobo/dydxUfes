@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-app-bar hide-on-scroll flat dark app>
       <v-app-bar-nav-icon class="blue--text" @click.stop="drawer = !drawer" />
 
@@ -95,7 +95,7 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" temporary dense dark app>
+    <v-navigation-drawer v-model="drawer" temporary clipped dense dark app>
       <v-list>
         <v-list-item class="px-2">
           <v-list-item-avatar>
@@ -133,7 +133,6 @@
       <v-divider />
       <div></div>
     </v-navigation-drawer>
-
     <v-content>
       <v-container fluid>
         <nuxt />
@@ -144,6 +143,12 @@
 
 <script>
 export default {
+  // theme: {
+  //   dark: true
+  // },
+  created() {
+    this.$vuetify.theme.dark = true
+  },
   mounted() {
     if (!window.MathJax) {
       const script = document.createElement('script')
@@ -155,6 +160,9 @@ export default {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       //this.onScriptLoaded()
     }
+  },
+  destroyed() {
+    this.$vuetify.theme.dark = false
   },
   methods: {
     onScriptLoaded(event = null) {

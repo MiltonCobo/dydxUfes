@@ -159,7 +159,6 @@ export function drawContoursSep1() {
     contours: {
       //coloring: 'none',
       start: -90,
-      end: 90,
       size: 1.5,
       highlightcolor: 'olive'
     }
@@ -170,6 +169,8 @@ export function drawContoursSep1() {
   }
 
   let data1 = {
+    // show only one level
+    end: 90,
     x: info.x,
     y: info.y,
     z: info.z,
@@ -182,13 +183,13 @@ export function drawContoursSep1() {
       coloring: 'none',
       smoothing: 1.2,
       width: 1.8,
-      color: 'green',
+      color: 'black',
       opacity: 1
     },
 
     contours: {
       coloring: 'none',
-      start: 3,
+      start: 3, //show only one level curve
       end: 3
       //size: 1.6,
       //highlightcolor: 'olive',
@@ -221,48 +222,47 @@ export function drawContoursSep1() {
   let yy2 = xx.map(x => fExplicit(x, +1))
 
   let trace1 = {
-    visible: true,
+    visible: false,
     x: xx,
     y: yy,
     type: 'scatter',
     line: {
       smoothing: 1,
-      width: 2.6,
+      width: 2,
       color: 'green'
     }
   }
 
   let trace2 = {
-    visible: true,
+    visible: false,
     x: xx,
     y: yy2,
     type: 'scatter',
     line: {
       smoothing: 1,
-      width: 2.6,
+      width: 2,
       color: 'red'
     }
   }
 
-  let annotations1 = [
-    {
-      text: '$ y^2-2y-x^3-2x^2-2x =3 $',
-      ax: -100,
-      ay: -40,
-      xref: 'pixel',
-      yref: 'pixel',
-      arrowcolor: 'black',
-      font: {
-        size: 15,
-        color: 'black'
-      },
-      x: 0,
-      y: 3
-    }
-  ]
+  let annotations1 = {
+    text: '$ y^2-2y-x^3-2x^2-2x =3 $',
+    ax: -100,
+    ay: -40,
+    xref: 'pixel',
+    yref: 'pixel',
+    arrowcolor: 'black',
+    font: {
+      size: 15,
+      color: 'black'
+    },
+    x: 0,
+    y: 3
+  }
 
   let annotations = [
     {
+      visible: true,
       text: '$ y = 1 $',
       ax: 0,
       ay: 0,
@@ -277,6 +277,7 @@ export function drawContoursSep1() {
       y: 1.2
     },
     {
+      visible: true,
       text: '$ (-2,1) $',
       ax: -40,
       ay: -30,
@@ -291,6 +292,7 @@ export function drawContoursSep1() {
       y: 1 // head af arrow
     },
     {
+      visible: true,
       text: '$ y = 1 - \\sqrt{x^3+2x^2+2x+4},\\, x \\ge -2 $',
       ax: -65, //tail of arrow
       ay: 45,
@@ -305,6 +307,7 @@ export function drawContoursSep1() {
       y: -1 // head af arrow
     },
     {
+      visible: true,
       text: '$ (0,-1) $',
       ax: 30,
       ay: -30,
@@ -319,6 +322,7 @@ export function drawContoursSep1() {
       y: -1 // head af arrow
     },
     {
+      visible: true,
       text: '$ y = 1 + \\sqrt{x^3+2x^2+2x+4},\\, x \\ge -2 $',
       ax: -65, //tail of arrow
       ay: -45,
@@ -333,6 +337,7 @@ export function drawContoursSep1() {
       y: 3 // head af arrow
     },
     {
+      visible: true,
       text: '$ (0,3) $',
       ax: 30,
       ay: 30,
@@ -356,14 +361,14 @@ export function drawContoursSep1() {
       y1: 1,
       line: {
         color: 'blue',
-        width: 3
+        width: 2
       },
       visible: true
     }
   ]
   let layout = {
-    annotations: annotations,
-    shapes: shapes,
+    annotations: [annotations1],
+    //shapes: [], //shapes,
     paper_bgcolor: 'gainsboro',
     plot_bgcolor: 'gainsboro',
     scene: {
@@ -392,24 +397,24 @@ export function drawContoursSep1() {
           {
             method: 'update',
             args: [
-              { visible: [true, false, true, true], opacity: [0.7, 0.6, 1, 1] },
+              { visible: [true, true, false, false], opacity: [1, 0.6, 0, 0] },
+              {
+                annotations: [annotations1],
+                shapes: []
+              }
+            ],
+            label: 'Curvas de nível'
+          },
+          {
+            method: 'update',
+            args: [
+              { visible: [true, false, true, true], opacity: [0.6, 0, 1, 1] },
               {
                 annotations: annotations,
                 shapes: shapes
               }
             ],
             label: 'Ver as funções'
-          },
-          {
-            method: 'update',
-            args: [
-              { visible: [true, true, false, false], opacity: [1, 0.6, 0, 0] },
-              {
-                annotations: annotations1,
-                shapes: null
-              }
-            ],
-            label: 'Curvas de nível'
           }
         ],
         direction: 'right',

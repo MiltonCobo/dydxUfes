@@ -2,18 +2,24 @@
 //
 // The variables you want to modify
 $font-size-root: 22px;
+$line-height-root: 1.2;
 $body-font-family: 'Lucida Grande', sans-serif;
 
+:root {
+  --mjx-green: #2e7d32;
+  /* #2e7d32; /* light-green darken-3 */
+  /*  #004b07; /* #33691e;*/
+  // line-height: 1.5;
+}
+
+#mathjax {
+  padding: 1em;
+  font-size: 18px;
+}
 * {
   text-transform: none !important;
 }
 
-body {
-  padding: 1.6em;
-  margin: 0px;
-  line-height: 1.5;
-  font-size: 22px;
-}
 /*'Rock Salt', cursive;*/
 /*Lucida Console; /*'Neucha', cursive; SofiaPro, Roboto;*/
 

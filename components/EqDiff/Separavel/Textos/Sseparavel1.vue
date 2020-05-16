@@ -23,13 +23,13 @@
       </p>
       <p>
         Em geral não é possível achar a solução de forma
-        <span style="color:green"> explícita $y=f(x).$ </span> No caso presente,
-        entretanto, é possível obter a solução explícita do PVI. Chamamos
-        ${\Delta = x^3+2x^2+2x+3}$ e colocamos $y$ em evidência na equação
-        ${y^2-2y-\Delta =0}.$ Isto é, $$ {y= \frac{-(-2)\pm \sqrt{(-2)^2 -
-        4\Delta}}{2} = 1\pm\sqrt{x^3+2x^2+2x+4}},$$ Assim, no gráfico da curva
+        <span style="color:var(--mjx-green);"> explícita $y=f(x).$ </span> No
+        caso presente, entretanto, é possível obter a solução explícita do PVI.
+        Chamamos ${\Delta = x^3+2x^2+2x+3}$ e colocamos $y$ em evidência na
+        equação ${y^2-2y-\Delta =0}.$ Isto é, $$ {y= \frac{-(-2)\pm \sqrt{(-2)^2
+        - 4\Delta}}{2} = 1\pm\sqrt{x^3+2x^2+2x+4}},$$ Assim, no gráfico da curva
         ${y^2-2y = x^3+2x^2+2x+3}$ se encontram
-        <span style="color:green;">escondidas</span> duas funções.
+        <span style="color:var(--mjx-green);">escondidas</span> duas funções.
         <v-btn
           style="margin:10px;"
           id="mathjax"

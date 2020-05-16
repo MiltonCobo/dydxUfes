@@ -23,7 +23,6 @@ export default function goldenRatio(p) {
     p.colorMode(p.HSB)
 
     slider = p.createSlider(0, 2 * p.PI, 1 / p.PI, rate)
-
     slider.style('width', '300px')
     slider.parent('#figure')
     //slider.style('height: 60px;')
@@ -51,7 +50,7 @@ export default function goldenRatio(p) {
   }
 
   p.draw = function() {
-    slider.changed(setAngle)
+    //slider.changed(setAngle)
     button.mousePressed(toggleStopAngle)
     btn.mousePressed(stopSketch)
 
