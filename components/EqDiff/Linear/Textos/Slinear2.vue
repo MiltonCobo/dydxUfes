@@ -29,11 +29,7 @@
     + C, $$ isto é, ${C=(4/5 + a)}$. Assim as soluções do problema de valor
     inicial são da forma: $$ { y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5})
     \cos(t) + {(\frac{4}{5}+a)}\e^{t/2}. }$$
-    <v-btn
-      style="margin:0.2em 0cm 0.2em;"
-      @click.stop="openFigure = true"
-      color="green lighten-4"
-    >
+    <v-btn large @click.stop="openFigure = true" color="green lighten-4">
       Gráfico das soluções
     </v-btn>
     <br />

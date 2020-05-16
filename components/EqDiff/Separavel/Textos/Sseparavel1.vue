@@ -8,11 +8,7 @@
         <span style="color:green">implícitamente</span> nas curvas $$ { y^2-2y =
         x^3+2x^2+2x+C} \quad \textrm{(eq1)} $$ com $C$ variando em $\R.$ Assim,
         as soluções da equação são as curvas de nível da função
-        <v-btn
-          style="margin:4px;"
-          @click.stop="openFigure = true"
-          color="green lighten-4"
-        >
+        <v-btn large @click.stop="openFigure = true" color="green lighten-4">
           Ver Gráfico
         </v-btn>
         <br />
@@ -30,12 +26,7 @@
         - 4\Delta}}{2} = 1\pm\sqrt{x^3+2x^2+2x+4}},$$ Assim, no gráfico da curva
         ${y^2-2y = x^3+2x^2+2x+3}$ se encontram
         <span style="color:var(--mjx-green);">escondidas</span> duas funções.
-        <v-btn
-          style="margin:10px;"
-          id="mathjax"
-          @click.stop="openFigure2 = true"
-          color="green lighten-4"
-        >
+        <v-btn large @click.stop="openFigure2 = true" color="green lighten-4">
           Ver Gráfico
         </v-btn>
       </p>

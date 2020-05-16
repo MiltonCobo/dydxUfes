@@ -9,12 +9,7 @@
         { y^3-3y^2 = x^3+x+C} \quad\textrm{(eq1)}$$ com $C$ variando em $\R.$
         Dito de outra forma, as soluções da equação moram nas curvas de nível da
         função:
-        <v-btn
-          style="margin:4px;"
-          id="mathjax"
-          @click.stop="openFigure = true"
-          color="green lighten-4"
-        >
+        <v-btn large @click.stop="openFigure = true" color="green lighten-4">
           Ver figura
         </v-btn>
         $${z=V(x,y) = y^3-3y^2 -x^3-x}. $$
@@ -114,12 +109,7 @@
         <span style="color:var(--mjx-green)">
           o domínio da solução é o intervalo $[-1,1]$</span
         >
-        <v-btn
-          style="margin:10px;"
-          id="mathjax"
-          @click.stop="openFigure2 = true"
-          color="green lighten-4"
-        >
+        <v-btn large @click.stop="openFigure2 = true" color="green lighten-4">
           Ver figura.
         </v-btn>
         Uma outra observação a se fazer é que as curvas de nível de

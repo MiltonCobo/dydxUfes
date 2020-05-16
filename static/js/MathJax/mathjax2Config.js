@@ -28,7 +28,7 @@ window.MathJax = {
     processEscapes: true
   },
   CommonHTML: {
-    scale: 105,
+    scale: 100,
     linebreaks: { automatic: false }
   },
 

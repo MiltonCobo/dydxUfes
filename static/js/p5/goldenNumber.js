@@ -14,7 +14,7 @@ export default function goldenRatio(p) {
   //let over = false
   let angleSlider
   let button
-  let l = 1
+  let inflation = 1
   let r0 = 9
   let r1 = 9
   let N = 0
@@ -29,7 +29,7 @@ export default function goldenRatio(p) {
   let slider
 
   p.setup = function() {
-    let cnv = p.createCanvas(p.windowWidth, p.windowHeight)
+    let cnv = p.createCanvas(600, 600) //(p.windowWidth, p.windowHeight)
     cnv.parent('#container')
 
     p.angleMode(p.RADIANS)
@@ -63,10 +63,10 @@ export default function goldenRatio(p) {
     button.style('font-size', '18px')
 
     let xpos = 0.1
-    angleTexto.position(xpos * p.windowWidth, 0.04 * p.height)
-    button.position(xpos * p.width, 0.75 * p.height)
-    inputAngle.position(xpos * p.width, 0.85 * p.height)
-    slider.position(xpos * p.width, 0.9 * p.height)
+    angleTexto.position(0.4 * p.width, 0.1 * p.height)
+    button.position(xpos * p.width, 0.82 * p.height)
+    inputAngle.position(xpos * p.width, 0.9 * p.height)
+    slider.position(xpos * p.width, 0.95 * p.height)
   }
 
   function updateAngle() {
@@ -74,6 +74,7 @@ export default function goldenRatio(p) {
     angle = p.float(inputAngle.value())
     angle = (angle * p.TWO_PI) % p.TWO_PI
     slider.value(angle)
+    return
     //stopped = false
   }
 
@@ -84,10 +85,10 @@ export default function goldenRatio(p) {
     angle = slider.value()
     //inputAngle.value(angle.toFixed(6).toString())
   }
-  p.windowResized = function() {
-    p.resizeCanvas(p.windowWidth, p.windowHeight)
-    console.log(p.windowWidth)
-  }
+  // p.windowResized = function() {
+  //   p.resizeCanvas(p.windowWidth, p.windowHeight)
+  //   console.log(p.windowWidth)
+  // }
 
   p.draw = function() {
     let route = window.location.pathname
@@ -97,15 +98,15 @@ export default function goldenRatio(p) {
     }
 
     p.clear()
-    p.translate(0.2 * p.width, 0.4 * p.height)
+    p.translate(0.5 * p.width, 0.5 * p.height)
     console.log('working')
     if (step < totalSteps) {
       let bubble
 
       p.push()
       //p.translate(0.2 * p.width, 0.4 * p.height)
-      p.stroke(0, 0, 255)
-      p.strokeWeight(3)
+      p.stroke('rgb(0, 0, 255)')
+      p.strokeWeight(2)
       p.noFill()
       p.circle(0, 0, 2 * initialRadium)
 
@@ -115,7 +116,7 @@ export default function goldenRatio(p) {
       for (let n = 0; n < step; n++) {
         let x = initialRadium * p.cos(-n * angle)
         let y = initialRadium * p.sin(-n * angle)
-
+        p.noStroke()
         bubble = new Bubble(x, y, hue, sat, lightness, r0)
         bubble.display()
       }
@@ -124,9 +125,9 @@ export default function goldenRatio(p) {
       initialRadium--
       p.push()
       //p.translate(0.2 * p.width, 0.4 * p.height)
-      p.stroke(0, 0, 255)
-      p.noFill()
-      p.strokeWeight(3)
+      // p.noStroke()
+      // p.noFill()
+      // p.strokeWeight(3)
       //p.scale()
       //p.circle(0, 0, 2 * R)
       for (let n = 0; n < totalSteps; n++) {
@@ -138,12 +139,12 @@ export default function goldenRatio(p) {
       }
 
       p.pop()
-    } else if (l > 0) {
-      l -= 0.01
+    } else if (inflation > 0) {
+      inflation -= 0.01
       p.push()
       p.scale(escala)
       for (let n = 0; n < totalPoints; n++) {
-        distances[n] = l + (1 - l) * Math.sqrt(n)
+        distances[n] = inflation + (1 - inflation) * Math.sqrt(n)
         let x = c * distances[n] * p.cos(n * angle)
         let y = c * distances[n] * p.sin(n * angle)
         hue = n % 267

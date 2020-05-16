@@ -62,7 +62,7 @@
         na equação (eq2) temos que $${ y(t) = 12 - 2t - {8\sqrt{\e}}\, \e^{-t/4}
         }.$$ A figura mostra que realmente ${t=2}$ é um ponto de tangência desta
         função.
-        <v-btn @click.stop="openFigure = true" color="green lighten-4">
+        <v-btn @click.stop="openFigure = true" large color="green lighten-4">
           Ver gráfico
         </v-btn>
         <br />

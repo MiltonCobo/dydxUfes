@@ -158,7 +158,8 @@ export function drawContoursSep1() {
 
     contours: {
       //coloring: 'none',
-      start: -90,
+      start: -15,
+      end: 20,
       size: 1.5,
       highlightcolor: 'olive'
     }
@@ -170,7 +171,9 @@ export function drawContoursSep1() {
 
   let data1 = {
     // show only one level
-    end: 90,
+    start: 0,
+    end: 4,
+    size: 1,
     x: info.x,
     y: info.y,
     z: info.z,
@@ -352,6 +355,21 @@ export function drawContoursSep1() {
       y: 3 // head af arrow
     }
   ]
+  let shapes1 = [
+    {
+      type: 'line',
+      x0: -3.8,
+      y0: 1,
+      x1: 3,
+      y1: 1,
+      line: {
+        color: 'blue',
+        width: 2
+      },
+      visible: false
+    }
+  ]
+
   let shapes = [
     {
       type: 'line',
@@ -368,7 +386,7 @@ export function drawContoursSep1() {
   ]
   let layout = {
     annotations: [annotations1],
-    //shapes: [], //shapes,
+    shapes: shapes1,
     paper_bgcolor: 'gainsboro',
     plot_bgcolor: 'gainsboro',
     scene: {
@@ -400,7 +418,7 @@ export function drawContoursSep1() {
               { visible: [true, true, false, false], opacity: [1, 0.6, 0, 0] },
               {
                 annotations: [annotations1],
-                shapes: []
+                shapes: shapes1
               }
             ],
             label: 'Curvas de nível'

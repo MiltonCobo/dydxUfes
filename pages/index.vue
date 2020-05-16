@@ -5,20 +5,20 @@
         <v-col xs="12" md="7">
           <div style="color:lightgoldenrodyellow" id="mathjax">
             <h2 style="color: salmon;">O número Aúreo e o Girassol</h2>
-            <v-divider style="margin-bottom:5px;" />
+            <v-divider style="margin-bottom:20px;" />
             <p>
-              Esta animação está relacionada com a distribuição de sementes em
-              algumas flores como o girassol. Matematicamente se trata de rotar
-              iteradamente um ponto do círculo por um ângulo $\theta$ (que
-              podemos variar usando o
-              <i>slider</i> na figura). Se $\theta=p/q$ é racional, a figura tem
-              exatamente $q$ pernas. Para ângulos irracionais o número de pernas
-              aumenta com o número de iterações. Por exemplo para $\theta =
-              1/\pi \approx 0.31830... $ o número de pernas é primeiro $3$ e
-              depois $22$. Isso porque $1/\pi$ é bem aproximado por $1/3$ e por
-              $7/22.$
+              $\def\cc#1{\color{}{#1}}$ Esta animação está relacionada com a
+              distribuição de sementes em algumas flores como o girassol.
+              Matematicamente se trata de rotar iteradamente um ponto do círculo
+              por um ângulo $\cc\theta$ (que podemos variar usando o
+              <i>slider</i> na figura). Se $\cc{\theta=p/q}$ é racional, a
+              figura tem exatamente $\cc{q}$ pernas. Para ângulos irracionais o
+              número de pernas aumenta com o número de iterações. Por exemplo
+              para $\cc{\theta = 1/\pi \approx 0.31830... }$ o número de pernas
+              é primeiro $\cc{3}$ e depois $\cc{22}$. Isso porque $\cc{1/\pi}$ é
+              bem aproximado por $\cc{1/3}$ e por $\cc{7/22}.$
               <br />
-              A figura mais complicada acontece quando $\color{wheat}{\theta =
+              A figura mais complicada acontece quando $\cc{\theta =
               2/(1+\sqrt{5}) \approx 0.6180...}$
               <span style="color:wheat"
                 >Este é o mais irracional de todos os números irracionais!</span
@@ -58,7 +58,7 @@
             </p>
           </div>
         </v-col>
-        <v-col xs="12" md="5">
+        <v-col xs="12" md="5" align-start>
           <div style="position:relative" ref="container" id="container"></div
         ></v-col>
       </v-row>
@@ -170,8 +170,13 @@ export default {
 }
 
 #mathjax {
-  font-size: 18px;
-  padding: 0.5em;
+  font-size: 22px;
+  /* padding-left: 5%;
+  padding-right: 5%; */
+  line-height: 1.2;
+  font-family: 'Neucha', cursive;
+
+  /* font-family: SofiaPro Roboto; */
 }
 /* font-family: 'Rock Salt', cursive;
   /* font-family: SofiaPro Roboto; */
