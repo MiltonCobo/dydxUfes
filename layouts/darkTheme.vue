@@ -100,10 +100,11 @@
         <v-list-item class="px-2">
           <v-list-item-avatar>
             <v-img
-              width=""
+              width="400"
               position="center right"
-              src="https://randomuser.me/api/portraits/men/19.jpg"
+              src="/figures/logo-ufes.jpg"
             />
+            <!-- src="https://randomuser.me/api/portraits/men/19.jpg" -->
           </v-list-item-avatar>
           <span class="blue--text"> UFES </span>
         </v-list-item>

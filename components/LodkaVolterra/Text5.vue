@@ -1,5 +1,5 @@
 <template>
-  <v-sheet id="mathjax">
+  <v-sheet class="mathjax">
     <v-container fluid>
       <v-row wrap>
         <v-col justify-start xs="12" md="6">

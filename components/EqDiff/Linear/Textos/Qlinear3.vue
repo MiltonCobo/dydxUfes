@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mathjax">
     <h4>
       Encontre o valor de $y_0$ para que a solução de
       <span style="color:green">

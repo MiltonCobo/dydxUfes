@@ -2,15 +2,16 @@
   <div>
     <v-container fluid>
       <v-row no-gutters>
-        <v-col xs="12" md="7">
-          <div style="color:lightgoldenrodyellow" id="mathjax">
+        <v-col xs="12" md="6">
+          <div>
             <h2 style="color: salmon;">O número Aúreo e o Girassol</h2>
             <v-divider style="margin-bottom:20px;" />
-            <p>
-              $\def\cc#1{\color{}{#1}}$ Esta animação está relacionada com a
-              distribuição de sementes em algumas flores como o girassol.
-              Matematicamente se trata de rotar iteradamente um ponto do círculo
-              por um ângulo $\cc\theta$ (que podemos variar usando o
+            <p class="mathjax" style="padding-right: 0px;">
+              $\def\cc#1{\color{lightgoldenrodyellow}{#1}}$ Esta animação está
+              relacionada com a distribuição de sementes em algumas flores como
+              o girassol. Matematicamente se trata de rotar iteradamente um
+              ponto do círculo por um ângulo $\cc\theta$ (que podemos variar
+              usando o
               <i>slider</i> na figura). Se $\cc{\theta=p/q}$ é racional, a
               figura tem exatamente $\cc{q}$ pernas. Para ângulos irracionais o
               número de pernas aumenta com o número de iterações. Por exemplo
@@ -20,10 +21,11 @@
               <br />
               A figura mais complicada acontece quando $\cc{\theta =
               2/(1+\sqrt{5}) \approx 0.6180...}$
-              <span style="color:wheat"
+              <span style="color:lightgoldenrodyellow"
                 >Este é o mais irracional de todos os números irracionais!</span
               >
-              Ele é chamado de <span style="color:wheat">Número Aúreo</span> e
+              Ele é chamado de
+              <span style="color:lightgoldenrodyellow">Número Aúreo</span> e
               aparece constantemente em ciências naturais, por exemplo no
               formato da flor do girassol.
               <br />
@@ -58,7 +60,7 @@
             </p>
           </div>
         </v-col>
-        <v-col xs="12" md="5" align-start>
+        <v-col xs="12" md="6" align-center>
           <div style="position:relative" ref="container" id="container"></div
         ></v-col>
       </v-row>
@@ -107,6 +109,8 @@ export default {
     // },
     startPlot() {
       let divFigure = this.$refs.container
+      let cont = 0
+      // NEED TO BE SURE P5 EXIST!!!!!
       this.p5plot = new p5(goldenRatio, divFigure)
     }
   },

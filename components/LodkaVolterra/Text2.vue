@@ -1,5 +1,5 @@
 <template>
-  <v-sheet id="mathjax">
+  <v-sheet class="mathjax">
     Lotka e Volterra consideraram duas espécies, um predador e uma presa, num
     ecossistema isolado e interagindo segundo certas hipóteses. Consideramos aqui, para ilustrar,
     populações de atuns e tubarões, que denotaremos as populações por $x(t)$ e $y(t)$

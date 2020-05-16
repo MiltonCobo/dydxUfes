@@ -1,5 +1,5 @@
 <template>
-  <v-sheet id="mathjax">
+  <v-sheet class="mathjax">
     Durante a 1ª Guerra Mundial (1914-1917) a pesca no mar adriático foi
     severamente restrita. Após a Guerra os pescadores italianos reportaram o
     aumento ostensível dos predadores nesse mar, mas não assim o aumento na

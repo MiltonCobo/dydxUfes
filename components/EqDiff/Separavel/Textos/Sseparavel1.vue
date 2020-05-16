@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row>
-      <p id="solution">
+      <p class="mathjax">
         $\def\R{\mathbb R}$ Separamos as variáveis $$ {2(y-1)\, dy =
         (3x^2+4x+2)\, dx} $$ e integramos a ambos lados, obtendo que as soluções
         $y=f(x)$ da equação diferencial moram
@@ -15,10 +15,7 @@
         $${z=V(x,y) = y^2-2y -x^3-2x^2-2x}.$$ Usando a condição inicial $x=0,
         y=-1$ na equação (eq1) obtemos que $1-2(-1)=1+2=C$, isto é, a solução do
         problema de valor inicial (PVI) mora implícitamente na curva de nível
-        ${V(x,y)=3}$.
-      </p>
-      <p>
-        Em geral não é possível achar a solução de forma
+        ${V(x,y)=3}$. Em geral não é possível achar a solução de forma
         <span style="color:var(--mjx-green);"> explícita $y=f(x).$ </span> No
         caso presente, entretanto, é possível obter a solução explícita do PVI.
         Chamamos ${\Delta = x^3+2x^2+2x+3}$ e colocamos $y$ em evidência na
@@ -29,9 +26,7 @@
         <v-btn large @click.stop="openFigure2 = true" color="green lighten-4">
           Ver Gráfico
         </v-btn>
-      </p>
 
-      <p>
         Como queremos que $y(0)=-1,$ precisamos tomar sinal de "menos", isto é,
         a solução do PVI é dada por ${y=1-\sqrt{x^3+2x^2+2x+4}}.$ Notemos que
         ${x^3+2x^2+2x+4 = (x+2)(x^2+4)}$ e portanto o polinômio
@@ -47,7 +42,7 @@
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
-          <v-card-text id="mathjax" style="font-family: Lucida Console;">
+          <v-card-text class="mathjax" style="font-family: Lucida Console;">
           </v-card-text>
         </v-card-actions>
       </v-card>
@@ -59,7 +54,7 @@
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
           </client-only>
-          <v-card-text id="mathjax" style="font-family: Lucida Console;">
+          <v-card-text class="mathjax" style="font-family: Lucida Console;">
           </v-card-text>
         </v-card-actions>
       </v-card>

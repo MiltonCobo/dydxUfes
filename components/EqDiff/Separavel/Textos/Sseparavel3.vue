@@ -1,15 +1,14 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row class="flex-wrap-reverse">
+      <v-row class="flex-wrap-reverse" no-gutters>
         <v-col xs="12" md="6" order="1">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
         </v-col>
         <v-col xs="12" md="6" order="2">
-          <p id="solution">
-            <!-- $\def\e{\textrm e}$  -->
+          <p class="mathjax">
             Separando as variáveis, $ { (3+2y) \, dy = (2-\exp(x)) \, dx},$ e
             integrando a ambos lados, obtemos que as soluções $y=f(x)$ da
             equação diferencial moram nas curvas de nível da função $$ {V(x,y) =
@@ -22,7 +21,7 @@
       </v-row>
 
       <v-row>
-        <p>
+        <p class="mathjax">
           $${ y = \frac{-3\pm\sqrt{9-4\Delta}}{2} =\frac{-3\pm\sqrt{(9 -4C)+8x
           -4\e^x}}{2}}\,\textrm{(eq1)} $$ Vemos que a curva de nível $V(x,y)=C$
           esconde duas funções $y=f(x).$ Para verificar a condição inicial $x=0,
@@ -31,9 +30,9 @@
           $${ y = \frac{-3 +\sqrt{(13+8x)-4\e^x}}{2}} \quad\textrm{(eq2).}$$
         </p>
       </v-row>
-      <v-row class="flex-wrap-reverse">
+      <v-row class="flex-wrap-reverse" no-gutters>
         <v-col xs="12" md="6" order="4">
-          <p id="solution">
+          <p class="mathjax">
             <br />
             Para determinar onde esta função atinge seu máximo precisamos
             encontrar os pontos críticos, i.e., os valores de $x$ onde $y'(x) =
@@ -57,7 +56,7 @@
       </v-row>
 
       <v-row>
-        <p id="solution">
+        <p class="mathjax">
           Note que
           <span style="color: var(--mjx-green)">
             $y(x)$ é positivo quando $x=\ln(2)$, logo por continuidade, $y(x)>0$
@@ -73,14 +72,14 @@
           </span>
         </p>
       </v-row>
-      <v-row wrap>
+      <v-row wrap no-gutters>
         <v-col xs="12" md="6">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
           </client-only>
         </v-col>
         <v-col xs="12" md="6">
-          <p id="solution">
+          <p class="mathjax">
             Uma outra observação é que a derivada $y'(x)$ não está bem definida
             para $y=-3/2,$ e podemos ver na figura que é sobre esta reta que as
             curvas de nível são separadas em duas soluções da equação

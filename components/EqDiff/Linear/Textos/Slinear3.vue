@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row>
-      <p id="solution">
+      <p class="mathjax">
         A equação é linear e o fator integrante é $\mu(t)=\e^{t/4}.$ Portanto,
         $${ \begin{align*} \e^{t/4} (y' + \frac{1}{4} y) &= \frac{d}{dt}
         (\e^{t/4} y) = \e^{t/4} - \frac{1}{2}t\,\e^{t/4} \quad
@@ -81,8 +81,7 @@
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
           <v-card-text
-            class="gainsboro"
-            id="mathjax"
+            class="gainsboro mathjax"
             style="font-family: Lucida Console;"
           >
           </v-card-text>

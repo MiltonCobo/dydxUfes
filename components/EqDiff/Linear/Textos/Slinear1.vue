@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p id="solution">
+    <p class="mathjax">
       Seja ${ p(t) }$ a população de mosquitos
       em tempo $ {t}. $ Para simplificar os números consideramos
       ${p(t)}$ em milhões e ${t}$ em semanas. Na
@@ -26,21 +26,20 @@
         $$\begin{split} & \e^{-rt}(p'-r\, p) = \frac{d}{dt} ( \e^{-rt} \,p ) =
         -v\cdot \e^{-rt}\quad {\textrm{e integrando,}} \\ &
         \e^{-rt}\, p(t) = \frac{v}{r} \e^{-rt} + C \implies p(t) = a_0 + C\cdot
-        \e^{rt}, \end{split} $$
+        \e^{rt}, \end{split} $$  onde ${a_0 = \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ É
+            fácil ver que ${C= (p_0-a_0)}.$ <br />
       </span>
     </p>
 
     <v-container fluid>
-      <v-row class="flex-wrap">
+      <v-row class="flex-wrap" no-gutters>
         <v-col xs="12" md="6">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
         </v-col>
         <v-col xs="12" md="6">
-          <p id="solution">
-            onde ${a_0 = \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ É
-            fácil ver que ${C= (p_0-a_0)}.$ <br />
+          <p class="mathjax">
             Temos então a solução geral $${p(t)=a_0 + (p_0-a_0)\,
             \e^{rt}.}$$ 
             Note que para ${p(0)=a_0 }$ a solução é a
@@ -59,17 +58,18 @@
             mosquitos se torna negativa eventualmente, isto é, passa por zero em
             tempo positivo implicando que os mosquitos se extinguem pela ação
             dos predadores.
-
+            <br/>
+             Note que ${\e^{\ln(2)t} = 2^t}.$ Se inicialmente há
+            ${ 0.9 }$ milhões de mosquitos, a constante
+            ${ C=(0.9-\frac{0.7}{\ln 2}) \approx -0.11},$ e a
+            quantidade mosquitos (em milhões) é dada por ${ p(t) =
+            1.01 -(0.11) \, 2^{t}.} $
           </p>
         </v-col>
       </v-row>
       <v-col> 
-        <p>
-            Note que ${\e^{\ln(2)t} = 2^t}.$ Se inicialmente há
-            ${ 0.9 }$ milhões de mosquitos, a constante
-            ${ C=(0.9-\frac{0.7}{\ln 2}) \approx -0.11},$ e a
-            quantidade mosquitos (em milhões) é dada por ${ p(t) =
-            1.01 -(0.11) \, 2^{t}.} $ Os mosquitos se estinguem neste caso, e
+        <p class="mathjax">
+            Os mosquitos se estinguem neste caso, e
             resolvendo $p(t) = 0$ temos $2^t = 1.01/0.11\approx 9.18,$ ou
             $t=\log(9.18)/\log(2),$ os mosquitos se extinguem em aproximadamente
             ${t\approx 3.2}$ semanas (ver gráfico).

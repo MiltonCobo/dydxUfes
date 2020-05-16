@@ -1,5 +1,5 @@
 <template>
-  <div id="mathjax">
+  <div class="mathjax">
     A equação é do tipo linear $\,\boxed{y'+p(t) y = g(t)}\,$ sendo o fator
     integrante $${\mu(t)=\e^{\int p(t) dt} = \e^{-\int (1/2) dt} = \e^{-t/2}
     }.$$ Desta forma temos $${ \begin{align*} \e^{-t/2} (y' - \frac{1}{2} y) &=
@@ -71,11 +71,11 @@
       <v-card>
         <v-card-actions>
           <client-only v-if="openFigure">
-            <line-chart id="mathjax" :chartdata="data" :options="options" />
+            <line-chart class="mathjax" :chartdata="data" :options="options" />
           </client-only>
         </v-card-actions>
 
-        <v-card-text id="mathjax" style="font-family: Lucida Console;">
+        <v-card-text class="mathjax" style="font-family: Lucida Console;">
           $$ { y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t) +
           {(\frac{4}{5}+a)}\e^{t/2}. }$$ Para ${a=-0.8=-4/5}$ a soluções
           permanecem limitadas.

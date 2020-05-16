@@ -1,6 +1,6 @@
 export default function goldenRatio(p) {
   let totalPoints = 400 // total number of ball per angle
-  let totalSteps = 40
+  let totalSteps = 80
   let c = 15 //7
   //let radium = 13
   let escala = 0.6
@@ -15,14 +15,14 @@ export default function goldenRatio(p) {
   let angleSlider
   let button
   let inflation = 1
-  let r0 = 9
+  let r0 = 3
   let r1 = 9
   let N = 0
-  let step = 1
+  let steps = 1
   let distances = []
-  let hue = 82 //step % 267
-  let sat = 100
-  let lightness = 50
+  let hue = 100 //steps % 267
+  let sat = 80
+  let lightness = 70
   let inputAngle
   let angleTexto
   let angleString
@@ -45,7 +45,7 @@ export default function goldenRatio(p) {
     inputAngle.style('width:60; background-color: grey;')
     inputAngle.parent('#container')
 
-    slider = p.createSlider(0, p.TWO_PI, 0.15 * p.PI, rate)
+    slider = p.createSlider(0, p.TWO_PI, 1 / p.PI, rate)
 
     slider.style('width', '300px')
     slider.parent('#container')
@@ -57,7 +57,7 @@ export default function goldenRatio(p) {
     button.parent('#container')
 
     button.style(
-      'background-color: black; width: 200px; height: 50px; color:lightgoldenrodyellow'
+      'border: 1px solid white; background-color: inherit; width: 110px; height: 40px; color:lightgoldenrodyellow'
     )
 
     button.style('font-size', '18px')
@@ -65,8 +65,8 @@ export default function goldenRatio(p) {
     let xpos = 0.1
     angleTexto.position(0.4 * p.width, 0.1 * p.height)
     button.position(xpos * p.width, 0.82 * p.height)
-    inputAngle.position(xpos * p.width, 0.9 * p.height)
-    slider.position(xpos * p.width, 0.95 * p.height)
+    inputAngle.position(xpos * p.width, 0.92 * p.height)
+    slider.position(xpos * p.width, p.height)
   }
 
   function updateAngle() {
@@ -99,25 +99,26 @@ export default function goldenRatio(p) {
 
     p.clear()
     p.translate(0.5 * p.width, 0.5 * p.height)
-    console.log('working')
-    if (step < totalSteps) {
-      let bubble
 
+    console.log('working')
+
+    if (steps < totalSteps) {
       p.push()
-      //p.translate(0.2 * p.width, 0.4 * p.height)
       p.stroke('rgb(0, 0, 255)')
       p.strokeWeight(2)
       p.noFill()
       p.circle(0, 0, 2 * initialRadium)
 
       if (p.frameCount % 16 === 0) {
-        step++
+        steps++
       }
-      for (let n = 0; n < step; n++) {
+
+      for (let n = 0; n < steps; n++) {
         let x = initialRadium * p.cos(-n * angle)
         let y = initialRadium * p.sin(-n * angle)
         p.noStroke()
-        bubble = new Bubble(x, y, hue, sat, lightness, r0)
+        let bubble = new Bubble(x, y, hue, sat, lightness, r0)
+        hue = 10 * n + 25
         bubble.display()
       }
       p.pop()

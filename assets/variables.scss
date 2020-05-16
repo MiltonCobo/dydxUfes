@@ -7,16 +7,28 @@ $body-font-family: 'Lucida Grande', sans-serif;
 
 :root {
   --mjx-green: #2e7d32;
+  padding: 0px;
+  margin: 0px;
   /* #2e7d32; /* light-green darken-3 */
   /*  #004b07; /* #33691e;*/
   // line-height: 1.5;
 }
+.mathjax a {
+  text-decoration: none;
+}
 
-#mathjax {
+a:hover {
+  color: red;
+}
+
+body {
+  margin: 0px;
+}
+.mathjax {
   padding-left: 2%;
   padding-right: 2%;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 
 * {

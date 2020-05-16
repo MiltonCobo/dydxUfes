@@ -1,5 +1,5 @@
 <template>
-  <v-sheet id="mathjax">
+  <v-sheet class="mathjax">
     Sendo assim, temos por exemplo que a velocidade com que varia a população de
     presas estará dada por
     <span style="color:var(--mjx-green)"

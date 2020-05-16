@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-sheet id="solution">
+      <v-sheet class="mathjax">
         $\def\R{\mathbb R}$ Separando as variáveis, $ { (3y^2-6y) \, dy = (1+
         3x^2) \, dx},$ e integrando a ambos lados, obtemos que as soluções
         $y=f(x)$ da equação diferencial moram
@@ -150,7 +150,7 @@
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
           </client-only>
-          <v-card-text id="mathjax" style="font-family: Lucida Console;">
+          <v-card-text class="mathjax" style="font-family: Lucida Console;">
           </v-card-text>
         </v-card-actions>
       </v-card>

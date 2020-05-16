@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mathjax">
     <h4>
       Descreva o comportamento das soluções do problema de valor inicial
       $$\color{green}{ y' - {1\over 2} y = 2\cos(t), \quad y(0)=}

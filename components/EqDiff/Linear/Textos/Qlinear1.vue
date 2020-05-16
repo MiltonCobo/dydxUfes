@@ -1,5 +1,5 @@
 <template>
-  <div id="mathjax">
+  <div class="mathjax">
     <h4>
       A população de mosquitos numa determinada área cresce a uma taxa
       proporcional à população atual e, na ausência de predadores, a população
