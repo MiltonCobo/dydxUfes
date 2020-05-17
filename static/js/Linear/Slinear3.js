@@ -117,7 +117,7 @@ export function drawLinear3() {
           {
             method: 'update',
             args: [
-              { visible: [true, false, false], opacity: 1 },
+              { visible: [true, false, false], opacity: [1, 0, 0] },
               {
                 annotations: annotations0
               }
@@ -127,7 +127,7 @@ export function drawLinear3() {
           {
             method: 'update',
             args: [
-              { visible: [false, true, true], opacity: 1 },
+              { visible: [false, true, true], opacity: [0, 1, 1] },
               {
                 annotations: annotations1
               }

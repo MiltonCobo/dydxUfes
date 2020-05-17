@@ -98,12 +98,8 @@
     <v-navigation-drawer v-model="drawer" temporary clipped dense dark app>
       <v-list>
         <v-list-item class="px-2">
-          <v-list-item-avatar>
-            <v-img
-              width="400"
-              position="center right"
-              src="/figures/logo-ufes.jpg"
-            />
+          <v-list-item-avatar height="80" width="80">
+            <v-img position="center center" src="/figures/ufes-logo.png" />
             <!-- src="https://randomuser.me/api/portraits/men/19.jpg" -->
           </v-list-item-avatar>
           <span class="blue--text"> UFES </span>

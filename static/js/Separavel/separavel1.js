@@ -355,20 +355,6 @@ export function drawContoursSep1() {
       y: 3 // head af arrow
     }
   ]
-  let shapes1 = [
-    {
-      type: 'line',
-      x0: -3.8,
-      y0: 1,
-      x1: 3,
-      y1: 1,
-      line: {
-        color: 'blue',
-        width: 2
-      },
-      visible: false
-    }
-  ]
 
   let shapes = [
     {
@@ -386,7 +372,7 @@ export function drawContoursSep1() {
   ]
   let layout = {
     annotations: [annotations1],
-    shapes: shapes1,
+    shapes: [],
     paper_bgcolor: 'gainsboro',
     plot_bgcolor: 'gainsboro',
     scene: {
@@ -405,7 +391,7 @@ export function drawContoursSep1() {
         nticks: 3
       },
       zaxis: {
-        //range: [-15, 20],
+        range: [-15, 20]
       }
     },
 
@@ -413,18 +399,17 @@ export function drawContoursSep1() {
       {
         buttons: [
           {
-            method: 'update',
             args: [
               { visible: [true, true, false, false], opacity: [1, 0.6, 0, 0] },
               {
                 annotations: [annotations1],
-                shapes: shapes1
+                shapes: []
               }
             ],
-            label: 'Curvas de nível'
+            label: 'Curvas de nível',
+            method: 'update'
           },
           {
-            method: 'update',
             args: [
               { visible: [true, false, true, true], opacity: [0.6, 0, 1, 1] },
               {
@@ -432,7 +417,8 @@ export function drawContoursSep1() {
                 shapes: shapes
               }
             ],
-            label: 'Ver as funções'
+            label: 'Ver as funções',
+            method: 'update'
           }
         ],
         direction: 'right',
