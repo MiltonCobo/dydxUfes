@@ -26,7 +26,7 @@
         <v-btn large @click.stop="openFigure2 = true" color="green lighten-4">
           Ver Gráfico
         </v-btn>
-
+        <br />
         Como queremos que $y(0)=-1,$ precisamos tomar sinal de "menos", isto é,
         a solução do PVI é dada por ${y=1-\sqrt{x^3+2x^2+2x+4}}.$ Notemos que
         ${x^3+2x^2+2x+4 = (x+2)(x^2+4)}$ e portanto o polinômio

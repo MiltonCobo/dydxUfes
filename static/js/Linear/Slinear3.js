@@ -175,8 +175,8 @@ export function drawLinear3() {
     dragmode: false,
     displaylogo: false,
     showLink: false,
-    width: 500,
-    height: 500
+    width: 600,
+    height: 600
   }
 
   return { data: [data1, data2, data3], layout, options }

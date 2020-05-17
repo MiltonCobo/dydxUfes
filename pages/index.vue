@@ -43,7 +43,7 @@
               Em breve iremos explicar mais amplamente esta animação.
             </p>
 
-            <p>
+            <p class="mathjax" style="font-size: 15px">
               Indicamos (para aqueles que entendem inglês) este excelente
               <a
                 href="https://www.youtube.com/watch?v=sj8Sg8qnjOg&t=448s"
@@ -78,36 +78,33 @@ export default {
     if (!window.p5) {
       const script = document.createElement('script')
       script.type = 'text/javascript'
-      //script.onload = this.startPlot
+      script.addEventListener('load', this.startp5Plot)
       script.src =
         'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
       document.head.appendChild(script)
     } else {
       console.log('p5 is here')
+      this.startp5Plot()
     }
 
     if (!window.MathJax) {
       const script = document.createElement('script')
       script.type = 'text/javascript'
       script.src = '../../../js/MathJax/mathjax2Config.js'
+      script.addEventListener('load', this.onMathJaxLoaded)
       document.head.appendChild(script)
-      //script.onload = this.onScriptLoaded
     } else {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      //this.onScriptLoaded()
     }
-    this.startPlot()
   },
   destroyed() {
     this.p5plot.remove()
   },
   methods: {
-    // onScriptLoaded(event = null) {
-    //   if (window.MathJax.Hub) {
-    //     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    //   }
-    // },
-    startPlot() {
+    onMathJaxLoaded() {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    },
+    startp5Plot() {
       let divFigure = this.$refs.container
       let cont = 0
       // NEED TO BE SURE P5 EXIST!!!!!
@@ -115,7 +112,7 @@ export default {
     }
   },
   updated() {
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
 
   data() {
@@ -141,7 +138,9 @@ export default {
         {
           rel: 'stylesheet',
           href:
-            'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
+            'https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&display=swap'
+          // 'https://fonts.googleapis.com/css2?family=Kalam&display=swap'
+          // 'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
         }
       ],
       script: [
@@ -173,12 +172,14 @@ export default {
   /* background-color: black; */
 }
 
-#mathjax {
-  font-size: 22px;
+.mathjax {
+  font-size: 24px;
   /* padding-left: 5%;
   padding-right: 5%; */
-  line-height: 1.2;
+  /* line-height: 1.2; */
   font-family: 'Neucha', cursive;
+  /* font-family: 'Kalam', cursive; */
+  /* font-family: 'Rock Salt', cursive; */
 
   /* font-family: SofiaPro Roboto; */
 }

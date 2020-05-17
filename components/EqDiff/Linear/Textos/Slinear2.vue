@@ -67,11 +67,15 @@
       </li>
     </ul>
 
-    <v-dialog v-model="openFigure" max-width="550">
+    <v-dialog v-model="openFigure" max-width="550" transition="fab-transition">
       <v-card>
         <v-card-actions>
           <client-only v-if="openFigure">
-            <line-chart class="mathjax" :chartdata="data" :options="options" />
+            <line-chart
+              style="width:500px; height:500px;"
+              :chartdata="data"
+              :options="options"
+            />
           </client-only>
         </v-card-actions>
 

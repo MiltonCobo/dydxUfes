@@ -74,7 +74,7 @@
       </p>
     </v-row>
 
-    <v-dialog v-model="openFigure" max-width="500">
+    <v-dialog v-model="openFigure" max-width="600" transition="fab-transition">
       <v-card style="background-color:gainsboro;">
         <v-card-actions>
           <client-only placeholder="carregando...">
