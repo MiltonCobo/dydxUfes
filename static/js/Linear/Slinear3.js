@@ -48,19 +48,19 @@ export function drawLinear3() {
     }
   }
 
-  let dat3 = getDataScatter(assintota, xinitial, xwidth, step)
-  let data3 = {
-    visible: false,
-    x: dat3.x,
-    y: dat3.y,
-    line: {
-      smoothing: 1.2,
-      shape: 'spline',
-      width: 1.4,
-      color: 'black',
-      opacity: 1
+  let shapes = [
+    {
+      type: 'line',
+      x0: 0,
+      y0: 12,
+      x1: 20,
+      y1: -28,
+      line: {
+        color: 'black',
+        width: 2
+      }
     }
-  }
+  ]
 
   let annotations1 = [
     {
@@ -117,9 +117,14 @@ export function drawLinear3() {
           {
             method: 'update',
             args: [
-              { visible: [true, false, false], opacity: [1, 0, 0] },
               {
-                annotations: annotations0
+                visible: [true, false],
+                opacity: 1
+              },
+              {
+                autorange: true,
+                annotations: annotations0,
+                shapes: []
               }
             ],
             label: 'Tangência'
@@ -127,9 +132,11 @@ export function drawLinear3() {
           {
             method: 'update',
             args: [
-              { visible: [false, true, true], opacity: [0, 1, 1] },
+              { visible: [false, true], opacity: 1 },
               {
-                annotations: annotations1
+                autorange: true,
+                annotations: annotations1,
+                shapes: shapes
               }
             ],
             label: 'Mostrar assíntota'
@@ -153,11 +160,13 @@ export function drawLinear3() {
       }
     ],
     xaxis: {
+      autorange: true,
       title: 't',
       titlefont: { size: 14, color: 'brown' },
       tickfont: { size: 12, color: 'blue' }
     },
     yaxis: {
+      autorange: true,
       title: 'y(t)',
       titlefont: { size: 14, color: 'brown' },
       // side : 'right',
@@ -179,5 +188,5 @@ export function drawLinear3() {
     height: 600
   }
 
-  return { data: [data1, data2, data3], layout, options }
+  return { data: [data1, data2], layout, options }
 }

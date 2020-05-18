@@ -9,8 +9,8 @@ export function drawSurfaceSep1() {
   let ywidth = 10
   let xcenter = xwidth / 2
   let ycenter = (ywidth - 2) / 2
-  let ysteps = 30
-  let xsteps = 30
+  let ysteps = 20
+  let xsteps = 20
   let center = {
     x: xcenter,
     y: ycenter
@@ -123,6 +123,8 @@ export function drawSurfaceSep1() {
   return { data: [data], layout, options }
 }
 
+//-------------------------------------------------------------------------
+
 export function drawContoursSep1() {
   let xwidth = 8
   let ywidth = 8
@@ -152,55 +154,39 @@ export function drawContoursSep1() {
     line: {
       smoothing: 1.2,
       width: 1,
-      color: 'grey',
-      opacity: 0.3
+      color: 'grey'
+      // opacity: 0.3
     },
 
-    contours: {
-      //coloring: 'none',
-      start: -15,
-      end: 20,
-      size: 1.5,
-      highlightcolor: 'olive'
-    }
-    // dx: 10,
-    // x0: 0,
-    // dy: 10,
-    // y0: 0,
+    autocontour: true /* contours attrib picked by algorithm, ncontours = contours levels */,
+    ncontours: 40
   }
 
   let data1 = {
     // show only one level
-    start: 0,
-    end: 4,
-    size: 1,
+
     x: info.x,
     y: info.y,
     z: info.z,
     type: 'contour',
 
     showscale: false, // not show colorbar
-    //colorscale: 'RdBu',
 
     line: {
       coloring: 'none',
       smoothing: 1.2,
       width: 1.8,
-      color: 'black',
-      opacity: 1
+      color: 'black'
+      // opacity: 1
     },
 
     contours: {
       coloring: 'none',
+      shape: 'spline',
       start: 3, //show only one level curve
-      end: 3
-      //size: 1.6,
-      //highlightcolor: 'olive',
+      end: 3,
+      size: 0
     }
-    // dx: 10,
-    // x0: 0,
-    // dy: 10,
-    // y0: 0,
   }
 
   function fExplicit(x, s) {
@@ -230,6 +216,7 @@ export function drawContoursSep1() {
     y: yy,
     type: 'scatter',
     line: {
+      shape: 'spline',
       smoothing: 1,
       width: 2,
       color: 'green'
@@ -242,26 +229,29 @@ export function drawContoursSep1() {
     y: yy2,
     type: 'scatter',
     line: {
+      shape: 'spline',
       smoothing: 1,
       width: 2,
       color: 'red'
     }
   }
 
-  let annotations1 = {
-    text: '$ y^2-2y-x^3-2x^2-2x =3 $',
-    ax: -100,
-    ay: -40,
-    xref: 'pixel',
-    yref: 'pixel',
-    arrowcolor: 'black',
-    font: {
-      size: 15,
-      color: 'black'
-    },
-    x: 0,
-    y: 3
-  }
+  let annotations1 = [
+    {
+      text: '$ y^2-2y-x^3-2x^2-2x =3 $',
+      ax: -100,
+      ay: -40,
+      xref: 'pixel',
+      yref: 'pixel',
+      arrowcolor: 'black',
+      font: {
+        size: 15,
+        color: 'black'
+      },
+      x: 0,
+      y: 3
+    }
+  ]
 
   let annotations = [
     {
@@ -296,14 +286,14 @@ export function drawContoursSep1() {
     },
     {
       visible: true,
-      text: '$ y = 1 - \\sqrt{x^3+2x^2+2x+4},\\, x \\ge -2 $',
+      text: '$ y = 1 - \\sqrt{x^3+2x^2+2x+4}, x \\ge -2 $',
       ax: -65, //tail of arrow
       ay: 45,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'green',
       font: {
-        size: 15,
+        size: 18,
         color: 'green'
       },
       x: 0,
@@ -326,14 +316,14 @@ export function drawContoursSep1() {
     },
     {
       visible: true,
-      text: '$ y = 1 + \\sqrt{x^3+2x^2+2x+4},\\, x \\ge -2 $',
+      text: '$ y = 1 + \\sqrt{x^3+2x^2+2x+4},  x \\ge -2 $',
       ax: -65, //tail of arrow
       ay: -45,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'red',
       font: {
-        size: 15,
+        size: 18,
         color: 'red'
       },
       x: 0,
@@ -365,34 +355,36 @@ export function drawContoursSep1() {
       y1: 1,
       line: {
         color: 'blue',
-        width: 2
+        width: 2,
+        dash: 'dot'
       },
       visible: true
     }
   ]
   let layout = {
-    annotations: [annotations1],
-    shapes: [],
+    annotations: annotations1,
+    // shapes: [],
     paper_bgcolor: 'gainsboro',
     plot_bgcolor: 'gainsboro',
-    scene: {
-      xaxis: {
-        showlegend: false,
-        tickmode: 'linear',
-        tick0: 0,
-        dtick: 2,
-        nticks: 6
-      },
+    xaxis: {
+      autorange: true,
+      // showlegend: false,
+      tickmode: 'auto',
+      nticks: 5
+      // tickmode: 'linear',
+      // tick0: 0,
+      // dtick: 2
+      // nticks: 6   //work only with tickmode: auto
+    },
 
-      yaxis: {
-        tickmode: 'linear',
-        tick0: 0,
-        dtick: 2,
-        nticks: 3
-      },
-      zaxis: {
-        range: [-15, 20]
-      }
+    yaxis: {
+      autorange: true,
+      tickmode: 'auto',
+      nticks: 5
+      // tickmode: 'linear',
+      // tick0: 0,
+      // dtick: 2
+      // nticks: 4
     },
 
     updatemenus: [
@@ -402,7 +394,7 @@ export function drawContoursSep1() {
             args: [
               { visible: [true, true, false, false], opacity: [1, 0.6, 0, 0] },
               {
-                annotations: [annotations1],
+                annotations: [...annotations1], //
                 shapes: []
               }
             ],
@@ -411,9 +403,9 @@ export function drawContoursSep1() {
           },
           {
             args: [
-              { visible: [true, false, true, true], opacity: [0.6, 0, 1, 1] },
+              { visible: [true, false, true, true], opacity: [0.4, 0, 1, 1] },
               {
-                annotations: annotations,
+                annotations: [...annotations],
                 shapes: shapes
               }
             ],
@@ -448,9 +440,9 @@ export function drawContoursSep1() {
     showlegend: false,
     hovermode: false,
     dragmode: false,
-    autosize: true,
-    width: 600
-    // height: 600
+    autosize: false,
+    width: 600,
+    height: 500
     // margin: {
     //     l: 0,
     //     r: 0,

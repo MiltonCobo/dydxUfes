@@ -130,7 +130,11 @@
           Consegue encontrar uma justificativa matemática para este
           fenômeno?</span
         >
-        <v-dialog v-model="openFigure" max-width="600">
+        <v-dialog
+          transition="fab-transition"
+          v-model="openFigure"
+          max-width="600"
+        >
           <v-card style="background-color:gainsboro;">
             <v-card-actions>
               <client-only placeholder="carregando...">
@@ -144,7 +148,7 @@
       </v-sheet>
     </v-row>
 
-    <v-dialog v-model="openFigure2" max-width="600">
+    <v-dialog transition="fab-transition" v-model="openFigure2" max-width="600">
       <v-card style="background-color:gainsboro;">
         <v-card-actions>
           <client-only placeholder="carregando...">

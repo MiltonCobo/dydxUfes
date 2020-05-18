@@ -250,7 +250,7 @@ export function volterraContours() {
         {
           method: 'update',
           args: [
-            { visible: [true, true], opacity: [0.5, 1] },
+            { visible: [true, true], opacity: [0.4, 1] },
             {
               annotations: [...annotations2],
               shapes: [...shapes3, ...shapes2]

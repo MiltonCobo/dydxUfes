@@ -10,8 +10,8 @@ export function drawContoursSep2() {
   let ywidth = max
   let xcenter = c
   let ycenter = c
-  let ysteps = 50
-  let xsteps = 50
+  let ysteps = 60
+  let xsteps = 60
   let center = {
     x: xcenter,
     y: ycenter
@@ -43,13 +43,15 @@ export function drawContoursSep2() {
       color: 'grey'
     },
 
-    contours: {
-      coloring: 'none',
-      start: -30,
-      end: 30,
-      size: 2,
-      highlightcolor: 'red'
-    }
+    autocontour: true,
+    ncontours: 200
+    // contours: {
+    //   coloring: 'none',
+    //   start: -30,
+    //   end: 30,
+    //   size: 2,
+    //   highlightcolor: 'red'
+    // }
   }
 
   let data1 = {
@@ -75,9 +77,9 @@ export function drawContoursSep2() {
       coloring: 'none',
       shape: 'spline',
       start: -2,
-      end: -2,
+      end: -2
       //size: 4,
-      highlightcolor: 'red'
+      // highlightcolor: 'red'
     }
   }
 
@@ -270,19 +272,16 @@ export function drawContoursSep2() {
     autosize: false,
     width: 600,
     height: 600,
-    // margin: {
-    //   l: 80,
-    //   r: 0,
-    //   b: 80,
-    //   t: 100,
-    // },
+
     xaxis: {
-      range: [-c, c],
+      autorange: true,
+      // range: [-15, 15],
       tickvals: [-5, -1, 1, 5],
       ticktext: ['-5', '-1', '1', '5']
     },
     yaxis: {
-      range: [-c, c],
+      autorange: true,
+      // range: [-15, 15],
       tickvals: [-5, 2, 5],
       ticktext: ['-5', '2', '5']
     },
@@ -292,7 +291,7 @@ export function drawContoursSep2() {
           {
             method: 'update',
             args: [
-              { visible: [true, true, false], opacity: [0.6, 1] },
+              { visible: [true, true, false], opacity: [0.8, 1] },
               {
                 annotations: [...annotations1],
                 shapes: shapes1
@@ -304,7 +303,7 @@ export function drawContoursSep2() {
           {
             method: 'update',
             args: [
-              { visible: [true, true, true], opacity: [0.2, 0.7, 1] },
+              { visible: [true, true, true], opacity: [0.4, 0.7, 1] },
               {
                 annotations: [...annotations2],
                 shapes: shapes2

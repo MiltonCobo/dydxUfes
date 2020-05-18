@@ -95,10 +95,18 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" temporary dense dark app>
+    <v-navigation-drawer
+      v-model="drawer"
+      width="180"
+      clipped
+      temporary
+      dense
+      dark
+      app
+    >
       <v-list>
-        <v-list-item class="px-2">
-          <v-list-item-avatar width="80" height="80">
+        <v-list-item>
+          <v-list-item-avatar width="60" height="60">
             <v-img position="center center" src="/figures/ufes-logo.png" />
             <!-- src="https://randomuser.me/api/portraits/men/19.jpg" -->
           </v-list-item-avatar>
@@ -117,13 +125,15 @@
 
       <v-divider />
 
-      <v-list nav dense>
+      <v-list class="mx-n5" nav dense>
         <v-list-item v-for="item in itemsDrawer" :key="item.title">
           <v-list-item-icon>
             <v-icon class="blue--text" left>{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <n-link :to="item.route" style="text-decoration: none;">
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title class="mx-n6">{{
+              item.title
+            }}</v-list-item-title>
           </n-link>
         </v-list-item>
       </v-list>
