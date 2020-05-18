@@ -122,7 +122,6 @@ export function drawLinear3() {
                 opacity: 1
               },
               {
-                autorange: true,
                 annotations: annotations0,
                 shapes: []
               }
@@ -134,12 +133,11 @@ export function drawLinear3() {
             args: [
               { visible: [false, true], opacity: 1 },
               {
-                autorange: true,
                 annotations: annotations1,
                 shapes: shapes
               }
             ],
-            label: 'Mostrar assíntota'
+            label: 'Assíntota'
           }
         ],
         direction: 'bottom',

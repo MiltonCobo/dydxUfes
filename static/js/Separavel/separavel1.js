@@ -33,7 +33,7 @@ export function drawSurfaceSep1() {
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
     // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
     // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’
-    //autocontour: false,
+    autocontour: false,
     line: {
       smoothing: 1,
       width: 2
@@ -181,11 +181,14 @@ export function drawContoursSep1() {
     },
 
     contours: {
-      coloring: 'none',
-      shape: 'spline',
-      start: 3, //show only one level curve
-      end: 3,
-      size: 0
+      type: 'constraint',
+      operation: '=',
+      value: 3,
+      coloring: 'none'
+      // shape: 'spline',
+      // start: 3, //show only one level curve
+      // end: 3,
+      // size: 0
     }
   }
 
@@ -367,10 +370,10 @@ export function drawContoursSep1() {
     paper_bgcolor: 'gainsboro',
     plot_bgcolor: 'gainsboro',
     xaxis: {
-      autorange: true,
+      autorange: true
       // showlegend: false,
-      tickmode: 'auto',
-      nticks: 5
+      // tickmode: 'auto',
+      // nticks: 5
       // tickmode: 'linear',
       // tick0: 0,
       // dtick: 2
@@ -378,9 +381,9 @@ export function drawContoursSep1() {
     },
 
     yaxis: {
-      autorange: true,
-      tickmode: 'auto',
-      nticks: 5
+      autorange: true
+      // tickmode: 'auto',
+      // nticks: 5
       // tickmode: 'linear',
       // tick0: 0,
       // dtick: 2
@@ -443,12 +446,6 @@ export function drawContoursSep1() {
     autosize: false,
     width: 600,
     height: 500
-    // margin: {
-    //     l: 0,
-    //     r: 0,
-    //     b: 0,
-    //     t: 100,
-    //   },
   }
 
   return { data: [data0, data1, trace1, trace2], layout, options }

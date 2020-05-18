@@ -97,7 +97,7 @@
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
-      width="180"
+      width="250"
       temporary
       clipped
       dense

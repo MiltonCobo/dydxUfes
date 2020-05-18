@@ -74,10 +74,13 @@ export function drawContoursSep2() {
     },
 
     contours: {
-      coloring: 'none',
-      shape: 'spline',
-      start: -2,
-      end: -2
+      type: 'constraint',
+      operation: '=',
+      value: -2
+      // coloring: 'none',
+      // shape: 'spline',
+      // start: -2,
+      // end: -2
       //size: 4,
       // highlightcolor: 'red'
     }
@@ -119,6 +122,22 @@ export function drawContoursSep2() {
     }
   }
 
+  let annotations0 = [
+    {
+      text: '$y^3-3y^2-x^3-x = -2$',
+      ax: -50, //tail of arrow
+      ay: -80,
+      ayref: 'pixel', // refers to axes
+      axref: 'pixel',
+      arrowcolor: 'green',
+      font: {
+        size: 18,
+        color: 'green'
+      },
+      x: -0.75,
+      y: 2.6 // head af arrow
+    }
+  ]
   let annotations1 = [
     {
       text: '$y^3-3y^2-x^3-x = -2$',
@@ -145,8 +164,8 @@ export function drawContoursSep2() {
         size: 18,
         color: 'yellow'
       },
-      x: 7,
-      y: 7 // head af arrow
+      x: -5,
+      y: -5 // head af arrow
     },
     {
       text: '$y=2$',
@@ -227,7 +246,7 @@ export function drawContoursSep2() {
       x1: 10,
       y1: 2,
       line: {
-        color: 'green',
+        color: 'black',
         width: 2.5
       }
     },
@@ -238,7 +257,7 @@ export function drawContoursSep2() {
       x1: 10,
       y1: 0,
       line: {
-        color: 'green',
+        color: 'black',
         width: 2.5
       }
     }
@@ -285,6 +304,7 @@ export function drawContoursSep2() {
       tickvals: [-5, 2, 5],
       ticktext: ['-5', '2', '5']
     },
+    annotations: annotations0,
     updatemenus: [
       {
         buttons: [
@@ -297,7 +317,7 @@ export function drawContoursSep2() {
                 shapes: shapes1
               }
             ],
-            label: 'Anotações'
+            label: 'Outras anotações'
           },
 
           {
