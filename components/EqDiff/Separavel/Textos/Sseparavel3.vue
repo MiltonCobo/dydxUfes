@@ -31,7 +31,7 @@
         </p>
       </v-row>
       <v-row class="flex-wrap-reverse" no-gutters>
-        <v-col xs="12" md="6" order="4" align="center">
+        <v-col xs="12" md="6" order="4">
           <p class="mathjax">
             <br />
             Para determinar onde esta função atinge seu máximo precisamos

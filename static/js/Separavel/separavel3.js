@@ -7,7 +7,7 @@ import {
 export function drawSurfaceSep3() {
   let xwidth = 30
   let ywidth = 30
-  let xcenter = 15 //Math.log(2)
+  let xcenter = 25 //Math.log(2)
   let ycenter = 15 //-1.5
   let ysteps = 40
   let xsteps = 40
@@ -43,10 +43,13 @@ export function drawSurfaceSep3() {
     contours: {
       z: {
         show: true,
-        start: -2,
-        end: 40,
-        size: 4,
-        color: 'lightbrown', //'olive',
+        // autocontour: true,
+        // ncontours: 100,
+        start: 0,
+        end: 50,
+        size: 2,
+        usecolormap: true,
+        // color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,
 
