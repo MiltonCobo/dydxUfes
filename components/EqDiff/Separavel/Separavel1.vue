@@ -60,21 +60,4 @@ export default {
 }
 </script>
 
-<style scoped>
-#mathjax {
-  /* font-size: 15px; */
-  /* font-family: 'Montserrat', sans-serif; */
-  /* font-family: 'Neucha', cursive; */
-  /* font-family: Lucida Console; */
-  /* font-family: 'Rock Salt', cursive;
-  font-weight: 700;
-  line-height: 1.8; */
-}
-
-p {
-  /* font-size: 12px; */
-  /* font-weight: 700; */
-  /* line-height: 1.5; */
-  /* font-family: 'Rock Salt', cursive; */
-}
-</style>
+<style scoped></style>

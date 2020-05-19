@@ -141,7 +141,8 @@ export function getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps) {
         size: (zMax - zMin) * 0.05,
         autocontour: true,
         ncontours: 30,
-        color: 'lightbrown', //'olive',
+        usecolormap: true,
+        // color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,
         project: { z: true }

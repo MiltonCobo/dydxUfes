@@ -47,9 +47,10 @@ export function volterraSurface2() {
   data.contours.z.start = 15 /* set manually because zMax=Infinity */
   data.contours.z.end = 30
   data.contours.z.size = 1
+  // data.contours.usecolormap = true // this is done in options
   data.visible = true
-  data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
-  data.ncontours = 40
+  // data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
+  // data.ncontours = 40
   data.line = {
     smoothing: 1,
     width: 1,

@@ -35,26 +35,33 @@
             de tubarões no mar adriático por causa da guerra?
           </h4>
 
-          A resposta é que a pesca prejudica o crescimento intrínseco da
-          população de presas, isto é, a pesca diminui o valor de $a.$ Por outro
-          lado, a pesca aumenta a velocidade intrínseca com que a população de
-          predadores declina na ausência de presas, i.e., aumenta o valor de
-          $c.$ Isto porque os pescadores pegavam nas suas redes tanto predadores
-          como presas indiscriminadamente.
+          A resposta é que a pesca prejudica o crescimento da população de
+          presas, isto é, a pesca diminui o valor de $a.$ Lembramos que a
+          variável $a$ se refere a fatores extrínsecos que constringem o
+          crescimento das presas. Assim, a pesca aumenta a velocidade com que a
+          população de predadores declina na ausência de presas, i.e., aumenta o
+          valor de $c.$ Isto porque os pescadores pegavam nas suas redes tanto
+          predadores como presas indiscriminadamente.
 
           <br />
 
           Por outro lado a pesca não altera a dinâmica intrínseca
           predador-presa, isto é, as constantes $b$ e $d$ permanecem
-          inalteradas. Assim, o efeito da pesca será que a média $a/b$ da
+          inalteradas. Desta forma, o efeito da pesca será que a média $a/b$ da
           população dos tubarões diminui enquanto a média $c/d$ da população de
           atuns aumenta.
           <span style="color: var(--mjx-green)">
-            Assim, de forma paradoxal, a pesca aumenta a média da população de
-            atuns e diminui a média da população de tubarões!. Entretanto, a
-            restrição da pesca fará o contrário, a média dos tubarões aumenta e
-            a média dos atuns diminui.
+            Assim, de forma paradoxal, a pesca de atuns aumenta a média da
+            população de atuns e diminui a média da população de tubarões!
           </span>
+          <br />
+          Na verdade este modelo somente é válido para uma pesca mais restrita
+          com redes e barcos pequenos, desta forma os atuns se beneficiam mais
+          pela captura do seu predador, o tubarão, do que se prejudicam pela
+          própria pesca de atuns.<br />
+          Entretanto, a restrição da pesca fará o contrário, a média dos
+          tubarões aumenta e a média dos atuns diminui.
+
           <br />
           Observe na figura o efeito de diminuir $a$ de $5.3$ para $a'=3.6$ e
           aumentar $c=4.9$ para $c'=7.5$. Note que como todas as soluções são

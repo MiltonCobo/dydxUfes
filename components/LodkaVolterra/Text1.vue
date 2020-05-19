@@ -42,6 +42,17 @@
 export default {
   name: 'Text1',
   mounted() {
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.src = '../../../js/MathJax/mathjax2Config.js'
+      script.addEventListener('load', this.onMathJaxLoaded)
+      document.head.appendChild(script)
+    } else {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
+  },
+  onMathJaxLoaded() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }
