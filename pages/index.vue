@@ -60,7 +60,7 @@
             </p>
           </div>
         </v-col>
-        <v-col xs="12" md="6">
+        <v-col xs="12" md="6" align="center">
           <div style="position:relative;" ref="container" id="container"></div
         ></v-col>
       </v-row>

@@ -32,8 +32,8 @@
     </p>
 
     <v-container fluid>
-      <v-row class="flex-wrap" no-gutters>
-        <v-col xs="12" md="6">
+      <v-row no-gutters>
+        <v-col xs="12" md="6" align="center">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>

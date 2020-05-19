@@ -1,7 +1,7 @@
 <template>
   <v-sheet class="mathjax">
     <v-container fluid>
-      <v-row wrap>
+      <v-row>
         <v-col justify-start xs="12" md="6">
           As soluções das equações de Lodka-Volterra tem uma característica
           importante:
@@ -17,7 +17,7 @@
           \\ &= \int_0^T a-b\, y(t)\, dt \end{split} $$ de onde $ {1\over
           T}\int_0^T y(t) dt = a/b.$ A outra igualdade é similar.
         </v-col>
-        <v-col xs="12" md="6">
+        <v-col xs="12" md="6" align="center">
           <client-only>
             <vue-plotly
               v-if="startChart"

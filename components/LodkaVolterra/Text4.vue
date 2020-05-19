@@ -2,7 +2,7 @@
   <v-sheet class="mathjax">
     <v-container fluid>
       <v-row align="center" wrap>
-        <v-col align-center xs="12" style="width:600">
+        <v-col align="center" xs="12" style="width:600">
           <client-only>
             <vue-plotly
               v-if="startChart"

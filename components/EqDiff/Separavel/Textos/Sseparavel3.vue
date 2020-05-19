@@ -2,7 +2,7 @@
   <div>
     <v-container fluid>
       <v-row class="flex-wrap-reverse" no-gutters>
-        <v-col xs="12" md="6" order="1">
+        <v-col xs="12" md="6" order="1" align="center">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
@@ -31,7 +31,7 @@
         </p>
       </v-row>
       <v-row class="flex-wrap-reverse" no-gutters>
-        <v-col xs="12" md="6" order="4">
+        <v-col xs="12" md="6" order="4" align="center">
           <p class="mathjax">
             <br />
             Para determinar onde esta função atinge seu máximo precisamos
@@ -48,7 +48,7 @@
             É mais fácil fazer o seguinte.
           </p>
         </v-col>
-        <v-col xs="12" md="6" order="3">
+        <v-col xs="12" md="6" order="3" align="center">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
           </client-only>
@@ -72,8 +72,8 @@
           </span>
         </p>
       </v-row>
-      <v-row wrap no-gutters>
-        <v-col xs="12" md="6">
+      <v-row no-gutters>
+        <v-col xs="12" md="6" align="center">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
           </client-only>
