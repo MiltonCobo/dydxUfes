@@ -29,7 +29,7 @@ export default function goldenRatio(p) {
   let slider
 
   p.setup = function() {
-    let cnv = p.createCanvas(600, 600) //(p.windowWidth, p.windowHeight)
+    let cnv = p.createCanvas(600, 600) //(p.windowWidth / 2, p.windowHeight / 2)
     cnv.parent('#container')
 
     p.angleMode(p.RADIANS)
@@ -85,10 +85,10 @@ export default function goldenRatio(p) {
     angle = slider.value()
     //inputAngle.value(angle.toFixed(6).toString())
   }
-  // p.windowResized = function() {
-  //   p.resizeCanvas(p.windowWidth, p.windowHeight)
-  //   console.log(p.windowWidth)
-  // }
+  p.windowResized = function() {
+    p.resizeCanvas(p.width, p.height)
+    console.log(p.windowWidth)
+  }
 
   p.draw = function() {
     let route = window.location.pathname

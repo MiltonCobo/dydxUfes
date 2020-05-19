@@ -32,7 +32,7 @@
     </p>
 
     <v-container fluid>
-      <v-row no-gutters>
+      <v-row no-gutters align="center">
         <v-col xs="12" md="6" align="center">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />

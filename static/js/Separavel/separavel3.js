@@ -125,7 +125,7 @@ export function drawSurfaceSep3() {
     },
     showlegend: false,
     hovermode: false,
-    autosize: false,
+    autosize: true,
     width: 500,
     height: 550
   }

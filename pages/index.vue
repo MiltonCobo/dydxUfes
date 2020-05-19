@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row no-gutters align="center" justify="center">
+      <v-row no-gutters align="center">
         <v-col xs="12" md="6">
           <div>
             <h2 style="color: salmon;">O número Aúreo e o Girassol</h2>

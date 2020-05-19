@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row class="flex-wrap-reverse" no-gutters>
+      <v-row class="flex-wrap-reverse" align="center" no-gutters>
         <v-col xs="12" md="6" order="1" align="center">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
@@ -30,7 +30,7 @@
           $${ y = \frac{-3 +\sqrt{(13+8x)-4\e^x}}{2}} \quad\textrm{(eq2).}$$
         </p>
       </v-row>
-      <v-row class="flex-wrap-reverse" no-gutters>
+      <v-row class="flex-wrap-reverse" align="center" no-gutters>
         <v-col xs="12" md="6" order="4">
           <p class="mathjax">
             <br />
@@ -72,7 +72,7 @@
           </span>
         </p>
       </v-row>
-      <v-row no-gutters>
+      <v-row no-gutters align="center">
         <v-col xs="12" md="6" align="center">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
