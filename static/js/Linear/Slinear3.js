@@ -67,8 +67,8 @@ export function drawLinear3() {
       text: '$ y= 12- 2t $',
       ax: 100,
       ay: -60,
-      xref: 'pixel',
-      yref: 'pixel',
+      axref: 'pixel',
+      ayref: 'pixel',
       arrowcolor: 'black',
       font: {
         size: 15,
@@ -82,8 +82,8 @@ export function drawLinear3() {
   let annotations0 = [
     {
       text: '$ t_0=2 $',
-      xref: 'pixel',
-      yref: 'pixel',
+      axref: 'pixel',
+      ayref: 'pixel',
       showarrow: false,
       font: {
         size: 14,
@@ -94,8 +94,8 @@ export function drawLinear3() {
     },
     {
       text: '$y_0=12-8\\sqrt{\\e}$',
-      xref: 'pixel',
-      yref: 'pixel',
+      axref: 'pixel',
+      ayref: 'pixel',
       showarrow: false,
       xanchor: 'left',
       font: {

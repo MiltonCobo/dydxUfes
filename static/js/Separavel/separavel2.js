@@ -61,8 +61,8 @@ export function drawContoursSep2() {
     type: 'contour',
 
     showscale: false, // not show colorbar
-    colorscale: 'Greys',
-    reversescale: true,
+    //colorscale: 'Greys',
+    //reversescale: true,
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
     // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
     // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’

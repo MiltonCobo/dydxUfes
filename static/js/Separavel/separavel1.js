@@ -29,7 +29,7 @@ export function drawSurfaceSep1() {
     type: 'surface',
 
     showscale: false, // not show colorbar
-    colorscale: 'Jet', //'RdBu',
+    //colorscale: 'Jet', //'RdBu',
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
     // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
     // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’
@@ -150,6 +150,7 @@ export function drawContoursSep1() {
     type: 'contour',
 
     showscale: false, // not show colorbar
+    // colorscale: 'Viridis',
 
     line: {
       smoothing: 1.2,
@@ -164,7 +165,6 @@ export function drawContoursSep1() {
 
   let data1 = {
     // show only one level
-
     x: info.x,
     y: info.y,
     z: info.z,
@@ -173,7 +173,6 @@ export function drawContoursSep1() {
     showscale: false, // not show colorbar
 
     line: {
-      coloring: 'none',
       smoothing: 1.2,
       width: 1.8,
       color: 'black'
@@ -214,29 +213,27 @@ export function drawContoursSep1() {
   let yy2 = xx.map(x => fExplicit(x, +1))
 
   let trace1 = {
-    visible: false,
     x: xx,
     y: yy,
     type: 'scatter',
     line: {
-      shape: 'spline',
       smoothing: 1,
       width: 2,
       color: 'green'
-    }
+    },
+    visible: false
   }
 
   let trace2 = {
-    visible: false,
     x: xx,
     y: yy2,
     type: 'scatter',
     line: {
-      shape: 'spline',
       smoothing: 1,
       width: 2,
       color: 'red'
-    }
+    },
+    visible: false
   }
 
   let annotations1 = [
@@ -244,8 +241,8 @@ export function drawContoursSep1() {
       text: '$ y^2-2y-x^3-2x^2-2x =3 $',
       ax: -100,
       ay: -40,
-      xref: 'pixel',
-      yref: 'pixel',
+      axref: 'pixel',
+      ayref: 'pixel',
       arrowcolor: 'black',
       font: {
         size: 15,
@@ -261,24 +258,24 @@ export function drawContoursSep1() {
       visible: true,
       text: '$ y = 1 $',
       ax: 0,
-      ay: 0,
-      xref: 'pixel',
-      yref: 'pixel',
+      ay: -20,
+      axref: 'pixel',
+      ayref: 'pixel',
       arrowcolor: 'blue',
       font: {
         size: 15,
         color: 'blue'
       },
       x: -1.0,
-      y: 1.2
+      y: 1
     },
     {
       visible: true,
       text: '$ (-2,1) $',
       ax: -40,
       ay: -30,
-      xref: 'pixel',
-      yref: 'pixel',
+      axref: 'pixel',
+      ayref: 'pixel',
       arrowcolor: 'black',
       font: {
         size: 15,
@@ -307,8 +304,8 @@ export function drawContoursSep1() {
       text: '$ (0,-1) $',
       ax: 30,
       ay: -30,
-      xref: 'pixel',
-      yref: 'pixel',
+      axref: 'pixel',
+      ayref: 'pixel',
       arrowcolor: 'black',
       font: {
         size: 15,
@@ -319,7 +316,7 @@ export function drawContoursSep1() {
     },
     {
       visible: true,
-      text: '$ y = 1 + \\sqrt{x^3+2x^2+2x+4},  x \\ge -2 $',
+      text: '$ y = 1 + \\sqrt{x^3+2x^2+2x+4}, x \\ge -2 $',
       ax: -65, //tail of arrow
       ay: -45,
       ayref: 'pixel', // refers to axes
@@ -337,8 +334,8 @@ export function drawContoursSep1() {
       text: '$ (0,3) $',
       ax: 30,
       ay: 30,
-      xref: 'pixel',
-      yref: 'pixel',
+      axref: 'pixel',
+      ayref: 'pixel',
       arrowcolor: 'black',
       font: {
         size: 15,
@@ -437,8 +434,8 @@ export function drawContoursSep1() {
     ],
 
     // title: '$ dy/dx = (3x^2+4x+2)/2(y-1),\\quad y(0)=-1.$',
-    //title: '$\\color{brown}{y^2-2y-x^3-2x^2-2x = C}$',
-    title: "<span style='color:brown'>Interpretando as soluções</span>",
+    title: '$\\color{brown}{y^2-2y-x^3-2x^2-2x = C}$',
+    // title: "<span style='color:brown'>Interpretando as soluções</span>",
 
     showlegend: false,
     hovermode: false,
