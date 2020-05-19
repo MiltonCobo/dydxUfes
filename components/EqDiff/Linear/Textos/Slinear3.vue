@@ -54,8 +54,9 @@
           para todo $t$ no domínio da função $y$, em particular vale no ponto
           ${t_0}$!
         </span>
-        Portanto obtemos que ${ y'(t_0) + (1/4)\, y(t_0) = 0 = 1-(1/2)\, t_0. }$
-        Isto implica que ${t_0 = 2 }$ !
+        Portanto obtemos que $ \cancelto{0}{y'(t_0) }+ (1/4)\,
+        \cancelto{0}{y(t_0) }= 0 = 1-(1/2)\, t_0. $ Isto implica que ${t_0 = 2
+        }$ !
         <br />
         Sabendo que ${t_0=2}$ então resolvemos $${ y(2)= 12 -2\cdot 2 + (y_0-12)
         \e^{-2/4} = 0} $$ obtendo-se que ${ y_0 = 12-8\sqrt{\e}}.$ Substituindo

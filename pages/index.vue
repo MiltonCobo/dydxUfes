@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row no-gutters>
+      <v-row no-gutters align="center" justify="center">
         <v-col xs="12" md="6">
           <div>
             <h2 style="color: salmon;">O número Aúreo e o Girassol</h2>
@@ -60,8 +60,8 @@
             </p>
           </div>
         </v-col>
-        <v-col xs="12" md="6" align-center>
-          <div style="position:relative" ref="container" id="container"></div
+        <v-col xs="12" md="6">
+          <div style="position:relative;" ref="container" id="container"></div
         ></v-col>
       </v-row>
     </v-container>
@@ -106,7 +106,6 @@ export default {
     },
     startp5Plot() {
       let divFigure = this.$refs.container
-      let cont = 0
       // NEED TO BE SURE P5 EXIST!!!!!
       this.p5plot = new p5(goldenRatio, divFigure)
     }

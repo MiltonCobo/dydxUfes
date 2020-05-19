@@ -1,7 +1,7 @@
 export default function goldenRatio(p) {
   let totalPoints = 400 // total number of ball per angle
   let totalSteps = 80
-  let c = 15 //7
+  let c = 14 //7
   //let radium = 13
   let escala = 0.6
   let initialRadium = 100
@@ -15,8 +15,8 @@ export default function goldenRatio(p) {
   let angleSlider
   let button
   let inflation = 1
-  let r0 = 3
-  let r1 = 9
+  let r0 = 6
+  let r1 = 10
   let N = 0
   let steps = 1
   let distances = []
@@ -104,7 +104,7 @@ export default function goldenRatio(p) {
 
     if (steps < totalSteps) {
       p.push()
-      p.stroke('rgb(0, 0, 255)')
+      p.stroke('rgb(0, 100, 0)')
       p.strokeWeight(2)
       p.noFill()
       p.circle(0, 0, 2 * initialRadium)
@@ -118,7 +118,7 @@ export default function goldenRatio(p) {
         let y = initialRadium * p.sin(-n * angle)
         p.noStroke()
         let bubble = new Bubble(x, y, hue, sat, lightness, r0)
-        hue = 10 * n + 25
+        hue = (21 * n) % 267
         bubble.display()
       }
       p.pop()
@@ -216,11 +216,11 @@ export default function goldenRatio(p) {
     }
   }
 
-  p.mouseClicked = function() {
-    if (figFall == true) {
-      figFall = false
-    }
-  }
+  // p.mouseClicked = function() {
+  //   if (figFall == true) {
+  //     figFall = false
+  //   }
+  // }
 
   p.doubleClicked = function() {
     if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 300) {
@@ -239,7 +239,7 @@ export default function goldenRatio(p) {
     }
 
     display() {
-      p.stroke(100)
+      //p.stroke(100)
       p.fill(this.hue, this.sat, this.L)
       p.ellipse(this.x, this.y, this.r)
     }
