@@ -42,7 +42,7 @@ export function volterraSurface2() {
   layout0.height = 700 /* set size of plot */
   data.colorscale = 'Earth'
   layout0.title =
-    '$\\color{green}{V(x,y)=d\\, x - c\\, \\ln(x) +b\\, y-a\\, \\ln(y)}$'
+    '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'
 
   data.contours.z.start = 15 /* set manually because zMax=Infinity */
   data.contours.z.end = 30
@@ -171,6 +171,8 @@ export function volterraSurface2() {
           args: [
             { visible: [true, false], opacity: 1 },
             {
+              title:
+                '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$',
               scene: { annotations: [annotations1] }
               //   shapes: shapes1
             }
@@ -186,6 +188,8 @@ export function volterraSurface2() {
               opacity: [0.1, 1]
             },
             {
+              title:
+                '$\\color{green}{V(x,y)=0.14\\, x - 7.5\\, \\ln(x) +0.12\\, y-3.6\\,\\ln(y)}$',
               scene: { annotations: [annotations2] }
               //   shapes: [...shapes3, ...shapes2]
             }

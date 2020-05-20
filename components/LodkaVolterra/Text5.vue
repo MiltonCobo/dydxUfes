@@ -38,10 +38,10 @@
           A resposta é que a pesca prejudica o crescimento da população de
           presas, isto é, a pesca diminui o valor de $a.$ Lembramos que a
           variável $a$ se refere a fatores extrínsecos que constringem o
-          crescimento das presas. Assim, a pesca aumenta a velocidade com que a
-          população de predadores declina na ausência de presas, i.e., aumenta o
-          valor de $c.$ Isto porque os pescadores pegavam nas suas redes tanto
-          predadores como presas indiscriminadamente.
+          crescimento das presas. Similarmente, a pesca aumenta a velocidade com
+          que a população de predadores declina na ausência de presas, i.e., a
+          pesca aumenta o valor de $c.$ Isto porque os pescadores pegavam nas
+          suas redes tanto predadores como presas indiscriminadamente.
 
           <br />
 

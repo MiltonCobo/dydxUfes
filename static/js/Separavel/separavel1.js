@@ -5,12 +5,12 @@ import {
 } from '@/static/js/Plotly/plotly-config.js'
 
 export function drawSurfaceSep1() {
-  let xwidth = 6
-  let ywidth = 10
+  let xwidth = 14
+  let ywidth = 14
   let xcenter = xwidth / 2
   let ycenter = (ywidth - 2) / 2
-  let ysteps = 20
-  let xsteps = 20
+  let ysteps = 40
+  let xsteps = 40
   let center = {
     x: xcenter,
     y: ycenter
@@ -29,7 +29,8 @@ export function drawSurfaceSep1() {
     type: 'surface',
 
     showscale: false, // not show colorbar
-    //colorscale: 'Jet', //'RdBu',
+    colorscale: 'RdBu', //'RdBu',
+    reversescale: true,
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
     // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
     // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’
@@ -42,10 +43,13 @@ export function drawSurfaceSep1() {
     contours: {
       z: {
         show: true,
-        start: -80,
-        end: 50,
+        // autocontour: true,
+        // ncontours: 80,
+        usecolormap: true,
+        start: -10,
+        end: 30,
         size: 2,
-        color: 'lightbrown', //'olive',
+        //color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,
 
@@ -74,10 +78,6 @@ export function drawSurfaceSep1() {
         project: { x: true }
       }
     }
-    // dx: 10,
-    // x0: 0,
-    // dy: 10,
-    // y0: 0,
   }
 
   let layout = {
@@ -116,8 +116,8 @@ export function drawSurfaceSep1() {
     hovermode: false,
     dragmode: true,
     autosize: false,
-    width: 600,
-    height: 600
+    width: 550,
+    height: 550
   }
 
   return { data: [data], layout, options }
@@ -126,8 +126,8 @@ export function drawSurfaceSep1() {
 //-------------------------------------------------------------------------
 
 export function drawContoursSep1() {
-  let xwidth = 8
-  let ywidth = 8
+  let xwidth = 10
+  let ywidth = 10
   let xcenter = xwidth / 2
   let ycenter = (ywidth - 2) / 2
   let ysteps = 30
@@ -150,7 +150,8 @@ export function drawContoursSep1() {
     type: 'contour',
 
     showscale: false, // not show colorbar
-    // colorscale: 'Viridis',
+    colorscale: 'RdBu',
+    reversescale: true,
 
     line: {
       smoothing: 1.2,

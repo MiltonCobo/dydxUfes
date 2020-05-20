@@ -29,8 +29,8 @@ export function drawSurfaceSep3() {
     type: 'surface',
 
     showscale: false, // not show colorbar
-    colorscale: 'RdBu',
-    reversescale: true,
+    colorscale: 'Earth',
+    // reversescale: true,
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
     // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
     // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’

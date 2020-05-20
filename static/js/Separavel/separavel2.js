@@ -4,14 +4,13 @@ import {
   options
 } from '@/static/js/Plotly/plotly-config.js'
 export function drawContoursSep2() {
-  let max = 20
-  let c = 10
-  let xwidth = max
-  let ywidth = max
+  let c = 15
+  let xwidth = 30
+  let ywidth = 30
   let xcenter = c
   let ycenter = c
-  let ysteps = 60
-  let xsteps = 60
+  let ysteps = 80
+  let xsteps = 80
   let center = {
     x: xcenter,
     y: ycenter
@@ -61,15 +60,10 @@ export function drawContoursSep2() {
     type: 'contour',
 
     showscale: false, // not show colorbar
-    //colorscale: 'Greys',
-    //reversescale: true,
-    // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
-    // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
-    // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’
-    //autocontour: false,
+
     line: {
       smoothing: 1.3,
-      width: 2,
+      width: 1.5,
       color: 'green'
     },
 
@@ -87,38 +81,73 @@ export function drawContoursSep2() {
   }
 
   //-----calcula a solução em [-1,1]--------
-  let maxSteps = 1999
-  let dh = 0.001
-  let x_data = []
-  let y_data = []
-  let x = -0.999
-  let y = 1.95
-  x_data.push(-1)
-  y_data.push(2)
-  for (let i = 1; i < maxSteps; i++) {
-    let d = (1 + 3 * x * x) / (3 * y * y - 6 * y)
-    let dy = d * dh
-    y = y + dy
-    x = x + dh
-    x_data.push(x)
-    y_data.push(y)
+  // let maxSteps = 1999
+  // let dh = 0.001
+  // let x_data = []
+  // let y_data = []
+  // let x = -0.999
+  // let y = 1.95
+  // x_data.push(-1)
+  // y_data.push(2)
+  // for (let i = 1; i < maxSteps; i++) {
+  //   let d = (1 + 3 * x * x) / (3 * y * y - 6 * y)
+  //   let dy = d * dh
+  //   y = y + dy
+  //   x = x + dh
+  //   x_data.push(x)
+  //   y_data.push(y)
+  // }
+
+  // x_data.push(1)
+  // y_data.push(0)
+
+  // //---------------------------
+  // let trace1 = {
+  //   visible: false,
+  //   x: x_data,
+  //   y: y_data,
+  //   type: 'scatter',
+  //   line: {
+  //     smoothing: 1,
+  //     shape: 'spline',
+  //     width: 2,
+  //     color: 'red',
+  //     opacity: 1
+  //   }
+  // }
+
+  xwidth = 2.2
+  ywidth = 2.03
+  xcenter = 1.1 //to draw better corner
+  ycenter = 0 // this is not center, left-bottom corner
+
+  ysteps = 80
+  xsteps = 80
+  center = {
+    x: xcenter,
+    y: ycenter
   }
 
-  x_data.push(1)
-  y_data.push(0)
+  info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  let graphFunction = {
+    x: info.x,
+    y: info.y,
+    z: info.z,
+    type: 'contour',
 
-  //---------------------------
-  let trace1 = {
+    showscale: false, // not show colorbar
     visible: false,
-    x: x_data,
-    y: y_data,
-    type: 'scatter',
+
     line: {
-      smoothing: 1.3,
-      shape: 'spline',
+      smoothing: 1,
       width: 3,
-      color: 'red',
-      opacity: 1
+      color: 'red'
+    },
+
+    contours: {
+      type: 'constraint',
+      operation: '=',
+      value: -2
     }
   }
 
@@ -289,8 +318,8 @@ export function drawContoursSep2() {
     dragmode: false,
     hovermode: false,
     autosize: false,
-    width: 600,
-    height: 600,
+    width: 550,
+    height: 550,
 
     xaxis: {
       autorange: true,
@@ -313,6 +342,16 @@ export function drawContoursSep2() {
             args: [
               { visible: [true, true, false], opacity: [0.8, 1] },
               {
+                xaxis: {
+                  autorange: true,
+                  tickvals: [-5, -1, 1, 5],
+                  ticktext: ['-5', '-1', '1', '5']
+                },
+                yaxis: {
+                  autorange: true,
+                  tickvals: [-5, 2, 5],
+                  ticktext: ['-5', '2', '5']
+                },
                 annotations: [...annotations1],
                 shapes: shapes1
               }
@@ -325,6 +364,16 @@ export function drawContoursSep2() {
             args: [
               { visible: [true, true, true], opacity: [0.4, 0.7, 1] },
               {
+                xaxis: {
+                  range: [-10, 10],
+                  tickvals: [-5, -1, 1, 5],
+                  ticktext: ['-5', '-1', '1', '5']
+                },
+                yaxis: {
+                  range: [-8, 10],
+                  tickvals: [-5, 2, 5],
+                  ticktext: ['-5', '2', '5']
+                },
                 annotations: [...annotations2],
                 shapes: shapes2
               }
@@ -340,7 +389,7 @@ export function drawContoursSep2() {
         showactive: true,
         bgcolor: 'gainsboro',
         type: 'buttons',
-        x: 0.7,
+        x: 0.53,
         xanchor: 'left',
         y: 0.23,
         yanchor: 'top',
@@ -352,14 +401,14 @@ export function drawContoursSep2() {
     ]
   }
 
-  return { data: [data, data1, trace1], layout, options }
+  return { data: [data, data1, graphFunction], layout, options }
 } // End
 
 export function drawSurfaceSep2() {
-  let xwidth = 16
-  let ywidth = 16
-  let xcenter = 8
-  let ycenter = 8
+  let xwidth = 14
+  let ywidth = 14
+  let xcenter = 7
+  let ycenter = 7
   let ysteps = 40
   let xsteps = 40
   let center = {
@@ -380,8 +429,8 @@ export function drawSurfaceSep2() {
     type: 'surface',
 
     showscale: false, // not show colorbar
-    colorscale: 'Blues',
-    //reversescale: true,
+    colorscale: 'Earth',
+    reversescale: true,
 
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
     // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
@@ -470,7 +519,7 @@ export function drawSurfaceSep2() {
         tickmode: 'linear',
         tick0: 0,
         dtick: 10,
-        range: [-10, 10]
+        range: [-20, 20]
       }
     }
   }
