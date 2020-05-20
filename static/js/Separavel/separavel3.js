@@ -1,5 +1,5 @@
 import {
-  getDataSurface,
+  getDataSurfaceWithCorner,
   //   layout,
   options
 } from '@/static/js/Plotly/plotly-config.js'
@@ -7,20 +7,27 @@ import {
 export function drawSurfaceSep3() {
   let xwidth = 30
   let ywidth = 30
-  let xcenter = 25 //Math.log(2)
-  let ycenter = 15 //-1.5
+  let xcorner = 25 //Math.log(2)
+  let ycorner = 15 //-1.5
   let ysteps = 40
   let xsteps = 40
-  let center = {
-    x: xcenter,
-    y: ycenter
+  let corner = {
+    x: xcorner,
+    y: ycorner
   }
 
   function funct(x, y) {
     return 3 * y + y * y - 2 * x + Math.exp(x)
   }
 
-  let dat = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  let dat = getDataSurfaceWithCorner(
+    funct,
+    corner,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
 
   let data = {
     x: dat.x,
@@ -136,20 +143,27 @@ export function drawSurfaceSep3() {
 export function drawContoursSep3() {
   let xwidth = 40 //16
   let ywidth = 20 //10
-  let xcenter = 35 //12
-  let ycenter = 10 //6.5
+  let xcorner = 35 //12
+  let ycorner = 10 //6.5
   let ysteps = 50
   let xsteps = 50
-  let center = {
-    x: xcenter,
-    y: ycenter
+  let corner = {
+    x: xcorner,
+    y: ycorner
   }
 
   function funct(x, y) {
     return 3 * y + y * y - 2 * x + Math.exp(x)
   }
 
-  let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  let info = getDataSurfaceWithCorner(
+    funct,
+    corner,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
 
   let data = {
     x: info.x,

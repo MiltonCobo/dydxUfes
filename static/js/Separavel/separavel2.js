@@ -1,5 +1,5 @@
 import {
-  getDataSurface,
+  getDataSurfaceWithCorner,
   //   layout,
   options
 } from '@/static/js/Plotly/plotly-config.js'
@@ -7,20 +7,27 @@ export function drawContoursSep2() {
   let c = 15
   let xwidth = 30
   let ywidth = 30
-  let xcenter = c
-  let ycenter = c
+  let xcorner = c
+  let ycorner = c
   let ysteps = 80
   let xsteps = 80
-  let center = {
-    x: xcenter,
-    y: ycenter
+  let corner = {
+    x: xcorner,
+    y: ycorner
   }
 
   function funct(x, y) {
     return y * y * y - 3 * y * y - x * x * x - x //3*y +y*y-2*x+Math.exp(x);
   }
 
-  let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  let info = getDataSurfaceWithCorner(
+    funct,
+    corner,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
 
   let data = {
     x: info.x,
@@ -118,17 +125,17 @@ export function drawContoursSep2() {
 
   xwidth = 2.2
   ywidth = 2.03
-  xcenter = 1.1 //to draw better corner
-  ycenter = 0 // this is not center, left-bottom corner
+  xcorner = 1.1 //to draw better corner
+  ycorner = 0 // this is not center, left-bottom corner
 
   ysteps = 80
   xsteps = 80
-  center = {
-    x: xcenter,
-    y: ycenter
+  corner = {
+    x: xcorner,
+    y: ycorner
   }
 
-  info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  info = getDataSurfaceWithCorner(funct, corner, xwidth, ywidth, xsteps, ysteps)
   let graphFunction = {
     x: info.x,
     y: info.y,
@@ -407,20 +414,27 @@ export function drawContoursSep2() {
 export function drawSurfaceSep2() {
   let xwidth = 14
   let ywidth = 14
-  let xcenter = 7
-  let ycenter = 7
+  let xcorner = 7
+  let ycorner = 7
   let ysteps = 40
   let xsteps = 40
-  let center = {
-    x: xcenter,
-    y: ycenter
+  let corner = {
+    x: xcorner,
+    y: ycorner
   }
 
   function funct(x, y) {
     return y * y * y - 3 * y * y - x * x * x - x
   }
 
-  let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  let info = getDataSurfaceWithCorner(
+    funct,
+    corner,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
 
   let data = {
     x: info.x,

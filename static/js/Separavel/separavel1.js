@@ -1,5 +1,5 @@
 import {
-  getDataSurface,
+  getDataSurfaceWithCenter,
   //   layout,
   options
 } from '@/static/js/Plotly/plotly-config.js'
@@ -7,8 +7,8 @@ import {
 export function drawSurfaceSep1() {
   let xwidth = 14
   let ywidth = 14
-  let xcenter = xwidth / 2
-  let ycenter = (ywidth - 2) / 2
+  let xcenter = 0 //xwidth / 2
+  let ycenter = 1 // (ywidth - 2) / 2
   let ysteps = 40
   let xsteps = 40
   let center = {
@@ -20,7 +20,14 @@ export function drawSurfaceSep1() {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
   }
 
-  let info = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  let info = getDataSurfaceWithCenter(
+    funct,
+    center,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
 
   let data = {
     x: info.x,
@@ -48,7 +55,7 @@ export function drawSurfaceSep1() {
         usecolormap: true,
         start: -200,
         end: 200,
-        size: 5,
+        size: 10,
         //color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -134,10 +141,10 @@ export function drawSurfaceSep1() {
 //-------------------------------------------------------------------------
 
 export function drawContoursSep1() {
-  let xwidth = 10
-  let ywidth = 10
-  let xcenter = xwidth / 2
-  let ycenter = (ywidth - 2) / 2
+  let xwidth = 14
+  let ywidth = 14
+  let xcenter = 0 //xwidth / 2
+  let ycenter = 1 // (ywidth - 2) / 2
   let ysteps = 30
   let xsteps = 30
   let center = {
@@ -149,7 +156,14 @@ export function drawContoursSep1() {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
   }
 
-  let info = getDataSurface(func, center, xwidth, ywidth, xsteps, ysteps)
+  let info = getDataSurfaceWithCenter(
+    func,
+    center,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
 
   let data0 = {
     x: info.x,
@@ -207,12 +221,12 @@ export function drawContoursSep1() {
   }
 
   let xx = []
-  let maxIter = 10
+  let maxIter = 20
   xx[0] = -2
   for (let i = 1; i < maxIter; i++) {
     xx[i] = xx[i - 1] + 0.02
   }
-  let width = 1.5 - xx[maxIter - 1]
+  let width = 2.6 - xx[maxIter - 1]
   let steps = 20
   let stepsize = width / steps
   for (let i = 0; i < steps - 1; i++) {

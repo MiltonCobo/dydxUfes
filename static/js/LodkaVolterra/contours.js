@@ -1,5 +1,5 @@
 import {
-  getDataSurface,
+  getDataSurfaceWithCorner,
   layout,
   options
 } from '@/static/js/Plotly/plotly-config.js'
@@ -19,7 +19,7 @@ export function volterraContours() {
   let ywidth = 160
   let xsteps = 40
   let ysteps = 40
-  let center = { x: 0, y: 0 }
+  let corner = { x: 0, y: 0 }
 
   function funct(x, y) {
     return -c * Math.log(x) + d * x - a * Math.log(y) + b * y + 46
@@ -29,7 +29,14 @@ export function volterraContours() {
     return -c1 * Math.log(x) + d1 * x - a1 * Math.log(y) + b1 * y + 46
   }
 
-  let data = getDataSurface(funct, center, xwidth, ywidth, xsteps, ysteps)
+  let data = getDataSurfaceWithCorner(
+    funct,
+    corner,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
 
   data.type = 'contour'
   let layout0 = Object.assign({}, layout)
@@ -58,7 +65,14 @@ export function volterraContours() {
     return -c1 * Math.log(x) + d1 * x - a1 * Math.log(y) + b1 * y + 46
   }
 
-  let data1 = getDataSurface(funct_1, center, xwidth, ywidth, xsteps, ysteps)
+  let data1 = getDataSurfaceWithCorner(
+    funct_1,
+    corner,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
   data1.type = 'contour'
   data1.visible = false
   data1.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
