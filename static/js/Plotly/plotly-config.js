@@ -41,33 +41,23 @@ export let layout = {
   scene: {
     xaxis: {
       showlegend: true,
-      tickmode: 'linear',
       title: { text: 'x' },
-      //range: [0, 6],
-      tick0: 0,
-      dtick: null, //xwidth * 0.2
       tickmode: 'auto',
-      nticks: 4
-      //fixedrange: true
+      nticks: 5
     },
     yaxis: {
       showlegend: true,
-      tickmode: 'linear',
-      title: { text: 'y' },
-      //range: [0,10],
-      tick0: 0,
-      dtick: null, // ywidth * 0.2
       tickmode: 'auto',
-      nticks: 4
-
-      // fixedrange: true
+      title: { text: 'y' },
+      autorange: true,
+      nticks: 5
     },
     zaxis: {
       showlegend: true,
       tickmode: 'auto',
       nticks: 5,
       title: { text: 'z' },
-      range: null //[zMin, zMax]
+      autorange: true
     },
     camera: {
       eye: {
@@ -82,7 +72,7 @@ export let layout = {
   dragmode: true,
   showlegend: false,
   hovermode: false,
-  autosize: false,
+  autosize: true,
   width: null,
   height: null
 }

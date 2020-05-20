@@ -44,11 +44,11 @@ export function drawSurfaceSep1() {
       z: {
         show: true,
         // autocontour: true,
-        // ncontours: 80,
+        // ncontours: 200,
         usecolormap: true,
-        start: -10,
-        end: 30,
-        size: 2,
+        start: -200,
+        end: 200,
+        size: 5,
         //color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -59,9 +59,11 @@ export function drawSurfaceSep1() {
       },
       y: {
         show: true,
-        start: -6,
-        end: 6,
-        size: 0.5,
+        autocontour: true,
+        ncontours: 40,
+        // start: -6,
+        // end: 6,
+        // size: 0.5,
         color: 'lightblue',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -69,9 +71,11 @@ export function drawSurfaceSep1() {
       },
       x: {
         show: true,
-        start: -5,
-        end: 5,
-        size: 0.5,
+        autocontour: true,
+        ncontours: 40,
+        // start: -5,
+        // end: 5,
+        // size: 0.5,
         color: 'lightgreen',
         highlightcolor: 'red',
         highlightwidth: 16,
@@ -85,24 +89,28 @@ export function drawSurfaceSep1() {
     plot_bgcolor: 'gainsboro',
     scene: {
       xaxis: {
-        showlegend: false,
-        tickmode: 'linear',
-        //range: [0, 6],
+        showlegend: true,
+        title: 'x',
+        tickmode: 'auto',
         tick0: 0,
         dtick: 1,
-        nticks: 4
+        nticks: 7
         //fixedrange: true
       },
       yaxis: {
-        tickmode: 'linear',
-        //range: [0,10],
-        tick0: 0,
-        dtick: 2,
-        nticks: 3,
-        fixedrange: true
+        showlegend: true,
+        title: 'y',
+        tickmode: 'auto',
+
+        nticks: 7
       },
       zaxis: {
-        range: [-15, 20]
+        showlegend: true,
+        title: 'z',
+        //autorange: true,
+        tickmode: 'auto',
+        nticks: 10,
+        range: [-200, 200]
       },
       camera: {
         eye: {
