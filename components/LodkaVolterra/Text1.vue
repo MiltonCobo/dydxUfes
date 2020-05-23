@@ -8,15 +8,15 @@
     capturados pelos pescadores (tubarões, arraias, etc) nos portos de Fiume,
     Trieste e Veneza no período de 1914 a 1923. Ele observou que tal proporção
     era maior durante e imediatamente após a guerra, quando a pesca estava
-    severamente restrita. D'Ancona concluiu que a dinâmica predador-presa estava
-    mais próxima do seu equilíbrio natural neste período e que era a pesca que
-    alterava este equilíbrio, favorecendo de alguma forma o predador. D'Ancona
-    era casado com uma das filhas do destacado matemático italiano Vito
-    Volterra. Naquele momento não existia nenhuma explicação biológica ou
-    ecológica para este fenômeno e D'Ancona perguntou ao Volterra se ele podería
-    elaborar um modelo matemático para o mesmo. Em apenas alguns meses Volterra
-    elaborou varios modelos, o mais simple dos quais será abordado aqui. Ele é
-    conhecido como
+    minguada. D'Ancona concluiu que a dinâmica predador-presa estava mais
+    próxima do seu equilíbrio natural neste período e que era a pesca que
+    alterava este equilíbrio, prejudicando de alguma forma mais os predadores
+    que suas presas. D'Ancona era casado com uma das filhas do destacado
+    matemático italiano Vito Volterra. Naquele momento não existia nenhuma
+    explicação biológica ou ecológica para este fenômeno e D'Ancona perguntou ao
+    Volterra se ele podería elaborar um modelo matemático para o mesmo. Em
+    apenas alguns meses Volterra elaborou varios modelos, o mais simple dos
+    quais será abordado aqui. Ele é conhecido como
 
     <a
       href="https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations"

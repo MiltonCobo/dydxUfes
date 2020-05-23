@@ -1,68 +1,53 @@
 <template>
-  <div id="mathjax">
+  <div>
     <v-container fluid>
       <v-row>
-        <h2 style="color:brown; margin-bottom:0.1cm;">
-          As equações de Lotka-Volterra
-        </h2>
-        <v-btn
-          @click="count = count + 1"
-          class="mx-2"
-          fab
-          large
-          absolute
-          top
-          text
-          right
-        >
-          <v-icon class="brown--text" large>mdi-chevron-right</v-icon>
-        </v-btn>
+        <v-col>
+          <h2 style="color:brown;">
+            As equações de Lotka-Volterra
+            <v-btn @click="count++" fab large absolute text right>
+              <v-icon style="color:brown;" large>mdi-chevron-right</v-icon>
+            </v-btn>
+          </h2>
+        </v-col>
       </v-row>
-      <hr style="color:brown;margin-bottom:0.5cm;" />
-
-      <v-spacer />
+      <v-divider style="margin-bottom:0.5cm;" />
       <v-row>
-        <transition name="fade">
-          <div key="1" v-if="updateText == 0"><Text1 /></div>
-          <div key="2" v-else-if="updateText == 1"><Text2 /></div>
-          <div key="3" v-else-if="updateText == 2"><Text3 /></div>
-          <div key="4" v-else-if="updateText == 3"><Text4 /></div>
-          <div key="5" v-else><Text5 /></div>
-        </transition>
+        <v-col>
+          <transition name="fade">
+            <div key="1" v-if="updateText == 0"><Text1 /></div>
+            <div key="2" v-else-if="updateText == 1"><Text2 /></div>
+            <div key="3" v-else-if="updateText == 2"><Text3 /></div>
+            <div key="4" v-else-if="updateText == 3"><Text4 /></div>
+            <div key="5" v-else><Text5 /></div>
+          </transition>
+
+          <v-btn @click="count = count + 9" fab large text absolute bottom left>
+            <v-icon style="color:brown;" large>mdi-chevron-left</v-icon>
+          </v-btn>
+
+          <v-spacer />
+          <v-btn @click="count++" fab large text absolute bottom right>
+            <v-icon style="color:brown;" large>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-col>
       </v-row>
 
-      <v-row>
-        <v-btn
-          @click="count = count + 9"
-          class="mx-2"
-          fab
-          large
-          text
-          absolute
-          bottom
-          left
-        >
-          <v-icon class="brown--text" large>mdi-chevron-left</v-icon>
-        </v-btn>
+      <!-- <v-row>
+        <v-col>
+          <v-btn @click="count = count + 9" fab large text absolute bottom left>
+            <v-icon style="color:brown;" large>mdi-chevron-left</v-icon>
+          </v-btn>
 
-        <v-spacer />
-        <v-btn
-          @click="count++"
-          class="mx-2"
-          fab
-          large
-          text
-          absolute
-          bottom
-          right
-        >
-          <v-icon class="brown--text" large>mdi-chevron-right</v-icon>
-        </v-btn>
-      </v-row>
+          <v-spacer />
+          <v-btn @click="count++" fab large text absolute bottom right>
+            <v-icon style="color:brown;" large>mdi-chevron-right</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row> -->
     </v-container>
   </div>
 </template>
-top :style="{ left: '0%', top: '50%' }" -->
 <script>
 import Text1 from '../../components/LodkaVolterra/Text1'
 import Text2 from '../../components/LodkaVolterra/Text2'

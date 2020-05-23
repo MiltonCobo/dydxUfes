@@ -141,12 +141,12 @@ export function drawSurfaceSep3() {
 } // End
 
 export function drawContoursSep3() {
-  let xwidth = 40 //16
-  let ywidth = 20 //10
-  let xcorner = 35 //12
-  let ycorner = 10 //6.5
-  let ysteps = 50
-  let xsteps = 50
+  let xwidth = 45
+  let ywidth = 25
+  let xcorner = Math.log(2) + 40
+  let ycorner = -1.5 + 15
+  let ysteps = 80
+  let xsteps = 80
   let corner = {
     x: xcorner,
     y: ycorner
@@ -173,10 +173,9 @@ export function drawContoursSep3() {
     visible: true,
     // xaxis: 'x',
     // yaxis: 'y',
-    showscale: false, // not show colorbar
-    colorscale: 'Earth',
-    // colorscale: 'RdBu',
-    // reversescale: true,
+    showscale: true, // not show colorbar
+    colorscale: 'Earth', //'RdBu', //
+    //reversescale: true,
 
     // line: {
     //   smoothing: 1.3,
@@ -188,9 +187,11 @@ export function drawContoursSep3() {
 
     contours: {
       //coloring: 'none',
-      start: -2,
-      end: 100,
-      size: 4,
+      autocontour: true,
+      ncontours: 150,
+      // start: -2,
+      // end: 100,
+      // size: 4,
       opacity: 1
     }
   }
@@ -207,7 +208,7 @@ export function drawContoursSep3() {
     //colorscale: 'Earth',
 
     line: {
-      smoothing: 1.3,
+      smoothing: 1,
       shape: 'spline',
       width: 2.2,
       color: 'black',
@@ -223,6 +224,7 @@ export function drawContoursSep3() {
   }
 
   let y2 = info.y.map(chang) // data2 so plota mitade da figura...
+
   function chang(y) {
     if (y <= -1.5) {
       y = -1.5

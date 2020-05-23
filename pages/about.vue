@@ -26,8 +26,8 @@
     </v-dialog>
     <!-- </div> -->
 
-    <v-container style="width:100%" fluid>
-      <v-row wrap>
+    <v-container fluid>
+      <v-row>
         <v-col
           sm="12"
           md="8"
@@ -44,15 +44,14 @@
           md="4"
           style="position: relative; height:100%; width:100%"
         >
-          <v-card style="width:100%" class="green lighten-4">
+          <v-card class="green lighten-4">
             <v-card-title class="blue lighten-4 font-weight-bold"
               >Exercício:</v-card-title
             >
             <v-card-text id="mathjax">
               Resolva o problema de valor inicial $$\color{green} {\frac{dy}{dx}
               = \frac{1+ 3x^2}{3y^2-6y}, \quad y(0) =1 }$$ TEXTO EM MAIÚSCULAS
-              COM ROCK-SALT Nesse período temos escrito em portugués para não
-              crer mais em cocô.... Lorem ipsum dolor
+              COM NEUCHA cursiva....
             </v-card-text>
           </v-card>
         </v-col>

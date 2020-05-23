@@ -29,7 +29,7 @@ export default function goldenRatio(p) {
   let slider
 
   p.setup = function() {
-    let cnv = p.createCanvas(600, 600) //(p.windowWidth / 2, p.windowHeight / 2)
+    let cnv = p.createCanvas(520, 520) //(p.windowWidth / 2, p.windowHeight / 2)
     cnv.parent('#container')
 
     p.angleMode(p.RADIANS)
@@ -63,10 +63,10 @@ export default function goldenRatio(p) {
     button.style('font-size', '18px')
 
     let xpos = 0.1
-    angleTexto.position(0.4 * p.width, 0.1 * p.height)
-    button.position(xpos * p.width, 0.82 * p.height)
-    inputAngle.position(xpos * p.width, 0.92 * p.height)
-    slider.position(xpos * p.width, p.height)
+    angleTexto.position(0.6 * p.width, 0.08 * p.height)
+    button.position(xpos * p.width, 0.75 * p.height)
+    inputAngle.position(xpos * p.width, 0.85 * p.height)
+    slider.position(xpos * p.width, 0.94 * p.height)
   }
 
   function updateAngle() {

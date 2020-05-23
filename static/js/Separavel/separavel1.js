@@ -309,9 +309,24 @@ export function drawContoursSep1() {
     },
     {
       visible: true,
+      text: '$ y = 1 + \\sqrt{x^3+2x^2+2x+4}, x \\ge -2 $',
+      ax: -45, //tail of arrow
+      ay: -98,
+      ayref: 'pixel', // refers to axes
+      axref: 'pixel',
+      arrowcolor: 'red',
+      font: {
+        size: 18,
+        color: 'red'
+      },
+      x: 0,
+      y: 3 // head af arrow
+    },
+    {
+      visible: true,
       text: '$ y = 1 - \\sqrt{x^3+2x^2+2x+4}, x \\ge -2 $',
-      ax: -65, //tail of arrow
-      ay: 45,
+      ax: -45, //tail of arrow
+      ay: 90,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
       arrowcolor: 'green',
@@ -337,21 +352,7 @@ export function drawContoursSep1() {
       x: 0,
       y: -1 // head af arrow
     },
-    {
-      visible: true,
-      text: '$ y = 1 + \\sqrt{x^3+2x^2+2x+4}, x \\ge -2 $',
-      ax: -65, //tail of arrow
-      ay: -45,
-      ayref: 'pixel', // refers to axes
-      axref: 'pixel',
-      arrowcolor: 'red',
-      font: {
-        size: 18,
-        color: 'red'
-      },
-      x: 0,
-      y: 3 // head af arrow
-    },
+
     {
       visible: true,
       text: '$ (0,3) $',
