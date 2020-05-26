@@ -160,16 +160,15 @@ function plotMosquitosSol() {
 
     annotations: [
       {
-        text: '$p(0)=0.9$',
+        text: '$p(0)=0.9,\\, p(3.2)=0$',
         xref: 'pixel',
         yref: 'pixel',
-        font: { size: 18, color: 'red' },
+        font: { size: 16, color: 'red' },
         arrowcolor: 'red',
-
-        ax: 30,
-        ay: -40,
-        x: 6,
-        y: -6
+        ax: 80,
+        ay: -20,
+        x: 3.2,
+        y: 0
       },
       {
         text: '$p(0)= a_0\\approx 1.01, \\forall t.$',
