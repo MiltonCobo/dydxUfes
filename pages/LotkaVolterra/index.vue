@@ -69,6 +69,13 @@ export default {
     }
   },
   mounted() {
+    document.addEventListener('keydown', e => {
+      if (e.keyCode == 39) {
+        this.count++
+      } else if (e.keyCode == 37) {
+        this.count += 9
+      } else return
+    })
     if (!window.MathJax) {
       const script = document.createElement('script')
       //script.onload = this.onScriptLoaded
@@ -80,6 +87,14 @@ export default {
       //this.onScriptLoaded()
     }
   },
+  methods: {
+    // onKeyDown(e) {
+    //   if (e.keyCode == 39) {
+    //     console.log('tecla')
+    //     this.count++
+    //   }
+    // }
+  },
   updated() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
@@ -90,12 +105,12 @@ export default {
   },
   head() {
     return {
-      title: 'Lodka-Volterra',
+      title: 'Lotka-Volterra',
       meta: [
         {
-          hid: 'description lodka-volterra',
-          name: 'Lodka-Volterra',
-          content: 'Lodka-Volterra www.dydx.ufes.br do DMAT/UFES'
+          hid: 'description lotka-volterra',
+          name: 'Lotka-Volterra',
+          content: 'Lotka-Volterra www.dydx.ufes.br do DMAT/UFES'
         }
       ],
       link: [

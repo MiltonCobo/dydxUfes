@@ -107,9 +107,9 @@ function plotMosquitosSol() {
   const a0 = 0.7 / Math.log(2)
   const inc = 0.23
   const iter = 14
-  const step = 0.01
-  const xwidth = 8.5
-  const initial = -0.5
+  const step = 0.05
+  const xwidth = 30
+  const initial = -20
 
   let params = []
   var param
@@ -146,15 +146,15 @@ function plotMosquitosSol() {
     height: 500,
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
-      range: [initial, xwidth],
-      tickvals: [0, 2, 3.2, 4, 6],
-      ticktext: ['0', '2', '3.2', '4', '6'],
+      range: [-2, 10],
+      tickvals: [-10, -2, 0, 2, 3.2, 5, 10],
+      ticktext: ['-10','-2','0', '2', '3.2', '5', '10'],
       title: "<span style= 'color: Brown'> tempo (semanas) </span>"
     },
     yaxis: {
-      range: [-20, 20],
-      tickvals: [-20, -10, 0, 0.9, 10, 20],
-      ticktext: ['-20', '10', '0', '0.9', '10', '20'],
+      range: [-2, 3],
+      tickvals: [-5, -2, 0, 0.9, 2, 5],
+      ticktext: ['-5', '-2', '0', '0.9', '2', '5'],
       title: "<span style= 'color: Brown'> #mosquitos (milhões) </span>"
     },
 

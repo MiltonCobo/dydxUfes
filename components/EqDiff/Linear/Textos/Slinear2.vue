@@ -50,7 +50,7 @@
       </li>
       <li>
         se ${(a = -\frac{4}{5})}$ então a solução se torna $${y(t)=(\frac{8}{5})
-        \sin(t) - (\frac{4}{5}) \cos(t)} $$ que permance
+        \sin(t) - (\frac{4}{5}) \cos(t)} $$ que permanece
         <span style="color:var(--mjx-green)"> limitada</span>
         quando $t\to\infty.$ Isto significa que o módulo de $y(t)$ nunca é maior
         que um certo número $M>0, $ i.e., $| y(t) | < M \textrm{ para todo }

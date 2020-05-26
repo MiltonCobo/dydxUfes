@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row>
         <v-col justify-start xs="12" md="6">
-          As soluções das equações de Lodka-Volterra tem uma característica
+          As soluções das equações de Lotka-Volterra tem uma característica
           importante:
           <span style="color:  var(--mjx-green);">
             O valor médio da população de atuns, em qualquer trajetória, é $c/d$

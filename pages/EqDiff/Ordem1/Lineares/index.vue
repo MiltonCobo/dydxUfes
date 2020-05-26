@@ -65,6 +65,13 @@ export default {
     }
   },
   mounted() {
+    document.addEventListener('keydown', e => {
+      if (e.keyCode == 39) {
+        this.count++
+      } else if (e.keyCode == 37) {
+        this.count += 2
+      } else return
+    })
     if (!window.MathJax) {
       const script = document.createElement('script')
       // script.onload = this.onScriptLoaded

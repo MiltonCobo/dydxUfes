@@ -180,9 +180,9 @@ export default {
           route: '/about'
         },
         {
-          title: 'Lodka-Volterra',
+          title: 'Lotka-Volterra',
           icon: 'mdi-book-open-page-variant',
-          route: '/LodkaVolterra'
+          route: '/LotkaVolterra'
         }
       ]
     }
