@@ -14,11 +14,15 @@
           $b$ e $d$ dependem apenas da dinâmica interna predador-presa enquanto
           que $a$ e $c$ consideram fatores exteriores, como a pesca, que afetam
           o taxa de crescimento dos atuns e a taxa de mortalidade dos tubarões.
-          <br /> </v-col
-      ></v-row>
+          <br />
+          As soluções $(x(t), y(t))$ das equações de Lodka-Volterra moram nas
+          <span style="color:var(--mjx-green)">curvas de nível</span> da função
+          $${V(x,y)=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$
+        </v-col></v-row
+      >
 
       <v-row align="center">
-        <v-col align="center" xs="12" style="min-width:620px">
+        <v-col align="center" xs="12" style="min-width:660px">
           <client-only>
             <vue-plotly
               v-if="startChart"
@@ -29,14 +33,11 @@
           </client-only>
         </v-col>
         <v-col xs="12">
-          As soluções $(x(t), y(t))$ das equações de Lodka-Volterra moram nas
-          <span style="color:var(--mjx-green)">curvas de nível</span> da função
-          $${V(x,y)=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$ Para ver isto
-          eliminamos o tempo nas equações fazendo $${ { dy/dt\over {dx/dt}} =
-          {dy\over dx} = \frac{y(d\,x-c)}{x(a-b\,y)} }$$ e desta forma obtemos
-          uma equação diferencial, numa variável, do tipo "separável": \[{
-          \frac{a-b\, y}{y} dy = \frac{d\, x-c}{x}\, dx } \] e e por integração
-          chegamos na chamada solução
+          Para ver isto eliminamos o tempo nas equações fazendo $${ { dy/dt\over
+          {dx/dt}} = {dy\over dx} = \frac{y(d\,x-c)}{x(a-b\,y)} }$$ e desta
+          forma obtemos uma equação diferencial, numa variável, do tipo
+          "separável": \[{ \frac{a-b\, y}{y} dy = \frac{d\, x-c}{x}\, dx } \] e
+          e por integração chegamos na chamada solução
           <span style="color:var(--mjx-green)">implícita</span>
           $${ V=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$
           <br />
