@@ -36,11 +36,12 @@
           tubarões aumenta e a média dos atuns diminui.
 
           <br />
-          Observe na figura o efeito de diminuir $a$ de $5.3$ para $a'=3.6$ e
-          aumentar $c=4.9$ para $c'=7.5$. Note que como todas as soluções são
-          periódicas, em certos momentos há muitas presas para poucos predadores
-          e isto provoca o crescimento da população de predadores até termos a
-          situação oposta, muito predador para pouca presa e o ciclo se repete.
+          Observe na figura anterior o efeito de diminuir $a$ de $5.3$ para
+          $a'=3.6$ e aumentar $c=4.9$ para $c'=7.5$ . Note que como todas as
+          soluções são periódicas, em certos momentos há muitas presas para
+          poucos predadores e isto provoca o crescimento da população de
+          predadores até termos a situação oposta, muito predador para pouca
+          presa e o ciclo se repete.
           <br />
           As equações de Lotka-Volterra podem ser sofisticadas de várias formas,
           por exemplo introduzindo mais especies interdependentes.
