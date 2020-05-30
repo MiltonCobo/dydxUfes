@@ -99,12 +99,12 @@ export default {
   },
   head() {
     return {
-      title: 'Lodka-Volterra',
+      title: 'Eq. Linear de 1a ordem',
       meta: [
         {
-          hid: 'description lodka-volterra',
-          name: 'Lodka-Volterra',
-          content: 'Lodka-Volterra www.dydx.ufes.br do DMAT/UFES'
+          hid: 'description eq. linear de primeira ordem',
+          name: 'eq. linear',
+          content: 'eq. linear de primeira ordem www.dydx.ufes.br do DMAT/UFES'
         }
       ],
       link: [

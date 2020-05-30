@@ -72,14 +72,14 @@ export default {
   },
   head() {
     return {
-      title: 'Eq. Diferenciais Lineares',
-      meta: [
-        {
-          hid: 'Eq. Diferenciais Lineares',
-          name: 'Eq. Diferenciais Lineares',
-          content: 'q. Diferenciais Lineares'
-        }
-      ],
+      // title: 'Eq. Diferenciais Lineares',
+      // meta: [
+      //   {
+      //     hid: 'Eq. Diferenciais Lineares',
+      //     name: 'Eq. Diferenciais Lineares',
+      //     content: 'q. Diferenciais Lineares'
+      //   }
+      // ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {

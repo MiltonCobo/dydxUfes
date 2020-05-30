@@ -98,12 +98,12 @@ export default {
   },
   head() {
     return {
-      title: 'Eq Separável',
+      title: 'Eq. Separável',
       meta: [
         {
           hid: 'description Eq Separável',
-          name: 'Eq Separável',
-          content: 'LEq Separável www.dydx.ufes.br do DMAT/UFES'
+          name: 'Eq. Separável',
+          content: 'Eq. diferencial separável www.dydx.ufes.br do DMAT/UFES'
         }
       ]
       // script: [

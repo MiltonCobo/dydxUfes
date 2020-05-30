@@ -39,14 +39,14 @@ export default {
   },
   head() {
     return {
-      title: 'Eq. Diferenciais Lineares',
-      meta: [
-        {
-          hid: 'Eq. Diferenciais Lineares',
-          name: 'Eq. Diferenciais Lineares',
-          content: 'q. Diferenciais Lineares'
-        }
-      ],
+      // title: 'Eq. Separável',
+      // meta: [
+      //   {
+      //     hid: 'Eq. Separável',
+      //     name: 'Eq. Separável',
+      //     content: 'Eq. Separável de primeira ordem'
+      //   }
+      // ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {

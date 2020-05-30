@@ -45,14 +45,14 @@ export function volterraSurface2() {
   let layout0 = Object.assign({}, layout)
   //   let layout0 = {}
   layout0.autosize = false
-  layout0.width = 700
-  layout0.height = 700 /* set size of plot */
+  layout0.width = 620
+  layout0.height = 620 /* set size of plot */
   data.colorscale = 'Earth'
   layout0.title =
     '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'
 
   data.contours.z.start = 15 /* set manually because zMax=Infinity */
-  data.contours.z.end = 30
+  data.contours.z.end = 35
   data.contours.z.size = 1
   // data.contours.usecolormap = true // this is done in options
   data.visible = true
@@ -100,8 +100,8 @@ export function volterraSurface2() {
 
   let annotations1 = {
     text: 'mínimo=' + zMin.toFixed(1).toString(),
-    ax: 50, //tail of arrow
-    ay: 0,
+    ax: 40, //tail of arrow
+    ay: +20,
     visible: true,
     //   ayref: 'pixel', // refers to axes
     //   axref: 'pixel',
@@ -121,8 +121,8 @@ export function volterraSurface2() {
 
   let annotations2 = {
     text: 'mínimo=' + zMin1.toFixed(1).toString(),
-    ax: 50, //tail of arrow
-    ay: 0,
+    ax: 40, //tail of arrow
+    ay: 20,
     visible: true,
     xanchor: 'left',
 
@@ -142,17 +142,18 @@ export function volterraSurface2() {
   layout0.scene = {
     camera: {
       eye: {
-        x: 1.5,
-        y: 1,
-        z: 1
+        x: 1.25,
+        y: 1.25,
+        z: 1.25
       }
+      //projection: { type: 'orthographic' }
     },
     xaxis: {
       title: 'x',
       showlegend: true,
       tickmode: 'linear',
       range: [0, 160],
-      tick0: 0,
+      tick0: 20,
       dtick: 20
       // tickmode: 'auto',
       // nticks: 4
@@ -162,7 +163,7 @@ export function volterraSurface2() {
       title: 'y',
       tickmode: 'linear',
       range: [0, 160],
-      tick0: 0,
+      tick0: 20,
       dtick: 20
       // tickmode: 'auto',
       // nticks: 4
@@ -170,7 +171,10 @@ export function volterraSurface2() {
     },
     zaxis: {
       title: 'z',
-      range: [15, 36]
+      tickmode: 'linear',
+      tick0: 15,
+      dtick: 5,
+      range: [10, 38]
       //fixedrange: true
     }
   }
@@ -187,7 +191,7 @@ export function volterraSurface2() {
             {
               title:
                 '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$',
-              scene: { annotations: [annotations1] }
+              scene: { annotations: [annotations1], zaxis: { range: [10, 38] } }
               //   shapes: shapes1
             }
           ],
@@ -204,7 +208,7 @@ export function volterraSurface2() {
             {
               title:
                 '$\\color{green}{V(x,y)=0.14\\, x - 7.5\\, \\ln(x) +0.12\\, y-3.6\\,\\ln(y)}$',
-              scene: { annotations: [annotations2] }
+              scene: { annotations: [annotations2], zaxis: { range: [10, 38] } }
               //   shapes: [...shapes3, ...shapes2]
             }
           ],
