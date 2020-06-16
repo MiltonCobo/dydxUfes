@@ -1,5 +1,5 @@
 <template>
-  <v-container class="mathjax">
+  <v-container class="mathjax" fluid>
     <v-row>
       <v-col>
         <h3 style="color:green; margin-top: 0.3cm;">
@@ -68,19 +68,24 @@
           <span style="color:var(--mjx-green)"> se elas existirem. </span>
           <br />
           <br />
-          <v-divider />
-          <h3 style="color:var(--mjx-green)">Teorema:</h3>
-          Considere o polinômio ${p(x)= a_n x^n+ \dots+a_1 x+ a_0}$ onde os
-          coeficientes ${a_0, a_1, \dots,a_n}$ e ${n\gt 1}$ são números
-          inteiros.
-          <br />
-          Então se $p(x)$ tem uma raiz racional ${x=p/q}$ (com $p,q$ sem
-          divisores comuns), então
-          <span style="color:var(--mjx-green)"
-            >$p$ divide a $a_0$ e $q$ divide a $a_n.$
-          </span>
-          <br />
-          <v-divider />
+
+          <v-sheet
+            style="border: 1px green; padding: 2%;"
+            class="green lighten-5"
+          >
+            <h3 style="color:var(--mjx-green)">Teorema:</h3>
+
+            Considere o polinômio ${p(x)= a_n x^n+ \dots+a_1 x+ a_0}$ onde os
+            coeficientes ${a_0, a_1, \dots,a_n}$ e ${n\gt 1}$ são números
+            inteiros.
+            <br />
+            Então se $p(x)$ tem uma raiz racional ${x=p/q}$ (com $p,q$ sem
+            divisores comuns), então
+            <span style="color:var(--mjx-green)"
+              >$p$ divide a $a_0$ e $q$ divide a $a_n.$
+            </span>
+          </v-sheet>
+
           <br />
           Não tentaremos demostrar este resultado nestas notas. É importante
           frisar que $p(x)$ pode não ter nenhuma raiz racional e portanto o

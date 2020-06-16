@@ -6,6 +6,7 @@
           <h2 style="color:brown;">
             Equações separáveis de primeira Ordem
             <v-btn @click="count++" fab large absolute text right>
+              {{ updateText + 1 }} / {{ total }}
               <v-icon style="color:brown" large>chevron_right</v-icon>
             </v-btn>
           </h2>
@@ -18,17 +19,24 @@
             <div key="1" v-if="updateText == 0"><Separavel1 /></div>
             <div key="2" v-else-if="updateText == 1"><Separavel2 /></div>
             <div key="3" v-else="updateText == 2"><Separavel3 /></div>
-            <!-- <div key="4" v-else-if="updateText == 3"><Text4 /></div> -->
-            <!-- <div key="5" v-else><Linear1 /></div> -->
           </transition>
-          <v-btn @click="count += 2" fab large text absolute bottom left>
-            <v-icon style="color:brown;" large>chevron_left</v-icon>
-          </v-btn>
-
-          <v-btn @click="count++" fab large text absolute bottom right>
-            <v-icon style="color:brown;" large>chevron_right</v-icon>
-          </v-btn>
         </v-col>
+      </v-row>
+
+      <v-row>
+        <v-btn @click="count += 2" fab large text absolute bottom left>
+          <v-icon style="color:brown;" large>chevron_left</v-icon>
+          Anterior
+        </v-btn>
+
+        <v-btn large fab absolute bottom style="position:relative; left: 50%;"
+          >{{ updateText + 1 }} / {{ total }}</v-btn
+        >
+
+        <v-btn @click="count++" fab large text absolute bottom right>
+          Seguinte
+          <v-icon style="color:brown;" large>chevron_right</v-icon>
+        </v-btn>
       </v-row>
 
       <!-- <v-row>
@@ -61,7 +69,8 @@ export default {
   },
   data() {
     return {
-      count: 0
+      count: 0,
+      total: 3
     }
   },
   mounted() {

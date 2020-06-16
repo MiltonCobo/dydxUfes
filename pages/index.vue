@@ -1,97 +1,96 @@
 <template>
-  <div>
-    <v-container fluid>
-      <v-row align="center" class="flex-wrap-reverse">
-        <v-col xs="12" md="6" style="min-width:40%">
-          <div>
-            <h2 style="color: salmon;" align="center">
-              O número Aúreo e o Girassol
-            </h2>
-            <v-divider style="margin-bottom:20px;" />
-            <p class="mathjax ColorWheat">
-              Esta animação está relacionada com a distribuição de sementes em
-              algumas flores como o girassol. Na flor do girassol, sementes vão
-              surgindo do centro e, ao mesmo tempo que vão se afastando, vão
-              rodando por um certo ângulo fixado.
-              <br />
-              Na animação espalhamos um certo número de pontos num círculo (as
-              "sementes") espaçados por um mesmo ângulo $ \theta $ e depois
-              afastamos estes pontos do círculo para visualiza-los melhor.
-              Finalmente variamos o ângulo $ \theta $ provocando o movimento da
-              figura (isto pode ser acelerado usando o "slider" embaixo na
-              figura). Consideramos $ \theta $, em radianos, como sendo da forma
-              $ \theta = x \cdot 2\pi $ onde $ x $ é um número real variando no
-              intervalo $ [0,1] $. Quando $ x $ é racional, digamos $ x=p/q $ a
-              figura tem exatamente $ q $ pernas. Por exemplo, quando $ x = 0.25
-              = 1/4 $ a figura tem exatamente $ 4 $ pernas (digite este valor no
-              "input" embaixo da figura).
-            </p>
-          </div>
-        </v-col>
-        <v-col xs="12" md="6" align="center">
-          <!-- <client-only placeholder="carregando..."> -->
-          <div style="position:relative;" ref="container" id="container"></div>
-          <v-spacer />
-          <!-- </client-only> -->
-        </v-col>
-      </v-row>
-      <!-- <v-divider /> -->
-      <v-row>
-        <v-col>
-          <p class="mathjax ColorWheat">
-            Quando $ x $ irracional o número de pernas aumenta com o número de
-            iterações e as figuras ficam mais complicadas. O número de pernas
-            que vão aparecendo depende das aproximações racionais de $ x $. Por
-            exemplo, para $ x= 1/\pi \approx 0.31830... $ o número de pernas é
-            primeiro $ 3 $ e depois $ 22 $. Isso porque $ 1/\pi $ é bem
-            aproximado por $ 1/3 $ e por $ 7/22 $. Voce pode testar estes
-            valores do ângulo no "input" embaixo da figura.
-            <br />
-            A figura mais complicada acontece quando $ x $ é o número irracional
-            $ \varphi = (1+\sqrt{5})/2 \approx 1.6180339... $. Ele é chamado de
-            <span style="color:var(--mjx-color); font-size: 20px;"
-              >número aúreo ou proporção aúrea
-            </span>
-            e pode ser considerado o mais irracional de todos os números
-            irracionais, no sentido de que é o número real com as "piores
-            aproximações" por números racionais.
-            <br />
-            Na verdade há dois números aúreos que são as raizes de $ x^2-x-1 $:
-            $\quad \varphi_1 = {(1+\sqrt{5})\over 2}\,$ e $\,
-            \varphi_2={(1-\sqrt{5})\over 2} $. <br />
-            A primera raiz, que é positiva, é normalmente considerada a razão
-            aúrea. Pode-se verificar fácilmente que $ \varphi_2 = -1/\varphi_1 =
-            1-\varphi_1 \approx -0.6180339 $
+  <v-container fluid>
+    <v-row>
+      <v-col>
+        <h1 style="color: salmon;" align="center">
+          O número Aúreo e o Girassol
+        </h1>
+        <v-divider style="margin-bottom:0.5%;" />
+      </v-col>
+    </v-row>
+    <v-row align="center" class="flex-wrap-reverse">
+      <v-col xs="12" md="6" style="min-width:40%">
+        <p class="mathjax ColorWheat">
+          Esta animação está relacionada com a distribuição de sementes em
+          algumas flores como o girassol. Na flor do girassol, sementes vão
+          surgindo do centro e, ao mesmo tempo que vão se afastando, vão rodando
+          por um certo ângulo fixado.
+          <br />
+          Na animação espalhamos um certo número de pontos num círculo (as
+          "sementes") espaçados por um mesmo ângulo $ \theta $ e depois
+          afastamos estes pontos do círculo para visualiza-los melhor.
+          Finalmente variamos o ângulo $ \theta $ provocando o movimento da
+          figura (isto pode ser acelerado usando o "slider" embaixo na figura).
+          Consideramos $ \theta $, em radianos, como sendo da forma $ \theta = x
+          \cdot 2\pi $ onde $ x $ é um número real variando no intervalo $ [0,1]
+          $. Quando $ x $ é racional, digamos $ x=p/q $ a figura tem exatamente
+          $ q $ pernas. Por exemplo, quando $ x = 0.25 = 1/4 $ a figura tem
+          exatamente $ 4 $ pernas (digite este valor no "input" embaixo da
+          figura).
+        </p>
+      </v-col>
+      <v-col xs="12" md="6" align="center">
+        <!-- <client-only placeholder="carregando..."> -->
+        <div style="position:relative;" ref="container" id="container"></div>
+        <!-- <v-spacer /> -->
+        <!-- </client-only> -->
+      </v-col>
+    </v-row>
 
-            <br />
-            A razão aúrea aparece constantemente em ciências naturais, por
-            exemplo, o formato da flor do girassol aparentemente usa um ângulo
-            muito próximo da proporção aúrea (<a
-              href="https://pt.wikipedia.org/wiki/Propor%C3%A7%C3%A3o_%C3%A1urea"
-              target="_blank"
-            >
-              ver a página de Wikipedia </a
-            >).
+    <v-row>
+      <v-col>
+        <p class="mathjax ColorWheat">
+          Quando $ x $ irracional o número de pernas aumenta com o número de
+          iterações e as figuras ficam mais complicadas. O número de pernas que
+          vão aparecendo depende das aproximações racionais de $ x $. Por
+          exemplo, para $ x= 1/\pi \approx 0.31830... $ o número de pernas é
+          primeiro $ 3 $ e depois $ 22 $. Isso porque $ 1/\pi $ é bem aproximado
+          por $ 1/3 $ e por $ 7/22 $. Voce pode testar estes valores do ângulo
+          no "input" embaixo da figura.
+          <br />
+          A figura mais complicada acontece quando $ x $ é o número irracional $
+          \varphi = (1+\sqrt{5})/2 \approx 1.6180339... $. Ele é chamado de
+          <span style="color:var(--mjx-color); font-size: 20px;"
+            >número aúreo ou proporção aúrea
+          </span>
+          e pode ser considerado o mais irracional de todos os números
+          irracionais, no sentido de que é o número real com as "piores
+          aproximações" por números racionais.
+          <br />
+          Na verdade há dois números aúreos que são as raizes de $ x^2-x-1 $:
+          $\quad \varphi_1 = {(1+\sqrt{5})\over 2}\,$ e $\,
+          \varphi_2={(1-\sqrt{5})\over 2} $. <br />
+          A primera raiz, que é positiva, é normalmente considerada a razão
+          aúrea. Pode-se verificar fácilmente que $ \varphi_2 = -1/\varphi_1 =
+          1-\varphi_1 \approx -0.6180339. $
 
-            <br />
-            Indicamos
-            <a
-              href="https://www.youtube.com/watch?v=sj8Sg8qnjOg&t=448s"
-              target="_blank"
-            >
-              este excelente vídeo,</a
-            >
-            para aqueles que entendem inglês, sobre o assunto no canal de
-            youtube
-            <span style="color: wheat">Numberphile</span>, que infelizmente não
-            tem ainda legendas em português.
-            <br />
-            Em breve iremos explicar mais amplamente este assunto.
-          </p>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+          <br />
+          A razão aúrea aparece constantemente em ciências naturais, por
+          exemplo, o formato da flor do girassol aparentemente usa um ângulo
+          muito próximo da proporção aúrea (<a
+            href="https://pt.wikipedia.org/wiki/Propor%C3%A7%C3%A3o_%C3%A1urea"
+            target="_blank"
+          >
+            ver a página de Wikipedia </a
+          >).
+
+          <br />
+          Indicamos
+          <a
+            href="https://www.youtube.com/watch?v=sj8Sg8qnjOg&t=448s"
+            target="_blank"
+          >
+            este excelente vídeo,</a
+          >
+          para aqueles que entendem inglês, sobre o assunto no canal de youtube
+          <span style="color: wheat">Numberphile</span>, que infelizmente não
+          tem ainda legendas em português.
+          <br />
+          Em breve iremos explicar mais amplamente este assunto.
+        </p>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -198,7 +197,8 @@ export default {
 }
 
 .ColorWheat {
-  --mjx-green: wheat;
+  --mjx-green: #fff9c4; /* yellow lighten-4 */
+  /* wheat; */
 }
 
 .mathjax {

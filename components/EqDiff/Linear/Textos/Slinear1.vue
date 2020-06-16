@@ -1,46 +1,50 @@
 <template>
-  <v-container class="mathjax">
-    <v-row>
-      <v-col>
-    <h3 style="color:green; margin-top: 0.3cm;">
-      Solução:</h3>
-      </v-col>
-    </v-row>
-    <v-divider/>
-    <v-row>
-      <v-col>
-    <div style="margin-top: 0.3cm;">
-      Seja $ p(t) $ a população de mosquitos
-      em tempo $ {t}. $ Para simplificar os números consideramos
-      ${p(t)}$ em milhões e ${t}$ em semanas. Na
-      ausência de predadores, a taxa de crescimento dos mosquitos é dada por
-      ${ p'(t) = r\cdot p(t) }$ onde ${r}\, $ a taxa
-      intrínseca de crescimento. Obtemos que a população de mosquitos cresce
-      como ${ p(t)=p_0\e^{rt} }$ sendo ${p_0=p(0)}$ a
-      população inicial.
-      <br />
-      Por outro lado, a população de mosquitos dobra a cada semana. Isto
-      significa que ${ p(1)=2p(0) = p(0)\e^{r\cdot 1}}, $ de onde
-      concluímos que $ {r=\ln(2) \approx 0.69.}$ Denotaremos por
-      $v$ a taxa de mortalidade dos mosquitos, isto é, $ v=0,1 $ milhões x dia,
-      ou
-      <span style="color:var(--mjx-green)"> $ v= 0.7 $ milhões por semana.</span>
-      <br />
-      A equação diferencial associada é dada por $${\frac{dp}{dt} =
-      (\text{taxa crescimento}) - (\text{taxa de mortalidade}) = r\, p - v . }$$
-      A equação é linear de primeira ordem e o
-      <span style="color:var(--mjx-green)">fator integrante é </span>
-      $ {\mu(t)=\e^{-rt }} $ e portanto,
-      <span style="color:var(--mjx-green)">
-        $$\begin{split} & \e^{-rt}(p'-r\, p) = \frac{d}{dt} ( \e^{-rt} \,p ) =
-        -v\cdot \e^{-rt}\quad {\textrm{e integrando,}} \\ &
-        \e^{-rt}\, p(t) = \frac{v}{r} \e^{-rt} + C \implies p(t) = a_0 + C\cdot
-        \e^{rt}, \end{split} $$  onde ${a_0 = \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ É
-            fácil ver que ${C= (p_0-a_0)}.$ <br />
-      </span>
-    </div>
-      </v-col>
-    </v-row>
+  <div class="mathjax">
+    <v-container fluid>
+      <v-row>
+        <v-col>
+          <h3 style="color:green; margin-top: 0.3cm;">
+            Solução:
+          </h3>
+        </v-col>
+      </v-row>
+      <v-divider />
+      <v-row>
+        <v-col>
+          <div style="margin-top: 0.3cm;">
+            Seja $ p(t) $ a população de mosquitos em tempo $ {t}. $ Para
+            simplificar os números consideramos ${p(t)}$ em milhões e ${t}$ em
+            semanas. Na ausência de predadores, a taxa de crescimento dos
+            mosquitos é dada por ${ p'(t) = r\cdot p(t) }$ onde ${r}\, $ a taxa
+            intrínseca de crescimento. Obtemos que a população de mosquitos
+            cresce como ${ p(t)=p_0\e^{rt} }$ sendo ${p_0=p(0)}$ a população
+            inicial.
+            <br />
+            Por outro lado, a população de mosquitos dobra a cada semana. Isto
+            significa que ${ p(1)=2p(0) = p(0)\e^{r\cdot 1}}, $ de onde
+            concluímos que $ {r=\ln(2) \approx 0.69.}$ Denotaremos por $v$ a
+            taxa de mortalidade dos mosquitos, isto é, $ v=0,1 $ milhões x dia,
+            ou
+            <span style="color:var(--mjx-green)">
+              $ v= 0.7 $ milhões por semana.</span
+            >
+            <br />
+            A equação diferencial associada é dada por $${\frac{dp}{dt} =
+            (\text{taxa crescimento}) - (\text{taxa de mortalidade}) = r\, p - v
+            . }$$ A equação é linear de primeira ordem e o
+            <span style="color:var(--mjx-green)">fator integrante é </span>
+            $ {\mu(t)=\e^{-rt }} $ e portanto,
+            <span style="color:var(--mjx-green)">
+              $$\begin{split} & \e^{-rt}(p'-r\, p) = \frac{d}{dt} ( \e^{-rt} \,p
+              ) = -v\cdot \e^{-rt}\quad {\textrm{e integrando,}} \\ & \e^{-rt}\,
+              p(t) = \frac{v}{r} \e^{-rt} + C \implies p(t) = a_0 + C\cdot
+              \e^{rt}, \end{split} $$ onde ${a_0 = \frac{v}{r} =
+              \frac{0.7}{\ln(2)}.}$ É fácil ver que ${C= (p_0-a_0)}.$ <br />
+            </span>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
 
     <v-container fluid>
       <v-row no-gutters align="center">
@@ -50,48 +54,43 @@
           </client-only>
         </v-col>
         <v-col xs="12" md="6">
-          <div class="mathjax">
-            Temos então a solução geral $${p(t)=a_0 + (p_0-a_0)\,
-            \e^{rt}.}$$ 
+          <div>
+            Temos então a solução geral $${p(t)=a_0 + (p_0-a_0)\, \e^{rt}.}$$
             Note que para ${p(0)=a_0 }$ a solução é a
             <span style="color:var(--mjx-green)"
               >função constante $p(t) = a_0\approx 1.01,\,\, \forall t$ (um
               milhão e 10 mil mosquitos).
             </span>
             <br />
-
-            O comportamente das demais soluções depende do sinal de
-            ${p_0 - a_0}$:
+            O comportamente das demais soluções depende do sinal de ${p_0 -
+            a_0}$:
 
             <br />
-            Se ${p_0 - a_0 \gt 0}$ a população de mosquitos explode
-            para infinito e se ${p_0 - a_0 \lt 0}$ a população de
-            mosquitos se torna negativa eventualmente, isto é, passa por zero em
-            tempo positivo implicando que os mosquitos se extinguem pela ação
-            dos predadores.
-            <br/>
-             Note que ${\e^{\ln(2)t} = 2^t}.$ Se inicialmente há
-            ${ 0.9 }$ milhões de mosquitos, a constante
-            ${ C=(0.9-\frac{0.7}{\ln 2}) \approx -0.11},$ e a
-            quantidade mosquitos (em milhões) é dada por ${ p(t) =
-            1.01 -(0.11) \, 2^{t}.} $
+            Se ${p_0 - a_0 \gt 0}$ a população de mosquitos explode para
+            infinito e se ${p_0 - a_0 \lt 0}$ a população de mosquitos se torna
+            negativa eventualmente, isto é, passa por zero em tempo positivo
+            implicando que os mosquitos se extinguem pela ação dos predadores.
           </div>
         </v-col>
       </v-row>
-      <v-col> 
-        <v-row>
-        <p class="mathjax">
-            Os mosquitos se estinguem neste caso, e
-            resolvendo $p(t) = 0$ temos $2^t = 1.01/0.11\approx 9.18,$ ou
-            $t=\log(9.18)/\log(2),$ os mosquitos se extinguem em aproximadamente
-            ${t\approx 3.2}$ semanas (ver gráfico).
-        </p>
-        </v-row>
-      </v-col>
-      </v-row>
-      </v-row>
     </v-container>
+
+    <v-container fluid>
+      <v-row>
+        <v-col>
+          <p>
+            Note que ${\e^{\ln(2)t} = 2^t}.$ Se inicialmente há ${ 0.9 }$
+            milhões de mosquitos, a constante ${ C=(0.9-\frac{0.7}{\ln 2})
+            \approx -0.11},$ e a quantidade mosquitos (em milhões) é dada por ${
+            p(t) = 1.01 -(0.11) \, 2^{t}.} $ Os mosquitos se estinguem neste
+            caso, e resolvendo $p(t) = 0$ temos $2^t = 1.01/0.11\approx 9.18,$
+            ou $t=\log(9.18)/\log(2),$ os mosquitos se extinguem em
+            aproximadamente ${t\approx 3.2}$ semanas (ver gráfico).
+          </p>
+        </v-col> </v-row
+      >>
     </v-container>
+  </div>
 </template>
 
 <script>
@@ -155,13 +154,13 @@ function plotMosquitosSol() {
     autosize: true,
     hovermode: false,
     dragmode: false,
-    width: 500,
-    height: 500,
+    width: 450,
+    height: 450,
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
       range: [-2, 10],
       tickvals: [-10, -2, 0, 2, 3.2, 5, 10],
-      ticktext: ['-10','-2','0', '2', '3.2', '5', '10'],
+      ticktext: ['-10', '-2', '0', '2', '3.2', '5', '10'],
       title: "<span style= 'color: Brown'> tempo (semanas) </span>"
     },
     yaxis: {
