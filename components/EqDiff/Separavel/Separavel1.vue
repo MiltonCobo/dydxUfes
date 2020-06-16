@@ -1,6 +1,21 @@
 <template>
   <div>
-    <v-container class="mathjax" fluid>
+    <v-container fluid>
+      <v-row>
+        <v-col>
+          <Qseparavel1 />
+        </v-col>
+      </v-row>
+      <v-spacer />
+      <v-spacer />
+      <v-row>
+        <v-col>
+          <Sseparavel1 />
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+  <!-- <v-container class="mathjax" fluid>
       <v-row>
         <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
           Exercício 1:
@@ -21,7 +36,7 @@
         <Sseparavel1 />
       </v-row>
     </v-container>
-  </div>
+  </div> -->
 </template>
 
 <script>

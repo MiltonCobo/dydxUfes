@@ -144,7 +144,7 @@ export function volterraSurface2() {
       eye: {
         x: 1.25,
         y: 1.25,
-        z: 1.25
+        z: 0.25
       }
       //projection: { type: 'orthographic' }
     },

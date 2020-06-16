@@ -1,25 +1,17 @@
 <template>
   <div>
-    <v-container class="mathjax" fluid>
+    <v-container fluid>
       <v-row>
-        <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
-          Exercício 2:
-        </h3>
+        <v-col>
+          <Qseparavel2 />
+        </v-col>
       </v-row>
       <v-spacer />
-      <v-row>
-        <Qseparavel2 />
-      </v-row>
-      <v-divider />
       <v-spacer />
-
       <v-row>
-        <h3
-          style="color: green;margin:0.5cm 0cm 0.5cm 0cm;text-decoration: underline;"
-        >
-          Solução:
-        </h3>
-        <Sseparavel2 />
+        <v-col>
+          <Sseparavel2 />
+        </v-col>
       </v-row>
     </v-container>
   </div>

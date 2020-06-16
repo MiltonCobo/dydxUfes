@@ -1,6 +1,14 @@
 <template>
   <div>
-    <v-container fluid>
+    <v-container class="mathjax">
+      <v-row>
+        <v-col>
+          <h3 style="color:green; margin-top: 0.3cm;">
+            Solução:
+          </h3>
+        </v-col>
+      </v-row>
+      <v-divider />
       <v-row class="flex-wrap-reverse" align="center" no-gutters>
         <v-col xs="12" md="6" order="1" align="center">
           <client-only placeholder="carregando...">
@@ -8,7 +16,7 @@
           </client-only>
         </v-col>
         <v-col xs="12" md="6" order="2">
-          <p class="mathjax">
+          <p>
             Separando as variáveis, $ { (3+2y) \, dy = (2-\exp(x)) \, dx},$ e
             integrando a ambos lados, obtemos que as soluções $y=f(x)$ da
             equação diferencial moram nas curvas de nível da função $$ {V(x,y) =
@@ -21,18 +29,21 @@
       </v-row>
 
       <v-row>
-        <p class="mathjax">
-          $${ y = \frac{-3\pm\sqrt{9-4\Delta}}{2} =\frac{-3\pm\sqrt{(9 -4C)+8x
-          -4\e^x}}{2}}\,\textrm{(eq1)} $$ Vemos que a curva de nível $V(x,y)=C$
-          esconde duas funções $y=f(x).$ Para verificar a condição inicial $x=0,
-          y=0,$ precisamos tomar sinal de "mais" e o valor de $C$ deve ser
-          ${C=-1}.$ Portanto a solução explícita do problema de valor inicial é
-          $${ y = \frac{-3 +\sqrt{(13+8x)-4\e^x}}{2}} \quad\textrm{(eq2).}$$
-        </p>
+        <v-col>
+          <p class="mathjax">
+            $${ y = \frac{-3\pm\sqrt{9-4\Delta}}{2} =\frac{-3\pm\sqrt{(9 -4C)+8x
+            -4\e^x}}{2}}\,\textrm{(eq1)} $$ Vemos que a curva de nível
+            $V(x,y)=C$ esconde duas funções $y=f(x).$ Para verificar a condição
+            inicial $x=0, y=0,$ precisamos tomar sinal de "mais" e o valor de
+            $C$ deve ser ${C=-1}.$ Portanto a solução explícita do problema de
+            valor inicial é $${ y = \frac{-3 +\sqrt{(13+8x)-4\e^x}}{2}}
+            \quad\textrm{(eq2).}$$
+          </p>
+        </v-col>
       </v-row>
       <v-row class="flex-wrap-reverse" align="center" no-gutters>
         <v-col xs="12" md="6" order="4">
-          <p class="mathjax">
+          <p>
             <br />
             Para determinar onde esta função atinge seu máximo precisamos
             encontrar os pontos críticos, i.e., os valores de $x$ onde $y'(x) =
@@ -56,21 +67,23 @@
       </v-row>
 
       <v-row>
-        <p class="mathjax">
-          Note que
-          <span style="color: var(--mjx-green)">
-            $y(x)$ é positivo quando $x=\ln(2)$, logo por continuidade, $y(x)>0$
-            para $x$ próximo de $\ln(2).$
-          </span>
-          Portanto o denominador $3+2y$ da derivada $dy/dx$ é positivo perto de
-          $x=\ln(2)$ e o sinal da derivada depende inteiramente do numerador
-          $2-\e^x.$ É fácil ver então que
-          <span style="color:var(--mjx-green)">
-            $y'(x) > 0$ se $ x< \ln(2)$ e $y'(x) < 0$ se $ x > \ln(2),$ isto é,
-            a derivada $y'(x)$ esta decrescendo ao passar por $x=\ln(2),$ o que
-            implica que $y(x)$ passa por um máximo em ${x=\ln(2).}$
-          </span>
-        </p>
+        <v-col>
+          <p class="mathjax">
+            Note que
+            <span style="color: var(--mjx-green)">
+              $y(x)$ é positivo quando $x=\ln(2)$, logo por continuidade,
+              $y(x)>0$ para $x$ próximo de $\ln(2).$
+            </span>
+            Portanto o denominador $3+2y$ da derivada $dy/dx$ é positivo perto
+            de $x=\ln(2)$ e o sinal da derivada depende inteiramente do
+            numerador $2-\e^x.$ É fácil ver então que
+            <span style="color:var(--mjx-green)">
+              $y'(x) > 0$ se $ x< \ln(2)$ e $y'(x) < 0$ se $ x > \ln(2),$ isto
+              é, a derivada $y'(x)$ esta decrescendo ao passar por $x=\ln(2),$ o
+              que implica que $y(x)$ passa por um máximo em ${x=\ln(2).}$
+            </span>
+          </p>
+        </v-col>
       </v-row>
       <v-row no-gutters align="center">
         <v-col xs="12" md="6" align="center">

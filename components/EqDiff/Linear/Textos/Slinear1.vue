@@ -1,7 +1,16 @@
 <template>
-  <div>
-    <p class="mathjax">
-      Seja ${ p(t) }$ a população de mosquitos
+  <v-container class="mathjax">
+    <v-row>
+      <v-col>
+    <h3 style="color:green; margin-top: 0.3cm;">
+      Solução:</h3>
+      </v-col>
+    </v-row>
+    <v-divider/>
+    <v-row>
+      <v-col>
+    <div style="margin-top: 0.3cm;">
+      Seja $ p(t) $ a população de mosquitos
       em tempo $ {t}. $ Para simplificar os números consideramos
       ${p(t)}$ em milhões e ${t}$ em semanas. Na
       ausência de predadores, a taxa de crescimento dos mosquitos é dada por
@@ -29,7 +38,9 @@
         \e^{rt}, \end{split} $$  onde ${a_0 = \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ É
             fácil ver que ${C= (p_0-a_0)}.$ <br />
       </span>
-    </p>
+    </div>
+      </v-col>
+    </v-row>
 
     <v-container fluid>
       <v-row no-gutters align="center">
@@ -39,7 +50,7 @@
           </client-only>
         </v-col>
         <v-col xs="12" md="6">
-          <p class="mathjax">
+          <div class="mathjax">
             Temos então a solução geral $${p(t)=a_0 + (p_0-a_0)\,
             \e^{rt}.}$$ 
             Note que para ${p(0)=a_0 }$ a solução é a
@@ -64,21 +75,23 @@
             ${ C=(0.9-\frac{0.7}{\ln 2}) \approx -0.11},$ e a
             quantidade mosquitos (em milhões) é dada por ${ p(t) =
             1.01 -(0.11) \, 2^{t}.} $
-          </p>
+          </div>
         </v-col>
       </v-row>
       <v-col> 
+        <v-row>
         <p class="mathjax">
             Os mosquitos se estinguem neste caso, e
             resolvendo $p(t) = 0$ temos $2^t = 1.01/0.11\approx 9.18,$ ou
             $t=\log(9.18)/\log(2),$ os mosquitos se extinguem em aproximadamente
             ${t\approx 3.2}$ semanas (ver gráfico).
         </p>
+        </v-row>
       </v-col>
       </v-row>
       </v-row>
     </v-container>
-  </div>
+    </v-container>
 </template>
 
 <script>
