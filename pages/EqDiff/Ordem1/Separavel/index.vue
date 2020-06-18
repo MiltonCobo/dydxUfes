@@ -5,15 +5,16 @@
         <v-col xs="12" align="start">
           <h2 style="color:brown;">
             Equações separáveis de primeira Ordem
-            <v-btn @click="count++" fab large absolute text right>
-              {{ updateText + 1 }} / {{ total }}
+            <v-btn @click="count++" large absolute text right>
+              {{ updateText + 1 }}/{{ total }}
               <v-icon style="color:brown" large>chevron_right</v-icon>
             </v-btn>
           </h2>
         </v-col>
       </v-row>
       <v-divider style="margin:0.5cm;" />
-      <v-row>
+
+      <v-row v-touch="{ left: () => count++, right: () => (count += 2) }">
         <v-col>
           <transition name="fade">
             <div key="1" v-if="updateText == 0"><Separavel1 /></div>
@@ -24,19 +25,20 @@
       </v-row>
 
       <v-row>
-        <v-btn @click="count += 2" fab large text absolute bottom left>
-          <v-icon style="color:brown;" large>chevron_left</v-icon>
-          Anterior
-        </v-btn>
+        <v-col>
+          <v-btn @click="count += 2" large text absolute bottom left>
+            <v-icon style="color:brown;" large>chevron_left</v-icon>
+            Anterior
+          </v-btn>
 
-        <v-btn large fab absolute bottom style="position:relative; left: 50%;"
-          >{{ updateText + 1 }} / {{ total }}</v-btn
-        >
+          <v-btn large fab absolute bottom style="position:relative; left: 50%;"
+            >{{ updateText + 1 }}/{{ total }}</v-btn
+          >
 
-        <v-btn @click="count++" fab large text absolute bottom right>
-          Seguinte
-          <v-icon style="color:brown;" large>chevron_right</v-icon>
-        </v-btn>
+          <v-btn @click="count++" large text absolute bottom right
+            >Seguinte<v-icon style="color:brown;" large>chevron_right</v-icon>
+          </v-btn>
+        </v-col>
       </v-row>
 
       <!-- <v-row>

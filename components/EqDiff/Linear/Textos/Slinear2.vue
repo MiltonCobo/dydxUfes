@@ -101,7 +101,7 @@
 
               <v-card-text class="mathjax" style="font-family: Lucida Console;">
                 $$ { y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t) +
-                {(\frac{4}{5}+a)}\e^{t/2}. }$$ Para ${a=-0.8=-4/5}$ a soluções
+                {(\frac{4}{5}+a)}\e^{t/2}. }$$ Para ${a=-0.8=-4/5}$ as soluções
                 permanecem limitadas.
               </v-card-text>
             </v-card>

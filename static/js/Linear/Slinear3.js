@@ -56,7 +56,7 @@ export function drawLinear3() {
       x1: 20,
       y1: -28,
       line: {
-        color: 'black',
+        color: 'red',
         width: 2
       }
     }
@@ -69,10 +69,10 @@ export function drawLinear3() {
       ay: -60,
       axref: 'pixel',
       ayref: 'pixel',
-      arrowcolor: 'black',
+      arrowcolor: 'red',
       font: {
         size: 15,
-        color: 'black'
+        color: 'red'
       },
       x: 5,
       y: 2

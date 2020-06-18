@@ -11,7 +11,7 @@
 
     <v-row>
       <v-col>
-        <div style="margin-top: 0.3cm;">
+        <v-sheet style="margin-top: 0.3cm;">
           $\def\R{\mathbb R}$ Separamos as variáveis $$ {2(y-1)\, dy =
           (3x^2+4x+2)\, dx} $$ e integramos a ambos lados, obtendo que as
           soluções $y=f(x)$ da equação diferencial moram
@@ -44,7 +44,7 @@
           que $p(x) \ge 0$ somente se $x \ge -2,$ assim nossa solução tem
           domínio $${ \textrm{Domínio } = \{x\in\R: x\ge -2 \} = [-2,\infty). }
           $$
-        </div>
+        </v-sheet>
       </v-col>
     </v-row>
 

@@ -11,7 +11,7 @@
       <v-divider />
       <v-row>
         <v-col>
-          <div style="margin-top: 0.3cm;">
+          <v-sheet style="margin-top: 0.3cm;">
             Seja $ p(t) $ a população de mosquitos em tempo $ {t}. $ Para
             simplificar os números consideramos ${p(t)}$ em milhões e ${t}$ em
             semanas. Na ausência de predadores, a taxa de crescimento dos
@@ -33,15 +33,13 @@
             (\text{taxa crescimento}) - (\text{taxa de mortalidade}) = r\, p - v
             . }$$ A equação é linear de primeira ordem e o
             <span style="color:var(--mjx-green)">fator integrante é </span>
-            $ {\mu(t)=\e^{-rt }} $ e portanto,
-            <span style="color:var(--mjx-green)">
-              $$\begin{split} & \e^{-rt}(p'-r\, p) = \frac{d}{dt} ( \e^{-rt} \,p
-              ) = -v\cdot \e^{-rt}\quad {\textrm{e integrando,}} \\ & \e^{-rt}\,
-              p(t) = \frac{v}{r} \e^{-rt} + C \implies p(t) = a_0 + C\cdot
-              \e^{rt}, \end{split} $$ onde ${a_0 = \frac{v}{r} =
-              \frac{0.7}{\ln(2)}.}$ É fácil ver que ${C= (p_0-a_0)}.$ <br />
-            </span>
-          </div>
+            $ \mu(t)=\e^{-rt } $ e portanto, $$\e^{-rt}(p'-r\,p) = \frac{d}{dt}
+            ( \e^{-rt} \,p ) = -v\cdot \e^{-rt} $$ e integrando, $$\int
+            \frac{d}{dt} ( \e^{-rt} \,p ) dt = \e^{-rt}\, p(t) = \frac{v}{r}
+            \e^{-rt} + C \implies p(t) = a_0 + C\cdot \e^{rt} $$ onde ${a_0 =
+            \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ É fácil ver que $C = p(0)- a_0 =
+            p_0-a_0.$
+          </v-sheet>
         </v-col>
       </v-row>
     </v-container>
@@ -54,7 +52,7 @@
           </client-only>
         </v-col>
         <v-col xs="12" md="6">
-          <div>
+          <v-sheet>
             Temos então a solução geral $${p(t)=a_0 + (p_0-a_0)\, \e^{rt}.}$$
             Note que para ${p(0)=a_0 }$ a solução é a
             <span style="color:var(--mjx-green)"
@@ -70,7 +68,7 @@
             infinito e se ${p_0 - a_0 \lt 0}$ a população de mosquitos se torna
             negativa eventualmente, isto é, passa por zero em tempo positivo
             implicando que os mosquitos se extinguem pela ação dos predadores.
-          </div>
+          </v-sheet>
         </v-col>
       </v-row>
     </v-container>
@@ -87,8 +85,8 @@
             ou $t=\log(9.18)/\log(2),$ os mosquitos se extinguem em
             aproximadamente ${t\approx 3.2}$ semanas (ver gráfico).
           </p>
-        </v-col> </v-row
-      >>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>

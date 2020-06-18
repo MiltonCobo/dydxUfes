@@ -1,6 +1,6 @@
 <template>
-  <div style="border: 1px solid green;">
-    <v-container class="mathjax green lighten-5" fluid>
+  <div>
+    <v-container fluid>
       <v-row>
         <v-col>
           <h3 style="color:green;">Exercício 1:</h3>

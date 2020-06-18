@@ -5,16 +5,16 @@
         <v-col xs="12" align="start">
           <h2 style="color:brown;">
             Equações Lineares de primeira Ordem
-            <v-btn @click="count++" fab large absolute text right>
-              {{ updateText + 1 }} / {{ total }}
-              <v-icon style="color:brown;" large> chevron_right</v-icon>
+            <v-btn @click="count++" large absolute text right>
+              {{ updateText + 1 }}/{{ total }}
+              <v-icon style="color:brown;" large>chevron_right</v-icon>
             </v-btn>
           </h2>
           <v-divider style="margin:0.5cm;" />
         </v-col>
       </v-row>
 
-      <v-row>
+      <v-row v-touch="{ left: () => count++, right: () => (count += 9) }">
         <v-col>
           <transition name="fade">
             <div key="1" v-if="updateText == 0"><Linear1 /></div>
@@ -27,19 +27,21 @@
       </v-row>
 
       <v-row>
-        <v-btn @click="count += 2" fab large text absolute bottom left>
-          <v-icon style="color:brown;" large>chevron_left</v-icon>
-          Anterior
-        </v-btn>
+        <v-col>
+          <v-btn @click="count += 2" large text absolute bottom left>
+            <v-icon style="color:brown;" large>chevron_left</v-icon>
+            Anterior
+          </v-btn>
 
-        <v-btn large fab absolute bottom style="position:relative; left: 50%;"
-          >{{ updateText + 1 }} / {{ total }}</v-btn
-        >
+          <v-btn large fab absolute bottom style="position:relative; left: 50%;"
+            >{{ updateText + 1 }}/{{ total }}</v-btn
+          >
 
-        <v-btn @click="count++" fab large text absolute bottom right>
-          Seguinte
-          <v-icon style="color:brown;" large>chevron_right</v-icon>
-        </v-btn>
+          <v-btn @click="count++" large text absolute bottom right>
+            Seguinte
+            <v-icon style="color:brown;" large>chevron_right</v-icon>
+          </v-btn>
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -57,8 +59,6 @@ export default {
     Linear1,
     Linear2,
     Linear3
-    // Linear4,
-    // Linear5
   },
   data() {
     return {

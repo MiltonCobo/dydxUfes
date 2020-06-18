@@ -22,8 +22,8 @@
       href="https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations"
       target="_blank"
     >
-      modelo predador-presa</a
-    >
+      modelo predador-presa
+    </a>
     e foi publicado como parte de um livro em 1942 em italiano, e em inglês em
     1954 sob o nome de "A luta pela existência". O matemático americano
     <!-- <a href="https://en.wikipedia.org/wiki/Alfred_J._Lotka" target="_blank"> -->
@@ -32,6 +32,7 @@
     (era também, físico, químico e estatístico!) propôs mais ou menos ao mesmo
     tempo, equações similares chamadas agora de "Equações de Lotka-Volterra".
     Com estas equações eles tentaram responder à pergunta:
+    </br>
     <h3 style="color: var(--mjx-green)">
       Por que a restrição da pesca favoreceu mais o predador do que sua presa?
     </h3>

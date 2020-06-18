@@ -83,8 +83,8 @@ export default {
    ** Global CSS
    */
   css: [
-    // 'vuetify/dist/vuetify.min.css',
-    // '~/assets/css/main.css',
+    'vuetify/dist/vuetify.min.css',
+    '~/assets/css/main.css',
     '@mdi/font/css/materialdesignicons.css',
     '~/assets/variables.scss'
   ],
@@ -95,13 +95,13 @@ export default {
     { src: '~plugins/vue-plotly', mode: 'client' },
     { src: '~plugins/vue-chartjs.js', mode: 'client' }
   ],
-  //plugins: [], // ['~/plugins/plotly.js'],
+
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    //'@nuxtjs/eslint-module', // had problems!
+    '@nuxtjs/eslint-module', // had problems!
     '@nuxtjs/vuetify'
   ],
   /*
@@ -114,6 +114,9 @@ export default {
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
+    treeShake: {
+      directives: ['Touch']
+    },
     customVariables: ['~/assets/variables.scss'],
     theme: {
       dark: false,

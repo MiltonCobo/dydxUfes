@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row>
-        <v-col>
-          <Qseparavel1 />
+      <v-row style="margin:25px;">
+        <v-col style="border: 1px solid green; padding: 0px;">
+          <Qseparavel1 class="mathjax green lighten-5" />
         </v-col>
       </v-row>
       <v-spacer />

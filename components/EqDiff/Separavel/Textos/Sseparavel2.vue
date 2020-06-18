@@ -74,16 +74,17 @@
             class="green lighten-5"
           >
             <h3 style="color:var(--mjx-green)">Teorema:</h3>
-
-            Considere o polinômio ${p(x)= a_n x^n+ \dots+a_1 x+ a_0}$ onde os
-            coeficientes ${a_0, a_1, \dots,a_n}$ e ${n\gt 1}$ são números
-            inteiros.
-            <br />
-            Então se $p(x)$ tem uma raiz racional ${x=p/q}$ (com $p,q$ sem
-            divisores comuns), então
-            <span style="color:var(--mjx-green)"
-              >$p$ divide a $a_0$ e $q$ divide a $a_n.$
-            </span>
+            <p>
+              Considere o polinômio ${p(x)= a_n x^n+ \dots+a_1 x+ a_0}$ onde os
+              coeficientes ${a_0, a_1, \dots,a_n}$ e ${n\gt 1}$ são números
+              inteiros.
+              <br />
+              Então se $p(x)$ tem uma raiz racional ${x=p/q}$ (com $p,q$ sem
+              divisores comuns), então
+              <span style="color:var(--mjx-green)"
+                >$p$ divide a $a_0$ e $q$ divide a $a_n.$
+              </span>
+            </p>
           </v-sheet>
 
           <br />
