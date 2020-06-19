@@ -1,103 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar hide-on-scroll flat dark app>
-      <v-app-bar-nav-icon class="blue--text" @click.stop="drawer = !drawer" />
-
-      <v-btn icon>
-        <nuxt-link to="/">
-          <v-icon>
-            mdi-home
-          </v-icon>
-        </nuxt-link>
-      </v-btn>
-
-      <v-toolbar flat>
-        <v-toolbar-title class="blue--text text-Capitalize">
-          Departamento de Matemática/UFES
-        </v-toolbar-title>
-      </v-toolbar>
-
-      <v-spacer />
-
-      <!--   MENU CURSOS -->
-      <v-menu :close-on-content-click="false" text dense dark offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn class="blue--text" dark v-on="on">
-            Cursos
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-group
-            v-for="curso in cursos"
-            :key="curso.title"
-            v-model="curso.active"
-          >
-            <template v-slot:activator>
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title link :to="curso.route">
-                    {{ curso.title }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </template>
-
-            <v-list
-              link
-              v-for="section in curso.sections"
-              :key="section.title"
-              @click=""
-              dense
-              no-action
-            >
-              <v-list-item link nuxt :to="section.route">
-                <v-list-item-content>
-                  <v-list-item-title class="blue--text">{{
-                    section.title
-                  }}</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-
-              <v-list
-                link
-                v-for="item in section.items"
-                :key="item.title"
-                @click=""
-                dense
-                no-action
-              >
-                <v-list-item class="mx-2" link nuxt :to="item.route">
-                  <v-list-item-content>
-                    <v-list-item-title class="green--text" link>{{
-                      item.title
-                    }}</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-list>
-          </v-list-group>
-        </v-list>
-      </v-menu>
-      <v-spacer />
-
-      <v-menu left bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on">
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-    </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
-      width="250"
+      disable-resize-watcher
+      mobile-breakpoint="1400"
       clipped
       temporary
       dense
@@ -105,10 +11,9 @@
       app
     >
       <v-list>
-        <v-list-item>
-          <v-list-item-avatar width="60" height="60">
-            <v-img position="center center" src="/figures/ufes-logo.png" />
-            <!-- src="https://randomuser.me/api/portraits/men/19.jpg" -->
+        <v-list-item style="position:30%;">
+          <v-list-item-avatar width="80" height="80" contain>
+            <v-img src="/figures/logo-ufes.jpg" />
           </v-list-item-avatar>
           <span class="blue--text"> UFES </span>
         </v-list-item>
@@ -116,9 +21,9 @@
         <v-list-item link>
           <v-list-item-content>
             <v-list-item-title class="blue--text">
-              Dep. de Matemática
+              Dpto de Matemática
             </v-list-item-title>
-            <v-list-item-subtitle>dmat.ufes.br</v-list-item-subtitle>
+            <v-list-item-subtitle>email: www.dmat.ufes.br</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -140,6 +45,112 @@
       <v-divider />
       <div></div>
     </v-navigation-drawer>
+
+    <v-app-bar hide-on-scroll flat dark app>
+      <v-app-bar-nav-icon class="blue--text" @click.stop="drawer = !drawer" />
+
+      <v-btn icon>
+        <nuxt-link to="/">
+          <div style="width:60px; height:40;">
+            <v-img src="/figures/ufes-logo4.png" />
+          </div>
+          <!-- <v-icon>
+            mdi-home
+          </v-icon> -->
+        </nuxt-link>
+      </v-btn>
+
+      <v-toolbar flat>
+        <v-toolbar-title class="blue--text text-Capitalize">
+          <nuxt-link to="/" flat>
+            Matemática-UFES
+          </nuxt-link>
+        </v-toolbar-title>
+      </v-toolbar>
+
+      <v-spacer />
+
+      <!--   MENU CURSOS -->
+      <v-menu text shaped dense dark offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn class="blue--text" dark v-on="on">
+            Cursos
+          </v-btn>
+        </template>
+
+        <!-- :close-on-content-click="closeOnContentClick" -->
+        <v-menu>
+          <template close-on-content-click="false" v-slot:activator="{ on }">
+            <v-list nav>
+              <v-list-group
+                v-on="on"
+                v-for="curso in cursos"
+                :key="curso.title"
+                v-model="curso.active"
+              >
+                <template v-slot:activator>
+                  <v-list-item>
+                    <v-list-item-content>
+                      <v-list-item-title link :to="curso.route">
+                        {{ curso.title }}
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </template>
+
+                <v-list
+                  link
+                  v-for="section in curso.sections"
+                  :key="section.title"
+                  dense
+                  no-action
+                >
+                  <v-list-item link nuxt :to="section.route">
+                    <v-list-item-content>
+                      <v-list-item-title class="blue--text">{{
+                        section.title
+                      }}</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+
+                  <v-list
+                    link
+                    v-for="item in section.items"
+                    :key="item.title"
+                    dense
+                    no-action
+                    rounded
+                  >
+                    <v-list-item class="mx-2" link nuxt :to="item.route">
+                      <v-list-item-content>
+                        <v-list-item-title class="green--text" link>{{
+                          item.title
+                        }}</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list>
+                </v-list>
+              </v-list-group>
+            </v-list>
+          </template>
+        </v-menu>
+      </v-menu>
+      <v-spacer />
+
+      <v-menu left bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn icon v-on="on">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
+            <v-list-item-title>Option {{ n }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </v-app-bar>
 
     <v-content>
       <v-container fluid>
@@ -171,6 +182,8 @@ export default {
   data() {
     return {
       drawer: false,
+      closeOnContentClick: true,
+      expandOnHover: true,
       cursos,
       itemsDrawer: [
         { title: 'Inicial', icon: 'mdi-home', route: '/' },

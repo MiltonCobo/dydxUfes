@@ -20,15 +20,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,400&display=swap'
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Neucha&display=swap'
-      },
+      // {
+      //   rel: 'stylesheet',
+      //   href:
+      //     'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,400&display=swap'
+      // },
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'https://fonts.googleapis.com/css2?family=Neucha&display=swap'
+      // },
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/icon?family=Material+Icons'

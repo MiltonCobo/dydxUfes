@@ -36,9 +36,9 @@
             $ \mu(t)=\e^{-rt } $ e portanto, $$\e^{-rt}(p'-r\,p) = \frac{d}{dt}
             ( \e^{-rt} \,p ) = -v\cdot \e^{-rt} $$ e integrando, $$\int
             \frac{d}{dt} ( \e^{-rt} \,p ) dt = \e^{-rt}\, p(t) = \frac{v}{r}
-            \e^{-rt} + C \implies p(t) = a_0 + C\cdot \e^{rt} $$ onde ${a_0 =
-            \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ É fácil ver que $C = p(0)- a_0 =
-            p_0-a_0.$
+            \e^{-rt} + C$$ de onde $ \boxed{ p(t) = a_0 + C \e^{rt} }$ com ${a_0
+            = \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ Denotamos $p_0 = p(0).$ É
+            fácil ver que $C=p_0-a_0.$
           </v-sheet>
         </v-col>
       </v-row>

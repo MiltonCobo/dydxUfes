@@ -137,8 +137,8 @@ export default {
 </script>
 <style scoped>
 #mathjax {
-  /* font-family: 'Comic Sans MS', cursive, sans-serif; */
-  font-family: 'Neucha', cursive;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  /* font-family: 'Neucha', cursive; */
   /* font-family: 'Montserrat', sans-serif; */
   font-size: 22px;
   font-weight: 700;

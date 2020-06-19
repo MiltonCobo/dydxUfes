@@ -13,3 +13,7 @@
 /* {
   text-transform: none !important;
 } */
+
+li a {
+  text-decoration: none;
+}
