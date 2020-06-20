@@ -155,9 +155,9 @@
 
     <v-content>
       <v-container fluid>
-        <transition name="slide-fade" mode="out-in">
-          <nuxt />
-        </transition>
+        <!-- <transition name="slide-fade" mode="out-in"> -->
+        <nuxt />
+        <!-- </transition> -->
       </v-container>
     </v-content>
   </v-app>
