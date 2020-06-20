@@ -9,19 +9,17 @@
         </v-col>
       </v-row>
       <v-divider />
-      <v-row
-        v-touch="{
+
+      <!-- v-touch="{
           left: () => {
             console.log('swipe left')
           },
           right: () => {
             console.log('swipe right')
           }
-        }"
-        class="flex-wrap-reverse"
-        align="center"
-        no-gutters
-      >
+        }" -->
+
+      <v-row class="flex-wrap-reverse" align="center" no-gutters>
         <v-col xs="12" md="6" order="1" align="center">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />

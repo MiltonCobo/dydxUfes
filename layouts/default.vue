@@ -10,6 +10,7 @@
       dark
       app
     >
+      <v-spacer />
       <v-list>
         <v-list-item style="position:30%;">
           <v-list-item-avatar width="80" height="80" contain>
@@ -23,7 +24,7 @@
             <v-list-item-title class="blue--text">
               Dpto de Matemática
             </v-list-item-title>
-            <v-list-item-subtitle>email: www.dmat.ufes.br</v-list-item-subtitle>
+            <v-list-item-subtitle>Campus Goiabeiras</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -48,7 +49,7 @@
 
     <v-app-bar hide-on-scroll flat dark app>
       <v-app-bar-nav-icon class="blue--text" @click.stop="drawer = !drawer" />
-
+      <v-spacer />
       <v-btn icon>
         <nuxt-link to="/">
           <div style="width:60px; height:40;">
@@ -154,7 +155,9 @@
 
     <v-content>
       <v-container fluid>
-        <nuxt />
+        <transition name="slide-fade" mode="out-in">
+          <nuxt />
+        </transition>
       </v-container>
     </v-content>
   </v-app>
@@ -183,6 +186,7 @@ export default {
     return {
       drawer: false,
       closeOnContentClick: true,
+      hideOnLeave: true,
       expandOnHover: true,
       cursos,
       itemsDrawer: [

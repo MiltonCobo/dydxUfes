@@ -108,7 +108,7 @@ export default {
         'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
       document.head.appendChild(script)
     } else {
-      console.log('p5 is here')
+      // console.log('p5 is here')
       this.startp5Plot()
     }
 

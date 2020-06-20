@@ -100,7 +100,7 @@ export default function goldenRatio(p) {
     p.clear()
     p.translate(0.5 * p.width, 0.5 * p.height)
 
-    console.log('working')
+    // console.log('working')
 
     if (steps < totalSteps) {
       p.push()

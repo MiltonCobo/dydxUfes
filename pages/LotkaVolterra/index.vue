@@ -16,7 +16,7 @@
 
       <v-row v-touch="{ left: () => count ++, right: () => (count+=9) }">
         <v-col>
-          <transition name="fade">
+          <transition name="fade" mode="out-in">
             <div key="1" v-if="updateText == 0"><Text1 /></div>
             <div key="2" v-else-if="updateText == 1"><Text2 /></div>
             <div key="3" v-else-if="updateText == 2"><Text3 /></div>

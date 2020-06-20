@@ -39,77 +39,31 @@ body {
 }
 
 * {
-  text-transform: none !important;
+  text-transform: none !important; // text in vuetify ?
 }
 
-/*'Rock Salt', cursive;*/
-/*Lucida Console; /*'Neucha', cursive; SofiaPro, Roboto;*/
-
 // TRANSITIONS-----------------------------------
-// .page-enter-active,
-// .page-enter-active {
-//   transition: all 0.5s;
-// }
-// .page-enter,
-// .page-leave-active {
-//   opacity: 0;
-//   transform: scale(0.95);
-// }
 
-// .page-enter-active,
-// .bounce-enter-active {
-//   animation: bounce-in 0.8s;
-// }
+// Transitions Layout
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.6s;
+}
+.layout-enter,
+.layout-leave-active {
+  opacity: 0;
+}
 
-// .page-enter,
-// .bounce-leave-active {
-//   animation: bounce-out 0.5s;
-// }
-
-// @keyframes bounce-in {
-//   0% {
-//     opacity: 0;
-//     transform: scale(0.9);
-//   }
-//   //   50% {
-//   //     transform: scale(1.5);
-//   //   }
-//   100% {
-//     opacity: 1;
-//     transform: scale(1);
-//   }
-// }
-// @keyframes bounce-out {
-//   0% {
-//     opacity: 1;
-//     transform: scale(1);
-//   }
-//   //   50% {
-//   //     transform: scale(1.5);
-//   //   }
-//   100% {
-//     opacity: 0;
-//     transform: scale(0.9);
-//   }
-// }
-
-// .slide-left-enter,
-// .slide-right-leave-active {
-//   opacity: 0;
-//   transform: translate(30px, 0);
-// }
-// .slide-left-leave-active,
-// .slide-right-enter {
-//   opacity: 0;
-//   transform: translate(-30px, 0);
-// }
+//Default Transitions Page
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.6s;
 }
 .page-enter,
-.page-leave-active {
+.page-leave-to {
   opacity: 0;
 }
 
