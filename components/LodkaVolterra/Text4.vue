@@ -2,7 +2,7 @@
   <v-sheet class="mathjax">
     <v-container fluid>
       <v-row align="center">
-        <v-col xs="12" md="6">
+        <v-col xs="12">
           Note que as curvas de nível de $V$ são fechadas. De fato o gradiente
           ${\nabla V(x,y)=(d-c/x, b-a/y)}$ se anula no ponto $\bar{p}=(c/d,
           a/b)$ e a matriz Hessiana de $V$ em ${\bar{p}}$ é dada por
@@ -13,20 +13,7 @@
           +\frac{b^2}{a}\, y^2 }$$ para $(x,y)$ muito pequenos e portanto, perto
           do ponto $\bar{p}$, o gráfico de $V$ é próximo de um paraboloide, com
           curvas de nível fechadas.
-        </v-col>
-        <v-col xs="12" md="6" align="center">
-          <client-only>
-            <vue-plotly
-              v-if="startChart"
-              :data="data"
-              :layout="layout"
-              :options="options"
-            />
-          </client-only>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col xs="12">
+          <br />
           As soluções das equações de Lotka-Volterra tem uma característica
           importante:
           <span style="color:  var(--mjx-green);">
@@ -47,22 +34,9 @@
 </template>
 
 <script>
-import { volterraContours } from '@/static/js/LodkaVolterra/contours'
 export default {
-  name: 'Text5',
-  data() {
-    let info = volterraContours()
-    let data = info.data
-    let layout = info.layout
-    let options = info.options
+  name: 'Text4',
 
-    return {
-      startChart: true,
-      data,
-      layout,
-      options
-    }
-  },
   mounted() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }

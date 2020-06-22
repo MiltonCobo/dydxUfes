@@ -13,18 +13,17 @@
         <v-col>
           <v-sheet style="margin-top: 0.3cm;">
             Seja $ p(t) $ a população de mosquitos em tempo $ {t}. $ Para
-            simplificar os números consideramos ${p(t)}$ em milhões e ${t}$ em
+            simplificar os números consideramos $p(t)$ em milhões e ${t}$ em
             semanas. Na ausência de predadores, a taxa de crescimento dos
-            mosquitos é dada por ${ p'(t) = r\cdot p(t) }$ onde ${r}\, $ a taxa
+            mosquitos é dada por $ p'(t) = r\cdot p(t) $ onde $ \,r\, $ a taxa
             intrínseca de crescimento. Obtemos que a população de mosquitos
-            cresce como ${ p(t)=p_0\e^{rt} }$ sendo ${p_0=p(0)}$ a população
+            cresce como $ p(t)=p_0\e^{rt} $ sendo $ p_0=p(0) $ a população
             inicial.
             <br />
             Por outro lado, a população de mosquitos dobra a cada semana. Isto
-            significa que ${ p(1)=2p(0) = p(0)\e^{r\cdot 1}}, $ de onde
-            concluímos que $ {r=\ln(2) \approx 0.69.}$ Denotaremos por $v$ a
-            taxa de mortalidade dos mosquitos, isto é, $ v=0,1 $ milhões x dia,
-            ou
+            significa que $ p(1)=2p(0) = p(0)\e^{r\cdot 1}, $ de onde concluímos
+            que $ r=\ln(2) \approx 0.69. $ Denotaremos por $v$ a taxa de
+            mortalidade dos mosquitos, isto é, $ v=0,1 $ milhões x dia, ou
             <span style="color:var(--mjx-green)">
               $ v= 0.7 $ milhões por semana.</span
             >

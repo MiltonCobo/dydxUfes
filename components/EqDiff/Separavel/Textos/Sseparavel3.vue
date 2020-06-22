@@ -10,15 +10,6 @@
       </v-row>
       <v-divider />
 
-      <!-- v-touch="{
-          left: () => {
-            console.log('swipe left')
-          },
-          right: () => {
-            console.log('swipe right')
-          }
-        }" -->
-
       <v-row class="flex-wrap-reverse" align="center" no-gutters>
         <v-col xs="12" md="6" order="1" align="center">
           <client-only placeholder="carregando...">

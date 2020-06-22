@@ -16,10 +16,11 @@
 
       <v-row v-touch="{ left: () => count++, right: () => (count += 2) }">
         <v-col>
+          <!-- key=count to guarantie re render -->
           <transition name="fade" mode="out-in">
-            <div key="1" v-if="updateText == 0"><Separavel1 /></div>
-            <div key="2" v-else-if="updateText == 1"><Separavel2 /></div>
-            <div key="3" v-else="updateText == 2"><Separavel3 /></div>
+            <div key="count" v-if="updateText == 0"><Separavel1 /></div>
+            <div key="count" v-else-if="updateText == 1"><Separavel2 /></div>
+            <div key="count" v-else="updateText == 2"><Separavel3 /></div>
           </transition>
         </v-col>
       </v-row>
