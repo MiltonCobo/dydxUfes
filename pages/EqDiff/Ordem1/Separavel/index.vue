@@ -14,7 +14,7 @@
       </v-row>
       <v-divider style="margin:0.5cm;" />
 
-      <v-row v-touch="{ left: () => count++, right: () => (count += 2) }">
+      <v-row v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }">
         <v-col>
           <!-- key=count to guarantie re render -->
           <transition name="fade" mode="out-in">
@@ -96,6 +96,20 @@ export default {
     }
   },
   methods: {
+    swipeLeft() {
+      if (this.$store.state.discardTouch) {
+        this.$store.setDiscardTouch(false)
+      } else {
+        this.count++
+      }
+    },
+    swipeRight() {
+      if (this.$store.state.discardTouch) {
+        this.$store.setDiscardTouch(false)
+      } else {
+        this.count += 2
+      }
+    },
     onScriptLoaded(event = null) {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }

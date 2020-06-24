@@ -11,7 +11,13 @@
       <v-divider />
 
       <v-row class="flex-wrap-reverse" align="center" no-gutters>
-        <v-col xs="12" md="6" order="1" align="center">
+        <v-col
+          v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
+          xs="12"
+          md="6"
+          order="1"
+          align="center"
+        >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
@@ -150,6 +156,14 @@ export default {
   },
   mounted() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  methods: {
+    swipeLeft() {
+      this.$store.setDiscardTouch(true)
+    },
+    swipeRight() {
+      this.$store.setDiscardTouch(true)
+    }
   }
 }
 </script>

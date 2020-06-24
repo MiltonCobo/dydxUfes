@@ -93,6 +93,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    '~/plugins/globalVariables',
     { src: '~plugins/vue-plotly', mode: 'client' },
     { src: '~plugins/vue-chartjs.js', mode: 'client' }
   ],
