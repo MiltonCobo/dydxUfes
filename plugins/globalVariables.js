@@ -4,7 +4,7 @@ export default (context, inject) => {
     state: {
       discardTouch: false
     },
-    setDiscardTouch(newValue) {
+    discardTouch(newValue) {
       if (this.debug) console.log('set discard touch to', newValue)
       this.state.discardTouch = newValue
     }

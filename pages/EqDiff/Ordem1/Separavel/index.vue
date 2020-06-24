@@ -98,14 +98,14 @@ export default {
   methods: {
     swipeLeft() {
       if (this.$store.state.discardTouch) {
-        this.$store.setDiscardTouch(false)
+        this.$store.discardTouch(false)
       } else {
         this.count++
       }
     },
     swipeRight() {
       if (this.$store.state.discardTouch) {
-        this.$store.setDiscardTouch(false)
+        this.$store.discardTouch(false)
       } else {
         this.count += 2
       }

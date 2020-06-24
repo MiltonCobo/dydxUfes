@@ -14,7 +14,7 @@
       </v-row>
       <v-divider style="margin-bottom:0.5cm;" />
 
-      <v-row v-touch="{ left: () => count ++, right: () => (count+=9) }">
+      <v-row v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }">
         <v-col> <!-- key=count to guarantie re render -->
           <transition name="fade" mode="out-in">
             <div key="count" v-if="updateText == 0"><Text1 /></div>
@@ -116,12 +116,20 @@ export default {
     }
   },
   methods: {
-    // onKeyDown(e) {
-    //   if (e.keyCode == 39) {
-    //     console.log('tecla')
-    //     this.count++
-    //   }
-    // }
+    swipeLeft() {
+        if (this.$store.state.discardTouch) {
+          this.$store.discardTouch(false)
+        } else {
+          this.count++
+        }
+    },
+    swipeRight() {
+        if (this.$store.state.discardTouch) {
+          this.$store.discardTouch(false)
+        } else {
+          this.count += 9
+        }
+    }
   },
   updated() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])

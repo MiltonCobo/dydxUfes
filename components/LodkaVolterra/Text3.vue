@@ -22,7 +22,12 @@
       >
 
       <v-row align="center">
-        <v-col align="center" xs="12" style="min-width:660px">
+        <v-col
+          v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
+          align="center"
+          xs="12"
+          style="min-width:640px"
+        >
           <client-only>
             <vue-plotly
               v-if="startChart"
@@ -55,7 +60,7 @@
 </template>
 
 <script>
-import { volterraSurface2 } from '@/static/js/LodkaVolterra/surfaces2'
+import { volterraSurface2 } from '@/static/js/LodkaVolterra/VolterraSurface'
 
 export default {
   name: 'Text3',
@@ -75,6 +80,14 @@ export default {
   },
   mounted() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  methods: {
+    swipeLeft() {
+      this.$store.discardTouch(true)
+    },
+    swipeRight() {
+      this.$store.discardTouch(true)
+    }
   }
 }
 </script>

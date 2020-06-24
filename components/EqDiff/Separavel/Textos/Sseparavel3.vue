@@ -159,10 +159,10 @@ export default {
   },
   methods: {
     swipeLeft() {
-      this.$store.setDiscardTouch(true)
+      this.$store.discardTouch(true)
     },
     swipeRight() {
-      this.$store.setDiscardTouch(true)
+      this.$store.discardTouch(true)
     }
   }
 }
