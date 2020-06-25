@@ -108,17 +108,17 @@ export default {
         }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        {
-          rel: 'stylesheet',
-          href:
-            'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
-        },
-        {
-          rel: 'stylesheet',
-          href:
-            'https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap'
-        }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        // {
+        //   rel: 'stylesheet',
+        //   href:
+        //     'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
+        // },
+        // {
+        //   rel: 'stylesheet',
+        //   href:
+        //     'https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap'
+        // }
       ]
       // script: [
       //   {
