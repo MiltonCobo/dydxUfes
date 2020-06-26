@@ -2,7 +2,7 @@
   <v-sheet class="mathjax">
     <v-container fluid>
       <v-row align="center">
-        <v-col xs="12" md="6">
+        <v-col xs="12" sm="8">
           Durante a 1ª Guerra Mundial (1914-1917) a pesca no mar adriático foi
           severamente restrita. Após a Guerra os pescadores italianos reportaram
           o aumento ostensível dos predadores nesse mar, mas não assim o aumento
@@ -10,26 +10,29 @@
           documentou este fato como parte de uma pesquisa, registrando a
           proporção de predadores capturados pelos pescadores (tubarões,
           arraias, etc) nos portos de Fiume, Trieste e Veneza no período de 1914
-          a 1923. Ele observou que tal proporção era maior durante e
-          imediatamente após a guerra, quando a pesca estava minguada. D'Ancona
-          concluiu que a dinâmica predador-presa estava mais próxima do seu
-          equilíbrio natural neste período e que era a pesca que alterava este
-          equilíbrio, prejudicando de alguma forma mais os predadores que suas
-          presas.
+          a 1923.
         </v-col>
-        <v-col xs="12" md="6" align="center">
-          <client-only>
+        <v-col xs="12" sm="4" align="center">
+          <v-img src="/figures/lebrelince.png" contain width="300" height="300">
+          </v-img>
+          <!-- <client-only>
             <vue-plotly
               v-if="startChart"
               :data="data"
               :layout="layout"
-              :options="options"
-            />
-          </client-only>
+              :options="options" -->
+          <!-- /> -->
+          <!-- </client-only> -->
         </v-col>
       </v-row>
       <v-row>
         <v-col>
+          Ele observou que tal proporção era maior durante e imediatamente após
+          a guerra, quando a pesca estava minguada. D'Ancona concluiu que a
+          dinâmica predador-presa estava mais próxima do seu equilíbrio natural
+          neste período e que era a pesca que alterava este equilíbrio,
+          prejudicando de alguma forma mais os predadores que suas presas.
+          <br />
           D'Ancona era casado com uma das filhas do destacado matemático
           italiano Vito Volterra. Naquele momento não existia nenhuma explicação
           biológica ou ecológica para este fenômeno e D'Ancona perguntou ao

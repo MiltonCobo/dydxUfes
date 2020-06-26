@@ -2,7 +2,7 @@
   <v-sheet class="mathjax">
     <v-container fluid>
       <v-row align="center">
-        <v-col xs="12">
+        <v-col xs="12" md="6">
           <h3 style="color:var(--mjx-green)">
             Qual foi a explicação dada por Volterra para o aumento da população
             de predadores no mar adriático por causa da guerra?
@@ -65,6 +65,28 @@
             target="_blank"
             >atrator de Lorenz
           </a>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <ol>
+            Referências:
+            <li>
+              <div>
+                <a
+                  href="https://pdfs.semanticscholar.org/30ca/85d9eaa25809d9d2814d8b79bcbec8e756d1.pdf"
+                  target="_blank"
+                >
+                  Chaos in Low-Dimensional Lotka-Volterra Models of Competition
+                  <br />
+                </a>
+              </div>
+              <div>
+                J. A. Vano,∗ J. C. Wildenberg, M. B. Anderson, J. K. Noel, and
+                J. C. Sprott
+              </div>
+            </li>
+          </ol>
         </v-col>
       </v-row>
     </v-container>

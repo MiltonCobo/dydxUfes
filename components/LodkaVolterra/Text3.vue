@@ -26,7 +26,7 @@
           v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
           align="center"
           xs="12"
-          style="min-width:640px"
+          style="min-width:600px"
         >
           <client-only>
             <vue-plotly

@@ -44,24 +44,57 @@
           <span style="color:var(--mjx-green)"
             >Como determinar os valores de $x$ que satisfazem esta equação?
           </span>
+        </v-sheet>
+      </v-col>
+    </v-row>
+
+    <v-row align="center">
+      <v-col xs="12" md="7">
+        <v-sheet>
           O problema de achar as raizes de um polinômio de grau $n\ge 3$ é em
           geral difícil. Para $n=2$ temos a fórmula de Bháskara ou quadrática.
           Para $n=3$ e $4$ ainda existem fórmulas explícitas mas muito extensas
           e pouco práticas para calcular as raizes. O matemático frances
-          Évariste Galois provou que
+          <span style="color: Brown">Évariste Galois </span> provou que
           <span style="color:var(--mjx-green)">
             para polinômios de grau $\ge 5$ não existem fórmulas gerais para
             calcular as raizes.</span
           >
           Este é um resultado profundo que Galois demostrou antes de completar
-          seus 20 anos, quando morreu num duelo de pistola (veja por exemplo a
-          página de
+          seus 21 anos, quando morreu num duelo de pistola!
+        </v-sheet>
+      </v-col>
+      <v-col xs="12" sm="5" align="center">
+        <v-img
+          contain
+          src="/figures/Evariste_galois.jpg"
+          width="300"
+          height="300"
+        >
+        </v-img>
+        <div class="subheading">Evariste Galois(1811-1832)</div>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-sheet>
+          Ele vivieu num momento de turbulência política na França sendo um
+          acalorado ativista político que não hesitava em se envolver em
+          situações perigosas, tendo sido preso varias vezes e expulso da École
+          normale. As razões do duelo de pistola não estão completamente claras
+          mas aparentemente estão relacionadas com um caso amoroso. De acordo
+          com seu primo, Gabriel Demante, Galois teria lhe dito numa carta
+          escrita antes do duelo
+          <span style="font-style: italic">
+            "eu sou vítima de uma coquete infame e seus dois idiotas".
+          </span>
+          (veja por exemplo a página de
           <a
             href="https://pt.wikipedia.org/wiki/%C3%89variste_Galois"
             target="_blank"
-            >Wikipedia sobre Galois
+            >Wikipedia sobre Galois,
           </a>
-          ).
+          a versão em inglés é mais completa ).
           <br />
           Usaremos o seguinte teorema matemático que nos permite achar as raizes
           racionais de um polinômio
