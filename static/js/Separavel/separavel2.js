@@ -9,8 +9,8 @@ export function drawContoursSep2() {
   let ywidth = 30
   let xcorner = c
   let ycorner = c
-  let ysteps = 80
-  let xsteps = 80
+  let ysteps = 60
+  let xsteps = 60
   let corner = {
     x: xcorner,
     y: ycorner
@@ -36,7 +36,7 @@ export function drawContoursSep2() {
     type: 'contour',
 
     showscale: false, // not show colorbar
-    //colorscale: 'Earth',
+    // colorscale: 'Greys',
     //reversescale: true,
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
     // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
@@ -50,7 +50,7 @@ export function drawContoursSep2() {
     },
 
     autocontour: true,
-    ncontours: 200
+    ncontours: 80
     // contours: {
     //   coloring: 'none',
     //   start: -30,
@@ -66,7 +66,7 @@ export function drawContoursSep2() {
     z: info.z,
     type: 'contour',
 
-    showscale: false, // not show colorbar
+    showscale: true, // not show colorbar
 
     line: {
       smoothing: 1.3,
@@ -165,10 +165,10 @@ export function drawContoursSep2() {
       ay: -80,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
-      arrowcolor: 'green',
+      arrowcolor: 'black',
       font: {
         size: 18,
-        color: 'green'
+        color: 'black'
       },
       x: -0.75,
       y: 2.6 // head af arrow
@@ -181,10 +181,10 @@ export function drawContoursSep2() {
       ay: -80,
       ayref: 'pixel', // refers to axes
       axref: 'pixel',
-      arrowcolor: 'green',
+      arrowcolor: 'darkgreen',
       font: {
         size: 18,
-        color: 'green'
+        color: 'darkgreen'
       },
       x: -0.75,
       y: 2.6 // head af arrow
@@ -277,24 +277,26 @@ export function drawContoursSep2() {
     },
     {
       type: 'line',
-      x0: -10,
+      x0: -c * 0.9,
       y0: 2,
-      x1: 10,
+      x1: c * 0.9,
       y1: 2,
       line: {
         color: 'black',
-        width: 2.5
+        width: 2,
+        dash: 'dot'
       }
     },
     {
       type: 'line',
-      x0: -10,
+      x0: -c * 0.9,
       y0: 0,
-      x1: 10,
+      x1: c * 0.9,
       y1: 0,
       line: {
         color: 'black',
-        width: 2.5
+        width: 2,
+        dash: 'dot'
       }
     }
   ]
@@ -443,7 +445,7 @@ export function drawSurfaceSep2() {
     type: 'surface',
 
     showscale: false, // not show colorbar
-    colorscale: 'Earth',
+    colorscale: 'RdBu',
     reversescale: true,
 
     // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
@@ -500,7 +502,7 @@ export function drawSurfaceSep2() {
     hovermode: false,
     autosize: true,
     width: 600,
-    // height: 600,
+    // height: 450,
     // margin: {
     //   l: 0,
     //   r: 0,
