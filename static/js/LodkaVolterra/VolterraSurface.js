@@ -15,10 +15,10 @@ export function volterraSurface2() {
   const c1 = 7.5
   const d1 = 0.14
 
-  let xwidth = 160
-  let ywidth = 160
-  let xsteps = 40
-  let ysteps = 40
+  let xwidth = 200
+  let ywidth = 200
+  let xsteps = 30
+  let ysteps = 30
   let corner = { x: 0, y: 0 }
 
   function funct(x, y) {
@@ -52,12 +52,12 @@ export function volterraSurface2() {
     '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'
 
   data.contours.z.start = 15 /* set manually because zMax=Infinity */
-  data.contours.z.end = 35
+  data.contours.z.end = 50
   data.contours.z.size = 1
   // data.contours.usecolormap = true // this is done in options
   data.visible = true
-  // data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
-  // data.ncontours = 40
+  //data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
+  //data.ncontours = 100
   data.line = {
     smoothing: 1,
     width: 1,
@@ -85,7 +85,7 @@ export function volterraSurface2() {
   data1.contours.z.end = 40
   data1.contours.z.size = 1
   data1.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
-  data1.ncontours = 40
+  data1.ncontours = 50
   // data.contours.z.start = 15 /* set manually because zMax=Infinity */
   // data.contours.z.end = 50
   // data.contours.z.size = 0.4
@@ -142,8 +142,8 @@ export function volterraSurface2() {
   layout0.scene = {
     camera: {
       eye: {
-        x: 1.25,
-        y: 1.25,
+        x: 1.1,
+        y: 1.1,
         z: 0.25
       }
       //projection: { type: 'orthographic' }
@@ -152,30 +152,30 @@ export function volterraSurface2() {
       title: 'x',
       showlegend: true,
       tickmode: 'linear',
-      range: [0, 160],
-      tick0: 20,
-      dtick: 20
+      range: [0, xwidth],
+      tick0: 0,
+      dtick: xwidth / 4,
       // tickmode: 'auto',
       // nticks: 4
-      //fixedrange: true
+      fixedrange: true
     },
     yaxis: {
       title: 'y',
       tickmode: 'linear',
-      range: [0, 160],
-      tick0: 20,
-      dtick: 20
+      range: [0, ywidth],
+      tick0: 0,
+      dtick: ywidth / 4,
       // tickmode: 'auto',
       // nticks: 4
-      //fixedrange: true
+      fixedrange: true
     },
     zaxis: {
       title: 'z',
       tickmode: 'linear',
-      tick0: 15,
+      tick0: 0,
       dtick: 5,
-      range: [10, 38]
-      //fixedrange: true
+      range: [0, 45],
+      fixedrange: true
     }
   }
 
@@ -191,9 +191,20 @@ export function volterraSurface2() {
             {
               title:
                 '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$',
-              scene: { annotations: [annotations1], zaxis: { range: [10, 38] } }
-              //   shapes: shapes1
+
+              scene: {
+                zaxis: { range: [0, 45] },
+                // camera: {
+                //   eye: {
+                //     x: 1.1,
+                //     y: 1.1,
+                //     z: 0.25
+                //   }
+                // },
+                annotations: [annotations1]
+              }
             }
+            //   shapes: shapes1  zaxis: { range: [10, 45]
           ],
           label: 'Superfície 1'
         },
@@ -203,13 +214,23 @@ export function volterraSurface2() {
           args: [
             {
               visible: [true, true],
-              opacity: [0.1, 1]
+              opacity: [0.05, 1]
             },
             {
               title:
                 '$\\color{green}{V(x,y)=0.14\\, x - 7.5\\, \\ln(x) +0.12\\, y-3.6\\,\\ln(y)}$',
-              scene: { annotations: [annotations2], zaxis: { range: [10, 38] } }
-              //   shapes: [...shapes3, ...shapes2]
+              scene: {
+                zaxis: { range: [0, 45] },
+                // camera: {
+                //   eye: {
+                //     x: 1.1,
+                //     y: 1.1,
+                //     z: 0.25
+                //   }
+                // },
+                annotations: [annotations2]
+              }
+              //   shapes: [...shapes3, ...shapes2] //
             }
           ],
           label: 'Superfície 2'
@@ -221,7 +242,7 @@ export function volterraSurface2() {
         t: 10
       },
       showactive: true,
-      // bgcolor: 'lightgrey',
+      //bgcolor: 'lightgrey',
       type: 'buttons',
       x: 0.76,
       xanchor: 'left',

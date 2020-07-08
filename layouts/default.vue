@@ -194,7 +194,7 @@ export default {
         {
           title: 'Lorenz',
           icon: 'mdi-book-open-page-variant',
-          route: '/about'
+          route: '/lorenz'
         },
         {
           title: 'Lotka-Volterra',

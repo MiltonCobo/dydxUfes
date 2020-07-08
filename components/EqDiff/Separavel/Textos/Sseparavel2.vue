@@ -54,7 +54,7 @@
           O problema de achar as raizes de um polinômio de grau $n\ge 3$ é em
           geral difícil. Para $n=2$ temos a fórmula de Bháskara ou quadrática.
           Para $n=3$ e $4$ ainda existem fórmulas explícitas mas muito extensas
-          e pouco práticas para calcular as raizes. O matemático frances
+          e pouco práticas para calcular as raizes. O matemático francês
           <span style="color: Brown">Évariste Galois </span> provou que
           <span style="color:var(--mjx-green)">
             para polinômios de grau $\ge 5$ não existem fórmulas gerais para
@@ -72,29 +72,31 @@
           height="300"
         >
         </v-img>
-        <div class="subheading">Evariste Galois(1811-1832)</div>
+        <div class="subheading">Évariste Galois(1811-1832)</div>
       </v-col>
     </v-row>
     <v-row>
       <v-col>
         <v-sheet>
-          Ele vivieu num momento de turbulência política na França sendo um
+          Ele viveu num momento de turbulência política na França sendo um
           acalorado ativista político que não hesitava em se envolver em
-          situações perigosas, tendo sido preso varias vezes e expulso da École
-          normale. As razões do duelo de pistola não estão completamente claras
-          mas aparentemente estão relacionadas com um caso amoroso. De acordo
-          com seu primo, Gabriel Demante, Galois teria lhe dito numa carta
-          escrita antes do duelo
+          situações perigosas, sendo preso varias vezes. Ele ainda conseguiu ser
+          expulso da École Normale Supérieure, onde era aluno, praticamente
+          acabando sua carreira matemática. As razões do duelo de pistola não
+          estão completamente claras mas aparentemente estão relacionadas com um
+          caso amoroso. De acordo com seu primo, Gabriel Demante, Galois teria
+          lhe dito numa carta escrita pouco antes do duelo
           <span style="font-style: italic">
-            "eu sou vítima de uma coquete infame e seus dois idiotas".
+            "eu sou vítima de uma coquete infame e seus dois idiotas"
           </span>
           (veja por exemplo a página de
           <a
             href="https://pt.wikipedia.org/wiki/%C3%89variste_Galois"
             target="_blank"
-            >Wikipedia sobre Galois,
+            >Wikipedia sobre Galois).
           </a>
-          a versão em inglés é mais completa ).
+
+          <v-spacer />
           <br />
           Usaremos o seguinte teorema matemático que nos permite achar as raizes
           racionais de um polinômio
@@ -121,9 +123,10 @@
           </v-sheet>
 
           <br />
-          Não tentaremos demostrar este resultado nestas notas. É importante
-          frisar que $p(x)$ pode não ter nenhuma raiz racional e portanto o
-          teorema não diz nada sobre as raizes de $p(x).$
+          Não tentaremos demostrar este resultado nestas notas, mas incentivamos
+          o leitor a achar uma prova por si próprio. É importante frisar que
+          $p(x)$ pode não ter nenhuma raiz racional e nesse caso o teorema não
+          diz nada sobre as raizes de $p(x).$
 
           <ul>
             <li>

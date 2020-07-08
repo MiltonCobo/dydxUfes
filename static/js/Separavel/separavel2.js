@@ -3,6 +3,7 @@ import {
   //   layout,
   options
 } from '@/static/js/Plotly/plotly-config.js'
+
 export function drawContoursSep2() {
   let c = 15
   let xwidth = 30

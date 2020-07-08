@@ -16,6 +16,8 @@
     "@mdi/font": "^5.1.45",
     "@statnett/vue-plotly": "^0.3.2",
     "babelify": "^10.0.0",
+    "babylonjs": "^4.1.0",
+    "babylonjs-gui": "^4.1.0",
     "chart.js": "^2.9.3",
     "ify-loader": "^1.1.0",
     "import": "0.0.6",

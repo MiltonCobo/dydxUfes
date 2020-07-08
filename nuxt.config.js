@@ -39,6 +39,18 @@ export default {
     title: 'Minha pagina UFES',
     script: [
       // {
+      //   type: 'text/javascript',
+      //   src: 'https://preview.babylonjs.com/babylon.js"',
+      //   sync: false,
+      //   defer: false
+      // },
+      // {
+      //   type: 'text/javascript',
+      //   src: 'https://preview.babylonjs.com/gui/babylon.gui.min.js',
+      //   async: false,
+      //   defer: false
+      // }
+      // {
       //   type: 'text/javascript', //x-mathjax-config',
       //   src: 'js/MathJax/mathjax2Config.js',
       //   async: false,
@@ -95,7 +107,9 @@ export default {
   plugins: [
     '~/plugins/globalVariables',
     { src: '~plugins/vue-plotly', mode: 'client' },
-    { src: '~plugins/vue-chartjs.js', mode: 'client' }
+    { src: '~plugins/vue-chartjs.js', mode: 'client' },
+    { src: '~plugins/babylonjs.js', mode: 'client' },
+    { src: '~plugins/babylon-gui.js', mode: 'client' }
   ],
 
   /*
@@ -103,7 +117,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module', // had problems!
+    //'@nuxtjs/eslint-module', // had problems!
     '@nuxtjs/vuetify'
   ],
   /*
