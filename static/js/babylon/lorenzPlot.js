@@ -2,10 +2,9 @@ import * as BABYLON from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
 export default function lorenzPlot() {
-  console.log(GUI)
-  var pointsLorenz = []
+  // var pointsLorenz = []
   var butterflies
-  var attractor
+  var attractor1, attractor2
 
   //var attractor
 
@@ -22,24 +21,24 @@ export default function lorenzPlot() {
   var lorenzOffset = rho - 1,
     singularity = Math.sqrt(beta * (rho - 1))
 
-  function makeVertices() {
+  function makeVertices(N) {
     let points = []
 
     for (let t = -1; t < 2; t += 2) {
       let y = 0.01,
         z = 0.01,
         x = t
-
+      points[t] = []
       for (let j = 0; j < 300; j++) {
         x = x + sigma * (z - x) * dt
         z = z + (x * (rho - y) - z) * dt
         y = y + (x * z - beta * y) * dt
       }
-      for (let i = 0; i < numPoints; i++) {
+      for (let i = 0; i < N; i++) {
         x = x + sigma * (z - x) * dt
         z = z + (x * (rho - y) - z) * dt
         y = y + (x * z - beta * y) * dt
-        points.push(new BABYLON.Vector3(x, y - lorenzOffset, z))
+        points[t].push(new BABYLON.Vector3(x, y - lorenzOffset, z))
       }
     }
 
@@ -48,7 +47,7 @@ export default function lorenzPlot() {
 
   var createScene = function(engine, canvas) {
     var scene = new BABYLON.Scene(engine)
-    scene.clearColor = new BABYLON.Color3(0, 0, 0)
+    scene.clearColor = new BABYLON.Color3(21 / 255, 21 / 255, 21 / 255)
 
     let camera = new BABYLON.ArcRotateCamera(
       'camera',
@@ -65,28 +64,55 @@ export default function lorenzPlot() {
     )
     camera.minZ = 0.01
     camera.maxZ = 300
+    //camera.target = new BABYLON.Vector3(0,0, 0)
 
-    let axes = new BABYLON.AxesViewer(scene, 10)
+    let axes = new BABYLON.AxesViewer(scene, 5)
     axes.position = new BABYLON.Vector3(0, 0, -lorenzOffset)
 
     //   lights
-    scene.createDefaultLight()
+    //scene.createDefaultLight()
+    // let sun = BABYLON.Mesh.CreateSphere('sun', 8, 0.5, scene)
+    // let sunMaterial = new BABYLON.StandardMaterial('sunMaterial', scene)
+    // //sunMaterial.emissiveTexture = new BABYLON.Texture('assets/images/Metal1.jpg')
+    // sunMaterial.emissiveColor = new BABYLON.Color4(1, 1, 1, 1)
+    // //sunMaterial.specularColor = new BABYLON.Color3(0, 0, 0)
+    // sun.material = sunMaterial
+    // sun.position.x = singularity
+    // sun.position.z = singularity
+    // sun.position.y = lorenzOffset - rho + 1
+
+    // //sun light
+
+    // // let sunLight = new BABYLON.PointLight(
+    // //   'sunLight',
+    // //   0.5 * camera.position,
+    // //   scene
+    // // )
+    // // sunLight.intensity = 10
 
     function updateAttractor() {
-      pointsLorenz = makeVertices({ x: 0.01, y: 0.01, z: -1 }, numPoints)
+      let pointsLorenz = makeVertices(numPoints)[-1]
       // draw attractor
-      attractor = BABYLON.MeshBuilder.CreateLines(
+      attractor1 = BABYLON.MeshBuilder.CreateLines(
+        'Lorenz',
+        { points: pointsLorenz, updatable: true },
+        scene
+      )
+      pointsLorenz = makeVertices(numPoints)[1]
+
+      attractor2 = BABYLON.MeshBuilder.CreateLines(
         'Lorenz',
         { points: pointsLorenz, updatable: true },
         scene
       )
 
-      attractor.color = attractorColor
+      attractor1.color = attractorColor
+      attractor2.color = attractorColor
     }
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BABYLON.PointsCloudSystem('butterflies', 1.5, scene, {
+      butterflies = new BABYLON.PointsCloudSystem('butterflies', 1.8, scene, {
         updatable: true
       })
       butterflies.addPoints(10000)
@@ -133,7 +159,7 @@ export default function lorenzPlot() {
       console.log('running')
     })
     BABYLON.GUI = GUI
-    //
+
     var advancedTexture = new BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI(
       'myUI'
     )
@@ -147,12 +173,12 @@ export default function lorenzPlot() {
 
     var startButton = new BABYLON.GUI.Button.CreateSimpleButton(
       'startButton',
-      'Reiniciar'
+      'Recriar partículas'
     )
-    startButton.width = '60px'
-    startButton.height = '20px'
-    startButton.color = 'brown'
-    startButton.fontSize = 14
+    startButton.width = '160px'
+    startButton.height = '40px'
+    startButton.color = 'green'
+    startButton.fontSize = 18
     startButton.borderRadius = 20
     startButton.borderColor = 'green'
     //startButton.top = '120px'
@@ -166,19 +192,19 @@ export default function lorenzPlot() {
     var textRho = new BABYLON.GUI.TextBlock()
     textRho.text = 'rho = ' + rho.toFixed(0).toString()
     textRho.color = 'green'
-    textRho.height = '20px'
-    textRho.fontSize = 14
+    textRho.height = '40px'
+    textRho.fontSize = 18
     textRho.top = '40px'
     panel.addControl(textRho)
 
     var sliderRho = new BABYLON.GUI.Slider()
-    sliderRho.minimum = 15
+    sliderRho.minimum = 0
     sliderRho.maximum = 30
     sliderRho.value = 28
     sliderRho.height = '15px'
     sliderRho.thumbWidth = 15
     sliderRho.width = '150px'
-    sliderRho.color = 'brown'
+    sliderRho.color = 'green'
     sliderRho.borderColor = 'black'
     sliderRho.isThumbCircle = true
     sliderRho.step = 0.1
@@ -188,17 +214,17 @@ export default function lorenzPlot() {
     sliderRho.onValueChangedObservable.add(function(value) {
       textRho.text = 'rho = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
       rho = value
-      attractor.dispose()
+      attractor1.dispose()
+      attractor2.dispose()
       updateAttractor()
-      //updateAttractor()
     })
     panel.addControl(sliderRho)
 
     var textSigma = new BABYLON.GUI.TextBlock()
     textSigma.text = 'sigma = ' + sigma.toFixed(0).toString()
     textSigma.color = 'green'
-    textSigma.height = '20px'
-    textSigma.fontSize = 14
+    textSigma.height = '40px'
+    textSigma.fontSize = 18
     //textSigma.top = '40px'
     panel.addControl(textSigma)
     var sliderSigma = new BABYLON.GUI.Slider()
@@ -208,7 +234,7 @@ export default function lorenzPlot() {
     sliderSigma.height = '15px'
     sliderSigma.thumbWidth = 15
     sliderSigma.width = '150px'
-    sliderSigma.color = 'brown'
+    sliderSigma.color = 'green'
     sliderSigma.borderColor = 'black'
     sliderSigma.isThumbCircle = true
     sliderSigma.step = 0.1
@@ -218,17 +244,17 @@ export default function lorenzPlot() {
     sliderSigma.onValueChangedObservable.add(function(value) {
       textSigma.text = 'sigma = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
       sigma = value
-      attractor.dispose()
+      attractor1.dispose()
+      attractor2.dispose()
       updateAttractor()
-      //updateAttractor()
     })
     panel.addControl(sliderSigma)
 
     var textBeta = new BABYLON.GUI.TextBlock()
-    textBeta.text = 'beta = ' + beta.toFixed(0).toString()
+    textBeta.text = 'beta = 8/3 ' //+ beta.toFixed(1).toString()
     textBeta.color = 'green'
-    textBeta.height = '20px'
-    textBeta.fontSize = 14
+    textBeta.height = '40px'
+    textBeta.fontSize = 18
     //textBeta.top = '40px'
     panel.addControl(textBeta)
     var sliderBeta = new BABYLON.GUI.Slider()
@@ -238,7 +264,7 @@ export default function lorenzPlot() {
     sliderBeta.height = '15px'
     sliderBeta.thumbWidth = 15
     sliderBeta.width = '150px'
-    sliderBeta.color = 'brown'
+    sliderBeta.color = 'green'
     sliderBeta.borderColor = 'black'
     sliderBeta.isThumbCircle = true
     sliderBeta.step = 0.1
@@ -248,9 +274,9 @@ export default function lorenzPlot() {
     sliderBeta.onValueChangedObservable.add(function(value) {
       textBeta.text = 'beta = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
       sigma = value
-      attractor.dispose()
+      attractor1.dispose()
+      attractor2.dispose()
       updateAttractor()
-      //updateAttractor()
     })
     panel.addControl(sliderBeta)
 
@@ -263,33 +289,58 @@ export default function lorenzPlot() {
     var comment = new BABYLON.GUI.TextBlock()
     comment.text = 'Use mouse ou setas para rotar e Ctrl+seta para transladar'
     comment.height = '20px'
-    comment.fontSize = 12
-    comment.color = 'brown'
+    comment.fontSize = 18
+    comment.color = 'green'
     panel2.addControl(comment)
 
     return scene
   }
 
-  function pageLoaded() {
-    var canvas = document.getElementById('lorenzCanvas')
-    var engine = new BABYLON.Engine(canvas, true)
-    var scene = createScene(engine, canvas)
+  var canvas = document.getElementById('lorenzCanvas')
+  var engine = new BABYLON.Engine(canvas, true)
+  var scene = createScene(engine, canvas)
 
-    engine.runRenderLoop(function() {
-      scene.render()
+  engine.runRenderLoop(function() {
+    console.log('running')
+    scene.render()
+    let route = window.location.pathname
+    // let p = navigationType()
+    // console.log(p)
+    if (route !== '/lorenz') {
+      engine.stopRenderLoop()
+    }
+  })
+  window.addEventListener('resize', function() {
+    engine.resize()
+  })
+}
 
-      let route = window.location.pathname
+function navigationType() {
+  var result
+  var p
 
-      if (route !== '/lorenz') {
-        engine.dispose()
-      }
-    })
-    window.addEventListener('resize', function() {
-      engine.resize()
-    })
+  if (window.performance.navigation) {
+    result = window.performance.navigation
+    if (result == 255) {
+      result = 4
+    } // 4 is my invention!
   }
-  pageLoaded()
-  //   window.addEventListener('DOMContentLoaded', function() {
-  //     pageLoaded()
-  //   })
+
+  if (window.performance.getEntriesByType('navigation')) {
+    p = window.performance.getEntriesByType('navigation')[0].type
+
+    if (p == 'navigate') {
+      result = 0
+    }
+    if (p == 'reload') {
+      result = 1
+    }
+    if (p == 'back_forward') {
+      result = 2
+    }
+    if (p == 'prerender') {
+      result = 3
+    } //3 is my invention!
+  }
+  return result
 }

@@ -1,17 +1,15 @@
 <template>
-  <v-container fluid>
+  <v-container style="margin:0px;" fluid>
     <v-row>
       <v-col>
-        <h1 style="color: salmon;" align="center">
+        <h2 style="color: salmon;" align="center">
           O Atrator de Lorenz
-        </h1>
+        </h2>
         <v-divider style="margin-bottom:0.5%;" />
       </v-col>
     </v-row>
     <v-row>
-      <v-col xs="12" align="center">
-        <canvas id="lorenzCanvas"></canvas>
-      </v-col>
+      <canvas id="lorenzCanvas"></canvas>
     </v-row>
   </v-container>
 </template>
@@ -23,19 +21,11 @@ export default {
   layout: 'darkTheme',
   created() {},
   mounted() {
-    // let script = document.createElement('script')
-    // script.type = 'text/javascript'
-    // script.src = '../../../js/babylon/babylon.max.js'
-    // document.head.appendChild(script)
-    // script.onload = console.log('load babylon')
-
-    let script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = '../../../js/babylon/babylon.gui.min.js'
-    document.head.appendChild(script)
-    script.onload = console.log('load GUI')
-
-    this.startBabylonPlot()
+    if (!document.lorenzPlot) {
+      this.startBabylonPlot()
+    } else {
+      console.log('lorenzPlot is load')
+    }
 
     // script.onload = () => {
     //   this.startBabylonPlot
@@ -43,7 +33,9 @@ export default {
     // }
     //script.addEventListener('load', this.updated) //this.startBabylonPlot)
   },
-  destroyed() {},
+  destroyed() {
+    console.log('destroyed foi ativado')
+  },
 
   methods: {
     onBabylonLoaded() {
@@ -59,7 +51,12 @@ export default {
     }
   },
   updated() {
-    this.startBabylonPlot()
+    if (!window.lorenzPlot) {
+      this.startBabylonPlot()
+    } else {
+      console.log('lorenzPlot is')
+    }
+
     //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
 
@@ -121,5 +118,7 @@ export default {
   width: 100%;
   height: 100%;
   touch-action: none;
+  margin: 0px;
+  padding: 0px;
 }
 </style>
