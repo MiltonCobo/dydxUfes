@@ -18,7 +18,7 @@
           <br />
           Na animação espalhamos um certo número de pontos num círculo (as
           "sementes") espaçados por um mesmo ângulo $ \theta $ e depois
-          afastamos estes pontos do círculo para visualiza-los melhor.
+          afastamos estes pontos do círculo para visualizá-los melhor.
           Finalmente variamos o ângulo $ \theta $ provocando o movimento da
           figura (isto pode ser acelerado usando o "slider" embaixo na figura).
           Consideramos $ \theta $, em radianos, como sendo da forma $ \theta = x
@@ -40,15 +40,15 @@
     <v-row>
       <v-col>
         <p class="mathjax ColorWheat">
-          Quando $ x $ irracional o número de pernas aumenta com o número de
-          iterações e as figuras ficam mais complicadas. O número de pernas que
+          Quando $ x $ é irracional o número de pernas aumenta com o número de
+          iterações e as figuras ficam mais complexas. O número de pernas que
           vão aparecendo depende das aproximações racionais de $ x $. Por
           exemplo, para $ x= 1/\pi \approx 0.31830... $ o número de pernas é
           primeiro $ 3 $ e depois $ 22 $. Isso porque $ 1/\pi $ é bem aproximado
           por $ 1/3 $ e por $ 7/22 $. Voce pode testar estes valores do ângulo
           no "input" embaixo da figura.
           <br />
-          A figura mais complicada acontece quando $ x $ é o número irracional $
+          A figura mais complexa acontece quando $ x $ é o número irracional $
           \varphi = (1+\sqrt{5})/2 \approx 1.6180339... $. Ele é chamado de
           <span style="color:var(--mjx-color); font-size: 20px;"
             >número aúreo ou proporção aúrea

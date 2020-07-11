@@ -2,9 +2,9 @@ import * as BABYLON from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
 export default function lorenzPlot() {
-  // var pointsLorenz = []
   var butterflies
   var attractor1, attractor2
+  var camera, axes
 
   //var attractor
 
@@ -13,10 +13,10 @@ export default function lorenzPlot() {
     beta = 8.0 / 3.0
 
   var dt = 0.005,
-    numPoints = 5000
+    numPoints = 6000
 
-  var attractorColor = new BABYLON.Color4(245 / 255, 150 / 255, 7 / 255, 1)
-  var particleColor = new BABYLON.Color4(8 / 255, 170 / 255, 245 / 255, 0.6)
+  var attractorColor = new BABYLON.Color4(245 / 255, 150 / 255, 0 / 255, 1)
+  var particleColor = new BABYLON.Color4(0 / 255, 170 / 255, 245 / 255, 0.6)
 
   var lorenzOffset = rho - 1,
     singularity = Math.sqrt(beta * (rho - 1))
@@ -38,7 +38,7 @@ export default function lorenzPlot() {
         x = x + sigma * (z - x) * dt
         z = z + (x * (rho - y) - z) * dt
         y = y + (x * z - beta * y) * dt
-        points[t].push(new BABYLON.Vector3(x, y - lorenzOffset, z))
+        points[t].push(new BABYLON.Vector3(x, y, z))
       }
     }
 
@@ -49,7 +49,7 @@ export default function lorenzPlot() {
     var scene = new BABYLON.Scene(engine)
     scene.clearColor = new BABYLON.Color3(21 / 255, 21 / 255, 21 / 255)
 
-    let camera = new BABYLON.ArcRotateCamera(
+    camera = new BABYLON.ArcRotateCamera(
       'camera',
       0,
       0,
@@ -60,35 +60,14 @@ export default function lorenzPlot() {
 
     camera.attachControl(canvas, true)
     camera.setPosition(
-      new BABYLON.Vector3(5 * singularity, 3.2, -4.5 * singularity)
+      new BABYLON.Vector3(5 * singularity, rho - 1, -4.5 * singularity)
     )
-    camera.minZ = 0.01
+    camera.minZ = 0.001
     camera.maxZ = 300
-    //camera.target = new BABYLON.Vector3(0,0, 0)
+    camera.setTarget(new BABYLON.Vector3(0, -27 + rho - 1, 0))
 
-    let axes = new BABYLON.AxesViewer(scene, 5)
-    axes.position = new BABYLON.Vector3(0, 0, -lorenzOffset)
-
-    //   lights
-    //scene.createDefaultLight()
-    // let sun = BABYLON.Mesh.CreateSphere('sun', 8, 0.5, scene)
-    // let sunMaterial = new BABYLON.StandardMaterial('sunMaterial', scene)
-    // //sunMaterial.emissiveTexture = new BABYLON.Texture('assets/images/Metal1.jpg')
-    // sunMaterial.emissiveColor = new BABYLON.Color4(1, 1, 1, 1)
-    // //sunMaterial.specularColor = new BABYLON.Color3(0, 0, 0)
-    // sun.material = sunMaterial
-    // sun.position.x = singularity
-    // sun.position.z = singularity
-    // sun.position.y = lorenzOffset - rho + 1
-
-    // //sun light
-
-    // // let sunLight = new BABYLON.PointLight(
-    // //   'sunLight',
-    // //   0.5 * camera.position,
-    // //   scene
-    // // )
-    // // sunLight.intensity = 10
+    axes = new BABYLON.AxesViewer(scene, 5)
+    axes.position = new BABYLON.Vector3(0, -27 + rho - 1, 0)
 
     function updateAttractor() {
       let pointsLorenz = makeVertices(numPoints)[-1]
@@ -108,11 +87,14 @@ export default function lorenzPlot() {
 
       attractor1.color = attractorColor
       attractor2.color = attractorColor
+
+      attractor1.position = new BABYLON.Vector3(0, -rho + 1, 0)
+      attractor2.position = new BABYLON.Vector3(0, -rho + 1, 0)
     }
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BABYLON.PointsCloudSystem('butterflies', 1.8, scene, {
+      butterflies = new BABYLON.PointsCloudSystem('butterflies', 2, scene, {
         updatable: true
       })
       butterflies.addPoints(10000)
@@ -132,7 +114,7 @@ export default function lorenzPlot() {
         butterflies.setParticles()
 
         mesh.position.x = 0
-        mesh.position.y = -lorenzOffset
+        mesh.position.y = -rho + 1
         mesh.position.z = 0
         mesh.alwaysSelectAsActiveMesh = true
       })
@@ -156,8 +138,8 @@ export default function lorenzPlot() {
 
     scene.registerBeforeRender(function() {
       butterflies.setParticles()
-      console.log('running')
     })
+
     BABYLON.GUI = GUI
 
     var advancedTexture = new BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI(
@@ -168,7 +150,7 @@ export default function lorenzPlot() {
     var panel = new BABYLON.GUI.StackPanel()
     panel.width = '220px'
     panel.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT
-    panel.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER
+    panel.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel)
 
     var startButton = new BABYLON.GUI.Button.CreateSimpleButton(
@@ -177,7 +159,7 @@ export default function lorenzPlot() {
     )
     startButton.width = '160px'
     startButton.height = '40px'
-    startButton.color = 'green'
+    startButton.color = '#08a31f'
     startButton.fontSize = 18
     startButton.borderRadius = 20
     startButton.borderColor = 'green'
@@ -191,7 +173,7 @@ export default function lorenzPlot() {
 
     var textRho = new BABYLON.GUI.TextBlock()
     textRho.text = 'rho = ' + rho.toFixed(0).toString()
-    textRho.color = 'green'
+    textRho.color = '#08a31f'
     textRho.height = '40px'
     textRho.fontSize = 18
     textRho.top = '40px'
@@ -202,7 +184,7 @@ export default function lorenzPlot() {
     sliderRho.maximum = 30
     sliderRho.value = 28
     sliderRho.height = '15px'
-    sliderRho.thumbWidth = 15
+    sliderRho.thumbWidth = 20
     sliderRho.width = '150px'
     sliderRho.color = 'green'
     sliderRho.borderColor = 'black'
@@ -217,12 +199,13 @@ export default function lorenzPlot() {
       attractor1.dispose()
       attractor2.dispose()
       updateAttractor()
+      butterflies.mesh.position.y = -rho + 1
     })
     panel.addControl(sliderRho)
 
     var textSigma = new BABYLON.GUI.TextBlock()
     textSigma.text = 'sigma = ' + sigma.toFixed(0).toString()
-    textSigma.color = 'green'
+    textSigma.color = '#08a31f'
     textSigma.height = '40px'
     textSigma.fontSize = 18
     //textSigma.top = '40px'
@@ -232,7 +215,7 @@ export default function lorenzPlot() {
     sliderSigma.maximum = 20
     sliderSigma.value = 10
     sliderSigma.height = '15px'
-    sliderSigma.thumbWidth = 15
+    sliderSigma.thumbWidth = 20
     sliderSigma.width = '150px'
     sliderSigma.color = 'green'
     sliderSigma.borderColor = 'black'
@@ -252,7 +235,7 @@ export default function lorenzPlot() {
 
     var textBeta = new BABYLON.GUI.TextBlock()
     textBeta.text = 'beta = 8/3 ' //+ beta.toFixed(1).toString()
-    textBeta.color = 'green'
+    textBeta.color = '#08a31f'
     textBeta.height = '40px'
     textBeta.fontSize = 18
     //textBeta.top = '40px'
@@ -262,7 +245,7 @@ export default function lorenzPlot() {
     sliderBeta.maximum = 20
     sliderBeta.value = 10
     sliderBeta.height = '15px'
-    sliderBeta.thumbWidth = 15
+    sliderBeta.thumbWidth = 20
     sliderBeta.width = '150px'
     sliderBeta.color = 'green'
     sliderBeta.borderColor = 'black'
@@ -283,15 +266,22 @@ export default function lorenzPlot() {
     var panel2 = new BABYLON.GUI.StackPanel()
     panel2.width = '500px'
     panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
-    panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP
+    panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel2)
 
-    var comment = new BABYLON.GUI.TextBlock()
-    comment.text = 'Use mouse ou setas para rotar e Ctrl+seta para transladar'
+    let comment = new BABYLON.GUI.TextBlock()
+    comment.text = 'Use mouse, um dedo ou as setas para rotar'
     comment.height = '20px'
-    comment.fontSize = 18
-    comment.color = 'green'
+    comment.fontSize = 16
+    comment.color = '#08a31f'
     panel2.addControl(comment)
+
+    let comment2 = new BABYLON.GUI.TextBlock()
+    comment2.text = 'Use Ctrl+setas ou dois dedos para transladar'
+    comment2.height = '20px'
+    comment2.fontSize = 16
+    comment2.color = '#08a31f'
+    panel2.addControl(comment2)
 
     return scene
   }
@@ -301,12 +291,14 @@ export default function lorenzPlot() {
   var scene = createScene(engine, canvas)
 
   engine.runRenderLoop(function() {
-    console.log('running')
-    scene.render()
     let route = window.location.pathname
-    // let p = navigationType()
-    // console.log(p)
-    if (route !== '/lorenz') {
+    if (
+      route == 'www.dydx.ufes.br/lorenz/' ||
+      route == '/lorenz/' ||
+      route == '/lorenz'
+    ) {
+      scene.render()
+    } else {
       engine.stopRenderLoop()
     }
   })
