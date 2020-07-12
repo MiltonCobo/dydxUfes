@@ -45,7 +45,7 @@
         bifurcações e se tornando também repulsoras enquanto $\rho$ aumenta.
         Para $\rho = 28$ todas as trajetórias periódicas dentro da bola são
         repulsoras. Desta forma, o atrator dentro da bola $B$ deve ter uma
-        estrutura geométrica mais complexa, de fato, sua dimensão de haussdorff
+        estrutura geométrica mais complexa, de fato, sua dimensão de Hausdorff
         foi calculada em $2.06$ aproximadamente, ou seja o atrator é uma
         criatura com dimensão fractal, sendo um pouco mais do que um plano e bem
         menos que um $\mathbb{R}^3.$ Conjecturou-se que para $\rho = 28$ o
@@ -189,7 +189,9 @@ export default {
 #lorenzCanvas {
   width: 90vw;
   height: 90vh;
-  touch-action: manipulation;
+  touch-action: none;
+  scroll-behavior: smooth;
+  /* manipulation; */
   margin: 0px;
   padding: 0px;
 }

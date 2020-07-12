@@ -87,7 +87,7 @@ export default function lorenzPlot() {
       scene
     )
 
-    camera.attachControl(canvas, true)
+    camera.attachControl(canvas, false) // FALSE scroll in canvas is not passed to browser
     camera.setPosition(
       new BABYLON.Vector3(5 * singularity, rho - 1, -4.5 * singularity)
     )
