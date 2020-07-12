@@ -188,7 +188,7 @@ export default {
 
 #lorenzCanvas {
   width: 90vw;
-  height: 90vh;
+  height: 40vw;
   touch-action: none;
   scroll-behavior: smooth;
   /* manipulation; */

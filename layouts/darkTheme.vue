@@ -50,12 +50,12 @@
       <div></div>
     </v-navigation-drawer>
 
-    <v-app-bar hide-on-scroll flat dark app>
+    <v-app-bar inverted-scroll flat dark app>
       <v-app-bar-nav-icon class="blue--text" @click.stop="drawer = !drawer" />
       <v-spacer />
       <!-- <v-btn icon>
         <nuxt-link to="/">
-          <v-icon>
+          <v-icon> hide-on-scroll
             mdi-home
           </v-icon>
         </nuxt-link>
