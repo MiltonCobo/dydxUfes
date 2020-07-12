@@ -136,7 +136,7 @@ export default {
     }
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
 
   data() {
@@ -149,7 +149,7 @@ export default {
 
   head() {
     return {
-      title: 'página dydx da UFES',
+      title: 'O número de Ouro',
       meta: [
         {
           hid: 'description index.vue',
@@ -160,9 +160,9 @@ export default {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         {
-          rel: 'stylesheet',
-          href:
-            'https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&display=swap'
+          // rel: 'stylesheet',
+          // href:
+          //   'https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&display=swap'
           // 'https://fonts.googleapis.com/css2?family=Kalam&display=swap'
           // 'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
         }

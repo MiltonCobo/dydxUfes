@@ -19,8 +19,8 @@
       ><v-col class="mathjax">
         O Atrator de Lorenz foi introduzido por Edward Lorenz em 1963. Lorenz,
         um metererologista americano, estava tentando modelar o fenômeno de
-        convecção térmica na atmosfera produzido pelo calentamento das camadas
-        superiores provocado pelo sol. Neste fenômeno, o ar quente mais leve
+        convecção térmica na atmosfera produzido pelo aquecimento das camadas
+        superiores provocado pelo sol. Neste fenômeno, o ar quente, mais leve,
         circula para cima criando correntes de ar mais fresco nas camadas
         inferiores. Após numerosas simplificações, Lorenz chegou no seguinte
         sistema de equações diferenciais: \[ \begin{cases} \dfrac{dx}{dt} =
@@ -34,25 +34,25 @@
         \rho < 1 $ a origem é um ponto crítico e um atrator global para as
         trajetórias. Em $\rho =1$ acontece uma bifurcação tipo <i>pichfork</i>,
         aparecendo dois pontos críticos atratores (cada um deles atrai mitade do
-        $ R^3$). Existe então uma bola $ B $ centrada na origem de forma que as
-        trajetórias do fluxo entram nessa bola e ficam atrapadas, se aproximando
-        de um desses pontos. Aproximadamente em $\rho =24.73$ estes dois pontos
-        críticos se tornam repulsores, expulsando trajetórias muito próximas. No
-        entanto as trajetórias que nascem longe continuam sendo atrapadas dentro
-        da bola $B.$ Sendo assim devem existir atratores dentro da bola $B$.
-        Inicialmente estes atratores são trajetórias periódicas atratoras. Estas
-        trajetórias periódicas vão sofrendo bifurcações e se tornando também
-        repulsoras enquanto $\rho$ aumenta. Para $\rho = 28$ todas as
-        trajetórias periódicas dentro da bola são repulsoras. Desta forma, o
-        atrator dentro da bola $B$ deve ter uma estrutura geométrica mais
-        complexa, de fato, sua dimensão de haussdorff foi calculada em $2.06$
-        aproximadamente, ou seja o atrator é uma criatura com dimensão fractal,
-        sendo um pouco mais do que um plano e bem menos que um $\R^3.$
-        Conjecturou-se que para $\rho = 28$ o sistema teria um
-        <i>atrator caótico</i>. Nos atratores caóticos, qualquer erro na
-        determinação da posição inicial, por minúsculo que seja, fará a
-        trajetória divergir totalmente da trajetória verdadeira. Isto é o que se
-        conhece como
+        $ \mathbb{R}^3$). Existe então uma bola $ B $ centrada na origem de
+        forma que as trajetórias do fluxo entram nessa bola e ficam atrapadas,
+        se aproximando de um desses pontos. Aproximadamente em $\rho =24.73$
+        estes dois pontos críticos se tornam repulsores, expulsando trajetórias
+        muito próximas. No entanto as trajetórias que nascem longe continuam
+        sendo atrapadas dentro da bola $B.$ Sendo assim devem existir atratores
+        dentro da bola $B$. Inicialmente estes atratores são trajetórias
+        periódicas atratoras. Estas trajetórias periódicas vão sofrendo
+        bifurcações e se tornando também repulsoras enquanto $\rho$ aumenta.
+        Para $\rho = 28$ todas as trajetórias periódicas dentro da bola são
+        repulsoras. Desta forma, o atrator dentro da bola $B$ deve ter uma
+        estrutura geométrica mais complexa, de fato, sua dimensão de haussdorff
+        foi calculada em $2.06$ aproximadamente, ou seja o atrator é uma
+        criatura com dimensão fractal, sendo um pouco mais do que um plano e bem
+        menos que um $\mathbb{R}^3.$ Conjecturou-se que para $\rho = 28$ o
+        sistema teria um <i>atrator caótico</i>. Nos atratores caóticos,
+        qualquer erro na determinação da posição inicial, por minúsculo que
+        seja, fará a trajetória divergir totalmente da trajetória verdadeira.
+        Isto é o que se conhece como
         <i>sensibilidade às condições inicias.</i>
         <br />
         Em 1998 foi finalmente demonstrado pelo Warwick Tucker que o atrator
@@ -80,7 +80,7 @@
           <i
             ><b
               >"talvez a borboleta, com sua aparente fragilidade e falta de
-              poder, seja o símbolo natural daquilo que, sendo muito pequeno
+              poder, seja o símbolo natural daquilo que, sendo muito pequeno,
               causa grandes efeitos..."</b
             >
           </i>
@@ -100,8 +100,14 @@ export default {
   // layout: 'darkTheme',
   created() {},
   mounted() {
+    const script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = '../../../js/babylon/babylon.gui.min.js'
+    document.head.appendChild(script)
+    script.addEventListener('load', this.startBabylonPlot)
+
     if (!window.MathJax) {
-      const script = document.createElement('script')
+      let script = document.createElement('script')
       script.type = 'text/javascript'
       script.src = '../../../js/MathJax/mathjax2Config.js'
       script.addEventListener('load', this.onMathJaxLoaded)
@@ -109,18 +115,7 @@ export default {
     } else {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
-
-    if (!window.BABYLON) {
-      console.log('BABYLON is loaded')
-    } else {
-      this.startBabylonPlot()
-    }
-
-    // script.onload = () => {
-    //   this.startBabylonPlot
-    //   console.log('load GUI')
-    // }
-    //script.addEventListener('load', this.updated) //this.startBabylonPlot)
+    //this.startBabylonPlot()
   },
   destroyed() {
     console.log('destroyed foi ativado')
@@ -131,11 +126,6 @@ export default {
 
   methods: {
     onBabylonLoaded() {
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = '../../../js/babylon/babylon.gui.min.js'
-      document.head.appendChild(script)
-      script.addEventListener('load', this.startBabylonPlot)
       this.startBabylonPlot
     },
     startBabylonPlot() {
@@ -143,12 +133,7 @@ export default {
     }
   },
   updated() {
-    // if (!window.lorenzPlot) {
-    //   this.startBabylonPlot()
-    // } else {
-    //   console.log('lorenzPlot is')
-    // }
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
 
   data() {
@@ -169,7 +154,17 @@ export default {
           content: 'O atrator de Lorenz em www.dydx.ufes.br do DMAT/UFES'
         }
       ],
-      link: []
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        {
+          // rel: 'stylesheet',
+          // href:
+          //   'https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&display=swap'
+          // 'https://fonts.googleapis.com/css2?family=Kalam&display=swap'
+          // 'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
+        }
+      ],
+      script: []
     }
   }
 }
@@ -193,7 +188,7 @@ export default {
 
 #lorenzCanvas {
   width: 90vw;
-  height: 80vh;
+  height: 90vh;
   touch-action: manipulation;
   margin: 0px;
   padding: 0px;

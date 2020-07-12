@@ -2,32 +2,62 @@ import * as BABYLON from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
 export default function lorenzPlot() {
-  var butterflies
-  var attractor1, attractor2
-  var camera, axes
+  let butterflies
+  let attractor1, attractor2, axes
+  let camera
 
-  //var attractor
+  let toggleAttractor = true
+  let togglePanel = false
 
-  var rho = 28,
+  //let attractor
+
+  let rho = 28,
     sigma = 10,
     beta = 8.0 / 3.0
 
-  var dt = 0.005,
-    numPoints = 6000
+  const numPoints = 7000
 
-  var attractorColor = new BABYLON.Color4(245 / 255, 150 / 255, 0 / 255, 1)
-  var particleColor = new BABYLON.Color4(0 / 255, 170 / 255, 245 / 255, 0.6)
+  let attractorColor = new BABYLON.Color4(245 / 255, 150 / 255, 0 / 255, 1)
+  let particleColor = new BABYLON.Color4(0 / 255, 170 / 255, 245 / 255, 0.6)
 
-  var lorenzOffset = rho - 1,
-    singularity = Math.sqrt(beta * (rho - 1))
+  let singularity = Math.sqrt(beta * (rho - 1))
+
+  // make Vertices based on the singularities -------
+  // function makeVertices(N) {
+  //   let points = []
+
+  //   for (let t = -1; t < 2; t += 2) {
+  //     let x = t * singularity + t * 0.1,
+  //       z = t * singularity + t * 0.1,
+  //       y = rho - 1 + t * 0.05
+
+  //     points[t] = []
+
+  //     for (let j = 0; j < 300; j++) {
+  //       x = x + sigma * (z - x) * dt
+  //       z = z + (x * (rho - y) - z) * dt
+  //       y = y + (x * z - beta * y) * dt
+  //     }
+  //     for (let i = 0; i < 2 * N; i++) {
+  //       x = x + sigma * (z - x) * dt
+  //       z = z + (x * (rho - y) - z) * dt
+  //       y = y + (x * z - beta * y) * dt
+  //       points[t].push(new BABYLON.Vector3(x, y, z))
+  //     }
+  //   }
+  //   return points
+  // }
 
   function makeVertices(N) {
     let points = []
 
     for (let t = -1; t < 2; t += 2) {
       let y = 0.01,
-        z = 0.01,
+        z = t, //0.01,
         x = t
+
+      let dt = 0.005
+
       points[t] = []
       for (let j = 0; j < 300; j++) {
         x = x + sigma * (z - x) * dt
@@ -41,12 +71,11 @@ export default function lorenzPlot() {
         points[t].push(new BABYLON.Vector3(x, y, z))
       }
     }
-
     return points
   }
 
-  var createScene = function(engine, canvas) {
-    var scene = new BABYLON.Scene(engine)
+  let createScene = function(engine, canvas) {
+    let scene = new BABYLON.Scene(engine)
     scene.clearColor = new BABYLON.Color3(21 / 255, 21 / 255, 21 / 255)
 
     camera = new BABYLON.ArcRotateCamera(
@@ -64,14 +93,14 @@ export default function lorenzPlot() {
     )
     camera.minZ = 0.001
     camera.maxZ = 300
-    camera.setTarget(new BABYLON.Vector3(0, -27 + rho - 1, 0))
+    camera.setTarget(new BABYLON.Vector3(0, rho - 1, 0))
 
-    axes = new BABYLON.AxesViewer(scene, 5)
-    axes.position = new BABYLON.Vector3(0, -27 + rho - 1, 0)
+    axes = new BABYLON.AxesViewer(scene, 8)
+    //axes.position = new BABYLON.Vector3(0, -27 + rho - 1, 0)
 
     function updateAttractor() {
       let pointsLorenz = makeVertices(numPoints)[-1]
-      // draw attractor
+
       attractor1 = BABYLON.MeshBuilder.CreateLines(
         'Lorenz',
         { points: pointsLorenz, updatable: true },
@@ -88,8 +117,11 @@ export default function lorenzPlot() {
       attractor1.color = attractorColor
       attractor2.color = attractorColor
 
-      attractor1.position = new BABYLON.Vector3(0, -rho + 1, 0)
-      attractor2.position = new BABYLON.Vector3(0, -rho + 1, 0)
+      attractor1.isVisible = toggleAttractor
+      attractor2.isVisible = toggleAttractor
+
+      //attractor1.position = new BABYLON.Vector3(0, -rho + 1, 0)
+      //attractor2.position = new BABYLON.Vector3(0, -rho + 1, 0)
     }
     updateAttractor()
 
@@ -114,7 +146,7 @@ export default function lorenzPlot() {
         butterflies.setParticles()
 
         mesh.position.x = 0
-        mesh.position.y = -rho + 1
+        mesh.position.y = 0 //-rho + 1
         mesh.position.z = 0
         mesh.alwaysSelectAsActiveMesh = true
       })
@@ -124,6 +156,7 @@ export default function lorenzPlot() {
         let y = particle.position.y
         let z = particle.position.z
 
+        let dt = 0.01
         x = x + sigma * (z - x) * dt
         z = z + (x * (rho - y) - z) * dt
         y = y + (x * z - beta * y) * dt
@@ -142,36 +175,83 @@ export default function lorenzPlot() {
 
     BABYLON.GUI = GUI
 
-    var advancedTexture = new BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI(
+    let advancedTexture = new BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI(
       'myUI'
     )
     advancedTexture.isForeground = false // panel behind attractor
 
-    var panel = new BABYLON.GUI.StackPanel()
-    panel.width = '220px'
+    let panel = new BABYLON.GUI.StackPanel()
+    panel.width = '160px'
     panel.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT
     panel.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel)
 
-    var startButton = new BABYLON.GUI.Button.CreateSimpleButton(
+    let hidePanel = new BABYLON.GUI.Button.CreateSimpleButton(
+      'hidePanel',
+      'Controles'
+    )
+    hidePanel.width = '100px'
+    hidePanel.height = '40px'
+    hidePanel.color = '#08a31f'
+    hidePanel.fontSize = 18
+    hidePanel.thickness = 0
+    hidePanel.cornerRadius = 20
+    hidePanel.background = '#1e1e1e'
+
+    hidePanel.onPointerUpObservable.add(function() {
+      togglePanel = !togglePanel
+      startButton.isVisible = togglePanel
+      sliderRho.isVisible = togglePanel
+      textRho.isVisible = togglePanel
+      sliderSigma.isVisible = togglePanel
+      textSigma.isVisible = togglePanel
+      sliderBeta.isVisible = togglePanel
+      textBeta.isVisible = togglePanel
+      startButton.isVisible = togglePanel
+      hideAttractor.isVisible = togglePanel
+    })
+    panel.addControl(hidePanel)
+
+    let hideAttractor = new BABYLON.GUI.Button.CreateSimpleButton(
+      'hide attractor',
+      'Sem/Com Atrator'
+    )
+    hideAttractor.isVisible = togglePanel
+    hideAttractor.width = '100px'
+    hideAttractor.height = '40px'
+    hideAttractor.color = '#08a31f'
+    hideAttractor.fontSize = 16
+    hideAttractor.thickness = 0
+    hideAttractor.cornerRadius = 20
+    //hideAttractor.bottom = '120px'
+    hideAttractor.background = '#1e1e1e'
+    hideAttractor.onPointerUpObservable.add(function() {
+      toggleAttractor = !toggleAttractor
+      attractor1.isVisible = toggleAttractor
+      attractor2.isVisible = toggleAttractor
+    })
+    panel.addControl(hideAttractor)
+
+    let startButton = new BABYLON.GUI.Button.CreateSimpleButton(
       'startButton',
       'Recriar partículas'
     )
-    startButton.width = '160px'
+    startButton.isVisible = togglePanel
+    startButton.width = '140px'
     startButton.height = '40px'
     startButton.color = '#08a31f'
-    startButton.fontSize = 18
-    startButton.borderRadius = 20
-    startButton.borderColor = 'green'
-    //startButton.top = '120px'
-    startButton.background = 'black'
+    startButton.fontSize = 16
+    startButton.thickness = 0
+    startButton.cornerRadius = 20
+    startButton.background = '#1e1e1e'
     startButton.onPointerUpObservable.add(function() {
       butterflies.dispose()
       createParticles()
     })
     panel.addControl(startButton)
 
-    var textRho = new BABYLON.GUI.TextBlock()
+    let textRho = new BABYLON.GUI.TextBlock()
+    textRho.isVisible = togglePanel
     textRho.text = 'rho = ' + rho.toFixed(0).toString()
     textRho.color = '#08a31f'
     textRho.height = '40px'
@@ -179,38 +259,45 @@ export default function lorenzPlot() {
     textRho.top = '40px'
     panel.addControl(textRho)
 
-    var sliderRho = new BABYLON.GUI.Slider()
+    let sliderRho = new BABYLON.GUI.Slider()
+    sliderRho.isVisible = togglePanel
     sliderRho.minimum = 0
     sliderRho.maximum = 30
     sliderRho.value = 28
+
     sliderRho.height = '15px'
     sliderRho.thumbWidth = 20
     sliderRho.width = '150px'
     sliderRho.color = 'green'
     sliderRho.borderColor = 'black'
     sliderRho.isThumbCircle = true
-    sliderRho.step = 0.1
+    sliderRho.step = 0.01
     //sliderRho.top = '60px'
     //sliderRho.isVertical = true
 
     sliderRho.onValueChangedObservable.add(function(value) {
-      textRho.text = 'rho = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
+      textRho.text = 'rho = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
       rho = value
+
       attractor1.dispose()
       attractor2.dispose()
       updateAttractor()
-      butterflies.mesh.position.y = -rho + 1
+      camera.setTarget(new BABYLON.Vector3(0, rho - 1, 0))
+      // Camera should follow the position of singularities....-------
+      //butterflies.mesh.position.y = -rho + 1
     })
     panel.addControl(sliderRho)
 
-    var textSigma = new BABYLON.GUI.TextBlock()
+    let textSigma = new BABYLON.GUI.TextBlock()
+    textSigma.isVisible = togglePanel
     textSigma.text = 'sigma = ' + sigma.toFixed(0).toString()
     textSigma.color = '#08a31f'
     textSigma.height = '40px'
     textSigma.fontSize = 18
     //textSigma.top = '40px'
     panel.addControl(textSigma)
-    var sliderSigma = new BABYLON.GUI.Slider()
+    let sliderSigma = new BABYLON.GUI.Slider()
+    sliderSigma.isVisible = togglePanel
     sliderSigma.minimum = 0
     sliderSigma.maximum = 20
     sliderSigma.value = 10
@@ -233,14 +320,16 @@ export default function lorenzPlot() {
     })
     panel.addControl(sliderSigma)
 
-    var textBeta = new BABYLON.GUI.TextBlock()
+    let textBeta = new BABYLON.GUI.TextBlock()
+    textBeta.isVisible = togglePanel
     textBeta.text = 'beta = 8/3 ' //+ beta.toFixed(1).toString()
     textBeta.color = '#08a31f'
     textBeta.height = '40px'
     textBeta.fontSize = 18
     //textBeta.top = '40px'
     panel.addControl(textBeta)
-    var sliderBeta = new BABYLON.GUI.Slider()
+    let sliderBeta = new BABYLON.GUI.Slider()
+    sliderBeta.isVisible = togglePanel
     sliderBeta.minimum = 0
     sliderBeta.maximum = 20
     sliderBeta.value = 10
@@ -263,7 +352,7 @@ export default function lorenzPlot() {
     })
     panel.addControl(sliderBeta)
 
-    var panel2 = new BABYLON.GUI.StackPanel()
+    let panel2 = new BABYLON.GUI.StackPanel()
     panel2.width = '500px'
     panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
     panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
@@ -283,14 +372,26 @@ export default function lorenzPlot() {
     comment2.color = '#08a31f'
     panel2.addControl(comment2)
 
+    //advancedTexture.addControl(hidePanel)
+
     return scene
   }
 
-  var canvas = document.getElementById('lorenzCanvas')
-  var engine = new BABYLON.Engine(canvas, true)
-  var scene = createScene(engine, canvas)
+  let canvas = document.getElementById('lorenzCanvas')
+  let engine = new BABYLON.Engine(canvas, true)
+  let scene = createScene(engine, canvas)
 
   engine.runRenderLoop(function() {
+    // console.log('running')
+
+    // let navigation = navigationType()
+    // console.log(navigation)
+
+    // if (navigation != 1) {
+    //   engine.stopRenderLoop()
+    // } else {
+    //   scene.render()
+    // }
     let route = window.location.pathname
     if (
       route == 'www.dydx.ufes.br/lorenz/' ||
@@ -308,8 +409,8 @@ export default function lorenzPlot() {
 }
 
 function navigationType() {
-  var result
-  var p
+  let result
+  let p
 
   if (window.performance.navigation) {
     result = window.performance.navigation
