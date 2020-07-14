@@ -17,6 +17,9 @@ export function drawContoursSep2() {
     y: ycorner
   }
 
+  // let windowWidth = window.innerWidth
+  // let windowHeight = window.innerHeight
+
   function funct(x, y) {
     return y * y * y - 3 * y * y - x * x * x - x //3*y +y*y-2*x+Math.exp(x);
   }
@@ -328,8 +331,9 @@ export function drawContoursSep2() {
     dragmode: false,
     hovermode: false,
     autosize: false,
-    width: 550,
-    height: 550,
+
+    width: 550, //0.42 * windowWidth,
+    height: 550, //0.42 * windowWidth,
 
     xaxis: {
       autorange: true,
@@ -426,6 +430,9 @@ export function drawSurfaceSep2() {
     y: ycorner
   }
 
+  // let windowWidth = window.innerWidth
+  // let windowHeight = window.innerHeight
+
   function funct(x, y) {
     return y * y * y - 3 * y * y - x * x * x - x
   }
@@ -502,8 +509,8 @@ export function drawSurfaceSep2() {
     showlegend: false,
     hovermode: false,
     autosize: true,
-    width: 600,
-    // height: 450,
+    width: 600, //0.5 * windowWidth,
+    //height: 0.5 * windowWidth,
     // margin: {
     //   l: 0,
     //   r: 0,

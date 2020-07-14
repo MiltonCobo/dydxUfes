@@ -9,12 +9,13 @@
       </v-col>
     </v-row>
     <v-row align="center" class="flex-wrap-reverse">
-      <v-col xs="12" md="6" style="min-width:40%">
+      <v-col sm="12" md="6" style="min-width:40%">
         <p class="mathjax ColorWheat">
           Esta animação está relacionada com a distribuição de sementes em
           algumas flores como o girassol. Na flor do girassol, sementes vão
           surgindo do centro e, ao mesmo tempo que vão se afastando, vão rodando
           por um certo ângulo fixado.
+
           <br />
           Na animação espalhamos um certo número de pontos num círculo (as
           "sementes") espaçados por um mesmo ângulo $ \theta $ e depois
@@ -29,7 +30,7 @@
           figura).
         </p>
       </v-col>
-      <v-col xs="12" md="6" align="center">
+      <v-col sm="12" md="6" align="center">
         <!-- <client-only placeholder="carregando..."> -->
         <div style="position:relative;" ref="container" id="container"></div>
         <!-- <v-spacer /> -->
@@ -50,9 +51,7 @@
           <br />
           A figura mais complexa acontece quando $ x $ é o número irracional $
           \varphi = (1+\sqrt{5})/2 \approx 1.6180339... $. Ele é chamado de
-          <span style="color:var(--mjx-color); font-size: 20px;"
-            >número aúreo ou proporção aúrea
-          </span>
+          <i>número aúreo ou proporção aúrea </i>
           e pode ser considerado o mais irracional de todos os números
           irracionais, no sentido de que é o número real com as "piores
           aproximações" por números racionais.
@@ -83,8 +82,8 @@
             este excelente vídeo,</a
           >
           para aqueles que entendem inglês, sobre o assunto no canal de youtube
-          <span style="color: wheat">Numberphile</span>, que infelizmente não
-          tem ainda legendas em português.
+          <i style="color: wheat">Numberphile</i>, que infelizmente não tem
+          ainda legendas em português.
           <br />
           Em breve iremos explicar mais amplamente este assunto.
         </p>
@@ -201,17 +200,17 @@ export default {
   /* wheat; */
 }
 
-.mathjax {
-  font-size: 20px;
-  /* padding-left: 5%;
+/* .mathjax { */
+/* font-size: 20px; */
+/* padding-left: 5%;
   padding-right: 5%; */
-  /* line-height: 1.2; */
-  /* font-family: 'Neucha', cursive; */
-  /* font-family: 'Kalam', cursive; */
-  /* font-family: 'Rock Salt', cursive; */
+/* line-height: 1.2; */
+/* font-family: 'Neucha', cursive; */
+/* font-family: 'Kalam', cursive; */
+/* font-family: 'Rock Salt', cursive; */
 
-  /* font-family: SofiaPro Roboto; */
-}
+/* font-family: SofiaPro Roboto; */
+/* } */
 /* font-family: 'Rock Salt', cursive;
   /* font-family: SofiaPro Roboto; */
 /* font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; */

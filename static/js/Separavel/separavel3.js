@@ -15,6 +15,26 @@ export function drawSurfaceSep3() {
     x: xcorner,
     y: ycorner
   }
+  //   function return width and heigth of portview
+  // function getViewportSize() {
+  //   // This works for all browsers except IE8 and before
+  //   if (window.innerWidth != null)
+  //     return { w: window.innerWidth, h: window.innerHeight }
+
+  //   // For IE (or any browser) in Standards mode
+  //   var d = window.document
+  //   if (document.compatMode == 'CSS1Compat')
+  //     return {
+  //       w: d.documentElement.clientWidth,
+  //       h: d.documentElement.clientHeight
+  //     }
+
+  //   // For browsers in Quirks mode
+  //   return { w: d.body.clientWidth, h: d.body.clientHeight }
+  // }
+
+  // let windowWidth = getViewportSize()
+  //let windowHeight = window.innerHeight
 
   function funct(x, y) {
     return 3 * y + y * y - 2 * x + Math.exp(x)
@@ -133,8 +153,8 @@ export function drawSurfaceSep3() {
     showlegend: false,
     hovermode: false,
     autosize: true,
-    width: 500,
-    height: 550
+    width: 500, //0.42 * windowWidth, //500,
+    height: 550 //0.42 * windowWidth //550
   }
 
   return { data: [data], layout, options }
@@ -151,6 +171,9 @@ export function drawContoursSep3() {
     x: xcorner,
     y: ycorner
   }
+
+  // let windowWidth = window.innerWidth
+  // let windowHeight = window.innerHeight
 
   function funct(x, y) {
     return 3 * y + y * y - 2 * x + Math.exp(x)
@@ -425,8 +448,8 @@ export function drawContoursSep3() {
     hovermode: false,
     dragmode: false,
     autosize: false,
-    width: 500,
-    height: 500
+    width: 500, // 0.42 * windowWidth,
+    height: 500 //0.42 * windowWidth
   }
 
   return { data: [data, data1, data2], layout, options }
@@ -440,6 +463,9 @@ export function drawFunctionsSep3() {
   function reta1(x) {
     return 13 + 8 * x
   }
+
+  // let windowWidth = window.innerWidth
+  // let windowHeight = window.innerHeight
 
   let xx2 = []
   xx2[0] = -2
@@ -530,8 +556,8 @@ export function drawFunctionsSep3() {
     dragmode: false,
     displaylogo: false,
     showLink: true,
-    width: 500,
-    height: 500
+    width: 500, //0.42 * windowWidth,
+    height: 500 //0.42 * windowWidth
   }
 
   return { data: [trace1, trace2], layout, options }

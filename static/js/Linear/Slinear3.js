@@ -9,6 +9,25 @@ export function drawLinear3() {
   let step = 0.05
   let xinitial = 0
 
+  // function getViewportSize() {
+  //   // This works for all browsers except IE8 and before
+  //   if (window.innerWidth != null)
+  //     return { w: window.innerWidth, h: window.innerHeight }
+
+  //   // For IE (or any browser) in Standards mode
+  //   var d = window.document
+  //   if (document.compatMode == 'CSS1Compat')
+  //     return {
+  //       w: d.documentElement.clientWidth,
+  //       h: d.documentElement.clientHeight
+  //     }
+
+  //   // For browsers in Quirks mode
+  //   return { w: d.body.clientWidth, h: d.body.clientHeight }
+  // }
+
+  // let windowWidth = getViewportSize()
+
   function funct(x) {
     return 12 - 2 * x - 8 * Math.sqrt(Math.E) * Math.exp(-x / 4)
   }
@@ -182,8 +201,8 @@ export function drawLinear3() {
     dragmode: false,
     displaylogo: false,
     showLink: false,
-    width: 600,
-    height: 600
+    width: 600, //Math.min(0.42 * windowWidth, 490),
+    height: 600 // Math.min(0.42 * windowWidth, 490)
   }
 
   return { data: [data1, data2], layout, options }

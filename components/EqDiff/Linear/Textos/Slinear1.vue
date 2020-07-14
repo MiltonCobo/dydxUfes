@@ -93,6 +93,7 @@
 <script>
 import { getDataScatter } from '@/static/js/Plotly/plotly-config.js'
 let inf = plotMosquitosSol()
+console.log(inf)
 let data = inf.data
 let layout = inf.layout
 let options = inf.options
@@ -106,7 +107,94 @@ export default {
     }
   },
   mounted() {},
-  methods: {},
+  methods: {
+    // plotMosquitosSol() {
+    //   const a0 = 0.7 / Math.log(2)
+    //   const inc = 0.23
+    //   const iter = 14
+    //   const step = 0.05
+    //   const xwidth = 30
+    //   const initial = -20
+    //   let windowWidth = window.innerWidth
+    //   let params = []
+    //   var param
+    //   params[0] = a0 - Math.floor(0.4 * iter) * inc
+    //   function mapMosquitos(x) {
+    //     // return a0+10*Math.sin(param*x);
+    //     return a0 + (param - a0) * Math.pow(2, x)
+    //   }
+    //   //---define array A[]-------
+    //   for (let i = 1; i < iter - 2; i++) {
+    //     params[i] = params[i - 1] + inc
+    //   }
+    //   params.push(a0)
+    //   params.push(0.9)
+    //   //----------------------------
+    //   var traces = [] // obtem as traces...
+    //   for (let i = 0; i < iter; i++) {
+    //     param = params[i]
+    //     traces[i] = getDataScatter(mapMosquitos, initial, xwidth, step)
+    //   }
+    //   let data = traces
+    //   let layout = {
+    //     showlegend: false, // dont show names of traces
+    //     autosize: true,
+    //     hovermode: false,
+    //     dragmode: false,
+    //     width: 0.42 * windowWidth,
+    //     height: 0.44 * windowWidth,
+    //     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
+    //     xaxis: {
+    //       range: [-2, 10],
+    //       tickvals: [-10, -2, 0, 2, 3.2, 5, 10],
+    //       ticktext: ['-10', '-2', '0', '2', '3.2', '5', '10'],
+    //       title: "<span style= 'color: Brown'> tempo (semanas) </span>"
+    //     },
+    //     yaxis: {
+    //       range: [-2, 3],
+    //       tickvals: [-5, -2, 0, 0.9, 2, 5],
+    //       ticktext: ['-5', '-2', '0', '0.9', '2', '5'],
+    //       title: "<span style= 'color: Brown'> #mosquitos (milhões) </span>"
+    //     },
+    //     annotations: [
+    //       {
+    //         text: '$p(0)=0.9,\\, p(3.2)=0$',
+    //         xref: 'pixel',
+    //         yref: 'pixel',
+    //         font: { size: 16, color: 'red' },
+    //         arrowcolor: 'red',
+    //         ax: 80,
+    //         ay: -20,
+    //         x: 3.2,
+    //         y: 0
+    //       },
+    //       {
+    //         text: '$p(0)= a_0\\approx 1.01, \\forall t.$',
+    //         xref: 'pixel',
+    //         yref: 'pixel',
+    //         font: { size: 18, color: 'green' },
+    //         arrowcolor: 'green',
+    //         ax: 30,
+    //         ay: -40,
+    //         x: 6,
+    //         y: a0
+    //       }
+    //     ]
+    //   }
+    //   let options = {
+    //     displaylogo: false,
+    //     scrollZoom: false,
+    //     responsive: false,
+    //     showLink: false,
+    //     modeBarButtonsToRemove: [
+    //       'hoverClosestCartesian',
+    //       'hoverCompareCartesian',
+    //       'toggleSpikelines'
+    //     ]
+    //   }
+    //   return { data, layout, options }
+    // }
+  },
   updated() {
     // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
@@ -119,6 +207,26 @@ function plotMosquitosSol() {
   const step = 0.05
   const xwidth = 30
   const initial = -20
+
+  // function getViewportSize(w) {
+
+  //   // This works for all browsers except IE8 and before
+  //   if (window.innerWidth != null)
+  //     return { w: window.innerWidth, h: window.innerHeight }
+
+  //   // For IE (or any browser) in Standards mode
+  //   var d = window.document
+  //   if (document.compatMode == 'CSS1Compat')
+  //     return {
+  //       w: d.documentElement.clientWidth,
+  //       h: d.documentElement.clientHeight
+  //     }
+
+  //   // For browsers in Quirks mode
+  //   return { w: d.body.clientWidth, h: d.body.clientHeight }
+  // }
+
+  // let windowWidth = getViewportSize()
 
   let params = []
   var param
@@ -151,8 +259,8 @@ function plotMosquitosSol() {
     autosize: true,
     hovermode: false,
     dragmode: false,
-    width: 450,
-    height: 450,
+    width: 450, //0.42 * windowWidth,
+    height: 450, // 0.44 * windowWidth,
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
       range: [-2, 10],

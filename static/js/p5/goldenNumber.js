@@ -15,8 +15,8 @@ export default function goldenRatio(p) {
   let angleSlider
   let button
   let inflation = 1
-  let r0 = 6
-  let r1 = 10
+  let r0 = 10
+  let r1 = 6
   let N = 0
   let steps = 1
   let distances = []
@@ -27,46 +27,112 @@ export default function goldenRatio(p) {
   let angleTexto
   let angleString
   let slider
+  let control
+  let controlToggle = false
 
+  //   function return width and heigth of portview
+  function getViewportSize() {
+    // This works for all browsers except IE8 and before
+    if (window.innerWidth != null)
+      return { w: window.innerWidth, h: window.innerHeight }
+
+    // For IE (or any browser) in Standards mode
+    var d = window.document
+    if (document.compatMode == 'CSS1Compat')
+      return {
+        w: d.documentElement.clientWidth,
+        h: d.documentElement.clientHeight
+      }
+
+    // For browsers in Quirks mode
+    return { w: d.body.clientWidth, h: d.body.clientHeight }
+  }
+
+  //--------------------------------------
   p.setup = function() {
-    let cnv = p.createCanvas(520, 520) //(p.windowWidth / 2, p.windowHeight / 2)
-    cnv.parent('#container')
+    let viewport = getViewportSize()
 
+    let factor = 0.5
+    if (viewport.w < 600) {
+      factor = 0.9 // force to break boxes ....?
+    }
+
+    let width = Math.floor(factor * viewport.w)
+    let height = Math.floor(0.6 * factor * viewport.w)
+
+    console.log('client width=', viewport.w)
+    console.log('width=', width)
+
+    let cnv = p.createCanvas(width, height) //(p.windowWidth / 2, p.windowHeight / 2)
+    cnv.parent('#container')
+    console.log('dimensions p5=', p.width, p.height)
     p.angleMode(p.RADIANS)
     p.colorMode(p.HSL)
 
-    angleTexto = p.createElement('h3', '')
-    angleTexto.style(
-      'background-color: black; font-size: 20px; color:lightgoldenrodyellow'
-    )
+    // controls
+
+    control = p.createButton('Controles')
+    control.parent('#container')
+
+    button = p.createButton('Parar/Seguir')
+    button.parent('#container')
+    angleTexto = p.createElement('p', '')
+
+    angleTexto.style('background-color: inherit; color:lightgoldenrodyellow')
     angleTexto.parent('#container')
 
-    inputAngle = p.createInput('Digite a fração de 2 PI')
-    inputAngle.style('width:60; background-color: grey;')
+    inputAngle = p.createInput('Fração de 2PI')
+    inputAngle.style('background-color: #1e1e1e;')
     inputAngle.parent('#container')
 
     slider = p.createSlider(0, p.TWO_PI, 1 / p.PI, rate)
 
-    slider.style('width', '300px')
+    let sliderLength = Math.floor(0.4 * width)
+
+    slider.style('width', sliderLength.toString() + 'px')
     slider.parent('#container')
     //slider.style('height: 60px;')
 
     angle = slider.value() // set angle inicial in slider
 
-    button = p.createButton('Parar/Seguir')
-    button.parent('#container')
+    // button = p.createButton('Parar/Seguir')
+    // button.parent('#container')
 
     button.style(
-      'border: 1px solid white; background-color: inherit; width: 110px; height: 40px; color:lightgoldenrodyellow'
+      'border: 0px solid white; background-color: #1e1e1e; color:lightgoldenrodyellow'
     )
+    control.style(
+      'border: 0px solid white; background-color: inherit; color:lightgoldenrodyellow'
+    )
+    slider.style('background-color : #1e1e1e;')
 
-    button.style('font-size', '18px')
+    // fontSize
 
-    let xpos = 0.1
-    angleTexto.position(0.6 * p.width, 0.08 * p.height)
-    button.position(xpos * p.width, 0.75 * p.height)
-    inputAngle.position(xpos * p.width, 0.85 * p.height)
-    slider.position(xpos * p.width, 0.94 * p.height)
+    let fontFactor = 0.015
+    fontSize = Math.floor(fontFactor * viewport.w).toString()
+    console.log('fontSize=', fontSize)
+    let fontSize = Math.floor(fontFactor * viewport.w.toString())
+    angleTexto.style('font-size', fontSize + 'px')
+    button.style('font-size', fontSize + 'px')
+    control.style('font-size', fontSize + 'px')
+
+    button.style('width', Math.floor(8 * fontSize).toString() + 'px')
+    button.style('height', Math.floor(1.8 * fontSize).toString() + 'px')
+    inputAngle.style('width', Math.floor(6 * fontSize).toString() + 'px')
+    inputAngle.style('font-size', fontSize + 'px')
+
+    let xpos = 0.05
+
+    control.position(xpos * width, 0.43 * width)
+    angleTexto.position(0.7 * width, 0.02 * width)
+    button.position(xpos * width, 0.52 * width)
+    slider.position(xpos * width, 0.58 * width)
+    inputAngle.position(xpos * width, 0.48 * width)
+
+    button.hide()
+    slider.hide()
+    inputAngle.hide()
+    control.hide()
   }
 
   function updateAngle() {
@@ -76,6 +142,21 @@ export default function goldenRatio(p) {
     slider.value(angle)
     return
     //stopped = false
+  }
+
+  function toggleControls() {
+    controlToggle = !controlToggle
+    console.log('controlToggle=', controlToggle)
+
+    if (controlToggle) {
+      button.show()
+      slider.show()
+      inputAngle.show()
+    } else {
+      button.hide()
+      slider.hide()
+      inputAngle.hide()
+    }
   }
 
   function toggleStopAngle() {
@@ -100,29 +181,34 @@ export default function goldenRatio(p) {
     p.clear()
     p.translate(0.5 * p.width, 0.5 * p.height)
 
-    // console.log('working')
+    button.mousePressed(toggleStopAngle)
+    control.mousePressed(toggleControls)
+    slider.changed(setAngle)
+    inputAngle.changed(updateAngle)
 
-    if (steps < totalSteps) {
-      p.push()
-      p.stroke('rgb(0, 100, 0)')
-      p.strokeWeight(2)
-      p.noFill()
-      p.circle(0, 0, 2 * initialRadium)
+    // if (steps < totalSteps) {
+    //   p.push()
+    //   p.stroke('rgb(0, 100, 0)')
+    //   p.strokeWeight(2)
+    //   p.noFill()
+    //   p.circle(0, 0, 2 * initialRadium)
 
-      if (p.frameCount % 16 === 0) {
-        steps++
-      }
+    //   if (p.frameCount % 13 === 0) {
+    //     steps++
+    //   }
 
-      for (let n = 0; n < steps; n++) {
-        let x = initialRadium * p.cos(-n * angle)
-        let y = initialRadium * p.sin(-n * angle)
-        p.noStroke()
-        let bubble = new Bubble(x, y, hue, sat, lightness, r0)
-        hue = (21 * n) % 267
-        bubble.display()
-      }
-      p.pop()
-    } else if (initialRadium > 20) {
+    //   for (let n = 0; n < steps; n++) {
+    //     let x = initialRadium * p.cos(-n * angle)
+    //     let y = initialRadium * p.sin(-n * angle)
+    //     p.noStroke()
+    //     hue = (21 * n) % 267
+    //     let bubble = new Bubble(x, y, hue, sat, lightness, 5)
+    //     bubble.display()
+    //   }
+    //   p.pop()
+    // } else
+
+    if (initialRadium > 20) {
       initialRadium--
       p.push()
       //p.translate(0.2 * p.width, 0.4 * p.height)
@@ -135,7 +221,7 @@ export default function goldenRatio(p) {
         let x = initialRadium * p.cos(n * angle)
         let y = initialRadium * p.sin(n * angle)
 
-        let bubble = new Bubble(x, y, hue, sat, lightness, r0)
+        let bubble = new Bubble(x, y, hue, sat, lightness, 5)
         bubble.display()
       }
 
@@ -143,16 +229,16 @@ export default function goldenRatio(p) {
     } else if (inflation > 0) {
       inflation -= 0.01
       p.push()
-      p.scale(escala)
+      //p.scale(escala)
       for (let n = 0; n < totalPoints; n++) {
-        distances[n] = inflation + (1 - inflation) * Math.sqrt(n)
+        distances[n] = 0.5 * inflation + 0.5 * (1 - inflation) * Math.sqrt(n)
         let x = c * distances[n] * p.cos(n * angle)
         let y = c * distances[n] * p.sin(n * angle)
         hue = n % 267
         sat = 70
         lightness = 55
 
-        let bubble = new Bubble(x, y, hue, sat, lightness, r1)
+        let bubble = new Bubble(x, y, hue, sat, lightness, 5)
         //bubbles.push(bubble)
         bubble.display()
       }
@@ -160,10 +246,11 @@ export default function goldenRatio(p) {
       p.pop()
     } else {
       angleString = (angle % p.TWO_PI).toFixed(6).toString()
-      angleTexto.html('Ângulo (radianos) =' + angleString)
+      angleTexto.html('ângulo (radianos) =' + angleString)
 
+      control.show()
       button.mousePressed(toggleStopAngle)
-
+      control.mousePressed(toggleControls)
       slider.changed(setAngle)
       inputAngle.changed(updateAngle)
 
@@ -190,7 +277,7 @@ export default function goldenRatio(p) {
           sat = 70
           lightness = 55
 
-          let bubble = new Bubble(x, y, hue, sat, lightness, r1)
+          let bubble = new Bubble(x, y, hue, sat, lightness, r0)
           bubbles.push(bubble)
           // if (over == true) {
           // 	bubble.wiggle()
@@ -223,7 +310,7 @@ export default function goldenRatio(p) {
   // }
 
   p.doubleClicked = function() {
-    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 300) {
+    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 200) {
       figFall = !figFall
     }
   }

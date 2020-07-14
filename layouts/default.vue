@@ -50,18 +50,16 @@
     <v-app-bar hide-on-scroll flat dark app>
       <v-app-bar-nav-icon class="blue--text" @click.stop="drawer = !drawer" />
       <v-spacer />
-      <v-btn icon>
+
+      <v-btn v-if="smallWindow" icon>
         <nuxt-link to="/">
-          <div style="width:60px; height:40;">
-            <v-img src="/figures/ufes-logo4.png" />
-          </div>
-          <!-- <v-icon>
+          <v-icon>
             mdi-home
-          </v-icon> -->
+          </v-icon>
         </nuxt-link>
       </v-btn>
 
-      <v-toolbar flat>
+      <v-toolbar v-if="!smallWindow" flat>
         <v-toolbar-title class="blue--text text-Capitalize">
           <nuxt-link to="/" flat>
             Matemática-UFES
@@ -166,6 +164,11 @@
 <script>
 export default {
   mounted() {
+    let windowWidth = window.innerWidth
+    if (windowWidth < 400) {
+      this.smallWindow = true
+    }
+
     if (!window.MathJax) {
       const script = document.createElement('script')
       //script.onload = this.onScriptLoaded
@@ -185,6 +188,7 @@ export default {
   data() {
     return {
       drawer: false,
+      smallWindow: false,
       closeOnContentClick: true,
       hideOnLeave: true,
       expandOnHover: true,

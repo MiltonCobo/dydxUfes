@@ -182,13 +182,13 @@ export default {
   /* wheat; */
 }
 
-.mathjax {
+/* .mathjax {
   font-size: 20px;
-}
+} */
 
 #lorenzCanvas {
   width: 90vw;
-  height: 40vw;
+  height: 80vh;
   touch-action: none;
   scroll-behavior: smooth;
   /* manipulation; */

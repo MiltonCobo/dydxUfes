@@ -16,6 +16,9 @@ export function drawSurfaceSep1() {
     y: ycenter
   }
 
+  // let windowWidth = window.innerWidth
+  // let windowHeight = window.innerHeight
+
   function funct(x, y) {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
   }
@@ -131,8 +134,8 @@ export function drawSurfaceSep1() {
     hovermode: false,
     dragmode: true,
     autosize: false,
-    width: 550,
-    height: 550
+    width: 550, //0.42 * windowWidth,
+    height: 550 //0.44 * windowWidth
   }
 
   return { data: [data], layout, options }
@@ -151,6 +154,9 @@ export function drawContoursSep1() {
     x: xcenter,
     y: ycenter
   }
+
+  let windowWidth = window.innerWidth
+  let windowHeight = window.innerHeight
 
   function func(x, y) {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
@@ -457,7 +463,6 @@ export function drawContoursSep1() {
       }
     ],
 
-    // title: '$ dy/dx = (3x^2+4x+2)/2(y-1),\\quad y(0)=-1.$',
     title: '$\\color{brown}{y^2-2y-x^3-2x^2-2x = C}$',
     // title: "<span style='color:brown'>Interpretando as soluções</span>",
 
@@ -465,8 +470,8 @@ export function drawContoursSep1() {
     hovermode: false,
     dragmode: false,
     autosize: false,
-    width: 600,
-    height: 500
+    width: 600, //0.44 * windowWidth,
+    height: 500 // 0.42 * windowWidth
   }
 
   return { data: [data0, data1, trace1, trace2], layout, options }
