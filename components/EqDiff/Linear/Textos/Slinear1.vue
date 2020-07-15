@@ -45,7 +45,12 @@
 
     <v-container fluid>
       <v-row no-gutters align="center">
-        <v-col xs="12" md="6" align="center">
+        <v-col
+          xs="12"
+          md="6"
+          align="center"
+          style="min-width:300px; min-height:300px"
+        >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
@@ -259,8 +264,8 @@ function plotMosquitosSol() {
     autosize: true,
     hovermode: false,
     dragmode: false,
-    width: 450, //0.42 * windowWidth,
-    height: 450, // 0.44 * windowWidth,
+    // width: 450,
+    // height: 450,
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
       range: [-2, 10],

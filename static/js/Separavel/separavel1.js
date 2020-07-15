@@ -155,9 +155,6 @@ export function drawContoursSep1() {
     y: ycenter
   }
 
-  let windowWidth = window.innerWidth
-  let windowHeight = window.innerHeight
-
   function func(x, y) {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
   }
@@ -424,8 +421,9 @@ export function drawContoursSep1() {
             args: [
               { visible: [true, true, false, false], opacity: [1, 0.6, 0, 0] },
               {
-                annotations: [...annotations1], //
-                shapes: []
+                annotations: [...annotations1],
+                shapes: [],
+                layout: { autosize: true }
               }
             ],
             label: 'Curvas de nível',
@@ -436,7 +434,8 @@ export function drawContoursSep1() {
               { visible: [true, false, true, true], opacity: [0.4, 0, 1, 1] },
               {
                 annotations: [...annotations],
-                shapes: shapes
+                shapes: shapes,
+                layout: { autosize: true }
               }
             ],
             label: 'Ver as funções',
@@ -470,8 +469,8 @@ export function drawContoursSep1() {
     hovermode: false,
     dragmode: false,
     autosize: false,
-    width: 600, //0.44 * windowWidth,
-    height: 500 // 0.42 * windowWidth
+    width: 600,
+    height: 500
   }
 
   return { data: [data0, data1, trace1, trace2], layout, options }

@@ -165,9 +165,14 @@
 export default {
   mounted() {
     let windowWidth = window.innerWidth
+    let windowHeight = window.innerHeight
+
     if (windowWidth < 400) {
       this.smallWindow = true
     }
+
+    this.$store.setWindowWidth(windowWidth)
+    //this.$store.setWindowHeight(windowHeight)
 
     if (!window.MathJax) {
       const script = document.createElement('script')

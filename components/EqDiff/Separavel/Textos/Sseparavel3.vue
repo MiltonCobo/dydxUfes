@@ -17,6 +17,7 @@
           md="6"
           order="1"
           align="center"
+          style="min-width:300px; min-height:300px"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
@@ -66,7 +67,13 @@
             É mais fácil fazer o seguinte.
           </p>
         </v-col>
-        <v-col xs="12" md="6" order="3" align="center">
+        <v-col
+          xs="12"
+          md="6"
+          order="3"
+          align="center"
+          style="min-width:300px; min-height:300px"
+        >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
           </client-only>
@@ -93,7 +100,12 @@
         </v-col>
       </v-row>
       <v-row no-gutters align="center">
-        <v-col xs="12" md="6" align="center">
+        <v-col
+          xs="12"
+          md="6"
+          align="center"
+          style="min-width:300px; min-height:300px"
+        >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
           </client-only>
@@ -134,6 +146,7 @@ export default {
     let info = drawSurfaceSep3()
     let data = info.data
     let layout = info.layout
+
     let options = info.options
 
     let info2 = drawContoursSep3()
@@ -151,10 +164,18 @@ export default {
       data2,
       layout2,
       data3,
-      layout3
+      layout3,
+      windowWidth: null
     }
   },
   mounted() {
+    // this.windowWidth = window.innerWidth
+    // this.layout.width = 0.4 * this.windowWidth
+    // this.layout.height = 0.4 * this.windowWidth
+
+    // console.log('windowWidth mounted= ', this.windowWidth)
+    // console.log('layout width  mounted= ', this.layout.width)
+
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   methods: {

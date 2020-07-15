@@ -48,7 +48,7 @@
       </v-col>
     </v-row>
 
-    <v-dialog transition="fab-transition" v-model="openFigure" max-width="600">
+    <v-dialog transition="fab-transition" v-model="openFigure" width="600">
       <v-card style="background-color:gainsboro;">
         <v-card-actions>
           <client-only placeholder="carregando...">
@@ -60,7 +60,7 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog transition="fab-transition" v-model="openFigure2" max-width="600">
+    <v-dialog transition="fab-transition" v-model="openFigure2" width="600">
       <v-card style="background-color:gainsboro;">
         <v-card-actions>
           <client-only placeholder="carregando...">
@@ -82,7 +82,9 @@ export default {
   data() {
     let info = drawSurfaceSep1()
     let data = info.data
+
     let layout = info.layout
+
     let options = info.options
 
     let info2 = drawContoursSep1()

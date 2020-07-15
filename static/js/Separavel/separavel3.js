@@ -152,9 +152,9 @@ export function drawSurfaceSep3() {
     },
     showlegend: false,
     hovermode: false,
-    autosize: true,
-    width: 500, //0.42 * windowWidth, //500,
-    height: 550 //0.42 * windowWidth //550
+    autosize: true
+    // width: 500, //0.42 * windowWidth, //500,
+    // height: 550 //0.42 * windowWidth //550
   }
 
   return { data: [data], layout, options }
@@ -447,9 +447,9 @@ export function drawContoursSep3() {
     showlegend: false,
     hovermode: false,
     dragmode: false,
-    autosize: false,
-    width: 500, // 0.42 * windowWidth,
-    height: 500 //0.42 * windowWidth
+    autosize: true
+    // width: 500, // 0.42 * windowWidth,
+    // height: 500 //0.42 * windowWidth
   }
 
   return { data: [data, data1, data2], layout, options }
@@ -552,12 +552,12 @@ export function drawFunctionsSep3() {
     // paper_bgcolor: 'lightgrey',
     showlegend: false,
     hovermode: false,
-    autosize: false,
+    autosize: true,
     dragmode: false,
     displaylogo: false,
-    showLink: true,
-    width: 500, //0.42 * windowWidth,
-    height: 500 //0.42 * windowWidth
+    showLink: true
+    // width: 500, //0.42 * windowWidth,
+    // height: 500 //0.42 * windowWidth
   }
 
   return { data: [trace1, trace2], layout, options }
