@@ -13,17 +13,17 @@
       <v-row class="flex-wrap-reverse" align="center" no-gutters>
         <v-col
           v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
-          xs="12"
+          sm="12"
           md="6"
           order="1"
           align="center"
-          style="min-width:300px; min-height:300px"
+          style="min-width:450px; max-width: 100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
         </v-col>
-        <v-col xs="12" md="6" order="2">
+        <v-col sm="12" md="6" order="2">
           <p>
             Separando as variáveis, $ { (3+2y) \, dy = (2-\exp(x)) \, dx},$ e
             integrando a ambos lados, obtemos que as soluções $y=f(x)$ da
@@ -50,7 +50,7 @@
         </v-col>
       </v-row>
       <v-row class="flex-wrap-reverse" align="center" no-gutters>
-        <v-col xs="12" md="6" order="4">
+        <v-col sm="12" md="6" order="4">
           <p>
             <br />
             Para determinar onde esta função atinge seu máximo precisamos
@@ -68,11 +68,11 @@
           </p>
         </v-col>
         <v-col
-          xs="12"
+          sm="12"
           md="6"
           order="3"
           align="center"
-          style="min-width:300px; min-height:300px"
+          style="min-width:450px; max-width: 100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
@@ -101,16 +101,16 @@
       </v-row>
       <v-row no-gutters align="center">
         <v-col
-          xs="12"
+          sm="12"
           md="6"
           align="center"
-          style="min-width:300px; min-height:300px"
+          style="min-width:450px; max-width: 100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
           </client-only>
         </v-col>
-        <v-col xs="12" md="6">
+        <v-col sm="12" md="6">
           <p class="mathjax">
             Uma outra observação é que a derivada $y'(x)$ não está bem definida
             para $y=-3/2,$ e podemos ver na figura que é sobre esta reta que as
@@ -164,18 +164,10 @@ export default {
       data2,
       layout2,
       data3,
-      layout3,
-      windowWidth: null
+      layout3
     }
   },
   mounted() {
-    // this.windowWidth = window.innerWidth
-    // this.layout.width = 0.4 * this.windowWidth
-    // this.layout.height = 0.4 * this.windowWidth
-
-    // console.log('windowWidth mounted= ', this.windowWidth)
-    // console.log('layout width  mounted= ', this.layout.width)
-
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   methods: {

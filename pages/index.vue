@@ -1,10 +1,10 @@
 <template>
-  <v-container fluid>
+  <v-container pa="0" ma="0" class="container" fluid>
     <v-row>
       <v-col>
-        <h1 style="color: salmon;" align="center">
+        <h2 style="color:brown" align="center">
           O número Aúreo e o Girassol
-        </h1>
+        </h2>
         <v-divider style="margin-bottom:0.5%;" />
       </v-col>
     </v-row>
@@ -32,7 +32,11 @@
       </v-col>
       <v-col sm="12" md="6" align="center">
         <!-- <client-only placeholder="carregando..."> -->
-        <div style="position:relative;" ref="container" id="container"></div>
+        <div
+          style="position:relative;"
+          ref="container"
+          id="container-figure"
+        ></div>
         <!-- <v-spacer /> -->
         <!-- </client-only> -->
       </v-col>
@@ -66,12 +70,13 @@
           <br />
           A razão aúrea aparece constantemente em ciências naturais, por
           exemplo, o formato da flor do girassol aparentemente usa um ângulo
-          muito próximo da proporção aúrea (<a
+          muito próximo da proporção aúrea
+          <a
             href="https://pt.wikipedia.org/wiki/Propor%C3%A7%C3%A3o_%C3%A1urea"
             target="_blank"
           >
-            ver a página de Wikipedia </a
-          >).
+            (ver a página de Wikipedia) </a
+          >.
 
           <br />
           Indicamos
@@ -82,8 +87,8 @@
             este excelente vídeo,</a
           >
           para aqueles que entendem inglês, sobre o assunto no canal de youtube
-          <i style="color: wheat">Numberphile</i>, que infelizmente não tem
-          ainda legendas em português.
+          <i>Numberphile</i>, que infelizmente não tem ainda legendas em
+          português.
           <br />
           Em breve iremos explicar mais amplamente este assunto.
         </p>
@@ -96,7 +101,7 @@
 import goldenRatio from '@/static/js/p5/goldenNumber.js'
 
 export default {
-  layout: 'darkTheme',
+  //layout: 'darkTheme',
   created() {},
   mounted() {
     if (!window.p5) {
@@ -195,10 +200,16 @@ export default {
   /* background-color: black; */
 }
 
-.ColorWheat {
-  --mjx-green: #fff9c4; /* yellow lighten-4 */
-  /* wheat; */
+#container-figure {
+  background-color: gainsboro;
+  margin: 0px;
+  padding: 0px;
 }
+
+/* .ColorWheat {
+  --mjx-green: #fff9c4; 
+   wheat; 
+} /*
 
 /* .mathjax { */
 /* font-size: 20px; */

@@ -1,6 +1,6 @@
 export default function goldenRatio(p) {
   let totalPoints = 400 // total number of ball per angle
-  let totalSteps = 80
+  let totalSteps = 40 //80
   let c = 14 //7
   //let radium = 13
   let escala = 0.6
@@ -16,7 +16,7 @@ export default function goldenRatio(p) {
   let button
   let inflation = 1
   let r0 = 10
-  let r1 = 6
+
   let N = 0
   let steps = 1
   let distances = []
@@ -51,88 +51,90 @@ export default function goldenRatio(p) {
   //--------------------------------------
   p.setup = function() {
     let viewport = getViewportSize()
+    let aspectRatioInverse = viewport.h / viewport.w
 
-    let factor = 0.5
+    let factor = 0.5 // almost 60%
     if (viewport.w < 600) {
+      // break point xs="600"
       factor = 0.9 // force to break boxes ....?
     }
 
     let width = Math.floor(factor * viewport.w)
-    let height = Math.floor(0.6 * factor * viewport.w)
+    let height = Math.min(
+      Math.floor(1.4 * aspectRatioInverse * width),
+      1.4 * width
+    ) // height is 40% bigger
 
-    console.log('client width=', viewport.w)
-    console.log('width=', width)
+    r0 = Math.max(Math.floor(0.016 * viewport.w), 15) // LINE ADDED
 
-    let cnv = p.createCanvas(width, height) //(p.windowWidth / 2, p.windowHeight / 2)
-    cnv.parent('#container')
-    console.log('dimensions p5=', p.width, p.height)
+    let cnv = p.createCanvas(width, height)
+
+    cnv.parent('#container-figure')
+
     p.angleMode(p.RADIANS)
     p.colorMode(p.HSL)
 
     // controls
 
+    // create controls
     control = p.createButton('Controles')
-    control.parent('#container')
-
     button = p.createButton('Parar/Seguir')
-    button.parent('#container')
     angleTexto = p.createElement('p', '')
-
-    angleTexto.style('background-color: inherit; color:lightgoldenrodyellow')
-    angleTexto.parent('#container')
-
-    inputAngle = p.createInput('Fração de 2PI')
-    inputAngle.style('background-color: #1e1e1e;')
-    inputAngle.parent('#container')
-
+    inputAngle = p.createInput('fração de 2PI')
     slider = p.createSlider(0, p.TWO_PI, 1 / p.PI, rate)
 
-    let sliderLength = Math.floor(0.4 * width)
+    //controls parent
+    control.parent('#container-figure')
+    angleTexto.parent('#container-figure')
+    inputAngle.parent('#container-figure')
+    button.parent('#container-figure')
+    slider.parent('#container-figure')
 
-    slider.style('width', sliderLength.toString() + 'px')
-    slider.parent('#container')
-    //slider.style('height: 60px;')
+    // controls style
 
-    angle = slider.value() // set angle inicial in slider
+    // background, border, color
 
-    // button = p.createButton('Parar/Seguir')
-    // button.parent('#container')
-
+    angleTexto.style('background-color: inherit;')
+    inputAngle.style(
+      'background-color: lightgrey; color: green; padding-left: 1%;'
+    )
     button.style(
-      'border: 0px solid white; background-color: #1e1e1e; color:lightgoldenrodyellow'
+      'border: 0px solid white; background-color: lightgrey; color:green '
     )
-    control.style(
-      'border: 0px solid white; background-color: inherit; color:lightgoldenrodyellow'
-    )
-    slider.style('background-color : #1e1e1e;')
+    control.style('border: 0px solid white; color: green;')
+    inputAngle.style('border: 1px solid green;')
+    button.style('border: 1px solid green')
 
-    // fontSize
+    // font-size
 
-    let fontFactor = 0.015
-    fontSize = Math.floor(fontFactor * viewport.w).toString()
-    console.log('fontSize=', fontSize)
-    let fontSize = Math.floor(fontFactor * viewport.w.toString())
-    angleTexto.style('font-size', fontSize + 'px')
-    button.style('font-size', fontSize + 'px')
-    control.style('font-size', fontSize + 'px')
+    angleTexto.style('font-size', '0.8em')
+    button.style('font-size', '0.8em') // 70% of fontSize
+    inputAngle.style('font-size', '0.8em')
+    control.style('font-size', '0.9em')
 
-    button.style('width', Math.floor(8 * fontSize).toString() + 'px')
-    button.style('height', Math.floor(1.8 * fontSize).toString() + 'px')
-    inputAngle.style('width', Math.floor(6 * fontSize).toString() + 'px')
-    inputAngle.style('font-size', fontSize + 'px')
+    // width
 
-    let xpos = 0.05
+    slider.style('width', Math.floor(0.3 * width).toString() + 'px') //30% of width
+    button.style('width', Math.floor(0.2 * width).toString() + 'px')
+    button.style('height', Math.floor(0.05 * width).toString() + 'px')
+    inputAngle.style('width', Math.floor(0.2 * width).toString() + 'px')
+    inputAngle.style('height', Math.floor(0.05 * width).toString() + 'px')
 
-    control.position(xpos * width, 0.43 * width)
-    angleTexto.position(0.7 * width, 0.02 * width)
-    button.position(xpos * width, 0.52 * width)
-    slider.position(xpos * width, 0.58 * width)
-    inputAngle.position(xpos * width, 0.48 * width)
+    let offsetX = 0.01
+
+    button.position(offsetX * width, 0.63 * height)
+    inputAngle.position(offsetX * width, 0.71 * height)
+    slider.position(offsetX * width, 0.8 * height)
+    angleTexto.position(offsetX * width, 0.87 * height) //(0.7 * width, 0.02 * width)
+    control.position(offsetX * width, 0.95 * height)
 
     button.hide()
     slider.hide()
     inputAngle.hide()
     control.hide()
+    angleTexto.hide()
+
+    angle = slider.value() // set angle inicial in slider
   }
 
   function updateAngle() {
@@ -152,10 +154,12 @@ export default function goldenRatio(p) {
       button.show()
       slider.show()
       inputAngle.show()
+      angleTexto.show()
     } else {
       button.hide()
       slider.hide()
       inputAngle.hide()
+      angleTexto.hide()
     }
   }
 
@@ -221,12 +225,12 @@ export default function goldenRatio(p) {
         let x = initialRadium * p.cos(n * angle)
         let y = initialRadium * p.sin(n * angle)
 
-        let bubble = new Bubble(x, y, hue, sat, lightness, 5)
+        let bubble = new Bubble(x, y, hue, sat, lightness, r0)
         bubble.display()
       }
 
       p.pop()
-    } else if (inflation > 0) {
+    } else if (inflation > 0.005) {
       inflation -= 0.01
       p.push()
       //p.scale(escala)
@@ -238,7 +242,7 @@ export default function goldenRatio(p) {
         sat = 70
         lightness = 55
 
-        let bubble = new Bubble(x, y, hue, sat, lightness, 5)
+        let bubble = new Bubble(x, y, hue, sat, lightness, r0)
         //bubbles.push(bubble)
         bubble.display()
       }
@@ -247,7 +251,7 @@ export default function goldenRatio(p) {
     } else {
       angleString = (angle % p.TWO_PI).toFixed(6).toString()
       angleTexto.html('ângulo (radianos) =' + angleString)
-
+      angleTexto.style('color: green')
       control.show()
       button.mousePressed(toggleStopAngle)
       control.mousePressed(toggleControls)

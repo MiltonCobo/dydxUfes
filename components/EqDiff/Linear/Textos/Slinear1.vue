@@ -46,16 +46,16 @@
     <v-container fluid>
       <v-row no-gutters align="center">
         <v-col
-          xs="12"
+          sm="12"
           md="6"
           align="center"
-          style="min-width:300px; min-height:300px"
+          style="min-width:300px; max-width:100%"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
         </v-col>
-        <v-col xs="12" md="6">
+        <v-col sm="12" md="6">
           <v-sheet>
             Temos então a solução geral $${p(t)=a_0 + (p_0-a_0)\, \e^{rt}.}$$
             Note que para ${p(0)=a_0 }$ a solução é a
