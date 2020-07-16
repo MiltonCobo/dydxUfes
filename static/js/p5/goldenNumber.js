@@ -6,7 +6,6 @@ export default function goldenRatio(p) {
   let c = 9
 
   let initialRadium = 140
-  let bubbles = []
   let stepSlider = 0.00001
 
   let angle
@@ -15,6 +14,7 @@ export default function goldenRatio(p) {
   let angleSlider
   let button
   let r0 = 12
+  let bubbles = []
 
   let minScale = 0.1
   let inflation = minScale
@@ -30,6 +30,8 @@ export default function goldenRatio(p) {
   let angleString
   let slider
   let control
+  let msg
+
   let controlToggle = false
 
   //   function return width and heigth of portview
@@ -90,6 +92,10 @@ export default function goldenRatio(p) {
     angleTexto = p.createElement('p', '')
     inputAngle = p.createInput('fração de 2PI')
     slider = p.createSlider(0, p.TWO_PI, 1 / p.PI, stepSlider)
+    msg = p.createElement(
+      'p',
+      'clique duas vezes no centro da figura...de novo'
+    )
 
     //controls parent
     control.parent('#container-figure')
@@ -97,12 +103,13 @@ export default function goldenRatio(p) {
     inputAngle.parent('#container-figure')
     button.parent('#container-figure')
     slider.parent('#container-figure')
+    msg.parent('#container-figure')
 
     // controls style
 
     // background, border, color
 
-    angleTexto.style('background-color: inherit;')
+    angleTexto.style('background-color: inherit; color:green')
     inputAngle.style(
       'background-color: lightgrey; color: green; padding-left: 1%;'
     )
@@ -112,28 +119,31 @@ export default function goldenRatio(p) {
     control.style('border: 0px solid white; color: green;')
     inputAngle.style('border: 1px solid green;')
     control.style('background-color: lightgrey;')
+    msg.style('color: green; background-color: inherit;')
 
     // font-size
 
     angleTexto.style('font-size', '0.8em')
-    button.style('font-size', '0.8em') // 70% of fontSize
+    button.style('font-size', '0.8em') // 80% of fontSize
     inputAngle.style('font-size', '0.8em')
+    msg.style('font-size', '0.6em')
     control.style('font-size', '0.9em')
 
     // width
 
     slider.style('width', Math.floor(0.3 * width).toString() + 'px') //30% of width
-    button.style('width', Math.floor(0.15 * width).toString() + 'px')
+    button.style('width', Math.floor(0.18 * width).toString() + 'px')
     button.style('height', Math.floor(0.04 * width).toString() + 'px')
     control.style('height', Math.floor(0.04 * width).toString() + 'px')
-    control.style('width', Math.floor(0.15 * width).toString() + 'px')
+    control.style('width', Math.floor(0.18 * width).toString() + 'px')
     inputAngle.style('width', Math.floor(0.2 * width).toString() + 'px')
     inputAngle.style('height', Math.floor(0.05 * width).toString() + 'px')
 
     // control posiitions
     let offsetX = 0.01
 
-    button.position(0.2 * width, 0.95 * height) // 63%  of height
+    button.position(0.2 * width, 0.95 * height) // 95%  of height
+    msg.position(0.5 * width, 0.95 * height) // 95%  of height
     inputAngle.position(offsetX * width, 0.71 * height)
     slider.position(offsetX * width, 0.8 * height)
     angleTexto.position(offsetX * width, 0.87 * height)
@@ -141,6 +151,7 @@ export default function goldenRatio(p) {
 
     // all controls are hide at the beginning
     button.hide()
+    msg.hide()
     slider.hide()
     inputAngle.hide()
     control.hide()
@@ -160,7 +171,6 @@ export default function goldenRatio(p) {
 
   function toggleControls() {
     controlToggle = !controlToggle
-    console.log('controlToggle=', controlToggle)
 
     if (controlToggle) {
       button.show()
@@ -184,7 +194,6 @@ export default function goldenRatio(p) {
   }
   p.windowResized = function() {
     p.resizeCanvas(p.width, p.height)
-    console.log(p.windowWidth)
   }
 
   p.draw = function() {
@@ -218,9 +227,7 @@ export default function goldenRatio(p) {
       inflation += 0.008
       p.push()
       p.scale(inflation)
-      // let distances = []
       for (let n = 0; n < totalPoints; n++) {
-        //distances[n] = Math.sqrt(n) //inflation + (1 - inflation) * Math.sqrt(n)
         let x = c * distance[n] * p.cos(n * angle)
         let y = c * distance[n] * p.sin(n * angle)
 
@@ -236,10 +243,10 @@ export default function goldenRatio(p) {
       // show control and button stop
       control.show()
       button.show()
+      msg.show()
       // show angle in angleText
       angleString = (angle % p.TWO_PI).toFixed(5).toString()
       angleTexto.html('ângulo (radianos) =' + angleString)
-      angleTexto.style('color: green')
 
       // callbacks for controls
       button.mousePressed(toggleStopAngle)
@@ -249,26 +256,27 @@ export default function goldenRatio(p) {
 
       angleSlider = slider.value() % p.TWO_PI
       angle = angle % p.TWO_PI
+
       if (angle != angleSlider) {
         angle = angleSlider
       }
 
-      p.push()
-
       if (figFall == false) {
+        bubbles = [] //   clear bubbles to star over again
         if (stopped == false) {
           angle += stepSlider
           slider.value(angle)
         }
 
         for (let n = 0; n < totalPoints; n++) {
-          let x = c * distance[n] * p.cos(n * angle)
-          let y = c * distance[n] * p.sin(n * angle)
-
+          let x = c * Math.sqrt(n) * p.cos(n * angle)
+          let y = c * Math.sqrt(n) * p.sin(n * angle)
           hue = n % 267
+          sat = 70
+          lightness = 55
 
           let bubble = new Bubble(x, y, hue, sat, lightness, r0)
-          //bubbles.push(bubble)
+          bubbles.push(bubble)
           // if (over == true) {
           // 	bubble.wiggle()
           // }
@@ -282,9 +290,8 @@ export default function goldenRatio(p) {
           bubble.display()
         }
       }
-      p.pop()
-    } // end draw
-  }
+    }
+  } // end draw
 
   p.mouseOver = function() {
     if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 300) {
@@ -301,7 +308,7 @@ export default function goldenRatio(p) {
   // }
 
   p.doubleClicked = function() {
-    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 200) {
+    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 120) {
       figFall = !figFall
     }
   }
@@ -317,7 +324,6 @@ export default function goldenRatio(p) {
     }
 
     display() {
-      //p.stroke(100)
       p.fill(this.hue, this.sat, this.l)
       p.ellipse(this.x, this.y, this.r, this.r)
     }

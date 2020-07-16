@@ -204,6 +204,7 @@ export default {
   background-color: gainsboro;
   margin: 0px;
   padding: 0px;
+  touch-action: manipulate;
 }
 
 /* .ColorWheat {
