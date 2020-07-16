@@ -1,28 +1,30 @@
+import { Scalar } from 'babylonjs'
+
 export default function goldenRatio(p) {
   let totalPoints = 400 // total number of ball per angle
-  let totalSteps = 40 //80
-  let c = 14 //7
-  //let radium = 13
-  let escala = 0.6
-  let initialRadium = 100
+  let totalSteps = 80
+  let c = 9
+
+  let initialRadium = 140
   let bubbles = []
-  let rate = 0.0001
+  let stepSlider = 0.00001
 
   let angle
   let figFall = false
   let stopped = false
-  //let over = false
   let angleSlider
   let button
-  let inflation = 1
-  let r0 = 10
+  let r0 = 12
 
-  let N = 0
-  let steps = 1
-  let distances = []
-  let hue = 100 //steps % 267
-  let sat = 80
-  let lightness = 70
+  let minScale = 0.1
+  let inflation = minScale
+  let scale = 1
+
+  let distance = []
+
+  let hue = 100
+  let sat = 45
+  let lightness = 50
   let inputAngle
   let angleTexto
   let angleString
@@ -65,7 +67,7 @@ export default function goldenRatio(p) {
       1.4 * width
     ) // height is 40% bigger
 
-    r0 = Math.max(Math.floor(0.016 * viewport.w), 15) // LINE ADDED
+    r0 = Math.max(Math.floor(0.001 * viewport.w), r0) // LINE ADDED
 
     let cnv = p.createCanvas(width, height)
 
@@ -74,14 +76,20 @@ export default function goldenRatio(p) {
     p.angleMode(p.RADIANS)
     p.colorMode(p.HSL)
 
+    // make distances
+
+    for (let n = 0; n < totalPoints; n++) {
+      distance[n] = Math.sqrt(n)
+    }
+
     // controls
 
     // create controls
     control = p.createButton('Controles')
-    button = p.createButton('Parar/Seguir')
+    button = p.createButton('parar/seguir')
     angleTexto = p.createElement('p', '')
     inputAngle = p.createInput('fração de 2PI')
-    slider = p.createSlider(0, p.TWO_PI, 1 / p.PI, rate)
+    slider = p.createSlider(0, p.TWO_PI, 1 / p.PI, stepSlider)
 
     //controls parent
     control.parent('#container-figure')
@@ -103,7 +111,7 @@ export default function goldenRatio(p) {
     )
     control.style('border: 0px solid white; color: green;')
     inputAngle.style('border: 1px solid green;')
-    button.style('border: 1px solid green')
+    control.style('background-color: lightgrey;')
 
     // font-size
 
@@ -115,19 +123,23 @@ export default function goldenRatio(p) {
     // width
 
     slider.style('width', Math.floor(0.3 * width).toString() + 'px') //30% of width
-    button.style('width', Math.floor(0.2 * width).toString() + 'px')
-    button.style('height', Math.floor(0.05 * width).toString() + 'px')
+    button.style('width', Math.floor(0.15 * width).toString() + 'px')
+    button.style('height', Math.floor(0.04 * width).toString() + 'px')
+    control.style('height', Math.floor(0.04 * width).toString() + 'px')
+    control.style('width', Math.floor(0.15 * width).toString() + 'px')
     inputAngle.style('width', Math.floor(0.2 * width).toString() + 'px')
     inputAngle.style('height', Math.floor(0.05 * width).toString() + 'px')
 
+    // control posiitions
     let offsetX = 0.01
 
-    button.position(offsetX * width, 0.63 * height)
+    button.position(0.2 * width, 0.95 * height) // 63%  of height
     inputAngle.position(offsetX * width, 0.71 * height)
     slider.position(offsetX * width, 0.8 * height)
-    angleTexto.position(offsetX * width, 0.87 * height) //(0.7 * width, 0.02 * width)
+    angleTexto.position(offsetX * width, 0.87 * height)
     control.position(offsetX * width, 0.95 * height)
 
+    // all controls are hide at the beginning
     button.hide()
     slider.hide()
     inputAngle.hide()
@@ -190,76 +202,50 @@ export default function goldenRatio(p) {
     slider.changed(setAngle)
     inputAngle.changed(updateAngle)
 
-    // if (steps < totalSteps) {
-    //   p.push()
-    //   p.stroke('rgb(0, 100, 0)')
-    //   p.strokeWeight(2)
-    //   p.noFill()
-    //   p.circle(0, 0, 2 * initialRadium)
-
-    //   if (p.frameCount % 13 === 0) {
-    //     steps++
-    //   }
-
-    //   for (let n = 0; n < steps; n++) {
-    //     let x = initialRadium * p.cos(-n * angle)
-    //     let y = initialRadium * p.sin(-n * angle)
-    //     p.noStroke()
-    //     hue = (21 * n) % 267
-    //     let bubble = new Bubble(x, y, hue, sat, lightness, 5)
-    //     bubble.display()
-    //   }
-    //   p.pop()
-    // } else
-
-    if (initialRadium > 20) {
-      initialRadium--
+    if (scale > minScale) {
+      scale -= 0.005
       p.push()
-      //p.translate(0.2 * p.width, 0.4 * p.height)
-      // p.noStroke()
-      // p.noFill()
-      // p.strokeWeight(3)
-      //p.scale()
-      //p.circle(0, 0, 2 * R)
+      p.scale(scale)
       for (let n = 0; n < totalSteps; n++) {
         let x = initialRadium * p.cos(n * angle)
         let y = initialRadium * p.sin(n * angle)
-
-        let bubble = new Bubble(x, y, hue, sat, lightness, r0)
-        bubble.display()
+        hue = 2 * n + 40
+        new Bubble(x, y, hue, sat, lightness, r0).display()
+        //bubble.display()
       }
-
       p.pop()
-    } else if (inflation > 0.005) {
-      inflation -= 0.01
+    } else if (inflation < 1) {
+      inflation += 0.008
       p.push()
-      //p.scale(escala)
+      p.scale(inflation)
+      // let distances = []
       for (let n = 0; n < totalPoints; n++) {
-        distances[n] = 0.5 * inflation + 0.5 * (1 - inflation) * Math.sqrt(n)
-        let x = c * distances[n] * p.cos(n * angle)
-        let y = c * distances[n] * p.sin(n * angle)
+        //distances[n] = Math.sqrt(n) //inflation + (1 - inflation) * Math.sqrt(n)
+        let x = c * distance[n] * p.cos(n * angle)
+        let y = c * distance[n] * p.sin(n * angle)
+
         hue = n % 267
-        sat = 70
-        lightness = 55
 
         let bubble = new Bubble(x, y, hue, sat, lightness, r0)
-        //bubbles.push(bubble)
         bubble.display()
+        bubbles.push(bubble)
       }
-      //setTimeout(() => console.log('hola'), 1000)
+
       p.pop()
     } else {
-      angleString = (angle % p.TWO_PI).toFixed(6).toString()
+      // show control and button stop
+      control.show()
+      button.show()
+      // show angle in angleText
+      angleString = (angle % p.TWO_PI).toFixed(5).toString()
       angleTexto.html('ângulo (radianos) =' + angleString)
       angleTexto.style('color: green')
-      control.show()
+
+      // callbacks for controls
       button.mousePressed(toggleStopAngle)
       control.mousePressed(toggleControls)
       slider.changed(setAngle)
       inputAngle.changed(updateAngle)
-
-      p.push()
-      p.scale(escala)
 
       angleSlider = slider.value() % p.TWO_PI
       angle = angle % p.TWO_PI
@@ -267,22 +253,22 @@ export default function goldenRatio(p) {
         angle = angleSlider
       }
 
+      p.push()
+
       if (figFall == false) {
-        bubbles = []
         if (stopped == false) {
-          angle += rate
+          angle += stepSlider
           slider.value(angle)
         }
 
         for (let n = 0; n < totalPoints; n++) {
-          let x = c * Math.sqrt(n) * p.cos(n * angle)
-          let y = c * Math.sqrt(n) * p.sin(n * angle)
-          hue = n % 267 //(n%93) + 60 ;//80 + 123*Math.sqrt(n)/Math.sqrt(totalPoints);
-          sat = 70
-          lightness = 55
+          let x = c * distance[n] * p.cos(n * angle)
+          let y = c * distance[n] * p.sin(n * angle)
+
+          hue = n % 267
 
           let bubble = new Bubble(x, y, hue, sat, lightness, r0)
-          bubbles.push(bubble)
+          //bubbles.push(bubble)
           // if (over == true) {
           // 	bubble.wiggle()
           // }
@@ -299,6 +285,7 @@ export default function goldenRatio(p) {
       p.pop()
     } // end draw
   }
+
   p.mouseOver = function() {
     if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 300) {
       over = true
@@ -323,7 +310,7 @@ export default function goldenRatio(p) {
     constructor(x, y, hue, saturation, lightness, radium) {
       this.x = x
       this.y = y
-      this.L = lightness
+      this.l = lightness
       this.hue = hue
       this.sat = saturation
       this.r = radium
@@ -331,8 +318,8 @@ export default function goldenRatio(p) {
 
     display() {
       //p.stroke(100)
-      p.fill(this.hue, this.sat, this.L)
-      p.ellipse(this.x, this.y, this.r)
+      p.fill(this.hue, this.sat, this.l)
+      p.ellipse(this.x, this.y, this.r, this.r)
     }
     fall() {
       this.x = this.x + p.random(-1, 1)

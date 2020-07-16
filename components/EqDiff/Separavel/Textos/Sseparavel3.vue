@@ -17,7 +17,7 @@
           md="6"
           order="1"
           align="center"
-          style="min-width:450px; max-width: 100%;"
+          style="min-width:300px; max-width: 100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
@@ -72,7 +72,7 @@
           md="6"
           order="3"
           align="center"
-          style="min-width:450px; max-width: 100%;"
+          style="min-width:300px; max-width: 100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
@@ -104,7 +104,7 @@
           sm="12"
           md="6"
           align="center"
-          style="min-width:450px; max-width: 100%;"
+          style="min-width:300px; max-width: 100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />

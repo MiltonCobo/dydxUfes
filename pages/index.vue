@@ -19,15 +19,15 @@
           <br />
           Na animação espalhamos um certo número de pontos num círculo (as
           "sementes") espaçados por um mesmo ângulo $ \theta $ e depois
-          afastamos estes pontos do círculo para visualizá-los melhor.
-          Finalmente variamos o ângulo $ \theta $ provocando o movimento da
-          figura (isto pode ser acelerado usando o "slider" embaixo na figura).
-          Consideramos $ \theta $, em radianos, como sendo da forma $ \theta = x
-          \cdot 2\pi $ onde $ x $ é um número real variando no intervalo $ [0,1]
-          $. Quando $ x $ é racional, digamos $ x=p/q $ a figura tem exatamente
-          $ q $ pernas. Por exemplo, quando $ x = 0.25 = 1/4 $ a figura tem
-          exatamente $ 4 $ pernas (digite este valor no "input" embaixo da
-          figura).
+          afastamos estes pontos do círculo para visualizá-los melhor. A
+          distância do n-ésimo ponto à origem é $\sqrt{n}.$ Finalmente fazemos
+          variar o ângulo $ \theta $ provocando o movimento da figura (isto pode
+          ser acelerado usando o "slider" dado no controles). Consideramos $
+          \theta $, em radianos, como sendo da forma $ \theta = x \cdot 2\pi $
+          onde $ x $ é um número real variando no intervalo $ [0,1] $. Quando $
+          x $ é racional, digamos $ x=p/q $ a figura tem exatamente $ q $
+          pernas. Por exemplo, quando $ x = 0.25 $ a figura tem exatamente $ 4 $
+          pernas (digite este valor no "input" embaixo da figura).
         </p>
       </v-col>
       <v-col sm="12" md="6" align="center">
@@ -45,13 +45,13 @@
     <v-row>
       <v-col>
         <p class="mathjax ColorWheat">
-          Quando $ x $ é irracional o número de pernas aumenta com o número de
-          iterações e as figuras ficam mais complexas. O número de pernas que
-          vão aparecendo depende das aproximações racionais de $ x $. Por
-          exemplo, para $ x= 1/\pi \approx 0.31830... $ o número de pernas é
-          primeiro $ 3 $ e depois $ 22 $. Isso porque $ 1/\pi $ é bem aproximado
-          por $ 1/3 $ e por $ 7/22 $. Voce pode testar estes valores do ângulo
-          no "input" embaixo da figura.
+          Quando $ x $ é irracional as figuras ficam mais complexas pois o
+          número de pernas aumenta a medida que no nos afastamos da origem. De
+          fato, o número de pernas que vai aparecendo depende das aproximações
+          racionais de $ x $. Por exemplo, para $ x= 1/\pi \approx 0.31830... $
+          o número de pernas é primeiro $ 3 $ e depois $ 22 $. Isso porque $
+          1/\pi $ é bem aproximado por $ 1/3 $ e por $ 7/22 $. Voce pode
+          observar isto digitando $0.31830$ no "input" dado nos controles.
           <br />
           A figura mais complexa acontece quando $ x $ é o número irracional $
           \varphi = (1+\sqrt{5})/2 \approx 1.6180339... $. Ele é chamado de
@@ -90,7 +90,7 @@
           <i>Numberphile</i>, que infelizmente não tem ainda legendas em
           português.
           <br />
-          Em breve iremos explicar mais amplamente este assunto.
+          <!-- Em breve iremos explicar mais amplamente este assunto. -->
         </p>
       </v-col>
     </v-row>
