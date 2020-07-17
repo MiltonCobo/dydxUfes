@@ -48,24 +48,40 @@
       </v-col>
     </v-row>
 
-    <v-dialog transition="fab-transition" v-model="openFigure" width="600">
+    <v-dialog
+      transition="fab-transition"
+      v-model="openFigure"
+      width="600"
+      height="800"
+    >
       <v-card style="background-color:gainsboro;">
-        <v-card-actions>
+        <v-card-actions class="flex-column align-start">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
+          <v-btn color="light-green" @click="openFigure = false">
+            Voltar
+          </v-btn>
           <v-card-text class="mathjax" style="font-family: Lucida Console;">
           </v-card-text>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
-    <v-dialog transition="fab-transition" v-model="openFigure2" width="600">
+    <v-dialog
+      transition="fab-transition"
+      v-model="openFigure2"
+      max-width="600"
+      max-height="800"
+    >
       <v-card style="background-color:gainsboro;">
-        <v-card-actions>
+        <v-card-actions class="flex-column align-start">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
           </client-only>
+          <v-btn color="light-green" left @click="openFigure2 = false">
+            Voltar
+          </v-btn>
           <v-card-text class="mathjax" style="font-family: Lucida Console;">
           </v-card-text>
         </v-card-actions>

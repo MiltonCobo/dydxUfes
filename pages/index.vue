@@ -17,17 +17,17 @@
           por um certo ângulo fixado.
 
           <br />
-          Na animação espalhamos um certo número de pontos num círculo (as
-          "sementes") espaçados por um mesmo ângulo $ \theta $ e depois
-          afastamos estes pontos do círculo para visualizá-los melhor. A
-          distância do n-ésimo ponto à origem é $\sqrt{n}.$ Finalmente fazemos
-          variar o ângulo $ \theta $ provocando o movimento da figura (isto pode
-          ser acelerado usando o "slider" dado no controles). Consideramos $
-          \theta $, em radianos, como sendo da forma $ \theta = x \cdot 2\pi $
-          onde $ x $ é um número real variando no intervalo $ [0,1] $. Quando $
-          x $ é racional, digamos $ x=p/q $ a figura tem exatamente $ q $
-          pernas. Por exemplo, quando $ x = 0.25 $ a figura tem exatamente $ 4 $
-          pernas (digite este valor no "input" embaixo da figura).
+          Na animação espalhamos um certo número de bolinhas num círculo (as
+          "sementes") espaçadas por um mesmo ângulo $ \theta $ e as afastamos do
+          círculo para visualizá-las melhor. A distância da n-ésima bolinha à
+          origem é $\sqrt{n}.$ Finalmente fazemos variar o ângulo $ \theta $
+          provocando o movimento da figura (isto pode ser acelerado usando o
+          "slider" dado no controles). Consideramos $ \theta $, em radianos,
+          como sendo da forma $ \theta = x \cdot 2\pi $ onde $ x $ é um número
+          real variando no intervalo $ [0,1] $. Quando $ x $ é racional, digamos
+          $ x=p/q $ a figura tem exatamente $ q $ pernas. Por exemplo, quando $
+          x = 0.25 $ a figura tem exatamente $ 4 $ pernas (digite este valor no
+          "input" embaixo da figura).
         </p>
       </v-col>
       <v-col sm="12" md="6" align="center">
@@ -46,7 +46,7 @@
       <v-col>
         <p class="mathjax ColorWheat">
           Quando $ x $ é irracional as figuras ficam mais complexas pois o
-          número de pernas aumenta a medida que no nos afastamos da origem. De
+          número de pernas aumenta a medida que nos afastamos da origem. De
           fato, o número de pernas que vai aparecendo depende das aproximações
           racionais de $ x $. Por exemplo, para $ x= 1/\pi \approx 0.31830... $
           o número de pernas é primeiro $ 3 $ e depois $ 22 $. Isso porque $

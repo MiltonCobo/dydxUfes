@@ -40,9 +40,9 @@ export function volterraContours() {
 
   data.type = 'contour'
   let layout0 = Object.assign({}, layout)
-
-  layout0.width = 500
-  layout0.height = 500 /* set size of plot */
+  layout0.autosize = true
+  // layout0.width = 500
+  // layout0.height = 500 /* set size of plot */
   layout0.dragmode = false
   data.colorscale = 'Earth'
   layout0.title =

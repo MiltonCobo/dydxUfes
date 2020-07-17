@@ -2,7 +2,7 @@
   <v-sheet class="mathjax">
     <v-container fluid>
       <v-row align="center">
-        <v-col xs="12">
+        <v-col sm="12">
           Note que as curvas de nível de $V$ são fechadas. De fato o gradiente
           ${\nabla V(x,y)=(d-c/x, b-a/y)}$ se anula no ponto $\bar{p}=(c/d,
           a/b)$ e a matriz Hessiana de $V$ em ${\bar{p}}$ é dada por

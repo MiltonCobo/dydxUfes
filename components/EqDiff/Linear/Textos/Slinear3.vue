@@ -87,12 +87,20 @@
       </v-col>
     </v-row>
 
-    <v-dialog v-model="openFigure" max-width="600" transition="fab-transition">
+    <v-dialog
+      v-model="openFigure"
+      width="600"
+      height="600"
+      transition="fab-transition"
+    >
       <v-card style="background-color:gainsboro;">
-        <v-card-actions>
+        <v-card-actions class="flex-column align-start">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
+          <v-btn color="light-green" @click="openFigure = false">
+            Voltar
+          </v-btn>
           <v-card-text
             class="gainsboro mathjax"
             style="font-family: Lucida Console;"

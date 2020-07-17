@@ -49,7 +49,7 @@
     </v-row>
 
     <v-row align="center">
-      <v-col xs="12" md="7">
+      <v-col sm="12" md="7">
         <v-sheet>
           O problema de achar as raizes de um polinômio de grau $n\ge 3$ é em
           geral difícil. Para $n=2$ temos a fórmula de Bháskara ou quadrática.
@@ -64,14 +64,8 @@
           seus 21 anos, quando morreu num duelo de pistola!
         </v-sheet>
       </v-col>
-      <v-col xs="12" sm="5" align="center">
-        <v-img
-          contain
-          src="/figures/Evariste_galois.jpg"
-          width="300"
-          height="300"
-        >
-        </v-img>
+      <v-col sm="12" md="5" align="center">
+        <v-img contain src="/figures/Evariste_galois.jpg" height="300"> </v-img>
         <div class="subheading">Évariste Galois(1811-1832)</div>
       </v-col>
     </v-row>
@@ -187,10 +181,11 @@
           <v-dialog
             transition="fab-transition"
             v-model="openFigure"
+            width-width="360"
             max-width="600"
           >
             <v-card style="background-color:gainsboro;">
-              <v-card-actions>
+              <v-card-actions class="flex-column align-start">
                 <client-only placeholder="carregando...">
                   <vue-plotly
                     :data="data"
@@ -198,8 +193,10 @@
                     :options="options"
                   />
                 </client-only>
-                <v-card-text id="mathjax" style="font-family: Lucida Console;">
-                </v-card-text>
+
+                <v-btn color="light-green" @click="openFigure = false">
+                  Voltar
+                </v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -207,12 +204,20 @@
       </v-col>
     </v-row>
 
-    <v-dialog transition="fab-transition" v-model="openFigure2" max-width="600">
+    <v-dialog
+      transition="fab-transition"
+      v-model="openFigure2"
+      width="600"
+      height="600"
+    >
       <v-card style="background-color:gainsboro;">
-        <v-card-actions>
+        <v-card-actions class="flex-column align-start">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
           </client-only>
+          <v-btn color="light-green" @click="openFigure2 = false">
+            Voltar
+          </v-btn>
           <v-card-text class="mathjax" style="font-family: Lucida Console;">
           </v-card-text>
         </v-card-actions>

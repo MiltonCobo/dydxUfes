@@ -44,9 +44,9 @@ export function volterraSurface2() {
 
   let layout0 = Object.assign({}, layout)
 
-  //layout0.autosize = true
-  layout0.width = 550
-  layout0.height = 550 /* set size of plot */
+  layout0.autosize = true
+  // layout0.width = 550
+  // layout0.height = 550 /* set size of plot */
   data.colorscale = 'Earth'
   layout0.title =
     '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'

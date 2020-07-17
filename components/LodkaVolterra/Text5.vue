@@ -2,7 +2,7 @@
   <v-sheet class="mathjax">
     <v-container fluid>
       <v-row align="center">
-        <v-col xs="12" md="6">
+        <v-col sm="12" md="6">
           <h3 style="color:var(--mjx-green)">
             Qual foi a explicação dada por Volterra para o aumento da população
             de predadores no mar adriático por causa da guerra?
@@ -18,7 +18,12 @@
 
           <br />
         </v-col>
-        <v-col xs="12" md="6" align="center">
+        <v-col
+          sm="12"
+          md="6"
+          align="center"
+          style="min-width: 360px; max-width: 100%"
+        >
           <client-only>
             <vue-plotly
               v-if="startChart"

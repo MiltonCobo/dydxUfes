@@ -1,11 +1,11 @@
-import { Scalar } from 'babylonjs'
+//import { Scalar } from 'babylonjs'
 
 export default function goldenRatio(p) {
-  let totalPoints = 400 // total number of ball per angle
+  let totalPoints = 500 // 400// total number of ball per angle
   let totalSteps = 80
-  let c = 9
+  let c = 8 // 9
 
-  let initialRadium = 140
+  // let initialRadium = 140
   let stepSlider = 0.00001
 
   let angle
@@ -13,17 +13,17 @@ export default function goldenRatio(p) {
   let stopped = false
   let angleSlider
   let button
-  let r0 = 12
+  let r0 = 11 //12
   let bubbles = []
 
   let minScale = 0.1
-  let inflation = minScale
-  let scale = 1
+  //let inflation = minScale
+  let scale = 0.5
 
   let distance = []
 
   let hue = 100
-  let sat = 45
+  let sat = 50
   let lightness = 50
   let inputAngle
   let angleTexto
@@ -78,12 +78,6 @@ export default function goldenRatio(p) {
     p.angleMode(p.RADIANS)
     p.colorMode(p.HSL)
 
-    // make distances
-
-    for (let n = 0; n < totalPoints; n++) {
-      distance[n] = Math.sqrt(n)
-    }
-
     // controls
 
     // create controls
@@ -92,10 +86,7 @@ export default function goldenRatio(p) {
     angleTexto = p.createElement('p', '')
     inputAngle = p.createInput('fração de 2PI')
     slider = p.createSlider(0, p.TWO_PI, 1 / p.PI, stepSlider)
-    msg = p.createElement(
-      'p',
-      'clique duas vezes no centro da figura...de novo'
-    )
+    msg = p.createElement('p', 'clique no centro da figura...de novo')
 
     //controls parent
     control.parent('#container-figure')
@@ -158,6 +149,26 @@ export default function goldenRatio(p) {
     angleTexto.hide()
 
     angle = slider.value() // set angle inicial in slider
+
+    // make distances
+
+    //make bubbles
+    for (let n = 0; n < totalPoints; n++) {
+      let x = 20 * p.cos(n * angle)
+      let y = 20 * p.sin(n * angle)
+      // let x = c * distance[n] * p.cos(n * angle)
+      // let y = c * distance[n] * p.sin(n * angle)
+
+      //save distances for the future...
+      distance[n] = Math.sqrt(n)
+
+      hue = (n % 150) + 20
+      sat = 100 - 0.167 * n
+      lightness = 0.08 * n + 40
+
+      let bubble = new Bubble(x, y, hue, sat, lightness, r0)
+      bubbles.push(bubble)
+    }
   }
 
   function updateAngle() {
@@ -211,35 +222,29 @@ export default function goldenRatio(p) {
     slider.changed(setAngle)
     inputAngle.changed(updateAngle)
 
-    if (scale > minScale) {
-      scale -= 0.005
-      p.push()
-      p.scale(scale)
-      for (let n = 0; n < totalSteps; n++) {
-        let x = initialRadium * p.cos(n * angle)
-        let y = initialRadium * p.sin(n * angle)
-        hue = 2 * n + 40
-        new Bubble(x, y, hue, sat, lightness, r0).display()
-        //bubble.display()
-      }
-      p.pop()
-    } else if (inflation < 1) {
-      inflation += 0.008
-      p.push()
-      p.scale(inflation)
-      for (let n = 0; n < totalPoints; n++) {
-        let x = c * distance[n] * p.cos(n * angle)
-        let y = c * distance[n] * p.sin(n * angle)
+    if (scale > 0) {
+      scale -= 0.004
 
-        hue = n % 267
-
-        let bubble = new Bubble(x, y, hue, sat, lightness, r0)
+      let factor = 1 - scale
+      bubbles.forEach((bubble, index) => {
+        bubble.x = c * factor * distance[index] * Math.cos(index * angle)
+        bubble.y = c * factor * distance[index] * Math.sin(index * angle)
         bubble.display()
-        bubbles.push(bubble)
-      }
+      })
+      //p.push()
+      //p.scale(scale)
+      //bubbles.forEach(bubble => bubble.display())
+      //p.pop()
+    }
+    //else if (inflation < 1) {
+    //   inflation += 0.008
 
-      p.pop()
-    } else {
+    //   p.push()
+    //   p.scale(inflation)
+    //   bubbles.forEach(bubble => bubble.display())
+    //   p.pop()
+    // }
+    else {
       // show control and button stop
       control.show()
       button.show()
@@ -262,33 +267,26 @@ export default function goldenRatio(p) {
       }
 
       if (figFall == false) {
-        bubbles = [] //   clear bubbles to star over again
+        //bubbles = [] //   clear bubbles to star over again
         if (stopped == false) {
           angle += stepSlider
           slider.value(angle)
         }
+        // update bubbles positions
 
-        for (let n = 0; n < totalPoints; n++) {
-          let x = c * Math.sqrt(n) * p.cos(n * angle)
-          let y = c * Math.sqrt(n) * p.sin(n * angle)
-          hue = n % 267
-          sat = 70
-          lightness = 55
-
-          let bubble = new Bubble(x, y, hue, sat, lightness, r0)
-          bubbles.push(bubble)
-          // if (over == true) {
-          // 	bubble.wiggle()
-          // }
-          bubble.display()
-        }
+        bubbles.forEach((bubble, index) => {
+          bubble.x = c * distance[index] * p.cos(index * angle)
+          bubble.y = c * distance[index] * p.sin(index * angle)
+        })
+        //display bubbles
+        bubbles.forEach(bubble => bubble.display())
       } else {
-        for (let bubble of bubbles) {
+        bubbles.forEach(bubble => {
           if (stopped == false) {
             bubble.fall()
           }
           bubble.display()
-        }
+        })
       }
     }
   } // end draw
@@ -301,13 +299,7 @@ export default function goldenRatio(p) {
     }
   }
 
-  // p.mouseClicked = function() {
-  //   if (figFall == true) {
-  //     figFall = false
-  //   }
-  // }
-
-  p.doubleClicked = function() {
+  p.mouseClicked = function() {
     if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 120) {
       figFall = !figFall
     }

@@ -2,7 +2,7 @@
   <v-sheet class="mathjax">
     <v-container fluid>
       <v-row align="center">
-        <v-col xs="12" sm="8">
+        <v-col sm="12" md="6">
           Durante a 1ª Guerra Mundial (1914-1917) a pesca no mar adriático foi
           severamente restrita. Após a Guerra os pescadores italianos reportaram
           o aumento ostensível dos predadores nesse mar, mas não assim o aumento
@@ -12,7 +12,7 @@
           arraias, etc) nos portos de Fiume, Trieste e Veneza no período de 1914
           a 1923.
         </v-col>
-        <v-col xs="12" sm="4" align="center">
+        <v-col sm="12" md="4" align="center">
           <v-img src="/figures/lebrelince.png" contain width="300" height="300">
           </v-img>
           <!-- <client-only>

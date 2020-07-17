@@ -2,7 +2,7 @@
   <v-sheet class="mathjax">
     <v-container fluid>
       <v-row>
-        <v-col xs="12">
+        <v-col>
           Sendo assim, temos por exemplo que a velocidade com que varia a
           população de presas estará dada por
           <span style="color:var(--mjx-green)"
@@ -18,16 +18,18 @@
           As soluções $(x(t), y(t))$ das equações de Lodka-Volterra moram nas
           <span style="color:var(--mjx-green)">curvas de nível</span> da função
           $${V(x,y)=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$
-        </v-col></v-row
-      >
+        </v-col>
+      </v-row>
 
       <v-row align="center">
         <v-col
-          v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
           align="center"
-          xs="12"
-          style="min-width:600px"
+          v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
+          sm="12"
+          md="6"
+          style="min-width: 360px; max-width:100%; height: 500px;"
         >
+          <!-- for this figure we need to set at least hight=500px, why? -->
           <client-only>
             <vue-plotly
               v-if="startChart"
@@ -37,7 +39,7 @@
             />
           </client-only>
         </v-col>
-        <v-col xs="12">
+        <v-col sm="12" md="6">
           Para ver isto eliminamos o tempo nas equações fazendo $${ { dy/dt\over
           {dx/dt}} = {dy\over dx} = \frac{y(d\,x-c)}{x(a-b\,y)} }$$ e desta
           forma obtemos uma equação diferencial, numa variável, do tipo
@@ -45,16 +47,16 @@
           e por integração chegamos na chamada solução
           <span style="color:var(--mjx-green)">implícita</span>
           $${ V=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$
-          <br />
         </v-col>
       </v-row>
+
       <v-row>
-        <v-col xs="12">
+        <v-col>
           A figura mostra o gráfico de $V(x,y)$ para valores ${a=5.3, b=0.12,
           c=4.9}$ e ${d=0.14}$ (superfície 1, sem pesca) e para valores
           ${a=3.6}$ e ${c=7.5} $ (superfície 2, com pesca).
-        </v-col></v-row
-      >
+        </v-col>
+      </v-row>
     </v-container>
   </v-sheet>
 </template>

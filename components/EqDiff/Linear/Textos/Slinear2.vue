@@ -85,11 +85,12 @@
 
           <v-dialog
             v-model="openFigure"
-            max-width="550"
+            width="600"
+            height="700"
             transition="fab-transition"
           >
             <v-card>
-              <v-card-actions>
+              <v-card-actions class="flex-column align-start">
                 <client-only v-if="openFigure">
                   <line-chart
                     style="width:500px; height:500px;"
@@ -97,6 +98,9 @@
                     :options="options"
                   />
                 </client-only>
+                <v-btn color="light-green" @click="openFigure = false">
+                  Voltar
+                </v-btn>
               </v-card-actions>
 
               <v-card-text class="mathjax" style="font-family: Lucida Console;">

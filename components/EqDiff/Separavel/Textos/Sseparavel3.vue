@@ -17,7 +17,7 @@
           md="6"
           order="1"
           align="center"
-          style="min-width:300px; max-width: 100%;"
+          style="min-width:360px; max-width:100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
@@ -39,13 +39,13 @@
       <v-row>
         <v-col>
           <p class="mathjax">
-            $${ y = \frac{-3\pm\sqrt{9-4\Delta}}{2} =\frac{-3\pm\sqrt{(9 -4C)+8x
-            -4\e^x}}{2}}\,\textrm{(eq1)} $$ Vemos que a curva de nível
-            $V(x,y)=C$ esconde duas funções $y=f(x).$ Para verificar a condição
-            inicial $x=0, y=0,$ precisamos tomar sinal de "mais" e o valor de
-            $C$ deve ser ${C=-1}.$ Portanto a solução explícita do problema de
-            valor inicial é $${ y = \frac{-3 +\sqrt{(13+8x)-4\e^x}}{2}}
-            \quad\textrm{(eq2).}$$
+            $$ y = {-3\pm\sqrt{9-4\Delta}\over 2} =
+            {-3\pm\sqrt{(9-4C)+8x-4\e^x}\over 2}, \textrm{(eq1)}$$ Vemos que a
+            curva de nível $V(x,y)=C$ esconde duas funções $y=f(x).$ Para
+            verificar a condição inicial $x=0, y=0,$ precisamos tomar sinal de
+            "mais" e o valor de $C$ deve ser ${C=-1}.$ Portanto a solução
+            explícita do problema de valor inicial é $${ y = \frac{-3
+            +\sqrt{(13+8x)-4\e^x}}{2}} \quad\textrm{(eq2).}$$
           </p>
         </v-col>
       </v-row>
@@ -72,7 +72,7 @@
           md="6"
           order="3"
           align="center"
-          style="min-width:300px; max-width: 100%;"
+          style="min-width:360px;max-width:100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
@@ -104,7 +104,7 @@
           sm="12"
           md="6"
           align="center"
-          style="min-width:300px; max-width: 100%;"
+          style="min-width:360px; max-width:100%;"
         >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
