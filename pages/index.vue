@@ -201,10 +201,12 @@ export default {
 }
 
 #container-figure {
+  max-width: 100vw;
+  max-height: 40%;
   background-color: gainsboro;
   margin: 0px;
   padding: 0px;
-  touch-action: manipulate;
+  touch-action: none;
 }
 
 /* .ColorWheat {

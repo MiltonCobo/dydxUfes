@@ -1,11 +1,10 @@
-//import { Scalar } from 'babylonjs'
+// import Bubble from 'static/js/p5/bubbles'
 
 export default function goldenRatio(p) {
-  let totalPoints = 500 // 400// total number of ball per angle
-  let totalSteps = 80
-  let c = 8 // 9
+  let totalPoints = 400 // total number of ball per angle
 
-  // let initialRadium = 140
+  let c = 8 // parameter to determine size of figure
+
   let stepSlider = 0.00001
 
   let angle
@@ -13,14 +12,12 @@ export default function goldenRatio(p) {
   let stopped = false
   let angleSlider
   let button
-  let r0 = 11 //12
+  let r0 = 11 //   size of the balls
   let bubbles = []
 
-  let minScale = 0.1
-  //let inflation = minScale
-  let scale = 0.5
-
-  let distance = []
+  let minDist = 1
+  let count = 0
+  let controlToggle = false
 
   let hue = 100
   let sat = 50
@@ -32,8 +29,6 @@ export default function goldenRatio(p) {
   let control
   let msg
 
-  let controlToggle = false
-
   //   function return width and heigth of portview
   function getViewportSize() {
     // This works for all browsers except IE8 and before
@@ -41,7 +36,7 @@ export default function goldenRatio(p) {
       return { w: window.innerWidth, h: window.innerHeight }
 
     // For IE (or any browser) in Standards mode
-    var d = window.document
+    let d = window.document
     if (document.compatMode == 'CSS1Compat')
       return {
         w: d.documentElement.clientWidth,
@@ -54,22 +49,37 @@ export default function goldenRatio(p) {
 
   //--------------------------------------
   p.setup = function() {
-    let viewport = getViewportSize()
-    let aspectRatioInverse = viewport.h / viewport.w
+    //let viewport = getViewportSize()
+    // let aspectRatioInverse = viewport.h / viewport.w
+    // let factor = 0.5 // almost 60%
+    // if (viewport.w < 600) {
+    //   // break point xs="600"
+    //   factor = 0.9 // force to break boxes ....?
+    // }
+    // let width = Math.floor(factor * viewport.w)
+    // let height = Math.min(
+    //   Math.floor(1.4 * aspectRatioInverse * width),
+    //   1.4 * width
+    // ) // height is 40% bigger
 
-    let factor = 0.5 // almost 60%
-    if (viewport.w < 600) {
-      // break point xs="600"
-      factor = 0.9 // force to break boxes ....?
+    let canvas = document.getElementById('container-figure')
+
+    let canvasRect = canvas.getBoundingClientRect()
+
+    let width, height
+    let windowW = window.innerWidth
+    let windowH = window.innerHeight
+
+    let aspRatio = windowH / windowW
+    if (windowW < 600) {
+      width = 0.9 * windowW
+      height = 1.2 * width
+    } else {
+      width = canvasRect.width
+      height = 1.4 * canvasRect.width * aspRatio
     }
 
-    let width = Math.floor(factor * viewport.w)
-    let height = Math.min(
-      Math.floor(1.4 * aspectRatioInverse * width),
-      1.4 * width
-    ) // height is 40% bigger
-
-    r0 = Math.max(Math.floor(0.001 * viewport.w), r0) // LINE ADDED
+    r0 = Math.max(Math.floor(0.002 * windowW), r0) // LINE ADDED
 
     let cnv = p.createCanvas(width, height)
 
@@ -85,7 +95,7 @@ export default function goldenRatio(p) {
     button = p.createButton('parar/seguir')
     angleTexto = p.createElement('p', '')
     inputAngle = p.createInput('fração de 2PI')
-    slider = p.createSlider(0, p.TWO_PI, 1 / p.PI, stepSlider)
+    slider = p.createSlider(0, p.TWO_PI, 0.3183, stepSlider)
     msg = p.createElement('p', 'clique no centro da figura...de novo')
 
     //controls parent
@@ -122,19 +132,27 @@ export default function goldenRatio(p) {
 
     // width
 
-    slider.style('width', Math.floor(0.3 * width).toString() + 'px') //30% of width
-    button.style('width', Math.floor(0.18 * width).toString() + 'px')
-    button.style('height', Math.floor(0.04 * width).toString() + 'px')
-    control.style('height', Math.floor(0.04 * width).toString() + 'px')
-    control.style('width', Math.floor(0.18 * width).toString() + 'px')
-    inputAngle.style('width', Math.floor(0.2 * width).toString() + 'px')
-    inputAngle.style('height', Math.floor(0.05 * width).toString() + 'px')
+    slider.style('width', '10em') //30% of width
+    button.style('width', '6em')
+    button.style('height', '1.5em')
+    control.style('height', '1.5em')
+    control.style('width', '6em')
+    inputAngle.style('width', '8em')
+    inputAngle.style('height', '1.5em')
+
+    // slider.style('width', Math.floor(0.3 * width).toString() + 'px') //30% of width
+    // button.style('width', Math.floor(0.18 * width).toString() + 'px')
+    // button.style('height', Math.floor(0.04 * width).toString() + 'px')
+    // control.style('height', Math.floor(0.04 * width).toString() + 'px')
+    // control.style('width', Math.floor(0.18 * width).toString() + 'px')
+    // inputAngle.style('width', Math.floor(0.2 * width).toString() + 'px')
+    // inputAngle.style('height', Math.floor(0.05 * width).toString() + 'px')
 
     // control posiitions
     let offsetX = 0.01
 
     button.position(0.2 * width, 0.95 * height) // 95%  of height
-    msg.position(0.5 * width, 0.95 * height) // 95%  of height
+    msg.position(0.5 * width, 0.97 * height) // 95%  of height
     inputAngle.position(offsetX * width, 0.71 * height)
     slider.position(offsetX * width, 0.8 * height)
     angleTexto.position(offsetX * width, 0.87 * height)
@@ -154,19 +172,23 @@ export default function goldenRatio(p) {
 
     //make bubbles
     for (let n = 0; n < totalPoints; n++) {
-      let x = 20 * p.cos(n * angle)
-      let y = 20 * p.sin(n * angle)
-      // let x = c * distance[n] * p.cos(n * angle)
-      // let y = c * distance[n] * p.sin(n * angle)
-
-      //save distances for the future...
-      distance[n] = Math.sqrt(n)
+      let x = 10 * c * p.cos(n * angle)
+      let y = 10 * c * p.sin(n * angle)
 
       hue = (n % 150) + 20
       sat = 100 - 0.167 * n
       lightness = 0.08 * n + 40
 
       let bubble = new Bubble(x, y, hue, sat, lightness, r0)
+
+      bubble.target = p.createVector(
+        0.1 * Math.sqrt(n) * x,
+        0.1 * Math.sqrt(n) * y //set initial targets and velocities
+      )
+      bubble.vel = p.createVector(
+        30 * (Math.random() - 0.5),
+        30 * (Math.random() - 0.5)
+      )
       bubbles.push(bubble)
     }
   }
@@ -222,36 +244,36 @@ export default function goldenRatio(p) {
     slider.changed(setAngle)
     inputAngle.changed(updateAngle)
 
-    if (scale > 0) {
-      scale -= 0.004
+    //make the first bubbles in the circle
+    if (count < 160) {
+      for (let n = 0; n < count; n++) {
+        bubbles[n].display()
+      }
+      count++
 
-      let factor = 1 - scale
-      bubbles.forEach((bubble, index) => {
-        bubble.x = c * factor * distance[index] * Math.cos(index * angle)
-        bubble.y = c * factor * distance[index] * Math.sin(index * angle)
-        bubble.display()
-      })
-      //p.push()
-      //p.scale(scale)
-      //bubbles.forEach(bubble => bubble.display())
-      //p.pop()
+      return
     }
-    //else if (inflation < 1) {
-    //   inflation += 0.008
 
-    //   p.push()
-    //   p.scale(inflation)
-    //   bubbles.forEach(bubble => bubble.display())
-    //   p.pop()
-    // }
-    else {
+    if (minDist > 0.0001) {
+      // bubbles are wandering
+      let distances = []
+      bubbles.forEach(bubble => {
+        bubble.behaviors()
+        bubble.update()
+        let dist = p.createVector(
+          bubble.target.x - bubble.pos.x,
+          bubble.target.y - bubble.pos.y
+        )
+        distances.push(dist.mag())
+      })
+
+      bubbles.forEach(bubble => bubble.display())
+      minDist = Math.min(...distances) // when steering stop
+    } else {
       // show control and button stop
       control.show()
       button.show()
       msg.show()
-      // show angle in angleText
-      angleString = (angle % p.TWO_PI).toFixed(5).toString()
-      angleTexto.html('ângulo (radianos) =' + angleString)
 
       // callbacks for controls
       button.mousePressed(toggleStopAngle)
@@ -259,24 +281,47 @@ export default function goldenRatio(p) {
       slider.changed(setAngle)
       inputAngle.changed(updateAngle)
 
-      angleSlider = slider.value() % p.TWO_PI
-      angle = angle % p.TWO_PI
-
-      if (angle != angleSlider) {
-        angle = angleSlider
-      }
-
       if (figFall == false) {
-        //bubbles = [] //   clear bubbles to star over again
-        if (stopped == false) {
-          angle += stepSlider
-          slider.value(angle)
+        if (minDist > 0.00001) {
+          // when click second time minDist = 10
+          let distances = []
+          bubbles.forEach(bubble => {
+            bubble.behaviors()
+            bubble.update()
+            let dist = p.createVector(
+              bubble.target.x - bubble.pos.x,
+              bubble.target.y - bubble.pos.y
+            )
+            distances.push(dist.mag())
+          })
+
+          bubbles.forEach(bubble => bubble.display())
+          minDist = Math.min(...distances)
+          return
+        } else {
+          angleSlider = slider.value() % p.TWO_PI
+          angle = angle % p.TWO_PI
+
+          if (angle != angleSlider) {
+            angle = angleSlider
+          }
+
+          // show angle in angleText
+          angleString = (angle % p.TWO_PI).toFixed(5).toString()
+          angleTexto.html('ângulo (radianos) =' + angleString)
+
+          if (stopped == false) {
+            angle += stepSlider
+            slider.value(angle)
+          }
         }
+
         // update bubbles positions
 
         bubbles.forEach((bubble, index) => {
-          bubble.x = c * distance[index] * p.cos(index * angle)
-          bubble.y = c * distance[index] * p.sin(index * angle)
+          bubble.x = c * Math.sqrt(index) * p.cos(index * angle)
+          bubble.y = c * Math.sqrt(index) * p.sin(index * angle)
+          bubble.pos = p.createVector(bubble.x, bubble.y)
         })
         //display bubbles
         bubbles.forEach(bubble => bubble.display())
@@ -301,11 +346,25 @@ export default function goldenRatio(p) {
 
   p.mouseClicked = function() {
     if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 120) {
+      if (figFall == true) {
+        bubbles.forEach(bubble => {
+          bubble.vel = p.createVector(
+            30 * (Math.random() - 0.5),
+            30 * (Math.random() - 0.5)
+          )
+        })
+        minDist = 10
+      } else {
+        bubbles.forEach(bubble => {
+          bubble.target = bubble.pos
+        })
+        minDist = 0 // stop steerin behavior...
+      }
       figFall = !figFall
     }
   }
 
-  class Bubble {
+  let Bubble = class {
     constructor(x, y, hue, saturation, lightness, radium) {
       this.x = x
       this.y = y
@@ -313,6 +372,56 @@ export default function goldenRatio(p) {
       this.hue = hue
       this.sat = saturation
       this.r = radium
+      this.maxforce = 0.5
+      this.maxspeed = 8
+
+      this.pos = p.createVector(x, y)
+      this.target = p.createVector()
+      this.vel = p.createVector()
+      this.acc = p.createVector()
+    }
+
+    update() {
+      this.pos.add(this.vel)
+
+      this.vel.add(this.acc)
+
+      this.acc.mult(0)
+      this.x = this.pos.x
+      this.y = this.pos.y
+    }
+
+    applyForce(f) {
+      this.acc.add(f)
+    }
+
+    behaviors() {
+      this.arrive(this.target)
+    }
+
+    arrive(target) {
+      let newForce = p.createVector(
+        target.x - this.pos.x,
+        target.y - this.pos.y
+      )
+
+      let d = newForce.mag()
+
+      let speed = this.maxspeed
+
+      if (d < 100) {
+        speed = p.map(d, 0, 100, 0, this.maxspeed)
+      }
+
+      newForce.setMag(speed)
+
+      let steer = p.createVector(
+        newForce.x - this.vel.x,
+        newForce.y - this.vel.y
+      )
+      steer.limit(this.maxforce)
+
+      this.applyForce(steer)
     }
 
     display() {
@@ -322,6 +431,7 @@ export default function goldenRatio(p) {
     fall() {
       this.x = this.x + p.random(-1, 1)
       this.y = this.y + 0.05 * this.x
+      this.pos = p.createVector(this.x, this.y)
     }
     wiggle() {
       this.x = this.x + p.random(-2, 2)
