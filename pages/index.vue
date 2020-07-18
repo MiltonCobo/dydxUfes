@@ -13,8 +13,8 @@
         <p class="mathjax ColorWheat">
           Esta animação está relacionada com a distribuição de sementes em
           algumas flores como o girassol. Na flor do girassol, sementes vão
-          surgindo do centro e, ao mesmo tempo que vão se afastando, vão rodando
-          por um certo ângulo fixado.
+          surgindo do centro e, enquanto vão se afastando, vão rodando por um
+          certo ângulo fixado.
 
           <br />
           Na animação espalhamos um certo número de bolinhas num círculo (as
@@ -22,12 +22,12 @@
           círculo para visualizá-las melhor. A distância da n-ésima bolinha à
           origem é $\sqrt{n}.$ Finalmente fazemos variar o ângulo $ \theta $
           provocando o movimento da figura (isto pode ser acelerado usando o
-          "slider" dado no controles). Consideramos $ \theta $, em radianos,
+          "slider" dado nos controles). Consideramos $ \theta $, em radianos,
           como sendo da forma $ \theta = x \cdot 2\pi $ onde $ x $ é um número
           real variando no intervalo $ [0,1] $. Quando $ x $ é racional, digamos
           $ x=p/q $ a figura tem exatamente $ q $ pernas. Por exemplo, quando $
           x = 0.25 $ a figura tem exatamente $ 4 $ pernas (digite este valor no
-          "input" embaixo da figura).
+          "input" dado nos controles).
         </p>
       </v-col>
       <v-col sm="12" md="6" align="center">
@@ -201,18 +201,13 @@ export default {
 }
 
 #container-figure {
-  max-width: 100vw;
-  max-height: 40%;
+  width: auto;
+  height: auto;
   background-color: gainsboro;
-  margin: 0px;
   padding: 0px;
   touch-action: none;
+  scroll-behavior: smooth;
 }
-
-/* .ColorWheat {
-  --mjx-green: #fff9c4; 
-   wheat; 
-} /*
 
 /* .mathjax { */
 /* font-size: 20px; */

@@ -252,7 +252,7 @@ export default {
   height: 80vh;
   touch-action: none;
   scroll-behavior: smooth;
-  /* manipulation; */
+
   margin: 0px;
   padding: 0px;
 }

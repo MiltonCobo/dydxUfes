@@ -45,12 +45,7 @@
 
     <v-container fluid>
       <v-row no-gutters align="center">
-        <v-col
-          sm="12"
-          md="6"
-          align="center"
-          style="min-width:300px; max-width:100%"
-        >
+        <v-col sm="12" md="6" align="center" class="figure">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data" :layout="layout" :options="options" />
           </client-only>
@@ -98,7 +93,7 @@
 <script>
 import { getDataScatter } from '@/static/js/Plotly/plotly-config.js'
 let inf = plotMosquitosSol()
-console.log(inf)
+
 let data = inf.data
 let layout = inf.layout
 let options = inf.options
@@ -320,3 +315,13 @@ function plotMosquitosSol() {
   return { data, layout, options }
 }
 </script>
+<style scoped>
+.figure {
+  width: 100%;
+  min-width: 360px;
+  height: auto;
+  background-color: inherit;
+  margin: 0px;
+  padding: 0px;
+}
+</style>

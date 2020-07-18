@@ -27,9 +27,8 @@
           v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
           sm="12"
           md="6"
-          style="min-width: 360px; max-width:100%; height: 500px;"
+          class="figure"
         >
-          <!-- for this figure we need to set at least hight=500px, why? -->
           <client-only>
             <vue-plotly
               v-if="startChart"
@@ -93,3 +92,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.figure {
+  width: 100%;
+  min-width: 360px;
+  height: auto;
+  background-color: inherit;
+  margin: 0px;
+  padding: 0px;
+}
+</style>

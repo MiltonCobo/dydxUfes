@@ -49,37 +49,9 @@ export default function goldenRatio(p) {
 
   //--------------------------------------
   p.setup = function() {
-    //let viewport = getViewportSize()
-    // let aspectRatioInverse = viewport.h / viewport.w
-    // let factor = 0.5 // almost 60%
-    // if (viewport.w < 600) {
-    //   // break point xs="600"
-    //   factor = 0.9 // force to break boxes ....?
-    // }
-    // let width = Math.floor(factor * viewport.w)
-    // let height = Math.min(
-    //   Math.floor(1.4 * aspectRatioInverse * width),
-    //   1.4 * width
-    // ) // height is 40% bigger
-
-    let canvas = document.getElementById('container-figure')
-
-    let canvasRect = canvas.getBoundingClientRect()
-
-    let width, height
-    let windowW = window.innerWidth
-    let windowH = window.innerHeight
-
-    let aspRatio = windowH / windowW
-    if (windowW < 600) {
-      width = 0.9 * windowW
-      height = 1.2 * width
-    } else {
-      width = canvasRect.width
-      height = 1.4 * canvasRect.width * aspRatio
-    }
-
-    r0 = Math.max(Math.floor(0.002 * windowW), r0) // LINE ADDED
+    let canvasSize = setCanvasSize()
+    let width = canvasSize.w
+    let height = canvasSize.h
 
     let cnv = p.createCanvas(width, height)
 
@@ -112,14 +84,14 @@ export default function goldenRatio(p) {
 
     angleTexto.style('background-color: inherit; color:green')
     inputAngle.style(
-      'background-color: lightgrey; color: green; padding-left: 1%;'
+      'background-color: gainsboro; color: green; padding-left: 1%;'
     )
     button.style(
-      'border: 0px solid white; background-color: lightgrey; color:green '
+      'border: 0px solid white; background-color: gainsboro; color:green '
     )
     control.style('border: 0px solid white; color: green;')
     inputAngle.style('border: 1px solid green;')
-    control.style('background-color: lightgrey;')
+    control.style('background-color: gainsboro;')
     msg.style('color: green; background-color: inherit;')
 
     // font-size
@@ -137,21 +109,13 @@ export default function goldenRatio(p) {
     button.style('height', '1.5em')
     control.style('height', '1.5em')
     control.style('width', '6em')
-    inputAngle.style('width', '8em')
+    inputAngle.style('width', '7em')
     inputAngle.style('height', '1.5em')
-
-    // slider.style('width', Math.floor(0.3 * width).toString() + 'px') //30% of width
-    // button.style('width', Math.floor(0.18 * width).toString() + 'px')
-    // button.style('height', Math.floor(0.04 * width).toString() + 'px')
-    // control.style('height', Math.floor(0.04 * width).toString() + 'px')
-    // control.style('width', Math.floor(0.18 * width).toString() + 'px')
-    // inputAngle.style('width', Math.floor(0.2 * width).toString() + 'px')
-    // inputAngle.style('height', Math.floor(0.05 * width).toString() + 'px')
 
     // control posiitions
     let offsetX = 0.01
 
-    button.position(0.2 * width, 0.95 * height) // 95%  of height
+    button.position(offsetX * width, 0.63 * height) // 95%  of height
     msg.position(0.5 * width, 0.97 * height) // 95%  of height
     inputAngle.position(offsetX * width, 0.71 * height)
     slider.position(offsetX * width, 0.8 * height)
@@ -218,6 +182,48 @@ export default function goldenRatio(p) {
     }
   }
 
+  function setCanvasSize() {
+    let canvas = document.getElementById('container-figure')
+
+    let canvasRect = canvas.getBoundingClientRect()
+
+    let width, height
+
+    let windowW = window.innerWidth
+    let windowH = window.innerHeight
+
+    let aspRatio = windowH / windowW
+
+    if (windowW < 600) {
+      width = 0.98 * windowW
+      height = 1.1 * width
+      r0 = 0.03 * windowW
+      c = 6
+    } else if (windowW > 600 && aspRatio > 1) {
+      width = 0.98 * canvasRect.width
+      height = canvasRect.width
+      r0 = Math.max(Math.floor(0.002 * windowW), 11) // LINE ADDED
+    } else {
+      width = 0.98 * canvasRect.width
+      height = 1.5 * canvasRect.width * aspRatio
+      r0 = Math.max(Math.floor(0.002 * windowW), 11) // LINE ADDED
+    }
+    return { w: width, h: height }
+
+    //let viewport = getViewportSize()
+    // let aspectRatioInverse = viewport.h / viewport.w
+    // let factor = 0.5 // almost 60%
+    // if (viewport.w < 600) {
+    //   // break point xs="600"
+    //   factor = 0.9 // force to break boxes ....?
+    // }
+    // let width = Math.floor(factor * viewport.w)
+    // let height = Math.min(
+    //   Math.floor(1.4 * aspectRatioInverse * width),
+    //   1.4 * width
+    // ) // height is 40% bigger
+  }
+
   function toggleStopAngle() {
     stopped = !stopped
   }
@@ -272,7 +278,6 @@ export default function goldenRatio(p) {
     } else {
       // show control and button stop
       control.show()
-      button.show()
       msg.show()
 
       // callbacks for controls

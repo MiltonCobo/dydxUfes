@@ -18,12 +18,7 @@
 
           <br />
         </v-col>
-        <v-col
-          sm="12"
-          md="6"
-          align="center"
-          style="min-width: 360px; max-width: 100%"
-        >
+        <v-col sm="12" md="6" align="center" class="figure">
           <client-only>
             <vue-plotly
               v-if="startChart"
@@ -122,3 +117,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.figure {
+  width: 100%;
+  min-width: 360px;
+  height: auto;
+  background-color: inherit;
+  margin: 0px;
+  padding: 0px;
+}
+</style>

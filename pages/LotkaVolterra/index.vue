@@ -192,8 +192,8 @@ export default {
   opacity: 0;
 }
 
-#mathjax {
-  /* font-family: 'Lucida Grande', sans-serif;
+/*#mathjax {
+   font-family: 'Lucida Grande', sans-serif;
   font-size: 20px; */
   /* font-weight: 700; */
   /* line-height: 150%; */
@@ -204,7 +204,7 @@ export default {
   /* font-size: 18px; */
   /* font-weight: 700; */
   /* line-height: 150%; */
-  /* margin: 0; */
-  /* margin-bottom: 0.4cm; */
-}
+  /* margin: 0; 
+  margin-bottom: 0.4cm; 
+} */
 </style>
