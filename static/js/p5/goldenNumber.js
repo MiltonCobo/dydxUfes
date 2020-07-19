@@ -206,7 +206,7 @@ export default function goldenRatio(p) {
     } else {
       width = 0.98 * canvasRect.width
       height = 1.5 * canvasRect.width * aspRatio
-      r0 = Math.max(Math.floor(0.002 * windowW), 11) // LINE ADDED
+      r0 = Math.max(Math.floor(0.003 * windowW), 11) // LINE ADDED
     }
     return { w: width, h: height }
 

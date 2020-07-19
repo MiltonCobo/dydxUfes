@@ -203,6 +203,7 @@ export default {
 #container-figure {
   width: auto;
   height: auto;
+
   background-color: gainsboro;
   padding: 0px;
   touch-action: none;

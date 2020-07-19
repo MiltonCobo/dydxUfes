@@ -172,9 +172,9 @@ export default {
 
 <style scoped>
 .figure {
-  width: 100%;
-  min-width: 360px;
-  max-width: 80%;
+  min-width: 320px;
+  width: 700px;
+
   height: auto;
   background-color: inherit;
 

@@ -194,13 +194,13 @@ export function volterraSurface2() {
 
               scene: {
                 zaxis: { range: [0, 45] },
-                // camera: {
-                //   eye: {
-                //     x: 1.1,
-                //     y: 1.1,
-                //     z: 0.25
-                //   }
-                // },
+                camera: {
+                  eye: {
+                    x: 1.1,
+                    y: 1.1,
+                    z: 0.25
+                  }
+                },
                 annotations: [annotations1]
               }
             }
@@ -221,13 +221,13 @@ export function volterraSurface2() {
                 '$\\color{green}{V(x,y)=0.14\\, x - 7.5\\, \\ln(x) +0.12\\, y-3.6\\,\\ln(y)}$',
               scene: {
                 zaxis: { range: [0, 45] },
-                // camera: {
-                //   eye: {
-                //     x: 1.1,
-                //     y: 1.1,
-                //     z: 0.25
-                //   }
-                // },
+                camera: {
+                  eye: {
+                    x: 1.1,
+                    y: 1.1,
+                    z: 0.25
+                  }
+                },
                 annotations: [annotations2]
               }
               //   shapes: [...shapes3, ...shapes2] //

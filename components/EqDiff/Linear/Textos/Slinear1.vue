@@ -317,9 +317,8 @@ function plotMosquitosSol() {
 </script>
 <style scoped>
 .figure {
-  width: 100%;
-  min-width: 360px;
-  height: auto;
+  min-width: 300px;
+  width: 700px;
   background-color: inherit;
   margin: 0px;
   padding: 0px;
