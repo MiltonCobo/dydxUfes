@@ -262,7 +262,7 @@ export default function goldenRatio(p) {
       return
     }
 
-    if (minDist > 0.0001) {
+    if (minDist > 0.1) {
       // bubbles are wandering
       let distances = []
       bubbles.forEach(bubble => {
@@ -289,7 +289,7 @@ export default function goldenRatio(p) {
       inputAngle.changed(updateAngle)
 
       if (figFall == false) {
-        if (minDist > 0.00001) {
+        if (minDist > 0.1) {
           // when click second time minDist = 10
           let distances = []
           bubbles.forEach(bubble => {
