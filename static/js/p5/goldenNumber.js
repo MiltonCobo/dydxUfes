@@ -49,9 +49,9 @@ export default function goldenRatio(p) {
 
   //--------------------------------------
   p.setup = function() {
-    let canvasSize = setCanvasSize()
-    let width = canvasSize.w
-    let height = canvasSize.h
+    //let canvasSize = setCanvasSize()
+    let width = window.innerWidth
+    let height = window.innerHeight //canvasSize.h
 
     let cnv = p.createCanvas(width, height)
 
@@ -67,7 +67,7 @@ export default function goldenRatio(p) {
     button = p.createButton('parar/seguir')
     angleTexto = p.createElement('p', '')
     inputAngle = p.createInput('fração de 2PI')
-    slider = p.createSlider(0, p.TWO_PI, 0.3183, stepSlider)
+    slider = p.createSlider(0, p.TWO_PI, 0.31835, stepSlider)
     msg = p.createElement('p', 'clique no centro da figura...de novo')
 
     //controls parent
@@ -82,17 +82,17 @@ export default function goldenRatio(p) {
 
     // background, border, color
 
-    angleTexto.style('background-color: inherit; color:green')
+    angleTexto.style('background-color: RGBA(250,250,250,0.1); color:green')
     inputAngle.style(
-      'background-color: gainsboro; color: green; padding-left: 1%;'
+      'background-color: RGBA(250,250,250,0.1); color: green; padding-left: 1%;'
     )
     button.style(
-      'border: 0px solid white; background-color: gainsboro; color:green '
+      'border: 0px solid white; background-color: RGBA(250,250,250,0.1); color:green '
     )
     control.style('border: 0px solid white; color: green;')
     inputAngle.style('border: 1px solid green;')
-    control.style('background-color: gainsboro;')
-    msg.style('color: green; background-color: inherit;')
+    control.style('background-color: RGBA(250,250,250,0.1);')
+    msg.style('color: green; background-color: RGBA(250,250,250,0.1);')
 
     // font-size
 
@@ -113,14 +113,16 @@ export default function goldenRatio(p) {
     inputAngle.style('height', '1.5em')
 
     // control posiitions
-    let offsetX = 0.01
+    let offsetX = 0.05
+    let stepY = 0.06
+    let step0 = 0.02
 
-    button.position(offsetX * width, 0.63 * height) // 95%  of height
-    msg.position(0.5 * width, 0.97 * height) // 95%  of height
-    inputAngle.position(offsetX * width, 0.71 * height)
-    slider.position(offsetX * width, 0.8 * height)
-    angleTexto.position(offsetX * width, 0.87 * height)
-    control.position(offsetX * width, 0.95 * height)
+    control.position(offsetX * width, step0 * height)
+    inputAngle.position(offsetX * width, (step0 + stepY) * height)
+    angleTexto.position(offsetX * width, (step0 + 2 * stepY) * height)
+    slider.position(offsetX * width, (step0 + 3 * stepY) * height)
+    button.position(offsetX * width, (step0 + 4 * stepY) * height) // 95%  of height
+    msg.position(0.7 * width, step0 * height) // 95%  of height
 
     // all controls are hide at the beginning
     button.hide()
@@ -150,8 +152,8 @@ export default function goldenRatio(p) {
         0.1 * Math.sqrt(n) * y //set initial targets and velocities
       )
       bubble.vel = p.createVector(
-        30 * (Math.random() - 0.5),
-        30 * (Math.random() - 0.5)
+        40 * (Math.random() - 0.5),
+        40 * (Math.random() - 0.5)
       )
       bubbles.push(bubble)
     }
@@ -243,7 +245,7 @@ export default function goldenRatio(p) {
     }
 
     p.clear()
-    p.translate(0.5 * p.width, 0.5 * p.height)
+    p.translate(0.5 * p.width, 200) //0.5 * p.height)
 
     button.mousePressed(toggleStopAngle)
     control.mousePressed(toggleControls)
@@ -274,7 +276,7 @@ export default function goldenRatio(p) {
       })
 
       bubbles.forEach(bubble => bubble.display())
-      minDist = Math.min(...distances) // when steering stop
+      minDist = Math.max(...distances) // when steering stop
     } else {
       // show control and button stop
       control.show()
@@ -301,7 +303,7 @@ export default function goldenRatio(p) {
           })
 
           bubbles.forEach(bubble => bubble.display())
-          minDist = Math.min(...distances)
+          minDist = Math.max(...distances)
           return
         } else {
           angleSlider = slider.value() % p.TWO_PI
@@ -342,7 +344,7 @@ export default function goldenRatio(p) {
   } // end draw
 
   p.mouseOver = function() {
-    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 300) {
+    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 200) {
       over = true
     } else {
       over = false
@@ -350,7 +352,8 @@ export default function goldenRatio(p) {
   }
 
   p.mouseClicked = function() {
-    if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 120) {
+    if (p.dist(p.mouseX, p.mouseY, p.width / 2, 200) < 120) {
+      // if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 120) {
       if (figFall == true) {
         bubbles.forEach(bubble => {
           bubble.vel = p.createVector(

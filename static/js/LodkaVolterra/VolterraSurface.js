@@ -174,7 +174,7 @@ export function volterraSurface2() {
       tickmode: 'linear',
       tick0: 0,
       dtick: 5,
-      range: [0, 45],
+      range: [15, 45],
       fixedrange: true
     }
   }
@@ -191,19 +191,20 @@ export function volterraSurface2() {
             {
               title:
                 '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$',
-
+              // layout: {
               scene: {
-                zaxis: { range: [0, 45] },
+                annotations: [annotations1],
+                zaxis: { range: [15, 45] },
                 camera: {
                   eye: {
                     x: 1.1,
                     y: 1.1,
                     z: 0.25
                   }
-                },
-                annotations: [annotations1]
+                }
               }
             }
+            // }
             //   shapes: shapes1  zaxis: { range: [10, 45]
           ],
           label: 'Superfície 1'
@@ -219,8 +220,10 @@ export function volterraSurface2() {
             {
               title:
                 '$\\color{green}{V(x,y)=0.14\\, x - 7.5\\, \\ln(x) +0.12\\, y-3.6\\,\\ln(y)}$',
+
+              // layout: {
               scene: {
-                zaxis: { range: [0, 45] },
+                zaxis: { range: [10, 40] },
                 camera: {
                   eye: {
                     x: 1.1,
@@ -230,13 +233,14 @@ export function volterraSurface2() {
                 },
                 annotations: [annotations2]
               }
-              //   shapes: [...shapes3, ...shapes2] //
             }
+            //   shapes: [...shapes3, ...shapes2] //
+            // }
           ],
           label: 'Superfície 2'
         }
       ],
-      direction: 'bottom',
+      direction: 'right',
       pad: {
         r: 10,
         t: 10
@@ -244,10 +248,10 @@ export function volterraSurface2() {
       showactive: true,
       //bgcolor: 'lightgrey',
       type: 'buttons',
-      x: 0.76,
-      xanchor: 'left',
-      y: 0.92,
-      yanchor: 'top',
+      x: 0.01,
+      xanchor: 'left', // 0.01 is at the left
+      y: -0.03,
+      yanchor: 'top', // -0.02 is at the top
       font: {
         size: 14,
         color: 'brown'

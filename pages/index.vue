@@ -8,8 +8,22 @@
         <v-divider style="margin-bottom:0.5%;" />
       </v-col>
     </v-row>
+
+    <v-row>
+      <v-col align="center">
+        <!-- <client-only placeholder="carregando..."> -->
+        <div
+          style="position:relative;"
+          ref="container"
+          id="container-figure"
+        ></div>
+        <!-- <v-spacer /> -->
+        <!-- </client-only> -->
+      </v-col>
+    </v-row>
+
     <v-row align="center" class="flex-wrap-reverse">
-      <v-col sm="12" md="6" style="min-width:40%">
+      <v-col style="min-width:40%">
         <p class="mathjax ColorWheat">
           Esta animação está relacionada com a distribuição de sementes em
           algumas flores como o girassol. Na flor do girassol, sementes vão
@@ -29,21 +43,7 @@
           x = 0.25 $ a figura tem exatamente $ 4 $ pernas (digite este valor no
           "input" dado nos controles).
         </p>
-      </v-col>
-      <v-col sm="12" md="6" align="center">
-        <!-- <client-only placeholder="carregando..."> -->
-        <div
-          style="position:relative;"
-          ref="container"
-          id="container-figure"
-        ></div>
-        <!-- <v-spacer /> -->
-        <!-- </client-only> -->
-      </v-col>
-    </v-row>
 
-    <v-row>
-      <v-col>
         <p class="mathjax ColorWheat">
           Quando $ x $ é irracional as figuras ficam mais complexas pois o
           número de pernas aumenta a medida que nos afastamos da origem. De
@@ -201,12 +201,12 @@ export default {
 }
 
 #container-figure {
-  width: auto;
+  max-width: 100%;
   height: auto;
-
-  background-color: gainsboro;
+  max-height: 400px;
+  /* background-color: gainsboro; */
   padding: 0px;
-  touch-action: none;
+  touch-action: manipulation;
   scroll-behavior: smooth;
 }
 
