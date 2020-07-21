@@ -19,9 +19,6 @@ export default function goldenRatio(p) {
   let count = 0
   let controlToggle = false
 
-  let hue = 100
-  let sat = 50
-  let lightness = 50
   let inputAngle
   let angleTexto
   let angleString
@@ -136,25 +133,20 @@ export default function goldenRatio(p) {
 
     // make distances
 
-    //make bubbles
+    //make bubbles for the first time
     for (let n = 0; n < totalPoints; n++) {
       let x = 10 * c * p.cos(n * angle)
       let y = 10 * c * p.sin(n * angle)
 
-      hue = (n % 150) + 20
-      sat = 100 - 0.167 * n
-      lightness = 0.08 * n + 40
+      let hue = (n % 150) + 20
+      let saturation = 100 - 0.167 * n
+      let lightness = 0.08 * n + 40
 
-      let bubble = new Bubble(x, y, hue, sat, lightness, r0)
+      let bubble = new Bubble(x, y, hue, saturation, lightness, r0)
 
-      bubble.target = p.createVector(
-        0.1 * Math.sqrt(n) * x,
-        0.1 * Math.sqrt(n) * y //set initial targets and velocities
-      )
-      bubble.vel = p.createVector(
-        40 * (Math.random() - 0.5),
-        40 * (Math.random() - 0.5)
-      )
+      bubble.target.set(0.1 * Math.sqrt(n) * x, 0.1 * Math.sqrt(n) * y) //set initial targets and velocities
+
+      bubble.vel.set(40 * (Math.random() - 0.5), 40 * (Math.random() - 0.5))
       bubbles.push(bubble)
     }
   }
@@ -296,6 +288,7 @@ export default function goldenRatio(p) {
             bubble.behaviors()
             bubble.update()
             let dist = p.createVector(
+              //bubble.target.sub(bubble.pos)
               bubble.target.x - bubble.pos.x,
               bubble.target.y - bubble.pos.y
             )
@@ -326,9 +319,8 @@ export default function goldenRatio(p) {
         // update bubbles positions
 
         bubbles.forEach((bubble, index) => {
-          bubble.x = c * Math.sqrt(index) * p.cos(index * angle)
-          bubble.y = c * Math.sqrt(index) * p.sin(index * angle)
-          bubble.pos = p.createVector(bubble.x, bubble.y)
+          bubble.pos.x = c * Math.sqrt(index) * p.cos(index * angle)
+          bubble.pos.y = c * Math.sqrt(index) * p.sin(index * angle)
         })
         //display bubbles
         bubbles.forEach(bubble => bubble.display())
@@ -352,21 +344,19 @@ export default function goldenRatio(p) {
   }
 
   p.mouseClicked = function() {
-    if (p.dist(p.mouseX, p.mouseY, p.width / 2, 200) < 120) {
-      // if (p.dist(p.mouseX, p.mouseY, p.width / 2, p.height / 2) < 120) {
+    if (p.dist(p.mouseX, p.mouseY, p.width / 2, 200) < 200) {
       if (figFall == true) {
+        // clicked by the second time
         bubbles.forEach(bubble => {
-          bubble.vel = p.createVector(
-            30 * (Math.random() - 0.5),
-            30 * (Math.random() - 0.5)
-          )
+          bubble.vel.set(30 * (Math.random() - 0.5), 30 * (Math.random() - 0.5))
         })
         minDist = 10
       } else {
+        // clicked by the first time
         bubbles.forEach(bubble => {
-          bubble.target = bubble.pos
+          bubble.target.set(bubble.pos)
         })
-        minDist = 0 // stop steerin behavior...
+        minDist = 0 // stop steering behavior...
       }
       figFall = !figFall
     }
@@ -374,9 +364,7 @@ export default function goldenRatio(p) {
 
   let Bubble = class {
     constructor(x, y, hue, saturation, lightness, radium) {
-      this.x = x
-      this.y = y
-      this.l = lightness
+      this.lightness = lightness
       this.hue = hue
       this.sat = saturation
       this.r = radium
@@ -384,19 +372,15 @@ export default function goldenRatio(p) {
       this.maxspeed = 8
 
       this.pos = p.createVector(x, y)
-      this.target = p.createVector()
       this.vel = p.createVector()
       this.acc = p.createVector()
+      this.target = p.createVector(x, y)
     }
 
     update() {
       this.pos.add(this.vel)
-
       this.vel.add(this.acc)
-
       this.acc.mult(0)
-      this.x = this.pos.x
-      this.y = this.pos.y
     }
 
     applyForce(f) {
@@ -423,27 +407,24 @@ export default function goldenRatio(p) {
 
       newForce.setMag(speed)
 
-      let steer = p.createVector(
-        newForce.x - this.vel.x,
-        newForce.y - this.vel.y
-      )
+      let steer = newForce.sub(this.vel)
+
       steer.limit(this.maxforce)
 
       this.applyForce(steer)
     }
 
     display() {
-      p.fill(this.hue, this.sat, this.l)
-      p.ellipse(this.x, this.y, this.r, this.r)
+      p.fill(this.hue, this.sat, this.lightness)
+      p.ellipse(this.pos.x, this.pos.y, this.r)
     }
+
     fall() {
-      this.x = this.x + p.random(-1, 1)
-      this.y = this.y + 0.05 * this.x
-      this.pos = p.createVector(this.x, this.y)
+      this.pos.add(p.random(-1, 1), 0.05 * this.pos.x)
     }
+
     wiggle() {
-      this.x = this.x + p.random(-2, 2)
-      this.y = this.y + p.random(-2, 2)
+      this.pos.add(p.random(-2, 2), p.random(-2, 2))
     }
   }
 }
