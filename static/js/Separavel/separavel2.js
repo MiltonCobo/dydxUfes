@@ -3,6 +3,7 @@ import {
   //   layout,
   options
 } from '@/static/js/Plotly/plotly-config.js'
+import { TextureAssetTask } from 'babylonjs'
 
 export function drawContoursSep2() {
   let c = 15
@@ -24,7 +25,7 @@ export function drawContoursSep2() {
     return y * y * y - 3 * y * y - x * x * x - x //3*y +y*y-2*x+Math.exp(x);
   }
 
-  let info = getDataSurfaceWithCorner(
+  let data = getDataSurfaceWithCorner(
     funct,
     corner,
     xwidth,
@@ -32,100 +33,32 @@ export function drawContoursSep2() {
     xsteps,
     ysteps
   )
+  data.type = 'contour'
+  data.showscale = false
+  data.colorscale = 'None'
+  data.autocontour = true
+  data.ncontours = 80
 
-  let data = {
-    x: info.x,
-    y: info.y,
-    z: info.z,
-    type: 'contour',
-
-    showscale: false, // not show colorbar
-    // colorscale: 'Greys',
-    //reversescale: true,
-    // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
-    // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
-    // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’
-    //autocontour: false,
-    line: {
-      smoothing: 1.3,
-      shape: 'spline',
-      width: 1,
-      color: 'grey'
-    },
-
-    autocontour: true,
-    ncontours: 80
-    // contours: {
-    //   coloring: 'none',
-    //   start: -30,
-    //   end: 30,
-    //   size: 2,
-    //   highlightcolor: 'red'
-    // }
+  data.line = {
+    smoothing: 2,
+    width: 0.6,
+    color: 'grey'
   }
 
-  let data1 = {
-    x: info.x,
-    y: info.y,
-    z: info.z,
-    type: 'contour',
+  let data1 = Object.assign({}, data)
+  data1.showscale = false
 
-    showscale: true, // not show colorbar
-
-    line: {
-      smoothing: 1.3,
-      width: 1.5,
-      color: 'green'
-    },
-
-    contours: {
-      type: 'constraint',
-      operation: '=',
-      value: -2
-      // coloring: 'none',
-      // shape: 'spline',
-      // start: -2,
-      // end: -2
-      //size: 4,
-      // highlightcolor: 'red'
-    }
+  data1.line = {
+    smoothing: 2,
+    width: 1.5,
+    color: 'green'
   }
 
-  //-----calcula a solução em [-1,1]--------
-  // let maxSteps = 1999
-  // let dh = 0.001
-  // let x_data = []
-  // let y_data = []
-  // let x = -0.999
-  // let y = 1.95
-  // x_data.push(-1)
-  // y_data.push(2)
-  // for (let i = 1; i < maxSteps; i++) {
-  //   let d = (1 + 3 * x * x) / (3 * y * y - 6 * y)
-  //   let dy = d * dh
-  //   y = y + dy
-  //   x = x + dh
-  //   x_data.push(x)
-  //   y_data.push(y)
-  // }
-
-  // x_data.push(1)
-  // y_data.push(0)
-
-  // //---------------------------
-  // let trace1 = {
-  //   visible: false,
-  //   x: x_data,
-  //   y: y_data,
-  //   type: 'scatter',
-  //   line: {
-  //     smoothing: 1,
-  //     shape: 'spline',
-  //     width: 2,
-  //     color: 'red',
-  //     opacity: 1
-  //   }
-  // }
+  data1.contours = {
+    type: 'constraint',
+    operation: '=',
+    value: -2
+  }
 
   xwidth = 2.2
   ywidth = 2.03
@@ -139,29 +72,31 @@ export function drawContoursSep2() {
     y: ycorner
   }
 
-  info = getDataSurfaceWithCorner(funct, corner, xwidth, ywidth, xsteps, ysteps)
-  let graphFunction = {
-    x: info.x,
-    y: info.y,
-    z: info.z,
-    type: 'contour',
+  let graphFunction = getDataSurfaceWithCorner(
+    funct,
+    corner,
+    xwidth,
+    ywidth,
+    xsteps,
+    ysteps
+  )
 
-    showscale: false, // not show colorbar
-    visible: false,
-
-    line: {
-      smoothing: 1,
-      width: 3,
-      color: 'red'
-    },
-
-    contours: {
-      type: 'constraint',
-      operation: '=',
-      value: -2
-    }
+  graphFunction.type = 'contour' // graph of solution in [-1,1]
+  graphFunction.showscale = false
+  graphFunction.visible = false
+  graphFunction.line = {
+    smoothing: 1,
+    width: 3,
+    color: 'red'
   }
 
+  graphFunction.contours = {
+    type: 'constraint',
+    operation: '=',
+    value: -2
+  }
+
+  //------------------------------------------------------------------------
   let annotations0 = [
     {
       text: '$y^3-3y^2-x^3-x = -2$',
@@ -419,12 +354,12 @@ export function drawContoursSep2() {
 } // End
 
 export function drawSurfaceSep2() {
-  let xwidth = 14
-  let ywidth = 14
-  let xcorner = 7
-  let ycorner = 7
-  let ysteps = 40
-  let xsteps = 40
+  let xwidth = 12
+  let ywidth = 12
+  let xcorner = 5
+  let ycorner = 5
+  let ysteps = 30
+  let xsteps = 30
   let corner = {
     x: xcorner,
     y: ycorner
@@ -437,7 +372,7 @@ export function drawSurfaceSep2() {
     return y * y * y - 3 * y * y - x * x * x - x
   }
 
-  let info = getDataSurfaceWithCorner(
+  let dataSurface = getDataSurfaceWithCorner(
     funct,
     corner,
     xwidth,
@@ -446,59 +381,47 @@ export function drawSurfaceSep2() {
     ysteps
   )
 
-  let data = {
-    x: info.x,
-    y: info.y,
-    z: info.z,
-    type: 'surface',
+  dataSurface.type = 'surface'
+  dataSurface.showscale = false // not show colorbar
+  dataSurface.colorscale = 'Viridis'
 
-    showscale: false, // not show colorbar
-    colorscale: 'RdBu',
-    reversescale: true,
+  dataSurface.line = {
+    smoothing: 1.3,
+    width: 1.8,
+    color: 'black'
+  }
 
-    // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
-    // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
-    // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’
-    //autocontour: false,
+  dataSurface.contours = {
+    z: {
+      show: true,
+      start: -20,
+      end: 20,
+      size: 3,
+      color: 'lightbrown', //'olive',
+      highlightcolor: 'red',
+      highlightwidth: 16,
 
-    line: {
-      smoothing: 1.3,
-      width: 1.8,
-      color: 'black'
+      project: { z: true }
     },
-
-    contours: {
-      z: {
-        show: true,
-        start: -20,
-        end: 20,
-        size: 3,
-        color: 'lightbrown', //'olive',
-        highlightcolor: 'red',
-        highlightwidth: 16,
-
-        project: { z: true }
-      },
-      y: {
-        show: true,
-        start: -5,
-        end: 5,
-        size: 0.5,
-        color: 'lightblue',
-        highlightcolor: 'red',
-        highlightwidth: 16,
-        project: { y: true }
-      },
-      x: {
-        show: true,
-        start: -5,
-        end: 5,
-        size: 0.5,
-        color: 'lightgreen',
-        highlightcolor: 'red',
-        highlightwidth: 16,
-        project: { x: true }
-      }
+    y: {
+      show: true,
+      start: -5,
+      end: 5,
+      size: 0.5,
+      color: 'lightblue',
+      highlightcolor: 'red',
+      highlightwidth: 16,
+      project: { y: true }
+    },
+    x: {
+      show: true,
+      start: -5,
+      end: 5,
+      size: 0.5,
+      color: 'lightgreen',
+      highlightcolor: 'red',
+      highlightwidth: 16,
+      project: { x: true }
     }
   }
 
@@ -508,15 +431,9 @@ export function drawSurfaceSep2() {
     paper_bgcolor: 'gainsboro',
     showlegend: false,
     hovermode: false,
-    autosize: true,
+    //autosize: true,
     width: 600, //0.5 * windowWidth,
-    //height: 0.5 * windowWidth,
-    // margin: {
-    //   l: 0,
-    //   r: 0,
-    //   b: 0,
-    //   t: 100,
-    // },
+
     scene: {
       camera: {
         eye: {
@@ -548,5 +465,5 @@ export function drawSurfaceSep2() {
     }
   }
 
-  return { data: [data], layout, options }
+  return { data: [dataSurface], layout, options }
 } // End drawSurface_sep2

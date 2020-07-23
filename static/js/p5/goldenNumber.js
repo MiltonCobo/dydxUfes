@@ -27,22 +27,22 @@ export default function goldenRatio(p) {
   let msg
 
   //   function return width and heigth of portview
-  function getViewportSize() {
-    // This works for all browsers except IE8 and before
-    if (window.innerWidth != null)
-      return { w: window.innerWidth, h: window.innerHeight }
+  // function getViewportSize() {
+  //   // This works for all browsers except IE8 and before
+  //   if (window.innerWidth != null)
+  //     return { w: window.innerWidth, h: window.innerHeight }
 
-    // For IE (or any browser) in Standards mode
-    let d = window.document
-    if (document.compatMode == 'CSS1Compat')
-      return {
-        w: d.documentElement.clientWidth,
-        h: d.documentElement.clientHeight
-      }
+  //   // For IE (or any browser) in Standards mode
+  //   let d = window.document
+  //   if (document.compatMode == 'CSS1Compat')
+  //     return {
+  //       w: d.documentElement.clientWidth,
+  //       h: d.documentElement.clientHeight
+  //     }
 
-    // For browsers in Quirks mode
-    return { w: d.body.clientWidth, h: d.body.clientHeight }
-  }
+  //   // For browsers in Quirks mode
+  //   return { w: d.body.clientWidth, h: d.body.clientHeight }
+  // }
 
   //--------------------------------------
   p.setup = function() {

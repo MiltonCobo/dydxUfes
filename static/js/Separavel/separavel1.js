@@ -23,7 +23,7 @@ export function drawSurfaceSep1() {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
   }
 
-  let info = getDataSurfaceWithCenter(
+  let dataSurface = getDataSurfaceWithCenter(
     funct,
     center,
     xwidth,
@@ -32,65 +32,50 @@ export function drawSurfaceSep1() {
     ysteps
   )
 
-  let data = {
-    x: info.x,
-    y: info.y,
-    z: info.z,
-    type: 'surface',
+  dataSurface.type = 'surface'
+  dataSurface.colorscale = 'RdBu'
+  dataSurface.reversescale = true
 
-    showscale: false, // not show colorbar
-    colorscale: 'RdBu', //'RdBu',
-    reversescale: true,
-    // ‘Bluered’, ‘Blackbody’,‘Blues’, ‘Earth’, ‘Electric’,
-    // ‘Greens’, ‘Greys’, ‘Hot’, ‘Jet’, ‘Picnic’, ‘Portland’,
-    // ‘Rainbow’,‘RdBu’, ‘Reds’, ‘Viridis’, ‘YlGnBu’,‘YlOrRd’
-    autocontour: false,
-    line: {
-      smoothing: 1,
-      width: 2
-    },
+  dataSurface.contours = {
+    z: {
+      show: true,
+      // autocontour: true,
+      // ncontours: 200,
+      usecolormap: true,
+      start: -200,
+      end: 200,
+      size: 10,
+      //color: 'lightbrown', //'olive',
+      highlightcolor: 'red',
+      highlightwidth: 16,
 
-    contours: {
-      z: {
-        show: true,
-        // autocontour: true,
-        // ncontours: 200,
-        usecolormap: true,
-        start: -200,
-        end: 200,
-        size: 10,
-        //color: 'lightbrown', //'olive',
-        highlightcolor: 'red',
-        highlightwidth: 16,
-
-        project: {
-          z: true
-        }
-      },
-      y: {
-        show: true,
-        autocontour: true,
-        ncontours: 40,
-        // start: -6,
-        // end: 6,
-        // size: 0.5,
-        color: 'lightblue',
-        highlightcolor: 'red',
-        highlightwidth: 16,
-        project: { y: true }
-      },
-      x: {
-        show: true,
-        autocontour: true,
-        ncontours: 40,
-        // start: -5,
-        // end: 5,
-        // size: 0.5,
-        color: 'lightgreen',
-        highlightcolor: 'red',
-        highlightwidth: 16,
-        project: { x: true }
+      project: {
+        z: true
       }
+    },
+    y: {
+      show: true,
+      autocontour: true,
+      ncontours: 40,
+      // start: -6,
+      // end: 6,
+      // size: 0.5,
+      color: 'lightblue',
+      highlightcolor: 'red',
+      highlightwidth: 16,
+      project: { y: true }
+    },
+    x: {
+      show: true,
+      autocontour: true,
+      ncontours: 40,
+      // start: -5,
+      // end: 5,
+      // size: 0.5,
+      color: 'lightgreen',
+      highlightcolor: 'red',
+      highlightwidth: 16,
+      project: { x: true }
     }
   }
 
@@ -138,7 +123,7 @@ export function drawSurfaceSep1() {
     height: 550 //0.44 * windowWidth
   }
 
-  return { data: [data], layout, options }
+  return { data: [dataSurface], layout, options }
 }
 
 //-------------------------------------------------------------------------
@@ -159,7 +144,7 @@ export function drawContoursSep1() {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
   }
 
-  let info = getDataSurfaceWithCenter(
+  let data0 = getDataSurfaceWithCenter(
     func,
     center,
     xwidth,
@@ -168,53 +153,36 @@ export function drawContoursSep1() {
     ysteps
   )
 
-  let data0 = {
-    x: info.x,
-    y: info.y,
-    z: info.z,
-    type: 'contour',
-
-    showscale: false, // not show colorbar
-    colorscale: 'RdBu',
-    reversescale: true,
-
-    line: {
-      smoothing: 1.2,
-      width: 1,
-      color: 'grey'
-      // opacity: 0.3
-    },
-
-    autocontour: true /* contours attrib picked by algorithm, ncontours = contours levels */,
-    ncontours: 40
+  data0.type = 'contour'
+  data0.colorscale = 'RdBu'
+  data0.reversescale = true
+  data0.line = {
+    smoothing: 1.2,
+    width: 1,
+    color: 'grey'
+    // opacity: 0.3
   }
+  data0.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
+  data0.ncontours = 40
 
-  let data1 = {
-    // show only one level
-    x: info.x,
-    y: info.y,
-    z: info.z,
-    type: 'contour',
-
-    showscale: false, // not show colorbar
-
-    line: {
-      smoothing: 1.2,
-      width: 1.8,
-      color: 'black'
-      // opacity: 1
-    },
-
-    contours: {
-      type: 'constraint',
-      operation: '=',
-      value: 3,
-      coloring: 'none'
-      // shape: 'spline',
-      // start: 3, //show only one level curve
-      // end: 3,
-      // size: 0
-    }
+  let data1 = Object.assign({}, data0)
+  data1.type = 'contour'
+  data1.showscale = false
+  data1.line = {
+    smoothing: 1.2,
+    width: 1.8,
+    color: 'black'
+    // opacity: 1
+  }
+  data1.contours = {
+    type: 'constraint',
+    operation: '=',
+    value: 3,
+    coloring: 'none'
+    // shape: 'spline',
+    // start: 3, //show only one level curve
+    // end: 3,
+    // size: 0
   }
 
   function fExplicit(x, s) {
@@ -223,8 +191,9 @@ export function drawContoursSep1() {
     //}
   }
 
+  //------------makes graph two functions
   let xx = []
-  let maxIter = 20
+  let maxIter = 20 // first closes to the point with derivative = infinity
   xx[0] = -2
   for (let i = 1; i < maxIter; i++) {
     xx[i] = xx[i - 1] + 0.02

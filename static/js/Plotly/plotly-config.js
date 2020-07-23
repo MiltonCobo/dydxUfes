@@ -19,7 +19,8 @@ export function getDataScatter(funct, xinitial, xwidth, step) {
       smoothing: 1.2,
       shape: 'spline',
       width: 1.5,
-      opacity: 1
+      opacity: 1,
+      color: 'green'
     }
   }
 }
@@ -128,7 +129,7 @@ export function getDataSurfaceWithCorner(
     //autocontour: false,
     line: {
       smoothing: 1,
-      width: 2
+      width: 1
     },
 
     contours: {

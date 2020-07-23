@@ -9,63 +9,18 @@ export function drawLinear3() {
   let step = 0.05
   let xinitial = 0
 
-  // function getViewportSize() {
-  //   // This works for all browsers except IE8 and before
-  //   if (window.innerWidth != null)
-  //     return { w: window.innerWidth, h: window.innerHeight }
-
-  //   // For IE (or any browser) in Standards mode
-  //   var d = window.document
-  //   if (document.compatMode == 'CSS1Compat')
-  //     return {
-  //       w: d.documentElement.clientWidth,
-  //       h: d.documentElement.clientHeight
-  //     }
-
-  //   // For browsers in Quirks mode
-  //   return { w: d.body.clientWidth, h: d.body.clientHeight }
-  // }
-
-  // let windowWidth = getViewportSize()
-
   function funct(x) {
     return 12 - 2 * x - 8 * Math.sqrt(Math.E) * Math.exp(-x / 4)
   }
 
-  function assintota(x) {
-    return 12 - 2 * x
-  }
-
-  let dat1 = getDataScatter(funct, xinitial, xwidth, step)
-
-  let data1 = {
-    x: dat1.x,
-    y: dat1.y,
-    line: {
-      smoothing: 1.2,
-      width: 1.2,
-      color: 'green',
-      opacity: 1
-    }
-  }
+  let data1 = getDataScatter(funct, xinitial, xwidth, step)
 
   xwidth = 20
   step = 0.01
   xinitial = 0
 
-  let dat2 = getDataScatter(funct, xinitial, xwidth, step)
-
-  let data2 = {
-    visible: false,
-    x: dat2.x,
-    y: dat2.y,
-    line: {
-      smoothing: 1.2,
-      width: 1.2,
-      color: 'green',
-      opacity: 1
-    }
-  }
+  let data2 = getDataScatter(funct, xinitial, xwidth, step)
+  data2.visible = false // important
 
   let shapes = [
     {
