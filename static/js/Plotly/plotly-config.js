@@ -210,8 +210,8 @@ export function getDataSurfaceWithCenter(
       zArray[i].push(value)
     }
   }
-  let zMax = Math.max(...[].concat(...zArray))
-  let zMin = Math.min(...[].concat(...zArray))
+  // let zMax = Math.max(...[].concat(...zArray))
+  // let zMin = Math.min(...[].concat(...zArray))
 
   // console.log('zMin=', zMin)
   // console.log('zMax=', zMax)
@@ -220,7 +220,7 @@ export function getDataSurfaceWithCenter(
     x: xArray,
     y: yArray,
     z: zArray,
-    type: '', // 'contour', surface
+    type: 'contour', //surface
 
     showscale: false, // no colorbar
     colorscale: 'Viridis',

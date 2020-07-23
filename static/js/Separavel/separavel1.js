@@ -192,24 +192,23 @@ export function drawContoursSep1() {
   }
 
   //------------makes graph two functions
-  let xx = []
-  let maxIter = 20 // first closes to the point with derivative = infinity
-  xx[0] = -2
-  for (let i = 1; i < maxIter; i++) {
-    xx[i] = xx[i - 1] + 0.02
+  let xarr = []
+  let maxIter = 20 // first 20 points closer to -2 where derivative = infinity
+  xarr[0] = -2
+
+  for (let i = 1; i < 2 * maxIter; i++) {
+    if (i < maxIter) {
+      xarr[i] = xarr[i - 1] + 0.02
+    } else {
+      let width = 2.6 - xarr[maxIter - 1]
+      let stepsize = width / 20
+      xarr[i] = xarr[i - 1] + stepsize
+    }
   }
-  let width = 2.6 - xx[maxIter - 1]
-  let steps = 20
-  let stepsize = width / steps
-  for (let i = 0; i < steps - 1; i++) {
-    xx[maxIter + i] = xx[maxIter + i - 1] + stepsize
-  }
-  let yy = xx.map(x => fExplicit(x, -1))
-  let yy2 = xx.map(x => fExplicit(x, +1))
 
   let trace1 = {
-    x: xx,
-    y: yy,
+    x: xarr,
+    y: xarr.map(x => fExplicit(x, -1)), // apply the function with -1
     type: 'scatter',
     line: {
       smoothing: 1,
@@ -220,8 +219,8 @@ export function drawContoursSep1() {
   }
 
   let trace2 = {
-    x: xx,
-    y: yy2,
+    x: xarr,
+    y: xarr.map(x => fExplicit(x, +1)),
     type: 'scatter',
     line: {
       smoothing: 1,
