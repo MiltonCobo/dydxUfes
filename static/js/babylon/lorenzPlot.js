@@ -20,9 +20,10 @@ export default function lorenzPlot() {
   const numPoints = 8000
 
   //let attractorColor = new BABYLON.Color4(245 / 255, 150 / 255, 0 / 255, 1)
+  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
 
-  var attractorColor1 = new BYN.Color4(245 / 255, 150 / 255, 0 / 255, 0.1)
-  var attractorColor2 = new BYN.Color4(188 / 255, 143 / 255, 143 / 255, 0.1)
+  var attractorColor1 = new BYN.Color4(245 / 255, 150 / 255, 0 / 255, 1)
+  var attractorColor2 = tomato //new BYN.Color4(188 / 255, 143 / 255, 143 / 255, 1)
   // var attractorColor2 = new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
 
   let particleColor = new BABYLON.Color4(0 / 255, 170 / 255, 245 / 255, 0.5)

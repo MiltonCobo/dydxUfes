@@ -14,10 +14,10 @@ export default function QiChenPlot() {
 
   let BYN = BABYLON
 
-  let a = 1.5
+  let a = 1.4
 
-  let dt = 0.002,
-    numPoints = 5000
+  let dt = 0.0043,
+    numPoints = 6000
 
   let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
   let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
@@ -27,14 +27,16 @@ export default function QiChenPlot() {
     210 / 255,
     0.5
   )
+  let mediumseagreen = new BYN.Color4(60 / 255, 179 / 255, 113 / 255, 0.5)
+  let orange = new BYN.Color4(255 / 255, 165 / 255, 0 / 255, 0.5)
   let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
   let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
 
-  let c = [palegoldenrod, peachpuff, lightgoldenrodyellow, tomato]
+  let c = [orange, mediumseagreen, lightgoldenrodyellow, tomato]
 
   let attractorColors = []
-  for (let i = -2; i < 5; i += 2) {
-    attractorColors[i] = c[(i + 2) / 2]
+  for (let t = -2; t < 5; t += 2) {
+    attractorColors[t] = c[(t + 2) / 2]
   }
   //let attractorColor = new BYN.Color4(100 / 255, 180 / 255, 80 / 255, 0.1)
   //let attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 1)
@@ -46,12 +48,10 @@ export default function QiChenPlot() {
   function makeVertices(N) {
     let points = []
 
-    let x,
-      y = -2.9, //0.5,
-      z = 2.9
-
     for (let t = -2; t < 5; t += 2) {
-      x = t
+      let y = -2
+      let x = t
+      let z = t
       points[t] = []
       for (let j = 0; j < 300; j++) {
         for (let i = 0; i < numPoints; i++) {
@@ -104,26 +104,26 @@ export default function QiChenPlot() {
     //scene.createDefaultLight()
 
     function updateAttractor() {
-      for (let i = -2; i < 5; i += 2) {
-        pointsLorenz = makeVertices(numPoints)[i]
-        attractors[i] = BYN.MeshBuilder.CreateLines(
+      for (let t = -2; t < 5; t += 2) {
+        pointsLorenz = makeVertices(numPoints)[t]
+        attractors[t] = BYN.MeshBuilder.CreateLines(
           'Lorenz',
           { points: pointsLorenz, updatable: true },
           scene
         )
 
-        attractors[i].color = attractorColors[i]
+        attractors[t].color = attractorColors[t]
       }
     }
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BYN.PointsCloudSystem('butterflies', 3, scene, {
+      butterflies = new BYN.PointsCloudSystem('butterflies', 2.2, scene, {
         updatable: true
       })
-      butterflies.addPoints(20000)
+      butterflies.addPoints(10000)
 
-      let N = 50
+      let N = 30
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
           butterflies.particles[p].position = new BYN.Vector3(
@@ -222,8 +222,8 @@ export default function QiChenPlot() {
     hideAttractor.background = '#1e1e1e'
     hideAttractor.onPointerUpObservable.add(function() {
       toggleAttractor = !toggleAttractor
-      for (let i = -2; i < 5; i += 2) {
-        attractors[i].isVisible = toggleAttractor
+      for (let t = -2; t < 5; t += 2) {
+        attractors[t].isVisible = toggleAttractor
       }
     })
     panel.addControl(hideAttractor)
@@ -259,7 +259,7 @@ export default function QiChenPlot() {
     sliderA.isVisible = togglePanel
     sliderA.minimum = 1.3
     sliderA.maximum = 1.7
-    sliderA.value = 1.5
+    sliderA.value = 1.4
     sliderA.height = '25px'
     sliderA.thumbWidth = 20
     sliderA.width = '150px'
@@ -276,8 +276,8 @@ export default function QiChenPlot() {
       a = value
       //attractor.dispose()
 
-      for (let i = -2; i < 5; i += 2) {
-        attractors[i].dispose()
+      for (let t = -2; t < 5; t += 2) {
+        attractors[t].dispose()
       }
       updateAttractor()
       //updateAttractor()

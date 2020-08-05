@@ -20,7 +20,7 @@
         O atrator de Halvorsen corresponde as equações: \[ \begin{cases}
         \dfrac{dx}{dt} = -ax +2y - 4z -y^2 +(3a+15) \\ \dfrac{dy}{dt} = -ay +2z
         - 4x -z^2 +(3a+15) \\ \dfrac{dz}{dt} = -az +2x - 4y -x^2 +(3a+15)
-        \end{cases} \] onde o parâmetro $a = 1.5. $
+        \end{cases} \] com $ a $ próximo de $ 1.4. $
       </v-col>
     </v-row>
     <!-- 

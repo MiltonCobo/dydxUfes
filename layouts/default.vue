@@ -45,31 +45,16 @@
       </v-list>
       <v-divider />
 
-      <!-- ---------------------------------- -->
-      <v-list class="mx-p5" nav dense>
-        <!-- <v-list-item-group>
-          <template v-slot:activator value="false">
-            <v-list-item-content>
-              <v-list-item-icon>
-                <v-icon class="blue--text" left
-                  >'mdi-book-open-page-variant'
-                </v-icon>
-              </v-list-item-icon>
-              <v-list-item-title class="blue--text"
-                >Atratores</v-list-item-title
-              >
-            </v-list-item-content>
-          </template>
-        </v-list-item-group> -->
-
+      <!-- ------------Chaotic attractots---------------------- -->
+      <v-list nav dense>
         <v-list-group no-action>
           <!-- <v-list-item-icon>
             <v-icon class="blue--text" left>'mdi-home' </v-icon>
           </v-list-item-icon> -->
           <template v-slot:activator value="false">
             <v-list-item-content>
-              <v-list-item-title class="blue--text"
-                >Atratores Caóticos</v-list-item-title
+              <v-list-item-subtitle class="blue--text"
+                >Atratores Caóticos</v-list-item-subtitle
               >
             </v-list-item-content>
           </template>
@@ -243,11 +228,7 @@ export default {
       ],
       itemsDrawer: [
         { title: 'Inicial', icon: 'mdi-home', route: '/' },
-        // {
-        //   title: 'Lorenz',
-        //   icon: 'mdi-book-open-page-variant',
-        //   route: '/lorenz'
-        // },
+
         {
           title: 'Lotka-Volterra',
           icon: 'mdi-book-open-page-variant',

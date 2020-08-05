@@ -17,7 +17,7 @@ export default function QiChenPlot() {
     c = 28
 
   var dt = 0.003,
-    numPoints = 12000
+    numPoints = 8000
 
   let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
   let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
@@ -33,13 +33,13 @@ export default function QiChenPlot() {
   let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
   let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
   let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
-
-  var attractorColor1 = lightgreen //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
-  var attractorColor2 = lightcyan // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
+  let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
+  var attractorColor1 = tomato //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
+  var attractorColor2 = aquamarine // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
   //var attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
-  //var particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
+  var particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
   //   var particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
-  var particleColor = new BYN.Color4(240 / 255, 128 / 255, 0 / 255, 1)
+  //   var particleColor = new BYN.Color4(240 / 255, 128 / 255, 0 / 255, 1)
 
   var lorenzOffset = 2 * c - a,
     singularity = Math.sqrt((2 * c - a) * b)
@@ -118,7 +118,7 @@ export default function QiChenPlot() {
       butterflies = new BYN.PointsCloudSystem('butterflies', 2.2, scene, {
         updatable: true
       })
-      butterflies.addPoints(10000)
+      butterflies.addPoints(8000)
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
           butterflies.particles[p].position = new BYN.Vector3(
@@ -244,7 +244,7 @@ export default function QiChenPlot() {
 
     let textRho = new BABYLON.GUI.TextBlock()
     textRho.isVisible = togglePanel
-    textRho.text = 'a = ' + a.toFixed(0).toString()
+    textRho.text = 'a = ' + a.toFixed(1).toString()
     textRho.color = '#08a31f'
     textRho.height = '40px'
     textRho.fontSize = 18
@@ -263,12 +263,12 @@ export default function QiChenPlot() {
     sliderRho.color = 'green'
     sliderRho.borderColor = 'black'
     sliderRho.isThumbCircle = true
-    sliderRho.step = 0.01
+    sliderRho.step = 0.1
     //sliderRho.top = '60px'
     //sliderRho.isVertical = true
 
     sliderRho.onValueChangedObservable.add(function(value) {
-      textRho.text = 'a = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
+      textRho.text = 'a = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
       a = value
 
       attractor1.dispose()
@@ -300,7 +300,7 @@ export default function QiChenPlot() {
     sliderSigma.color = 'green'
     sliderSigma.borderColor = 'black'
     sliderSigma.isThumbCircle = true
-    sliderSigma.step = 0.1
+    sliderSigma.step = 0.5
     //sliderSigma.top = '60px'
     //sliderSigma.isVertical = true
 
@@ -315,7 +315,7 @@ export default function QiChenPlot() {
 
     let textBeta = new BABYLON.GUI.TextBlock()
     textBeta.isVisible = togglePanel
-    textBeta.text = 'beta = 8/3 ' //+ beta.toFixed(1).toString()
+    textBeta.text = 'c = ' + c.toFixed(1).toString()
     textBeta.color = '#08a31f'
     textBeta.height = '40px'
     textBeta.fontSize = 18
