@@ -21,12 +21,12 @@ export default function lorenzPlot() {
 
   //let attractorColor = new BABYLON.Color4(245 / 255, 150 / 255, 0 / 255, 1)
   let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
+  let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 1)
+  let attractorColor1 = seagreen //new BYN.Color4(245 / 255, 150 / 255, 0 / 255, 1)
+  let attractorColor2 = tomato //new BYN.Color4(188 / 255, 143 / 255, 143 / 255, 1)
+  // let attractorColor2 = new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
 
-  var attractorColor1 = new BYN.Color4(245 / 255, 150 / 255, 0 / 255, 1)
-  var attractorColor2 = tomato //new BYN.Color4(188 / 255, 143 / 255, 143 / 255, 1)
-  // var attractorColor2 = new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
-
-  let particleColor = new BABYLON.Color4(0 / 255, 170 / 255, 245 / 255, 0.5)
+  let particleColor = new BABYLON.Color4(0 / 255, 170 / 255, 245 / 255, 0.2)
 
   let singularity = Math.sqrt(beta * (rho - 1))
 
@@ -123,8 +123,6 @@ export default function lorenzPlot() {
       )
       attractor1.color = attractorColor1
       attractor2.color = attractorColor2
-      // attractor1.color = attractorColor
-      // attractor2.color = attractorColor
 
       attractor1.isVisible = toggleAttractor
       attractor2.isVisible = toggleAttractor

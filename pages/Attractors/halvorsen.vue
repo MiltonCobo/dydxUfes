@@ -20,7 +20,13 @@
         O atrator de Halvorsen corresponde as equações: \[ \begin{cases}
         \dfrac{dx}{dt} = -ax +2y - 4z -y^2 +(3a+15) \\ \dfrac{dy}{dt} = -ay +2z
         - 4x -z^2 +(3a+15) \\ \dfrac{dz}{dt} = -az +2x - 4y -x^2 +(3a+15)
-        \end{cases} \] com $ a $ próximo de $ 1.4. $
+        \end{cases} \] com $ a $ próximo de $ 1.4. $ Aparentemente o atrator não
+        é global pois ha muitas trajetórias que fogem para infinito mas um
+        conjunto de medida positiva é capturado pelo atrator. Tambem notamos que
+        para $a=1.8$ o atrator aparentemente se reduz a uma trajetória periódica
+        e para $a=1.2$ quase todas as trajetórias fogem para o infinito. Isto
+        pode ser visto melhor se apagamos o atrator enquanto movemos o slider ja
+        que, sem ter que desenhar o atrator, o processo é mais fluido.
       </v-col>
     </v-row>
     <!-- 

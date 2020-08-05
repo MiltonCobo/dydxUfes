@@ -17,7 +17,7 @@ export default function QiChenPlot() {
   let a = 1.4
 
   let dt = 0.0043,
-    numPoints = 6000
+    numPoints = 5000
 
   let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
   let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
@@ -42,7 +42,7 @@ export default function QiChenPlot() {
   //let attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 1)
 
   //let particleColor = new BYN.Color4(255 / 255, 70 / 255, 255 / 255, 0.5)
-  let particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 0.6)
+  let particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 0.2)
   //let particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 0.6)
 
   function makeVertices(N) {
@@ -104,15 +104,19 @@ export default function QiChenPlot() {
     //scene.createDefaultLight()
 
     function updateAttractor() {
-      for (let t = -2; t < 5; t += 2) {
-        pointsLorenz = makeVertices(numPoints)[t]
-        attractors[t] = BYN.MeshBuilder.CreateLines(
-          'Lorenz',
-          { points: pointsLorenz, updatable: true },
-          scene
-        )
+      if (toggleAttractor) {
+        for (let t = -2; t < 5; t += 2) {
+          pointsLorenz = makeVertices(numPoints)[t]
+          attractors[t] = BYN.MeshBuilder.CreateLines(
+            'Lorenz',
+            { points: pointsLorenz, updatable: true },
+            scene
+          )
 
-        attractors[t].color = attractorColors[t]
+          attractors[t].color = attractorColors[t]
+
+          attractors[t].isVisible = toggleAttractor
+        }
       }
     }
     updateAttractor()
@@ -257,8 +261,8 @@ export default function QiChenPlot() {
 
     let sliderA = new BYN.GUI.Slider()
     sliderA.isVisible = togglePanel
-    sliderA.minimum = 1.3
-    sliderA.maximum = 1.7
+    sliderA.minimum = 1.2
+    sliderA.maximum = 1.8
     sliderA.value = 1.4
     sliderA.height = '25px'
     sliderA.thumbWidth = 20

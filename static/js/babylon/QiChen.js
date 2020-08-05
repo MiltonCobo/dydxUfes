@@ -16,7 +16,7 @@ export default function QiChenPlot() {
     b = 3,
     c = 28
 
-  var dt = 0.003,
+  var dt = 0.004,
     numPoints = 8000
 
   let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
@@ -34,8 +34,9 @@ export default function QiChenPlot() {
   let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
   let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
   let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
+  let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.8)
   var attractorColor1 = tomato //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
-  var attractorColor2 = aquamarine // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
+  var attractorColor2 = seagreen // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
   //var attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
   var particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
   //   var particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
@@ -110,6 +111,9 @@ export default function QiChenPlot() {
 
       attractor1.color = attractorColor1
       attractor2.color = attractorColor2
+
+      attractor1.isVisible = toggleAttractor
+      attractor2.isVisible = toggleAttractor
     }
 
     updateAttractor()

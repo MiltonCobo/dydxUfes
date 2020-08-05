@@ -223,7 +223,7 @@ export default {
       cursos,
       attractors: [
         { name: 'Lorenz', route: '/Attractors/lorenz' },
-        { name: 'QiChen', route: '/Attractors/qichen' },
+        { name: 'Qi-Chen', route: '/Attractors/qichen' },
         { name: 'Halvorsen', route: '/Attractors/halvorsen' }
       ],
       itemsDrawer: [

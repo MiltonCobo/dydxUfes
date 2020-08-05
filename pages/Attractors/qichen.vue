@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <h2 style="color: black;" align="center">
-          O Atrator de Qi-Chen
+          O Atrator de Chen
         </h2>
         <!-- color attractor #f59700; -->
         <v-divider style="margin-bottom:0.5%;" />
@@ -17,38 +17,78 @@
 
     <v-row
       ><v-col class="mathjax">
-        O atrator de Halvorsen corresponde as equações: \[ \begin{cases}
+        O atrator de Chen corresponde as equações: \[ \begin{cases}
         \dfrac{dx}{dt} = a(x-y) \\ \dfrac{dy}{dt} = (c-a)x-xz + cy \\
         \dfrac{dz}{dt} = xy-bz \end{cases} \] com os valores dos parâmetros $a =
         40, b=3 $ e $c=28.$
+        <br />
+        Inicialmente este atrator foi observado pelo Leon Chua em circuitos
+        caóticos eletronicos, chamados de
+        <a href="https://en.wikipedia.org/wiki/Chua%27s_circuit"
+          >circuitos de Chua.</a
+        >
+        Chua também mostrou rigorosamente que existe um atrator caótico para os
+        parâmetros dados por ele. O atrator foi chamado de
+        <i>turbilhão duplo</i> (double scroll) pois se asemelha a dois dos anéis
+        de Saturno conectados por uma hélice (em tradução livre). Foi desoberto
+        que existem outros pequenos atratores periódicos escondidos dentro da
+        hélice do atrator.
+        <br />
+        No ano de 1999 Guanrong Chen propós o atrator que mostramos nesta
+        animação. Posteriormente outras generalizações destes atratores,
+        chamadas de
+        <i>multiscroll</i> foram encontradas ( ver a página de wikipedia nas
+        referèncias) e em breve iremos apresentar algumas de elas.
       </v-col>
     </v-row>
-    <!-- 
+
     <v-row>
       <v-col class="ml-5">
         <ol>
           <u>Referências:</u>
           <li class="mt-4">
-            <a href="http://w3.impa.br/~viana/out/ael.pdf" target="_blank">
-              Atratores estranhos de Lorenz. Marcelo Viana. IMPA
-            </a>
-          </li>
-          <li>
+            Multiscroll attractor.
             <a
-              href="https://pt.wikipedia.org/wiki/Atractor_de_Lorenz"
+              href="https://en.wikipedia.org/wiki/Multiscroll_attractor"
               target="_blank"
             >
-              O atrator de Lorenz. Wikipedia.
+              Wikipedia.
             </a>
           </li>
           <li>
-            <a href="http://w3.impa.br/~viana/out/mi.pdf" target="_blank">
-              What's new on Lorenz Attractors? Marcelo Viana. IMPA
+            Chua, Leon (2007).
+            <a
+              href="http://www.scholarpedia.org/article/Chua_circuit"
+              target="_blank"
+            >
+              Chua circuits.
+            </a>
+            Scholarpedia.
+          </li>
+          <li>
+            Chua, Leon (2007).
+            <a
+              href="http://www.scholarpedia.org/article/Chua_circuit#Fractal_Geometry_of_the_Double_Scroll_Attractor"
+              target="_blank"
+            >
+              Fractal Geometry of the Double-Scroll Attractor
+            </a>
+            . Scholarpedia.
+          </li>
+          <li>
+            Chen, Guanrong; Jinhu Lu (2006).
+            <a
+              href="http://www.ee.cityu.edu.hk/~gchen/pdf/LC-IJBC06-survey.pdf"
+              target="_blank"
+            >
+              Generating multiscroll chaotic attractors: theories, methods and
+              applications (pdf).
             </a>
           </li>
+          International Journal of Bifurcation and Chaos. 16 (4): 793–794.
         </ol>
       </v-col>
-    </v-row> -->
+    </v-row>
   </v-container>
 </template>
 
