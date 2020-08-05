@@ -242,7 +242,7 @@ export function getDataSurfaceWithCenter(
         // size: (zMax - zMin) * 0.05,
         autocontour: true,
         ncontours: 30,
-        usecolormap: true,
+        usecolormap: true, // z-contours same color as surface
         // color: 'lightbrown', //'olive',
         highlightcolor: 'red',
         highlightwidth: 16,

@@ -44,7 +44,45 @@
         </v-list-item>
       </v-list>
       <v-divider />
-      <div></div>
+
+      <!-- ---------------------------------- -->
+      <v-list class="mx-p5" nav dense>
+        <!-- <v-list-item-group>
+          <template v-slot:activator value="false">
+            <v-list-item-content>
+              <v-list-item-icon>
+                <v-icon class="blue--text" left
+                  >'mdi-book-open-page-variant'
+                </v-icon>
+              </v-list-item-icon>
+              <v-list-item-title class="blue--text"
+                >Atratores</v-list-item-title
+              >
+            </v-list-item-content>
+          </template>
+        </v-list-item-group> -->
+
+        <v-list-group no-action>
+          <!-- <v-list-item-icon>
+            <v-icon class="blue--text" left>'mdi-home' </v-icon>
+          </v-list-item-icon> -->
+          <template v-slot:activator value="false">
+            <v-list-item-content>
+              <v-list-item-title class="blue--text"
+                >Atratores Caóticos</v-list-item-title
+              >
+            </v-list-item-content>
+          </template>
+
+          <v-list-item v-for="(attractor, i) in attractors" :key="i">
+            <n-link :to="attractor.route" style="text-decoration: none;">
+              <v-list-item-title>
+                {{ attractor.name }}
+              </v-list-item-title>
+            </n-link>
+          </v-list-item>
+        </v-list-group>
+      </v-list>
     </v-navigation-drawer>
 
     <v-app-bar hide-on-scroll flat dark app>
@@ -198,13 +236,18 @@ export default {
       hideOnLeave: true,
       expandOnHover: true,
       cursos,
+      attractors: [
+        { name: 'Lorenz', route: '/Attractors/lorenz' },
+        { name: 'QiChen', route: '/Attractors/qichen' },
+        { name: 'Halvorsen', route: '/Attractors/halvorsen' }
+      ],
       itemsDrawer: [
         { title: 'Inicial', icon: 'mdi-home', route: '/' },
-        {
-          title: 'Lorenz',
-          icon: 'mdi-book-open-page-variant',
-          route: '/lorenz'
-        },
+        // {
+        //   title: 'Lorenz',
+        //   icon: 'mdi-book-open-page-variant',
+        //   route: '/lorenz'
+        // },
         {
           title: 'Lotka-Volterra',
           icon: 'mdi-book-open-page-variant',
@@ -214,6 +257,7 @@ export default {
     }
   }
 }
+
 let cursos = [
   {
     title: 'Eq. Diferenciais',

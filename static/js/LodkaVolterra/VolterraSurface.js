@@ -42,11 +42,13 @@ export function volterraSurface2() {
   //   let zMax = Math.max(...[].concat(...data.z))
   let zMin = Math.min(...[].concat(...data.z))
 
-  let layout0 = Object.assign({}, layout)
+  let layout0 = Object.assign({}, layout) //copy of data
 
   layout0.autosize = true
-  // layout0.width = 550
-  // layout0.height = 550 /* set size of plot */
+  //let vw = window.innerWidth
+  //let vh = window.innerHeight
+  //layout0.width = 600
+  //layout0.height = 0.6 * vw //550 /* set size of plot */
   data.colorscale = 'Earth'
   layout0.title =
     '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'
@@ -103,15 +105,15 @@ export function volterraSurface2() {
     ax: 40, //tail of arrow
     ay: +20,
     visible: true,
-    //   ayref: 'pixel', // refers to axes
-    //   axref: 'pixel',
+    yref: 'paper', // refers to axes
+    xref: 'paper',
     arrowcolor: 'black',
     xanchor: 'left',
     arrowsize: 3,
     arrowwidth: 1,
     arrowhead: 1,
     font: {
-      size: 18,
+      size: 16,
       color: 'red'
     },
     x: c / d,
@@ -125,13 +127,12 @@ export function volterraSurface2() {
     ay: 20,
     visible: true,
     xanchor: 'left',
-
-    //   ayref: 'pixel', // refers to axes
-    //   axref: 'pixel',
+    yref: 'paper', // refers to axes
+    xref: 'paper',
     arrowhead: 1,
     arrowcolor: 'black',
     font: {
-      size: 18,
+      size: 16,
       color: 'red'
     },
     x: c1 / d1,
@@ -142,8 +143,8 @@ export function volterraSurface2() {
   layout0.scene = {
     camera: {
       eye: {
-        x: 1.1,
-        y: 1.1,
+        x: 0.9,
+        y: 0.9,
         z: 0.25
       }
       //projection: { type: 'orthographic' }
@@ -154,28 +155,28 @@ export function volterraSurface2() {
       tickmode: 'linear',
       range: [0, xwidth],
       tick0: 0,
-      dtick: xwidth / 4,
+      dtick: xwidth / 4
       // tickmode: 'auto',
       // nticks: 4
-      fixedrange: true
+      //fixedrange: true
     },
     yaxis: {
       title: 'y',
       tickmode: 'linear',
       range: [0, ywidth],
       tick0: 0,
-      dtick: ywidth / 4,
+      dtick: ywidth / 4
       // tickmode: 'auto',
       // nticks: 4
-      fixedrange: true
+      //fixedrange: true
     },
     zaxis: {
       title: 'z',
       tickmode: 'linear',
       tick0: 0,
       dtick: 5,
-      range: [15, 45],
-      fixedrange: true
+      range: [15, 45]
+      //fixedrange: true
     }
   }
 
@@ -197,8 +198,8 @@ export function volterraSurface2() {
                 zaxis: { range: [15, 45] },
                 camera: {
                   eye: {
-                    x: 1.1,
-                    y: 1.1,
+                    x: 0.9,
+                    y: 0.9,
                     z: 0.25
                   }
                 }
@@ -226,8 +227,8 @@ export function volterraSurface2() {
                 zaxis: { range: [10, 40] },
                 camera: {
                   eye: {
-                    x: 1.1,
-                    y: 1.1,
+                    x: 0.9,
+                    y: 0.9, //1.1
                     z: 0.25
                   }
                 },
