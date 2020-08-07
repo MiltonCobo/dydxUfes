@@ -179,7 +179,7 @@ export default {
     //this.startBabylonPlot()
   },
   destroyed() {
-    console.log('destroyed foi ativado')
+    //console.log('destroyed foi ativado')
   },
   updated() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
@@ -232,21 +232,6 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --mjx-green: white; /* #2e7d32; /* #2e7d32; /* light-green darken-3 */
-  /*  #004b07; /* #33691e;*/
-  /* background-color: black; */
-}
-
-.ColorWheat {
-  --mjx-green: #fff9c4; /* yellow lighten-4 */
-  /* wheat; */
-}
-
-/* .mathjax {
-  font-size: 20px;
-} */
-
 #lorenzCanvas {
   width: 90vw;
   height: 80vh;

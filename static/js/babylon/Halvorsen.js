@@ -93,7 +93,7 @@ export default function QiChenPlot() {
       scene
     )
 
-    camera.attachControl(canvas, true)
+    camera.attachControl(canvas, false) // false avoid scroll in canvas
     camera.setPosition(new BYN.Vector3(25, -25, -25))
     camera.minZ = 0.001
     camera.maxZ = 1000
@@ -104,28 +104,24 @@ export default function QiChenPlot() {
     //scene.createDefaultLight()
 
     function updateAttractor() {
-      if (toggleAttractor) {
-        for (let t = -2; t < 5; t += 2) {
-          pointsLorenz = makeVertices(numPoints)[t]
-          attractors[t] = BYN.MeshBuilder.CreateLines(
-            'Lorenz',
-            { points: pointsLorenz, updatable: true },
-            scene
-          )
-
-          attractors[t].color = attractorColors[t]
-
-          attractors[t].isVisible = toggleAttractor
-        }
+      let pointsAttractor = makeVertices(numPoints)
+      for (let t = -2; t < 5; t += 2) {
+        attractors[t] = BYN.MeshBuilder.CreateLines(
+          'Lorenz',
+          { points: pointsAttractor[t], updatable: true },
+          scene
+        )
+        attractors[t].color = attractorColors[t]
+        attractors[t].isVisible = toggleAttractor
       }
     }
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BYN.PointsCloudSystem('butterflies', 2.2, scene, {
+      butterflies = new BYN.PointsCloudSystem('butterflies', 3, scene, {
         updatable: true
       })
-      butterflies.addPoints(10000)
+      butterflies.addPoints(5000)
 
       let N = 30
       butterflies.initParticles = function() {
@@ -137,6 +133,7 @@ export default function QiChenPlot() {
           )
 
           butterflies.particles[p].color = particleColor
+
           // new BYN.Color4(
           // 	random(),
           // 	random(),
@@ -170,6 +167,7 @@ export default function QiChenPlot() {
     }
 
     createParticles()
+    butterflies.computeBoundingBox = true // avoid computing particles ver far away
 
     scene.registerBeforeRender(function() {
       butterflies.setParticles()
@@ -284,7 +282,6 @@ export default function QiChenPlot() {
         attractors[t].dispose()
       }
       updateAttractor()
-      //updateAttractor()
     })
     panel.addControl(sliderA)
 

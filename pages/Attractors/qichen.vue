@@ -19,26 +19,33 @@
       ><v-col class="mathjax">
         O atrator de Chen corresponde as equações: \[ \begin{cases}
         \dfrac{dx}{dt} = a(x-y) \\ \dfrac{dy}{dt} = (c-a)x-xz + cy \\
-        \dfrac{dz}{dt} = xy-bz \end{cases} \] com os valores dos parâmetros $a =
-        40, b=3 $ e $c=28.$
+        \dfrac{dz}{dt} = xy-bz \end{cases} \] com parâmetros $a = 35, b=3 $ e
+        $c=28.$
         <br />
-        Inicialmente este atrator foi observado pelo Leon Chua em circuitos
-        caóticos eletronicos, chamados de
+        A presença de atratores caóticos foi observada pelo Leon Chua em certos
+        circuitos eletrônicos, chamados de
         <a href="https://en.wikipedia.org/wiki/Chua%27s_circuit"
           >circuitos de Chua.</a
         >
-        Chua também mostrou rigorosamente que existe um atrator caótico para os
-        parâmetros dados por ele. O atrator foi chamado de
-        <i>turbilhão duplo</i> (double scroll) pois se asemelha a dois dos anéis
-        de Saturno conectados por uma hélice (em tradução livre). Foi desoberto
-        que existem outros pequenos atratores periódicos escondidos dentro da
-        hélice do atrator.
+        Os atratores foram chamados de
+        <i>turbilhões duplos</i> (double scroll) pois se asemelham a dois dos
+        anéis de Saturno conectados por uma hélice (em tradução livre).
         <br />
-        No ano de 1999 Guanrong Chen propós o atrator que mostramos nesta
-        animação. Posteriormente outras generalizações destes atratores,
+        No ano de 1999 Guanrong Chen propós a versão do atrator que mostramos
+        nesta animação. Posteriormente outras generalizações destes atratores,
         chamadas de
-        <i>multiscroll</i> foram encontradas ( ver a página de wikipedia nas
-        referèncias) e em breve iremos apresentar algumas de elas.
+        <i>multi-scroll</i> foram encontradas (ver a página de wikipedia nas
+        referências) e em breve iremos apresentar algumas delas.
+        <br />
+        Para ver o
+        <i>turbilhão</i> mais claramente apague o atrator, faça $a\le 28$ no
+        <i>slider</i> e afaste um pouco a figura. Recrie então as partículas.
+        Observa-se que a maioria das trajetórias converge para uma trajetória
+        periódica formando uma espécie de turbilhão. Recentemente também foi
+        descoberto que existem outros pequenos atratores escondidos dentro da
+        hélice do atrator. O sistema tem dois pontos críticos (além da origem)
+        em $(\pm\sqrt{(2c-a)b}, 2c-a)$ e quando $a$ se aproxima de $56$ estes
+        pontos críticos se tornam atratores e se aproximam da origem.
       </v-col>
     </v-row>
 
@@ -117,7 +124,7 @@ export default {
     //this.startBabylonPlot()
   },
   destroyed() {
-    console.log('destroyed foi ativado')
+    //console.log('destroyed foi ativado')
   },
   updated() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
@@ -145,11 +152,11 @@ export default {
 
   head() {
     return {
-      title: 'O atrator de Lorenz',
+      title: 'O atrator de Chen',
       meta: [
         {
           hid: 'description index.vue',
-          name: 'O atrator de Lorenz',
+          name: 'O atrator de Chen',
           content: 'O atrator de Lorenz em www.dydx.ufes.br do DMAT/UFES'
         }
       ],
@@ -170,25 +177,10 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --mjx-green: white; /* #2e7d32; /* #2e7d32; /* light-green darken-3 */
-  /*  #004b07; /* #33691e;*/
-  /* background-color: black; */
-}
-
-.ColorWheat {
-  --mjx-green: #fff9c4; /* yellow lighten-4 */
-  /* wheat; */
-}
-
-/* .mathjax {
-  font-size: 20px;
-} */
-
 #lorenzCanvas {
   width: 90vw;
   height: 80vh;
-  touch-action: none;
+  touch-action: auto;
   scroll-behavior: smooth;
 
   margin: 0px;

@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <h2 style="color: black;" align="center">
-          O Atrator de Halvorsen
+          O Atrator de Chen-Lee
         </h2>
         <!-- color attractor #f59700; -->
         <v-divider style="margin-bottom:0.5%;" />
@@ -17,52 +17,66 @@
 
     <v-row
       ><v-col class="mathjax">
-        O atrator de Halvorsen corresponde as equações: \[ \begin{cases}
-        \dfrac{dx}{dt} = -ax +2y - 4z -y^2 +(3a+15) \\ \dfrac{dy}{dt} = -ay +2z
-        - 4x -z^2 +(3a+15) \\ \dfrac{dz}{dt} = -az +2x - 4y -x^2 +(3a+15)
-        \end{cases} \] com $ a $ próximo de $ 1.4. $
+        O atrator de Chen-Lee corresponde as equações: \[ \begin{cases}
+        \dfrac{dx}{dt} = a x- yz \\ \dfrac{dy}{dt} = by + xz \\ \dfrac{dz}{dt} =
+        cz + xy/3\end{cases} \] com parâmetros $a = 5, b=-10 $ e $c=-0.38.$
         <br />
-        Não temos informação mais detalhada sobre este atrator neste momento.
-        Aparentemente o atrator não é global pois observam-se trajetórias que
-        fogem para o infinito mas parece que um conjunto com medida positiva de
-        pontos é capturado pelo atrator. Também notamos que para $a=1.8$ o
-        atrator aparentemente se reduz a uma única trajetória periódica e para
-        $a=1.2$ quase todas as trajetórias fogem para o infinito. Isto pode ser
-        visto melhor se apagamos o atrator e movemos o <i>slider</i> pois assim
-        o processo é mais fluido.
       </v-col>
     </v-row>
-    <!-- 
+
     <v-row>
       <v-col class="ml-5">
         <ol>
           <u>Referências:</u>
           <li class="mt-4">
-            <a href="http://w3.impa.br/~viana/out/ael.pdf" target="_blank">
-              Atratores estranhos de Lorenz. Marcelo Viana. IMPA
-            </a>
-          </li>
-          <li>
             <a
-              href="https://pt.wikipedia.org/wiki/Atractor_de_Lorenz"
+              href="https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0103-97332009000500007&lng=en&nrm=iso&tlng=en"
               target="_blank"
             >
-              O atrator de Lorenz. Wikipedia.
+              A 3-D four-wing attractor and its analysis.
             </a>
+            Braz. J. Phys. vol.39 no.3 São Paulo Sept. 2009
+          </li>
+          <!-- <li>
+            Chua, Leon (2007).
+            <a
+              href="http://www.scholarpedia.org/article/Chua_circuit"
+              target="_blank"
+            >
+              Chua circuits.
+            </a>
+            Scholarpedia.
           </li>
           <li>
-            <a href="http://w3.impa.br/~viana/out/mi.pdf" target="_blank">
-              What's new on Lorenz Attractors? Marcelo Viana. IMPA
+            Chua, Leon (2007).
+            <a
+              href="http://www.scholarpedia.org/article/Chua_circuit#Fractal_Geometry_of_the_Double_Scroll_Attractor"
+              target="_blank"
+            >
+              Fractal Geometry of the Double-Scroll Attractor
+            </a>
+            . Scholarpedia.
+          </li>
+          <li>
+            Chen, Guanrong; Jinhu Lu (2006).
+            <a
+              href="http://www.ee.cityu.edu.hk/~gchen/pdf/LC-IJBC06-survey.pdf"
+              target="_blank"
+            >
+              Generating multiscroll chaotic attractors: theories, methods and
+              applications (pdf).
             </a>
           </li>
+          International Journal of Bifurcation and Chaos. 16 (4): 793–794. -->
         </ol>
       </v-col>
-    </v-row> -->
+    </v-row>
   </v-container>
 </template>
 
 <script>
-import HalvorsenPlot from '@/static/js/babylon/Halvorsen.js'
+// import ChuaPlot from '@/static/js/babylon/Chua.js'
+import ChenLeePlot from '@/static/js/babylon/ChenLee.js'
 
 export default {
   // layout: 'darkTheme',
@@ -97,7 +111,7 @@ export default {
       this.startBabylonPlot
     },
     startBabylonPlot() {
-      HalvorsenPlot()
+      ChenLeePlot()
     }
   },
   updated() {
@@ -114,12 +128,12 @@ export default {
 
   head() {
     return {
-      title: 'O atrator de Halvorsen',
+      title: 'O atrator de Chen',
       meta: [
         {
           hid: 'description index.vue',
-          name: 'O atrator de Halvorsen',
-          content: 'O atrator de Halvorsen em www.dydx.ufes.br do DMAT/UFES'
+          name: 'O atrator de Chen',
+          content: 'O atrator de Lorenz em www.dydx.ufes.br do DMAT/UFES'
         }
       ],
       link: [
@@ -139,25 +153,10 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --mjx-green: white; /* #2e7d32; /* #2e7d32; /* light-green darken-3 */
-  /*  #004b07; /* #33691e;*/
-  /* background-color: black; */
-}
-
-.ColorWheat {
-  --mjx-green: #fff9c4; /* yellow lighten-4 */
-  /* wheat; */
-}
-
-/* .mathjax {
-  font-size: 20px;
-} */
-
 #lorenzCanvas {
   width: 90vw;
   height: 80vh;
-  touch-action: none;
+  touch-action: auto;
   scroll-behavior: smooth;
 
   margin: 0px;

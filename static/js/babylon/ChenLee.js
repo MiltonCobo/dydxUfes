@@ -3,8 +3,8 @@
 import * as BABYLON from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
-export default function QiChenPlot() {
-  let butterflies
+export default function ChenLeePlot() {
+  var butterflies
   let attractor1, attractor2
 
   let toggleAttractor = true
@@ -12,40 +12,39 @@ export default function QiChenPlot() {
 
   let BYN = BABYLON
 
-  let a = 35,
-    b = 3,
-    c = 28
+  var a = 5,
+    b = -10,
+    c = -0.38
 
-  let dt = 0.0038,
-    numPoints = 10000
+  var dt = 0.0045,
+    numPoints = 14000
 
-  let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 1)
-  let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 1)
-  let lightgoldenrodyellow = new BYN.Color4(250 / 255, 250 / 255, 210 / 255, 1)
+  let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
+  let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
+  let lightgoldenrodyellow = new BYN.Color4(
+    250 / 255,
+    250 / 255,
+    210 / 255,
+    0.5
+  )
   let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.5)
   let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.5)
   let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
   let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
-  let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 1)
+  let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
   let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
-  let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 1)
+  let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
   let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.8)
-  let darkcyan = new BYN.Color4(0 / 255, 139 / 255, 139 / 255, 1)
-  let darkturquoise = new BYN.Color4(0 / 255, 206 / 255, 209 / 255, 1)
-  let lightblue = new BYN.Color4(173 / 255, 216 / 255, 230 / 255, 1)
-  let pink = new BYN.Color4(255 / 255, 192 / 255, 203 / 255, 1)
-  let thistle = new BYN.Color4(216 / 255, 191 / 255, 216 / 255, 1)
-  let lightskyblue = new BABYLON.Color4(135 / 255, 206 / 255, 250 / 255, 1)
-  let white = new BYN.Color4(1, 1, 1, 1)
-  let attractorColor1 = seagreen //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
-  let attractorColor2 = tomato // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
-  //let attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
-  let particleColor = gold //new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
-  //   let particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
-  //   let particleColor = new BYN.Color4(240 / 255, 128 / 255, 0 / 255, 1)
+  var attractorColor1 = tomato //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
+  var attractorColor2 = seagreen // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
+  //var attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
+  var particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
+  //   var particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
+  //   var particleColor = new BYN.Color4(240 / 255, 128 / 255, 0 / 255, 1)
 
-  let lorenzOffset = 2 * c - a,
-    singularity = Math.sqrt((2 * c - a) * b)
+  let singularityZ = Math.sqrt(-a * b),
+    singularityX = Math.sqrt(3 * b * c),
+    singularityY = Math.sqrt(-3 * a * c)
 
   function makeVertices(N) {
     // make points for Lorenz
@@ -57,24 +56,24 @@ export default function QiChenPlot() {
         x = t
       points[t] = []
       for (let j = 0; j < 300; j++) {
-        x = x + a * (y - x) * dt
-        y = y + ((c - a) * x - x * z + c * y) * dt
-        z = z + (x * y - b * z) * dt
+        x = x + (a * x - y * z) * dt
+        y = y + (b * y + x * z) * dt
+        z = z + (c * z + (x * y) / 3) * dt
       }
       for (let i = 0; i < N; i++) {
-        x = x + a * (y - x) * dt
-        y = y + ((c - a) * x - x * z + c * y) * dt
-        z = z + (x * y - b * z) * dt
-        points[t].push(new BYN.Vector3(x, z, y)) // exchange z and y
+        x = x + (a * x - y * z) * dt
+        y = y + (b * y + x * z) * dt
+        z = z + (c * z + (x * y) / 3) * dt
+        points[t].push(new BYN.Vector3(x, y, z)) // exchange z and y
       }
     }
 
     return points
   }
 
-  let createScene = function(engine, canvas) {
-    let scene = new BYN.Scene(engine)
-    scene.clearColor = new BYN.Color3(0.2, 0.2, 0.2)
+  var createScene = function(engine, canvas) {
+    var scene = new BYN.Scene(engine)
+    scene.clearColor = new BYN.Color3(0, 0, 0)
 
     let camera = new BYN.ArcRotateCamera(
       'camera',
@@ -87,27 +86,26 @@ export default function QiChenPlot() {
 
     camera.attachControl(canvas, false)
     camera.setPosition(
-      new BYN.Vector3(6 * singularity, lorenzOffset, -5 * singularity)
+      new BYN.Vector3(20 * singularityX, singularityZ, -20 * singularityY)
     )
     camera.minZ = 0.001
     camera.maxZ = 1000
-    camera.setTarget(new BYN.Vector3(0, lorenzOffset, 0))
+    camera.setTarget(new BYN.Vector3(0, singularityZ, 0))
 
     let axes = new BYN.AxesViewer(scene, 8)
 
     function updateAttractor() {
-      let pointsLorenz = makeVertices(numPoints)
+      let pointsAttractor = makeVertices(numPoints)
 
       attractor1 = BYN.MeshBuilder.CreateLines(
         'Lorenz1',
-        { points: pointsLorenz[-1], updatable: true },
+        { points: pointsAttractor[-1], updatable: true },
         scene
       )
-      // pointsLorenz = makeVertices(numPoints)[1]
 
       attractor2 = BYN.MeshBuilder.CreateLines(
         'Lorenz2',
-        { points: pointsLorenz[1], updatable: true },
+        { points: pointsAttractor[1], updatable: true },
         scene
       )
 
@@ -121,10 +119,10 @@ export default function QiChenPlot() {
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BYN.PointsCloudSystem('butterflies', 4, scene, {
+      butterflies = new BYN.PointsCloudSystem('butterflies', 2.6, scene, {
         updatable: true
       })
-      butterflies.addPoints(600)
+      butterflies.addPoints(6000)
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
           butterflies.particles[p].position = new BYN.Vector3(
@@ -141,7 +139,7 @@ export default function QiChenPlot() {
         butterflies.setParticles()
 
         mesh.position.x = 0
-        mesh.position.y = 0 //-lorenzOffset
+        mesh.position.y = 0 //-singularityZ
         mesh.position.z = 0
         mesh.alwaysSelectAsActiveMesh = true
       })
@@ -151,18 +149,14 @@ export default function QiChenPlot() {
         let y = particle.position.y
         let z = particle.position.z
 
-        x = x + a * (z - x) * dt
-        z = z + ((c - a) * x - x * y + c * z) * dt //exchange z-y formulas
-        y = y += (x * z - b * y) * dt
+        x = x + (a * x - y * z) * dt
+        y = y + (b * y + x * z) * dt
+        z = z + (c * z + (x * y) / 3) * dt
 
         particle.position.x = x
         particle.position.y = y
         particle.position.z = z
       }
-
-      //}
-      // updateAttractor()
-      // console.log(butterflies)
     }
 
     createParticles()
@@ -259,9 +253,9 @@ export default function QiChenPlot() {
 
     let sliderA = new BABYLON.GUI.Slider()
     sliderA.isVisible = togglePanel
-    sliderA.minimum = 26
-    sliderA.maximum = 56
-    sliderA.value = 35
+    sliderA.minimum = 0
+    sliderA.maximum = 10
+    sliderA.value = 5
 
     sliderA.height = '15px'
     sliderA.thumbWidth = 20
@@ -279,7 +273,7 @@ export default function QiChenPlot() {
 
       attractor1.dispose()
       attractor2.dispose()
-      camera.setTarget(new BYN.Vector3(0, 2 * c - a, 0))
+      camera.setTarget(new BYN.Vector3(0, singularityZ, 0))
       updateAttractor()
 
       // Camera should follow the position of singularities....-------
@@ -297,16 +291,16 @@ export default function QiChenPlot() {
     panel.addControl(textB)
     let sliderB = new BABYLON.GUI.Slider()
     sliderB.isVisible = togglePanel
-    sliderB.minimum = 0
-    sliderB.maximum = 5
-    sliderB.value = 3
+    sliderB.minimum = -30
+    sliderB.maximum = -5
+    sliderB.value = -10
     sliderB.height = '15px'
     sliderB.thumbWidth = 20
     sliderB.width = '150px'
     sliderB.color = 'green'
     sliderB.borderColor = 'black'
     sliderB.isThumbCircle = true
-    sliderB.step = 0.5
+    sliderB.step = 1
     //sliderB.top = '60px'
     //sliderB.isVertical = true
 
@@ -321,7 +315,7 @@ export default function QiChenPlot() {
 
     let textC = new BABYLON.GUI.TextBlock()
     textC.isVisible = togglePanel
-    textC.text = 'c = ' + c.toFixed(1).toString()
+    textC.text = 'c = ' + c.toFixed(2).toString()
     textC.color = '#08a31f'
     textC.height = '40px'
     textC.fontSize = 18
@@ -329,25 +323,25 @@ export default function QiChenPlot() {
     panel.addControl(textC)
     let sliderC = new BABYLON.GUI.Slider()
     sliderC.isVisible = togglePanel
-    sliderC.minimum = 20
-    sliderC.maximum = 40
-    sliderC.value = 28
+    sliderC.minimum = -1
+    sliderC.maximum = 0
+    sliderC.value = -0.38
     sliderC.height = '15px'
     sliderC.thumbWidth = 20
     sliderC.width = '150px'
     sliderC.color = 'green'
     sliderC.borderColor = 'black'
     sliderC.isThumbCircle = true
-    sliderC.step = 0.1
+    sliderC.step = 0.01
     //sliderC.top = '60px'
     //sliderC.isVertical = true
 
     sliderC.onValueChangedObservable.add(function(value) {
-      textC.text = 'c = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
+      textC.text = 'c = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
       c = value
       attractor1.dispose()
       attractor2.dispose()
-      camera.setTarget(new BYN.Vector3(0, 2 * c - a, 0))
+      camera.setTarget(new BYN.Vector3(0, singularityZ, 0))
       updateAttractor()
     })
     panel.addControl(sliderC)
@@ -382,9 +376,9 @@ export default function QiChenPlot() {
   engine.runRenderLoop(function() {
     let route = window.location.pathname
     if (
-      route == 'www.dydx.ufes.br/Attractors/qichen' ||
-      route == '/Attractors/qichen/' ||
-      route == '/Attractors/qichen'
+      route == 'www.dydx.ufes.br/Attractors/chenlee' ||
+      route == '/Attractors/chenlee/' ||
+      route == '/Attractors/chenlee'
     ) {
       scene.render()
     } else {

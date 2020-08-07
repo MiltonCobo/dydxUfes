@@ -223,8 +223,9 @@ export default {
       cursos,
       attractors: [
         { name: 'Lorenz', route: '/Attractors/lorenz' },
-        { name: 'Qi-Chen', route: '/Attractors/qichen' },
-        { name: 'Halvorsen', route: '/Attractors/halvorsen' }
+        { name: 'Chen', route: '/Attractors/qichen' },
+        { name: 'Halvorsen', route: '/Attractors/halvorsen' },
+        { name: 'Chen-Lee', route: '/Attractors/chenlee' }
       ],
       itemsDrawer: [
         { title: 'Inicial', icon: 'mdi-home', route: '/' },

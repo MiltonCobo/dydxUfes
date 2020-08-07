@@ -3,7 +3,7 @@ import * as GUI from 'babylonjs-gui'
 
 export default function lorenzPlot() {
   let butterflies
-  let attractor1, attractor2, axes
+  let attractor1, attractor2
   let camera
 
   let toggleAttractor = true
@@ -17,44 +17,28 @@ export default function lorenzPlot() {
 
   let BYN = BABYLON
 
-  const numPoints = 8000
+  const numPoints = 6000
+  const numPart = 10000
 
   //let attractorColor = new BABYLON.Color4(245 / 255, 150 / 255, 0 / 255, 1)
-  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
+  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 1)
   let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 1)
-  let attractorColor1 = seagreen //new BYN.Color4(245 / 255, 150 / 255, 0 / 255, 1)
-  let attractorColor2 = tomato //new BYN.Color4(188 / 255, 143 / 255, 143 / 255, 1)
+  let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.2)
+  let orange = new BYN.Color4(255 / 255, 165 / 255, 0 / 255, 1)
+  let goldenrod = new BYN.Color4(218 / 255, 165 / 255, 32 / 255, 1)
+  let sandybrown = new BYN.Color4(244 / 255, 164 / 255, 96 / 255, 1)
+  let beige = new BYN.Color4(245 / 255, 245 / 255, 220 / 255, 1)
+  let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.2)
+  let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 1)
+  let thistle = new BYN.Color4(216 / 255, 191 / 255, 216 / 255, 1)
+
+  let attractorColor1 = new BYN.Color4(245 / 255, 150 / 255, 0 / 255, 1)
+  let attractorColor2 = seagreen //thistle //new BYN.Color4(188 / 255, 143 / 255, 143 / 255, 1)
   // let attractorColor2 = new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
 
-  let particleColor = new BABYLON.Color4(0 / 255, 170 / 255, 245 / 255, 0.2)
+  let particleColor = new BABYLON.Color4(0 / 255, 170 / 255, 245 / 255, 0.8)
 
   let singularity = Math.sqrt(beta * (rho - 1))
-
-  // make Vertices based on the singularities -------
-  // function makeVertices(N) {
-  //   let points = []
-
-  //   for (let t = -1; t < 2; t += 2) {
-  //     let x = t * singularity + t * 0.1,
-  //       z = t * singularity + t * 0.1,
-  //       y = rho - 1 + t * 0.05
-
-  //     points[t] = []
-
-  //     for (let j = 0; j < 300; j++) {
-  //       x = x + sigma * (z - x) * dt
-  //       z = z + (x * (rho - y) - z) * dt
-  //       y = y + (x * z - beta * y) * dt
-  //     }
-  //     for (let i = 0; i < 2 * N; i++) {
-  //       x = x + sigma * (z - x) * dt
-  //       z = z + (x * (rho - y) - z) * dt
-  //       y = y + (x * z - beta * y) * dt
-  //       points[t].push(new BABYLON.Vector3(x, y, z))
-  //     }
-  //   }
-  //   return points
-  // }
 
   function makeVertices(N) {
     let points = []
@@ -67,7 +51,7 @@ export default function lorenzPlot() {
       let dt = 0.005
 
       points[t] = []
-      for (let j = 0; j < 300; j++) {
+      for (let j = 0; j < 200; j++) {
         x = x + sigma * (z - x) * dt
         z = z + (x * (rho - y) - z) * dt
         y = y + (x * z - beta * y) * dt
@@ -103,22 +87,21 @@ export default function lorenzPlot() {
     camera.maxZ = 300
     camera.setTarget(new BABYLON.Vector3(0, rho - 1, 0))
 
-    axes = new BABYLON.AxesViewer(scene, 8)
+    let axes = new BABYLON.AxesViewer(scene, 8)
     //axes.position = new BABYLON.Vector3(0, -27 + rho - 1, 0)
 
     function updateAttractor() {
-      let pointsLorenz = makeVertices(numPoints)[-1]
+      let pointsLorenz = makeVertices(numPoints)
 
       attractor1 = BABYLON.MeshBuilder.CreateLines(
         'Lorenz',
-        { points: pointsLorenz, updatable: true },
+        { points: pointsLorenz[-1], updatable: true },
         scene
       )
-      pointsLorenz = makeVertices(numPoints)[1]
 
       attractor2 = BABYLON.MeshBuilder.CreateLines(
         'Lorenz',
-        { points: pointsLorenz, updatable: true },
+        { points: pointsLorenz[1], updatable: true },
         scene
       )
       attractor1.color = attractorColor1
@@ -126,17 +109,14 @@ export default function lorenzPlot() {
 
       attractor1.isVisible = toggleAttractor
       attractor2.isVisible = toggleAttractor
-
-      //attractor1.position = new BABYLON.Vector3(0, -rho + 1, 0)
-      //attractor2.position = new BABYLON.Vector3(0, -rho + 1, 0)
     }
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BABYLON.PointsCloudSystem('butterflies', 2.5, scene, {
+      butterflies = new BABYLON.PointsCloudSystem('butterflies', 2, scene, {
         updatable: true
       })
-      butterflies.addPoints(10000)
+      butterflies.addPoints(numPart)
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
           butterflies.particles[p].position = new BABYLON.Vector3(
@@ -291,7 +271,6 @@ export default function lorenzPlot() {
       updateAttractor()
       camera.setTarget(new BABYLON.Vector3(0, rho - 1, 0))
       // Camera should follow the position of singularities....-------
-      //butterflies.mesh.position.y = -rho + 1
     })
     panel.addControl(sliderRho)
 
