@@ -16,7 +16,7 @@ export default function QiChenPlot() {
     b = 3,
     c = 28
 
-  let dt = 0.0038,
+  let dt = 0.003,
     numPoints = 10000
 
   let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 1)
@@ -25,20 +25,36 @@ export default function QiChenPlot() {
   let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.5)
   let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.5)
   let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
-  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
+  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.2)
   let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 1)
   let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
   let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 1)
-  let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.8)
+  let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.2)
   let darkcyan = new BYN.Color4(0 / 255, 139 / 255, 139 / 255, 1)
   let darkturquoise = new BYN.Color4(0 / 255, 206 / 255, 209 / 255, 1)
   let lightblue = new BYN.Color4(173 / 255, 216 / 255, 230 / 255, 1)
   let pink = new BYN.Color4(255 / 255, 192 / 255, 203 / 255, 1)
   let thistle = new BYN.Color4(216 / 255, 191 / 255, 216 / 255, 1)
   let lightskyblue = new BABYLON.Color4(135 / 255, 206 / 255, 250 / 255, 1)
+  let deepskyblue = new BYN.Color4(0 / 255, 191 / 255, 255 / 255, 0.5)
+  let royalblue = new BYN.Color4(65 / 255, 105 / 255, 225 / 255, 0.5)
+  let blue = new BYN.Color4(0, 100 / 255, 255 / 255, 0.5)
+  let tan = new BYN.Color4(210 / 255, 180 / 255, 140 / 255, 0.5)
+  let chocolate = new BYN.Color4(210 / 255, 105 / 255, 30 / 255, 0.5)
+  let azure = new BYN.Color4(240 / 255, 255 / 255, 255 / 255, 0.5)
+  let cornflowerblue = new BYN.Color4(100 / 255, 149 / 255, 237 / 255, 0.5)
+  let orange = new BYN.Color4(255 / 255, 165 / 255, 0 / 255, 1)
+  let lightsalmon = new BYN.Color4(255 / 255, 160 / 255, 122 / 255, 0.5)
+  let maroon = new BYN.Color4(128 / 255, 0, 0, 0.5)
+  let darkslategray = new BYN.Color4(47 / 255, 79 / 255, 79 / 255, 0.5)
+  let dodgerblue = new BYN.Color4(30 / 255, 144 / 255, 255 / 255, 0.5)
+
+  let darkblue = new BYN.Color4(0 / 255, 0 / 255, 139 / 255, 0.5)
+
   let white = new BYN.Color4(1, 1, 1, 1)
+
   let attractorColor1 = seagreen //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
-  let attractorColor2 = tomato // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
+  let attractorColor2 = tan // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
   //let attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
   let particleColor = gold //new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
   //   let particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
@@ -74,7 +90,7 @@ export default function QiChenPlot() {
 
   let createScene = function(engine, canvas) {
     let scene = new BYN.Scene(engine)
-    scene.clearColor = new BYN.Color3(0.2, 0.2, 0.2)
+    scene.clearColor = new BYN.Color3(0, 0, 0) //(105 / 255, 105 / 255, 105 / 255) //dimgrey
 
     let camera = new BYN.ArcRotateCamera(
       'camera',
@@ -194,7 +210,7 @@ export default function QiChenPlot() {
     hidePanel.fontSize = 18
     hidePanel.thickness = 0
     hidePanel.cornerRadius = 20
-    hidePanel.background = '#1e1e1e'
+    hidePanel.background = '#0f0f0f' // '#1e1e1e'
 
     hidePanel.onPointerUpObservable.add(function() {
       togglePanel = !togglePanel
@@ -222,7 +238,7 @@ export default function QiChenPlot() {
     hideAttractor.thickness = 0
     hideAttractor.cornerRadius = 20
     //hideAttractor.bottom = '120px'
-    hideAttractor.background = '#1e1e1e'
+    hideAttractor.background = '#0f0f0f' //'#1e1e1e'
     hideAttractor.onPointerUpObservable.add(function() {
       toggleAttractor = !toggleAttractor
       attractor1.isVisible = toggleAttractor
@@ -241,7 +257,7 @@ export default function QiChenPlot() {
     startButton.fontSize = 16
     startButton.thickness = 0
     startButton.cornerRadius = 20
-    startButton.background = '#1e1e1e'
+    startButton.background = '#0f0f0f' //'#1e1e1e'
     startButton.onPointerUpObservable.add(function() {
       butterflies.dispose()
       createParticles()
@@ -270,6 +286,7 @@ export default function QiChenPlot() {
     sliderA.borderColor = 'black'
     sliderA.isThumbCircle = true
     sliderA.step = 0.1
+    sliderA.background = '#1e1e1e'
     //sliderA.top = '60px'
     //sliderA.isVertical = true
 
@@ -307,6 +324,7 @@ export default function QiChenPlot() {
     sliderB.borderColor = 'black'
     sliderB.isThumbCircle = true
     sliderB.step = 0.5
+    sliderB.background = '#1e1e1e'
     //sliderB.top = '60px'
     //sliderB.isVertical = true
 
@@ -339,6 +357,7 @@ export default function QiChenPlot() {
     sliderC.borderColor = 'black'
     sliderC.isThumbCircle = true
     sliderC.step = 0.1
+    sliderC.background = '#1e1e1e'
     //sliderC.top = '60px'
     //sliderC.isVertical = true
 

@@ -3,22 +3,31 @@
 import * as BABYLON from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
-export default function ChuaPlot() {
+export default function ThreeScroll() {
   var butterflies
-  let attractor1, attractor2
+  let attractors = []
 
   let toggleAttractor = true
   let togglePanel = false
 
   let BYN = BABYLON
 
-  let a = 10,
-    b = 14.87,
-    c = -1.27,
-    d = -0.68
+  // let a = 40,
+  //   b = 0.833,
+  //   c = 20,
+  //   d = 0.5,
+  //   f = 0.65
 
-  let dt = 0.0001,
-    numPoints = 3000
+  let a = 40,
+    b = 55,
+    c = 11 / 6,
+    d = 0.16,
+    e = 0.65,
+    f = 20
+
+  let dt = 0.001,
+    numPoints = 24000,
+    numPart = 600
 
   let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
   let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
@@ -28,46 +37,46 @@ export default function ChuaPlot() {
     210 / 255,
     0.5
   )
-  let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.5)
-  let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.5)
+  let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.3)
+  let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.1)
   let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
   let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
   let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
   let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
   let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
-  let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.8)
-  var attractorColor1 = tomato //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
-  var attractorColor2 = seagreen // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
-  //var attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
-  var particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
-  //   var particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
-  //   var particleColor = new BYN.Color4(240 / 255, 128 / 255, 0 / 255, 1)
+  let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.1)
+  let thistle = new BYN.Color4(216 / 255, 191 / 255, 216 / 255, 0.2)
+  let orange = new BYN.Color4(255 / 255, 165 / 255, 0 / 255, 0.1)
+  let darkred = new BYN.Color4(139 / 255, 0, 0, 0.1)
+  let lightskyblue = new BABYLON.Color4(135 / 255, 206 / 255, 250 / 255, 1)
+  let tan = new BYN.Color4(210 / 255, 180 / 255, 140 / 255, 0.5)
+  let olive = new BYN.Color4(128 / 255, 12 / 2558, 0, 0.6)
+  let mediumseagreen = new BYN.Color4(60 / 255, 179 / 255, 113 / 255, 0.6)
 
-  let singularityZ = 0, //Math.sqrt(-a * b),
-    singularityX = 0, //Math.sqrt(3 * b * c),
-    singularityY = 0 // Math.sqrt(-3 * a * c)
+  let attractorColor = []
+  attractorColor[-2] = seagreen
+  attractorColor[0] = darkred
+  attractorColor[2] = lightskyblue
 
-  function f(x) {
-    return c * x + 0.5 * (d - c) * (Math.abs(x + 1) - Math.abs(x - 1))
-  }
+  var particleColor = gold // new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
 
   function makeVertices(N) {
     // make points for Lorenz
     let points = []
-    let y = 0.5,
-      z = 0.5
-    for (let t = -1; t < 2; t += 2) {
+    let y = 0.1,
+      z = 0.1
+    for (let t = -2; t < 4; t += 2) {
       let x = t
       points[t] = []
-      for (let j = 0; j < 300; j++) {
-        x = x + a * (-x + y - f(x) + 10) * dt
-        y = y + (x - y + z + 10) * dt
-        z = z - (b * y + 10) * dt
+      for (let j = 0; j < 400; j++) {
+        x = x + dt * (a * (y - x) + d * x * z)
+        y = y + dt * (b * x + f * y - x * z)
+        z = z + dt * (c * z + x * y - e * (x * x))
       }
-      for (let i = 0; i < N; i++) {
-        x = x + a * (-x + y - f(x)) * dt
-        y = y + (x - y + z) * dt
-        z = z - b * y * dt
+      for (let i = 0; i < N / 3; i++) {
+        x = x + dt * (a * (y - x) + d * x * z)
+        y = y + dt * (b * x + f * y - x * z)
+        z = z + dt * (c * z + x * y - e * (x * x))
         points[t].push(new BYN.Vector3(x, y, z)) // exchange z and y
       }
     }
@@ -89,50 +98,40 @@ export default function ChuaPlot() {
     )
 
     camera.attachControl(canvas, false)
-    camera.setPosition(new BYN.Vector3(10, 5, 10))
+    camera.setPosition(new BYN.Vector3(600, -600, 600))
     camera.minZ = 0.001
-    camera.maxZ = 1000
-    camera.setTarget(new BYN.Vector3(0, 0, 0))
+    camera.maxZ = 6000
+    camera.setTarget(new BYN.Vector3(0, 0, 50))
 
-    let axes = new BYN.AxesViewer(scene, 8)
+    //let axes = new BYN.AxesViewer(scene, 200)
 
     function updateAttractor() {
-      //let points =
-      let pointsLorenz = makeVertices(numPoints)[-1]
+      let pointsAttractor = makeVertices(numPoints)
 
-      attractor1 = BYN.MeshBuilder.CreateLines(
-        'Lorenz1',
-        { points: pointsLorenz, updatable: true },
-        scene
-      )
-      pointsLorenz = makeVertices(numPoints)[1]
-
-      attractor2 = BYN.MeshBuilder.CreateLines(
-        'Lorenz2',
-        { points: pointsLorenz, updatable: true },
-        scene
-      )
-
-      attractor1.color = attractorColor1
-      attractor2.color = attractorColor2
-
-      attractor1.isVisible = toggleAttractor
-      attractor2.isVisible = toggleAttractor
+      for (let t = -2; t < 4; t += 2) {
+        attractors[t] = BYN.MeshBuilder.CreateLines(
+          'Lorenz1',
+          { points: pointsAttractor[t], updatable: true },
+          scene
+        )
+        attractors[t].color = attractorColor[t]
+        attractors[t].isVisible = toggleAttractor
+      }
     }
 
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BYN.PointsCloudSystem('butterflies', 2.6, scene, {
+      butterflies = new BYN.PointsCloudSystem('butterflies', 4, scene, {
         updatable: true
       })
-      butterflies.addPoints(6000)
+      butterflies.addPoints(numPart)
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
           butterflies.particles[p].position = new BYN.Vector3(
-            Math.random() * 200,
-            Math.random() * 200,
-            Math.random() * 200
+            Math.random() * 500,
+            Math.random() * 500,
+            Math.random() * 500
           )
 
           butterflies.particles[p].color = particleColor
@@ -143,7 +142,7 @@ export default function ChuaPlot() {
         butterflies.setParticles()
 
         mesh.position.x = 0
-        mesh.position.y = 0 //-singularityZ
+        mesh.position.y = 0
         mesh.position.z = 0
         mesh.alwaysSelectAsActiveMesh = true
       })
@@ -153,9 +152,9 @@ export default function ChuaPlot() {
         let y = particle.position.y
         let z = particle.position.z
 
-        x = x + a * (-x + y - f(x)) * dt
-        y = y + (x - y + z) * dt
-        z = z - b * y * dt
+        x = x + dt * (a * (y - x) + d * x * z)
+        y = y + dt * (b * x + f * y - x * z)
+        z = z + dt * (c * z + x * y - e * (x * x))
 
         particle.position.x = x
         particle.position.y = y
@@ -192,17 +191,24 @@ export default function ChuaPlot() {
     hidePanel.fontSize = 18
     hidePanel.thickness = 0
     hidePanel.cornerRadius = 20
-    hidePanel.background = '#1e1e1e'
+    hidePanel.background = '#0f0f0f' //'#1e1e1e'
 
     hidePanel.onPointerUpObservable.add(function() {
       togglePanel = !togglePanel
       startButton.isVisible = togglePanel
-      sliderA.isVisible = togglePanel
       textA.isVisible = togglePanel
-      sliderB.isVisible = togglePanel
       textB.isVisible = togglePanel
-      sliderC.isVisible = togglePanel
       textC.isVisible = togglePanel
+      textD.isVisible = togglePanel
+      textE.isVisible = togglePanel
+      textF.isVisible = togglePanel
+      sliderA.isVisible = togglePanel
+      sliderB.isVisible = togglePanel
+      sliderC.isVisible = togglePanel
+      sliderD.isVisible = togglePanel
+      sliderE.isVisible = togglePanel
+      sliderF.isVisible = togglePanel
+
       startButton.isVisible = togglePanel
       hideAttractor.isVisible = togglePanel
     })
@@ -220,11 +226,13 @@ export default function ChuaPlot() {
     hideAttractor.thickness = 0
     hideAttractor.cornerRadius = 20
     //hideAttractor.bottom = '120px'
-    hideAttractor.background = '#1e1e1e'
+    hideAttractor.background = '#0f0f0f' //'#1e1e1e'
+
     hideAttractor.onPointerUpObservable.add(function() {
       toggleAttractor = !toggleAttractor
-      attractor1.isVisible = toggleAttractor
-      attractor2.isVisible = toggleAttractor
+      for (let t = -2; t < 4; t += 2) {
+        attractors[t].isVisible = toggleAttractor
+      }
     })
     panel.addControl(hideAttractor)
 
@@ -239,7 +247,7 @@ export default function ChuaPlot() {
     startButton.fontSize = 16
     startButton.thickness = 0
     startButton.cornerRadius = 20
-    startButton.background = '#1e1e1e'
+    startButton.background = '#0f0f0f' //'#1e1e1e'
     startButton.onPointerUpObservable.add(function() {
       butterflies.dispose()
       createParticles()
@@ -257,9 +265,9 @@ export default function ChuaPlot() {
 
     let sliderA = new BABYLON.GUI.Slider()
     sliderA.isVisible = togglePanel
-    sliderA.minimum = 0
-    sliderA.maximum = 10
-    sliderA.value = 5
+    sliderA.minimum = 32
+    sliderA.maximum = 50
+    sliderA.value = 40
 
     sliderA.height = '15px'
     sliderA.thumbWidth = 20
@@ -267,17 +275,17 @@ export default function ChuaPlot() {
     sliderA.color = 'green'
     sliderA.borderColor = 'black'
     sliderA.isThumbCircle = true
-    sliderA.step = 0.1
+    sliderA.step = 1
     //sliderA.top = '60px'
     //sliderA.isVertical = true
 
     sliderA.onValueChangedObservable.add(function(value) {
       textA.text = 'a = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
       a = value
+      for (let t = -2; t < 4; t += 2) {
+        attractors[t].dispose()
+      }
 
-      attractor1.dispose()
-      attractor2.dispose()
-      camera.setTarget(new BYN.Vector3(0, singularityZ, 0))
       updateAttractor()
 
       // Camera should follow the position of singularities....-------
@@ -295,9 +303,9 @@ export default function ChuaPlot() {
     panel.addControl(textB)
     let sliderB = new BABYLON.GUI.Slider()
     sliderB.isVisible = togglePanel
-    sliderB.minimum = -30
-    sliderB.maximum = -5
-    sliderB.value = -10
+    sliderB.minimum = 30
+    sliderB.maximum = 70
+    sliderB.value = 55
     sliderB.height = '15px'
     sliderB.thumbWidth = 20
     sliderB.width = '150px'
@@ -311,15 +319,16 @@ export default function ChuaPlot() {
     sliderB.onValueChangedObservable.add(function(value) {
       textB.text = 'b = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
       b = value
-      attractor1.dispose()
-      attractor2.dispose()
+      for (let t = -2; t < 4; t += 2) {
+        attractors[t].dispose()
+      }
       updateAttractor()
     })
     panel.addControl(sliderB)
 
     let textC = new BABYLON.GUI.TextBlock()
     textC.isVisible = togglePanel
-    textC.text = 'c = ' + c.toFixed(2).toString()
+    textC.text = 'c = ' + c.toFixed(1).toString()
     textC.color = '#08a31f'
     textC.height = '40px'
     textC.fontSize = 18
@@ -327,28 +336,131 @@ export default function ChuaPlot() {
     panel.addControl(textC)
     let sliderC = new BABYLON.GUI.Slider()
     sliderC.isVisible = togglePanel
-    sliderC.minimum = -1
-    sliderC.maximum = 0
-    sliderC.value = -0.38
+    sliderC.minimum = 0
+    sliderC.maximum = 10
+    sliderC.value = 11 / 6
     sliderC.height = '15px'
     sliderC.thumbWidth = 20
     sliderC.width = '150px'
     sliderC.color = 'green'
     sliderC.borderColor = 'black'
     sliderC.isThumbCircle = true
-    sliderC.step = 0.01
+    sliderC.step = 0.1
     //sliderC.top = '60px'
     //sliderC.isVertical = true
 
     sliderC.onValueChangedObservable.add(function(value) {
       textC.text = 'c = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
       c = value
-      attractor1.dispose()
-      attractor2.dispose()
-      camera.setTarget(new BYN.Vector3(0, singularityZ, 0))
+      for (let t = -2; t < 4; t += 2) {
+        attractors[t].dispose()
+      }
+
       updateAttractor()
     })
     panel.addControl(sliderC)
+
+    let textD = new BABYLON.GUI.TextBlock()
+    textD.isVisible = togglePanel
+    textD.text = 'd = ' + d.toFixed(2).toString()
+    textD.color = '#08a31f'
+    textD.height = '40px'
+    textD.fontSize = 18
+    //textD.top = '40px'
+    panel.addControl(textD)
+    let sliderD = new BABYLON.GUI.Slider()
+    sliderD.isVisible = togglePanel
+    sliderD.minimum = 0
+    sliderD.maximum = 0.22
+    sliderD.value = 0.16
+    sliderD.height = '15px'
+    sliderD.thumbWidth = 20
+    sliderD.width = '150px'
+    sliderD.color = 'green'
+    sliderD.borderColor = 'black'
+    sliderD.isThumbCircle = true
+    sliderD.step = 0.01
+    //sliderD.top = '60px'
+    //sliderD.isVertical = true
+
+    sliderD.onValueChangedObservable.add(function(value) {
+      textD.text = 'd = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
+      d = value
+      for (let t = -2; t < 4; t += 2) {
+        attractors[t].dispose()
+      }
+
+      updateAttractor()
+    })
+    panel.addControl(sliderD)
+
+    let textE = new BABYLON.GUI.TextBlock()
+    textE.isVisible = togglePanel
+    textE.text = 'e = ' + e.toFixed(2).toString()
+    textE.color = '#08a31f'
+    textE.height = '40px'
+    textE.fontSize = 18
+    //textE.top = '40px'
+    panel.addControl(textE)
+    let sliderE = new BABYLON.GUI.Slider()
+    sliderE.isVisible = togglePanel
+    sliderE.minimum = 0.54
+    sliderE.maximum = 0.72
+    sliderE.value = 0.65
+    sliderE.height = '15px'
+    sliderE.thumbWidth = 20
+    sliderE.width = '150px'
+    sliderE.color = 'green'
+    sliderE.borderColor = 'black'
+    sliderE.isThumbCircle = true
+    sliderE.step = 0.01
+    //sliderE.top = '60px'
+    //sliderE.isVertical = true
+
+    sliderE.onValueChangedObservable.add(function(value) {
+      textE.text = 'e = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
+      e = value
+      for (let t = -2; t < 4; t += 2) {
+        attractors[t].dispose()
+      }
+
+      updateAttractor()
+    })
+    panel.addControl(sliderE)
+
+    let textF = new BABYLON.GUI.TextBlock()
+    textF.isVisible = togglePanel
+    textF.text = 'f = ' + f.toFixed(0).toString()
+    textF.color = '#08a31f'
+    textF.height = '40px'
+    textF.fontSize = 18
+    //textF.top = '40px'
+    panel.addControl(textF)
+    let sliderF = new BABYLON.GUI.Slider()
+    sliderF.isVisible = togglePanel
+    sliderF.minimum = -5
+    sliderF.maximum = 24
+    sliderF.value = 20
+    sliderF.height = '15px'
+    sliderF.thumbWidth = 20
+    sliderF.width = '150px'
+    sliderF.color = 'green'
+    sliderF.borderColor = 'black'
+    sliderF.isThumbCircle = true
+    sliderF.step = 1
+    //sliderF.top = '60px'
+    //sliderF.isVertical = true
+
+    sliderF.onValueChangedObservable.add(function(value) {
+      textF.text = 'f = ' + value.toFixed(0).toString() //(BABYLON.Tools.toString(value) | 0)
+      f = value
+      for (let t = -2; t < 4; t += 2) {
+        attractors[t].dispose()
+      }
+
+      updateAttractor()
+    })
+    panel.addControl(sliderF)
 
     let panel2 = new BABYLON.GUI.StackPanel()
     panel2.width = '500px'
@@ -380,9 +492,9 @@ export default function ChuaPlot() {
   engine.runRenderLoop(function() {
     let route = window.location.pathname
     if (
-      route == 'www.dydx.ufes.br/Attractors/chenlee' ||
-      route == '/Attractors/chenlee/' ||
-      route == '/Attractors/chenlee'
+      route == 'www.dydx.ufes.br/Attractors/3scroll' ||
+      route == '/Attractors/3scroll/' ||
+      route == '/Attractors/3scroll'
     ) {
       scene.render()
     } else {

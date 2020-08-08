@@ -233,7 +233,7 @@ export default {
 
 <style scoped>
 #lorenzCanvas {
-  width: 90vw;
+  width: 84vw;
   height: 80vh;
   touch-action: none;
   scroll-behavior: smooth;

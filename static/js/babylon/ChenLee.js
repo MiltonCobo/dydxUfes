@@ -90,7 +90,7 @@ export default function ChenLeePlot() {
     )
     camera.minZ = 0.001
     camera.maxZ = 1000
-    camera.setTarget(new BYN.Vector3(0, singularityZ, 0))
+    camera.setTarget(new BYN.Vector3(0, 0, 0))
 
     let axes = new BYN.AxesViewer(scene, 8)
 

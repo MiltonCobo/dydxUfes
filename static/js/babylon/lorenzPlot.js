@@ -183,7 +183,7 @@ export default function lorenzPlot() {
     hidePanel.fontSize = 18
     hidePanel.thickness = 0
     hidePanel.cornerRadius = 20
-    hidePanel.background = '#1e1e1e'
+    hidePanel.background = '#0f0f0f' // '#1e1e1e'
 
     hidePanel.onPointerUpObservable.add(function() {
       togglePanel = !togglePanel
@@ -211,7 +211,7 @@ export default function lorenzPlot() {
     hideAttractor.thickness = 0
     hideAttractor.cornerRadius = 20
     //hideAttractor.bottom = '120px'
-    hideAttractor.background = '#1e1e1e'
+    hideAttractor.background = '#0f0f0f' //'#1e1e1e'
     hideAttractor.onPointerUpObservable.add(function() {
       toggleAttractor = !toggleAttractor
       attractor1.isVisible = toggleAttractor
@@ -230,7 +230,7 @@ export default function lorenzPlot() {
     startButton.fontSize = 16
     startButton.thickness = 0
     startButton.cornerRadius = 20
-    startButton.background = '#1e1e1e'
+    startButton.background = '#0f0f0f' //'#1e1e1e'
     startButton.onPointerUpObservable.add(function() {
       butterflies.dispose()
       createParticles()

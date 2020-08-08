@@ -75,7 +75,6 @@
 </template>
 
 <script>
-// import ChuaPlot from '@/static/js/babylon/Chua.js'
 import ChenLeePlot from '@/static/js/babylon/ChenLee.js'
 
 export default {
@@ -155,7 +154,7 @@ export default {
 <style scoped>
 #lorenzCanvas {
   width: 90vw;
-  height: 80vh;
+  height: 90vh;
   touch-action: auto;
   scroll-behavior: smooth;
 

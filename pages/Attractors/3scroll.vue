@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <h2 style="color: black;" align="center">
-          O Atrator de Chen
+          O Atrator <i>Three Scroll</i>
         </h2>
         <!-- color attractor #f59700; -->
         <v-divider style="margin-bottom:0.5%;" />
@@ -17,35 +17,11 @@
 
     <v-row
       ><v-col class="mathjax">
-        O atrator de Chen corresponde as equações: \[ \begin{cases}
-        \dfrac{dx}{dt} = a(x-y) \\ \dfrac{dy}{dt} = (c-a)x-xz + cy \\
-        \dfrac{dz}{dt} = xy-bz \end{cases} \] com parâmetros $a = 35, b=3 $ e
-        $c=28.$
+        O atrator de "Three scroll" (com três rolagens) corresponde as equações:
+        \[ \begin{cases} \dfrac{dx}{dt} = a(y-x) + dxz \\ \dfrac{dy}{dt} = bx +
+        fy -xz \\ \dfrac{dz}{dt} = -ex^2 + xy + cz\end{cases} \] com parâmetros
+        $a = 40, b= 55, c=11/6, d= 0.16, e = 0.65$ e $f=20.$
         <br />
-        A presença de atratores caóticos foi observada pelo Leon Chua em certos
-        circuitos eletrônicos, chamados de
-        <a href="https://en.wikipedia.org/wiki/Chua%27s_circuit"
-          >circuitos de Chua.</a
-        >
-        Os atratores foram chamados de
-        <i>turbilhões duplos</i> (double scroll) pois se asemelham a dois dos
-        anéis de Saturno conectados por uma hélice (em tradução livre).
-        <br />
-        No ano de 1999 Guanrong Chen propós a versão do atrator que mostramos
-        nesta animação. Posteriormente outras generalizações destes atratores,
-        chamadas de
-        <i>multi-scroll</i> foram encontradas (ver a página de wikipedia nas
-        referências) e em breve iremos apresentar algumas delas.
-        <br />
-        Para ver o
-        <i>turbilhão</i> mais claramente apague o atrator, faça $a\le 28$ no
-        <i>slider</i> e afaste um pouco a figura. Recrie então as partículas.
-        Observa-se que a maioria das trajetórias converge para uma trajetória
-        periódica formando uma espécie de turbilhão. Recentemente também foi
-        descoberto que existem outros pequenos atratores escondidos dentro da
-        hélice do atrator. O sistema tem dois pontos críticos (além da origem)
-        em $(\pm\sqrt{(2c-a)b}, 2c-a)$ e quando $a$ se aproxima de $56$ estes
-        pontos críticos se tornam atratores e se aproximam da origem.
       </v-col>
     </v-row>
 
@@ -54,15 +30,16 @@
         <ol>
           <u>Referências:</u>
           <li class="mt-4">
-            Multiscroll attractor.
             <a
-              href="https://en.wikipedia.org/wiki/Multiscroll_attractor"
+              href="https://www.sciencedirect.com/science/article/pii/S0375960107010584"
               target="_blank"
             >
-              Wikipedia.
+              A three-scroll chaotic attractor.
             </a>
+            Dequan Li. Physics Letters A Volume 372, Issue 4, 21 January 2008,
+            Pages 387-393.
           </li>
-          <li>
+          <!-- <li>
             Chua, Leon (2007).
             <a
               href="http://www.scholarpedia.org/article/Chua_circuit"
@@ -92,7 +69,7 @@
               applications (pdf).
             </a>
           </li>
-          International Journal of Bifurcation and Chaos. 16 (4): 793–794.
+          International Journal of Bifurcation and Chaos. 16 (4): 793–794. -->
         </ol>
       </v-col>
     </v-row>
@@ -100,7 +77,7 @@
 </template>
 
 <script>
-import QiChenPlot from '@/static/js/babylon/QiChen.js'
+import ThreeScroll from '@/static/js/babylon/ThreeScroll.js'
 
 export default {
   // layout: 'darkTheme',
@@ -135,7 +112,7 @@ export default {
       this.startBabylonPlot
     },
     startBabylonPlot() {
-      QiChenPlot()
+      ThreeScroll()
     }
   },
   updated() {
@@ -179,7 +156,7 @@ export default {
 <style scoped>
 #lorenzCanvas {
   width: 84vw;
-  height: 80vh;
+  height: 90vh;
   touch-action: auto;
   scroll-behavior: smooth;
 
