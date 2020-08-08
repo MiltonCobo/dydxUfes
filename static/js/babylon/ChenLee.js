@@ -17,7 +17,7 @@ export default function ChenLeePlot() {
     c = -0.38
 
   var dt = 0.0045,
-    numPoints = 14000
+    numPoints = 15000
 
   let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
   let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
@@ -55,7 +55,7 @@ export default function ChenLeePlot() {
         z = t,
         x = t
       points[t] = []
-      for (let j = 0; j < 300; j++) {
+      for (let j = 0; j < 400; j++) {
         x = x + (a * x - y * z) * dt
         y = y + (b * y + x * z) * dt
         z = z + (c * z + (x * y) / 3) * dt

@@ -26,37 +26,38 @@ export default function ThreeScroll() {
     f = 20
 
   let dt = 0.001,
-    numPoints = 24000,
+    numPoints = 35000,
     numPart = 600
 
-  let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
-  let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
-  let lightgoldenrodyellow = new BYN.Color4(
-    250 / 255,
-    250 / 255,
-    210 / 255,
-    0.5
-  )
-  let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.3)
-  let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.1)
-  let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
-  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
-  let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
-  let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
-  let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
+  // let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
+  // let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
+  // let lightgoldenrodyellow = new BYN.Color4(
+  //   250 / 255,
+  //   250 / 255,
+  //   210 / 255,
+  //   0.5
+  // )
+  // let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.1)
+  // let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
+  // let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
+  // let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
+  // let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
+  // let thistle = new BYN.Color4(216 / 255, 191 / 255, 216 / 255, 0.2)
+  // let orange = new BYN.Color4(255 / 255, 165 / 255, 0 / 255, 0.1)
+  // let darkred = new BYN.Color4(139 / 255, 0, 0, 0.1)
+  // let tan = new BYN.Color4(210 / 255, 180 / 255, 140 / 255, 0.5)
+  // let olive = new BYN.Color4(128 / 255, 12 / 2558, 0, 0.6)
+  // let mediumseagreen = new BYN.Color4(60 / 255, 179 / 255, 113 / 255, 0.6)
+
   let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.1)
-  let thistle = new BYN.Color4(216 / 255, 191 / 255, 216 / 255, 0.2)
-  let orange = new BYN.Color4(255 / 255, 165 / 255, 0 / 255, 0.1)
-  let darkred = new BYN.Color4(139 / 255, 0, 0, 0.1)
+  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
+  let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.3)
   let lightskyblue = new BABYLON.Color4(135 / 255, 206 / 255, 250 / 255, 1)
-  let tan = new BYN.Color4(210 / 255, 180 / 255, 140 / 255, 0.5)
-  let olive = new BYN.Color4(128 / 255, 12 / 2558, 0, 0.6)
-  let mediumseagreen = new BYN.Color4(60 / 255, 179 / 255, 113 / 255, 0.6)
 
   let attractorColor = []
   attractorColor[-2] = seagreen
-  attractorColor[0] = darkred
-  attractorColor[2] = lightskyblue
+  attractorColor[0] = lightskyblue
+  attractorColor[2] = tomato
 
   var particleColor = gold // new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
 
@@ -64,11 +65,12 @@ export default function ThreeScroll() {
     // make points for Lorenz
     let points = []
     let y = 0.1,
-      z = 0.1
+      z = 400
     for (let t = -2; t < 4; t += 2) {
-      let x = t
+      let x = t * 200
+
       points[t] = []
-      for (let j = 0; j < 400; j++) {
+      for (let j = 0; j < 800; j++) {
         x = x + dt * (a * (y - x) + d * x * z)
         y = y + dt * (b * x + f * y - x * z)
         z = z + dt * (c * z + x * y - e * (x * x))
@@ -77,7 +79,7 @@ export default function ThreeScroll() {
         x = x + dt * (a * (y - x) + d * x * z)
         y = y + dt * (b * x + f * y - x * z)
         z = z + dt * (c * z + x * y - e * (x * x))
-        points[t].push(new BYN.Vector3(x, y, z)) // exchange z and y
+        points[t].push(new BYN.Vector3(x, z, y)) // exchange z and y
       }
     }
 
@@ -98,12 +100,11 @@ export default function ThreeScroll() {
     )
 
     camera.attachControl(canvas, false)
-    camera.setPosition(new BYN.Vector3(600, -600, 600))
+    camera.setPosition(new BYN.Vector3(400, 200, -400))
     camera.minZ = 0.001
     camera.maxZ = 6000
-    camera.setTarget(new BYN.Vector3(0, 0, 50))
-
-    //let axes = new BYN.AxesViewer(scene, 200)
+    camera.setTarget(new BYN.Vector3(0, 100, 0))
+    let axes = new BYN.AxesViewer(scene, 50)
 
     function updateAttractor() {
       let pointsAttractor = makeVertices(numPoints)
@@ -129,9 +130,9 @@ export default function ThreeScroll() {
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
           butterflies.particles[p].position = new BYN.Vector3(
-            Math.random() * 500,
-            Math.random() * 500,
-            Math.random() * 500
+            Math.random() * 600,
+            Math.random() * 600,
+            Math.random() * 600
           )
 
           butterflies.particles[p].color = particleColor
@@ -152,9 +153,11 @@ export default function ThreeScroll() {
         let y = particle.position.y
         let z = particle.position.z
 
-        x = x + dt * (a * (y - x) + d * x * z)
-        y = y + dt * (b * x + f * y - x * z)
-        z = z + dt * (c * z + x * y - e * (x * x))
+        x = x + dt * (a * (z - x) + d * x * y)
+
+        z = z + dt * (b * x + f * z - x * y) // exchange z and y
+
+        y = y + dt * (c * y + x * z - e * (x * x))
 
         particle.position.x = x
         particle.position.y = y
