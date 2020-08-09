@@ -191,12 +191,12 @@ export default function QiChenPlot() {
       'Controles'
     )
     hidePanel.width = '100px'
-    hidePanel.height = '40px'
+    hidePanel.height = '42px'
     hidePanel.color = '#08a31f'
     hidePanel.fontSize = 18
     hidePanel.thickness = 0
     hidePanel.cornerRadius = 20
-    hidePanel.background = '#1e1e1e'
+    hidePanel.background = '#0f0f0f'
 
     hidePanel.onPointerUpObservable.add(function() {
       togglePanel = !togglePanel
@@ -215,13 +215,13 @@ export default function QiChenPlot() {
     )
     hideAttractor.isVisible = togglePanel
     hideAttractor.width = '100px'
-    hideAttractor.height = '40px'
+    hideAttractor.height = '42px'
     hideAttractor.color = '#08a31f'
     hideAttractor.fontSize = 16
     hideAttractor.thickness = 0
     hideAttractor.cornerRadius = 20
     //hideAttractor.bottom = '120px'
-    hideAttractor.background = '#1e1e1e'
+    hideAttractor.background = '#0f0f0f'
     hideAttractor.onPointerUpObservable.add(function() {
       toggleAttractor = !toggleAttractor
       for (let t = -2; t < 5; t += 2) {
@@ -236,12 +236,12 @@ export default function QiChenPlot() {
     )
     startButton.isVisible = togglePanel
     startButton.width = '140px'
-    startButton.height = '40px'
+    startButton.height = '42px'
     startButton.color = '#08a31f'
     startButton.fontSize = 16
     startButton.thickness = 0
     startButton.cornerRadius = 20
-    startButton.background = '#1e1e1e'
+    startButton.background = '#0f0f0f'
     startButton.onPointerUpObservable.add(function() {
       butterflies.dispose()
       createParticles()
@@ -262,15 +262,16 @@ export default function QiChenPlot() {
     sliderA.minimum = 1.2
     sliderA.maximum = 1.8
     sliderA.value = 1.4
-    sliderA.height = '25px'
+    sliderA.height = '45px'
     sliderA.thumbWidth = 20
     sliderA.width = '150px'
     sliderA.color = '#08a31f'
     sliderA.borderColor = 'black'
-    sliderA.background = '#1e1e1e'
+    sliderA.background = '#2f2f2f'
     sliderA.isThumbCircle = true
     sliderA.step = 0.1
-    //sliderA.top = '60px'
+    // sliderA.top = '-100px'
+    sliderA.paddingBottom = '20px' // elevate the slider
     //sliderA.isVertical = true
 
     sliderA.onValueChangedObservable.add(function(value) {
@@ -286,7 +287,7 @@ export default function QiChenPlot() {
     panel.addControl(sliderA)
 
     let panel2 = new BABYLON.GUI.StackPanel()
-    panel2.width = '500px'
+    panel2.width = '400px'
     panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
     panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel2)

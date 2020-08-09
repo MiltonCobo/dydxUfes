@@ -205,12 +205,12 @@ export default function QiChenPlot() {
       'Controles'
     )
     hidePanel.width = '100px'
-    hidePanel.height = '40px'
+    hidePanel.height = '42px'
     hidePanel.color = '#08a31f'
     hidePanel.fontSize = 18
     hidePanel.thickness = 0
     hidePanel.cornerRadius = 20
-    hidePanel.background = '#0f0f0f' // '#1e1e1e'
+    hidePanel.background = '#0f0f0f'
 
     hidePanel.onPointerUpObservable.add(function() {
       togglePanel = !togglePanel
@@ -232,7 +232,7 @@ export default function QiChenPlot() {
     )
     hideAttractor.isVisible = togglePanel
     hideAttractor.width = '100px'
-    hideAttractor.height = '40px'
+    hideAttractor.height = '42px'
     hideAttractor.color = '#08a31f'
     hideAttractor.fontSize = 16
     hideAttractor.thickness = 0
@@ -252,7 +252,7 @@ export default function QiChenPlot() {
     )
     startButton.isVisible = togglePanel
     startButton.width = '140px'
-    startButton.height = '40px'
+    startButton.height = '42px'
     startButton.color = '#08a31f'
     startButton.fontSize = 16
     startButton.thickness = 0
@@ -268,7 +268,7 @@ export default function QiChenPlot() {
     textA.isVisible = togglePanel
     textA.text = 'a = ' + a.toFixed(1).toString()
     textA.color = '#08a31f'
-    textA.height = '40px'
+    textA.height = '42px'
     textA.fontSize = 18
     textA.top = '40px'
     panel.addControl(textA)
@@ -286,7 +286,7 @@ export default function QiChenPlot() {
     sliderA.borderColor = 'black'
     sliderA.isThumbCircle = true
     sliderA.step = 0.1
-    sliderA.background = '#1e1e1e'
+    sliderA.background = '#2f2f2f'
     //sliderA.top = '60px'
     //sliderA.isVertical = true
 
@@ -308,7 +308,7 @@ export default function QiChenPlot() {
     textB.isVisible = togglePanel
     textB.text = 'b = ' + b.toFixed(0).toString()
     textB.color = '#08a31f'
-    textB.height = '40px'
+    textB.height = '42px'
     textB.fontSize = 18
     //textB.top = '40px'
     panel.addControl(textB)
@@ -324,7 +324,7 @@ export default function QiChenPlot() {
     sliderB.borderColor = 'black'
     sliderB.isThumbCircle = true
     sliderB.step = 0.5
-    sliderB.background = '#1e1e1e'
+    sliderB.background = '#2f2f2f'
     //sliderB.top = '60px'
     //sliderB.isVertical = true
 
@@ -341,7 +341,7 @@ export default function QiChenPlot() {
     textC.isVisible = togglePanel
     textC.text = 'c = ' + c.toFixed(1).toString()
     textC.color = '#08a31f'
-    textC.height = '40px'
+    textC.height = '42px'
     textC.fontSize = 18
     //textC.top = '40px'
     panel.addControl(textC)
@@ -350,15 +350,15 @@ export default function QiChenPlot() {
     sliderC.minimum = 20
     sliderC.maximum = 40
     sliderC.value = 28
-    sliderC.height = '15px'
+    sliderC.height = '30px'
     sliderC.thumbWidth = 20
     sliderC.width = '150px'
     sliderC.color = 'green'
     sliderC.borderColor = 'black'
     sliderC.isThumbCircle = true
     sliderC.step = 0.1
-    sliderC.background = '#1e1e1e'
-    //sliderC.top = '60px'
+    sliderC.background = '#2f2f2f'
+    sliderC.paddingBottom = '15px'
     //sliderC.isVertical = true
 
     sliderC.onValueChangedObservable.add(function(value) {
@@ -372,7 +372,7 @@ export default function QiChenPlot() {
     panel.addControl(sliderC)
 
     let panel2 = new BABYLON.GUI.StackPanel()
-    panel2.width = '500px'
+    panel2.width = '400px'
     panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
     panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel2)

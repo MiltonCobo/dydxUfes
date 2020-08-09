@@ -178,7 +178,7 @@ export default function lorenzPlot() {
       'Controles'
     )
     hidePanel.width = '100px'
-    hidePanel.height = '40px'
+    hidePanel.height = '42px'
     hidePanel.color = '#08a31f'
     hidePanel.fontSize = 18
     hidePanel.thickness = 0
@@ -205,7 +205,7 @@ export default function lorenzPlot() {
     )
     hideAttractor.isVisible = togglePanel
     hideAttractor.width = '100px'
-    hideAttractor.height = '40px'
+    hideAttractor.height = '42px'
     hideAttractor.color = '#08a31f'
     hideAttractor.fontSize = 16
     hideAttractor.thickness = 0
@@ -225,7 +225,7 @@ export default function lorenzPlot() {
     )
     startButton.isVisible = togglePanel
     startButton.width = '140px'
-    startButton.height = '40px'
+    startButton.height = '42px'
     startButton.color = '#08a31f'
     startButton.fontSize = 16
     startButton.thickness = 0
@@ -241,7 +241,7 @@ export default function lorenzPlot() {
     textRho.isVisible = togglePanel
     textRho.text = 'rho = ' + rho.toFixed(0).toString()
     textRho.color = '#08a31f'
-    textRho.height = '40px'
+    textRho.height = '42px'
     textRho.fontSize = 18
     textRho.top = '40px'
     panel.addControl(textRho)
@@ -278,7 +278,7 @@ export default function lorenzPlot() {
     textSigma.isVisible = togglePanel
     textSigma.text = 'sigma = ' + sigma.toFixed(0).toString()
     textSigma.color = '#08a31f'
-    textSigma.height = '40px'
+    textSigma.height = '42px'
     textSigma.fontSize = 18
     //textSigma.top = '40px'
     panel.addControl(textSigma)
@@ -310,7 +310,7 @@ export default function lorenzPlot() {
     textBeta.isVisible = togglePanel
     textBeta.text = 'beta = 8/3 ' //+ beta.toFixed(1).toString()
     textBeta.color = '#08a31f'
-    textBeta.height = '40px'
+    textBeta.height = '42px'
     textBeta.fontSize = 18
     //textBeta.top = '40px'
     panel.addControl(textBeta)
@@ -319,13 +319,15 @@ export default function lorenzPlot() {
     sliderBeta.minimum = 0
     sliderBeta.maximum = 20
     sliderBeta.value = 10
-    sliderBeta.height = '15px'
+    sliderBeta.height = '30px'
     sliderBeta.thumbWidth = 20
     sliderBeta.width = '150px'
     sliderBeta.color = 'green'
     sliderBeta.borderColor = 'black'
     sliderBeta.isThumbCircle = true
     sliderBeta.step = 0.1
+    sliderBeta.paddingBottom = '15px'
+
     //sliderBeta.top = '60px'
     //sliderBeta.isVertical = true
 
@@ -339,7 +341,7 @@ export default function lorenzPlot() {
     panel.addControl(sliderBeta)
 
     let panel2 = new BABYLON.GUI.StackPanel()
-    panel2.width = '500px'
+    panel2.width = '400px'
     panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
     panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel2)

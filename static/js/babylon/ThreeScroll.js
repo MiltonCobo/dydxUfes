@@ -18,8 +18,8 @@ export default function ThreeScroll() {
   //   d = 0.5,
   //   f = 0.65
 
-  let a = 40,
-    b = 55,
+  let a = 42,
+    b = 43,
     c = 11 / 6,
     d = 0.16,
     e = 0.65,
@@ -270,7 +270,7 @@ export default function ThreeScroll() {
     sliderA.isVisible = togglePanel
     sliderA.minimum = 32
     sliderA.maximum = 50
-    sliderA.value = 40
+    sliderA.value = 42
 
     sliderA.height = '15px'
     sliderA.thumbWidth = 20
@@ -279,6 +279,7 @@ export default function ThreeScroll() {
     sliderA.borderColor = 'black'
     sliderA.isThumbCircle = true
     sliderA.step = 1
+    sliderA.background = '#2f2f2f'
     //sliderA.top = '60px'
     //sliderA.isVertical = true
 
@@ -308,7 +309,7 @@ export default function ThreeScroll() {
     sliderB.isVisible = togglePanel
     sliderB.minimum = 30
     sliderB.maximum = 70
-    sliderB.value = 55
+    sliderB.value = 43
     sliderB.height = '15px'
     sliderB.thumbWidth = 20
     sliderB.width = '150px'
@@ -316,6 +317,7 @@ export default function ThreeScroll() {
     sliderB.borderColor = 'black'
     sliderB.isThumbCircle = true
     sliderB.step = 1
+    sliderB.background = '#2f2f2f'
     //sliderB.top = '60px'
     //sliderB.isVertical = true
 
@@ -349,6 +351,7 @@ export default function ThreeScroll() {
     sliderC.borderColor = 'black'
     sliderC.isThumbCircle = true
     sliderC.step = 0.1
+    sliderC.background = '#2f2f2f'
     //sliderC.top = '60px'
     //sliderC.isVertical = true
 
@@ -383,6 +386,8 @@ export default function ThreeScroll() {
     sliderD.borderColor = 'black'
     sliderD.isThumbCircle = true
     sliderD.step = 0.01
+    sliderD.background = '#2f2f2f'
+
     //sliderD.top = '60px'
     //sliderD.isVertical = true
 
@@ -417,6 +422,8 @@ export default function ThreeScroll() {
     sliderE.borderColor = 'black'
     sliderE.isThumbCircle = true
     sliderE.step = 0.01
+    sliderE.background = '#2f2f2f'
+
     //sliderE.top = '60px'
     //sliderE.isVertical = true
 
@@ -444,13 +451,16 @@ export default function ThreeScroll() {
     sliderF.minimum = -5
     sliderF.maximum = 24
     sliderF.value = 20
-    sliderF.height = '15px'
+    sliderF.height = '30px'
     sliderF.thumbWidth = 20
     sliderF.width = '150px'
     sliderF.color = 'green'
     sliderF.borderColor = 'black'
     sliderF.isThumbCircle = true
     sliderF.step = 1
+    sliderF.background = '#2f2f2f'
+    sliderF.paddingBottom = '15px'
+
     //sliderF.top = '60px'
     //sliderF.isVertical = true
 
@@ -466,7 +476,7 @@ export default function ThreeScroll() {
     panel.addControl(sliderF)
 
     let panel2 = new BABYLON.GUI.StackPanel()
-    panel2.width = '500px'
+    panel2.width = '400px'
     panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
     panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel2)
