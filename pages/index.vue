@@ -104,12 +104,14 @@ export default {
   //layout: 'darkTheme',
   created() {},
   mounted() {
+    //window.PlotlyConfig = { MathJaxConfig: 'local' }
     if (!window.p5) {
       const script = document.createElement('script')
       script.type = 'text/javascript'
       script.addEventListener('load', this.startp5Plot)
-      script.src =
-        'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
+      script.src = '../../../js/p5/p5.min.js' // new version of p5
+      //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
+
       document.head.appendChild(script)
     } else {
       // console.log('p5 is here')
@@ -120,10 +122,14 @@ export default {
       const script = document.createElement('script')
       script.type = 'text/javascript'
       script.src = '../../../js/MathJax/mathjax2Config.js'
-      script.addEventListener('load', this.onMathJaxLoaded)
       document.head.appendChild(script)
+      script.addEventListener('load', this.onMathJaxLoaded)
     } else {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //MathJax.typeset()
+      if (MathJax.Hub) {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        //console.log('MathJax.Hub!')
+      }
     }
   },
   destroyed() {
@@ -131,7 +137,11 @@ export default {
   },
   methods: {
     onMathJaxLoaded() {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //MathJax.typeset()
+      if (MathJax.Hub) {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        console.log('MathJax.Hub!')
+      }
     },
     startp5Plot() {
       let divFigure = this.$refs.container
@@ -140,7 +150,9 @@ export default {
     }
   },
   updated() {
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
 
   data() {
@@ -172,14 +184,15 @@ export default {
         }
       ],
       script: [
-        {
-          type: 'text/javascript',
-          //src: '/js/p5/p5.min.js',
-          src: 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js',
-          // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
-          async: false,
-          defer: false
-        }
+        // {
+        //   type: 'text/javascript',
+        //   //src: '/js/p5/p5.min.js',
+        //   src: 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js',
+        //   //'../../../js/p5/p5.min.js',
+        //   // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+        //   async: false,
+        //   defer: false
+        // }
         // {
         //   type: 'text/javascript',
         //   src: '/js/p5/p5.dom.js',

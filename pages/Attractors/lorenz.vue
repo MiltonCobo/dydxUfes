@@ -38,8 +38,8 @@
         inferiores. Após numerosas simplificações, Lorenz chegou no seguinte
         sistema de equações diferenciais, que é uma forma de indicar a
         velocidade de uma partícula que se encontra num ponto $(x,y,z)$ no
-        instante $t$: \[ \begin{cases} \dfrac{dx}{dt} = -\sigma x+\sigma y \\
-        \dfrac{dy}{dt} = -xz+\rho x-y \\ \dfrac{dz}{dt} = xy-\beta z.
+        instante $t$: \[ \begin{cases} \dfrac{dx}{dt} = \sigma(y-x) \\
+        \dfrac{dy}{dt} = \rho x -xz -y \\ \dfrac{dz}{dt} = xy-\beta z.
         \end{cases} \] Neste sistema $\sigma, \beta$ e $\rho$ são parâmetros
         usados em mecânica de fluidos. $\sigma$ é o chamado
         <i>número de Prandtl,</i> ($\sigma = 4.8$ para a água e $\sigma = 1$
@@ -182,7 +182,9 @@ export default {
     //console.log('destroyed foi ativado')
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
 
   methods: {
@@ -194,7 +196,9 @@ export default {
     }
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
 
   data() {

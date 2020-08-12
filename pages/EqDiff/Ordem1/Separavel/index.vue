@@ -77,11 +77,11 @@ export default {
     }
   },
   mounted() {
-    // let windowWidth = window.innerWidth
-    // let windowHeight = window.innerHeight
+    let windowWidth = window.innerWidth
+    let windowHeight = window.innerHeight
 
-    // this.$store.setWindowWidth(windowWidth)
-    // this.$store.setWindowHeight(windowHeight)
+    this.$store.setWindowWidth(windowWidth)
+    this.$store.setWindowHeight(windowHeight)
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {

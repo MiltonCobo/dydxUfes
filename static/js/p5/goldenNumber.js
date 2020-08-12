@@ -176,57 +176,58 @@ export default function goldenRatio(p) {
     }
   }
 
-  function setCanvasSize() {
-    let canvas = document.getElementById('container-figure')
+  // function setCanvasSize() {
+  //   let canvas = document.getElementById('container-figure')
 
-    let canvasRect = canvas.getBoundingClientRect()
+  //   let canvasRect = canvas.getBoundingClientRect()
 
-    let width, height
+  //   let width, height
 
-    let windowW = window.innerWidth
-    let windowH = window.innerHeight
+  //   let windowW = window.innerWidth
+  //   let windowH = window.innerHeight
 
-    let aspRatio = windowH / windowW
+  //   let aspRatio = windowH / windowW
 
-    if (windowW < 600) {
-      width = 0.98 * windowW
-      height = 1.1 * width
-      r0 = 0.03 * windowW
-      c = 6
-    } else if (windowW > 600 && aspRatio > 1) {
-      width = 0.98 * canvasRect.width
-      height = canvasRect.width
-      r0 = Math.max(Math.floor(0.002 * windowW), 11) // LINE ADDED
-    } else {
-      width = 0.98 * canvasRect.width
-      height = 1.5 * canvasRect.width * aspRatio
-      r0 = Math.max(Math.floor(0.003 * windowW), 11) // LINE ADDED
-    }
-    return { w: width, h: height }
+  //   if (windowW < 600) {
+  //     width = 0.98 * windowW
+  //     height = 1.1 * width
+  //     r0 = 0.03 * windowW
+  //     c = 6
+  //   } else if (windowW > 600 && aspRatio > 1) {
+  //     width = 0.98 * canvasRect.width
+  //     height = canvasRect.width
+  //     r0 = Math.max(Math.floor(0.002 * windowW), 11) // LINE ADDED
+  //   } else {
+  //     width = 0.98 * canvasRect.width
+  //     height = 1.5 * canvasRect.width * aspRatio
+  //     r0 = Math.max(Math.floor(0.003 * windowW), 11) // LINE ADDED
+  //   }
+  //   return { w: width, h: height }
 
-    //let viewport = getViewportSize()
-    // let aspectRatioInverse = viewport.h / viewport.w
-    // let factor = 0.5 // almost 60%
-    // if (viewport.w < 600) {
-    //   // break point xs="600"
-    //   factor = 0.9 // force to break boxes ....?
-    // }
-    // let width = Math.floor(factor * viewport.w)
-    // let height = Math.min(
-    //   Math.floor(1.4 * aspectRatioInverse * width),
-    //   1.4 * width
-    // ) // height is 40% bigger
-  }
+  //let viewport = getViewportSize()
+  // let aspectRatioInverse = viewport.h / viewport.w
+  // let factor = 0.5 // almost 60%
+  // if (viewport.w < 600) {
+  //   // break point xs="600"
+  //   factor = 0.9 // force to break boxes ....?
+  // }
+  // let width = Math.floor(factor * viewport.w)
+  // let height = Math.min(
+  //   Math.floor(1.4 * aspectRatioInverse * width),
+  //   1.4 * width
+  // ) // height is 40% bigger
+  //}
 
   function toggleStopAngle() {
     stopped = !stopped
   }
+
   function setAngle() {
     angle = slider.value()
     //inputAngle.value(angle.toFixed(6).toString())
   }
   p.windowResized = function() {
-    p.resizeCanvas(p.width, p.height)
+    p.resizeCanvas(p.windowWidth, p.windowHeight)
   }
 
   p.draw = function() {

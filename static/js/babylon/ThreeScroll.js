@@ -22,7 +22,7 @@ export default function ThreeScroll() {
     b = 43,
     c = 11 / 6,
     d = 0.16,
-    e = 0.65,
+    e = -0.65,
     f = 20
 
   let dt = 0.001,
@@ -73,12 +73,12 @@ export default function ThreeScroll() {
       for (let j = 0; j < 800; j++) {
         x = x + dt * (a * (y - x) + d * x * z)
         y = y + dt * (b * x + f * y - x * z)
-        z = z + dt * (c * z + x * y - e * (x * x))
+        z = z + dt * (c * z + x * y + e * (x * x))
       }
       for (let i = 0; i < N / 3; i++) {
         x = x + dt * (a * (y - x) + d * x * z)
         y = y + dt * (b * x + f * y - x * z)
-        z = z + dt * (c * z + x * y - e * (x * x))
+        z = z + dt * (c * z + x * y + e * (x * x))
         points[t].push(new BYN.Vector3(x, z, y)) // exchange z and y
       }
     }
@@ -157,7 +157,7 @@ export default function ThreeScroll() {
 
         z = z + dt * (b * x + f * z - x * y) // exchange z and y
 
-        y = y + dt * (c * y + x * z - e * (x * x))
+        y = y + dt * (c * y + x * z + e * (x * x))
 
         particle.position.x = x
         particle.position.y = y
@@ -412,9 +412,9 @@ export default function ThreeScroll() {
     panel.addControl(textE)
     let sliderE = new BABYLON.GUI.Slider()
     sliderE.isVisible = togglePanel
-    sliderE.minimum = 0.54
-    sliderE.maximum = 0.72
-    sliderE.value = 0.65
+    sliderE.minimum = -0.72
+    sliderE.maximum = -0.54
+    sliderE.value = -0.65
     sliderE.height = '15px'
     sliderE.thumbWidth = 20
     sliderE.width = '150px'

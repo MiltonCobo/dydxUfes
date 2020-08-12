@@ -191,7 +191,7 @@ export default function QiChenPlot() {
       'Controles'
     )
     hidePanel.width = '100px'
-    hidePanel.height = '42px'
+    hidePanel.height = '45px'
     hidePanel.color = '#08a31f'
     hidePanel.fontSize = 18
     hidePanel.thickness = 0
@@ -215,7 +215,7 @@ export default function QiChenPlot() {
     )
     hideAttractor.isVisible = togglePanel
     hideAttractor.width = '100px'
-    hideAttractor.height = '42px'
+    hideAttractor.height = '45px'
     hideAttractor.color = '#08a31f'
     hideAttractor.fontSize = 16
     hideAttractor.thickness = 0
@@ -236,7 +236,7 @@ export default function QiChenPlot() {
     )
     startButton.isVisible = togglePanel
     startButton.width = '140px'
-    startButton.height = '42px'
+    startButton.height = '45px'
     startButton.color = '#08a31f'
     startButton.fontSize = 16
     startButton.thickness = 0
@@ -252,8 +252,8 @@ export default function QiChenPlot() {
     textA.isVisible = togglePanel
     textA.text = 'a = ' + a.toFixed(2).toString()
     textA.color = '#08a31f'
-    textA.height = '20px'
-    textA.fontSize = 16
+    textA.height = '30px'
+    textA.fontSize = 18
     textA.top = '40px'
     panel.addControl(textA)
 

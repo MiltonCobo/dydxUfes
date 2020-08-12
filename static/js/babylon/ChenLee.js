@@ -4,7 +4,7 @@ import * as BABYLON from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
 export default function ChenLeePlot() {
-  var butterflies
+  let butterflies
   let attractor1, attractor2
 
   let toggleAttractor = true
@@ -12,35 +12,36 @@ export default function ChenLeePlot() {
 
   let BYN = BABYLON
 
-  var a = 5,
+  let a = 5,
     b = -10,
     c = -0.38
 
-  var dt = 0.0045,
-    numPoints = 15000
+  let dt = 0.0046,
+    numPoints = 20000
 
-  let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
-  let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
-  let lightgoldenrodyellow = new BYN.Color4(
-    250 / 255,
-    250 / 255,
-    210 / 255,
-    0.5
-  )
-  let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.5)
-  let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.5)
-  let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
-  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
-  let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
-  let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
-  let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
+  // let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
+  // let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
+  // let lightgoldenrodyellow = new BYN.Color4(
+  //   250 / 255,
+  //   250 / 255,
+  //   210 / 255,
+  //   0.5
+  // )
+  // let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.5)
+  // let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.5)
+  // let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
+  // let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
+  // let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
+  // let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
   let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.8)
-  var attractorColor1 = tomato //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
-  var attractorColor2 = seagreen // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
-  //var attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
-  var particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
-  //   var particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
-  //   var particleColor = new BYN.Color4(240 / 255, 128 / 255, 0 / 255, 1)
+  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
+
+  let attractorColor1 = tomato //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
+  let attractorColor2 = seagreen // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
+  //let attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
+  let particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
+  //   let particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
+  //   let particleColor = new BYN.Color4(240 / 255, 128 / 255, 0 / 255, 1)
 
   let singularityZ = Math.sqrt(-a * b),
     singularityX = Math.sqrt(3 * b * c),
@@ -52,10 +53,11 @@ export default function ChenLeePlot() {
 
     for (let t = -1; t < 2; t += 2) {
       let y = 0.01, // y = z!
-        z = t,
+        z = 0,
+        //z = t,
         x = t
       points[t] = []
-      for (let j = 0; j < 400; j++) {
+      for (let j = 0; j < 2000; j++) {
         x = x + (a * x - y * z) * dt
         y = y + (b * y + x * z) * dt
         z = z + (c * z + (x * y) / 3) * dt
@@ -71,8 +73,8 @@ export default function ChenLeePlot() {
     return points
   }
 
-  var createScene = function(engine, canvas) {
-    var scene = new BYN.Scene(engine)
+  let createScene = function(engine, canvas) {
+    let scene = new BYN.Scene(engine)
     scene.clearColor = new BYN.Color3(0, 0, 0)
 
     let camera = new BYN.ArcRotateCamera(

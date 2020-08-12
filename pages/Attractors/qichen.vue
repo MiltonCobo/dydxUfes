@@ -17,7 +17,7 @@
 
     <v-row
       ><v-col class="mathjax">
-        O atrator de Chen corresponde as equações: \[ \begin{cases}
+        O atrator de Chen corresponde às equações: \[ \begin{cases}
         \dfrac{dx}{dt} = a(x-y) \\ \dfrac{dy}{dt} = (c-a)x-xz + cy \\
         \dfrac{dz}{dt} = xy-bz \end{cases} \] com parâmetros $a = 35, b=3 $ e
         $c=28.$
@@ -32,13 +32,14 @@
         anéis de Saturno conectados por uma hélice (em tradução livre).
         <br />
         No ano de 1999 Guanrong Chen propós a versão do atrator que mostramos
-        nesta animação. Posteriormente outras generalizações destes atratores,
-        chamadas de
-        <i>multi-scroll</i> foram encontradas (ver a página de wikipedia nas
-        referências) e em breve iremos apresentar algumas delas.
+        nesta animação, com um único turbilhão. Posteriormente outras
+        generalizações destes atratores, chamadas de
+        <i>multi-scroll</i> foram encontradas. Veja por exemplo o atrator
+        <i>Three scroll.</i>
+
         <br />
         Para ver o
-        <i>turbilhão</i> mais claramente apague o atrator, faça $a\le 28$ no
+        <i>turbilhão</i> mais claramente apague o atrator, faça $a = 28$ no
         <i>slider</i> e afaste um pouco a figura. Recrie então as partículas.
         Observa-se que a maioria das trajetórias converge para uma trajetória
         periódica formando uma espécie de turbilhão. Recentemente também foi
@@ -127,7 +128,9 @@ export default {
     //console.log('destroyed foi ativado')
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
 
   methods: {

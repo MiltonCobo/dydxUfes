@@ -17,12 +17,13 @@
 
     <v-row
       ><v-col class="mathjax">
-        O atrator de Halvorsen corresponde as equações: \[ \begin{cases}
-        \dfrac{dx}{dt} = -ax +2y - 4z -y^2 +(3a+15) \\ \dfrac{dy}{dt} = -ay +2z
-        - 4x -z^2 +(3a+15) \\ \dfrac{dz}{dt} = -az +2x - 4y -x^2 +(3a+15)
-        \end{cases} \] com $ a $ próximo de $ 1.4. $
+        O atrator de Halvorsen corresponde às equações: \[ \begin{cases}
+        \dfrac{dx}{dt} = -ax +2y - 4z -y^2 \\ \dfrac{dy}{dt} = -ay +2z - 4x -z^2
+        \\ \dfrac{dz}{dt} = -az +2x - 4y -x^2 \end{cases} \] com $ a $ próximo
+        de $ 1.4. $
         <br />
-        Não temos informação mais detalhada sobre este atrator neste momento.
+
+        Em breve iremos postar informação mais detalhada sobre este atrator.
         Aparentemente o atrator não é global pois observam-se trajetórias que
         fogem para o infinito mas parece que um conjunto com medida positiva de
         pontos é capturado pelo atrator. Também notamos que para $a=1.8$ o
@@ -89,7 +90,9 @@ export default {
     //console.log('destroyed foi ativado')
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
 
   methods: {

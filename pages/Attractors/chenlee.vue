@@ -17,7 +17,7 @@
 
     <v-row
       ><v-col class="mathjax">
-        O atrator de Chen-Lee corresponde as equações: \[ \begin{cases}
+        O atrator de Chen-Lee corresponde às equações: \[ \begin{cases}
         \dfrac{dx}{dt} = a x- yz \\ \dfrac{dy}{dt} = by + xz \\ \dfrac{dz}{dt} =
         cz + xy/3\end{cases} \] com parâmetros $a = 5, b=-10 $ e $c=-0.38.$
         <br />
@@ -94,7 +94,9 @@ export default {
       script.addEventListener('load', this.onMathJaxLoaded)
       document.head.appendChild(script)
     } else {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      if (MathJax.Hub) {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      }
     }
     //this.startBabylonPlot()
   },
@@ -102,7 +104,9 @@ export default {
     //console.log('destroyed foi ativado')
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
 
   methods: {

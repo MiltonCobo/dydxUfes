@@ -50,7 +50,9 @@ export default {
     Sseparavel1
   },
   mounted() {
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
   head() {
     return {
@@ -63,12 +65,12 @@ export default {
       //   }
       // ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        {
-          rel: 'stylesheet',
-          href:
-            'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
-        }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        // {
+        //   rel: 'stylesheet',
+        //   href:
+        //     'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
+        // }
       ]
     }
   }

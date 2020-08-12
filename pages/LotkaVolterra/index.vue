@@ -97,6 +97,9 @@ export default {
     }
   },
   mounted() {
+    window.PlotlyConfig = { MathJaxConfig: 'local' }
+
+
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
         this.count++
@@ -110,9 +113,14 @@ export default {
       script.type = 'text/javascript'
       script.src = '../../../js/MathJax/mathjax2Config.js'
       document.head.appendChild(script)
-    } else {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      //this.onScriptLoaded()
+    } 
+    else {
+        if (MathJax.Hub) {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        //console.log('MathJax.Hub!')
+      }
+
+      //MathJax.typeset()
     }
   },
   methods: {
@@ -132,7 +140,11 @@ export default {
     }
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //MathJax.typeset()
+        if (MathJax.Hub) {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        //console.log('MathJax.Hub!')
+      }
   },
   computed: {
     updateText() {

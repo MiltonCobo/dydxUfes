@@ -80,6 +80,7 @@ export default {
     }
   },
   mounted() {
+    //window.PlotlyConfig = { MathJaxConfig: 'local' }
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   methods: {

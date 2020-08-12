@@ -38,7 +38,7 @@ window.MathJax = {
 ;(function() {
   let script = document.createElement('script')
   script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js' //?config=TeX-AMS-MML_SVG' //TeX-AMS_HTML'
-  // 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
+  //'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/latest.js?config=TeX-AMS-MML_SVG'
   script.async = true
   document.head.appendChild(script)
 })()

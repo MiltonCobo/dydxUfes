@@ -275,7 +275,7 @@ export default function QiChenPlot() {
 
     let sliderA = new BABYLON.GUI.Slider()
     sliderA.isVisible = togglePanel
-    sliderA.minimum = 26
+    sliderA.minimum = 28
     sliderA.maximum = 56
     sliderA.value = 35
 

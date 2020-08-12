@@ -259,6 +259,7 @@ export default function lorenzPlot() {
     sliderRho.borderColor = 'black'
     sliderRho.isThumbCircle = true
     sliderRho.step = 0.01
+    sliderRho.background = '#2f2f2f'
     //sliderRho.top = '60px'
     //sliderRho.isVertical = true
 
@@ -294,6 +295,7 @@ export default function lorenzPlot() {
     sliderSigma.borderColor = 'black'
     sliderSigma.isThumbCircle = true
     sliderSigma.step = 0.1
+    sliderSigma.background = '#2f2f2f'
     //sliderSigma.top = '60px'
     //sliderSigma.isVertical = true
 
@@ -327,6 +329,7 @@ export default function lorenzPlot() {
     sliderBeta.isThumbCircle = true
     sliderBeta.step = 0.1
     sliderBeta.paddingBottom = '15px'
+    sliderBeta.background = '#2f2f2f'
 
     //sliderBeta.top = '60px'
     //sliderBeta.isVertical = true

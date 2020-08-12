@@ -4,7 +4,6 @@
       v-model="drawer"
       disable-resize-watcher
       mobile-breakpoint="1400"
-      clipped
       temporary
       dense
       dark
@@ -46,14 +45,14 @@
       <v-divider />
 
       <!-- ------------Chaotic attractots---------------------- -->
-      <v-list nav dense>
+      <v-list dense>
         <v-list-group no-action>
           <!-- <v-list-item-icon>
             <v-icon class="blue--text" left>'mdi-home' </v-icon>
           </v-list-item-icon> -->
           <template v-slot:activator value="false">
             <v-list-item-content>
-              <v-list-item-subtitle class="blue--text"
+              <v-list-item-subtitle dense class="blue--text"
                 >Atratores Caóticos</v-list-item-subtitle
               >
             </v-list-item-content>
@@ -195,24 +194,26 @@ export default {
     }
 
     this.$store.setWindowWidth(windowWidth)
-    //this.$store.setWindowHeight(windowHeight)
+    this.$store.setWindowHeight(windowHeight)
 
-    if (!window.MathJax) {
-      const script = document.createElement('script')
-      //script.onload = this.onScriptLoaded
-      script.type = 'text/javascript'
-      script.src = '../../../js/MathJax/mathjax2Config.js'
-      document.head.appendChild(script)
-    } else {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      //this.onScriptLoaded()
-    }
+    window.PlotlyConfig = { MathJaxConfig: 'local' }
+
+    // if (!window.MathJax) {
+    //   const script = document.createElement('script')
+    //   //script.onload = this.onScriptLoaded
+    //   script.type = 'text/javascript'
+    //   script.src = '../../../js/MathJax/mathjax2Config.js'
+    //   document.head.appendChild(script)
+    // } else {
+    //   MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //   //this.onScriptLoaded()
+    // }
   },
-  methods: {
-    onScriptLoaded(event = null) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    }
-  },
+  // methods: {
+  //   onScriptLoaded(event = null) {
+  //     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  //   }
+  // },
   data() {
     return {
       drawer: false,

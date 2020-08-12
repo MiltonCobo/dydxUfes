@@ -88,11 +88,15 @@ export default {
       script.addEventListener('load', this.onMathJaxLoaded)
       document.head.appendChild(script)
     } else {
+      //MathJax.typeset()
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
   },
   onMathJaxLoaded() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //MathJax.typeset()
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   }
 }
 </script>
