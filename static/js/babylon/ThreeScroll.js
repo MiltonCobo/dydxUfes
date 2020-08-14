@@ -12,21 +12,15 @@ export default function ThreeScroll() {
 
   let BYN = BABYLON
 
-  // let a = 40,
-  //   b = 0.833,
-  //   c = 20,
-  //   d = 0.5,
-  //   f = 0.65
-
-  let a = 42,
-    b = 43,
+  let a = 43,
+    b = 55,
     c = 11 / 6,
     d = 0.16,
     e = -0.65,
     f = 20
 
   let dt = 0.001,
-    numPoints = 35000,
+    numPoints = 40000,
     numPart = 600
 
   // let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
@@ -67,10 +61,10 @@ export default function ThreeScroll() {
     let y = 0.1,
       z = 400
     for (let t = -2; t < 4; t += 2) {
-      let x = t * 200
+      let x = t * 300
 
       points[t] = []
-      for (let j = 0; j < 800; j++) {
+      for (let j = 0; j < 1000; j++) {
         x = x + dt * (a * (y - x) + d * x * z)
         y = y + dt * (b * x + f * y - x * z)
         z = z + dt * (c * z + x * y + e * (x * x))
@@ -123,16 +117,16 @@ export default function ThreeScroll() {
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BYN.PointsCloudSystem('butterflies', 4, scene, {
+      butterflies = new BYN.PointsCloudSystem('butterflies', 3.6, scene, {
         updatable: true
       })
       butterflies.addPoints(numPart)
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
           butterflies.particles[p].position = new BYN.Vector3(
-            Math.random() * 600,
-            Math.random() * 600,
-            Math.random() * 600
+            Math.random() * 1000 - 500,
+            Math.random() * 1000 - 500,
+            Math.random() * 1000 - 500
           )
 
           butterflies.particles[p].color = particleColor

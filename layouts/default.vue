@@ -45,11 +45,33 @@
       <v-divider />
 
       <!-- ------------Chaotic attractots---------------------- -->
-      <v-list dense>
+
+      <!-- <v-list-item> -->
+      <!-- button inside list --->
+      <v-menu bottom offset-x offset-y transition="slide-x-transition">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-on="on" text class="blue--text">
+            <!-- <v-list-item-icon>
+              <v-icon class="blue--text">mdi-chart-bell-curve </v-icon>
+            </v-list-item-icon> -->
+            Atratores caóticos
+          </v-btn>
+        </template>
+        <v-list dense dark>
+          <v-list-item v-for="(attractor, i) in attractors" :key="i">
+            <n-link :to="attractor.route" style="text-decoration: none;">
+              <v-list-item-title>
+                {{ attractor.name }}
+              </v-list-item-title>
+            </n-link>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <!-- </v-list-item>
+      </v-list> -->
+      <!-- <v-list dense>
         <v-list-group no-action>
-          <!-- <v-list-item-icon>
-            <v-icon class="blue--text" left>'mdi-home' </v-icon>
-          </v-list-item-icon> -->
+
           <template v-slot:activator value="false">
             <v-list-item-content>
               <v-list-item-subtitle dense class="blue--text"
@@ -66,7 +88,7 @@
             </n-link>
           </v-list-item>
         </v-list-group>
-      </v-list>
+      </v-list> -->
     </v-navigation-drawer>
 
     <v-app-bar hide-on-scroll flat dark app>

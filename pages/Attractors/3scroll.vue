@@ -20,7 +20,7 @@
         O atrator de "Three scroll" (com três turbilhões) corresponde às
         equações: \[ \begin{cases} \dfrac{dx}{dt} = a(y-x) + dxz \\
         \dfrac{dy}{dt} = bx + fy -xz \\ \dfrac{dz}{dt} = ex^2 + xy +
-        cz\end{cases} \] com parâmetros $a = 42, b= 43, c=11/6, d= 4/25, e =
+        cz\end{cases} \] com parâmetros $a = 43, b= 55, c=11/6, d= 4/25, e =
         -13/20$ e $f=20.$
         <br />
       </v-col>

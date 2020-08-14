@@ -124,7 +124,7 @@ export default function ChenLeePlot() {
       butterflies = new BYN.PointsCloudSystem('butterflies', 2.6, scene, {
         updatable: true
       })
-      butterflies.addPoints(6000)
+      butterflies.addPoints(12000)
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
           butterflies.particles[p].position = new BYN.Vector3(
