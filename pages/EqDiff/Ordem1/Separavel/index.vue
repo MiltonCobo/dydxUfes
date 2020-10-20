@@ -97,7 +97,7 @@ export default {
       script.src = '../../../js/MathJax/mathjax2Config.js'
       document.head.appendChild(script)
     } else {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       //this.onScriptLoaded()
     }
   },

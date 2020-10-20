@@ -145,7 +145,7 @@ export function volterraSurface2() {
       eye: {
         x: 0.9,
         y: 0.9,
-        z: 0.25
+        z: 1.5
       }
       //projection: { type: 'orthographic' }
     },
@@ -200,7 +200,7 @@ export function volterraSurface2() {
                   eye: {
                     x: 0.9,
                     y: 0.9,
-                    z: 0.25
+                    z: 1.5
                   }
                 }
               }
@@ -228,8 +228,8 @@ export function volterraSurface2() {
                 camera: {
                   eye: {
                     x: 0.9,
-                    y: 0.9, //1.1
-                    z: 0.25
+                    y: 0.1, //1.1
+                    z: 1.5
                   }
                 },
                 annotations: [annotations2]

@@ -50,7 +50,7 @@ export default {
     Sseparavel1
   },
   mounted() {
-    if (MathJax.Hub) {
+    if (window.MathJax) {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
   },

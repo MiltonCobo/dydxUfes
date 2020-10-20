@@ -52,7 +52,6 @@
       <v-row class="flex-wrap-reverse" align="center" no-gutters>
         <v-col sm="12" md="6" order="4">
           <p>
-            <br />
             Para determinar onde esta função atinge seu máximo precisamos
             encontrar os pontos críticos, i.e., os valores de $x$ onde $y'(x) =
             0.$ Podemos usar diretamente na expressão explícita de $y(x)$ na
@@ -64,10 +63,14 @@
             segunda derivada na equação (eq1) mas isto sería bastante
             trabalhoso.
             <br />
-            É mais fácil fazer o seguinte.
+            É mais fácil fazer o seguinte. Note que
+            <span style="color: var(--mjx-green)">
+              $y(x)$ é positivo quando $x=\ln(2)$, logo por continuidade,
+              $y(x)>0$ para $x$ próximo de $\ln(2).$
+            </span>
           </p>
         </v-col>
-        <v-col sm="12" md="6" order="3" align="center" class="figure">
+        <v-col sm="12" md="6" order="3" class="figure" style="height: 25em;">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
           </client-only>
@@ -75,31 +78,26 @@
       </v-row>
 
       <v-row>
-        <v-col>
+        <v-col lg="12">
           <p class="mathjax">
-            Note que
-            <span style="color: var(--mjx-green)">
-              $y(x)$ é positivo quando $x=\ln(2)$, logo por continuidade,
-              $y(x)>0$ para $x$ próximo de $\ln(2).$
-            </span>
             Portanto o denominador $3+2y$ da derivada $dy/dx$ é positivo perto
             de $x=\ln(2)$ e o sinal da derivada depende inteiramente do
             numerador $2-\e^x.$ É fácil ver então que
             <span style="color:var(--mjx-green)">
-              $y'(x) > 0$ se $ x< \ln(2)$ e $y'(x) < 0$ se $ x > \ln(2),$ isto
+              $y'(x) \gt 0$ se $ x \lt \ln(2)$ e $y'(x) \lt 0$ se $ x \gt \ln(2),$ isto
               é, a derivada $y'(x)$ esta decrescendo ao passar por $x=\ln(2),$ o
               que implica que $y(x)$ passa por um máximo em ${x=\ln(2).}$
             </span>
           </p>
         </v-col>
       </v-row>
-      <v-row no-gutters align="center">
-        <v-col sm="12" md="6" align="center" class="figure">
+      <v-row no-gutters align="center" >
+        <v-col sm="12" md="6" align="center" class="figure" >
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
           </client-only>
         </v-col>
-        <v-col sm="12" md="6">
+        <v-col >
           <p class="mathjax">
             Uma outra observação é que a derivada $y'(x)$ não está bem definida
             para $y=-3/2,$ e podemos ver na figura que é sobre esta reta que as
@@ -157,7 +155,7 @@ export default {
     }
   },
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   methods: {
     swipeLeft() {
@@ -172,12 +170,13 @@ export default {
 
 <style scoped>
 .figure {
-  min-width: 320px;
-  width: 700px;
-
-  height: auto;
+  width: 100%;
+  min-width: 400px;
+  max-width: 700px;
+  height:100%;  /* foi necessario dar uma altura de 500px */
+  /* min-height: 400px; */
+  max-height: 500px;
   background-color: inherit;
-
   margin: 0px;
   padding: 0px;
 }
