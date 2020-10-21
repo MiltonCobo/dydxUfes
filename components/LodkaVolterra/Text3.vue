@@ -17,12 +17,12 @@
         </v-col>
       </v-row>
 
-      <v-row align="center">
+      <v-row align="center" no-gutters>
         <v-col
           align="center"
           v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
           sm="12"
-          md="6"
+          md="7"
           class="figure"
         >
           <client-only>
@@ -34,7 +34,7 @@
             />
           </client-only>
         </v-col>
-        <v-col sm="12" md="6">
+        <v-col sm="12" md="5">
           As soluções $(x(t), y(t))$ das equações de Lodka-Volterra moram nas
           <span style="color:var(--mjx-green)">curvas de nível</span> da função
           $${V(x,y)=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$ Para ver isto
@@ -95,11 +95,11 @@ export default {
 
 <style scoped>
 .figure {
-  /* width: 500px; */
-  min-width: 400px;
+  width: 90%;  
+
   /* max-width: 800px; */
-  height: 35em;
-  min-height: 400px;
+  /* height: auto;  */
+  height: 24em;
   /* max-height: 800px; */
 
   background-color: inherit;

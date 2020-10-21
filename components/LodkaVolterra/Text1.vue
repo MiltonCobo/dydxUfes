@@ -1,8 +1,8 @@
 <template>
   <v-sheet class="mathjax">
     <v-container fluid>
-      <v-row align="center">
-        <v-col sm="12" md="6">
+      <v-row align="center" no-gutters>
+        <v-col sm="12" md="8">
           Durante a 1ª Guerra Mundial (1914-1917) a pesca no mar adriático foi
           severamente restrita. Após a Guerra os pescadores italianos reportaram
           o aumento ostensível dos predadores nesse mar, mas não assim o aumento

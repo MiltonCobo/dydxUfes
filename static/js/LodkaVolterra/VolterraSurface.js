@@ -47,7 +47,8 @@ export function volterraSurface2() {
   layout0.autosize = true
   //let vw = window.innerWidth
   //let vh = window.innerHeight
-  //layout0.width = 600
+  //layout0.width = 0.7*vw
+  //console.log('0.7 vw', 0.7*vw)
   //layout0.height = 0.6 * vw //550 /* set size of plot */
   data.colorscale = 'Earth'
   layout0.title =
