@@ -126,7 +126,7 @@ export default {
     let options = info.options
 
     return {
-      openFigure: false,
+      openFigure: true,
       data,
       options // has been modified below from original
     }

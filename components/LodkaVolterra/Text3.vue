@@ -95,10 +95,10 @@ export default {
 
 <style scoped>
 .figure {
-  width: 100%;
+  /* width: 500px; */
   min-width: 400px;
   /* max-width: 800px; */
-  height: 100%;
+  height: 35em;
   min-height: 400px;
   /* max-height: 800px; */
 
