@@ -9,6 +9,7 @@ export function drawLinear2() {
       return legendItem.datasetIndex % 4 == 1
     }
   }
+  newOptions.animation={ duration: 4000, easing : 'easeOutBounce'}
 
   newOptions.scales = {
     yAxes: [

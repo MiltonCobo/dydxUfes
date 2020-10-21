@@ -10,4 +10,4 @@ Vue.component('line-chart', {
 })
 
 Vue.use(Line)
-export default Line
+

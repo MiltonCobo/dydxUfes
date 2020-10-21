@@ -7,7 +7,7 @@ const VuePlotly = {
   }
 }
 Vue.use(VuePlotly)
-export default VuePlotly
+
 
 // import Vue from 'vue'
 // import VuePlotly from '@statnett/vue-plotly'

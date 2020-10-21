@@ -136,7 +136,7 @@ export default {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }
 </script>
