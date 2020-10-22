@@ -14,7 +14,7 @@
       </v-row>
       <v-divider style="margin-bottom:0.5cm;" />
 
-      <v-row v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }">
+      <v-row v-touch="{ left: (event) => swipeLeft(event), right: (event) => swipeRight(event) }">
         <v-col> <!-- key=count to guarantie re render -->
           <transition name="fade" mode="out-in">
             <div key="count" v-if="updateText == 0"><Text1 /></div>
@@ -124,19 +124,24 @@ export default {
     }
   },
   methods: {
-    swipeLeft() {
-        if (this.$store.state.discardTouch) {
-          this.$store.discardTouch(false)
-        } else {
-          this.count++
+    swipeLeft(event) {
+        if (this.$store.state.discardTouch ) {
+        this.$store.discardTouch(false)   // allow swipes
+        } else if (event.offsetX < -150) { // long swipe?
+        this.count++ 
         }
     },
-    swipeRight() {
-        if (this.$store.state.discardTouch) {
-          this.$store.discardTouch(false)
-        } else {
-          this.count += 9
+    swipeRight(event) {
+        if (this.$store.state.discardTouch ) {
+        this.$store.discardTouch(false)   // allow swipes
+        } else if (event.offsetX > 150) { // long swipe?
+       this.count +=9
         }
+        // if (this.$store.state.discardTouch) {
+        //   this.$store.discardTouch(false)
+        // } else {
+        //   this.count += 9
+        // }
     }
   },
   updated() {

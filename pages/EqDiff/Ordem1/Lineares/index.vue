@@ -14,7 +14,7 @@
         </v-col>
       </v-row>
 
-      <v-row v-touch="{ left: () => count++, right: () => (count += 9) }">
+      <v-row v-touch="{ left: (event) => swipeLeft(event) , right: (event) => swipeRight(event) }">
         <v-col>
           <!-- key=count to guarantie re render -->
           <transition name="fade" mode="out-in">
@@ -85,6 +85,21 @@ export default {
     //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   methods: {
+    swipeLeft(event) {
+    if (this.$store.state.discardTouch ) {
+    this.$store.discardTouch(false)   // allow swipes
+    } else if (event.offsetX < -150) { // long swipe?
+    this.count++
+    }
+    },
+    swipeRight(event) {
+    console.log(event.offsetX)
+    if (this.$store.state.discardTouch ) {
+    this.$store.discardTouch(false)   // allow swipes
+    } else if (event.offsetX > 150) { // long swipe?
+    this.count +=9
+    }
+    },
     onScriptLoaded(event = null) {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
