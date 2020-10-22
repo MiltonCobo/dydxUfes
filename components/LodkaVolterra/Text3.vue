@@ -34,6 +34,7 @@
             />
           </client-only>
         </v-col>
+
         <v-col sm="12" md="5">
           As soluções $(x(t), y(t))$ das equações de Lodka-Volterra moram nas
           <span style="color:var(--mjx-green)">curvas de nível</span> da função
@@ -60,13 +61,13 @@
 </template>
 
 <script>
-import { volterraSurface2 } from '@/static/js/LodkaVolterra/VolterraSurface'
+import { volterraSurface } from '@/static/js/LodkaVolterra/VolterraSurface'
 
 export default {
   name: 'Text3',
 
   data() {
-    let info = volterraSurface2()
+    let info = volterraSurface()
     let data = info.data
     let layout = info.layout
     let options = info.options
@@ -95,12 +96,11 @@ export default {
 
 <style scoped>
 .figure {
-  width: 90%;  
+  /* width: 90%;   */
 
   /* max-width: 800px; */
   /* height: auto;  */
-  height: 24em;
-  /* max-height: 800px; */
+  height: 24em; 
 
   background-color: inherit;
   margin: 0px;

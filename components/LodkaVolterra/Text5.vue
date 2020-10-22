@@ -120,7 +120,7 @@ export default {
 
 <style scoped>
 .figure {
-  width: 90%;  
+  /* width: 90%;   */
   height: 24em;
   
    /* apparently need a fix height */

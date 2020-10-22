@@ -4,7 +4,7 @@ import {
   options
 } from '@/static/js/Plotly/plotly-config.js'
 
-export function volterraSurface2() {
+export function volterraSurface() {
   const a = 5.3
   const b = 0.12
   const c = 4.9
@@ -47,8 +47,8 @@ export function volterraSurface2() {
   layout0.autosize = true
   //let vw = window.innerWidth
   //let vh = window.innerHeight
-  //layout0.width = 0.7*vw
-  //console.log('0.7 vw', 0.7*vw)
+  //layout0.width = 0.6*vw
+  //console.log('0.6 vw', 0.6*vw)
   //layout0.height = 0.6 * vw //550 /* set size of plot */
   data.colorscale = 'Earth'
   layout0.title =
