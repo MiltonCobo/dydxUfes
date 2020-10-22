@@ -97,7 +97,7 @@ export default {
     if (this.$store.state.discardTouch ) {
     this.$store.discardTouch(false)   // allow swipes
     } else if (event.offsetX > 150) { // long swipe?
-    this.count +=9
+    this.count += 2
     }
     },
     onScriptLoaded(event = null) {
