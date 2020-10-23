@@ -2,6 +2,9 @@ import { getDataLineChartjs, options } from '@/static/js/Chartjs/Functions.js'
 
 export function drawLinear2() {
   let newOptions = Object.assign({}, options)
+
+  newOptions.legend.position ='bottom'
+
   newOptions.legend.labels = {
     // para aparecerem apenas 5 legendas
     boxWidth: 10, // reduce tamanho da cor
@@ -10,6 +13,7 @@ export function drawLinear2() {
     }
   }
   newOptions.animation={ duration: 4000, easing : 'easeOutBounce'}
+  //newOptions.title = { text: }
 
   newOptions.scales = {
     yAxes: [

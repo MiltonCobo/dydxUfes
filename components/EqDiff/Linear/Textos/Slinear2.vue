@@ -90,6 +90,10 @@
             transition="fab-transition"
           >
             <v-card>
+                <v-card-text class="mathjax" align="center" style="padding-top:20px; margin-bottom: -60px; font-family: Lucida Console;">
+                Soluções da equação linear  $$ y' - {1\over 2} y = 2\cos(t), \, y(0) = a $$ para diferentes
+                valores do parâmetro $a.$
+              </v-card-text>
               <v-card-actions class="flex-column align-start">
                 <client-only v-if="openFigure">
                   <line-chart
@@ -103,9 +107,9 @@
                 </v-btn>
               </v-card-actions>
 
-              <v-card-text class="mathjax" style="font-family: Lucida Console;">
-                $$ { y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t) +
-                {(\frac{4}{5}+a)}\e^{t/2}. }$$ Para ${a=-0.8=-4/5}$ as soluções
+              <v-card-text class="mathjax" style="padding: 20px; font-family: Lucida Console;">
+                As soluções são $$ { y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t) +
+                {(\frac{4}{5}+a)}\e^{t/2}. }$$ Observe que para ${a=-0.8=-4/5}$ as soluções
                 permanecem limitadas.
               </v-card-text>
             </v-card>
