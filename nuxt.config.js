@@ -50,12 +50,12 @@ export default {
       //   async: false,
       //   defer: false
       // }
-      // {
-      //   type: 'text/javascript', //x-mathjax-config',
-      //   src: 'js/MathJax/mathjax2Config.js',
-      //   async: false,
-      //   defer: true // defer = true is important
-      // }
+      {
+        type: 'text/javascript', //x-mathjax-config',
+        src: '../../../js/MathJax/mathjax2Config.js', //'js/MathJax/mathjax2Config.js',
+        async: true,
+        defer: true // defer = true is important
+      }
       // {
       //   type: 'text/javascript',
       //   async: true,
@@ -81,7 +81,7 @@ export default {
       // }
       // {
       //   type: 'text/x-mathjax-config',
-      //   src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+      //   src: '../../../js/p5/p5.min.js', //'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
       //   async: true,
       //   defer: true
       // }
@@ -97,8 +97,8 @@ export default {
    */
   css: [
     'vuetify/dist/vuetify.min.css',
-    '~/assets/css/main.css',
-    '@mdi/font/css/materialdesignicons.css',
+    //'~/assets/css/main.css',
+    //'@mdi/font/css/materialdesignicons.css',
     '~/assets/variables.scss'
   ],
   /*
@@ -107,14 +107,15 @@ export default {
   plugins: [
     '~/plugins/globalVariables',
     { src: '~plugins/vue-plotly', mode: 'client' },
-    { src: '~plugins/vue-chartjs.js', mode: 'client' },
-    { src: '~plugins/babylonjs.js', mode: 'client' },
-    { src: '~plugins/babylon-gui.js', mode: 'client' }
+    { src: '~plugins/vue-chartjs.js', mode: 'client' }
+    //{ src: '~plugins/babylonjs.js', mode: 'client' }
+    //{ src: '~plugins/babylon-gui.js', mode: 'client' }   Not necessary?
   ],
 
   /*
    ** Nuxt.js dev-modules
    */
+
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     //'@nuxtjs/eslint-module', // had problems!
@@ -123,7 +124,20 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+
+  modules: [
+    [
+      'nuxt-compress',
+      {
+        gzip: {
+          cache: true
+        },
+        brotli: {
+          threshold: 10240
+        }
+      }
+    ]
+  ],
 
   /*
    ** vuetify module configuration
@@ -165,6 +179,32 @@ export default {
   build: {
     extractCSS: true,
     transpile: ['vue-plotly.js', 'vue-chartjs'],
+
+    /*
+     ** You can extend webpack config here
+     */
+
+    analyze: true,
+    // extend(config, ctx) {
+    //   if (ctx && ctx.isClient && ctx.isServer) {
+    //     config.optimization.splitChunks.maxSize = 51200
+    //   }
+    // },
+
+    // optimization: {
+    //   splitChunks: {
+    //     chunks: 'all',
+    //     automaticNameDelimiter: '.',
+    //     name: 'test',
+    //     maxSize: 256000
+    //   }
+    // },
+
+    // extend(config, { isClient, isServer }) {
+    //   //if (isClient) {
+    //   config.optimization.splitChunks.maxSize = 200000
+    //}
+    // },
 
     /*
      ** You can extend webpack config here

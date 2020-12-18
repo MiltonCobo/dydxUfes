@@ -17,9 +17,9 @@ $body-font-family: 'Lucida Grande', sans-serif;
   /*  #004b07; /* #33691e;*/
   // line-height: 1.5;
 }
-.mathjax a {
-  text-decoration: none;
-}
+// .mathjax a {
+//   text-decoration: none;
+// }
 
 a {
   text-decoration: none;
@@ -43,11 +43,31 @@ body {
   padding-left: 2%;
   padding-right: 2%;
   //font-size: min(3.2vmin, 22px); // CHANGE HERE
+  //color: green !important;
   line-height: 1.3;
 }
 
 * {
   text-transform: none !important; // text in vuetify ?
+}
+
+li a {
+  text-decoration: none;
+}
+
+// lock screen orientation in small devices
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
 }
 
 // TRANSITIONS-----------------------------------

@@ -1,4 +1,4 @@
-import * as BABYLON from 'babylonjs'
+import * as BYN from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
 export default function lorenzPlot() {
@@ -15,7 +15,7 @@ export default function lorenzPlot() {
     sigma = 10,
     beta = 8.0 / 3.0
 
-  let BYN = BABYLON
+  // let BYN = BABYLON
 
   const numPoints = 6000
   const numPart = 10000

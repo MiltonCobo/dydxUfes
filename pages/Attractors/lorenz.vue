@@ -155,17 +155,26 @@
 </template>
 
 <script>
+// import * as BABYLON from 'babylonjs'
 import lorenzPlot from '@/static/js/babylon/lorenzPlot.js'
 
 export default {
   // layout: 'darkTheme',
   created() {},
   mounted() {
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = '../../../js/babylon/babylon.gui.min.js'
-    document.head.appendChild(script)
-    script.addEventListener('load', this.startBabylonPlot)
+    // if (window.BABYLON) {
+    //   console.log('babylon is load!')
+    //   this.startBabylonPlot()
+    // } else {
+    //   console.log('babylon is not loaded!')
+    //   const script = document.createElement('script')
+    //   script.type = 'text/javascript'
+    //   script.src = '../../../js/babylon/babylon.gui.min.js'
+    //   document.head.appendChild(script)
+    //   script.addEventListener('load', this.startBabylonPlot)
+    // }
+
+    this.startBabylonPlot()
 
     if (!window.MathJax) {
       let script = document.createElement('script')
@@ -173,7 +182,7 @@ export default {
       script.src = '../../../js/MathJax/mathjax2Config.js'
       script.addEventListener('load', this.onMathJaxLoaded)
       document.head.appendChild(script)
-    } else {
+    } else if (window.MathJax.Hub) {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
     //this.startBabylonPlot()
@@ -182,7 +191,7 @@ export default {
     //console.log('destroyed foi ativado')
   },
   updated() {
-    if (MathJax.Hub) {
+    if (window.MathJax.Hub) {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
   },

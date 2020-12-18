@@ -104,34 +104,59 @@ export default {
   //layout: 'darkTheme',
   created() {},
   mounted() {
-    //window.PlotlyConfig = { MathJaxConfig: 'local' }
     if (!window.p5) {
       const script = document.createElement('script')
       script.type = 'text/javascript'
       script.addEventListener('load', this.startp5Plot)
       script.src = '../../../js/p5/p5.min.js' // new version of p5
       //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
-
       document.head.appendChild(script)
     } else {
-      // console.log('p5 is here')
+      console.log('p5 is here')
       this.startp5Plot()
     }
+    // while (!window.p5) {
+    //   console.log('loading p5.js')
+    // }
+    // console.log('p5 is here')
+    //this.startp5Plot()
+    //window.PlotlyConfig = { MathJaxConfig: 'local' }
+    //this.startp5Plot()
 
     if (!window.MathJax) {
       const script = document.createElement('script')
       script.type = 'text/javascript'
+      script.defer = true
       script.src = '../../../js/MathJax/mathjax2Config.js'
       document.head.appendChild(script)
-      script.addEventListener('load', this.onMathJaxLoaded)
+      script.addEventListener('load', console.log('mathjax has been loaded!'))
+      //script.addEventListener('load', this.onMathJaxLoaded)
     } else {
       //MathJax.typeset()
-      if (MathJax.Hub) {
+      if (window.MathJax.Hub) {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
         //console.log('MathJax.Hub!')
       }
     }
   },
+  updated() {
+    if (!window.p5) {
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.addEventListener('load', this.startp5Plot)
+      script.src = '../../../js/p5/p5.min.js' // new version of p5
+      //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
+      document.head.appendChild(script)
+    } else {
+      console.log('p5 is here')
+      this.startp5Plot()
+    }
+
+    if (!window.MathJax) {
+      console.log('mathjax is not loaded!')
+    }
+  },
+
   destroyed() {
     this.p5plot.remove()
   },
@@ -144,9 +169,10 @@ export default {
       }
     },
     startp5Plot() {
-      let divFigure = this.$refs.container
+      console.log('p5 was loaded!')
+      //let divFigure = this.$refs.container
       // NEED TO BE SURE P5 EXIST!!!!!
-      this.p5plot = new p5(goldenRatio, divFigure)
+      this.p5plot = new p5(goldenRatio, this.$refs.container)
     }
   },
   updated() {
