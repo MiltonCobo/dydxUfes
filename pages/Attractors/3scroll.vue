@@ -85,11 +85,21 @@ export default {
   // layout: 'darkTheme',
   created() {},
   mounted() {
-    // const script = document.createElement('script')
-    // script.type = 'text/javascript'
-    // script.src = '../../../js/babylon/babylon.gui.min.js'
-    // document.head.appendChild(script)
-    // script.addEventListener('load', this.startBabylonPlot)
+    if (!window.BABYLON) {
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.src = '../../../js/babylon/babylon.gui.min.js'
+      document.head.appendChild(script)
+      script.addEventListener('load', this.startBabylonPlot)
+    } else {
+      console.log('babylon is loaded!')
+    }
+
+    const script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = '../../../js/babylon/babylon.gui.min.js'
+    document.head.appendChild(script)
+    script.addEventListener('load', this.startBabylonPlot)
 
     if (!window.MathJax) {
       let script = document.createElement('script')

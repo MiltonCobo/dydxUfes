@@ -162,17 +162,15 @@ export default {
   // layout: 'darkTheme',
   created() {},
   mounted() {
-    // if (window.BABYLON) {
-    //   console.log('babylon is load!')
-    //   this.startBabylonPlot()
-    // } else {
-    //   console.log('babylon is not loaded!')
-    //   const script = document.createElement('script')
-    //   script.type = 'text/javascript'
-    //   script.src = '../../../js/babylon/babylon.gui.min.js'
-    //   document.head.appendChild(script)
-    //   script.addEventListener('load', this.startBabylonPlot)
-    // }
+    if (!window.BABYLON) {
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.src = '../../../js/babylon/babylon.gui.min.js'
+      document.head.appendChild(script)
+      script.addEventListener('load', this.startBabylonPlot)
+    } else {
+      console.log('babylon is loaded!')
+    }
 
     this.startBabylonPlot()
 

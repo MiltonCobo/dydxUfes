@@ -10,7 +10,8 @@ export default function ThreeScroll() {
   let toggleAttractor = true
   let togglePanel = false
 
-  // let BYN = BABYLON
+  let BYN = BABYLON
+  // let GUI = BYN - GUI
 
   let a = 43,
     b = 55,
@@ -164,8 +165,6 @@ export default function ThreeScroll() {
     scene.registerBeforeRender(function() {
       butterflies.setParticles()
     })
-
-    BYN.GUI = GUI
 
     let advancedTexture = new BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI(
       'myUI'
