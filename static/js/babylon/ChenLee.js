@@ -1,6 +1,6 @@
 ///<reference path="BABYLON.d.ts"/>
 
-import * as BABYLON from 'babylonjs'
+import * as BYN from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
 export default function ChenLeePlot() {
@@ -10,7 +10,7 @@ export default function ChenLeePlot() {
   let toggleAttractor = true
   let togglePanel = false
 
-  let BYN = BABYLON
+  // let BYN = BABYLON
 
   let a = 5,
     b = -10,

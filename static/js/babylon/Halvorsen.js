@@ -1,10 +1,10 @@
 ///<reference path="BABYLON.d.ts"/>
 
-import * as BABYLON from 'babylonjs'
+import * as BYN from 'babylonjs'
 import * as GUI from 'babylonjs-gui'
 
 export default function QiChenPlot() {
-  let pointsLorenz = []
+  //let pointsLorenz = []
   let butterflies
   //let attractor
   let attractors = []
@@ -12,7 +12,7 @@ export default function QiChenPlot() {
   let toggleAttractor = true
   let togglePanel = false
 
-  let BYN = BABYLON
+  // let BYN = BABYLON
 
   let a = 1.4
 

@@ -98,7 +98,7 @@ export default {
   css: [
     'vuetify/dist/vuetify.min.css',
     //'~/assets/css/main.css',
-    //'@mdi/font/css/materialdesignicons.css',
+    '@mdi/font/css/materialdesignicons.css',
     '~/assets/variables.scss'
   ],
   /*
