@@ -136,7 +136,7 @@ export default {
     } else {
       //MathJax.typeset()
       if (window.MathJax.Hub) {
-        console.log('mathjax is already loaded in index.js')
+        console.log('mathjax is already loaded in index.vue')
         //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
         //console.log('MathJax.Hub!')
       }
