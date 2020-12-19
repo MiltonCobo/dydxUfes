@@ -185,7 +185,7 @@ export default {
      ** You can extend webpack config here
      */
 
-    analyze: true,
+    analyze: false,
     // extend(config, ctx) {
     //   if (ctx && ctx.isClient && ctx.isServer) {
     //     config.optimization.splitChunks.maxSize = 51200
