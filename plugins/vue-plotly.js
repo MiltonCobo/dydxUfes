@@ -1,4 +1,7 @@
 import Vue from 'vue'
+
+// window.PlotlyConfig = { MathJaxConfig: 'local' }
+
 import vPlotly from '@statnett/vue-plotly'
 
 const VuePlotly = {
@@ -7,7 +10,6 @@ const VuePlotly = {
   }
 }
 Vue.use(VuePlotly)
-
 
 // import Vue from 'vue'
 // import VuePlotly from '@statnett/vue-plotly'

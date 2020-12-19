@@ -50,10 +50,29 @@ export default {
     Sseparavel1
   },
   mounted() {
-    if (window.MathJax) {
+    window.PlotlyConfig = { MathJaxConfig: 'local' }
+
+    if (!window.MathJax) {
+      const script = document.createElement('script')
+      script.type = 'text/javascript'
+      script.src = '../../../js/MathJax/mathjax2Config.js'
+      script.addEventListener('load', this.onMathJaxLoaded)
+      document.head.appendChild(script)
+    } else if (MathJax.Hub) {
+      //MathJax.typeset()
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
   },
+  onMathJaxLoaded() {
+    //MathJax.typeset()
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
+  },
+  // if (window.MathJax) {
+  //   MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  // }
+  //},
   head() {
     return {
       // title: 'Eq. Separável',

@@ -1,4 +1,6 @@
 export default (context, inject) => {
+  const PlotlyConfig = { MathJaxConfig: 'local' }
+
   const store = {
     debug: true,
     state: {

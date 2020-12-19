@@ -14,7 +14,12 @@
       </v-row>
       <v-divider style="margin:0.5cm;" />
 
-      <v-row v-touch="{ left: (event) => swipeLeft(event), right: (event) => swipeRight(event) }">
+      <v-row
+        v-touch="{
+          left: event => swipeLeft(event),
+          right: event => swipeRight(event)
+        }"
+      >
         <v-col>
           <!-- key=count to guarantie re render -->
           <transition name="fade" mode="out-in">
@@ -77,6 +82,8 @@ export default {
     }
   },
   mounted() {
+    window.PlotlyConfig = { MathJaxConfig: 'local' }
+
     let windowWidth = window.innerWidth
     let windowHeight = window.innerHeight
 
@@ -92,36 +99,42 @@ export default {
     })
     if (!window.MathJax) {
       const script = document.createElement('script')
-      script.onload = this.onScriptLoaded
+      //script.onload = this.onScriptLoaded
       script.type = 'text/javascript'
       script.src = '../../../js/MathJax/mathjax2Config.js'
       document.head.appendChild(script)
-    } else {
-      // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      //this.onScriptLoaded()
+    } else if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //console.log('MathJax.Hub!')
     }
   },
   methods: {
     swipeLeft(event) {
-        if (this.$store.state.discardTouch ) {
-        this.$store.discardTouch(false)   // allow swipes
-        } else if (event.offsetX < -150) { // long swipe?
-        this.count++ 
-        }
+      if (this.$store.state.discardTouch) {
+        this.$store.discardTouch(false) // allow swipes
+      } else if (event.offsetX < -150) {
+        // long swipe?
+        this.count++
+      }
     },
     swipeRight(event) {
-        if (this.$store.state.discardTouch ) {
-        this.$store.discardTouch(false)   // allow swipes
-        } else if (event.offsetX > 150) { // long swipe?
-        this.count+=2
-        }
+      if (this.$store.state.discardTouch) {
+        this.$store.discardTouch(false) // allow swipes
+      } else if (event.offsetX > 150) {
+        // long swipe?
+        this.count += 2
+      }
     },
-    onScriptLoaded(event = null) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    onScriptLoaded() {
+      if (MathJax.Hub) {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      }
     }
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   },
   computed: {
     updateText() {

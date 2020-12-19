@@ -220,16 +220,17 @@ export default {
 
     window.PlotlyConfig = { MathJaxConfig: 'local' }
 
-    // if (!window.MathJax) {
-    //   const script = document.createElement('script')
-    //   //script.onload = this.onScriptLoaded
-    //   script.type = 'text/javascript'
-    //   script.src = '../../../js/MathJax/mathjax2Config.js'
-    //   document.head.appendChild(script)
-    // } else {
-    //   MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    //   //this.onScriptLoaded()
-    // }
+    if (!window.MathJax) {
+      console.log('running in default.vue')
+      const script = document.createElement('script') // NECESSARY?
+      //script.onload = this.onScriptLoaded
+      script.type = 'text/javascript'
+      script.src = '../../../js/MathJax/mathjax2Config.js'
+      document.head.appendChild(script)
+    } else {
+      //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //this.onScriptLoaded()
+    }
   },
   // methods: {
   //   onScriptLoaded(event = null) {

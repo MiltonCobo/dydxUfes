@@ -6,7 +6,7 @@
           <h2 style="color:brown;">
             As equações de Lotka-Volterra
             <v-btn @click="count++" large absolute text right>
-            {{ updateText + 1 }}/{{ total }}
+              {{ updateText + 1 }}/{{ total }}
               <v-icon style="color:brown;" large>mdi-chevron-right</v-icon>
             </v-btn>
           </h2>
@@ -14,8 +14,14 @@
       </v-row>
       <v-divider style="margin-bottom:0.5cm;" />
 
-      <v-row v-touch="{ left: (event) => swipeLeft(event), right: (event) => swipeRight(event) }">
-        <v-col> <!-- key=count to guarantie re render -->
+      <v-row
+        v-touch="{
+          left: event => swipeLeft(event),
+          right: event => swipeRight(event)
+        }"
+      >
+        <v-col>
+          <!-- key=count to guarantie re render -->
           <transition name="fade" mode="out-in">
             <div key="count" v-if="updateText == 0"><Text1 /></div>
             <div key="count" v-else-if="updateText == 1"><Text2 /></div>
@@ -26,29 +32,25 @@
         </v-col>
       </v-row>
 
-          <v-row>
-            <v-col>
-            <v-btn @click="count += 9" large text absolute bottom left>
-              <v-icon style="color:brown;" large>chevron_left</v-icon>
-              Anterior
-            </v-btn>
+      <v-row>
+        <v-col>
+          <v-btn @click="count += 9" large text absolute bottom left>
+            <v-icon style="color:brown;" large>chevron_left</v-icon>
+            Anterior
+          </v-btn>
 
-            <v-btn
-              large
-              fab
-              absolute
-              bottom
-              style="position:relative; left: 50%;"
-              >{{ updateText + 1 }}/{{ total }}</v-btn
-            >
+          <v-btn large fab absolute bottom style="position:relative; left: 50%;"
+            >{{ updateText + 1 }}/{{ total }}</v-btn
+          >
 
-            <v-btn @click="count++" large text absolute bottom right>Seguinte
-              <v-icon style="color:brown;" large>chevron_right</v-icon>
-            </v-btn>
-            </v-col>
-          </v-row>
+          <v-btn @click="count++" large text absolute bottom right
+            >Seguinte
+            <v-icon style="color:brown;" large>chevron_right</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
 
-          <!-- 
+      <!-- 
           <v-btn @click="count = count + 9" fab large text absolute bottom left>
             <v-icon style="color:brown;" large>mdi-chevron-left</v-icon>
           </v-btn>
@@ -57,8 +59,8 @@
           <v-btn @click="count++" fab large text absolute bottom right>
             <v-icon style="color:brown;" large>mdi-chevron-right</v-icon>
           </v-btn> -->
-        </v-col>
-      </v-row>
+      <!-- </v-col>
+      </v-row> -->
 
       <!-- <v-row>
         <v-col>
@@ -99,7 +101,6 @@ export default {
   mounted() {
     window.PlotlyConfig = { MathJaxConfig: 'local' }
 
-
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
         this.count++
@@ -113,9 +114,8 @@ export default {
       script.type = 'text/javascript'
       script.src = '../../../js/MathJax/mathjax2Config.js'
       document.head.appendChild(script)
-    } 
-    else {
-        if (MathJax.Hub) {
+    } else {
+      if (MathJax.Hub) {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
         //console.log('MathJax.Hub!')
       }
@@ -125,31 +125,33 @@ export default {
   },
   methods: {
     swipeLeft(event) {
-        if (this.$store.state.discardTouch ) {
-        this.$store.discardTouch(false)   // allow swipes
-        } else if (event.offsetX < -150) { // long swipe?
-        this.count++ 
-        }
+      if (this.$store.state.discardTouch) {
+        this.$store.discardTouch(false) // allow swipes
+      } else if (event.offsetX < -150) {
+        // long swipe?
+        this.count++
+      }
     },
     swipeRight(event) {
-        if (this.$store.state.discardTouch ) {
-        this.$store.discardTouch(false)   // allow swipes
-        } else if (event.offsetX > 150) { // long swipe?
-       this.count +=9
-        }
-        // if (this.$store.state.discardTouch) {
-        //   this.$store.discardTouch(false)
-        // } else {
-        //   this.count += 9
-        // }
+      if (this.$store.state.discardTouch) {
+        this.$store.discardTouch(false) // allow swipes
+      } else if (event.offsetX > 150) {
+        // long swipe?
+        this.count += 9
+      }
+      // if (this.$store.state.discardTouch) {
+      //   this.$store.discardTouch(false)
+      // } else {
+      //   this.count += 9
+      // }
     }
   },
   updated() {
     //MathJax.typeset()
-        if (MathJax.Hub) {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-        //console.log('MathJax.Hub!')
-      }
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      //console.log('MathJax.Hub!')
+    }
   },
   computed: {
     updateText() {
@@ -167,7 +169,7 @@ export default {
         }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
         // {
         //   rel: 'stylesheet',
         //   href:
@@ -212,16 +214,16 @@ export default {
 /*#mathjax {
    font-family: 'Lucida Grande', sans-serif;
   font-size: 20px; */
-  /* font-weight: 700; */
-  /* line-height: 150%; */
-  /* font-family: 'Comic Sans MS', cursive, sans-serif; */
-  /* font-family: 'Neucha', cursive; */
-  /* font-family: Lucida Console; */
-  /* font-family: 'Montserrat', sans-serif; */
-  /* font-size: 18px; */
-  /* font-weight: 700; */
-  /* line-height: 150%; */
-  /* margin: 0; 
+/* font-weight: 700; */
+/* line-height: 150%; */
+/* font-family: 'Comic Sans MS', cursive, sans-serif; */
+/* font-family: 'Neucha', cursive; */
+/* font-family: Lucida Console; */
+/* font-family: 'Montserrat', sans-serif; */
+/* font-size: 18px; */
+/* font-weight: 700; */
+/* line-height: 150%; */
+/* margin: 0; 
   margin-bottom: 0.4cm; 
 } */
 </style>

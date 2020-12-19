@@ -14,13 +14,18 @@
         </v-col>
       </v-row>
 
-      <v-row v-touch="{ left: (event) => swipeLeft(event) , right: (event) => swipeRight(event) }">
+      <v-row
+        v-touch="{
+          left: event => swipeLeft(event),
+          right: event => swipeRight(event)
+        }"
+      >
         <v-col>
           <!-- key=count to guarantie re render -->
           <transition name="fade" mode="out-in">
             <div key="count" v-if="updateText == 0"><Linear1 /></div>
             <div key="count" v-else-if="updateText == 1"><Linear2 /></div>
-            <div key="count" v-else="updateText == 2"><Linear3 /></div>
+            <div key="count" v-else><Linear3 /></div>
           </transition>
         </v-col>
       </v-row>
@@ -66,6 +71,8 @@ export default {
     }
   },
   mounted() {
+    window.PlotlyConfig = { MathJaxConfig: 'local' }
+
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
         this.count++
@@ -73,9 +80,10 @@ export default {
         this.count += 2
       } else return
     })
+
     if (!window.MathJax) {
       const script = document.createElement('script')
-      // script.onload = this.onScriptLoaded
+      script.onload = this.onScriptLoaded
       script.type = 'text/javascript'
       script.src = '../../../js/MathJax/mathjax2Config.js'
       document.head.appendChild(script)
@@ -86,22 +94,26 @@ export default {
   },
   methods: {
     swipeLeft(event) {
-    if (this.$store.state.discardTouch ) {
-    this.$store.discardTouch(false)   // allow swipes
-    } else if (event.offsetX < -150) { // long swipe?
-    this.count++
-    }
+      if (this.$store.state.discardTouch) {
+        this.$store.discardTouch(false) // allow swipes
+      } else if (event.offsetX < -150) {
+        // long swipe?
+        this.count++
+      }
     },
     swipeRight(event) {
-    console.log(event.offsetX)
-    if (this.$store.state.discardTouch ) {
-    this.$store.discardTouch(false)   // allow swipes
-    } else if (event.offsetX > 150) { // long swipe?
-    this.count += 2
-    }
+      console.log(event.offsetX)
+      if (this.$store.state.discardTouch) {
+        this.$store.discardTouch(false) // allow swipes
+      } else if (event.offsetX > 150) {
+        // long swipe?
+        this.count += 2
+      }
     },
-    onScriptLoaded(event = null) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    onScriptLoaded() {
+      if (typeof MathJax.Hub.Queue !== undefined) {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      }
     }
   },
   updated() {

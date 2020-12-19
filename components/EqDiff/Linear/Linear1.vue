@@ -28,7 +28,27 @@ export default {
     Slinear1
   },
 
-  methods: {},
+  methods: {
+    mounted() {
+      console.log('mounted in linear1 was fired!')
+      if (!window.MathJax) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.defer = true
+        script.src = '../../../js/MathJax/mathjax2Config.js'
+        document.head.appendChild(script)
+        script.addEventListener('load', console.log('mathjax has been loaded!'))
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      } else {
+        //MathJax.typeset()
+        if (window.MathJax.Hub) {
+          console.log('mathjax is already loaded in index.js')
+          MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+          //console.log('MathJax.Hub!')
+        }
+      }
+    }
+  },
   head() {
     return {
       // title: 'Eq. Diferenciais Lineares',
@@ -52,21 +72,4 @@ export default {
 }
 </script>
 
-<style scoped>
-#mathjax {
-  /* font-size: 15px; */
-  /* font-family: 'Montserrat', sans-serif; */
-  /* font-family: 'Neucha', cursive; */
-  /* font-family: Lucida Console; */
-  /* font-family: 'Rock Salt', cursive;
-  font-weight: 700;
-  line-height: 1.8; */
-}
-
-p {
-  /* font-size: 12px; */
-  /* font-weight: 700; */
-  /* line-height: 1.5; */
-  /* font-family: 'Rock Salt', cursive; */
-}
-</style>
+<style scoped></style>

@@ -104,6 +104,8 @@ export default {
   //layout: 'darkTheme',
   created() {},
   mounted() {
+    //window.PlotlyConfig = { MathJaxConfig: 'local' }
+
     if (!window.p5) {
       const script = document.createElement('script')
       script.type = 'text/javascript'
@@ -134,7 +136,8 @@ export default {
     } else {
       //MathJax.typeset()
       if (window.MathJax.Hub) {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        console.log('mathjax is already loaded in index.js')
+        //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
         //console.log('MathJax.Hub!')
       }
     }

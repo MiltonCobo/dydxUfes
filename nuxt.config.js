@@ -106,6 +106,7 @@ export default {
    */
   plugins: [
     '~/plugins/globalVariables',
+    { src: '~plugins/PlotlyConfig.js', mode: 'server' },
     { src: '~plugins/vue-plotly', mode: 'client' },
     { src: '~plugins/vue-chartjs.js', mode: 'client' }
     //{ src: '~plugins/babylonjs.js', mode: 'client' }
