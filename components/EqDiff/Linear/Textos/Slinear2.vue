@@ -145,29 +145,14 @@ export default {
   },
 
   mounted() {
-    this.checkMathJaxLoaded()
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //this.checkMathJaxLoaded()
+    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   updated() {
-    this.checkMathJaxLoaded()
-
+    //this.checkMathJaxLoaded()
     //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
-  methods: {
-    checkMathJaxLoaded() {
-      if (typeof window.MathJax !== undefined) {
-        const script = document.createElement('script')
-        script.type = 'text/javascript'
-        script.defer = true
-        script.src = '../../../js/MathJax/mathjax2Config.js'
-        script.addEventListener('load', console.log('mathjax has been loaded!'))
-
-        document.head.appendChild(script)
-        //script.addEventListener('load', this.onMathJaxLoaded)
-      }
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    }
-  }
+  methods: {}
 }
 </script>
 

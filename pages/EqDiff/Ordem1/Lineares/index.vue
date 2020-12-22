@@ -102,30 +102,33 @@ export default {
       }
     },
     onScriptLoaded() {
-      if (typeof MathJax.Hub.Queue !== undefined) {
-        // if (typeof MathJax.typeset !== undefined) {
-        // MathJax.typeset()
+      if (MathJax.Hub) {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
     },
 
     checkMathJaxLoaded() {
       if (typeof window.MathJax !== undefined) {
+        console.log('mathjax is not loaded a lineares/index.vue')
         const script = document.createElement('script')
         script.type = 'text/javascript'
-        script.defer = true
+        // script.defer= false
+        // script.async = true  // not necessary?
         script.src = '../../../js/MathJax/mathjax2Config.js'
-        script.addEventListener('load', console.log('mathjax has been loaded!'))
+        script.addEventListener(
+          'load',
+          MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        )
 
         document.head.appendChild(script)
         //script.addEventListener('load', this.onMathJaxLoaded)
+      } else {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
   },
   updated() {
-    this.checkMathJaxLoaded()
-    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   computed: {
     updateText() {

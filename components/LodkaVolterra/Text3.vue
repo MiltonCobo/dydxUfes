@@ -82,18 +82,6 @@ export default {
       layout,
       options
     }
-  },
-  mounted() {
-    //window.PlotlyConfig = { MathJaxConfig: 'local' }
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
-  methods: {
-    swipeLeft() {
-      this.$store.discardTouch(true)
-    },
-    swipeRight() {
-      this.$store.discardTouch(true)
-    }
   }
 }
 </script>

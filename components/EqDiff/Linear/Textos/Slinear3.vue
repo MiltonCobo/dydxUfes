@@ -95,8 +95,13 @@
     >
       <v-card style="background-color:gainsboro;">
         <v-card-actions class="flex-column align-start">
-          <client-only placeholder="carregando...">
-            <vue-plotly :data="data" :layout="layout" :options="options" />
+          <client-only>
+            <vue-plotly
+              placeholder="carregando..."
+              :data="data"
+              :layout="layout"
+              :options="options"
+            />
           </client-only>
           <v-btn color="light-green" @click="openFigure = false">
             Voltar
@@ -132,10 +137,10 @@ export default {
     }
   },
   mounted() {
-    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   updated() {
-    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }
 </script>

@@ -80,27 +80,7 @@ export default {
       options
     }
   },
-  mounted() {
-    // if (!window.MathJax) {
-    //   const script = document.createElement('script')
-    //   script.type = 'text/javascript'
-    //   script.src = '../../../js/MathJax/mathjax2Config.js'
-    //   script.addEventListener('load', this.onMathJaxLoaded)
-    //   document.head.appendChild(script)
-    // } else if (MathJax.Hub.Typeset) {
-    //   //MathJax.typeset()
-    //   MathJax.Hub.Typeset()
-    //   // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    // }
-  },
-  onMathJaxLoaded() {
-    //MathJax.typeset()
-    if (typeof MathJax.Hub !== undefined) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    } else {
-      console.log('mathjax is not loaded!')
-    }
-  }
+  mounted() {}
 }
 </script>
 

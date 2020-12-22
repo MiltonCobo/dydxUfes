@@ -21,6 +21,7 @@
         <v-col sm="12" md="6" align="center" class="figure">
           <client-only>
             <vue-plotly
+              placeholder="carregando..."
               v-if="startChart"
               :data="data"
               :layout="layout"

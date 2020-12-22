@@ -35,10 +35,6 @@
 
 <script>
 export default {
-  name: 'Text4',
-
-  mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  }
+  name: 'Text4'
 }
 </script>

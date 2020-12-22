@@ -99,6 +99,8 @@ export default {
     }
   },
   mounted() {
+    this.checkMathJaxLoaded()
+
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
         this.count++
@@ -108,6 +110,24 @@ export default {
     })
   },
   methods: {
+    checkMathJaxLoaded() {
+      if (typeof window.MathJax !== undefined) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.defer = true
+        script.src = '../../../js/MathJax/mathjax2Config.js'
+        document.head.appendChild(script)
+        script.addEventListener('load', console.log('mathjax has been loaded!'))
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      } else if (typeof MathJax.Hub.Typeset !== 'undefined') {
+        // MathJax.typeset()
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        console.log('mathjax is already loaded in index.vue and typeset()')
+      } else {
+        console.log('mathjax.typeset is not loaded....')
+      }
+    },
+
     swipeLeft(event) {
       if (this.$store.state.discardTouch) {
         this.$store.discardTouch(false) // allow swipes
@@ -123,15 +143,9 @@ export default {
         // long swipe?
         this.count += 9
       }
-      // if (this.$store.state.discardTouch) {
-      //   this.$store.discardTouch(false)
-      // } else {
-      //   this.count += 9
-      // }
     }
   },
   updated() {
-    //MathJax.typeset()
     if (MathJax.Hub) {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       console.log('MathJax.Hub! in updated')

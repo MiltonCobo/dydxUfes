@@ -28,27 +28,7 @@ export default {
     Slinear1
   },
 
-  methods: {
-    mounted() {
-      console.log('mounted in linear1 was fired!')
-      if (!window.MathJax) {
-        const script = document.createElement('script')
-        script.type = 'text/javascript'
-        script.defer = true
-        script.src = '../../../js/MathJax/mathjax2Config.js'
-        document.head.appendChild(script)
-        script.addEventListener('load', console.log('mathjax has been loaded!'))
-        //script.addEventListener('load', this.onMathJaxLoaded)
-      } else {
-        //MathJax.typeset()
-        if (window.MathJax.Hub) {
-          console.log('mathjax is already loaded in index.js')
-          MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-          //console.log('MathJax.Hub!')
-        }
-      }
-    }
-  },
+  methods: {},
   head() {
     return {
       // title: 'Eq. Diferenciais Lineares',

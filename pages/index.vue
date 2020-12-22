@@ -139,12 +139,9 @@ export default {
         document.head.appendChild(script)
         script.addEventListener('load', console.log('mathjax has been loaded!'))
         //script.addEventListener('load', this.onMathJaxLoaded)
-      } else if (typeof MathJax.Hub.Typeset !== 'undefined') {
+      } else {
         // MathJax.typeset()
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-        console.log('mathjax is already loaded in index.vue and typeset()')
-      } else {
-        console.log('mathjax.typeset is not loaded....')
       }
     },
     onMathJaxLoaded() {

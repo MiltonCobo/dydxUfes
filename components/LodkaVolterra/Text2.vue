@@ -69,7 +69,6 @@
 export default {
   name: 'Text2',
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }
 </script>

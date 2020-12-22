@@ -83,11 +83,6 @@ export default {
   },
   mounted() {
     this.checkMathJaxLoaded()
-    let windowWidth = window.innerWidth
-    let windowHeight = window.innerHeight
-
-    this.$store.setWindowWidth(windowWidth)
-    this.$store.setWindowHeight(windowHeight)
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
@@ -139,9 +134,7 @@ export default {
     }
   },
   updated() {
-    if (MathJax.Hub) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    }
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   computed: {
     updateText() {
