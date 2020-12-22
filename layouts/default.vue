@@ -219,18 +219,6 @@ export default {
     this.$store.setWindowHeight(windowHeight)
 
     window.PlotlyConfig = { MathJaxConfig: 'local' }
-
-    if (!window.MathJax) {
-      console.log('running in default.vue')
-      const script = document.createElement('script') // NECESSARY?
-      //script.onload = this.onScriptLoaded
-      script.type = 'text/javascript'
-      script.src = '../../../js/MathJax/mathjax2Config.js'
-      document.head.appendChild(script)
-    } else {
-      //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      //this.onScriptLoaded()
-    }
   },
   // methods: {
   //   onScriptLoaded(event = null) {
@@ -273,7 +261,7 @@ let cursos = [
       {
         title: 'Eq. de 1a Ordem',
         route: '/EqDiff/Ordem1/',
-        active: false,
+        active: true,
         items: [
           { title: 'Eq. Linear', route: '/EqDiff/Ordem1/Lineares/' },
           { title: 'Eq. Separável', route: '/EqDiff/Ordem1/Separavel/' }
