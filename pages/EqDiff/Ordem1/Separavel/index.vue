@@ -82,7 +82,8 @@ export default {
     }
   },
   mounted() {
-    this.checkMathJaxLoaded()
+    // this.checkMathJaxLoaded()
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {

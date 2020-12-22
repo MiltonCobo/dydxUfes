@@ -213,7 +213,7 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, { loader }) {
-      config.resolve.alias['plotly.js$'] = 'plotly.js/dist/plotly.min.js'
+      config.resolve.alias['plotly.js$'] = 'plotly.js/dist/plotly.min.js' // To avoid loading other staff
 
       config.module.rules.push({
         test: /\.js$/,

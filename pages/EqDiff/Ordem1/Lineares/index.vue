@@ -73,7 +73,8 @@ export default {
     }
   },
   mounted() {
-    this.checkMathJaxLoaded()
+    //this.checkMathJaxLoaded()
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
@@ -112,12 +113,12 @@ export default {
         const script = document.createElement('script')
         script.type = 'text/javascript'
         // script.defer= false
-        // script.async = true  // not necessary?
+        script.async = true
         script.src = '../../../js/MathJax/mathjax2Config.js'
-        // script.addEventListener(
-        //   'load',
-        //   MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-        //)
+        script.addEventListener(
+          'load',
+          MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        )
 
         document.head.appendChild(script)
       } else {

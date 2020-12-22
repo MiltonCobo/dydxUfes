@@ -3,12 +3,12 @@ window.MathJax = {
   extensions: ['tex2jax.js', 'Safe.js'],
   styles: {
     '.mjx-chtml': { padding: '0.1em 0.1em', color: 'var(--mjx-green)' }
-    // '.mjx-chtml': { color: 'var(--mjx-green)' } // .MJXc-display '#2E7D32' CSS variable in default.vue  'var(--mjx-green)'
   },
   displayAlign: 'center',
 
   TeX: {
-    extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js'],
+    equationNumbers: { autoNumber: 'AMS' },
+    extensions: ['AMSmath.js', 'AMSsymbols.js', 'AMScd.js', 'autobold.js'],
     Macros: {
       e: '{\\textrm{e}}',
       R: '{\\mathbb{R}}',
@@ -39,19 +39,10 @@ window.MathJax = {
   let script = document.createElement('script')
   script.type = 'text/javascript'
   script.id = 'MathJax-script'
-  script.src = script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js' //'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' // 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest' //'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/node-main.min.js'
-  //  'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
-  // 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.8/latest.js?config=TeX-AMS_SVG'
-  //'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG'
+  script.src = script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js'
 
-  // 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js' //?config=TeX-AMS-MML_SVG'
-  //script.integrity =
-  //'sha512-3a//fktUW1yG8LJiA9gw3EyfUHBVWwXo3ZcAkajl69mY8dKzLPCxfDMLxGJ4VKHAtrw1mJE3yMj2F7oCCE3RxA=='
-  //script.crossorigin = 'anonymous'
-  // 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.8/latest.js?config=TeX-AMS-MML_SVG'
-  //
-  //'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/latest.js?config=TeX-AMS-MML_SVG'
+  //  'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
+
   script.async = true
-  //script.defer = true
   document.head.appendChild(script)
 })()

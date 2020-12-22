@@ -110,7 +110,7 @@ export default {
     this.checkMathJaxLoaded() // NEED TO RELOAD MATHJAX WHEN CLICK ON UFES LINK...
   },
   updated() {
-    this.checkMathJaxLoaded()
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax']) //NEEDED WHEN ANY UPDATE IN ANY COMPONENT
   },
 
   destroyed() {
@@ -126,7 +126,6 @@ export default {
         //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
         document.head.appendChild(script)
       } else {
-        console.log('p5 is here')
         this.p5plot = new p5(goldenRatio, this.$refs.container)
       }
     },
@@ -137,8 +136,8 @@ export default {
         script.defer = true
         script.src = '../../../js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-        script.addEventListener('load', console.log('mathjax has been loaded!'))
-        //script.addEventListener('load', this.onMathJaxLoaded)
+        // script.addEventListener('load', console.log('mathjax has been loaded!'))
+        script.addEventListener('load', this.onMathJaxLoaded)
       } else {
         // MathJax.typeset()
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
@@ -148,13 +147,9 @@ export default {
       //MathJax.typeset()
       if (MathJax.Hub) {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-        console.log('MathJax.Hub!')
       }
     },
     startp5Plot() {
-      console.log('p5 was loaded!')
-      //let divFigure = this.$refs.container
-      // NEED TO BE SURE P5 EXIST!!!!!
       this.p5plot = new p5(goldenRatio, this.$refs.container)
     }
   },
