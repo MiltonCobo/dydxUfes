@@ -84,20 +84,21 @@
             de $x=\ln(2)$ e o sinal da derivada depende inteiramente do
             numerador $2-\e^x.$ É fácil ver então que
             <span style="color:var(--mjx-green)">
-              $y'(x) \gt 0$ se $ x \lt \ln(2)$ e $y'(x) \lt 0$ se $ x \gt \ln(2),$ isto
-              é, a derivada $y'(x)$ esta decrescendo ao passar por $x=\ln(2),$ o
-              que implica que $y(x)$ passa por um máximo em ${x=\ln(2).}$
+              $y'(x) \gt 0$ se $ x \lt \ln(2)$ e $y'(x) \lt 0$ se $ x \gt
+              \ln(2),$ isto é, a derivada $y'(x)$ esta decrescendo ao passar por
+              $x=\ln(2),$ o que implica que $y(x)$ passa por um máximo em
+              ${x=\ln(2).}$
             </span>
           </p>
         </v-col>
       </v-row>
-      <v-row no-gutters align="center" >
-        <v-col sm="12" md="6" align="center" class="figure" >
+      <v-row no-gutters align="center">
+        <v-col sm="12" md="6" align="center" class="figure">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data3" :layout="layout3" :options="options" />
           </client-only>
         </v-col>
-        <v-col >
+        <v-col>
           <p class="mathjax">
             Uma outra observação é que a derivada $y'(x)$ não está bem definida
             para $y=-3/2,$ e podemos ver na figura que é sobre esta reta que as
@@ -129,6 +130,10 @@ import { drawContoursSep3 } from '@/static/js/Separavel/separavel3.js'
 import { drawFunctionsSep3 } from '@/static/js/Separavel/separavel3.js'
 
 export default {
+  components: {
+    'vue-plotly': () => import('@statnett/vue-plotly')
+  },
+
   data() {
     let info = drawSurfaceSep3()
     let data = info.data
@@ -173,7 +178,7 @@ export default {
   width: 100%;
   min-width: 400px;
   max-width: 700px;
-  height:100%;  /* foi necessario dar uma altura de 500px */
+  height: 100%; /* foi necessario dar uma altura de 500px */
   /* min-height: 400px; */
   max-height: 500px;
   background-color: inherit;

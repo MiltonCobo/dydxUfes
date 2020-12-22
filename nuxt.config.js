@@ -2,6 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   mode: 'universal',
+  // middleware: ['checkMathJax'],
 
   /*
    ** Headers of the page
@@ -51,9 +52,9 @@ export default {
       //   defer: false
       // }
       {
-        type: 'text/javascript', //x-mathjax-config',
-        src: '../../../js/MathJax/mathjax2Config.js', //'js/MathJax/mathjax2Config.js',
-        async: true,
+        type: 'text/javascript',
+        id: 'MathJax-script',
+        src: '../../../js/MathJax/mathjax2Config.js',
         defer: true // defer = true is important
       }
       // {
@@ -106,8 +107,9 @@ export default {
    */
   plugins: [
     '~/plugins/globalVariables',
-    { src: '~plugins/PlotlyConfig.js', mode: 'server' },
-    { src: '~plugins/vue-plotly', mode: 'client' },
+    { src: '~plugins/PlotlyConfig.js' },
+    // { src: '~plugins/vue-plotly', mode: 'client' }, // bundle is too big to initial load....
+
     { src: '~plugins/vue-chartjs.js', mode: 'client' }
     //{ src: '~plugins/babylonjs.js', mode: 'client' }
     //{ src: '~plugins/babylon-gui.js', mode: 'client' }   Not necessary?
@@ -179,7 +181,7 @@ export default {
    */
   build: {
     extractCSS: true,
-    transpile: ['vue-plotly.js', 'vue-chartjs'],
+    transpile: ['vue-chartjs', 'vue-plotly.js'],
 
     /*
      ** You can extend webpack config here
@@ -210,7 +212,9 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, {}) {
+    extend(config, { loader }) {
+      config.resolve.alias['plotly.js$'] = 'plotly.js/dist/plotly.min.js'
+
       config.module.rules.push({
         test: /\.js$/,
         // loader: 'ify-loader',

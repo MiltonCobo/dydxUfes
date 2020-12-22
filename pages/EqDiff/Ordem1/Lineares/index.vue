@@ -52,6 +52,8 @@
 </template>
 
 <script>
+// import vuePlotly from '@statnett/vue-plotly'
+
 import Linear1 from '@/components/EqDiff/Linear/Linear1'
 import Linear2 from '@/components/EqDiff/Linear/Linear2'
 import Linear3 from '@/components/EqDiff/Linear/Linear3'
@@ -71,7 +73,7 @@ export default {
     }
   },
   mounted() {
-    window.PlotlyConfig = { MathJaxConfig: 'local' }
+    this.checkMathJaxLoaded()
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
@@ -80,17 +82,6 @@ export default {
         this.count += 2
       } else return
     })
-
-    if (!window.MathJax) {
-      const script = document.createElement('script')
-      script.onload = this.onScriptLoaded
-      script.type = 'text/javascript'
-      script.src = '../../../js/MathJax/mathjax2Config.js'
-      document.head.appendChild(script)
-    } else {
-      this.onScriptLoaded()
-    }
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   methods: {
     swipeLeft(event) {
@@ -112,12 +103,29 @@ export default {
     },
     onScriptLoaded() {
       if (typeof MathJax.Hub.Queue !== undefined) {
+        // if (typeof MathJax.typeset !== undefined) {
+        // MathJax.typeset()
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
+    },
+
+    checkMathJaxLoaded() {
+      if (typeof window.MathJax !== undefined) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.defer = true
+        script.src = '../../../js/MathJax/mathjax2Config.js'
+        script.addEventListener('load', console.log('mathjax has been loaded!'))
+
+        document.head.appendChild(script)
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      }
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.checkMathJaxLoaded()
+    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   computed: {
     updateText() {

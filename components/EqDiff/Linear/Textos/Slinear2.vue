@@ -90,9 +90,13 @@
             transition="fab-transition"
           >
             <v-card>
-                <v-card-text class="mathjax" align="center" style="padding-top:20px; margin-bottom: -60px; font-family: Lucida Console;">
-                Soluções da equação linear  $$ y' - {1\over 2} y = 2\cos(t), \, y(0) = a $$ para diferentes
-                valores do parâmetro $a.$
+              <v-card-text
+                class="mathjax"
+                align="center"
+                style="padding-top:20px; margin-bottom: -60px; font-family: Lucida Console;"
+              >
+                Soluções da equação linear $$ y' - {1\over 2} y = 2\cos(t), \,
+                y(0) = a $$ para diferentes valores do parâmetro $a.$
               </v-card-text>
               <v-card-actions class="flex-column align-start">
                 <client-only v-if="openFigure">
@@ -107,10 +111,13 @@
                 </v-btn>
               </v-card-actions>
 
-              <v-card-text class="mathjax" style="padding: 20px; font-family: Lucida Console;">
-                As soluções são $$ { y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t) +
-                {(\frac{4}{5}+a)}\e^{t/2}. }$$ Observe que para ${a=-0.8=-4/5}$ as soluções
-                permanecem limitadas.
+              <v-card-text
+                class="mathjax"
+                style="padding: 20px; font-family: Lucida Console;"
+              >
+                As soluções são $$ { y(t) = (\frac{8}{5}) \sin(t) -
+                (\frac{4}{5}) \cos(t) + {(\frac{4}{5}+a)}\e^{t/2}. }$$ Observe
+                que para ${a=-0.8=-4/5}$ as soluções permanecem limitadas.
               </v-card-text>
             </v-card>
           </v-dialog>
@@ -121,6 +128,7 @@
 </template>
 
 <script>
+// import vuePlotly from '@statnett/vue-plotly'
 import { drawLinear2 } from '@/static/js/Linear/linear2.js'
 
 export default {
@@ -137,10 +145,28 @@ export default {
   },
 
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.checkMathJaxLoaded()
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   updated() {
-     MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.checkMathJaxLoaded()
+
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  methods: {
+    checkMathJaxLoaded() {
+      if (typeof window.MathJax !== undefined) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.defer = true
+        script.src = '../../../js/MathJax/mathjax2Config.js'
+        script.addEventListener('load', console.log('mathjax has been loaded!'))
+
+        document.head.appendChild(script)
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      }
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   }
 }
 </script>

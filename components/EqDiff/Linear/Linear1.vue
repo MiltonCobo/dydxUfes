@@ -22,7 +22,7 @@ import Qlinear1 from '@/components/EqDiff/Linear/Textos/Qlinear1'
 import Slinear1 from '@/components/EqDiff/Linear/Textos/Slinear1'
 
 export default {
-  name: 'Text1',
+  name: 'Linear1',
   components: {
     Qlinear1,
     Slinear1

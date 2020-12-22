@@ -99,6 +99,10 @@ import { volterraContours } from '@/static/js/LodkaVolterra/contours'
 export default {
   name: 'Text5',
 
+  components: {
+    'vue-plotly': () => import('@statnett/vue-plotly')
+  },
+
   data() {
     let info = volterraContours()
     let data = info.data
@@ -122,8 +126,8 @@ export default {
 .figure {
   /* width: 90%;   */
   height: 24em;
-  
-   /* apparently need a fix height */
+
+  /* apparently need a fix height */
   /* min-height: 400px;
   max-height: 500px; */
   background-color: inherit;

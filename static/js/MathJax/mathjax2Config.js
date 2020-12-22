@@ -37,7 +37,9 @@ window.MathJax = {
 }
 ;(function() {
   let script = document.createElement('script')
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js'
+  script.type = 'text/javascript'
+  script.id = 'MathJax-script'
+  script.src = script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js' //'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js' // 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest' //'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/node-main.min.js'
   //  'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
   // 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.8/latest.js?config=TeX-AMS_SVG'
   //'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG'

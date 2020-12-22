@@ -103,67 +103,50 @@ import goldenRatio from '@/static/js/p5/goldenNumber.js'
 export default {
   //layout: 'darkTheme',
   created() {},
+  // middleware: 'checkMathJax',
   mounted() {
-    //window.PlotlyConfig = { MathJaxConfig: 'local' }
+    this.checkp5Loaded()
 
-    if (!window.p5) {
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.addEventListener('load', this.startp5Plot)
-      script.src = '../../../js/p5/p5.min.js' // new version of p5
-      //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
-      document.head.appendChild(script)
-    } else {
-      console.log('p5 is here')
-      this.startp5Plot()
-    }
-    // while (!window.p5) {
-    //   console.log('loading p5.js')
-    // }
-    // console.log('p5 is here')
-    //this.startp5Plot()
-    //window.PlotlyConfig = { MathJaxConfig: 'local' }
-    //this.startp5Plot()
-
-    if (!window.MathJax) {
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.defer = true
-      script.src = '../../../js/MathJax/mathjax2Config.js'
-      document.head.appendChild(script)
-      script.addEventListener('load', console.log('mathjax has been loaded!'))
-      //script.addEventListener('load', this.onMathJaxLoaded)
-    } else {
-      //MathJax.typeset()
-      if (window.MathJax.Hub) {
-        console.log('mathjax is already loaded in index.vue')
-        //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-        //console.log('MathJax.Hub!')
-      }
-    }
+    this.checkMathJaxLoaded() // NEED TO RELOAD MATHJAX WHEN CLICK ON UFES LINK...
   },
   updated() {
-    if (!window.p5) {
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.addEventListener('load', this.startp5Plot)
-      script.src = '../../../js/p5/p5.min.js' // new version of p5
-      //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
-      document.head.appendChild(script)
-    } else {
-      console.log('p5 is here')
-      this.startp5Plot()
-    }
-
-    if (!window.MathJax) {
-      console.log('mathjax is not loaded!')
-    }
+    this.checkMathJaxLoaded()
   },
 
   destroyed() {
     this.p5plot.remove()
   },
   methods: {
+    checkp5Loaded() {
+      if (!window.p5) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.addEventListener('load', this.startp5Plot)
+        script.src = '../../../js/p5/p5.min.js' // new version of p5
+        //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
+        document.head.appendChild(script)
+      } else {
+        console.log('p5 is here')
+        this.p5plot = new p5(goldenRatio, this.$refs.container)
+      }
+    },
+    checkMathJaxLoaded() {
+      if (typeof window.MathJax !== undefined) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.defer = true
+        script.src = '../../../js/MathJax/mathjax2Config.js'
+        document.head.appendChild(script)
+        script.addEventListener('load', console.log('mathjax has been loaded!'))
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      } else if (typeof MathJax.Hub.Typeset !== 'undefined') {
+        // MathJax.typeset()
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        console.log('mathjax is already loaded in index.vue and typeset()')
+      } else {
+        console.log('mathjax.typeset is not loaded....')
+      }
+    },
     onMathJaxLoaded() {
       //MathJax.typeset()
       if (MathJax.Hub) {

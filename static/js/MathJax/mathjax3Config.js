@@ -15,6 +15,8 @@ window.MathJax = {
 }
 ;(function() {
   let script = document.createElement('script')
+  script.type = 'text/javascript'
+  script.id = 'MathJax-script'
   script.src = 'https://polyfill.io/v3/polyfill.min.js?features=es6'
   //'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.0/es5/latest?tex-svg.js'
   //script.async = true

@@ -113,9 +113,11 @@
 </template>
 
 <script>
+// import vuePlotly from '@statnett/vue-plotly'
 import { drawLinear3 } from '@/static/js/Linear/Slinear3'
 
 export default {
+  components: { 'vue-plotly': () => import('@statnett/vue-plotly') },
   data() {
     let info = drawLinear3()
     let data = info.data
@@ -130,10 +132,10 @@ export default {
     }
   },
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }
 </script>

@@ -95,6 +95,10 @@ import { drawSurfaceSep1 } from '@/static/js/Separavel/separavel1.js'
 import { drawContoursSep1 } from '@/static/js/Separavel/separavel1.js'
 
 export default {
+  components: {
+    'vue-plotly': () => import('@statnett/vue-plotly')
+  },
+
   data() {
     let info = drawSurfaceSep1()
     let data = info.data

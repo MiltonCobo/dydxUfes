@@ -162,28 +162,8 @@ export default {
   // layout: 'darkTheme',
   created() {},
   mounted() {
-    if (!window.BABYLON) {
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = '../../../js/babylon/babylon.gui.min.js'
-      document.head.appendChild(script)
-      script.addEventListener('load', this.startBabylonPlot)
-    } else {
-      console.log('babylon is loaded!')
-    }
-
-    this.startBabylonPlot()
-
-    if (!window.MathJax) {
-      let script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = '../../../js/MathJax/mathjax2Config.js'
-      script.addEventListener('load', this.onMathJaxLoaded)
-      document.head.appendChild(script)
-    } else if (window.MathJax.Hub) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-    }
-    //this.startBabylonPlot()
+    this.checkBabylonGui()
+    this.checkMathJaxLoaded()
   },
   destroyed() {
     //console.log('destroyed foi ativado')
@@ -200,6 +180,45 @@ export default {
     },
     startBabylonPlot() {
       lorenzPlot()
+    },
+
+    checkBabylonGui() {
+      if (typeof window.BABYLON !== undefined) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = '../../../js/babylon/babylon.gui.min.js'
+        document.head.appendChild(script)
+
+        if (typeof window.BABYLON.GUI !== undefined) {
+          const script2 = document.createElement('script')
+          script2.type = 'text/javascript'
+          script2.src = '../../../js/babylon/babylon.gui.min.js'
+          document.head.appendChild(script)
+        } else {
+          console.log('babylon gui is loaded!')
+        }
+
+        this.startBabylonPlot()
+        // script.addEventListener('load', this.startBabylonPlot)
+        // script2.addEventListener('load', this.startBabylonPlot)
+      }
+    },
+    checkMathJaxLoaded() {
+      if (typeof window.MathJax !== undefined) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.defer = true
+        script.src = '../../../js/MathJax/mathjax2Config.js'
+        document.head.appendChild(script)
+        script.addEventListener('load', console.log('mathjax has been loaded!'))
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      } else if (typeof MathJax.Hub.Typeset !== 'undefined') {
+        // MathJax.typeset()
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        console.log('mathjax is already loaded in index.vue and typeset()')
+      } else {
+        console.log('mathjax.typeset is not loaded....')
+      }
     }
   },
   updated() {

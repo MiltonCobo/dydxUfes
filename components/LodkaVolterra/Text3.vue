@@ -27,6 +27,7 @@
         >
           <client-only>
             <vue-plotly
+              placeholder="carregando..."
               v-if="startChart"
               :data="data"
               :layout="layout"
@@ -65,6 +66,9 @@ import { volterraSurface } from '@/static/js/LodkaVolterra/VolterraSurface'
 
 export default {
   name: 'Text3',
+  components: {
+    'vue-plotly': () => import('@statnett/vue-plotly')
+  },
 
   data() {
     let info = volterraSurface()
@@ -100,7 +104,7 @@ export default {
 
   /* max-width: 800px; */
   /* height: auto;  */
-  height: 24em; 
+  height: 24em;
 
   background-color: inherit;
   margin: 0px;

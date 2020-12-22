@@ -46,8 +46,13 @@
     <v-container fluid>
       <v-row no-gutters align="center">
         <v-col sm="12" md="6" align="center" class="figure">
-          <client-only placeholder="carregando...">
-            <vue-plotly :data="data" :layout="layout" :options="options" />
+          <client-only>
+            <vue-plotly
+              placeholder="carregando..."
+              :data="data"
+              :layout="layout"
+              :options="options"
+            />
           </client-only>
         </v-col>
         <v-col sm="12" md="6">
@@ -91,7 +96,7 @@
 </template>
 
 <script>
-// import vuePlotly from '@statnett/vue-plotly'
+//import vuePlotly from '@statnett/vue-plotly'
 import { getDataScatter } from '@/static/js/Plotly/plotly-config.js'
 
 let inf = plotMosquitosSol()
@@ -99,8 +104,12 @@ let inf = plotMosquitosSol()
 let data = inf.data
 let layout = inf.layout
 let options = inf.options
+
 export default {
-  // components: { vuePlotly },
+  components: {
+    'vue-plotly': () => import('@statnett/vue-plotly')
+  },
+
   data() {
     return {
       startChart: true,
@@ -110,22 +119,24 @@ export default {
     }
   },
   mounted() {
-    console.log('mounted was fire!')
+    this.checkMathJaxLoaded()
+  },
+  methods: {
+    checkMathJaxLoaded() {
+      if (typeof window.MathJax !== undefined) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.defer = true
+        script.src = '../../../js/MathJax/mathjax2Config.js'
+        script.addEventListener('load', console.log('mathjax has been loaded!'))
 
-    if (!window.MathJax) {
-      console.log('no MathJax in Slinear1')
+        document.head.appendChild(script)
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      }
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
     }
   },
-  methods: {},
   updated() {
-    // if (!window.p5) {
-    //   const script = document.createElement('script')
-    //   script.type = 'text/javascript'
-    //   script.addEventListener('load', this.startp5Plot)
-    //   script.src = '../../../js/p5/p5.min.js' // new version of p5
-    //   //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
-    //   document.head.appendChild(script)
-    // }
     // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }
