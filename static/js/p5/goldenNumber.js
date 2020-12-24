@@ -1,11 +1,12 @@
 // import Bubble from 'static/js/p5/bubbles'
 
 export default function goldenRatio(p) {
-  let totalPoints = 400 // total number of ball per angle
+  let totalPoints = 500 // total number of ball per angle
 
   let c = 8 // parameter to determine size of figure
 
   let stepSlider = 0.00001
+  let initialAngle = 0.525
 
   let angle
   let figFall = false
@@ -64,7 +65,7 @@ export default function goldenRatio(p) {
     button = p.createButton('parar/seguir')
     angleTexto = p.createElement('p', '')
     inputAngle = p.createInput('fração de 2PI')
-    slider = p.createSlider(0, p.TWO_PI, 0.31835, stepSlider)
+    slider = p.createSlider(0, p.TWO_PI, initialAngle, stepSlider) //0.31835
     msg = p.createElement('p', 'clique no centro da figura...de novo')
 
     //controls parent
@@ -246,7 +247,7 @@ export default function goldenRatio(p) {
     inputAngle.changed(updateAngle)
 
     //make the first bubbles in the circle
-    if (count < 160) {
+    if (count < 300) {
       for (let n = 0; n < count; n++) {
         bubbles[n].display()
       }
