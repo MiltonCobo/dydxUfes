@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted() {
-    this.checkMathJaxLoaded()
+    //this.checkMathJaxLoaded()
 
     //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
 
@@ -103,8 +103,8 @@ export default {
         this.count += 2
       }
     },
-    onScriptLoaded() {
-      if (MathJax.Hub) {
+    onMathJaxLoaded() {
+      if (window.MathJax.Hub) {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
     },
@@ -116,7 +116,7 @@ export default {
         // script.defer= false
         script.async = true
         script.src = '../../../js/MathJax/mathjax2Config.js'
-        script.onload = MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        script.onload = this.onMathJaxLoaded()
         // script.addEventListener(
         //   'load',
         //   MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
