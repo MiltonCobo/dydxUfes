@@ -188,15 +188,15 @@ export default {
         }
       ],
       script: [
-        // {
-        //   type: 'text/javascript',
-        //   //src: '/js/p5/p5.min.js',
-        //   src: 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js',
-        //   //'../../../js/p5/p5.min.js',
-        //   // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
-        //   async: false,
-        //   defer: false
-        // }
+        {
+          type: 'text/javascript',
+          //src: '/js/p5/p5.min.js',
+          //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js',
+          src: '../../../js/p5/p5.min.js',
+          // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+          async: true,
+          defer: false
+        }
         // {
         //   type: 'text/javascript',
         //   src: '/js/p5/p5.dom.js',

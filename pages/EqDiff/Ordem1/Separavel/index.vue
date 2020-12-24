@@ -83,7 +83,7 @@ export default {
   },
   mounted() {
     // this.checkMathJaxLoaded()
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
@@ -151,15 +151,15 @@ export default {
           name: 'Eq. Separável',
           content: 'Eq. diferencial separável www.dydx.ufes.br do DMAT/UFES'
         }
+      ],
+      script: [
+        {
+          type: 'text/javascript', //x-mathjax-config',
+          src: '../../../js/MathJax/mathjax2Config.js',
+          async: true // WHEN RELOAD FROM THIS PAGE MATHJAX IS LOADED
+          //defer: true // defer = true is important
+        }
       ]
-      // script: [
-      //   {
-      //     type: 'text/javascript',
-      //     src: 'js/MathJax/mathjax2Config.js',
-      //     async: true
-      //     //defer: true // defer = true is important
-      //   }
-      // ]
     }
   }
 }

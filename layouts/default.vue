@@ -195,13 +195,13 @@
       </v-menu>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <v-container fluid>
         <!-- <transition name="slide-fade" mode="out-in"> -->
         <nuxt />
         <!-- </transition> -->
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
