@@ -218,7 +218,6 @@ export default {
 
       config.module.rules.push({
         test: /\.js$/,
-        // loader: 'ify-loader',
         enforce: 'post',
         use: [
           'ify-loader'
