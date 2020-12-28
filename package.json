@@ -18,6 +18,7 @@
     "babelify": "^10.0.0",
     "babylonjs": "^4.2.0",
     "babylonjs-gui": "^4.2.0",
+    "babylonjs-loaders": "^4.2.0",
     "chart.js": "^2.9.4",
     "ify-loader": "^1.1.0",
     "import": "0.0.6",

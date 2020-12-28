@@ -21,6 +21,8 @@ import {
   Slider
 } from 'babylonjs-gui'
 
+import 'babylonjs-loaders'
+
 export default function lorenzPlot() {
   let butterflies
   let attractor1, attractor2

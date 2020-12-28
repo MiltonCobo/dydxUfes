@@ -21,6 +21,8 @@ import {
   Slider
 } from 'babylonjs-gui'
 
+import 'babylonjs-loaders'
+
 export default function QiChenPlot() {
   let butterflies
   let attractor1, attractor2

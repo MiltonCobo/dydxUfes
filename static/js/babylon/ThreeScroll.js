@@ -20,6 +20,8 @@ import {
   Slider
 } from 'babylonjs-gui'
 
+import 'babylonjs-loaders'
+
 export default function ThreeScroll() {
   var butterflies
   let attractors = []

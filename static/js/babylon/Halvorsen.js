@@ -20,6 +20,7 @@ import {
   TextBlock,
   Slider
 } from 'babylonjs-gui'
+import 'babylonjs-loaders'
 
 export default function QiChenPlot() {
   //let pointsLorenz = []

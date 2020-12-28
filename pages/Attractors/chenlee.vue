@@ -113,8 +113,6 @@ export default {
           script2.type = 'text/javascript'
           script2.src = '../../../js/babylon/babylon.gui.min.js'
           document.head.appendChild(script)
-        } else {
-          console.log('babylon gui is loaded!')
         }
 
         this.startBabylonPlot()
@@ -129,14 +127,11 @@ export default {
         script.defer = true
         script.src = '../../../js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-        script.addEventListener('load', console.log('mathjax has been loaded!'))
+        //script.addEventListener('load', console.log('mathjax has been loaded!'))
         //script.addEventListener('load', this.onMathJaxLoaded)
       } else if (typeof MathJax.Hub.Typeset !== 'undefined') {
         // MathJax.typeset()
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-        console.log('mathjax is already loaded in index.vue and typeset()')
-      } else {
-        console.log('mathjax.typeset is not loaded....')
       }
     }
   },
