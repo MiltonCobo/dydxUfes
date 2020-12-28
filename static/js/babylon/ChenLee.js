@@ -1,7 +1,25 @@
 ///<reference path="BABYLON.d.ts"/>
 
-import * as BYN from 'babylonjs'
-import * as GUI from 'babylonjs-gui'
+import {
+  Engine,
+  Scene,
+  Color3,
+  Color4,
+  ArcRotateCamera,
+  Vector3,
+  AxesViewer,
+  MeshBuilder,
+  PointsCloudSystem
+} from 'babylonjs'
+
+import {
+  AdvancedDynamicTexture,
+  Control,
+  StackPanel,
+  Button,
+  TextBlock,
+  Slider
+} from 'babylonjs-gui'
 
 export default function ChenLeePlot() {
   let butterflies
@@ -19,29 +37,29 @@ export default function ChenLeePlot() {
   let dt = 0.0046,
     numPoints = 20000
 
-  // let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
-  // let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
-  // let lightgoldenrodyellow = new BYN.Color4(
+  // let papayawhip = new  Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
+  // let palegoldenrod = new  Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
+  // let lightgoldenrodyellow = new  Color4(
   //   250 / 255,
   //   250 / 255,
   //   210 / 255,
   //   0.5
   // )
-  // let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.5)
-  // let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.5)
-  // let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
-  // let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
-  // let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
-  // let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
-  let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.8)
-  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
+  // let gold = new  Color4(255 / 255, 215 / 255, 0 / 255, 0.5)
+  // let salmon = new  Color4(250 / 255, 128 / 255, 114 / 255, 0.5)
+  // let lightgreen = new  Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
+  // let peachpuff = new  Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
+  // let lightcyan = new  Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
+  // let aquamarine = new  Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
+  let seagreen = new Color4(46 / 255, 139 / 255, 87 / 255, 0.8)
+  let tomato = new Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
 
-  let attractorColor1 = tomato //new BYN.Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
-  let attractorColor2 = seagreen // new BYN.Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
-  //let attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
-  let particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
-  //   let particleColor = tomato //new BYN.Color4(255 / 255, 182 / 255, 193 / 255, 1)
-  //   let particleColor = new BYN.Color4(240 / 255, 128 / 255, 0 / 255, 1)
+  let attractorColor1 = tomato //new  Color4(50 / 255, 100 / 255, 200 / 255, 0.1)
+  let attractorColor2 = seagreen // new  Color4(50 / 255, 200 / 255, 100 / 255, 0.1)
+  //let attractorColor = new  Color4(245 / 255, 150 / 255, 7 / 255, 0.0)
+  let particleColor = new Color4(8 / 255, 170 / 255, 245 / 255, 1)
+  //   let particleColor = tomato //new  Color4(255 / 255, 182 / 255, 193 / 255, 1)
+  //   let particleColor = new  Color4(240 / 255, 128 / 255, 0 / 255, 1)
 
   let singularityZ = Math.sqrt(-a * b),
     singularityX = Math.sqrt(3 * b * c),
@@ -66,7 +84,7 @@ export default function ChenLeePlot() {
         x = x + (a * x - y * z) * dt
         y = y + (b * y + x * z) * dt
         z = z + (c * z + (x * y) / 3) * dt
-        points[t].push(new BYN.Vector3(x, y, z)) // exchange z and y
+        points[t].push(new Vector3(x, y, z)) // exchange z and y
       }
     }
 
@@ -74,38 +92,38 @@ export default function ChenLeePlot() {
   }
 
   let createScene = function(engine, canvas) {
-    let scene = new BYN.Scene(engine)
-    scene.clearColor = new BYN.Color3(0, 0, 0)
+    let scene = new Scene(engine)
+    scene.clearColor = new Color3(0, 0, 0)
 
-    let camera = new BYN.ArcRotateCamera(
+    let camera = new ArcRotateCamera(
       'camera',
       -1.57,
       -1.8,
       50,
-      new BYN.Vector3(0, 0, 0),
+      new Vector3(0, 0, 0),
       scene
     )
 
     camera.attachControl(canvas, false)
     camera.setPosition(
-      new BYN.Vector3(20 * singularityX, singularityZ, -20 * singularityY)
+      new Vector3(20 * singularityX, singularityZ, -20 * singularityY)
     )
     camera.minZ = 0.001
     camera.maxZ = 1000
-    camera.setTarget(new BYN.Vector3(0, 0, 0))
+    camera.setTarget(new Vector3(0, 0, 0))
 
-    let axes = new BYN.AxesViewer(scene, 8)
+    let axes = new AxesViewer(scene, 8)
 
     function updateAttractor() {
       let pointsAttractor = makeVertices(numPoints)
 
-      attractor1 = BYN.MeshBuilder.CreateLines(
+      attractor1 = MeshBuilder.CreateLines(
         'Lorenz1',
         { points: pointsAttractor[-1], updatable: true },
         scene
       )
 
-      attractor2 = BYN.MeshBuilder.CreateLines(
+      attractor2 = MeshBuilder.CreateLines(
         'Lorenz2',
         { points: pointsAttractor[1], updatable: true },
         scene
@@ -121,13 +139,13 @@ export default function ChenLeePlot() {
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BYN.PointsCloudSystem('butterflies', 2.6, scene, {
+      butterflies = new PointsCloudSystem('butterflies', 2.6, scene, {
         updatable: true
       })
       butterflies.addPoints(12000)
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
-          butterflies.particles[p].position = new BYN.Vector3(
+          butterflies.particles[p].position = new Vector3(
             Math.random() * 200,
             Math.random() * 200,
             Math.random() * 200
@@ -167,23 +185,18 @@ export default function ChenLeePlot() {
       butterflies.setParticles()
     })
 
-    BYN.GUI = GUI
+    //GUI = GUI
 
-    let advancedTexture = new BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI(
-      'myUI'
-    )
+    let advancedTexture = new AdvancedDynamicTexture.CreateFullscreenUI('myUI')
     advancedTexture.isForeground = false // panel behind attractor
 
-    let panel = new BABYLON.GUI.StackPanel()
+    let panel = new StackPanel()
     panel.width = '160px'
-    panel.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT
-    panel.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
+    panel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT
+    panel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel)
 
-    let hidePanel = new BABYLON.GUI.Button.CreateSimpleButton(
-      'hidePanel',
-      'Controles'
-    )
+    let hidePanel = new Button.CreateSimpleButton('hidePanel', 'Controles')
     hidePanel.width = '100px'
     hidePanel.height = '42px'
     hidePanel.color = '#08a31f'
@@ -206,7 +219,7 @@ export default function ChenLeePlot() {
     })
     panel.addControl(hidePanel)
 
-    let hideAttractor = new BABYLON.GUI.Button.CreateSimpleButton(
+    let hideAttractor = new Button.CreateSimpleButton(
       'hide attractor',
       'Sem/Com Atrator'
     )
@@ -226,7 +239,7 @@ export default function ChenLeePlot() {
     })
     panel.addControl(hideAttractor)
 
-    let startButton = new BABYLON.GUI.Button.CreateSimpleButton(
+    let startButton = new Button.CreateSimpleButton(
       'startButton',
       'Recriar partículas'
     )
@@ -244,7 +257,7 @@ export default function ChenLeePlot() {
     })
     panel.addControl(startButton)
 
-    let textA = new BABYLON.GUI.TextBlock()
+    let textA = new TextBlock()
     textA.isVisible = togglePanel
     textA.text = 'a = ' + a.toFixed(1).toString()
     textA.color = '#08a31f'
@@ -253,7 +266,7 @@ export default function ChenLeePlot() {
     textA.top = '40px'
     panel.addControl(textA)
 
-    let sliderA = new BABYLON.GUI.Slider()
+    let sliderA = new Slider()
     sliderA.isVisible = togglePanel
     sliderA.minimum = 0
     sliderA.maximum = 10
@@ -277,7 +290,7 @@ export default function ChenLeePlot() {
 
       attractor1.dispose()
       attractor2.dispose()
-      camera.setTarget(new BYN.Vector3(0, singularityZ, 0))
+      camera.setTarget(new Vector3(0, singularityZ, 0))
       updateAttractor()
 
       // Camera should follow the position of singularities....-------
@@ -285,7 +298,7 @@ export default function ChenLeePlot() {
     })
     panel.addControl(sliderA)
 
-    let textB = new BABYLON.GUI.TextBlock()
+    let textB = new TextBlock()
     textB.isVisible = togglePanel
     textB.text = 'b = ' + b.toFixed(0).toString()
     textB.color = '#08a31f'
@@ -293,7 +306,7 @@ export default function ChenLeePlot() {
     textB.fontSize = 18
     //textB.top = '40px'
     panel.addControl(textB)
-    let sliderB = new BABYLON.GUI.Slider()
+    let sliderB = new Slider()
     sliderB.isVisible = togglePanel
     sliderB.minimum = -30
     sliderB.maximum = -5
@@ -319,7 +332,7 @@ export default function ChenLeePlot() {
     })
     panel.addControl(sliderB)
 
-    let textC = new BABYLON.GUI.TextBlock()
+    let textC = new TextBlock()
     textC.isVisible = togglePanel
     textC.text = 'c = ' + c.toFixed(2).toString()
     textC.color = '#08a31f'
@@ -327,7 +340,7 @@ export default function ChenLeePlot() {
     textC.fontSize = 18
     //textC.top = '40px'
     panel.addControl(textC)
-    let sliderC = new BABYLON.GUI.Slider()
+    let sliderC = new Slider()
     sliderC.isVisible = togglePanel
     sliderC.minimum = -1
     sliderC.maximum = 0
@@ -350,25 +363,25 @@ export default function ChenLeePlot() {
       c = value
       attractor1.dispose()
       attractor2.dispose()
-      camera.setTarget(new BYN.Vector3(0, singularityZ, 0))
+      camera.setTarget(new Vector3(0, singularityZ, 0))
       updateAttractor()
     })
     panel.addControl(sliderC)
 
-    let panel2 = new BABYLON.GUI.StackPanel()
+    let panel2 = new StackPanel()
     panel2.width = '400px'
-    panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
-    panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
+    panel2.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT
+    panel2.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel2)
 
-    let comment = new BABYLON.GUI.TextBlock()
+    let comment = new TextBlock()
     comment.text = 'Use mouse, um dedo ou as setas para rotar'
     comment.height = '20px'
     comment.fontSize = 16
     comment.color = '#08a31f'
     panel2.addControl(comment)
 
-    let comment2 = new BABYLON.GUI.TextBlock()
+    let comment2 = new TextBlock()
     comment2.text = 'Use Ctrl+setas ou dois dedos para transladar'
     comment2.height = '20px'
     comment2.fontSize = 16
@@ -379,7 +392,7 @@ export default function ChenLeePlot() {
   }
 
   let canvas = document.getElementById('lorenzCanvas')
-  let engine = new BABYLON.Engine(canvas, true)
+  let engine = new Engine(canvas, true)
   let scene = createScene(engine, canvas)
 
   engine.runRenderLoop(function() {

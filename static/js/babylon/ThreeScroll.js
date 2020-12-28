@@ -1,7 +1,24 @@
-///<reference path="BABYLON.d.ts"/>
+///<reference path="d.ts"/>
+import {
+  Engine,
+  Scene,
+  Color3,
+  Color4,
+  ArcRotateCamera,
+  Vector3,
+  AxesViewer,
+  MeshBuilder,
+  PointsCloudSystem
+} from 'babylonjs'
 
-import * as BYN from 'babylonjs'
-import * as GUI from 'babylonjs-gui'
+import {
+  AdvancedDynamicTexture,
+  Control,
+  StackPanel,
+  Button,
+  TextBlock,
+  Slider
+} from 'babylonjs-gui'
 
 export default function ThreeScroll() {
   var butterflies
@@ -9,9 +26,6 @@ export default function ThreeScroll() {
 
   let toggleAttractor = true
   let togglePanel = false
-
-  let BYN = BABYLON
-  // let GUI = BYN - GUI
 
   let a = 43,
     b = 55,
@@ -24,37 +38,37 @@ export default function ThreeScroll() {
     numPoints = 40000,
     numPart = 600
 
-  // let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
-  // let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
-  // let lightgoldenrodyellow = new BYN.Color4(
+  // let papayawhip = new Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
+  // let palegoldenrod = new Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
+  // let lightgoldenrodyellow = new Color4(
   //   250 / 255,
   //   250 / 255,
   //   210 / 255,
   //   0.5
   // )
-  // let salmon = new BYN.Color4(250 / 255, 128 / 255, 114 / 255, 0.1)
-  // let lightgreen = new BYN.Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
-  // let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
-  // let lightcyan = new BYN.Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
-  // let aquamarine = new BYN.Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
-  // let thistle = new BYN.Color4(216 / 255, 191 / 255, 216 / 255, 0.2)
-  // let orange = new BYN.Color4(255 / 255, 165 / 255, 0 / 255, 0.1)
-  // let darkred = new BYN.Color4(139 / 255, 0, 0, 0.1)
-  // let tan = new BYN.Color4(210 / 255, 180 / 255, 140 / 255, 0.5)
-  // let olive = new BYN.Color4(128 / 255, 12 / 2558, 0, 0.6)
-  // let mediumseagreen = new BYN.Color4(60 / 255, 179 / 255, 113 / 255, 0.6)
+  // let salmon = new Color4(250 / 255, 128 / 255, 114 / 255, 0.1)
+  // let lightgreen = new Color4(144 / 255, 238 / 255, 144 / 255, 0.5)
+  // let peachpuff = new Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
+  // let lightcyan = new Color4(224 / 255, 255 / 255, 255 / 255, 0.5)
+  // let aquamarine = new Color4(127 / 255, 255 / 255, 212 / 255, 0.5)
+  // let thistle = new Color4(216 / 255, 191 / 255, 216 / 255, 0.2)
+  // let orange = new Color4(255 / 255, 165 / 255, 0 / 255, 0.1)
+  // let darkred = new Color4(139 / 255, 0, 0, 0.1)
+  // let tan = new Color4(210 / 255, 180 / 255, 140 / 255, 0.5)
+  // let olive = new Color4(128 / 255, 12 / 2558, 0, 0.6)
+  // let mediumseagreen = new Color4(60 / 255, 179 / 255, 113 / 255, 0.6)
 
-  let seagreen = new BYN.Color4(46 / 255, 139 / 255, 87 / 255, 0.1)
-  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
-  let gold = new BYN.Color4(255 / 255, 215 / 255, 0 / 255, 0.3)
-  let lightskyblue = new BABYLON.Color4(135 / 255, 206 / 255, 250 / 255, 1)
+  let seagreen = new Color4(46 / 255, 139 / 255, 87 / 255, 0.1)
+  let tomato = new Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
+  let gold = new Color4(255 / 255, 215 / 255, 0 / 255, 0.3)
+  let lightskyblue = new Color4(135 / 255, 206 / 255, 250 / 255, 1)
 
   let attractorColor = []
   attractorColor[-2] = seagreen
   attractorColor[0] = lightskyblue
   attractorColor[2] = tomato
 
-  var particleColor = gold // new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 1)
+  var particleColor = gold // new Color4(8 / 255, 170 / 255, 245 / 255, 1)
 
   function makeVertices(N) {
     // make points for Lorenz
@@ -74,7 +88,7 @@ export default function ThreeScroll() {
         x = x + dt * (a * (y - x) + d * x * z)
         y = y + dt * (b * x + f * y - x * z)
         z = z + dt * (c * z + x * y + e * (x * x))
-        points[t].push(new BYN.Vector3(x, z, y)) // exchange z and y
+        points[t].push(new Vector3(x, z, y)) // exchange z and y
       }
     }
 
@@ -82,30 +96,30 @@ export default function ThreeScroll() {
   }
 
   var createScene = function(engine, canvas) {
-    var scene = new BYN.Scene(engine)
-    scene.clearColor = new BYN.Color3(0, 0, 0)
+    var scene = new Scene(engine)
+    scene.clearColor = new Color3(0, 0, 0)
 
-    let camera = new BYN.ArcRotateCamera(
+    let camera = new ArcRotateCamera(
       'camera',
       -1.57,
       -1.8,
       50,
-      new BYN.Vector3(0, 0, 0),
+      new Vector3(0, 0, 0),
       scene
     )
 
     camera.attachControl(canvas, false)
-    camera.setPosition(new BYN.Vector3(400, 200, -400))
+    camera.setPosition(new Vector3(400, 200, -400))
     camera.minZ = 0.001
     camera.maxZ = 6000
-    camera.setTarget(new BYN.Vector3(0, 100, 0))
-    let axes = new BYN.AxesViewer(scene, 50)
+    camera.setTarget(new Vector3(0, 100, 0))
+    let axes = new AxesViewer(scene, 50)
 
     function updateAttractor() {
       let pointsAttractor = makeVertices(numPoints)
 
       for (let t = -2; t < 4; t += 2) {
-        attractors[t] = BYN.MeshBuilder.CreateLines(
+        attractors[t] = MeshBuilder.CreateLines(
           'Lorenz1',
           { points: pointsAttractor[t], updatable: true },
           scene
@@ -118,13 +132,13 @@ export default function ThreeScroll() {
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BYN.PointsCloudSystem('butterflies', 3.6, scene, {
+      butterflies = new PointsCloudSystem('butterflies', 3.6, scene, {
         updatable: true
       })
       butterflies.addPoints(numPart)
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
-          butterflies.particles[p].position = new BYN.Vector3(
+          butterflies.particles[p].position = new Vector3(
             Math.random() * 1000 - 500,
             Math.random() * 1000 - 500,
             Math.random() * 1000 - 500
@@ -166,21 +180,16 @@ export default function ThreeScroll() {
       butterflies.setParticles()
     })
 
-    let advancedTexture = new BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI(
-      'myUI'
-    )
+    let advancedTexture = new AdvancedDynamicTexture.CreateFullscreenUI('myUI')
     advancedTexture.isForeground = false // panel behind attractor
 
-    let panel = new BABYLON.GUI.StackPanel()
+    let panel = new StackPanel()
     panel.width = '160px'
-    panel.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT
-    panel.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
+    panel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT
+    panel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel)
 
-    let hidePanel = new BABYLON.GUI.Button.CreateSimpleButton(
-      'hidePanel',
-      'Controles'
-    )
+    let hidePanel = new Button.CreateSimpleButton('hidePanel', 'Controles')
     hidePanel.width = '100px'
     hidePanel.height = '40px'
     hidePanel.color = '#08a31f'
@@ -210,7 +219,7 @@ export default function ThreeScroll() {
     })
     panel.addControl(hidePanel)
 
-    let hideAttractor = new BABYLON.GUI.Button.CreateSimpleButton(
+    let hideAttractor = new Button.CreateSimpleButton(
       'hide attractor',
       'Sem/Com Atrator'
     )
@@ -232,7 +241,7 @@ export default function ThreeScroll() {
     })
     panel.addControl(hideAttractor)
 
-    let startButton = new BABYLON.GUI.Button.CreateSimpleButton(
+    let startButton = new Button.CreateSimpleButton(
       'startButton',
       'Recriar partículas'
     )
@@ -250,7 +259,7 @@ export default function ThreeScroll() {
     })
     panel.addControl(startButton)
 
-    let textA = new BABYLON.GUI.TextBlock()
+    let textA = new TextBlock()
     textA.isVisible = togglePanel
     textA.text = 'a = ' + a.toFixed(1).toString()
     textA.color = '#08a31f'
@@ -259,7 +268,7 @@ export default function ThreeScroll() {
     textA.top = '40px'
     panel.addControl(textA)
 
-    let sliderA = new BABYLON.GUI.Slider()
+    let sliderA = new Slider()
     sliderA.isVisible = togglePanel
     sliderA.minimum = 32
     sliderA.maximum = 50
@@ -277,7 +286,7 @@ export default function ThreeScroll() {
     //sliderA.isVertical = true
 
     sliderA.onValueChangedObservable.add(function(value) {
-      textA.text = 'a = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
+      textA.text = 'a = ' + value.toFixed(1).toString() //(Tools.toString(value) | 0)
       a = value
       for (let t = -2; t < 4; t += 2) {
         attractors[t].dispose()
@@ -290,7 +299,7 @@ export default function ThreeScroll() {
     })
     panel.addControl(sliderA)
 
-    let textB = new BABYLON.GUI.TextBlock()
+    let textB = new TextBlock()
     textB.isVisible = togglePanel
     textB.text = 'b = ' + b.toFixed(0).toString()
     textB.color = '#08a31f'
@@ -298,7 +307,7 @@ export default function ThreeScroll() {
     textB.fontSize = 18
     //textB.top = '40px'
     panel.addControl(textB)
-    let sliderB = new BABYLON.GUI.Slider()
+    let sliderB = new Slider()
     sliderB.isVisible = togglePanel
     sliderB.minimum = 30
     sliderB.maximum = 70
@@ -315,7 +324,7 @@ export default function ThreeScroll() {
     //sliderB.isVertical = true
 
     sliderB.onValueChangedObservable.add(function(value) {
-      textB.text = 'b = ' + value.toFixed(1).toString() //(BABYLON.Tools.toString(value) | 0)
+      textB.text = 'b = ' + value.toFixed(1).toString() //(Tools.toString(value) | 0)
       b = value
       for (let t = -2; t < 4; t += 2) {
         attractors[t].dispose()
@@ -324,7 +333,7 @@ export default function ThreeScroll() {
     })
     panel.addControl(sliderB)
 
-    let textC = new BABYLON.GUI.TextBlock()
+    let textC = new TextBlock()
     textC.isVisible = togglePanel
     textC.text = 'c = ' + c.toFixed(1).toString()
     textC.color = '#08a31f'
@@ -332,7 +341,7 @@ export default function ThreeScroll() {
     textC.fontSize = 18
     //textC.top = '40px'
     panel.addControl(textC)
-    let sliderC = new BABYLON.GUI.Slider()
+    let sliderC = new Slider()
     sliderC.isVisible = togglePanel
     sliderC.minimum = 0
     sliderC.maximum = 10
@@ -349,7 +358,7 @@ export default function ThreeScroll() {
     //sliderC.isVertical = true
 
     sliderC.onValueChangedObservable.add(function(value) {
-      textC.text = 'c = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
+      textC.text = 'c = ' + value.toFixed(2).toString() //(Tools.toString(value) | 0)
       c = value
       for (let t = -2; t < 4; t += 2) {
         attractors[t].dispose()
@@ -359,7 +368,7 @@ export default function ThreeScroll() {
     })
     panel.addControl(sliderC)
 
-    let textD = new BABYLON.GUI.TextBlock()
+    let textD = new TextBlock()
     textD.isVisible = togglePanel
     textD.text = 'd = ' + d.toFixed(2).toString()
     textD.color = '#08a31f'
@@ -367,7 +376,7 @@ export default function ThreeScroll() {
     textD.fontSize = 18
     //textD.top = '40px'
     panel.addControl(textD)
-    let sliderD = new BABYLON.GUI.Slider()
+    let sliderD = new Slider()
     sliderD.isVisible = togglePanel
     sliderD.minimum = 0
     sliderD.maximum = 0.22
@@ -385,7 +394,7 @@ export default function ThreeScroll() {
     //sliderD.isVertical = true
 
     sliderD.onValueChangedObservable.add(function(value) {
-      textD.text = 'd = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
+      textD.text = 'd = ' + value.toFixed(2).toString() //(Tools.toString(value) | 0)
       d = value
       for (let t = -2; t < 4; t += 2) {
         attractors[t].dispose()
@@ -395,7 +404,7 @@ export default function ThreeScroll() {
     })
     panel.addControl(sliderD)
 
-    let textE = new BABYLON.GUI.TextBlock()
+    let textE = new TextBlock()
     textE.isVisible = togglePanel
     textE.text = 'e = ' + e.toFixed(2).toString()
     textE.color = '#08a31f'
@@ -403,7 +412,7 @@ export default function ThreeScroll() {
     textE.fontSize = 18
     //textE.top = '40px'
     panel.addControl(textE)
-    let sliderE = new BABYLON.GUI.Slider()
+    let sliderE = new Slider()
     sliderE.isVisible = togglePanel
     sliderE.minimum = -0.72
     sliderE.maximum = -0.54
@@ -421,7 +430,7 @@ export default function ThreeScroll() {
     //sliderE.isVertical = true
 
     sliderE.onValueChangedObservable.add(function(value) {
-      textE.text = 'e = ' + value.toFixed(2).toString() //(BABYLON.Tools.toString(value) | 0)
+      textE.text = 'e = ' + value.toFixed(2).toString() //(Tools.toString(value) | 0)
       e = value
       for (let t = -2; t < 4; t += 2) {
         attractors[t].dispose()
@@ -431,7 +440,7 @@ export default function ThreeScroll() {
     })
     panel.addControl(sliderE)
 
-    let textF = new BABYLON.GUI.TextBlock()
+    let textF = new TextBlock()
     textF.isVisible = togglePanel
     textF.text = 'f = ' + f.toFixed(0).toString()
     textF.color = '#08a31f'
@@ -439,7 +448,7 @@ export default function ThreeScroll() {
     textF.fontSize = 18
     //textF.top = '40px'
     panel.addControl(textF)
-    let sliderF = new BABYLON.GUI.Slider()
+    let sliderF = new Slider()
     sliderF.isVisible = togglePanel
     sliderF.minimum = -5
     sliderF.maximum = 24
@@ -458,7 +467,7 @@ export default function ThreeScroll() {
     //sliderF.isVertical = true
 
     sliderF.onValueChangedObservable.add(function(value) {
-      textF.text = 'f = ' + value.toFixed(0).toString() //(BABYLON.Tools.toString(value) | 0)
+      textF.text = 'f = ' + value.toFixed(0).toString() //(Tools.toString(value) | 0)
       f = value
       for (let t = -2; t < 4; t += 2) {
         attractors[t].dispose()
@@ -468,20 +477,20 @@ export default function ThreeScroll() {
     })
     panel.addControl(sliderF)
 
-    let panel2 = new BABYLON.GUI.StackPanel()
+    let panel2 = new StackPanel()
     panel2.width = '400px'
-    panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
-    panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
+    panel2.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT
+    panel2.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel2)
 
-    let comment = new BABYLON.GUI.TextBlock()
+    let comment = new TextBlock()
     comment.text = 'Use mouse, um dedo ou as setas para rotar'
     comment.height = '20px'
     comment.fontSize = 16
     comment.color = '#08a31f'
     panel2.addControl(comment)
 
-    let comment2 = new BABYLON.GUI.TextBlock()
+    let comment2 = new TextBlock()
     comment2.text = 'Use Ctrl+setas ou dois dedos para transladar'
     comment2.height = '20px'
     comment2.fontSize = 16
@@ -492,7 +501,7 @@ export default function ThreeScroll() {
   }
 
   let canvas = document.getElementById('lorenzCanvas')
-  let engine = new BABYLON.Engine(canvas, true)
+  let engine = new Engine(canvas, true)
   let scene = createScene(engine, canvas)
 
   engine.runRenderLoop(function() {

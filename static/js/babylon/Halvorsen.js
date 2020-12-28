@@ -1,7 +1,25 @@
-///<reference path="BABYLON.d.ts"/>
+///<reference path="d.ts"/>
 
-import * as BYN from 'babylonjs'
-import * as GUI from 'babylonjs-gui'
+import {
+  Engine,
+  Scene,
+  Color3,
+  Color4,
+  ArcRotateCamera,
+  Vector3,
+  AxesViewer,
+  MeshBuilder,
+  PointsCloudSystem
+} from 'babylonjs'
+
+import {
+  AdvancedDynamicTexture,
+  Control,
+  StackPanel,
+  Button,
+  TextBlock,
+  Slider
+} from 'babylonjs-gui'
 
 export default function QiChenPlot() {
   //let pointsLorenz = []
@@ -12,25 +30,18 @@ export default function QiChenPlot() {
   let toggleAttractor = true
   let togglePanel = false
 
-  // let BYN = BABYLON
-
   let a = 1.4
 
   let dt = 0.0043,
     numPoints = 5000
 
-  let papayawhip = new BYN.Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
-  let palegoldenrod = new BYN.Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
-  let lightgoldenrodyellow = new BYN.Color4(
-    250 / 255,
-    250 / 255,
-    210 / 255,
-    0.5
-  )
-  let mediumseagreen = new BYN.Color4(60 / 255, 179 / 255, 113 / 255, 0.5)
-  let orange = new BYN.Color4(255 / 255, 165 / 255, 0 / 255, 0.5)
-  let tomato = new BYN.Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
-  let peachpuff = new BYN.Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
+  let papayawhip = new Color4(255 / 255, 239 / 255, 213 / 255, 0.5)
+  let palegoldenrod = new Color4(238 / 255, 232 / 255, 17 / 255, 0.5)
+  let lightgoldenrodyellow = new Color4(250 / 255, 250 / 255, 210 / 255, 0.5)
+  let mediumseagreen = new Color4(60 / 255, 179 / 255, 113 / 255, 0.5)
+  let orange = new Color4(255 / 255, 165 / 255, 0 / 255, 0.5)
+  let tomato = new Color4(255 / 255, 99 / 255, 71 / 255, 0.5)
+  let peachpuff = new Color4(255 / 255, 218 / 255, 185 / 255, 0.5)
 
   let c = [orange, mediumseagreen, lightgoldenrodyellow, tomato]
 
@@ -38,12 +49,12 @@ export default function QiChenPlot() {
   for (let t = -2; t < 5; t += 2) {
     attractorColors[t] = c[(t + 2) / 2]
   }
-  //let attractorColor = new BYN.Color4(100 / 255, 180 / 255, 80 / 255, 0.1)
-  //let attractorColor = new BYN.Color4(245 / 255, 150 / 255, 7 / 255, 1)
+  //let attractorColor = new    Color4(100 / 255, 180 / 255, 80 / 255, 0.1)
+  //let attractorColor = new    Color4(245 / 255, 150 / 255, 7 / 255, 1)
 
-  //let particleColor = new BYN.Color4(255 / 255, 70 / 255, 255 / 255, 0.5)
-  let particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 0.2)
-  //let particleColor = new BYN.Color4(8 / 255, 170 / 255, 245 / 255, 0.6)
+  //let particleColor = new    Color4(255 / 255, 70 / 255, 255 / 255, 0.5)
+  let particleColor = new Color4(8 / 255, 170 / 255, 245 / 255, 0.2)
+  //let particleColor = new    Color4(8 / 255, 170 / 255, 245 / 255, 0.6)
 
   function makeVertices(N) {
     let points = []
@@ -73,7 +84,7 @@ export default function QiChenPlot() {
         y = y + dy
         z = z + dz
 
-        points[t].push(new BYN.Vector3(x, y, z))
+        points[t].push(new Vector3(x, y, z))
       }
     }
 
@@ -81,32 +92,32 @@ export default function QiChenPlot() {
   }
 
   let createScene = function(engine, canvas) {
-    let scene = new BYN.Scene(engine)
-    scene.clearColor = new BYN.Color3(0, 0, 0) //(0.2, 0.2, 0.2)
+    let scene = new Scene(engine)
+    scene.clearColor = new Color3(0, 0, 0) //(0.2, 0.2, 0.2)
 
-    let camera = new BYN.ArcRotateCamera(
+    let camera = new ArcRotateCamera(
       'camera',
       0,
       0,
       0,
-      new BYN.Vector3(0, 0, 0),
+      new Vector3(0, 0, 0),
       scene
     )
 
     camera.attachControl(canvas, false) // false avoid scroll in canvas
-    camera.setPosition(new BYN.Vector3(25, -25, -25))
+    camera.setPosition(new Vector3(25, -25, -25))
     camera.minZ = 0.001
     camera.maxZ = 1000
 
-    let axes = new BYN.AxesViewer(scene, 3)
-    axes.position = new BYN.Vector3(0, 0, 0)
+    let axes = new AxesViewer(scene, 3)
+    axes.position = new Vector3(0, 0, 0)
 
     //scene.createDefaultLight()
 
     function updateAttractor() {
       let pointsAttractor = makeVertices(numPoints)
       for (let t = -2; t < 5; t += 2) {
-        attractors[t] = BYN.MeshBuilder.CreateLines(
+        attractors[t] = MeshBuilder.CreateLines(
           'Lorenz',
           { points: pointsAttractor[t], updatable: true },
           scene
@@ -118,7 +129,7 @@ export default function QiChenPlot() {
     updateAttractor()
 
     function createParticles() {
-      butterflies = new BYN.PointsCloudSystem('butterflies', 3, scene, {
+      butterflies = new PointsCloudSystem('butterflies', 3, scene, {
         updatable: true
       })
       butterflies.addPoints(5000)
@@ -126,7 +137,7 @@ export default function QiChenPlot() {
       let N = 30
       butterflies.initParticles = function() {
         for (let p = 0; p < butterflies.nbParticles; p++) {
-          butterflies.particles[p].position = new BYN.Vector3(
+          butterflies.particles[p].position = new Vector3(
             Math.random() * N - N / 2,
             Math.random() * N - N / 2, // random in (-15,15)
             Math.random() * N - N / 2
@@ -134,7 +145,7 @@ export default function QiChenPlot() {
 
           butterflies.particles[p].color = particleColor
 
-          // new BYN.Color4(
+          // new    Color4(
           // 	random(),
           // 	random(),
           // 	random(),
@@ -173,23 +184,16 @@ export default function QiChenPlot() {
       butterflies.setParticles()
     })
 
-    BYN.GUI = GUI
-
-    let advancedTexture = new BYN.GUI.AdvancedDynamicTexture.CreateFullscreenUI(
-      'myUI'
-    )
+    let advancedTexture = new AdvancedDynamicTexture.CreateFullscreenUI('myUI')
     advancedTexture.isForeground = false // panel behind attractor
 
-    let panel = new BYN.GUI.StackPanel()
+    let panel = new StackPanel()
     panel.width = '220px'
-    panel.horizontalAlignment = BYN.GUI.Control.HORIZONTAL_ALIGNMENT_RIGHT
-    panel.verticalAlignment = BYN.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
+    panel.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_RIGHT
+    panel.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel)
 
-    let hidePanel = new BABYLON.GUI.Button.CreateSimpleButton(
-      'hidePanel',
-      'Controles'
-    )
+    let hidePanel = new Button.CreateSimpleButton('hidePanel', 'Controles')
     hidePanel.width = '100px'
     hidePanel.height = '45px'
     hidePanel.color = '#08a31f'
@@ -209,7 +213,7 @@ export default function QiChenPlot() {
     })
     panel.addControl(hidePanel)
 
-    let hideAttractor = new BABYLON.GUI.Button.CreateSimpleButton(
+    let hideAttractor = new Button.CreateSimpleButton(
       'hide attractor',
       'Sem/Com Atrator'
     )
@@ -230,7 +234,7 @@ export default function QiChenPlot() {
     })
     panel.addControl(hideAttractor)
 
-    let startButton = new BABYLON.GUI.Button.CreateSimpleButton(
+    let startButton = new Button.CreateSimpleButton(
       'startButton',
       'Recriar partículas'
     )
@@ -248,7 +252,7 @@ export default function QiChenPlot() {
     })
     panel.addControl(startButton)
 
-    let textA = new BYN.GUI.TextBlock()
+    let textA = new TextBlock()
     textA.isVisible = togglePanel
     textA.text = 'a = ' + a.toFixed(2).toString()
     textA.color = '#08a31f'
@@ -257,7 +261,7 @@ export default function QiChenPlot() {
     textA.top = '40px'
     panel.addControl(textA)
 
-    let sliderA = new BYN.GUI.Slider()
+    let sliderA = new Slider()
     sliderA.isVisible = togglePanel
     sliderA.minimum = 1.2
     sliderA.maximum = 1.8
@@ -275,7 +279,7 @@ export default function QiChenPlot() {
     //sliderA.isVertical = true
 
     sliderA.onValueChangedObservable.add(function(value) {
-      textA.text = 'a = ' + value.toFixed(1).toString() //(BYN.Tools.toString(value) | 0)
+      textA.text = 'a = ' + value.toFixed(1).toString() //(   Tools.toString(value) | 0)
       a = value
       //attractor.dispose()
 
@@ -286,20 +290,20 @@ export default function QiChenPlot() {
     })
     panel.addControl(sliderA)
 
-    let panel2 = new BABYLON.GUI.StackPanel()
+    let panel2 = new StackPanel()
     panel2.width = '400px'
-    panel2.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT
-    panel2.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_BOTTOM
+    panel2.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT
+    panel2.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM
     advancedTexture.addControl(panel2)
 
-    let comment = new BABYLON.GUI.TextBlock()
+    let comment = new TextBlock()
     comment.text = 'Use mouse, um dedo ou as setas para rotar'
     comment.height = '20px'
     comment.fontSize = 16
     comment.color = '#08a31f'
     panel2.addControl(comment)
 
-    let comment2 = new BABYLON.GUI.TextBlock()
+    let comment2 = new TextBlock()
     comment2.text = 'Use Ctrl+setas ou dois dedos para transladar'
     comment2.height = '20px'
     comment2.fontSize = 16
@@ -310,7 +314,7 @@ export default function QiChenPlot() {
   }
 
   let canvas = document.getElementById('lorenzCanvas')
-  let engine = new BABYLON.Engine(canvas, true)
+  let engine = new Engine(canvas, true)
   let scene = createScene(engine, canvas)
 
   engine.runRenderLoop(function() {
