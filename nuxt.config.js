@@ -57,14 +57,14 @@ export default {
         id: 'MathJax-script',
         src: '../../../js/MathJax/mathjax2Config.js',
         defer: true // defer = true is important
+      },
+      {
+        type: 'text/javascript',
+        src: '../../../js/p5/p5.min.js',
+        // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+        async: true,
+        defer: false
       }
-      // {
-      //   type: 'text/javascript',
-      //   async: true,
-      //   defer: true, //&delayStartupUntil=configured
-      //   src:
-      //     'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG' // TeX-MML-AM_CHTML' //TeX-AMS-MML_SVG&delayStartupUntil=onLoad'
-      // }
       // {
       //   src: 'js/global-config.js',
       //   //async: true,
@@ -213,15 +213,17 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, { loader }) {
-      config.resolve.alias['plotly.js$'] = 'plotly.js/dist/plotly.min.js' // To avoid loading other staff
+    extend(config, {}) {
+      config.resolve.alias['plotly.js$'] = '~/static/js/customPlotly.js' //'plotly.js/dist/plotly.min.js' //'plotly.js-gl3d-dist/plotly-gl3d.js' // To avoid loading other staff
+
+      // config.node = { __dirname: false }
 
       config.module.rules.push({
         test: /\.js$/,
         enforce: 'post',
         use: [
-          'ify-loader'
-          //'transform-loader?plotly.js/tasks/util/compress_attributes.js'
+          'ify-loader',
+          'transform-loader?plotly.js/tasks/compress_attributes.js'
         ]
       })
     }
