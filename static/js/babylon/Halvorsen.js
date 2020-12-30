@@ -1,4 +1,4 @@
-///<reference path="d.ts"/>
+///<reference path="babylon.d.ts"/>
 
 import {
   Engine,
@@ -318,17 +318,24 @@ export default function QiChenPlot() {
   let engine = new Engine(canvas, true)
   let scene = createScene(engine, canvas)
 
+  const myPath = window.location.pathname
+
   engine.runRenderLoop(function() {
-    let route = window.location.pathname
-    if (
-      route == 'www.dydx.ufes.br/Attractors/halvorsen' ||
-      route == '/Attractors/halvorsen/' ||
-      route == '/Attractors/halvorsen'
-    ) {
-      scene.render()
-    } else {
+    scene.render()
+    if (window.location.pathname !== myPath) {
       engine.stopRenderLoop()
     }
+
+    // let route = window.location.pathname
+    // if (
+    //   route == 'www.dydx.ufes.br/Attractors/halvorsen' ||
+    //   route == '/Attractors/halvorsen/' ||
+    //   route == '/Attractors/halvorsen'
+    // ) {
+    //   scene.render()
+    // } else {
+    //   engine.stopRenderLoop()
+    // }
   })
   window.addEventListener('resize', function() {
     engine.resize()

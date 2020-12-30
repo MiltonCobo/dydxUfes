@@ -1,4 +1,4 @@
-///<reference path="d.ts"/>
+///<reference path="babylon.d.ts"/>
 
 import {
   Engine,
@@ -409,18 +409,20 @@ export default function QiChenPlot() {
   let engine = new Engine(canvas, true)
   let scene = createScene(engine, canvas)
 
+  const myPath = window.location.pathname
+
   engine.runRenderLoop(function() {
-    let route = window.location.pathname
-    if (
-      route == 'www.dydx.ufes.br/Attractors/qichen' ||
-      route == '/Attractors/qichen/' ||
-      route == '/Attractors/qichen'
-    ) {
-      scene.render()
-    } else {
+    scene.render()
+    if (window.location.pathname !== myPath) {
+      // CHECK IF PATH CHANGE TO STOP SKETCH
       engine.stopRenderLoop()
     }
+
+    // window.addEventListener('hashchange', () => {
+    //   console.log('hashchange')
+    //   engine.stopRenderLoop()
   })
+
   window.addEventListener('resize', function() {
     engine.resize()
   })

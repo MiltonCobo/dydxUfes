@@ -1,4 +1,4 @@
-///<reference path="d.ts"/>
+///<reference path="babylon.d.ts"/>
 
 import {
   Engine,
@@ -30,8 +30,6 @@ export default function lorenzPlot() {
 
   let toggleAttractor = true
   let togglePanel = false
-
-  //let attractor
 
   let rho = 28,
     sigma = 10,
@@ -126,7 +124,7 @@ export default function lorenzPlot() {
     updateAttractor()
 
     function createParticles() {
-      butterflies = new PointsCloudSystem('butterflies', 2, scene, {
+      butterflies = new PointsCloudSystem('butterflies', 2.5, scene, {
         updatable: true
       })
       butterflies.addPoints(numPart)
@@ -380,8 +378,20 @@ export default function lorenzPlot() {
   let engine = new Engine(canvas, true)
   let scene = createScene(engine, canvas)
 
+  // window.addEventListener('popstate', function(event) {
+  //   // Log the state data to the console
+  //   console.log('event.state = ', event.state)
+  // })
+  const myPath = window.location.pathname
+  console.log(window.location.pathname)
+
   engine.runRenderLoop(function() {
-    // console.log('running')
+    console.log('running lorenz')
+    scene.render()
+
+    if (window.location.pathname !== myPath) {
+      engine.stopRenderLoop()
+    }
 
     // let navigation = navigationType()
     // console.log(navigation)
@@ -391,17 +401,20 @@ export default function lorenzPlot() {
     // } else {
     //   scene.render()
     // }
-    let route = window.location.pathname
-    if (
-      route == 'www.dydx.ufes.br/Attractors/lorenz/' ||
-      route == '/Attractors/lorenz/' ||
-      route == '/Attractors/lorenz'
-    ) {
-      scene.render()
-    } else {
-      engine.stopRenderLoop()
-    }
+    // let route = window.location.pathname
+    // if (
+    //   route == 'www.dydx.ufes.br/Attractors/lorenz/' ||
+    //   route == '/Attractors/lorenz/' ||
+    //   route == '/Attractors/lorenz'
+    // ) {
+    //   scene.render()
+    // } else {
+    //   engine.stopRenderLoop()
+    // }
+    // scene.render()
+    // window.addEventListener('hashchange', () => engine.stopRenderLoop())
   })
+
   window.addEventListener('resize', function() {
     engine.resize()
   })
@@ -411,8 +424,8 @@ function navigationType() {
   let result
   let p
 
-  if (window.performance.navigation) {
-    result = window.performance.navigation
+  if (window.PerformanceNavigation) {
+    result = window.PerformanceNavigation
     if (result == 255) {
       result = 4
     } // 4 is my invention!

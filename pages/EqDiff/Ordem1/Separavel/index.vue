@@ -82,8 +82,7 @@ export default {
     }
   },
   mounted() {
-    // this.checkMathJaxLoaded()
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.checkMathJaxLoaded()
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
@@ -110,11 +109,6 @@ export default {
         this.count += 2
       }
     },
-    onScriptLoaded() {
-      if (MathJax.Hub) {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      }
-    },
 
     checkMathJaxLoaded() {
       if (typeof window.MathJax !== undefined) {
@@ -123,14 +117,10 @@ export default {
         script.defer = true
         script.src = '../../../js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-        script.addEventListener('load', console.log('mathjax has been loaded!'))
+        //script.addEventListener('load', console.log('mathjax has been loaded!'))
         //script.addEventListener('load', this.onMathJaxLoaded)
-      } else if (typeof MathJax.Hub.Typeset !== 'undefined') {
-        // MathJax.typeset()
+      } else if (typeof MathJax.Hub !== 'undefined') {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-        console.log('mathjax is already loaded in index.vue and typeset()')
-      } else {
-        console.log('mathjax.typeset is not loaded....')
       }
     }
   },

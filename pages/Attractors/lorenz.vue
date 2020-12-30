@@ -162,12 +162,10 @@ export default {
   // layout: 'darkTheme',
   created() {},
   mounted() {
-    this.checkBabylonGui()
+    lorenzPlot()
     this.checkMathJaxLoaded()
   },
-  destroyed() {
-    //console.log('destroyed foi ativado')
-  },
+  destroyed() {},
   updated() {
     if (window.MathJax.Hub) {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
@@ -175,32 +173,6 @@ export default {
   },
 
   methods: {
-    onBabylonLoaded() {
-      this.startBabylonPlot
-    },
-    startBabylonPlot() {
-      lorenzPlot()
-    },
-
-    checkBabylonGui() {
-      if (typeof window.BABYLON !== undefined) {
-        const script = document.createElement('script')
-        script.type = 'text/javascript'
-        script.src = '../../../js/babylon/babylon.gui.min.js'
-        document.head.appendChild(script)
-
-        if (typeof window.BABYLON.GUI !== undefined) {
-          const script2 = document.createElement('script')
-          script2.type = 'text/javascript'
-          script2.src = '../../../js/babylon/babylon.gui.min.js'
-          document.head.appendChild(script)
-        }
-
-        this.startBabylonPlot()
-        // script.addEventListener('load', this.startBabylonPlot)
-        // script2.addEventListener('load', this.startBabylonPlot)
-      }
-    },
     checkMathJaxLoaded() {
       if (typeof window.MathJax !== undefined) {
         const script = document.createElement('script')
@@ -210,8 +182,7 @@ export default {
         document.head.appendChild(script)
         //script.addEventListener('load', console.log('mathjax has been loaded!'))
         //script.addEventListener('load', this.onMathJaxLoaded)
-      } else if (typeof MathJax.Hub.Typeset !== 'undefined') {
-        // MathJax.typeset()
+      } else if (typeof MathJax.Hub !== 'undefined') {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
     }
@@ -223,11 +194,7 @@ export default {
   },
 
   data() {
-    return {
-      //   p5plot: null,
-      //   startChart: true,
-      //   startChart2: false
-    }
+    return {}
   },
 
   head() {

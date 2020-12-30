@@ -73,9 +73,7 @@ export default {
     }
   },
   mounted() {
-    //this.checkMathJaxLoaded()
-
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.checkMathJaxLoaded()
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {
@@ -103,27 +101,17 @@ export default {
         this.count += 2
       }
     },
-    onMathJaxLoaded() {
-      if (window.MathJax.Hub) {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      }
-    },
 
     checkMathJaxLoaded() {
-      if (typeof window.MathJax.Hub !== undefined) {
+      if (typeof window.MathJax !== undefined) {
         const script = document.createElement('script')
         script.type = 'text/javascript'
-        // script.defer= false
-        script.async = true
+        script.defer = true
         script.src = '../../../js/MathJax/mathjax2Config.js'
-        script.onload = this.onMathJaxLoaded()
-        // script.addEventListener(
-        //   'load',
-        //   MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-        // )
-
         document.head.appendChild(script)
-      } else {
+        //script.addEventListener('load', console.log('mathjax has been loaded!'))
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      } else if (typeof MathJax.Hub !== 'undefined') {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
     }
