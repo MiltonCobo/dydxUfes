@@ -386,7 +386,6 @@ export default function lorenzPlot() {
   console.log(window.location.pathname)
 
   engine.runRenderLoop(function() {
-    console.log('running lorenz')
     scene.render()
 
     if (window.location.pathname !== myPath) {
