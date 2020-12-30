@@ -121,7 +121,7 @@ export default {
       if (!window.p5) {
         await import('@/static/js/p5/p5.min.js')
           .then(() => (this.p5plot = new p5(goldenRatio, this.$refs.container)))
-          .catch(err => console.log(err))
+          .catch(err => console.log(err.message))
       } else {
         this.p5plot = new p5(goldenRatio, this.$refs.container)
       }
