@@ -209,11 +209,12 @@ export default {
     //   config.optimization.splitChunks.maxSize = 200000
     //}
     // },
-
     /*
      ** You can extend webpack config here
      */
     extend(config, {}) {
+      //const CompressionPlugin = require('compression-webpack-plugin')
+
       config.resolve.alias['plotly.js$'] = '~/static/js/customPlotly.js' //'plotly.js/dist/plotly.min.js' //'plotly.js-gl3d-dist/plotly-gl3d.js' // To avoid loading other staff
 
       // config.node = { __dirname: false }
@@ -226,6 +227,9 @@ export default {
           'transform-loader?plotly.js/tasks/compress_attributes.js'
         ]
       })
+
+      //config.plugins.push(new CompressionPlugin())
+      //console.log(config.plugins)
     }
   }
 }

@@ -104,10 +104,18 @@ let inf = plotMosquitosSol()
 let data = inf.data
 let layout = inf.layout
 let options = inf.options
+import errorComp from '@/components/EqDiff/Linear/Textos/errorComp.vue'
+import loadingComp from '@/components/EqDiff/Linear/Textos/loadingComp.vue'
 
 export default {
   components: {
-    'vue-plotly': () => import('@statnett/vue-plotly')
+    'vue-plotly': () => ({
+      component: import('@statnett/vue-plotly'),
+      loading: loadingComp,
+      erro: errorComp,
+      delay: 200,
+      timeout: 800
+    })
   },
 
   data() {
