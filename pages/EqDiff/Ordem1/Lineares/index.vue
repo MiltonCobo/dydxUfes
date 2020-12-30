@@ -22,7 +22,7 @@
       >
         <v-col>
           <!-- key=count to guarantie re render -->
-          <transition name="fade" mode="out-in">
+          <transition name="slide-fade" mode="out-in">
             <div key="count" v-if="updateText == 0"><Linear1 /></div>
             <div key="count" v-else-if="updateText == 1"><Linear2 /></div>
             <div key="count" v-else><Linear3 /></div>
@@ -148,49 +148,27 @@ export default {
         // }
       ],
       script: [
-        {
-          type: 'text/javascript', //x-mathjax-config',
-          src: '../../../js/MathJax/mathjax2Config.js',
-          async: true // WHEN RELOAD FROM THIS PAGE MATHJAX IS LOADED
-          //defer: true // defer = true is important
-        }
+        // {
+        //   type: 'text/javascript', //x-mathjax-config',
+        //   src: '../../../js/MathJax/mathjax2Config.js',
+        //   async: true // WHEN RELOAD FROM THIS PAGE MATHJAX IS LOADED
+        //   //defer: true // defer = true is important
+        // }
       ]
     }
   }
 }
 </script>
 <style scoped>
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
 .slide-fade-enter-active {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 .slide-fade-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
 }
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-
-/* font-family: 'Comic Sans MS', cursive, sans-serif; */
-/* font-family: 'Neucha', cursive; */
-/* font-family: Lucida Console; */
-/* font-family: 'Montserrat', sans-serif; */
-/* font-family: 'Reenie Beanie', cursive; */
-/* font-family: 'Lucida Grande', sans-serif; */
-/* font-size: 20px; */
-/* font-weight: 700; */
-/* line-height: 160%; */
-/* margin: 25px; */
-/* margin-bottom: 0.4cm; */
 </style>

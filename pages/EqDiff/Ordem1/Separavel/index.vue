@@ -21,11 +21,11 @@
         }"
       >
         <v-col>
-          <!-- key=count to guarantie re render -->
-          <transition name="fade" mode="out-in">
+          <!-- key=count to guarrantie re render -->
+          <transition name="bounce">
             <div key="count" v-if="updateText == 0"><Separavel1 /></div>
             <div key="count" v-else-if="updateText == 1"><Separavel2 /></div>
-            <div key="count" v-else="updateText == 2"><Separavel3 /></div>
+            <div key="count" v-else><Separavel3 /></div>
           </transition>
         </v-col>
       </v-row>
@@ -143,59 +143,38 @@ export default {
         }
       ],
       script: [
-        {
-          type: 'text/javascript', //x-mathjax-config',
-          src: '../../../js/MathJax/mathjax2Config.js',
-          async: true // WHEN RELOAD FROM THIS PAGE MATHJAX IS LOADED
-          //defer: true // defer = true is important
-        }
+        // {
+        //   type: 'text/javascript', //x-mathjax-config',
+        //   src: '../../../js/MathJax/mathjax2Config.js',
+        //   async: true // WHEN RELOAD FROM THIS PAGE MATHJAX IS LOADED
+        //   //defer: true // defer = true is important
+        // }
       ]
     }
   }
 }
 </script>
 <style scoped>
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
-.slide-fade-enter-active {
-  transition: all 0.2s ease;
+/* TRANSITIONS----------------------------------- */
+
+/* Transitions Layout */
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
 }
-.slide-fade-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
 }
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-
-.MathJax_Display {
-  text-align: center !important;
-  display: inline !important;
-}
-
-.MathJax {
-  color: green !important;
-  padding: 3px 3px;
-}
-
-#mathjax {
-  /* font-family: 'Comic Sans MS', cursive, sans-serif; */
-  /* font-family: 'Neucha', cursive; */
-  /* font-family: Lucida Console; */
-  /* font-family: 'Montserrat', sans-serif;
-  font-size: 25px; */
-  /* font-weight: 700; */
-  /* line-height: 150%; */
-  /* margin: 0; */
-  /* margin-bottom: 0.4cm; */
-}
+/* TRANSITIONS------------------------------- */
 </style>

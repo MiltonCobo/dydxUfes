@@ -117,18 +117,16 @@ export default {
     this.p5plot.remove()
   },
   methods: {
-    checkp5Loaded() {
+    async checkp5Loaded() {
       if (!window.p5) {
-        const script = document.createElement('script')
-        script.type = 'text/javascript'
-        script.addEventListener('load', this.startp5Plot)
-        script.src = '../../../js/p5/p5.min.js' // new version of p5
-        //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js'
-        document.head.appendChild(script)
+        await import('@/static/js/p5/p5.min.js')
+          .then(() => (this.p5plot = new p5(goldenRatio, this.$refs.container)))
+          .catch(err => console.log(err))
       } else {
         this.p5plot = new p5(goldenRatio, this.$refs.container)
       }
     },
+
     checkMathJaxLoaded() {
       if (typeof window.MathJax !== undefined) {
         const script = document.createElement('script')
