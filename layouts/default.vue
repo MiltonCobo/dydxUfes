@@ -13,17 +13,19 @@
       <v-list>
         <v-list-item style="position:30%;">
           <v-list-item-avatar width="80" height="80" contain>
-            <v-img src="/figures/logo-ufes.jpg" />
+            <img src="~/assets/figures/logo-ufes.jpg" />
           </v-list-item-avatar>
           <span class="blue--text"> UFES </span>
         </v-list-item>
 
         <v-list-item link>
-          <v-list-item-content>
+          <v-list-item-content style="font-size: min(2vmin, 15px)">
             <v-list-item-title class="blue--text">
-              Dpto de Matemática
+              Matemática
             </v-list-item-title>
-            <v-list-item-subtitle>Campus Goiabeiras</v-list-item-subtitle>
+            <v-list-item-subtitle class="blue--text"
+              >Campus Goiabeiras</v-list-item-subtitle
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -49,7 +51,7 @@
       <!-- <v-list-item> -->
       <!-- button inside list --->
       <v-menu bottom offset-x offset-y transition="slide-x-transition">
-        <template v-slot:activator="{ on, attrs }">
+        <template v-slot:activator="{ on }">
           <v-btn v-on="on" text class="blue--text">
             <!-- <v-list-item-icon>
               <v-icon class="blue--text">mdi-chart-bell-curve </v-icon>

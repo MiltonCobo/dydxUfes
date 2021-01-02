@@ -132,7 +132,7 @@ export default {
         const script = document.createElement('script')
         script.type = 'text/javascript'
         script.defer = true
-        script.src = '../../../js/MathJax/mathjax2Config.js'
+        script.src = '/js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
         // script.addEventListener('load', console.log('mathjax has been loaded!'))
         script.addEventListener('load', this.onMathJaxLoaded)
@@ -190,7 +190,7 @@ export default {
           type: 'text/javascript',
           //src: '/js/p5/p5.min.js',
           //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js',
-          src: '../../../js/p5/p5.min.js',
+          src: '/js/p5/p5.min.js',
           // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
           async: true,
           defer: false

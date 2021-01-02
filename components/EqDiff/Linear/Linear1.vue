@@ -27,8 +27,29 @@ export default {
     Qlinear1,
     Slinear1
   },
-
-  methods: {},
+  mounted() {
+    //this.checkMathJaxLoaded()
+  },
+  methods: {
+    checkMathJaxLoaded() {
+      if (typeof window.MathJax !== undefined) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.async = true
+        script.src = '/js/MathJax/mathjax2Config.js'
+        document.head.appendChild(script)
+        script.addEventListener(
+          'load',
+          //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+          console.log('mathjax has been loaded in lineares/LINEAR1!')
+        )
+        //script.addEventListener('load', this.onMathJaxLoaded)
+      } else if (typeof MathJax.Hub !== 'undefined') {
+        console.log('mathjax is present in LINEAR1, it will typeset')
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      }
+    }
+  },
   head() {
     return {
       // title: 'Eq. Diferenciais Lineares',

@@ -65,7 +65,7 @@
         </v-sheet>
       </v-col>
       <v-col sm="12" md="5" align="center">
-        <v-img contain src="/figures/Evariste_galois.jpg" height="300"> </v-img>
+        <img contain src="~/assets/figures/Evariste_galois.jpg" height="300" />
         <div class="subheading">Évariste Galois(1811-1832)</div>
       </v-col>
     </v-row>

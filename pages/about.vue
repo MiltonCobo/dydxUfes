@@ -99,7 +99,7 @@ export default {
         const script = document.createElement('script')
         script.type = 'text/javascript'
         script.defer = true
-        script.src = '../../../js/MathJax/mathjax2Config.js'
+        script.src = '/js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
         //script.addEventListener('load', console.log('mathjax has been loaded!'))
         //script.addEventListener('load', this.onMathJaxLoaded)

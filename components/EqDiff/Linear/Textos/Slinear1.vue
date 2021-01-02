@@ -98,14 +98,13 @@
 <script>
 //import vuePlotly from '@statnett/vue-plotly'
 import { getDataScatter } from '@/static/js/Plotly/plotly-config.js'
+import errorComp from '@/components/EqDiff/Linear/Textos/errorComp.vue'
+import loadingComp from '@/components/EqDiff/Linear/Textos/loadingComp.vue'
 
 let inf = plotMosquitosSol()
-
 let data = inf.data
 let layout = inf.layout
 let options = inf.options
-import errorComp from '@/components/EqDiff/Linear/Textos/errorComp.vue'
-import loadingComp from '@/components/EqDiff/Linear/Textos/loadingComp.vue'
 
 export default {
   components: {
@@ -178,7 +177,7 @@ function plotMosquitosSol() {
 
   //----------------------------
 
-  var traces = [] // obtem as traces...
+  var traces = [] // get  traces...
   for (let i = 0; i < iter; i++) {
     param = params[i]
     traces[i] = getDataScatter(mapMosquitos, initial, xwidth, step)
@@ -248,11 +247,11 @@ function plotMosquitosSol() {
 </script>
 
 <style scoped>
-.figure {
+/* .figure {
   min-width: 300px;
   width: 700px;
   background-color: inherit;
   margin: 0px;
   padding: 0px;
-}
+} */
 </style>

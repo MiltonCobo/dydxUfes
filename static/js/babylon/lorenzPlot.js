@@ -378,12 +378,7 @@ export default function lorenzPlot() {
   let engine = new Engine(canvas, true)
   let scene = createScene(engine, canvas)
 
-  // window.addEventListener('popstate', function(event) {
-  //   // Log the state data to the console
-  //   console.log('event.state = ', event.state)
-  // })
   const myPath = window.location.pathname
-  console.log(window.location.pathname)
 
   engine.runRenderLoop(function() {
     scene.render()
@@ -391,27 +386,6 @@ export default function lorenzPlot() {
     if (window.location.pathname !== myPath) {
       engine.stopRenderLoop()
     }
-
-    // let navigation = navigationType()
-    // console.log(navigation)
-
-    // if (navigation != 1) {
-    //   engine.stopRenderLoop()
-    // } else {
-    //   scene.render()
-    // }
-    // let route = window.location.pathname
-    // if (
-    //   route == 'www.dydx.ufes.br/Attractors/lorenz/' ||
-    //   route == '/Attractors/lorenz/' ||
-    //   route == '/Attractors/lorenz'
-    // ) {
-    //   scene.render()
-    // } else {
-    //   engine.stopRenderLoop()
-    // }
-    // scene.render()
-    // window.addEventListener('hashchange', () => engine.stopRenderLoop())
   })
 
   window.addEventListener('resize', function() {

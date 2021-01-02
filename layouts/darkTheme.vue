@@ -194,7 +194,7 @@ export default {
       const script = document.createElement('script')
       //script.onload = this.onScriptLoaded
       script.type = 'text/javascript'
-      script.src = '../../../js/MathJax/mathjax2Config.js'
+      script.src = '/js/MathJax/mathjax2Config.js'
       document.head.appendChild(script)
     } else {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])

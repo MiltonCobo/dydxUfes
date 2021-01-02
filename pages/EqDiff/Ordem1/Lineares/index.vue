@@ -57,8 +57,6 @@
 import Linear1 from '@/components/EqDiff/Linear/Linear1'
 import Linear2 from '@/components/EqDiff/Linear/Linear2'
 import Linear3 from '@/components/EqDiff/Linear/Linear3'
-// import Linear4 from '../../components/LodkaVolterra/Linear4'
-// import Linear5 from '../../components/LodkaVolterra/Linear5'
 
 export default {
   components: {
@@ -106,12 +104,17 @@ export default {
       if (typeof window.MathJax !== undefined) {
         const script = document.createElement('script')
         script.type = 'text/javascript'
-        script.defer = true
-        script.src = '../../../js/MathJax/mathjax2Config.js'
+        script.async = true
+        script.src = '/js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-        //script.addEventListener('load', console.log('mathjax has been loaded!'))
+        script.addEventListener(
+          'load',
+          //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+          console.log('mathjax has been loaded in lineares/index.vue!')
+        )
         //script.addEventListener('load', this.onMathJaxLoaded)
       } else if (typeof MathJax.Hub !== 'undefined') {
+        console.log('mathjax is present, it will typeset')
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
     }
@@ -135,7 +138,7 @@ export default {
         }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        //{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
         // {
         //   rel: 'stylesheet',
         //   href:
@@ -150,7 +153,7 @@ export default {
       script: [
         // {
         //   type: 'text/javascript', //x-mathjax-config',
-        //   src: '../../../js/MathJax/mathjax2Config.js',
+        //   src: '/js/MathJax/mathjax2Config.js',
         //   async: true // WHEN RELOAD FROM THIS PAGE MATHJAX IS LOADED
         //   //defer: true // defer = true is important
         // }

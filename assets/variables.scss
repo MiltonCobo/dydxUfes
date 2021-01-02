@@ -1,7 +1,7 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
 //
 // The variables you want to modify
-$font-size-root: max(3vmin, 15px); //CHANGE HERE
+$font-size-root: max(2.8vmin, 20px);
 $line-height-root: 1.2;
 $body-font-family: 'Lucida Grande', sans-serif;
 
@@ -31,7 +31,6 @@ a:hover {
 body {
   margin: 0px;
   font-size: min(3vmin, 22px); // CHANGE HERE
-  //font-size: 2.8vmin; // CHANGE HERE
 }
 
 .js-plotly-plot .plotly .modebar {

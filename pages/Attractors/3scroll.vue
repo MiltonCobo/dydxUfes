@@ -88,9 +88,7 @@ export default {
     ThreeScroll()
     this.checkMathJaxLoaded()
   },
-  destroyed() {
-    //console.log('destroyed foi ativado')
-  },
+  destroyed() {},
   updated() {
     if (window.MathJax.Hub) {
       MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
@@ -103,13 +101,17 @@ export default {
         const script = document.createElement('script')
         script.type = 'text/javascript'
         script.defer = true
-        script.src = '../../../js/MathJax/mathjax2Config.js'
+        script.src = '/js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-        //script.addEventListener('load', console.log('mathjax has been loaded!'))
+        // script.addEventListener(
+        //   'load',
+        //   console.log('mathjax has been loaded in trhee scroll!')
+        // )
         //script.addEventListener('load', this.onMathJaxLoaded)
-      } else if (typeof MathJax.Hub !== 'undefined') {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
+      // else if (typeof MathJax.Hub !== 'undefined') {
+      //   MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+      // }
     }
   },
   updated() {
@@ -130,16 +132,7 @@ export default {
           content: 'O atrator de Lorenz em www.dydx.ufes.br do DMAT/UFES'
         }
       ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        {
-          // rel: 'stylesheet',
-          // href:
-          //   'https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&display=swap'
-          // 'https://fonts.googleapis.com/css2?family=Kalam&display=swap'
-          // 'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'
-        }
-      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }, {}],
       script: []
     }
   }

@@ -55,12 +55,12 @@ export default {
       {
         type: 'text/javascript',
         id: 'MathJax-script',
-        src: '../../../js/MathJax/mathjax2Config.js',
+        src: '/js/MathJax/mathjax2Config.js',
         defer: true // defer = true is important
       },
       {
         type: 'text/javascript',
-        src: '../../../js/p5/p5.min.js',
+        src: '/js/p5/p5.min.js',
         // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
         async: true,
         defer: false
@@ -83,7 +83,7 @@ export default {
       // }
       // {
       //   type: 'text/x-mathjax-config',
-      //   src: '../../../js/p5/p5.min.js', //'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
+      //   src: '/js/p5/p5.min.js', //'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
       //   async: true,
       //   defer: true
       // }
@@ -218,6 +218,10 @@ export default {
       config.resolve.alias['plotly.js$'] = '~/static/js/customPlotly.js' //'plotly.js/dist/plotly.min.js' //'plotly.js-gl3d-dist/plotly-gl3d.js' // To avoid loading other staff
 
       // config.node = { __dirname: false }
+
+      // const { VuetifyLoaderPlugin } = require('vuetify-loader')
+
+      // config.plugins.push(new VuetifyLoaderPlugin())
 
       config.module.rules.push({
         test: /\.js$/,

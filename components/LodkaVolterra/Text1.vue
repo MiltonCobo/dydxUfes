@@ -13,16 +13,12 @@
           a 1923.
         </v-col>
         <v-col sm="12" md="4" align="center">
-          <v-img src="/figures/lebrelince.png" contain width="300" height="300">
-          </v-img>
-          <!-- <client-only>
-            <vue-plotly
-              v-if="startChart"
-              :data="data"
-              :layout="layout"
-              :options="options" -->
-          <!-- /> -->
-          <!-- </client-only> -->
+          <img
+            src="~/assets/figures/lebrelince.png"
+            contain
+            width="300"
+            height="300"
+          />
         </v-col>
       </v-row>
       <v-row>
