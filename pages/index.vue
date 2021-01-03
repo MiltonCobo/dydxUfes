@@ -130,14 +130,14 @@ export default {
     },
 
     checkMathJaxLoaded() {
-      if (!window.MathJax.AuthorConfig) {
+      if (!window.MathJax) {
         const script = document.createElement('script')
         script.type = 'text/javascript'
         script.id = 'MathJax-script'
         script.defer = false
         script.src = '/js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-      } else {
+      } else if (MathJax.Hub !== undefined) {
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax']) // THIS PART SEEMS NECESSARY OTHERWISE
         //WHEN CLICK ON UFES MATHJAX DOESNT PARSE AGAIN...
       }

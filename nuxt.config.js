@@ -63,7 +63,7 @@ export default {
         type: 'text/javascript',
         src: '/js/p5/p5.min.js',
         // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
-        async: true,
+        async: false,
         defer: false
       }
       // {
