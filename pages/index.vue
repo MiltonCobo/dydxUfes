@@ -105,16 +105,18 @@ export default {
   created() {},
   // middleware: 'checkMathJax',
   mounted() {
-    this.checkp5Loaded()
-
     this.checkMathJaxLoaded() // NEED TO RELOAD MATHJAX WHEN CLICK ON UFES LINK...
+    this.checkp5Loaded()
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax']) //NEEDED WHEN ANY UPDATE IN ANY COMPONENT
+    if (typeof MathJax.Hub !== undefined)
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax']) //NEEDED WHEN ANY UPDATE IN ANY COMPONENT
   },
 
   destroyed() {
-    this.p5plot.remove()
+    if (this.p5plot) {
+      this.p5plot.remove()
+    }
   },
   methods: {
     async checkp5Loaded() {
@@ -128,25 +130,19 @@ export default {
     },
 
     checkMathJaxLoaded() {
-      if (typeof window.MathJax !== undefined) {
+      if (!window.MathJax.AuthorConfig) {
         const script = document.createElement('script')
         script.type = 'text/javascript'
-        script.defer = true
+        script.id = 'MathJax-script'
+        script.defer = false
         script.src = '/js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-        // script.addEventListener('load', console.log('mathjax has been loaded!'))
-        script.addEventListener('load', this.onMathJaxLoaded)
       } else {
-        // MathJax.typeset()
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax']) // THIS PART SEEMS NECESSARY OTHERWISE
+        //WHEN CLICK ON UFES MATHJAX DOESNT PARSE AGAIN...
       }
     },
-    onMathJaxLoaded() {
-      //MathJax.typeset()
-      if (MathJax.Hub) {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      }
-    },
+
     startp5Plot() {
       this.p5plot = new p5(goldenRatio, this.$refs.container)
     }
@@ -186,21 +182,21 @@ export default {
         }
       ],
       script: [
-        {
-          type: 'text/javascript',
-          //src: '/js/p5/p5.min.js',
-          //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js',
-          src: '/js/p5/p5.min.js',
-          // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
-          async: true,
-          defer: false
-        }
         // {
         //   type: 'text/javascript',
-        //   src: '/js/p5/p5.dom.js',
+        //   //src: '/js/p5/p5.min.js',
+        //   //'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js',
+        //   src: '/js/p5/p5.min.js',
         //   // src: 'https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js',
-        //   async: false,
+        //   async: true,
         //   defer: false
+        // }
+        // {
+        //   type: 'text/javascript',
+        //   id: 'MathJax-script',
+        //   src: '/js/MathJax/mathjax2Config.js',
+        //   defer: false, // defer = true is important
+        //   async: false
         // }
       ]
     }

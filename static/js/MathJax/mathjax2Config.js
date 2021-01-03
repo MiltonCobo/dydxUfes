@@ -39,9 +39,9 @@ window.MathJax = {
   let script = document.createElement('script')
   script.type = 'text/javascript'
   script.id = 'MathJax-script'
-  script.src = script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js'
-
-  //  'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_SVG'
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js'
+  //'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js
+  //?config=TeX-AMS-MML_SVG'
 
   script.async = true
   document.head.appendChild(script)

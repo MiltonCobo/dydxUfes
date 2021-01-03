@@ -99,7 +99,7 @@ export default {
     }
   },
   mounted() {
-    //this.checkMathJaxLoaded()
+    this.checkMathJaxLoaded()
 
     document.addEventListener('keydown', e => {
       if (e.keyCode == 39) {

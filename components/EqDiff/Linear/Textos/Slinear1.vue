@@ -45,7 +45,13 @@
 
     <v-container fluid>
       <v-row no-gutters align="center">
-        <v-col sm="12" md="6" align="center" class="figure">
+        <v-col
+          sm="12"
+          md="6"
+          align="center"
+          class="figure"
+          style="min-width: 300px;"
+        >
           <client-only>
             <vue-plotly
               placeholder="carregando..."
@@ -109,7 +115,7 @@ let options = inf.options
 export default {
   components: {
     'vue-plotly': () => ({
-      component: import('@statnett/vue-plotly'),
+      component: process.client ? import('@statnett/vue-plotly') : null,
       loading: loadingComp,
       erro: errorComp,
       delay: 200,
@@ -123,6 +129,7 @@ export default {
       data,
       layout,
       options
+      //updateCount: 0
     }
   },
   mounted() {},

@@ -97,21 +97,17 @@ export default {
 
   methods: {
     checkMathJaxLoaded() {
-      if (typeof window.MathJax !== undefined) {
+      if (typeof window.MathJax === undefined) {
         const script = document.createElement('script')
         script.type = 'text/javascript'
         script.defer = true
         script.src = '/js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-        // script.addEventListener(
-        //   'load',
-        //   console.log('mathjax has been loaded in trhee scroll!')
-        // )
+
         //script.addEventListener('load', this.onMathJaxLoaded)
+      } else if (typeof MathJax.Hub !== 'undefined') {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
       }
-      // else if (typeof MathJax.Hub !== 'undefined') {
-      //   MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      // }
     }
   },
   updated() {

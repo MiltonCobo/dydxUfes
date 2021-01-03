@@ -91,7 +91,6 @@ export default {
       }
     },
     swipeRight(event) {
-      console.log(event.offsetX)
       if (this.$store.state.discardTouch) {
         this.$store.discardTouch(false) // allow swipes
       } else if (event.offsetX > 150) {
@@ -101,22 +100,15 @@ export default {
     },
 
     checkMathJaxLoaded() {
-      if (typeof window.MathJax !== undefined) {
+      if (window.MathJax === undefined) {
         const script = document.createElement('script')
         script.type = 'text/javascript'
         script.async = true
         script.src = '/js/MathJax/mathjax2Config.js'
         document.head.appendChild(script)
-        script.addEventListener(
-          'load',
-          //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-          console.log('mathjax has been loaded in lineares/index.vue!')
-        )
-        //script.addEventListener('load', this.onMathJaxLoaded)
       } else if (typeof MathJax.Hub !== 'undefined') {
-        console.log('mathjax is present, it will typeset')
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-      }
+      } //
     }
   },
   updated() {

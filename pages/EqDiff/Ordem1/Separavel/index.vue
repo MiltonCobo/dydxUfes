@@ -111,7 +111,7 @@ export default {
     },
 
     checkMathJaxLoaded() {
-      if (typeof window.MathJax !== undefined) {
+      if (typeof window.MathJax === undefined) {
         const script = document.createElement('script')
         script.type = 'text/javascript'
         script.defer = true

@@ -56,7 +56,8 @@ export default {
         type: 'text/javascript',
         id: 'MathJax-script',
         src: '/js/MathJax/mathjax2Config.js',
-        defer: true // defer = true is important
+        defer: false, // defer = true is important
+        async: false
       },
       {
         type: 'text/javascript',
