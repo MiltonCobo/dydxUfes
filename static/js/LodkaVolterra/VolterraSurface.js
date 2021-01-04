@@ -49,7 +49,7 @@ export function volterraSurface() {
   // let vh = window.innerHeight
   // layout0.width = vw
   // console.log('vw = ', vw)
-  // layout0.height = 0.9 * vw
+  layout0.height = 600
 
   data.colorscale = 'Earth'
   layout0.title =

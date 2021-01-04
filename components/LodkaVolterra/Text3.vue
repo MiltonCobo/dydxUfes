@@ -24,15 +24,16 @@
           sm="12"
           md="7"
           class="figure"
+          style="width: 100%; height: 100%;"
         >
           <client-only>
             <vue-plotly
               placeholder="carregando..."
-              v-if="startChart"
               :data="data"
               :layout="layout"
               :options="options"
             />
+            <!-- v-if="startChart"  -->
           </client-only>
         </v-col>
 
@@ -77,7 +78,7 @@ export default {
     let options = info.options
 
     return {
-      startChart: true,
+      // startChart: true,
       data,
       layout,
       options

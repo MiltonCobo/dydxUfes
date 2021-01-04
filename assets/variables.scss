@@ -40,9 +40,13 @@ body {
   //color: green !important;
 }
 
-* {
+.v-btn {
   text-transform: none !important; // text in vuetify not Capitalize
+  // }
 }
+
+// * {
+//   text-transform: none !important;
 
 li a {
   text-decoration: none;

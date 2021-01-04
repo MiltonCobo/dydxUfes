@@ -18,7 +18,13 @@
 
           <br />
         </v-col>
-        <v-col sm="12" md="6" align="center" class="figure">
+        <v-col
+          sm="12"
+          md="6"
+          align="center"
+          class="figure"
+          style="width:100%; height:100%;"
+        >
           <client-only>
             <vue-plotly
               placeholder="carregando..."
