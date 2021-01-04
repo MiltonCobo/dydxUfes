@@ -115,7 +115,7 @@ export function volterraSurface() {
     arrowwidth: 1,
     arrowhead: 1,
     font: {
-      size: 16,
+      size: 18,
       color: 'red'
     },
     x: c / d,
@@ -134,7 +134,7 @@ export function volterraSurface() {
     arrowhead: 1,
     arrowcolor: 'black',
     font: {
-      size: 16,
+      size: 18,
       color: 'red'
     },
     x: c1 / d1,
@@ -194,21 +194,20 @@ export function volterraSurface() {
             {
               title:
                 '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$',
-              // layout: {
-              scene: {
-                annotations: [annotations1],
-                zaxis: { range: [15, 45] },
-                camera: {
-                  eye: {
-                    x: 0.9,
-                    y: 0.9,
-                    z: 1.5
+              layout: {
+                scene: {
+                  annotations: [annotations1],
+                  zaxis: { range: [10, 45] },
+                  camera: {
+                    eye: {
+                      x: 0.9,
+                      y: 0.9,
+                      z: 1.5
+                    }
                   }
                 }
               }
             }
-            // }
-            //   shapes: shapes1  zaxis: { range: [10, 45]
           ],
           label: 'Superfície 1'
         },
@@ -224,21 +223,21 @@ export function volterraSurface() {
               title:
                 '$\\color{green}{V(x,y)=0.14\\, x - 7.5\\, \\ln(x) +0.12\\, y-3.6\\,\\ln(y)}$',
 
-              // layout: {
-              scene: {
-                zaxis: { range: [10, 40] },
-                camera: {
-                  eye: {
-                    x: 0.9,
-                    y: 0.1, //1.1
-                    z: 1.5
-                  }
-                },
-                annotations: [annotations2]
+              layout: {
+                scene: {
+                  zaxis: { range: [10, 45] },
+                  camera: {
+                    eye: {
+                      x: 0.9,
+                      y: 0.1, //1.1
+                      z: 1.5
+                    }
+                  },
+                  annotations: [annotations2]
+                }
               }
+              //   shapes: [...shapes3, ...shapes2] //
             }
-            //   shapes: [...shapes3, ...shapes2] //
-            // }
           ],
           label: 'Superfície 2'
         }
@@ -256,7 +255,7 @@ export function volterraSurface() {
       y: -0.03,
       yanchor: 'top', // -0.02 is at the top
       font: {
-        size: 14,
+        size: 18,
         color: 'brown'
       }
     }

@@ -45,7 +45,7 @@ export function drawLinear3() {
       ayref: 'pixel',
       arrowcolor: 'red',
       font: {
-        size: 15,
+        size: 18,
         color: 'red'
       },
       x: 5,
@@ -60,7 +60,7 @@ export function drawLinear3() {
       ayref: 'pixel',
       showarrow: false,
       font: {
-        size: 14,
+        size: 18,
         color: 'green'
       },
       x: 1.96,
@@ -73,7 +73,7 @@ export function drawLinear3() {
       showarrow: false,
       xanchor: 'left',
       font: {
-        size: 14,
+        size: 18,
         color: 'green'
       },
       x: 0.05,
@@ -126,7 +126,7 @@ export function drawLinear3() {
         y: 0.63,
         yanchor: 'top',
         font: {
-          size: 14,
+          size: 18,
           color: 'brown'
         }
       }
@@ -134,13 +134,13 @@ export function drawLinear3() {
     xaxis: {
       autorange: true,
       title: 't',
-      titlefont: { size: 14, color: 'brown' },
+      titlefont: { size: 18, color: 'brown' },
       tickfont: { size: 12, color: 'blue' }
     },
     yaxis: {
       autorange: true,
       title: 'y(t)',
-      titlefont: { size: 14, color: 'brown' },
+      titlefont: { size: 18, color: 'brown' },
       // side : 'right',
       // tickvals: [0, -1.18, 12, -20],
       // ticktext: ['0', '$12-8\\sqrt{\\e}$', '12', '-20'],
