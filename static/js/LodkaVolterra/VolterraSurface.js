@@ -45,11 +45,12 @@ export function volterraSurface() {
   let layout0 = Object.assign({}, layout) //copy of data
 
   layout0.autosize = true
-  //let vw = window.innerWidth
-  //let vh = window.innerHeight
-  //layout0.width = 0.6*vw
-  //console.log('0.6 vw', 0.6*vw)
-  //layout0.height = 0.6 * vw //550 /* set size of plot */
+  //let vw = Math.floor(0.3 * window.innerWidth)
+  // let vh = window.innerHeight
+  // layout0.width = vw
+  // console.log('vw = ', vw)
+  // layout0.height = 0.9 * vw
+
   data.colorscale = 'Earth'
   layout0.title =
     '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'

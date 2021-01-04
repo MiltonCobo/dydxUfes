@@ -1,8 +1,8 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
 //
 // The variables you want to modify
-$font-size-root: max(2.8vmin, 20px);
-$line-height-root: 1.2;
+$font-size-root: 18px;
+$line-height-root: 1.5;
 $body-font-family: 'Lucida Grande', sans-serif;
 
 //$material-dark: (
@@ -15,11 +15,7 @@ $body-font-family: 'Lucida Grande', sans-serif;
   margin: 0px;
   /* #2e7d32; /* light-green darken-3 */
   /*  #004b07; /* #33691e;*/
-  // line-height: 1.5;
 }
-// .mathjax a {
-//   text-decoration: none;
-// }
 
 a {
   text-decoration: none;
@@ -30,7 +26,6 @@ a:hover {
 
 body {
   margin: 0px;
-  font-size: min(3vmin, 22px); // CHANGE HERE
 }
 
 .js-plotly-plot .plotly .modebar {
@@ -43,11 +38,10 @@ body {
   padding-right: 2%;
   //font-size: min(3.2vmin, 22px); // CHANGE HERE
   //color: green !important;
-  line-height: 1.3;
 }
 
 * {
-  text-transform: none !important; // text in vuetify ?
+  text-transform: none !important; // text in vuetify not Capitalize
 }
 
 li a {
@@ -58,14 +52,15 @@ li a {
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
   html {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    height: 100vw;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    font-size: 16px;
+    // transform: rotate(-90deg);
+    // transform-origin: left top;
+    // width: 100vh;
+    // height: 100vw;
+    // overflow-x: hidden;
+    // position: absolute;
+    // top: 100%;
+    // left: 0;
   }
 }
 

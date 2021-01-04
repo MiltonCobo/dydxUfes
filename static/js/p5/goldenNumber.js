@@ -26,6 +26,7 @@ export default function goldenRatio(p) {
   let slider
   let control
   let msg
+  let currentPath
 
   //   function return width and heigth of portview
   // function getViewportSize() {
@@ -51,12 +52,15 @@ export default function goldenRatio(p) {
     let width = window.innerWidth
     let height = window.innerHeight //canvasSize.h
 
-    let cnv = p.createCanvas(width, height)
+    let cnv = p.createCanvas(0.9 * width, height)
 
     cnv.parent('#container-figure')
 
     p.angleMode(p.RADIANS)
     p.colorMode(p.HSL)
+
+    // keep initial route
+    currentPath = window.location.pathname
 
     // controls
 
@@ -233,7 +237,8 @@ export default function goldenRatio(p) {
 
   p.draw = function() {
     let route = window.location.pathname
-    if (route !== '/') {
+
+    if (route !== currentPath) {
       p.noLoop() /* stop sketch when route change */
       p.remove()
     }
