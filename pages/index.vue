@@ -11,14 +11,11 @@
 
     <v-row>
       <v-col align="center">
-        <!-- <client-only placeholder="carregando..."> -->
         <div
           style="position:relative;"
           ref="container"
           id="container-figure"
         ></div>
-        <!-- <v-spacer /> -->
-        <!-- </client-only> -->
       </v-col>
     </v-row>
 
