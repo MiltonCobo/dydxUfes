@@ -255,7 +255,7 @@ export function volterraSurface() {
       y: -0.03,
       yanchor: 'top', // -0.02 is at the top
       font: {
-        size: 18,
+        size: 16,
         color: 'brown'
       }
     }

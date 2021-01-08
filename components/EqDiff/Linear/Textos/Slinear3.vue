@@ -93,7 +93,8 @@
       height="600"
       transition="fab-transition"
     >
-      <v-card style="background-color:gainsboro;">
+      <v-card style="background-color:gainsboro;" :loading="loading" outline>
+        <v-card-text> </v-card-text>
         <v-card-actions class="flex-column align-start">
           <client-only>
             <vue-plotly
@@ -108,7 +109,7 @@
           </v-btn>
           <v-card-text
             class="gainsboro mathjax"
-            style="font-family: Lucida Console;"
+            style="font-family: 'Lucida Grande', sans-serif; font-size: 18px;"
           >
           </v-card-text>
         </v-card-actions>
@@ -131,6 +132,7 @@ export default {
 
     return {
       openFigure: false,
+      loading: false,
       data,
       layout,
       options

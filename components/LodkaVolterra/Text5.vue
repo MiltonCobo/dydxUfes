@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row align="center">
         <v-col sm="12" md="6">
-          <h3 style="color:var(--mjx-green)">
+          <h3 style="color:var(--myGreen)">
             Qual foi a explicação dada por Volterra para o aumento da população
             de predadores no mar adriático por causa da guerra?
           </h3>
@@ -23,7 +23,7 @@
           md="6"
           align="center"
           class="figure"
-          style="width:100%; height:100%;"
+          style="width: 600px; height: 500px;;"
         >
           <client-only>
             <vue-plotly
@@ -43,7 +43,7 @@
           inalteradas. Desta forma, o efeito da pesca será que a média $a/b$ da
           população dos tubarões diminui enquanto a média $c/d$ da população de
           atuns aumenta.
-          <span style="color: var(--mjx-green)">
+          <span style="color: var(--myGreen)">
             Assim, de forma paradoxal, a pesca de atuns aumenta a média da
             população de atuns e diminui a média da população de tubarões!
           </span>

@@ -126,7 +126,7 @@ export function drawLinear3() {
         y: 0.63,
         yanchor: 'top',
         font: {
-          size: 18,
+          size: 16,
           color: 'brown'
         }
       }

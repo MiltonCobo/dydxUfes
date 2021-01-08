@@ -24,7 +24,7 @@
           sm="12"
           md="7"
           class="figure"
-          style="width: 100%; height: 100%;"
+          style="width: 100%; height: 600px; "
         >
           <client-only>
             <vue-plotly
@@ -48,6 +48,10 @@
           chegamos na chamada solução
           <span style="color:var(--mjx-green)">implícita</span>
           $${ V=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$
+          <!-- A figura mostra o
+          gráfico de $V(x,y)$ para valores ${a=5.3, b=0.12, c=4.9}$ e ${d=0.14}$
+          (superfície 1, sem pesca) e para valores ${a=3.6}$ e ${c=7.5} $
+          (superfície 2, com pesca). -->
         </v-col>
       </v-row>
 
@@ -82,6 +86,14 @@ export default {
       data,
       layout,
       options
+    }
+  },
+  methods: {
+    swipeLeft() {
+      this.$store.discardTouch(true)
+    },
+    swipeRight() {
+      this.$store.discardTouch(true)
     }
   }
 }

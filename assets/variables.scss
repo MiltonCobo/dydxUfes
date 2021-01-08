@@ -1,20 +1,28 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
 //
 // The variables you want to modify
-$font-size-root: 18px;
-$line-height-root: 1.5;
-$body-font-family: 'Lucida Grande', sans-serif;
 
+$body-font-family: 'Verdana', sans-serif;
+$heading-font-family: 'Verdana', sans-serif;
+
+$font-size-root: 20px;
+$line-height-root: 1.5;
+
+// @import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap');
+// @import url('https://fonts.googleapis.com/css? family=Comfortaa&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap'); // $body-font-family: 'Oxygen Mono', monospace;
+// $body-font-family: 'Oxygen Mono', monospace;
+// $title-font: 'Comfortaa';
+// $body-font-family: 'Lucida Grande', sans-serif;
+// $font-size-body: 14px;
 //$material-dark: (
 //'background': #dcdcdc /* #fff */
 //);
 
 :root {
-  --mjx-green: #2e7d32;
+  --myGreen: #2e7d32;
   padding: 0px;
   margin: 0px;
-  /* #2e7d32; /* light-green darken-3 */
-  /*  #004b07; /* #33691e;*/
 }
 
 a {
@@ -22,10 +30,6 @@ a {
 }
 a:hover {
   color: red;
-}
-
-body {
-  margin: 0px;
 }
 
 .js-plotly-plot .plotly .modebar {
@@ -36,8 +40,6 @@ body {
 .mathjax {
   padding-left: 2%;
   padding-right: 2%;
-  //font-size: min(3.2vmin, 22px); // CHANGE HERE
-  //color: green !important;
 }
 
 .v-btn {
@@ -54,7 +56,7 @@ li a {
 
 // lock screen orientation in small devices
 
-@media only screen and (max-width: 600px) and (orientation: portrait) {
+@media only screen and (max-width: 600px) {
   html {
     font-size: 16px;
     // transform: rotate(-90deg);

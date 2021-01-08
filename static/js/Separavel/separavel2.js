@@ -343,7 +343,7 @@ export function drawContoursSep2() {
         y: 0.23,
         yanchor: 'top',
         font: {
-          size: 14,
+          size: 15,
           color: 'brown'
         }
       }

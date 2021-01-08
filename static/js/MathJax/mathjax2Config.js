@@ -2,7 +2,7 @@ window.MathJax = {
   jax: ['input/TeX', 'output/CommonHTML'],
   extensions: ['tex2jax.js', 'Safe.js'],
   styles: {
-    '.mjx-chtml': { padding: '0.1em 0.1em', color: 'var(--mjx-green)' }
+    '.mjx-chtml': { padding: '0.1em 0.1em', color: 'var(--myGreen)' }
   },
   displayAlign: 'center',
 

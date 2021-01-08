@@ -203,7 +203,7 @@ export default {
 
 <style scoped>
 :root {
-  --mjx-green: white; /* #2e7d32; /* #2e7d32; /* light-green darken-3 */
+  --myGreen: white; /* #2e7d32; /* #2e7d32; /* light-green darken-3 */
   /*  #004b07; /* #33691e;*/
   /* background-color: black; */
 }

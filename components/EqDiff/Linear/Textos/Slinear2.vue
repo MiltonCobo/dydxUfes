@@ -89,11 +89,11 @@
             height="700"
             transition="fab-transition"
           >
-            <v-card>
+            <v-card outlined>
               <v-card-text
                 class="mathjax"
                 align="center"
-                style="padding-top:20px; margin-bottom: -60px; font-family: Lucida Console;"
+                style="padding-top:20px; margin-bottom: -60px; font-family: 'Lucida Grande', sans-serif; font-size: 18px;"
               >
                 Soluções da equação linear $$ y' - {1\over 2} y = 2\cos(t), \,
                 y(0) = a $$ para diferentes valores do parâmetro $a.$
@@ -113,7 +113,7 @@
 
               <v-card-text
                 class="mathjax"
-                style="padding: 20px; font-family: Lucida Console;"
+                style="padding: 20px; font-family: 'Lucida Grande', sans-serif; font-size: 18px;"
               >
                 As soluções são $$ { y(t) = (\frac{8}{5}) \sin(t) -
                 (\frac{4}{5}) \cos(t) + {(\frac{4}{5}+a)}\e^{t/2}. }$$ Observe
