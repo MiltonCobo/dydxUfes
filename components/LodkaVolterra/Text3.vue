@@ -68,11 +68,19 @@
 
 <script>
 import { volterraSurface } from '@/static/js/LodkaVolterra/VolterraSurface'
+import errorComp from '@/components/LodkaVolterra/errorComp.vue'
+import loadingComp from '@/components/LodkaVolterra/loadingComp.vue'
 
 export default {
   name: 'Text3',
   components: {
-    'vue-plotly': () => import('@statnett/vue-plotly')
+    'vue-plotly': () => ({
+      component: process.client ? import('@statnett/vue-plotly') : null,
+      loading: loadingComp,
+      erro: errorComp,
+      delay: 200,
+      timeout: 800
+    })
   },
 
   data() {

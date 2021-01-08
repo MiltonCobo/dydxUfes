@@ -23,7 +23,7 @@
           md="6"
           align="center"
           class="figure"
-          style="width: 600px; height: 500px;;"
+          style="width: 600px; height: 500px;"
         >
           <client-only>
             <vue-plotly

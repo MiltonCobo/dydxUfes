@@ -3,14 +3,15 @@
     <v-container fluid>
       <v-col>
         <div>
-          <p style="color: red;">...Carregando....</p>
+          <p style="color: red; justify-content: center;">...Carregando....</p>
         </div>
+
         <div>
           <img
-            src="~/assets/figures/Slinear1.png"
+            src="~/assets/figures/LodkaVolterra3.png"
             contain
-            width="400"
-            height="400"
+            width="500"
+            height="500"
           />
         </div>
       </v-col>
