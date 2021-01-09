@@ -71,7 +71,8 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-sheet>
+        <v-sheet style="background: WhiteSmoke; padding: 15px;">
+          
           Ele viveu num momento de turbulência política na França sendo um
           acalorado ativista político que não hesitava em se envolver em
           situações perigosas, sendo preso varias vezes. Ele ainda conseguiu ser
@@ -89,6 +90,10 @@
             target="_blank"
             >Wikipedia sobre Galois).
           </a>
+
+          </v-sheet>
+            
+        <v-sheet>
 
           <v-spacer />
           <br />
