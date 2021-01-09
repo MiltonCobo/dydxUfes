@@ -3,7 +3,7 @@ import {
   //   layout,
   options
 } from '@/static/js/Plotly/plotly-config.js'
-import { TextureAssetTask } from 'babylonjs'
+// import { TextureAssetTask } from 'babylonjs'
 
 export function drawContoursSep2() {
   let c = 15
@@ -22,7 +22,7 @@ export function drawContoursSep2() {
   // let windowHeight = window.innerHeight
 
   function funct(x, y) {
-    return y * y * y - 3 * y * y - x * x * x - x //3*y +y*y-2*x+Math.exp(x);
+    return y * y * y - 3 * y * y - x * x * x - x 
   }
 
   let data = getDataSurfaceWithCorner(

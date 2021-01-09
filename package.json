@@ -1,5 +1,5 @@
 {
-  "name": "dydxUFES",
+  "name": "dydxufes",
   "version": "1.0.0",
   "description": "página DMAT-UFES para os cursos",
   "author": "MiltonCobo",
@@ -43,5 +43,15 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
     "eslint-plugin-nuxt": "^2.0.0"
-  }
+  },
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiltonCobo/dydxUfes.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiltonCobo/dydxUfes/issues"
+  },
+  "homepage": "https://github.com/MiltonCobo/dydxUfes#readme"
 }

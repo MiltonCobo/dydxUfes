@@ -6,10 +6,10 @@ import {
 
 export function drawSurfaceSep1() {
   let xwidth = 14
-  let ywidth = 14
+  let ywidth = 30
   let xcenter = 0 //xwidth / 2
   let ycenter = 1 // (ywidth - 2) / 2
-  let ysteps = 40
+  let ysteps = 20
   let xsteps = 40
   let center = {
     x: xcenter,
