@@ -9,7 +9,7 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row id="wrapper">
       <v-col align="center">
         <div
           style="position:relative;"
@@ -202,17 +202,16 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --myGreen: white; /* #2e7d32; /* #2e7d32; /* light-green darken-3 */
-  /*  #004b07; /* #33691e;*/
-  /* background-color: black; */
+#wrapper {
+  height: min(460px, 100vw);
+
+  /* width: min(90vw, 800px);   WIDTH IS SETUP BY ROW */
 }
 
 #container-figure {
-  max-width: 100%;
-  height: auto;
-  max-height: 400px;
-  /* background-color: gainsboro; */
+  width: 100%;
+  height: 100%;
+  /* max-height: 400px; */
   padding: 0px;
   touch-action: manipulation;
   scroll-behavior: smooth;

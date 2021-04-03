@@ -15,26 +15,6 @@ export function drawSurfaceSep3() {
     x: xcorner,
     y: ycorner
   }
-  //   function return width and heigth of portview
-  // function getViewportSize() {
-  //   // This works for all browsers except IE8 and before
-  //   if (window.innerWidth != null)
-  //     return { w: window.innerWidth, h: window.innerHeight }
-
-  //   // For IE (or any browser) in Standards mode
-  //   var d = window.document
-  //   if (document.compatMode == 'CSS1Compat')
-  //     return {
-  //       w: d.documentElement.clientWidth,
-  //       h: d.documentElement.clientHeight
-  //     }
-
-  //   // For browsers in Quirks mode
-  //   return { w: d.body.clientWidth, h: d.body.clientHeight }
-  // }
-
-  // let windowWidth = getViewportSize()
-  //let windowHeight = window.innerHeight
 
   function funct(x, y) {
     return 3 * y + y * y - 2 * x + Math.exp(x)

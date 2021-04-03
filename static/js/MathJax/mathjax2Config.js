@@ -28,9 +28,12 @@ window.MathJax = {
     processEscapes: true
   },
   CommonHTML: {
-    scale: 105,
-    linebreaks: { automatic: false }
+    scale: 100,
+    linebreaks: { automatic: true }
   },
+
+  'HTML-CSS': { linebreaks: { automatic: true } },
+  SVG: { linebreaks: { automatic: true } },
 
   showProcessingMessages: false,
   menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true }

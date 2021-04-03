@@ -11,7 +11,7 @@
 
     <v-row>
       <v-col>
-        <v-sheet style="margin-top: 0.3cm;">
+        <v-sheet style="margin-top: 0.3cm; overflow-x:visible;">
           $\def\R{\mathbb R}$ Separamos as variáveis $$ {2(y-1)\, dy =
           (3x^2+4x+2)\, dx} $$ e integramos a ambos lados, obtendo que as
           soluções $y=f(x)$ da equação diferencial moram
@@ -26,13 +26,13 @@
           y=-1$ na equação (eq1) obtemos que $1-2(-1)=1+2=C$, isto é, a solução
           do problema de valor inicial (PVI) mora implícitamente na curva de
           nível ${V(x,y)=3}$. Em geral não é possível achar a solução de forma
-          <span style="color:var(--mjx-green);"> explícita $y=f(x).$ </span> No
+          <span style="color:var(--myGreen);"> explícita $y=f(x).$ </span> No
           caso presente, entretanto, é possível obter a solução explícita do
           PVI. Chamamos ${\Delta = x^3+2x^2+2x+3}$ e colocamos $y$ em evidência
-          na equação ${y^2-2y-\Delta =0}.$ Isto é, $$ {y= \frac{-(-2)\pm
-          \sqrt{(-2)^2 - 4\Delta}}{2} = 1\pm\sqrt{x^3+2x^2+2x+4}},$$ Assim, no
+          na equação ${y^2-2y-\Delta =0}.$ Isto é, $$ {y = \frac{-(-2)\pm
+          \sqrt{(-2)^2 - 4\Delta}}{2} = 1\pm\sqrt{x^3+2x^2+2x+4}}.$$ Assim, no
           gráfico da curva ${y^2-2y = x^3+2x^2+2x+3}$ se encontram
-          <span style="color:var(--mjx-green);">escondidas</span> duas funções.
+          <span style="color:var(--myGreen);">escondidas</span> duas funções.
           <v-btn large @click.stop="openFigure2 = true" color="green lighten-4">
             Ver Gráfico
           </v-btn>
@@ -51,8 +51,8 @@
     <v-dialog
       transition="fab-transition"
       v-model="openFigure"
-      width="600"
-      height="800"
+      :width="clientWidth"
+      :height="clientHeight"
     >
       <v-card style="background-color:gainsboro;">
         <v-card-actions class="flex-column align-start">
@@ -71,8 +71,8 @@
     <v-dialog
       transition="fab-transition"
       v-model="openFigure2"
-      max-width="600"
-      max-height="800"
+      :width="clientWidth"
+      :height="clientHeight"
     >
       <v-card style="background-color:gainsboro;">
         <v-card-actions class="flex-column align-start">
@@ -111,6 +111,9 @@ export default {
     let data2 = info2.data
     let layout2 = info2.layout
 
+    let clientWidth
+    let clientHeight
+
     return {
       openFigure: false,
       openFigure2: false,
@@ -118,11 +121,22 @@ export default {
       layout,
       options,
       data2,
-      layout2
+      layout2,
+
+      clientWidth,
+      clientHeight
     }
   },
   mounted() {
+    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
+    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
+
+    console.log('clientWidth mounted = ', this.clientWidth, this.clientHeight)
     //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+  },
+  updated() {
+    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
+    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
   }
 }
 </script>

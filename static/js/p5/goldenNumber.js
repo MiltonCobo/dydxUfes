@@ -1,7 +1,7 @@
 // import Bubble from 'static/js/p5/bubbles'
 
 export default function goldenRatio(p) {
-  let totalPoints = 500 // total number of ball per angle
+  let totalPoints // total number of ball per angle
 
   let c = 8 // parameter to determine size of figure
 
@@ -13,7 +13,7 @@ export default function goldenRatio(p) {
   let stopped = false
   let angleSlider
   let button
-  let r0 = 11 //   size of the balls
+  let r0 //   size of the balls
   let bubbles = []
 
   let minDist = 1
@@ -48,11 +48,21 @@ export default function goldenRatio(p) {
 
   //--------------------------------------
   p.setup = function() {
-    //let canvasSize = setCanvasSize()
-    let width = window.innerWidth
-    let height = window.innerHeight //canvasSize.h
+    let wrapper = document.getElementById('wrapper')
+    let width = wrapper.getBoundingClientRect().width // save initial values of width,height
+    let height = wrapper.getBoundingClientRect().height
 
-    let cnv = p.createCanvas(0.9 * width, height)
+    if (width < 960) {
+      r0 = 8
+    }
+    r0 = 10
+    totalPoints = Math.min(Math.floor((4 * width) / r0), 600) // max number of bubbles=600
+    console.log(totalPoints)
+
+    // let width = window.innerWidth
+    // let height = window.innerHeight
+
+    let cnv = p.createCanvas(0.9 * width, 1.5 * height)
 
     cnv.parent('#container-figure')
 
@@ -232,7 +242,10 @@ export default function goldenRatio(p) {
     //inputAngle.value(angle.toFixed(6).toString())
   }
   p.windowResized = function() {
-    p.resizeCanvas(p.windowWidth, p.windowHeight)
+    let wrapper = document.getElementById('wrapper')
+    let width = wrapper.getBoundingClientRect().width // save initial values of width,height
+    let height = wrapper.getBoundingClientRect().height
+    p.resizeCanvas(0.9 * width, 1.5 * height)
   }
 
   p.draw = function() {
@@ -244,7 +257,7 @@ export default function goldenRatio(p) {
     }
 
     p.clear()
-    p.translate(0.5 * p.width, 200) //0.5 * p.height)
+    p.translate(0.5 * p.width, 0.5 * (2 / 3) * p.height)
 
     button.mousePressed(toggleStopAngle)
     control.mousePressed(toggleControls)
@@ -252,7 +265,8 @@ export default function goldenRatio(p) {
     inputAngle.changed(updateAngle)
 
     //make the first bubbles in the circle
-    if (count < 300) {
+    let N = Math.min(50, 0.6 * totalPoints)
+    if (count < N) {
       for (let n = 0; n < count; n++) {
         bubbles[n].display()
       }

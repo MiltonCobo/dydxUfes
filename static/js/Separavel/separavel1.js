@@ -16,8 +16,13 @@ export function drawSurfaceSep1() {
     y: ycenter
   }
 
-  // let windowWidth = window.innerWidth
-  // let windowHeight = window.innerHeight
+  let body = document.getElementsByTagName('body')[0]
+  let clientWidth = body.clientWidth // save initial values of width,height
+  let clientHeight = body.clientHeight
+
+  let size = Math.min(clientWidth, clientHeight)
+
+  console.log('clientWidth = ', clientWidth, 'clientHeight = ', clientHeight)
 
   function funct(x, y) {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
@@ -119,8 +124,8 @@ export function drawSurfaceSep1() {
     hovermode: false,
     dragmode: true,
     autosize: false,
-    width: 550, //0.42 * windowWidth,
-    height: 550 //0.44 * windowWidth
+    width: Math.min(size, 600), //550, //0.42 * windowWidth,
+    height: Math.min(size, 600) // 550 //0.44 * windowWidth
   }
 
   return { data: [dataSurface], layout, options }
@@ -139,6 +144,12 @@ export function drawContoursSep1() {
     x: xcenter,
     y: ycenter
   }
+
+  let body = document.getElementsByTagName('body')[0]
+  let clientWidth = body.clientWidth // save initial values of width,height
+  let clientHeight = body.clientHeight
+
+  let size = Math.min(clientWidth, clientHeight)
 
   function func(x, y) {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
@@ -239,7 +250,7 @@ export function drawContoursSep1() {
       ayref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 15,
+        // size: 14,
         color: 'black'
       },
       x: 0,
@@ -257,7 +268,7 @@ export function drawContoursSep1() {
       ayref: 'pixel',
       arrowcolor: 'blue',
       font: {
-        size: 15,
+        // size: 14,
         color: 'blue'
       },
       x: -1.0,
@@ -272,7 +283,7 @@ export function drawContoursSep1() {
       ayref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 15,
+        // size: 14,
         color: 'black'
       },
       x: -2,
@@ -287,7 +298,7 @@ export function drawContoursSep1() {
       axref: 'pixel',
       arrowcolor: 'red',
       font: {
-        size: 18,
+        // size: 14,
         color: 'red'
       },
       x: 0,
@@ -302,7 +313,7 @@ export function drawContoursSep1() {
       axref: 'pixel',
       arrowcolor: 'green',
       font: {
-        size: 18,
+        // size: 14,
         color: 'green'
       },
       x: 0,
@@ -317,7 +328,7 @@ export function drawContoursSep1() {
       ayref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 15,
+        // size: 14,
         color: 'black'
       },
       x: 0,
@@ -333,7 +344,7 @@ export function drawContoursSep1() {
       ayref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 15,
+        // size: 14,
         color: 'black'
       },
       x: 0,
@@ -424,7 +435,7 @@ export function drawContoursSep1() {
         y: -0.1,
         yanchor: 'top',
         font: {
-          size: 14,
+          // size: 14,
           color: 'brown'
         }
       }
@@ -437,8 +448,8 @@ export function drawContoursSep1() {
     hovermode: false,
     dragmode: false,
     autosize: false,
-    width: 600,
-    height: 500
+    width: Math.min(size, 600), //550, //0.42 * windowWidth,
+    height: Math.min(size, 600) // 550 //0.44 * windowWidth
   }
 
   return { data: [data0, data1, trace1, trace2], layout, options }

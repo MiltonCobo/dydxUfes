@@ -5,8 +5,8 @@
 $body-font-family: 'Verdana', sans-serif;
 $heading-font-family: 'Verdana', sans-serif;
 
-$font-size-root: 20px;
-$line-height-root: 1.5;
+$font-size-root: 18px; // 20PX --> 18PX SMALL CHANGES
+$line-height-root: 1.2; // 1.5--> 1.2
 
 // @import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono&display=swap');
 // @import url('https://fonts.googleapis.com/css? family=Comfortaa&display=swap');
@@ -47,18 +47,15 @@ a:hover {
   // }
 }
 
-// * {
-//   text-transform: none !important;
-
 li a {
   text-decoration: none;
 }
 
 // lock screen orientation in small devices
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 960px) {
   html {
-    font-size: 16px;
+    font-size: 14px; // CHANGE SIZE IN SMALL SCREENS
     // transform: rotate(-90deg);
     // transform-origin: left top;
     // width: 100vh;
