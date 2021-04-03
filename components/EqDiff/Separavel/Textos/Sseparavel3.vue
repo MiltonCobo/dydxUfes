@@ -179,6 +179,7 @@ export default {
   /* min-width: 400px;
   max-width: 700px; */
   height: 100%; /* foi necessario dar uma altura de 500px */
+  /* min-width: 340px; */
   /* min-height: 400px; */
   /* max-height: 500px; */
   background-color: inherit;

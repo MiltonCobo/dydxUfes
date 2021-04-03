@@ -22,7 +22,14 @@ export function drawSurfaceSep1() {
 
   let size = Math.min(clientWidth, clientHeight)
 
-  console.log('clientWidth = ', clientWidth, 'clientHeight = ', clientHeight)
+  console.log(
+    'clientWidth = ',
+    clientWidth,
+    'clientHeight = ',
+    clientHeight,
+    'size =',
+    size
+  )
 
   function funct(x, y) {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x

@@ -128,15 +128,29 @@ export default {
     }
   },
   mounted() {
+    this.checkMathJaxLoaded()
     this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
     this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
-
-    console.log('clientWidth mounted = ', this.clientWidth, this.clientHeight)
     //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   },
   updated() {
     this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
     this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
+  },
+  methods: {
+    checkMathJaxLoaded() {
+      if (!window.MathJax) {
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.id = 'MathJax-script'
+        script.defer = false
+        script.src = '/js/MathJax/mathjax2Config.js'
+        document.head.appendChild(script)
+      } else if (MathJax.Hub !== undefined) {
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax']) // THIS PART SEEMS NECESSARY OTHERWISE
+        //WHEN CLICK ON UFES MATHJAX DOESNT PARSE AGAIN...
+      }
+    }
   }
 }
 </script>

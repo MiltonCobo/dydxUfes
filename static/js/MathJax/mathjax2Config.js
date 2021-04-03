@@ -32,9 +32,6 @@ window.MathJax = {
     linebreaks: { automatic: true }
   },
 
-  'HTML-CSS': { linebreaks: { automatic: true } },
-  SVG: { linebreaks: { automatic: true } },
-
   showProcessingMessages: false,
   menuSettings: { zoom: 'Double-Click', mpContext: true, mpMouse: true }
 }
