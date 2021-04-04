@@ -25,6 +25,16 @@ $line-height-root: 1.2; // 1.5--> 1.2
   margin: 0px;
 }
 
+.figure {
+  width: 100%;
+  min-width: 280px;
+  height: 100%;
+  padding: 0px;
+  touch-action: manipulation;
+  scroll-behavior: smooth;
+  font-size: 0.7rem;
+}
+
 a {
   text-decoration: none;
 }
@@ -38,8 +48,8 @@ a:hover {
 }
 
 .mathjax {
-  padding-left: 2%;
-  padding-right: 2%;
+  padding-left: 2rem; // CHANGE FROM 2%......
+  padding-right: 2rem;
 }
 
 .v-btn {

@@ -9,6 +9,12 @@ export function drawLinear3() {
   let step = 0.05
   let xinitial = 0
 
+  let body = document.getElementsByTagName('body')[0]
+  let clientWidth = body.clientWidth // save initial values of width,height
+  let clientHeight = body.clientHeight
+
+  let size = Math.min(clientWidth, clientHeight)
+
   function funct(x) {
     return 12 - 2 * x - 8 * Math.sqrt(Math.E) * Math.exp(-x / 4)
   }
@@ -45,8 +51,7 @@ export function drawLinear3() {
       ayref: 'pixel',
       arrowcolor: 'red',
       font: {
-        size: 18,
-        color: 'red'
+        color: 'brown'
       },
       x: 5,
       y: 2
@@ -60,7 +65,6 @@ export function drawLinear3() {
       ayref: 'pixel',
       showarrow: false,
       font: {
-        size: 18,
         color: 'green'
       },
       x: 1.96,
@@ -73,7 +77,7 @@ export function drawLinear3() {
       showarrow: false,
       xanchor: 'left',
       font: {
-        size: 18,
+        size: 14,
         color: 'green'
       },
       x: 0.05,
@@ -114,50 +118,47 @@ export function drawLinear3() {
             label: 'Assíntota'
           }
         ],
-        direction: 'bottom',
+        direction: 'right',
         pad: {
-          r: 10,
-          t: 10
+          r: 0,
+          t: 0
         },
+        font: { size: 14, color: 'brown' },
         showactive: true,
         type: 'buttons',
-        x: 0.7,
+        x: 0.01,
         xanchor: 'left',
-        y: 0.63,
-        yanchor: 'top',
-        font: {
-          size: 16,
-          color: 'brown'
-        }
+        y: -0.2,
+        yanchor: 'right'
       }
     ],
     xaxis: {
       autorange: true,
       title: 't',
-      titlefont: { size: 18, color: 'brown' },
+      titlefont: { color: 'brown' },
       tickfont: { size: 12, color: 'blue' }
     },
     yaxis: {
       autorange: true,
       title: 'y(t)',
-      titlefont: { size: 18, color: 'brown' },
+      titlefont: { size: 14, color: 'brown' },
       // side : 'right',
       // tickvals: [0, -1.18, 12, -20],
       // ticktext: ['0', '$12-8\\sqrt{\\e}$', '12', '-20'],
       tickfont: { size: 12, color: 'blue' }
     },
 
-    title:
-      '$\\color{brown}{ y(t)=12 - 2t -\\color{green}{8\\sqrt{e}}\\,\\exp(-t/4)  }$',
+    // title:
+    //   '$\\color{brown}{ y(t)=12 - 2t -\\color{green}{8\\sqrt{e}}\\,\\exp(-t/4)  }$',
 
     showlegend: false,
     hovermode: false,
     autosize: false,
+    width: Math.min(size, 600),
+    height: Math.min(size, 600),
     dragmode: false,
     displaylogo: false,
-    showLink: false,
-    width: 600, //Math.min(0.42 * windowWidth, 490),
-    height: 600 // Math.min(0.42 * windowWidth, 490)
+    showLink: false
   }
 
   return { data: [data1, data2], layout, options }

@@ -3,7 +3,7 @@
     <v-container class="mathjax" fluid>
       <v-row>
         <v-col>
-          <h3 style="color:green; margin-top: 0.3cm;">
+          <h3 style="color:green; margin-top: 1rem;">
             Solução:
           </h3>
         </v-col>
@@ -17,10 +17,14 @@
           md="6"
           order="1"
           align="center"
-          class="figure"
         >
           <client-only placeholder="carregando...">
-            <vue-plotly :data="data" :layout="layout" :options="options" />
+            <vue-plotly
+              :data="data"
+              :layout="layout"
+              :options="options"
+              class="figure"
+            />
           </client-only>
         </v-col>
         <v-col sm="12" md="6" order="2">
@@ -70,7 +74,7 @@
             </span>
           </p>
         </v-col>
-        <v-col sm="12" md="6" order="3" class="figure" style="height: 25em;">
+        <v-col sm="12" md="6" order="3" class="figure">
           <client-only placeholder="carregando...">
             <vue-plotly :data="data2" :layout="layout2" :options="options" />
           </client-only>
@@ -174,16 +178,16 @@ export default {
 </script>
 
 <style scoped>
-.figure {
+/* .figure {
   width: 100%;
   /* min-width: 400px;
   max-width: 700px; */
-  height: 100%; /* foi necessario dar uma altura de 500px */
-  /* min-width: 340px; */
-  /* min-height: 400px; */
-  /* max-height: 500px; */
+/*height: 100%;  foi necessario dar uma altura de 500px */
+/* min-width: 340px; */
+/* min-height: 400px; */
+/* max-height: 500px; 
   background-color: inherit;
   margin: 0px;
   padding: 0px;
-}
+} */
 </style>

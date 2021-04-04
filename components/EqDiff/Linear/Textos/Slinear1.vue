@@ -45,13 +45,7 @@
 
     <v-container fluid>
       <v-row no-gutters align="center">
-        <v-col
-          sm="12"
-          md="6"
-          align="center"
-          class="figure"
-          style="min-width: 300px;"
-        >
+        <v-col sm="12" md="6" align="center" class="figure">
           <client-only>
             <vue-plotly
               placeholder="carregando..."
@@ -145,26 +139,6 @@ function plotMosquitosSol() {
   const xwidth = 30
   const initial = -20
 
-  // function getViewportSize(w) {
-
-  //   // This works for all browsers except IE8 and before
-  //   if (window.innerWidth != null)
-  //     return { w: window.innerWidth, h: window.innerHeight }
-
-  //   // For IE (or any browser) in Standards mode
-  //   var d = window.document
-  //   if (document.compatMode == 'CSS1Compat')
-  //     return {
-  //       w: d.documentElement.clientWidth,
-  //       h: d.documentElement.clientHeight
-  //     }
-
-  //   // For browsers in Quirks mode
-  //   return { w: d.body.clientWidth, h: d.body.clientHeight }
-  // }
-
-  // let windowWidth = getViewportSize()
-
   let params = []
   var param
   params[0] = a0 - Math.floor(0.4 * iter) * inc
@@ -196,8 +170,7 @@ function plotMosquitosSol() {
     autosize: true,
     hovermode: false,
     dragmode: false,
-    // width: 450,
-    // height: 450,
+
     title: '$\\color{green}{p(t)=a_0 + (p_0 - a_0) 2^x}$',
     xaxis: {
       range: [-2, 10],
@@ -217,7 +190,7 @@ function plotMosquitosSol() {
         text: '$p(0)=0.9,\\, p(3.2)=0$',
         xref: 'pixel',
         yref: 'pixel',
-        font: { size: 16, color: 'red' },
+        font: { size: 14, color: 'red' },
         arrowcolor: 'red',
         ax: 80,
         ay: -20,
@@ -228,7 +201,7 @@ function plotMosquitosSol() {
         text: '$p(0)= a_0\\approx 1.01, \\forall t.$',
         xref: 'pixel',
         yref: 'pixel',
-        font: { size: 18, color: 'green' },
+        font: { size: 14, color: 'green' },
         arrowcolor: 'green',
         ax: 30,
         ay: -40,

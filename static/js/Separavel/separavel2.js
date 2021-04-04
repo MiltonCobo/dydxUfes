@@ -18,11 +18,14 @@ export function drawContoursSep2() {
     y: ycorner
   }
 
-  // let windowWidth = window.innerWidth
-  // let windowHeight = window.innerHeight
+  let body = document.getElementsByTagName('body')[0]
+  let clientWidth = body.clientWidth // save initial values of width,height
+  let clientHeight = body.clientHeight
+
+  let size = Math.min(clientWidth, clientHeight)
 
   function funct(x, y) {
-    return y * y * y - 3 * y * y - x * x * x - x 
+    return y * y * y - 3 * y * y - x * x * x - x
   }
 
   let data = getDataSurfaceWithCorner(
@@ -106,7 +109,7 @@ export function drawContoursSep2() {
       axref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 18,
+        size: 14,
         color: 'black'
       },
       x: -0.75,
@@ -256,7 +259,7 @@ export function drawContoursSep2() {
   let layout = {
     title: '$y^3-3y^2-x^3-x=C$',
     font: {
-      size: 18,
+      size: 14,
       color: 'brown'
     },
     plot_bgcolor: 'gainsboro',
@@ -267,8 +270,8 @@ export function drawContoursSep2() {
     hovermode: false,
     autosize: false,
 
-    width: 550, //0.42 * windowWidth,
-    height: 550, //0.42 * windowWidth,
+    width: Math.min(size, 600),
+    height: Math.min(size, 600),
 
     xaxis: {
       autorange: true,
@@ -365,8 +368,11 @@ export function drawSurfaceSep2() {
     y: ycorner
   }
 
-  // let windowWidth = window.innerWidth
-  // let windowHeight = window.innerHeight
+  let body = document.getElementsByTagName('body')[0]
+  let clientWidth = body.clientWidth // save initial values of width,height
+  let clientHeight = body.clientHeight
+
+  let size = Math.min(clientWidth, clientHeight)
 
   function funct(x, y) {
     return y * y * y - 3 * y * y - x * x * x - x
@@ -431,8 +437,9 @@ export function drawSurfaceSep2() {
     paper_bgcolor: 'gainsboro',
     showlegend: false,
     hovermode: false,
-    //autosize: true,
-    width: 600, //0.5 * windowWidth,
+    autosize: false,
+    width: Math.min(size, 600),
+    height: Math.min(size, 600),
 
     scene: {
       camera: {

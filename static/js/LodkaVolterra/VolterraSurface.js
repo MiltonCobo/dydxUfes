@@ -115,7 +115,7 @@ export function volterraSurface() {
     arrowwidth: 1,
     arrowhead: 1,
     font: {
-      size: 18,
+      size: 14,
       color: 'red'
     },
     x: c / d,
@@ -134,7 +134,7 @@ export function volterraSurface() {
     arrowhead: 1,
     arrowcolor: 'black',
     font: {
-      size: 18,
+      size: 14,
       color: 'red'
     },
     x: c1 / d1,
@@ -255,7 +255,7 @@ export function volterraSurface() {
       y: -0.03,
       yanchor: 'top', // -0.02 is at the top
       font: {
-        size: 16,
+        size: 14,
         color: 'brown'
       }
     }

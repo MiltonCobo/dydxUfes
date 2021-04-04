@@ -57,7 +57,12 @@
       <v-card style="background-color:gainsboro;">
         <v-card-actions class="flex-column align-start">
           <client-only placeholder="carregando...">
-            <vue-plotly :data="data" :layout="layout" :options="options" />
+            <vue-plotly
+              :data="data"
+              :layout="layout"
+              :options="options"
+              class="figure"
+            />
           </client-only>
           <v-btn color="light-green" @click="openFigure = false">
             Voltar
@@ -77,7 +82,12 @@
       <v-card style="background-color:gainsboro;">
         <v-card-actions class="flex-column align-start">
           <client-only placeholder="carregando...">
-            <vue-plotly :data="data2" :layout="layout2" :options="options" />
+            <vue-plotly
+              :data="data2"
+              :layout="layout2"
+              :options="options"
+              class="figure"
+            />
           </client-only>
           <v-btn color="light-green" left @click="openFigure2 = false">
             Voltar
@@ -128,29 +138,10 @@ export default {
     }
   },
   mounted() {
-    this.checkMathJaxLoaded()
-    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
-    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
-  updated() {
     this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
     this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
   },
-  methods: {
-    checkMathJaxLoaded() {
-      if (!window.MathJax) {
-        const script = document.createElement('script')
-        script.type = 'text/javascript'
-        script.id = 'MathJax-script'
-        script.defer = false
-        script.src = '/js/MathJax/mathjax2Config.js'
-        document.head.appendChild(script)
-      } else if (MathJax.Hub !== undefined) {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax']) // THIS PART SEEMS NECESSARY OTHERWISE
-        //WHEN CLICK ON UFES MATHJAX DOESNT PARSE AGAIN...
-      }
-    }
-  }
+  updated() {},
+  methods: {}
 }
 </script>

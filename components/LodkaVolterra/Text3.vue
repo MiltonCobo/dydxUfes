@@ -4,10 +4,8 @@
       <v-row>
         <v-col>
           Sendo assim, temos por exemplo que a velocidade com que varia a
-          população de presas estará dada por
-          <span style="color:var(--mjx-green)"
-            >$dx/dt $= taxa de entrada - taxa saida</span
-          >
+          população de presas estará dada por $dx/dt =$
+          <span style="color: var(--myGreen)">taxa de entrada-taxa saida</span>
           e as equações do modelo são (com $a, b, c $ e $d$ positivas): $$ {
           \frac{dx}{dt} = a\,x - b\,x y, \quad \frac{dy}{dt} = -c\,y + d\,x
           y.}\quad \textrm{(EQs)} $$ Uma observação é importante. As constantes
@@ -24,7 +22,6 @@
           sm="12"
           md="7"
           class="figure"
-          style="width: 100%; height: 600px; "
         >
           <client-only>
             <vue-plotly
@@ -108,15 +105,9 @@ export default {
 </script>
 
 <style scoped>
-.figure {
-  /* width: 90%;   */
-
-  /* max-width: 800px; */
-  /* height: auto;  */
-  height: 24em;
-
-  background-color: inherit;
-  margin: 0px;
-  padding: 0px;
-}
+/* .figure {
+  @media only screen and (min-width: 960px) {
+    height: 100%;
+  }
+} */
 </style>

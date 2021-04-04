@@ -85,15 +85,16 @@
 
           <v-dialog
             v-model="openFigure"
-            width="600"
-            height="700"
+            :width="clientWidth"
+            :height="clientHeight"
             transition="fab-transition"
+            class="figure"
           >
             <v-card outlined>
               <v-card-text
                 class="mathjax"
                 align="center"
-                style="padding-top:20px; margin-bottom: -60px; font-family: 'Lucida Grande', sans-serif; font-size: 18px;"
+                style="padding-top:2rem; margin-bottom: -3rem; font-family: 'Lucida Grande', sans-serif;"
               >
                 Soluções da equação linear $$ y' - {1\over 2} y = 2\cos(t), \,
                 y(0) = a $$ para diferentes valores do parâmetro $a.$
@@ -101,7 +102,7 @@
               <v-card-actions class="flex-column align-start">
                 <client-only v-if="openFigure">
                   <line-chart
-                    style="width:500px; height:500px;"
+                    style="width: 100%; height: 100%;"
                     :chartdata="data"
                     :options="options"
                   />
@@ -113,7 +114,7 @@
 
               <v-card-text
                 class="mathjax"
-                style="padding: 20px; font-family: 'Lucida Grande', sans-serif; font-size: 18px;"
+                style="padding: 2rem; font-family: 'Lucida Grande', sans-serif;"
               >
                 As soluções são $$ { y(t) = (\frac{8}{5}) \sin(t) -
                 (\frac{4}{5}) \cos(t) + {(\frac{4}{5}+a)}\e^{t/2}. }$$ Observe
@@ -137,21 +138,24 @@ export default {
     let data = info.data
     let options = info.options
 
+    let clientWidth
+    let clientHeight
+
     return {
       openFigure: true,
       data,
-      options // has been modified below from original
+      options, // has been modified below from original
+
+      clientWidth,
+      clientHeight
     }
   },
 
   mounted() {
-    //this.checkMathJaxLoaded()
-    // MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
+    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
   },
-  updated() {
-    //this.checkMathJaxLoaded()
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
-  },
+  updated() {},
   methods: {}
 }
 </script>

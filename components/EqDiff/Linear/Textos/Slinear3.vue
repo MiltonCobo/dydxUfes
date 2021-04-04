@@ -10,57 +10,43 @@
     <v-divider />
     <v-row>
       <v-col>
-        <div style="margin-top: 0.3cm;">
+        <div style="margin-top: 1rem;">
           A equação é linear e o fator integrante é $\mu(t)=\e^{t/4}.$ Portanto,
-          $${ \begin{align*} \e^{t/4} (y' + \frac{1}{4} y) &= \frac{d}{dt}
-          (\e^{t/4} y) = \e^{t/4} - \frac{1}{2}t\,\e^{t/4} \quad
-          \color{black}{\textrm{, e integrando, } } \\ & \\ \e^{t/4} y &= \int
-          \e^{t/4} \, dt - \frac{1}{2} \int t\,\e^{t/4}\,dt + C \quad
-          \textrm{(eq1)}. \end{align*} } $$ Claramente $\int \e^{t/4} \, dt =
-          4\e^{t/4} + C.$ Por outro lado, usando integração por partes, chegamos
-          a que
-          <span style="color: var(mjx-green)">
-            $$\int t\, \e^{at}\, dt = \frac{1}{a} t\, \e^{at}-
-            \frac{1}{a^2}\e^{at} + C$$</span
-          >
+          $$\e^{t/4} (y' + \frac{1}{4} y) = \frac{d}{dt} (\e^{t/4} y) = \e^{t/4}
+          - \frac{1}{2}t\,\e^{t/4}, $$ e integrando respeito de $t,$ $$ \e^{t/4}
+          y = \int \e^{t/4} \, dt - \frac{1}{2} \int t\,\e^{t/4}\,dt + C \quad
+          \textrm{(eq1)}. $$ Claramente $\int \e^{t/4} \, dt = 4\e^{t/4} + C.$
+          Por outro lado, usando integração por partes, chegamos a que $$\int
+          t\, \e^{at}\, dt = \frac{1}{a} t\, \e^{at}- \frac{1}{a^2}\e^{at} + C$$
           e para $a=1/4$, $\int t\, \e^{t/4}\, dt = 4 t\, \e^{t/4}- 16\e^{t/4} +
           C.$ Portanto, substituindo estes resultados na equação (eq1) obtemos
-          <span style="color: var(mjx-green)">
-            $$ \begin{align*} \e^{t/4} y &= 4 \e^{t/4} \, dt - \frac{1}{2} ( 4
-            t\, \e^{t/4}- 16\e^{t/4} ) + C, \quad\color{black}{\textrm{ isto é,
-            }} \\ y(t) &= 12 -2t +C\e^{-t/4}. \end{align*} $$
-          </span>
-          Usando a condição inicial $y(0)=y_0$ obtemos que ${C= (y_0-12)}.$
-          Assim, a solução do problema de valor inicial é
-
-          <span style="color: var(mjx-green)">
-            $$ y(t) = 12 - 2t + {(y_0-12)} \e^{-t/4} \quad \textrm{(eq2)}. $$
-          </span>
-
-          Precisamos agora determinar o valor de $y_0$ para o qual a solução
-          <span style="color:var(mjx-green)">
+          $$ \begin{align*} \e^{t/4} y &= 4 \e^{t/4} \, dt - \frac{1}{2} ( 4 t\,
+          \e^{t/4}- 16\e^{t/4} ) + C, \quad\color{black}{\textrm{ isto é, }} \\
+          y(t) &= 12 -2t +C\e^{-t/4}. \end{align*} $$ Usando a condição inicial
+          $y(0)=y_0$ obtemos que ${C= (y_0-12)}.$ Assim, a solução do problema
+          de valor inicial é $$ y(t) = 12 - 2t + {(y_0-12)} \e^{-t/4} \quad
+          \textrm{(eq2)}. $$ Precisamos agora determinar o valor de $y_0$ para o
+          qual a solução
+          <span style="color:var(myGreen)">
             encosta mas não atravessa o eixo $x$.</span
           >
           Que significa isto? Significa que, para algum valor $t=t_0$, a solução
-          <span style="color:var(mjx-green)">
+          <span style="color:var(myGreen)">
             toca o eixo $x$, isto é $y(t_0)=0$, e é tangente nesse ponto a este
             eixo, isto é, $y'(t_0)=0$.</span
           >
           <br />
           Uma maneira de tentar achar o valor de ${t_0}$ (que muitos alunos
-          tentam) é tentar resolver o sistema de equações
-          <span style="color: var(mjx-green)">
-            $$\begin{split} y(t_0) &= 12 - 2t_0 +(y_0-12)\e^{-t_0/2} = 0 \\
-            y'(t_0) &= 2 - \frac{1}{2} (y_0-12)\e^{-t_0/2} = 0, \end{split} $$
-          </span>
-          para ${t_0}$ e ${y_0}$. No entanto, isto não é possível. Se isolamos
-          uma variável (digamos $t_0$ na segunda equação), e substituimos na
-          outra equação, obtemos uma equação igualmente complicada (com
-          logaritmos em lugar de exponenciais). Assim, devemos procurar uma
-          outra forma de achar $y_0$. A resposta é olhar para a própria equação
-          diferencial, ${ y'(t)+ (1/4)\, y(t) = 1-(1/2)\, t. }$ Esta equação é
-          válida
-          <span style="color: var(mjx-green)">
+          tentam) é tentar resolver o sistema de equações $$\begin{split} y(t_0)
+          &= 12 - 2t_0 +(y_0-12)\e^{-t_0/2} = 0 \\ y'(t_0) &= 2 - \frac{1}{2}
+          (y_0-12)\e^{-t_0/2} = 0, \end{split} $$ para ${t_0}$ e ${y_0}$. No
+          entanto, isto não é possível. Se isolamos uma variável (digamos $t_0$
+          na segunda equação), e substituimos na outra equação, obtemos uma
+          equação igualmente complicada (com logaritmos em lugar de
+          exponenciais). Assim, devemos procurar uma outra forma de achar $y_0$.
+          A resposta é olhar para a própria equação diferencial, ${ y'(t)+
+          (1/4)\, y(t) = 1-(1/2)\, t. }$ Esta equação é válida
+          <span style="color: var(myGreen)">
             para todo $t$ no domínio da função $y$, em particular vale no ponto
             ${t_0}$!
           </span>
@@ -89,12 +75,20 @@
 
     <v-dialog
       v-model="openFigure"
-      width="600"
-      height="600"
+      :width="clientWidth"
+      :height="clientHeight"
       transition="fab-transition"
+      class="figure"
     >
-      <v-card style="background-color:gainsboro;" :loading="loading" outline>
-        <v-card-text> </v-card-text>
+      <v-card style="background-color:gainsboro;" :loading="loading" outlined>
+        <v-card-text
+          class="mathjax figure"
+          align="center"
+          style="padding-top:2rem; font-family: 'Lucida Grande', sans-serif;"
+        >
+          Gráfico da solução $$y(t)=12 - 2t -\color{brown}{8 \sqrt{e}
+          }\,\exp(-t/4).$$
+        </v-card-text>
         <v-card-actions class="flex-column align-start">
           <client-only>
             <vue-plotly
@@ -109,8 +103,10 @@
           </v-btn>
           <v-card-text
             class="gainsboro mathjax"
-            style="font-family: 'Lucida Grande', sans-serif; font-size: 18px;"
+            style="font-family: 'Lucida Grande', sans-serif;"
           >
+            Esta função apresenta uma tangência com o eixo $t$ no ponto $t_0=2$
+            e é assintótica à reta $y = 12 -2t$ quando $t\to\infty.$
           </v-card-text>
         </v-card-actions>
       </v-card>
@@ -130,25 +126,28 @@ export default {
     let layout = info.layout
     let options = info.options
 
+    let clientWidth
+    let clientHeight
+
     return {
       openFigure: false,
       loading: false,
       data,
       layout,
-      options
+      options,
+
+      clientWidth,
+      clientHeight
     }
   },
   mounted() {
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
+    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
   },
   updated() {
-    //MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
   }
 }
 </script>
 
-<style scoped>
-#solution {
-  margin: 0;
-}
-</style>
+<style scoped></style>

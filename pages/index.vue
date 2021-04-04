@@ -14,10 +14,12 @@
         <div
           style="position:relative;"
           ref="container"
+          class="figure"
           id="container-figure"
         ></div>
       </v-col>
     </v-row>
+    <!--id=container-figure is used in goldenNumber.js -->
 
     <v-row align="center" class="flex-wrap-reverse">
       <v-col style="min-width:40%">
@@ -204,18 +206,17 @@ export default {
 <style scoped>
 #wrapper {
   height: min(460px, 100vw);
-
   /* width: min(90vw, 800px);   WIDTH IS SETUP BY ROW */
 }
 
-#container-figure {
+/* .figure {
   width: 100%;
   height: 100%;
-  /* max-height: 400px; */
+  max-height: 400px; 
   padding: 0px;
   touch-action: manipulation;
   scroll-behavior: smooth;
-}
+} */
 
 /* .mathjax { */
 /* font-size: 20px; */

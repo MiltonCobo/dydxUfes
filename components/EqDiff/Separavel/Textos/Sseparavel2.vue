@@ -72,7 +72,6 @@
     <v-row>
       <v-col>
         <v-sheet style="background: WhiteSmoke; padding: 15px;">
-          
           Ele viveu num momento de turbulência política na França sendo um
           acalorado ativista político que não hesitava em se envolver em
           situações perigosas, sendo preso varias vezes. Ele ainda conseguiu ser
@@ -90,11 +89,9 @@
             target="_blank"
             >Wikipedia sobre Galois).
           </a>
+        </v-sheet>
 
-          </v-sheet>
-            
         <v-sheet>
-
           <v-spacer />
           <br />
           Usaremos o seguinte teorema matemático que nos permite achar as raizes
@@ -186,8 +183,8 @@
           <v-dialog
             transition="fab-transition"
             v-model="openFigure"
-            width-width="360"
-            max-width="600"
+            :width="clientWidth"
+            :height="clientHeight"
           >
             <v-card>
               <v-card-actions
@@ -214,10 +211,9 @@
 
     <v-dialog
       transition="fab-transition"
+      :width="clientWidth"
+      :height="clientHeight"
       v-model="openFigure2"
-      width="600"
-      height="600"
-      style="font-size: 18px;"
     >
       <v-card style="background-color:gainsboro;">
         <v-card-actions class="flex-column align-start">
@@ -257,6 +253,9 @@ export default {
     let data2 = info2.data
     let layout2 = info2.layout
 
+    let clientWidth
+    let clientHeight
+
     return {
       openFigure: false,
       openFigure2: false,
@@ -264,11 +263,16 @@ export default {
       layout,
       options,
       data2,
-      layout2
+      layout2,
+
+      clientWidth,
+      clientHeight
     }
   },
+
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
+    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
   }
 }
 </script>
