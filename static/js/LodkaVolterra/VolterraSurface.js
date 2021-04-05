@@ -45,15 +45,12 @@ export function volterraSurface() {
   let layout0 = Object.assign({}, layout) //copy of data
 
   layout0.autosize = true
-  //let vw = Math.floor(0.3 * window.innerWidth)
-  // let vh = window.innerHeight
-  // layout0.width = vw
-  // console.log('vw = ', vw)
-  layout0.height = 600
+
+  // layout0.height = 600
 
   data.colorscale = 'Earth'
-  layout0.title =
-    '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'
+  // layout0.title =
+  //   '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'
 
   data.contours.z.start = 15 /* set manually because zMax=Infinity */
   data.contours.z.end = 50
@@ -192,8 +189,8 @@ export function volterraSurface() {
           args: [
             { visible: [true, false], opacity: 1 },
             {
-              title:
-                '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$',
+              // title:
+              //   '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$',
               layout: {
                 scene: {
                   annotations: [annotations1],

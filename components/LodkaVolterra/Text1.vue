@@ -13,12 +13,7 @@
           a 1923.
         </v-col>
         <v-col sm="12" md="4" align="center">
-          <img
-            src="~/assets/figures/lebrelince.png"
-            contain
-            width="300"
-            height="300"
-          />
+          <img src="~/assets/figures/lebrelince.png" contain />
         </v-col>
       </v-row>
       <v-row>
@@ -80,10 +75,4 @@ export default {
 }
 </script>
 
-<style scoped>
-/* #mathjax { 
-  font-family: 'Comic Sans MS', cursive, sans-serif; 
-  font-family: 'Neucha', cursive;
-  font-family: 'Montserrat', sans-serif; margin: 20px; 
-   }  */
-</style>
+<style scoped></style>

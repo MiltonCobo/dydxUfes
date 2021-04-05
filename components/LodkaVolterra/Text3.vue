@@ -21,14 +21,18 @@
           v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
           sm="12"
           md="7"
-          class="figure"
         >
+          <div style="color: brown">
+            Gráfico da superfície dada por $$V(x,y)=0.14\, x - 4.9\, \ln(x)
+            +0.12\, y-5.3\,\ln(y)$$
+          </div>
           <client-only>
             <vue-plotly
               placeholder="carregando..."
               :data="data"
               :layout="layout"
               :options="options"
+              class="figure"
             />
             <!-- v-if="startChart"  -->
           </client-only>
@@ -105,9 +109,17 @@ export default {
 </script>
 
 <style scoped>
-/* .figure {
-  @media only screen and (min-width: 960px) {
-    height: 100%;
+/* @media only screen and (min-width: 960px) {
+  .figure {
+    min-width: 500px;
+    min-height: 600px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .figure {
+    width: 90vw;
+    height: 100vw;
   }
 } */
 </style>

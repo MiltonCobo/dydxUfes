@@ -42,21 +42,21 @@ export function volterraContours() {
   let layout0 = Object.assign({}, layout)
   layout0.autosize = true
   //layout0.width = 700
-  // layout0.height = 500 /* set size of plot */
+  //layout0.height = 500
   layout0.dragmode = false
   data.colorscale = 'Earth'
-  layout0.title =
-    '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$'
+  // layout0.title =
+  //   '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\, \\ln(y)}$'
 
   // data.contours.z.start = -10 /* set manually because zMax=Infinity */
   // data.contours.z.end = 50
   // data.contours.z.size = 0.5
   data.visible = true
   data.autocontour = true /* contours attrib picked by algorithm, ncontours = contours levels */
-  data.ncontours = 30
+  data.ncontours = 40
   data.line = {
     smoothing: 1,
-    width: 1,
+    width: 2,
     color: 'green'
   }
   data.contours.coloring = 'lines'
@@ -95,7 +95,7 @@ export function volterraContours() {
       axref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 18,
+        size: 14,
         color: 'black'
       },
       x: c / d,
@@ -111,7 +111,7 @@ export function volterraContours() {
       axref: 'pixel',
       arrowcolor: 'black',
       font: {
-        size: 18,
+        size: 14,
         color: 'black'
       },
       x: c1 / d1,
@@ -201,7 +201,7 @@ export function volterraContours() {
     title: 'Atuns',
     titlefont: {
       family: 'Arial, sans-serif',
-      size: 18,
+      size: 14,
       color: 'Blue'
     }
   }
@@ -212,7 +212,7 @@ export function volterraContours() {
     title: 'Tubarões',
     titlefont: {
       family: 'Arial, sans-serif',
-      size: 18,
+      size: 14,
       color: 'Blue'
     }
   }
@@ -243,8 +243,8 @@ export function volterraContours() {
   layout0.annotations = annotations1
   layout0.shapes = shapes1
 
-  layout0.title =
-    "<span style = 'font-family: lucida Console; color: brown;'>Soluções com/sem pesca</span>"
+  // layout0.title =
+  //   "<span style = 'font-family: lucida Console; color: brown;'>Soluções com/sem pesca</span>"
 
   layout0.updatemenus = [
     {
@@ -273,17 +273,17 @@ export function volterraContours() {
           label: 'Com pesca'
         }
       ],
-      direction: 'bottom',
+      direction: 'right',
       pad: {
-        r: 10,
-        t: 10
+        r: 0,
+        t: 0
       },
       showactive: true,
       // bgcolor: 'lightgrey',
       type: 'buttons',
-      x: 0.76,
+      x: 0.1,
       xanchor: 'left',
-      y: 0.92,
+      y: 0.95,
       yanchor: 'top',
       font: {
         size: 14,

@@ -19,6 +19,14 @@
           <br />
         </v-col>
         <v-col sm="12" md="6" align="center" class="figure">
+          <!-- <div style="color: brown">
+            Soluções com/sem pesca.
+            <br />
+            Curvas de nível das funções $$V(x,y)=0.14\, x - 4.9\, \ln(x) +0.12\,
+            y-5.3\, \ln(y)$$ $$V(x,y)=0.14\, x - 7.5\, \ln(x) +0.12\, y-3.6\,
+            \ln(y)$$
+          </div> -->
+
           <client-only>
             <vue-plotly
               placeholder="carregando..."
@@ -124,15 +132,15 @@ export default {
 </script>
 
 <style scoped>
-.figure {
-  /* width: 90%;   */
-  height: 24em;
-
-  /* apparently need a fix height */
-  /* min-height: 400px;
-  max-height: 500px; */
-  background-color: inherit;
-  margin: 0px;
-  padding: 0px;
+@media only screen and (max-width: 960px) {
+  .figure {
+    width: 100vw;
+    height: 100vw;
+  }
 }
+
+/* .figure {
+  min-width: 320px;
+  min-height: 320px;
+} */
 </style>

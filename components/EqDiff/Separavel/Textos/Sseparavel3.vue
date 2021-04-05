@@ -74,9 +74,14 @@
             </span>
           </p>
         </v-col>
-        <v-col sm="12" md="6" order="3" class="figure">
+        <v-col sm="12" md="6" order="3">
           <client-only placeholder="carregando...">
-            <vue-plotly :data="data2" :layout="layout2" :options="options" />
+            <vue-plotly
+              :data="data2"
+              :layout="layout2"
+              :options="options"
+              class="figure"
+            />
           </client-only>
         </v-col>
       </v-row>
@@ -97,9 +102,14 @@
         </v-col>
       </v-row>
       <v-row no-gutters align="center">
-        <v-col sm="12" md="6" align="center" class="figure">
+        <v-col sm="12" md="6" align="center">
           <client-only placeholder="carregando...">
-            <vue-plotly :data="data3" :layout="layout3" :options="options" />
+            <vue-plotly
+              :data="data3"
+              :layout="layout3"
+              :options="options"
+              class="figure"
+            />
           </client-only>
         </v-col>
         <v-col>
@@ -177,17 +187,4 @@ export default {
 }
 </script>
 
-<style scoped>
-/* .figure {
-  width: 100%;
-  /* min-width: 400px;
-  max-width: 700px; */
-/*height: 100%;  foi necessario dar uma altura de 500px */
-/* min-width: 340px; */
-/* min-height: 400px; */
-/* max-height: 500px; 
-  background-color: inherit;
-  margin: 0px;
-  padding: 0px;
-} */
-</style>
+<style scoped></style>

@@ -27,12 +27,14 @@ $line-height-root: 1.2; // 1.5--> 1.2
 
 .figure {
   width: 100%;
-  min-width: 280px;
+  min-width: 320px;
+  min-height: 320px;
   height: 100%;
   padding: 0px;
   touch-action: manipulation;
   scroll-behavior: smooth;
   font-size: 0.7rem;
+  background-color: inherit;
 }
 
 a {
@@ -74,6 +76,32 @@ li a {
     // position: absolute;
     // top: 100%;
     // left: 0;
+  }
+}
+
+img {
+  width: 300px;
+  height: 300px;
+}
+
+@media only screen and (min-width: 960px) {
+  .figure {
+    min-width: 500px;
+    min-height: 600px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .figure {
+    width: 90vw;
+    height: 100vw;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  img {
+    width: 250px;
+    height: 250px;
   }
 }
 
