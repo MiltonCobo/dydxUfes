@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <h3 style="color:green; margin-top: 1rem;">
-          <p>Solução:</p>
+          Solução:
         </h3>
       </v-col>
     </v-row>

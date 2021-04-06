@@ -1,5 +1,5 @@
 <template>
-  <v-container pa="0" ma="0" fluid>
+  <v-container fluid>
     <v-row>
       <v-col>
         <h3 style="color:green; margin-top: 1rem;">
@@ -9,7 +9,7 @@
     </v-row>
     <v-divider />
 
-    <v-row pa="0" ma="0" class="flex-wrap-reverse" align="center" no-gutters>
+    <v-row class="flex-wrap-reverse" align="center" no-gutters>
       <v-col
         v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
         sm="12"
@@ -70,14 +70,9 @@
           </span>
         </p>
       </v-col>
-      <v-col sm="12" md="6" order="3">
+      <v-col sm="12" md="6" order="3" ref="figure2" class="figure">
         <client-only placeholder="carregando...">
-          <vue-plotly
-            :data="data2"
-            :layout="layout2"
-            :options="options"
-            class="figure"
-          />
+          <vue-plotly :data="data2" :layout="layout2" :options="options" />
         </client-only>
       </v-col>
     </v-row>
@@ -98,14 +93,9 @@
       </v-col>
     </v-row>
     <v-row no-gutters align="center">
-      <v-col sm="12" md="6" align="center">
+      <v-col sm="12" md="6" align="center" ref="figure2" class="figure">
         <client-only placeholder="carregando...">
-          <vue-plotly
-            :data="data3"
-            :layout="layout3"
-            :options="options"
-            class="figure"
-          />
+          <vue-plotly :data="data3" :layout="layout3" :options="options" />
         </client-only>
       </v-col>
       <v-col>
@@ -173,26 +163,36 @@ export default {
   created() {},
 
   mounted() {
+    let w, h, size
     this.layout.autosize = false
-    let width = this.$refs.figure1.clientWidth
-    let height = this.$refs.figure1.clientHeight
-    let size = Math.min(width, height, 500)
+    w = this.$refs.figure1.clientWidth
+    h = this.$refs.figure1.clientHeight
+    w = Math.min(w, 550)
+    h = Math.min(h, 600) // size up to 120% width
 
-    this.layout.width = 0.8 * size
-    this.layout.height = size
+    console.log(window.innerWidth)
+    // if (window.innerWidth < 600) {
+    //   w = 0.6 * w
+    // }
 
-    // this.layout.width = Math.min(0.65 * this.$refs.figure1.clientWidth, 550)
-    // this.layout.height = Math.min(this.$refs.figure1.clientHeight, 600)
-    // this.layout2.autosize = false
-    // this.layout2.width = Math.min(0.65 * this.$refs.figure1.clientWidth, 550)
-    // this.layout2.height = Math.min(this.$refs.figure1.clientHeight, 600)
-    // this.layout3.autosize = false
-    // this.layout3.width = Math.min(0.65 * this.$refs.figure1.clientWidth, 550)
-    // this.layout3.height = Math.min(this.$refs.figure1.clientHeight, 600)
+    this.layout.width = w
+    this.layout.height = h
+
+    this.layout2.width = w
+    this.layout2.height = h
+
+    this.layout3.width = w
+    this.layout3.height = h
+
     console.log(
-      'mounted =',
+      'mounted clientWidth =',
       this.$refs.figure1.clientWidth,
-      this.$refs.figure1.clientHeight
+      'mounted clientHeight=',
+      this.$refs.figure1.clientHeight,
+      'w =',
+      w,
+      'h = ',
+      h
     )
   },
   methods: {

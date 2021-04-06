@@ -1,6 +1,5 @@
 <template>
   <v-container fluid>
-
     <Question>
       <template v-slot:exercise>
         Exercício 2:
@@ -12,7 +11,7 @@
         solução e determine onde a solução atinge seu valor máximo.
       </template>
     </Question>
-
+    <v-row>
       <v-col>
         <Sseparavel3 />
       </v-col>

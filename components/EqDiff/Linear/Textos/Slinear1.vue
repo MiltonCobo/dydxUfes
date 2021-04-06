@@ -11,7 +11,7 @@
       <v-divider />
       <v-row>
         <v-col>
-          <v-sheet style="margin-top: 0.3cm;">
+          <p>
             Seja $ p(t) $ a população de mosquitos em tempo $ {t}. $ Para
             simplificar os números consideramos $p(t)$ em milhões e ${t}$ em
             semanas. Na ausência de predadores, a taxa de crescimento dos
@@ -38,7 +38,7 @@
             \e^{-rt} + C$$ de onde $ \boxed{ p(t) = a_0 + C \e^{rt} }$ com ${a_0
             = \frac{v}{r} = \frac{0.7}{\ln(2)}.}$ Denotamos $p_0 = p(0).$ É
             fácil ver que $C=p_0-a_0.$
-          </v-sheet>
+          </p>
         </v-col>
       </v-row>
     </v-container>
@@ -56,7 +56,7 @@
           </client-only>
         </v-col>
         <v-col sm="12" md="6">
-          <v-sheet>
+          <p>
             Temos então a solução geral $${p(t)=a_0 + (p_0-a_0)\, \e^{rt}.}$$
             Note que para ${p(0)=a_0 }$ a solução é a
             <span style="color:var(--mjx-green)"
@@ -72,7 +72,7 @@
             infinito e se ${p_0 - a_0 \lt 0}$ a população de mosquitos se torna
             negativa eventualmente, isto é, passa por zero em tempo positivo
             implicando que os mosquitos se extinguem pela ação dos predadores.
-          </v-sheet>
+          </p>
         </v-col>
       </v-row>
     </v-container>

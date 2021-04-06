@@ -10,7 +10,7 @@
     <v-divider />
     <v-row>
       <v-col>
-        <div style="margin-top: 1rem;">
+        <p>
           A equação é linear e o fator integrante é $\mu(t)=\e^{t/4}.$ Portanto,
           $$\e^{t/4} (y' + \frac{1}{4} y) = \frac{d}{dt} (\e^{t/4} y) = \e^{t/4}
           - \frac{1}{2}t\,\e^{t/4}, $$ e integrando respeito de $t,$ $$ \e^{t/4}
@@ -69,7 +69,7 @@
           $t\to\infty.$ Por assintóticamente equivalentes entendemos que
           $\lim_{t\to\infty} {y(t)\over {12-2t}} = 1$ para toda solução $y(t)$
           da equação.
-        </div>
+        </p>
       </v-col>
     </v-row>
 

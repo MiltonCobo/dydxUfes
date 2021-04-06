@@ -10,7 +10,7 @@
     <v-divider />
     <v-row>
       <v-col>
-        <div style="margin-top: 0.3cm;">
+        <p>
           A equação é do tipo linear $\,\boxed{y'+p(t) y = g(t)}\,$ sendo o
           fator integrante $${\mu(t)=\e^{\int p(t) dt} = \e^{-\int (1/2) dt} =
           \e^{-t/2} }.$$ Desta forma temos $${ \begin{align*} \e^{-t/2} (y' -
@@ -49,81 +49,83 @@
           <br />
           O comportamento das soluções depende inteiramente do coeficiente
           ${(\frac{4}{5}+a)}$:
-          <ul>
-            <li>
-              Se este número for positivo, isto é, se ${(a \gt -\frac{4}{5})}$
-              então a solução explode para infinito positivo (por causa da
-              exponencial) quando $t\to\infty$: $\lim_{t\to\infty}
-              y(t)=+\infty.$
-            </li>
-          </ul>
+        </p>
 
-          <ul>
-            <li>
-              se ${(a \lt -\frac{4}{5})}$ então a solução explode para infinito
-              negativo quando $t\to\infty$: $\lim_{t\to\infty} y(t)=-\infty.$,
-            </li>
-            <li>
-              se ${(a = -\frac{4}{5})}$ então a solução se torna
-              $${y(t)=(\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t)} $$ que
-              permanece
-              <span style="color:var(--mjx-green)"> limitada</span>
-              quando $t\to\infty.$ Isto significa que o módulo de $y(t)$ nunca é
-              maior que um certo número $M>0, $ i.e., $| y(t) | < M \textrm{
-              para todo } t>0.$
-              <br />
-              Observe que o limite $\lim_{t\to\infty} y(t)$
-              <span style="color:var(--mjx-green)"> não existe </span> para esta
-              função. O fato da função estar limitada não implica na existência
-              deste limite.
-              <br />
-              Note também que quando $t\to -\infty$ a exponencial $\e^{t/2}\to
-              0$ e todas as soluções $y(t)$ se aproximam muito rápido da solução
-              periódica ${y(t)=(\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t)}.$
-            </li>
-          </ul>
+        <ul>
+          <li>
+            Se este número for positivo, isto é, se ${(a \gt -\frac{4}{5})}$
+            então a solução explode para infinito positivo (por causa da
+            exponencial) quando $t\to\infty$: $\lim_{t\to\infty} y(t)=+\infty.$
+          </li>
+        </ul>
 
-          <v-dialog
-            v-model="openFigure"
-            :width="clientWidth"
-            :height="clientHeight"
-            transition="fab-transition"
-            class="figure"
-          >
-            <v-card outlined>
-              <v-card-text
-                class="mathjax"
-                align="center"
-                style="padding-top:2rem; margin-bottom: -3rem; font-family: 'Lucida Grande', sans-serif;"
-              >
-                Soluções da equação linear $$ y' - {1\over 2} y = 2\cos(t), \,
-                y(0) = a $$ para diferentes valores do parâmetro $a.$
-              </v-card-text>
-              <v-card-actions class="flex-column align-start">
-                <client-only v-if="openFigure">
-                  <line-chart
-                    style="width: 100%; height: 100%;"
-                    :chartdata="data"
-                    :options="options"
-                  />
-                </client-only>
-                <v-btn color="light-green" @click="openFigure = false">
-                  Voltar
-                </v-btn>
-              </v-card-actions>
+        <ul>
+          <li>
+            se ${(a \lt -\frac{4}{5})}$ então a solução explode para infinito
+            negativo quando $t\to\infty$: $\lim_{t\to\infty} y(t)=-\infty.$,
+          </li>
+          <li>
+            se ${(a = -\frac{4}{5})}$ então a solução se torna
+            $${y(t)=(\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t)} $$ que
+            permanece
+            <span style="color:var(--mjx-green)"> limitada</span>
+            quando $t\to\infty.$ Isto significa que o módulo de $y(t)$ nunca é
+            maior que um certo número $M>0, $ i.e., $| y(t) | < M \textrm{ para
+            todo } t>0.$
+            <br />
+            Observe que o limite $\lim_{t\to\infty} y(t)$
+            <span style="color:var(--mjx-green)"> não existe </span> para esta
+            função. O fato da função estar limitada não implica na existência
+            deste limite.
+            <br />
+            Note também que quando $t\to -\infty$ a exponencial $\e^{t/2}\to 0$
+            e todas as soluções $y(t)$ se aproximam muito rápido da solução
+            periódica ${y(t)=(\frac{8}{5}) \sin(t) - (\frac{4}{5}) \cos(t)}.$
+          </li>
+        </ul>
 
-              <v-card-text
-                class="mathjax"
-                style="padding: 2rem; font-family: 'Lucida Grande', sans-serif;"
-              >
-                As soluções são $$ { y(t) = (\frac{8}{5}) \sin(t) -
-                (\frac{4}{5}) \cos(t) + {(\frac{4}{5}+a)}\e^{t/2}. }$$ Observe
-                que para ${a=-0.8=-4/5}$ as soluções permanecem limitadas.
-              </v-card-text>
-            </v-card>
-          </v-dialog>
-        </div>
-      </v-col>
+        <v-dialog
+          v-model="openFigure"
+          :width="clientWidth"
+          :height="clientHeight"
+          transition="fab-transition"
+          class="figure"
+        >
+          <v-card outlined>
+            <v-card-text
+              class="mathjax"
+              align="center"
+              style="padding-top:2rem; margin-bottom: -3rem; font-family: 'Lucida Grande', sans-serif;"
+            >
+              Soluções da equação linear $$ y' - {1\over 2} y = 2\cos(t), \,
+              y(0) = a $$ para diferentes valores do parâmetro $a.$
+            </v-card-text>
+            <v-card-actions class="flex-column align-start">
+              <client-only v-if="openFigure">
+                <line-chart
+                  style="width: 100%; height: 100%;"
+                  :chartdata="data"
+                  :options="options"
+                />
+              </client-only>
+              <v-btn color="light-green" @click="openFigure = false">
+                Voltar
+              </v-btn>
+            </v-card-actions>
+
+            <v-card-text
+              class="mathjax"
+              style="padding: 2rem; font-family: 'Lucida Grande', sans-serif;"
+            >
+              As soluções são $$ { y(t) = (\frac{8}{5}) \sin(t) - (\frac{4}{5})
+              \cos(t) + {(\frac{4}{5}+a)}\e^{t/2}. }$$ Observe que para
+              ${a=-0.8=-4/5}$ as soluções permanecem limitadas.
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+
+        ></v-col
+      >
     </v-row>
   </v-container>
 </template>
