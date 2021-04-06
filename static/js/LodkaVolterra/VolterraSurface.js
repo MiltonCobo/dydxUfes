@@ -49,8 +49,8 @@ export function volterraSurface() {
   // layout0.height = 600
 
   data.colorscale = 'Earth'
-  // layout0.title =
-  //   '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'
+  layout0.title =
+    '$\\color{green}{V(x,y)=0.14\\, x - 4.9\\, \\ln(x) +0.12\\, y-5.3\\,\\ln(y)}$'
 
   data.contours.z.start = 15 /* set manually because zMax=Infinity */
   data.contours.z.end = 50

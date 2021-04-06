@@ -25,12 +25,17 @@ $line-height-root: 1.2; // 1.5--> 1.2
   margin: 0px;
 }
 
+p {
+  padding: 0.5rem 1.5rem;
+}
+
 .figure {
-  width: 100%;
-  min-width: 320px;
-  min-height: 320px;
-  height: 100%;
+  // width: 100%;
+  min-width: 300px;
+  min-height: 400px;
+  // height: 100%;
   padding: 0px;
+  margin: 0px;
   touch-action: manipulation;
   scroll-behavior: smooth;
   font-size: 0.7rem;
@@ -46,24 +51,18 @@ a:hover {
 
 .js-plotly-plot .plotly .modebar {
   position: relative;
-  left: 30%;
+  left: 50%;
 }
 
 .mathjax {
-  padding-left: 2rem; // CHANGE FROM 2%......
-  padding-right: 2rem;
+  //padding-left: 2rem; // CHANGE FROM 2%......
+  //padding-right: 2rem;
 }
 
 .v-btn {
-  text-transform: none !important; // text in vuetify not Capitalize
+  text-transform: capitalize !important; // text in vuetify not Capitalize
   // }
 }
-
-li a {
-  text-decoration: none;
-}
-
-// lock screen orientation in small devices
 
 @media only screen and (max-width: 960px) {
   html {
@@ -71,7 +70,7 @@ li a {
     // transform: rotate(-90deg);
     // transform-origin: left top;
     // width: 100vh;
-    // height: 100vw;
+    // height: 100vw;  // lock screen orientation in small devices
     // overflow-x: hidden;
     // position: absolute;
     // top: 100%;
@@ -79,23 +78,23 @@ li a {
   }
 }
 
-img {
-  width: 300px;
-  height: 300px;
-}
-
 @media only screen and (min-width: 960px) {
   .figure {
-    min-width: 500px;
-    min-height: 600px;
+    min-width: 450px;
+    min-height: 500px;
   }
 }
 
 @media only screen and (max-width: 960px) {
-  .figure {
-    width: 90vw;
-    height: 100vw;
+  .container {
+    padding: 0px;
   }
+  // .figure {
+  //   width: 70vw;
+  //   height: 80vw;
+  //   min-width: 300px;
+  //   min-height: 340px;
+  // }
 }
 
 @media only screen and (max-width: 340px) {

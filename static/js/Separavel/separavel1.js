@@ -16,20 +16,11 @@ export function drawSurfaceSep1() {
     y: ycenter
   }
 
-  let body = document.getElementsByTagName('body')[0]
-  let clientWidth = body.clientWidth // save initial values of width,height
-  let clientHeight = body.clientHeight
+  // let body = window.getElementsByTagName('body')[0]
+  // let clientWidth = body.clientWidth // save initial values of width,height
+  // let clientHeight = body.clientHeight
 
-  let size = Math.min(clientWidth, clientHeight)
-
-  console.log(
-    'clientWidth = ',
-    clientWidth,
-    'clientHeight = ',
-    clientHeight,
-    'size =',
-    size
-  )
+  // let size = Math.min(clientWidth, clientHeight)
 
   function funct(x, y) {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
@@ -130,9 +121,9 @@ export function drawSurfaceSep1() {
     title: '$\\color{brown}{V(x,y)=y^2-2 y-x^3-2 x^2-2 x}$',
     hovermode: false,
     dragmode: true,
-    autosize: false,
-    width: Math.min(size, 600), //550, //0.42 * windowWidth,
-    height: Math.min(size, 600) // 550 //0.44 * windowWidth
+    autosize: true
+    // width: Math.min(size, 600), //550, //0.42 * windowWidth,
+    //height: Math.min(size, 600) // 550 //0.44 * windowWidth
   }
 
   return { data: [dataSurface], layout, options }
@@ -152,11 +143,11 @@ export function drawContoursSep1() {
     y: ycenter
   }
 
-  let body = document.getElementsByTagName('body')[0]
-  let clientWidth = body.clientWidth // save initial values of width,height
-  let clientHeight = body.clientHeight
+  // let body = document.getElementsByTagName('body')[0]
+  // let clientWidth = body.clientWidth // save initial values of width,height
+  // let clientHeight = body.clientHeight
 
-  let size = Math.min(clientWidth, clientHeight)
+  // let size = Math.min(clientWidth, clientHeight)
 
   function func(x, y) {
     return y * y - 2 * y - x * x * x - 2 * x * x - 2 * x
@@ -454,9 +445,9 @@ export function drawContoursSep1() {
     showlegend: false,
     hovermode: false,
     dragmode: false,
-    autosize: false,
-    width: Math.min(size, 600), //550, //0.42 * windowWidth,
-    height: Math.min(size, 600) // 550 //0.44 * windowWidth
+    autosize: false
+    // width: Math.min(size, 600), //550, //0.42 * windowWidth,
+    // height: Math.min(size, 600) // 550 //0.44 * windowWidth
   }
 
   return { data: [data0, data1, trace1, trace2], layout, options }

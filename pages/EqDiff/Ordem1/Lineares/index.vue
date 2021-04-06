@@ -1,54 +1,52 @@
 <template>
-  <div>
-    <v-container fluid>
-      <v-row>
-        <v-col xs="12" align="start">
-          <h2 style="color:brown;">
-            Equações Lineares de primeira Ordem
-            <v-btn @click="count++" large absolute text right>
-              {{ updateText + 1 }}/{{ total }}
-              <v-icon style="color:brown;" large>chevron_right</v-icon>
-            </v-btn>
-          </h2>
-          <v-divider style="margin:0.5cm;" />
-        </v-col>
-      </v-row>
-
-      <v-row
-        v-touch="{
-          left: event => swipeLeft(event),
-          right: event => swipeRight(event)
-        }"
-      >
-        <v-col>
-          <!-- key=count to guarantie re render -->
-          <transition name="slide-fade" mode="out-in">
-            <div key="count" v-if="updateText == 0"><Linear1 /></div>
-            <div key="count" v-else-if="updateText == 1"><Linear2 /></div>
-            <div key="count" v-else><Linear3 /></div>
-          </transition>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col>
-          <v-btn @click="count += 2" large text absolute bottom left>
-            <v-icon style="color:brown;" large>chevron_left</v-icon>
-            Anterior
-          </v-btn>
-
-          <v-btn large fab absolute bottom style="position:relative; left: 50%;"
-            >{{ updateText + 1 }}/{{ total }}</v-btn
-          >
-
-          <v-btn @click="count++" large text absolute bottom right>
-            Seguinte
+  <v-container fluid>
+    <v-row>
+      <v-col xs="12" align="start">
+        <h2 style="color:brown;">
+          Equações Lineares de primeira Ordem
+          <v-btn @click="count++" large absolute text right>
+            {{ updateText + 1 }}/{{ total }}
             <v-icon style="color:brown;" large>chevron_right</v-icon>
           </v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+        </h2>
+        <v-divider style="margin:0.5cm;" />
+      </v-col>
+    </v-row>
+
+    <v-row
+      v-touch="{
+        left: event => swipeLeft(event),
+        right: event => swipeRight(event)
+      }"
+    >
+      <v-col>
+        <!-- key=count to guarantie re render -->
+        <transition name="slide-fade" mode="out-in">
+          <div key="count" v-if="updateText == 0"><Linear1 /></div>
+          <div key="count" v-else-if="updateText == 1"><Linear2 /></div>
+          <div key="count" v-else><Linear3 /></div>
+        </transition>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col>
+        <v-btn @click="count += 2" large text absolute bottom left>
+          <v-icon style="color:brown;" large>chevron_left</v-icon>
+          Anterior
+        </v-btn>
+
+        <v-btn large fab absolute bottom style="position:relative; left: 50%;"
+          >{{ updateText + 1 }}/{{ total }}</v-btn
+        >
+
+        <v-btn @click="count++" large text absolute bottom right>
+          Seguinte
+          <v-icon style="color:brown;" large>chevron_right</v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

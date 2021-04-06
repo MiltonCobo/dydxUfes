@@ -1,11 +1,11 @@
 <template>
-  <v-container pa="0" ma="0" class="container" fluid>
+  <v-container class="container" fluid>
     <v-row>
       <v-col>
         <h2 style="color:brown" align="center">
           O número Aúreo e o Girassol
         </h2>
-        <v-divider style="margin-bottom:0.5%;" />
+        <v-divider style="margin-bottom:1rem;" />
       </v-col>
     </v-row>
 
@@ -22,13 +22,12 @@
     <!--id=container-figure is used in goldenNumber.js -->
 
     <v-row align="center" class="flex-wrap-reverse">
-      <v-col style="min-width:40%">
-        <p class="mathjax ColorWheat">
+      <v-col>
+        <p>
           Esta animação está relacionada com a distribuição de sementes em
           algumas flores como o girassol. Na flor do girassol, sementes vão
           surgindo do centro e, enquanto vão se afastando, vão rodando por um
           certo ângulo fixado.
-
           <br />
           Na animação espalhamos um certo número de bolinhas num círculo (as
           "sementes") espaçadas por um mesmo ângulo $ \theta $ e as afastamos do
@@ -40,17 +39,14 @@
           real variando no intervalo $ [0,1] $. Quando $ x $ é racional, digamos
           $ x=p/q $ a figura tem exatamente $ q $ pernas. Por exemplo, quando $
           x = 0.25 $ a figura tem exatamente $ 4 $ pernas (digite este valor no
-          "input" dado nos controles).
-        </p>
-
-        <p class="mathjax ColorWheat">
-          Quando $ x $ é irracional as figuras ficam mais complexas pois o
-          número de pernas aumenta a medida que nos afastamos da origem. De
-          fato, o número de pernas que vai aparecendo depende das aproximações
-          racionais de $ x $. Por exemplo, para $ x= 1/\pi \approx 0.31830... $
-          o número de pernas é primeiro $ 3 $ e depois $ 22 $. Isso porque $
-          1/\pi $ é bem aproximado por $ 1/3 $ e por $ 7/22 $. Voce pode
-          observar isto digitando $0.31830$ no "input" dado nos controles.
+          "input" dado nos controles). Quando $ x $ é irracional as figuras
+          ficam mais complexas pois o número de pernas aumenta a medida que nos
+          afastamos da origem. De fato, o número de pernas que vai aparecendo
+          depende das aproximações racionais de $ x $. Por exemplo, para $ x=
+          1/\pi \approx 0.31830... $ o número de pernas é primeiro $ 3 $ e
+          depois $ 22 $. Isso porque $ 1/\pi $ é bem aproximado por $ 1/3 $ e
+          por $ 7/22 $. Voce pode observar isto digitando $0.31830$ no "input"
+          dado nos controles.
           <br />
           A figura mais complexa acontece quando $ x $ é o número irracional $
           \varphi = (1+\sqrt{5})/2 \approx 1.6180339... $. Ele é chamado de
@@ -65,7 +61,6 @@
           A primera raiz, que é positiva, é normalmente considerada a razão
           aúrea. Pode-se verificar fácilmente que $ \varphi_2 = -1/\varphi_1 =
           1-\varphi_1 \approx -0.6180339. $
-
           <br />
           A razão aúrea aparece constantemente em ciências naturais, por
           exemplo, o formato da flor do girassol aparentemente usa um ângulo
@@ -76,7 +71,6 @@
           >
             (ver a página de Wikipedia) </a
           >.
-
           <br />
           Indicamos
           <a
@@ -88,9 +82,9 @@
           para aqueles que entendem inglês, sobre o assunto no canal de youtube
           <i>Numberphile</i>, que infelizmente não tem ainda legendas em
           português.
-          <br />
-          <!-- Em breve iremos explicar mais amplamente este assunto. -->
         </p>
+        <!-- <br /> -->
+        <!-- Em breve iremos explicar mais amplamente este assunto. -->
       </v-col>
     </v-row>
   </v-container>
@@ -209,14 +203,9 @@ export default {
   /* width: min(90vw, 800px);   WIDTH IS SETUP BY ROW */
 }
 
-/* .figure {
-  width: 100%;
-  height: 100%;
-  max-height: 400px; 
-  padding: 0px;
-  touch-action: manipulation;
-  scroll-behavior: smooth;
-} */
+p {
+  padding: 2rem;
+}
 
 /* .mathjax { */
 /* font-size: 20px; */

@@ -1,30 +1,33 @@
 <template>
-  <div>
-    <v-container fluid>
-      <v-row style="margin:25px;">
-        <v-col style="border: 1px solid green; padding: 0px;">
-          <Qseparavel2 class="mathjax green lighten-5" />
-        </v-col>
-      </v-row>
-      <v-spacer />
-      <v-spacer />
-      <v-row>
-        <v-col>
-          <Sseparavel2 />
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+  <v-container fluid>
+    <Question>
+      <template v-slot:exercise>
+        Exercício 2:
+      </template>
+
+      <template>
+        Resolva o problema de valor inicial $$\color{green}{ \frac{dy}{dx} =
+        \frac{1+ 3x^2}{3y^2-6y}, \quad y(0) =1 }$$ e encontre o domínio da
+        solução.
+      </template>
+    </Question>
+
+    <v-row>
+      <v-col>
+        <Sseparavel2 />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import Qseparavel2 from '@/components/EqDiff/Separavel/Textos/Qseparavel2'
+import Question from '@/components/EqDiff/Question'
 import Sseparavel2 from '@/components/EqDiff/Separavel/Textos/Sseparavel2'
 
 export default {
-  name: 'Text1',
+  name: 'Separavel2',
   components: {
-    Qseparavel2,
+    Question,
     Sseparavel2
   },
   mounted() {

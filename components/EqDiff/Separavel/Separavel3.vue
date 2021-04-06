@@ -1,30 +1,33 @@
 <template>
-  <div>
-    <v-container fluid>
-      <v-row style="margin:25px;">
-        <v-col style="border: 1px solid green; padding: 0px;">
-          <Qseparavel3 class="mathjax green lighten-5" />
-        </v-col>
-      </v-row>
-      <v-spacer />
-      <v-spacer />
-      <v-row>
-        <v-col>
-          <Sseparavel3 />
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+  <v-container fluid>
+
+    <Question>
+      <template v-slot:exercise>
+        Exercício 2:
+      </template>
+
+      <template>
+        Resolva o problema de valor inicial $$\color{green}{ \frac{dy}{dx} =
+        \frac{2-\exp(x)}{3+2y}, \quad y(0) = 0, }$$ encontre o domínio da
+        solução e determine onde a solução atinge seu valor máximo.
+      </template>
+    </Question>
+
+      <v-col>
+        <Sseparavel3 />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import Qseparavel3 from '@/components/EqDiff/Separavel/Textos/Qseparavel3'
+import Question from '@/components/EqDiff/Question'
 import Sseparavel3 from '@/components/EqDiff/Separavel/Textos/Sseparavel3'
 
 export default {
   name: 'Text1',
   components: {
-    Qseparavel3,
+    Question,
     Sseparavel3
   },
   mounted() {

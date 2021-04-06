@@ -271,7 +271,7 @@ export function drawContoursSep2() {
     autosize: false,
 
     width: Math.min(size, 600),
-    height: Math.min(size, 600),
+    height: Math.min(size, 650),
 
     xaxis: {
       autorange: true,
@@ -439,7 +439,7 @@ export function drawSurfaceSep2() {
     hovermode: false,
     autosize: false,
     width: Math.min(size, 600),
-    height: Math.min(size, 600),
+    height: Math.min(size, 650),
 
     scene: {
       camera: {

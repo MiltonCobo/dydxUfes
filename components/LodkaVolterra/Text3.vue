@@ -1,70 +1,70 @@
 <template>
-  <v-sheet class="mathjax">
-    <v-container fluid>
-      <v-row>
-        <v-col>
-          Sendo assim, temos por exemplo que a velocidade com que varia a
-          população de presas estará dada por $dx/dt =$
-          <span style="color: var(--myGreen)">taxa de entrada-taxa saida</span>
-          e as equações do modelo são (com $a, b, c $ e $d$ positivas): $$ {
-          \frac{dx}{dt} = a\,x - b\,x y, \quad \frac{dy}{dt} = -c\,y + d\,x
-          y.}\quad \textrm{(EQs)} $$ Uma observação é importante. As constantes
-          $b$ e $d$ dependem apenas da dinâmica interna predador-presa enquanto
-          que $a$ e $c$ consideram fatores exteriores, como a pesca, que afetam
-          o taxa de crescimento dos atuns e a taxa de mortalidade dos tubarões.
-        </v-col>
-      </v-row>
+  <v-container pa="0" ma="0" fluid>
+    <v-row>
+      <v-col>
+        Sendo assim, temos por exemplo que a velocidade com que varia a
+        população de presas estará dada por $dx/dt =$
+        <span style="color: var(--myGreen)">taxa de entrada-taxa saida</span>
+        e as equações do modelo são (com $a, b, c $ e $d$ positivas): $$ {
+        \frac{dx}{dt} = a\,x - b\,x y, \quad \frac{dy}{dt} = -c\,y + d\,x
+        y.}\quad \textrm{(EQs)} $$ Uma observação é importante. As constantes
+        $b$ e $d$ dependem apenas da dinâmica interna predador-presa enquanto
+        que $a$ e $c$ consideram fatores exteriores, como a pesca, que afetam o
+        taxa de crescimento dos atuns e a taxa de mortalidade dos tubarões.
+      </v-col>
+    </v-row>
 
-      <v-row align="center" no-gutters>
-        <v-col
-          align="center"
-          v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
-          sm="12"
-          md="7"
-        >
-          <div style="color: brown">
-            Gráfico da superfície dada por $$V(x,y)=0.14\, x - 4.9\, \ln(x)
-            +0.12\, y-5.3\,\ln(y)$$
-          </div>
-          <client-only>
-            <vue-plotly
-              placeholder="carregando..."
-              :data="data"
-              :layout="layout"
-              :options="options"
-              class="figure"
-            />
-            <!-- v-if="startChart"  -->
-          </client-only>
-        </v-col>
+    <v-row align="center" no-gutters>
+      <v-col
+        align="center"
+        v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
+        sm="12"
+        md="7"
+        ref="figure1"
+        class="figure"
+      >
+        <client-only>
+          <vue-plotly
+            placeholder="carregando..."
+            :data="data"
+            :layout="layout"
+            :options="options"
+          />
+          <!-- v-if="startChart"  -->
+        </client-only>
 
-        <v-col sm="12" md="5">
-          As soluções $(x(t), y(t))$ das equações de Lodka-Volterra moram nas
-          <span style="color:var(--mjx-green)">curvas de nível</span> da função
-          $${V(x,y)=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$ Para ver isto
-          eliminamos o tempo nas equações fazendo $${ { dy/dt\over {dx/dt}} =
-          {dy\over dx} = \frac{y(d\,x-c)}{x(a-b\,y)} }$$ e desta forma obtemos
-          uma equação diferencial, numa variável, do tipo "separável": \[{
-          \frac{a-b\, y}{y} dy = \frac{d\, x-c}{x}\, dx } \] e e por integração
-          chegamos na chamada solução
-          <span style="color:var(--mjx-green)">implícita</span>
-          $${ V=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$
-          <!-- A figura mostra o
+        <!-- <div style="color: brown">
+          Gráfico da superfície dada por $$V(x,y)=0.14\, x - 4.9\, \ln(x)
+          +0.12\, y-5.3\,\ln(y)$$
+        </div> -->
+      </v-col>
+
+      <v-col sm="12" md="5">
+        As soluções $(x(t), y(t))$ das equações de Lodka-Volterra moram nas
+        <span style="color:var(--mjx-green)">curvas de nível</span> da função
+        $${V(x,y)=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$ Para ver isto
+        eliminamos o tempo nas equações fazendo $${ { dy/dt\over {dx/dt}} =
+        {dy\over dx} = \frac{y(d\,x-c)}{x(a-b\,y)} }$$ e desta forma obtemos uma
+        equação diferencial, numa variável, do tipo "separável": \[{ \frac{a-b\,
+        y}{y} dy = \frac{d\, x-c}{x}\, dx } \] e e por integração chegamos na
+        chamada solução
+        <span style="color:var(--mjx-green)">implícita</span>
+        $${ V=d\, x -c\,\ln(x) + b\, y -a\, \ln(y) }.$$
+        <!-- A figura mostra o
           gráfico de $V(x,y)$ para valores ${a=5.3, b=0.12, c=4.9}$ e ${d=0.14}$
           (superfície 1, sem pesca) e para valores ${a=3.6}$ e ${c=7.5} $
           (superfície 2, com pesca). -->
-        </v-col>
-      </v-row>
+      </v-col>
+    </v-row>
 
-      <v-row>
-        <v-col>
-          A figura mostra o gráfico de $V(x,y)$ para valores ${a=5.3, b=0.12,
-          c=4.9}$ e ${d=0.14}$ (superfície 1, sem pesca) e para valores
-          ${a=3.6}$ e ${c=7.5} $ (superfície 2, com pesca).
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-sheet>
+    <v-row>
+      <v-col>
+        A figura mostra o gráfico de $V(x,y)$ para valores ${a=5.3, b=0.12,
+        c=4.9}$ e ${d=0.14}$ (superfície 1, sem pesca) e para valores ${a=3.6}$
+        e ${c=7.5} $ (superfície 2, com pesca).
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -97,6 +97,18 @@ export default {
       options
     }
   },
+
+  mounted() {
+    this.layout.autosize = false
+    this.layout.width = Math.min(this.$refs.figure1.clientWidth, 550)
+    this.layout.height = Math.min(this.$refs.figure1.clientHeight, 600)
+    console.log(
+      'mounted =',
+      this.$refs.figure1.clientWidth,
+      this.$refs.figure1.clientHeight
+    )
+  },
+
   methods: {
     swipeLeft() {
       this.$store.discardTouch(true)
@@ -108,18 +120,4 @@ export default {
 }
 </script>
 
-<style scoped>
-/* @media only screen and (min-width: 960px) {
-  .figure {
-    min-width: 500px;
-    min-height: 600px;
-  }
-}
-
-@media only screen and (max-width: 960px) {
-  .figure {
-    width: 90vw;
-    height: 100vw;
-  }
-} */
-</style>
+<style scoped></style>

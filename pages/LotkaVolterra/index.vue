@@ -12,7 +12,7 @@
           </h2>
         </v-col>
       </v-row>
-      <v-divider style="margin-bottom:0.5cm;" />
+      <v-divider style="margin-bottom: 1rem;" />
 
       <v-row
         v-touch="{
@@ -102,9 +102,9 @@ export default {
     this.checkMathJaxLoaded()
 
     document.addEventListener('keydown', e => {
-      if (e.keyCode == 39) {
+      if (e.key == 39 || e.keyCode == 39) {
         this.count++
-      } else if (e.keyCode == 37) {
+      } else if (e.key == 37 || e.keyCode == 37) {
         this.count += 9
       } else return
     })
@@ -202,20 +202,4 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
-
-/*#mathjax {
-   font-family: 'Lucida Grande', sans-serif;
-  font-size: 20px; */
-/* font-weight: 700; */
-/* line-height: 150%; */
-/* font-family: 'Comic Sans MS', cursive, sans-serif; */
-/* font-family: 'Neucha', cursive; */
-/* font-family: Lucida Console; */
-/* font-family: 'Montserrat', sans-serif; */
-/* font-size: 18px; */
-/* font-weight: 700; */
-/* line-height: 150%; */
-/* margin: 0; 
-  margin-bottom: 0.4cm; 
-} */
 </style>

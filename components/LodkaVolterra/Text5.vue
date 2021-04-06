@@ -18,7 +18,7 @@
 
           <br />
         </v-col>
-        <v-col sm="12" md="6" align="center" class="figure">
+        <v-col sm="12" md="6" align="center" class="figure" ref="figure1">
           <!-- <div style="color: brown">
             Soluções com/sem pesca.
             <br />
@@ -126,21 +126,16 @@ export default {
     }
   },
   mounted() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    this.layout.autosize = false
+    this.layout.width = Math.min(this.$refs.figure1.clientWidth, 550)
+    this.layout.height = Math.min(this.$refs.figure1.clientHeight, 600)
+    console.log(
+      'mounted =',
+      this.$refs.figure1.clientWidth,
+      this.$refs.figure1.clientHeight
+    )
   }
 }
 </script>
 
-<style scoped>
-@media only screen and (max-width: 960px) {
-  .figure {
-    width: 100vw;
-    height: 100vw;
-  }
-}
-
-/* .figure {
-  min-width: 320px;
-  min-height: 320px;
-} */
-</style>
+<style scoped></style>

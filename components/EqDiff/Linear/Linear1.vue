@@ -1,13 +1,19 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row style="margin:25px;">
-        <v-col style="border: 1px solid green; padding: 0px;">
-          <Qlinear1 class="mathjax green lighten-5" />
-        </v-col>
-      </v-row>
-      <v-spacer />
-      <v-spacer />
+      <Question>
+        <template v-slot:exercise>
+          Exercício 1:
+        </template>
+
+        <template>
+          A população de mosquitos numa determinada área cresce a uma taxa
+          proporcional à população atual e, na ausência de predadores, a
+          população dobra a cada semana. Inicialmente temos $ 900 $ mil
+          mosquitos na área e os predadores comem $100 $ mil mosquitos por dia.
+          Encontre a população de mosquitos como função do tempo.
+        </template>
+      </Question>
       <v-row>
         <v-col>
           <Slinear1 />
@@ -18,13 +24,13 @@
 </template>
 
 <script>
-import Qlinear1 from '@/components/EqDiff/Linear/Textos/Qlinear1'
+import Question from '@/components/EqDiff/Question'
 import Slinear1 from '@/components/EqDiff/Linear/Textos/Slinear1'
 
 export default {
   name: 'Linear1',
   components: {
-    Qlinear1,
+    Question,
     Slinear1
   },
   mounted() {},

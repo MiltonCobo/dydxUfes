@@ -1,53 +1,52 @@
 <template>
-  <div>
-    <v-container fluid>
-      <v-row>
-        <v-col xs="12" align="start">
-          <h2 style="color:brown;">
-            Equações separáveis de primeira Ordem
-            <v-btn @click="count++" large absolute text right>
-              {{ updateText + 1 }}/{{ total }}
-              <v-icon style="color:brown" large>chevron_right</v-icon>
-            </v-btn>
-          </h2>
-        </v-col>
-      </v-row>
-      <v-divider style="margin:0.5cm;" />
-
-      <v-row
-        v-touch="{
-          left: event => swipeLeft(event),
-          right: event => swipeRight(event)
-        }"
-      >
-        <v-col>
-          <!-- key=count to guarrantie re render -->
-          <transition name="bounce">
-            <div key="count" v-if="updateText == 0"><Separavel1 /></div>
-            <div key="count" v-else-if="updateText == 1"><Separavel2 /></div>
-            <div key="count" v-else><Separavel3 /></div>
-          </transition>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col>
-          <v-btn @click="count += 2" large text absolute bottom left>
-            <v-icon style="color:brown;" large>chevron_left</v-icon>
-            Anterior
+  <v-container fluid>
+    <v-row>
+      <v-col xs="12" align="start">
+        <h2 style="color:brown;">
+          Equações separáveis de primeira Ordem
+          <v-btn @click="count++" large absolute text right>
+            {{ updateText + 1 }}/{{ total }}
+            <v-icon style="color:brown" large>chevron_right</v-icon>
           </v-btn>
+        </h2>
+      </v-col>
+    </v-row>
+    <v-divider style="margin: 0.8rem" />
 
-          <v-btn large fab absolute bottom style="position:relative; left: 50%;"
-            >{{ updateText + 1 }}/{{ total }}</v-btn
-          >
+    <v-row
+      v-touch="{
+        left: event => swipeLeft(event),
+        right: event => swipeRight(event)
+      }"
+    >
+      <v-col>
+        <!-- key=count to guarrantie re render -->
+        <transition name="bounce">
+          <div key="count" v-if="updateText == 0"><Separavel1 /></div>
+          <div key="count" v-else-if="updateText == 1"><Separavel2 /></div>
+          <div key="count" v-else><Separavel3 /></div>
+        </transition>
+      </v-col>
+    </v-row>
 
-          <v-btn @click="count++" large text absolute bottom right
-            >Seguinte<v-icon style="color:brown;" large>chevron_right</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
+    <v-row>
+      <v-col>
+        <v-btn @click="count += 2" large text absolute bottom left>
+          <v-icon style="color:brown;" large>chevron_left</v-icon>
+          Anterior
+        </v-btn>
 
-      <!-- <v-row>
+        <v-btn large fab absolute bottom style="position:relative; left: 50%;"
+          >{{ updateText + 1 }}/{{ total }}</v-btn
+        >
+
+        <v-btn @click="count++" large text absolute bottom right
+          >Seguinte<v-icon style="color:brown;" large>chevron_right</v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
+
+    <!-- <v-row>
         <v-col>
           <v-btn @click="count += 2" fab large text absolute bottom left>
             <v-icon style="color:brown;" large>chevron_left</v-icon>
@@ -58,8 +57,7 @@
           </v-btn>
         </v-col>
       </v-row> -->
-    </v-container>
-  </div>
+  </v-container>
 </template>
 
 <script>

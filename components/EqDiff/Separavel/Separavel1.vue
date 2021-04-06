@@ -1,53 +1,34 @@
 <template>
-  <div>
-    <v-container fluid>
-      <v-row style="margin:25px;">
-        <v-col style="border: 1px solid green; padding: 0px;">
-          <Qseparavel1 class="mathjax green lighten-5" />
-        </v-col>
-      </v-row>
-      <v-spacer />
-      <v-spacer />
-      <v-row>
-        <v-col>
-          <Sseparavel1 />
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
-  <!-- <v-container class="mathjax" fluid>
-      <v-row>
-        <h3 style="color:green;margin-bottom:0.5cm;text-decoration: underline;">
-          Exercício 1:
-        </h3>
-      </v-row>
-      <v-row>
-        <Qseparavel1 />
-      </v-row>
-      <v-divider />
-      <v-spacer />
+  <v-container fluid>
+    <Question>
+      <template v-slot:exercise>
+        Exercício 1:
+      </template>
 
-      <v-row>
-        <h3
-          style="color: green;margin:0.5cm 0cm 0.5cm 0cm;text-decoration: underline;"
-        >
-          Solução:
-        </h3>
+      <template>
+        Ache a solução explícita do problema de valor inicial \[ \frac{dy}{dx} =
+        \frac{3x^2+4x+2}{2(y-1)},\quad y(0)=-1, \] determinando o intervalo de
+        validade da solução.
+      </template>
+    </Question>
+
+    <v-row>
+      <v-col>
         <Sseparavel1 />
-      </v-row>
-    </v-container>
-  </div> -->
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import Qseparavel1 from '@/components/EqDiff/Separavel/Textos/Qseparavel1'
+import Question from '@/components/EqDiff/Question'
 import Sseparavel1 from '@/components/EqDiff/Separavel/Textos/Sseparavel1'
 
 export default {
   name: 'Text1',
   components: {
-    Qseparavel1,
-    Sseparavel1
+    Sseparavel1,
+    Question
   },
   mounted() {},
   updated() {},

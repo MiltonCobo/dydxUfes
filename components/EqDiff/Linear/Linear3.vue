@@ -1,13 +1,21 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row style="margin:25px;">
-        <v-col style="border: 1px solid green; padding: 0px;">
-          <Qlinear3 class="mathjax green lighten-5" />
-        </v-col>
-      </v-row>
-      <v-spacer />
-      <v-spacer />
+      <Question>
+        <template v-slot:exercise>
+          Exercício 3:
+        </template>
+
+        <template>
+          Encontre o valor de $y_0$ para que a solução de
+          <span style="color:green">
+            $$y'+1/4 y = 1- t/2, \, y(0)=y_0$$
+          </span>
+          <span style="color: green"
+            >encoste mas não atravesse o eixo $x$.
+          </span>
+        </template>
+      </Question>
       <v-row>
         <v-col>
           <Slinear3 />
@@ -18,12 +26,12 @@
 </template>
 
 <script>
-import Qlinear3 from '@/components/EqDiff/Linear/Textos/Qlinear3'
+import Question from '@/components/EqDiff/Question'
 import Slinear3 from '@/components/EqDiff/Linear/Textos/Slinear3'
 
 export default {
   components: {
-    Qlinear3,
+    Question,
     Slinear3
   },
 

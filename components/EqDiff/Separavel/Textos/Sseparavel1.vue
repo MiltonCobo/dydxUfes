@@ -1,17 +1,17 @@
 <template>
-  <v-container class="mathjax" fluid>
+  <v-container fluid>
     <v-row>
       <v-col>
-        <h3 style="color:green; margin-top: 0.3cm;">
-          Solução:
+        <h3 style="color:green; margin-top: 1rem;">
+          <p>Solução:</p>
         </h3>
       </v-col>
     </v-row>
     <v-divider />
 
     <v-row>
-      <v-col>
-        <v-sheet style="margin-top: 0.3cm; overflow-x:visible;">
+      <v-col style="margin-top: 1rem; overflow-x:visible;">
+        <p>
           $\def\R{\mathbb R}$ Separamos as variáveis $$ {2(y-1)\, dy =
           (3x^2+4x+2)\, dx} $$ e integramos a ambos lados, obtendo que as
           soluções $y=f(x)$ da equação diferencial moram
@@ -42,9 +42,9 @@
           que ${x^3+2x^2+2x+4 = (x+2)(x^2+4)}$ e portanto o polinômio
           ${p(x)=x^3+2x^2+2x+4}$ só tem uma única raiz real $x=-2$ e é fácil ver
           que $p(x) \ge 0$ somente se $x \ge -2,$ assim nossa solução tem
-          domínio $${ \textrm{Domínio } = \{x\in\R: x\ge -2 \} = [-2,\infty). }
+          domínio $${ \textrm{Domínio } = \{x\in\R: x\ge -2 } = [-2,\infty). }
           $$
-        </v-sheet>
+        </p>
       </v-col>
     </v-row>
 
@@ -138,10 +138,23 @@ export default {
     }
   },
   mounted() {
-    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
-    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
+    this.clientWidth = Math.min(window.innerWidth, 700) //document.body.clientWidth // save initial values of width,height
+    this.clientHeight = Math.min(window.innerHeight, 700) //document.body.clientHeight
+    let size = Math.min(this.clientWidth, this.clientHeight)
+    this.layout.autosize = false
+    this.layout.width = Math.min(size, 600)
+    this.layout.height = Math.min(size, 600)
+    this.layout2.autosize = false
+    this.layout2.width = Math.min(size, 600)
+    this.layout2.height = Math.min(size, 600)
   },
   updated() {},
   methods: {}
 }
 </script>
+
+<style scoped>
+/* p {
+  padding: 2rem;
+} */
+</style>

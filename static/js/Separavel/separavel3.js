@@ -176,7 +176,7 @@ export function drawContoursSep3() {
     visible: true,
     // xaxis: 'x',
     // yaxis: 'y',
-    showscale: true, // not show colorbar
+    showscale: false, // not show colorbar
     colorscale: 'Earth', //'RdBu', //
     //reversescale: true,
 
