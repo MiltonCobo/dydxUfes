@@ -42,8 +42,7 @@
           que ${x^3+2x^2+2x+4 = (x+2)(x^2+4)}$ e portanto o polinômio
           ${p(x)=x^3+2x^2+2x+4}$ só tem uma única raiz real $x=-2$ e é fácil ver
           que $p(x) \ge 0$ somente se $x \ge -2,$ assim nossa solução tem
-          domínio $${ \textrm{Domínio } = \{x\in\R: x\ge -2 } = [-2,\infty). }
-          $$
+          domínio $$ \textrm{Domínio } = \{x\in\R: x\ge -2 \} = [-2,\infty). $$
         </p>
       </v-col>
     </v-row>

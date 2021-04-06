@@ -11,7 +11,7 @@
         </h2>
       </v-col>
     </v-row>
-    <v-divider style="margin: 0.8rem" />
+    <v-divider />
 
     <v-row
       v-touch="{

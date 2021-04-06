@@ -55,4 +55,9 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.js-plotly-plot .plotly .modebar {
+  position: relative;
+  left: -20%;
+}
+</style>

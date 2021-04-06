@@ -1,30 +1,31 @@
 <template>
-  <v-container fluid>
+  <v-container pa="0" ma="0" fluid>
     <v-row>
       <v-col>
         <h3 style="color:green; margin-top: 1rem;">
           Solução:
         </h3>
+        <v-divider />
       </v-col>
     </v-row>
-    <v-divider />
 
     <v-row class="flex-wrap-reverse" align="center" no-gutters>
       <v-col
         v-touch="{ left: () => swipeLeft(), right: () => swipeRight() }"
-        sm="12"
-        md="6"
-        order="1"
         align="center"
+        sm="12"
+        md="7"
+        order="1"
         id="figure1"
         class="figure"
         ref="figure1"
+        style="margin: -1.5rem;"
       >
         <client-only placeholder="carregando...">
           <vue-plotly :data="data" :layout="layout" :options="options" />
         </client-only>
       </v-col>
-      <v-col sm="12" md="6" order="2">
+      <v-col sm="12" md="5" order="2">
         <p>
           Separando as variáveis, $ { (3+2y) \, dy = (2-\exp(x)) \, dx},$ e
           integrando a ambos lados, obtemos que as soluções $y=f(x)$ da equação
@@ -51,7 +52,7 @@
       </v-col>
     </v-row>
     <v-row class="flex-wrap-reverse" align="center" no-gutters>
-      <v-col sm="12" md="6" order="4">
+      <v-col sm="12" md="5" order="4">
         <p>
           Para determinar onde esta função atinge seu máximo precisamos
           encontrar os pontos críticos, i.e., os valores de $x$ onde $y'(x) =
@@ -70,7 +71,15 @@
           </span>
         </p>
       </v-col>
-      <v-col sm="12" md="6" order="3" ref="figure2" class="figure">
+      <v-col
+        sm="12"
+        md="7"
+        order="3"
+        align="center"
+        ref="figure2"
+        class="figure"
+        style="margin: -1.5rem;"
+      >
         <client-only placeholder="carregando...">
           <vue-plotly :data="data2" :layout="layout2" :options="options" />
         </client-only>
@@ -78,7 +87,7 @@
     </v-row>
 
     <v-row>
-      <v-col lg="12">
+      <v-col sm="12" md="5" order="4">
         <p>
           Portanto o denominador $3+2y$ da derivada $dy/dx$ é positivo perto de
           $x=\ln(2)$ e o sinal da derivada depende inteiramente do numerador
@@ -93,7 +102,14 @@
       </v-col>
     </v-row>
     <v-row no-gutters align="center">
-      <v-col sm="12" md="6" align="center" ref="figure2" class="figure">
+      <v-col
+        sm="12"
+        md="7"
+        align="center"
+        ref="figure2"
+        class="figure"
+        style="margin: -1.5rem;"
+      >
         <client-only placeholder="carregando...">
           <vue-plotly :data="data3" :layout="layout3" :options="options" />
         </client-only>
@@ -141,6 +157,7 @@ export default {
     //layout.autosize = false
 
     let options = info.options
+    // options.displayModeBar = false
 
     let info2 = drawContoursSep3()
     let data2 = info2.data
@@ -170,9 +187,9 @@ export default {
     w = Math.min(w, 550)
     h = Math.min(h, 600) // size up to 120% width
 
-    console.log(window.innerWidth)
+    //console.log(window.innerWidth)
     // if (window.innerWidth < 600) {
-    //   w = 0.6 * w
+    //   w = 0.65 * w
     // }
 
     this.layout.width = w

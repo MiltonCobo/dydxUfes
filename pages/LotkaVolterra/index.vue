@@ -1,56 +1,55 @@
 <template>
-  <div>
-    <v-container fluid>
-      <v-row>
-        <v-col>
-          <h2 style="color:brown;">
-            As equações de Lotka-Volterra
-            <v-btn @click="count++" large absolute text right>
-              {{ updateText + 1 }}/{{ total }}
-              <v-icon style="color:brown;" large>mdi-chevron-right</v-icon>
-            </v-btn>
-          </h2>
-        </v-col>
-      </v-row>
-      <v-divider style="margin-bottom: 1rem;" />
-
-      <v-row
-        v-touch="{
-          left: event => swipeLeft(event),
-          right: event => swipeRight(event)
-        }"
-      >
-        <v-col>
-          <!-- key=count to guarantie re render -->
-          <transition name="fade" mode="out-in">
-            <div key="count" v-if="updateText == 0"><Text1 /></div>
-            <div key="count" v-else-if="updateText == 1"><Text2 /></div>
-            <div key="count" v-else-if="updateText == 2"><Text3 /></div>
-            <div key="count" v-else-if="updateText == 3"><Text4 /></div>
-            <div key="count" v-else><Text5 /></div>
-          </transition>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col>
-          <v-btn @click="count += 9" large text absolute bottom left>
-            <v-icon style="color:brown;" large>chevron_left</v-icon>
-            Anterior
+  <v-container fluid>
+    <v-row>
+      <v-col>
+        <h2 style="color:brown;">
+          As equações de Lotka-Volterra
+          <v-btn @click="count++" large absolute text right>
+            {{ updateText + 1 }}/{{ total }}
+            <v-icon style="color:brown;" large>mdi-chevron-right</v-icon>
           </v-btn>
+        </h2>
+      </v-col>
+    </v-row>
+    <v-divider style="margin-bottom: 1rem;" />
 
-          <v-btn large fab absolute bottom style="position:relative; left: 50%;"
-            >{{ updateText + 1 }}/{{ total }}</v-btn
-          >
+    <v-row
+      v-touch="{
+        left: event => swipeLeft(event),
+        right: event => swipeRight(event)
+      }"
+    >
+      <v-col>
+        <!-- key=count to guarantie re render -->
+        <transition name="fade" mode="out-in">
+          <div key="count" v-if="updateText == 0"><Text1 /></div>
+          <div key="count" v-else-if="updateText == 1"><Text2 /></div>
+          <div key="count" v-else-if="updateText == 2"><Text3 /></div>
+          <div key="count" v-else-if="updateText == 3"><Text4 /></div>
+          <div key="count" v-else><Text5 /></div>
+        </transition>
+      </v-col>
+    </v-row>
 
-          <v-btn @click="count++" large text absolute bottom right
-            >Seguinte
-            <v-icon style="color:brown;" large>chevron_right</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
+    <v-row>
+      <v-col>
+        <v-btn @click="count += 9" large text absolute bottom left>
+          <v-icon style="color:brown;" large>chevron_left</v-icon>
+          Anterior
+        </v-btn>
 
-      <!-- 
+        <v-btn large fab absolute bottom style="position:relative; left: 50%;"
+          >{{ updateText + 1 }}/{{ total }}</v-btn
+        >
+
+        <v-btn @click="count++" large text absolute bottom right
+          >Seguinte
+          <v-icon style="color:brown;" large>chevron_right</v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
+
+    <!-- 
           <v-btn @click="count = count + 9" fab large text absolute bottom left>
             <v-icon style="color:brown;" large>mdi-chevron-left</v-icon>
           </v-btn>
@@ -59,10 +58,10 @@
           <v-btn @click="count++" fab large text absolute bottom right>
             <v-icon style="color:brown;" large>mdi-chevron-right</v-icon>
           </v-btn> -->
-      <!-- </v-col>
+    <!-- </v-col>
       </v-row> -->
 
-      <!-- <v-row>
+    <!-- <v-row>
         <v-col>
           <v-btn @click="count = count + 9" fab large text absolute bottom left>
             <v-icon style="color:brown;" large>mdi-chevron-left</v-icon>
@@ -74,8 +73,7 @@
           </v-btn>
         </v-col>
       </v-row> -->
-    </v-container>
-  </div>
+  </v-container>
 </template>
 <script>
 import Text1 from '../../components/LodkaVolterra/Text1'
