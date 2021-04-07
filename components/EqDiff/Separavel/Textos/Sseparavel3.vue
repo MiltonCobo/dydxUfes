@@ -85,7 +85,7 @@
     </v-row>
 
     <v-row>
-      <v-col sm="12" md="5" order="4">
+      <v-col md="12" order="4">
         <p>
           Portanto o denominador $3+2y$ da derivada $dy/dx$ é positivo perto de
           $x=\ln(2)$ e o sinal da derivada depende inteiramente do numerador
@@ -171,37 +171,19 @@ export default {
   created() {},
 
   mounted() {
-    let w, h, size
-    this.layout.autosize = false
-    w = this.$refs.figure1.clientWidth
-    h = this.$refs.figure1.clientHeight
-    w = Math.min(w, 550)
-    h = Math.min(h, 600) // size up to 120% width
+    let w, h
 
-    //console.log(window.innerWidth)
-    // if (window.innerWidth < 600) {
-    //   w = 0.65 * w
-    // }
+    this.layout.autosize = false
+
+    w = Math.min(this.$refs.figure1.clientWidth, 600)
+    h = Math.min(this.$refs.figure1.clientHeight, 650)
 
     this.layout.width = w
-    this.layout.height = h
-
+    this.layout.height = Math.max(h, w)
     this.layout2.width = w
-    this.layout2.height = h
-
+    this.layout2.height = Math.max(h, w)
     this.layout3.width = w
-    this.layout3.height = h
-
-    console.log(
-      'mounted clientWidth =',
-      this.$refs.figure1.clientWidth,
-      'mounted clientHeight=',
-      this.$refs.figure1.clientHeight,
-      'w =',
-      w,
-      'h = ',
-      h
-    )
+    this.layout3.height = Math.max(h, w)
   },
   methods: {
     swipeLeft() {

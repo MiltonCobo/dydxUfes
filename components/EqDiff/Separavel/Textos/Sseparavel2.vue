@@ -184,9 +184,10 @@
           >
         </p>
         <v-dialog
-          transition="fab-transition"
-          v-model="openFigure"
-          class="dialog figure"
+        transition="fab-transition"
+        :width="clientWidth"
+        :height="clientHeight"
+        v-model="openFigure"
         >
 
           <v-card>
@@ -272,16 +273,26 @@ export default {
     let w, h
         
     this.layout.autosize = false
+    this.layout2.autosize = false
 
     w= window.innerWidth 
     h = window.innerHeight 
     
     this.layout.width =  Math.min(w, h, 600)
     this.layout.height =  Math.min(w, h, 600)
+    
+    this.layout2.width =  Math.min(w, h, 600)
+    this.layout2.height =  Math.min(w, h, 600)
 
     this.clientWidth = Math.min(w, h, 700)
     this.clientHeight= Math.min(w, h, 700)
 
+  },
+
+  updated() {
+    if (window.MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub])
+    }
   }
 }
 </script>

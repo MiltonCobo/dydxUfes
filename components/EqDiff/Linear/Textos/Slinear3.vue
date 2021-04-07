@@ -141,19 +141,19 @@ export default {
     }
   },
   mounted() {
-    this.clientWidth = Math.min(document.body.clientWidth, 700) // save initial values of width,height
-    this.clientHeight = Math.min(document.body.clientHeight, 700)
+    let w, h
+    w = Math.min(document.body.clientWidth, 650) // save initial values of width,height
+    h = Math.min(document.body.clientHeight, 700)
+    this.clientWidth = w
+    this.clientHeight = h
 
-    console.log(this.clientWidth)
-
-    let size = Math.min(this.clientWidth, this.clientHeight)
     this.layout.autosize = false
-    this.layout.width = Math.min(size, 600)
-    this.layout.height = Math.min(size, 600)
+    this.layout.width = 0.8 * w
+    this.layout.height = Math.min(w, h)
   },
   updated() {
-    if (MathJax.Hub) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (window.MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub])
     }
   }
 }

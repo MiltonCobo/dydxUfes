@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" align="start">
-        <h2 style="color:brown;">
+        <h2 style="color:brown; padding-top:3rem">
           Equações Lineares de primeira Ordem
           <v-btn @click="count++" large absolute text right>
             {{ updateText + 1 }}/{{ total }}

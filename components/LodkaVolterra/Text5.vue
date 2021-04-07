@@ -130,14 +130,15 @@ export default {
     }
   },
   mounted() {
+    let w, h
+
     this.layout.autosize = false
-    this.layout.width = Math.min(this.$refs.figure1.clientWidth, 550)
-    this.layout.height = Math.min(this.$refs.figure1.clientHeight, 600)
-    console.log(
-      'mounted =',
-      this.$refs.figure1.clientWidth,
-      this.$refs.figure1.clientHeight
-    )
+
+    w = Math.min(this.$refs.figure1.clientWidth, 600)
+    h = Math.min(this.$refs.figure1.clientHeight, 650)
+
+    this.layout.width = w
+    this.layout.height = Math.max(h, w)
   }
 }
 </script>

@@ -137,19 +137,25 @@ export default {
     }
   },
   mounted() {
-    this.clientWidth = Math.min(window.innerWidth, 700) //document.body.clientWidth // save initial values of width,height
-    this.clientHeight = Math.min(window.innerHeight, 700) //document.body.clientHeight
-    let size = Math.min(this.clientWidth, this.clientHeight)
+    let w, h
+
     this.layout.autosize = false
-    this.layout.width = Math.min(size, 600)
-    this.layout.height = Math.min(size, 600)
     this.layout2.autosize = false
-    this.layout2.width = Math.min(size, 600)
-    this.layout2.height = Math.min(size, 600)
+
+    w = window.innerWidth
+    h = window.innerHeight
+
+    this.layout.width = Math.min(w, h, 600)
+    this.layout.height = Math.min(w, h, 600)
+    this.layout2.width = Math.min(w, h, 600)
+    this.layout2.height = Math.min(w, h, 600)
+
+    this.clientWidth = Math.min(w, h, 700)
+    this.clientHeight = Math.min(w, h, 700)
   },
   updated() {
-    if (MathJax.Hub) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (window.MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub])
     }
   },
   methods: {}

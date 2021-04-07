@@ -45,7 +45,7 @@
 
     <v-container fluid>
       <v-row no-gutters align="center">
-        <v-col sm="12" md="6" align="center" class="figure">
+        <v-col sm="12" md="6" align="center" class="figure" ref="figure1">
           <client-only>
             <vue-plotly
               placeholder="carregando..."
@@ -126,7 +126,17 @@ export default {
       //updateCount: 0
     }
   },
-  mounted() {},
+  mounted() {
+    let w, h
+
+    this.layout.autosize = false
+
+    w = Math.min(this.$refs.figure1.clientWidth, 600)
+    h = Math.min(this.$refs.figure1.clientHeight, 650)
+
+    this.layout.width = w
+    this.layout.height = Math.max(h, w)
+  },
   methods: {},
   updated() {}
 }

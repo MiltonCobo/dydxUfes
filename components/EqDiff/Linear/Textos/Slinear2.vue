@@ -154,12 +154,12 @@ export default {
   },
 
   mounted() {
-    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
-    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
+    this.clientWidth = Math.min(document.body.clientWidth, 650) // save initial values of width,height
+    this.clientHeight = Math.min(document.body.clientHeight, 700)
   },
   updated() {
-    if (MathJax.Hub) {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (window.MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub])
     }
   },
   methods: {}
