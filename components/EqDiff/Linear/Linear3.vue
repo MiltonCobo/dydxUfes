@@ -1,28 +1,24 @@
 <template>
-  <div>
-    <v-container fluid>
-      <Question>
-        <template v-slot:exercise>
-          Exercício 3:
-        </template>
+  <v-container fluid>
+    <Question>
+      <template v-slot:exercise>
+        Exercício 3:
+      </template>
 
-        <template>
-          Encontre o valor de $y_0$ para que a solução de
-          <span style="color:green">
-            $$y'+1/4 y = 1- t/2, \, y(0)=y_0$$
-          </span>
-          <span style="color: green"
-            >encoste mas não atravesse o eixo $x$.
-          </span>
-        </template>
-      </Question>
-      <v-row>
-        <v-col>
-          <Slinear3 />
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+      <template>
+        Encontre o valor de $y_0$ para que a solução de
+        <span style="color:green">
+          $$y'+1/4 y = 1- t/2, \, y(0)=y_0$$
+        </span>
+        <span style="color: green">encoste mas não atravesse o eixo $x$. </span>
+      </template>
+    </Question>
+    <v-row>
+      <v-col>
+        <Slinear3 />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

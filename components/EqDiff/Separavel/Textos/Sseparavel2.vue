@@ -66,8 +66,8 @@
         <img
           contain
           src="~/assets/figures/Evariste_galois.jpg"
-          height="250"
-          width="250"
+          height="300"
+          width="300"
         />
         <div class="subheading">Évariste Galois(1811-1832)</div>
       </v-col>

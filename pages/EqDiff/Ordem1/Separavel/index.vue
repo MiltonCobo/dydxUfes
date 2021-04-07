@@ -2,17 +2,17 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" align="start">
-        <h2 style="color:brown; padding-top: 3rem">
+        <h2 style="color:brown; padding:3.5rem 0 1.5rem">
           <!-- padding-top necessary-->
           Equações separáveis de primeira Ordem
           <v-btn @click="count++" large absolute text right>
             {{ updateText + 1 }}/{{ total }}
             <v-icon style="color:brown" large>chevron_right</v-icon>
           </v-btn>
+          <v-divider />
         </h2>
       </v-col>
     </v-row>
-    <v-divider />
 
     <v-row
       v-touch="{
@@ -119,12 +119,12 @@ export default {
         //script.addEventListener('load', console.log('mathjax has been loaded!'))
         //script.addEventListener('load', this.onMathJaxLoaded)
       } else if (typeof MathJax.Hub !== 'undefined') {
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub])
       }
     }
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub])
   },
   computed: {
     updateText() {

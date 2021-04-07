@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row align="center" no-gutters>
-      <v-col sm="12" md="8">
+      <v-col sm="12" md="7">
         <p>
           Durante a 1ª Guerra Mundial (1914-1917) a pesca no mar adriático foi
           severamente restrita. Após a Guerra os pescadores italianos reportaram
@@ -13,11 +13,11 @@
           a 1923.
         </p>
       </v-col>
-      <v-col sm="12" md="4" align="center">
+      <v-col sm="12" md="5" align="center">
         <img
           src="~/assets/figures/lebrelince.png"
-          width="250px"
-          height="300px"
+          width="300px"
+          height="250px"
           contain
         />
       </v-col>

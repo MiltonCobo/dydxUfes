@@ -2,14 +2,14 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" align="start">
-        <h2 style="color:brown; padding-top:3rem">
+        <h2 style="color:brown; padding:3.5rem 0 1.5rem">
           Equações Lineares de primeira Ordem
           <v-btn @click="count++" large absolute text right>
             {{ updateText + 1 }}/{{ total }}
             <v-icon style="color:brown;" large>chevron_right</v-icon>
           </v-btn>
+          <v-divider />
         </h2>
-        <v-divider style="margin:0.5cm;" />
       </v-col>
     </v-row>
 
