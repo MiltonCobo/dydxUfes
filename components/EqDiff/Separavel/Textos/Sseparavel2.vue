@@ -269,10 +269,26 @@ export default {
   },
 
   mounted() {
-    // this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
-    // this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
+    let w, h
+        
+    this.layout.autosize = false
+
+    w= window.innerWidth 
+    h = window.innerHeight 
+    
+    this.layout.width =  Math.min(w, h, 600)
+    this.layout.height =  Math.min(w, h, 600)
+
+    this.clientWidth = Math.min(w, h, 700)
+    this.clientHeight= Math.min(w, h, 700)
+
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.js-plotly-plot .plotly .modebar {
+  position: relative;
+  left: 30%;
+}
+</style>

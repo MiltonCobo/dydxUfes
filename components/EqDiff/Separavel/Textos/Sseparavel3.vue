@@ -19,7 +19,6 @@
         id="figure1"
         class="figure"
         ref="figure1"
-        style="margin: -1.5rem;"
       >
         <client-only placeholder="carregando...">
           <vue-plotly :data="data" :layout="layout" :options="options" />
@@ -78,7 +77,6 @@
         align="center"
         ref="figure2"
         class="figure"
-        style="margin: -1.5rem;"
       >
         <client-only placeholder="carregando...">
           <vue-plotly :data="data2" :layout="layout2" :options="options" />
@@ -102,14 +100,7 @@
       </v-col>
     </v-row>
     <v-row no-gutters align="center">
-      <v-col
-        sm="12"
-        md="7"
-        align="center"
-        ref="figure2"
-        class="figure"
-        style="margin: -1.5rem;"
-      >
+      <v-col sm="12" md="7" align="center" ref="figure2" class="figure">
         <client-only placeholder="carregando...">
           <vue-plotly :data="data3" :layout="layout3" :options="options" />
         </client-only>

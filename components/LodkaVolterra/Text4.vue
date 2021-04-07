@@ -6,7 +6,7 @@
           Note que as curvas de nível de $V$ são fechadas. De fato o gradiente
           ${\nabla V(x,y)=(d-c/x, b-a/y)}$ se anula no ponto $\bar{p}=(c/d,
           a/b)$ e a matriz Hessiana de $V$ em ${\bar{p}}$ é dada por
-          $$\textrm{Hess}\, V(\bar{p}) = \begin{pmatrix} d^2/c & 0 \ 0 & b^2/a
+          $$\textrm{Hess}\, V(\bar{p}) = \begin{pmatrix} d^2/c & 0 \\ 0 & b^2/a
           \end{pmatrix}.$$ Pelo critério da segunda derivada $V$ tem um mínimo
           local em $\bar{p}$, isto é, ${ V(\frac{c}{d}+x,\frac{a}{b}+y) }$ é
           aproximadamente igual $${ V(\bar{p})+\frac{d^2}{c}\, x^2

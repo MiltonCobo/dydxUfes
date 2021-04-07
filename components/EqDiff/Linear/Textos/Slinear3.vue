@@ -82,7 +82,7 @@
     >
       <v-card style="background-color:gainsboro;" :loading="loading" outlined>
         <v-card-text
-          class="mathjax figure"
+          class="mathjax"
           align="center"
           style="padding-top:2rem; font-family: 'Lucida Grande', sans-serif;"
         >
@@ -141,11 +141,20 @@ export default {
     }
   },
   mounted() {
-    this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
-    this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
+    this.clientWidth = Math.min(document.body.clientWidth, 700) // save initial values of width,height
+    this.clientHeight = Math.min(document.body.clientHeight, 700)
+
+    console.log(this.clientWidth)
+
+    let size = Math.min(this.clientWidth, this.clientHeight)
+    this.layout.autosize = false
+    this.layout.width = Math.min(size, 600)
+    this.layout.height = Math.min(size, 600)
   },
   updated() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
   }
 }
 </script>

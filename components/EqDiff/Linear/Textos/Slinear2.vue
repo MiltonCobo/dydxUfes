@@ -157,7 +157,11 @@ export default {
     this.clientWidth = Math.min(document.documentElement.clientWidth, 700) // save initial values of width,height
     this.clientHeight = Math.min(document.documentElement.clientHeight, 700)
   },
-  updated() {},
+  updated() {
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
+  },
   methods: {}
 }
 </script>

@@ -147,7 +147,11 @@ export default {
     this.layout2.width = Math.min(size, 600)
     this.layout2.height = Math.min(size, 600)
   },
-  updated() {},
+  updated() {
+    if (MathJax.Hub) {
+      MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'mathjax'])
+    }
+  },
   methods: {}
 }
 </script>
